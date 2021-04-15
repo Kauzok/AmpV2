@@ -8,12 +8,14 @@ namespace HenryMod.Modules
     {
         // armor buff gained during roll
         internal static BuffDef armorBuff;
+        internal static BuffDef speedBuff;
 
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
         internal static void RegisterBuffs()
         {
             armorBuff = AddNewBuff("HenryArmorBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
+            speedBuff = AddNewBuff("BattlemageSpeedBuff", Resources.Load<Sprite>("None"), Color.cyan, false, false);
         }
 
         // simple helper method

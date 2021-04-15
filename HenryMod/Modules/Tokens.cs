@@ -32,7 +32,7 @@ namespace HenryMod.Modules
 
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_ROLL_NAME", "Bolt");
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>300% movement speed.</style>");
+            LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>200% movement speed.</style>");
             #endregion
 
             #region Special

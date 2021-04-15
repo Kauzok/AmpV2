@@ -4,6 +4,8 @@ using RoR2.Audio;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using RoR2.Orbs;
+
 
 namespace HenryMod.SkillStates.BaseStates
 {
