@@ -2,6 +2,7 @@
 using RoR2;
 using UnityEngine;
 using RoR2.Projectile;
+using System.Collections;
 
 namespace HenryMod.SkillStates
 {
@@ -18,7 +19,6 @@ namespace HenryMod.SkillStates
         public static float launchForce = 150f;
 
         private Animator animator;
-
 
         public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
 
@@ -44,20 +44,21 @@ namespace HenryMod.SkillStates
             base.OnExit();
         }
 
-        private void Fire()
+        IEnumerator Fire()
         {
             if (!this.hasFired)
             {
 
                 this.hasFired = true;
-                //EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
                 Util.PlaySound("HenryBombThrow", base.gameObject);
 
                 if (base.isAuthority)
                 {
-                    Ray aimRay = base.GetAimRay();
+                    for(int i = 0; i<6; i++)
+                    {
+                        Ray aimRay = base.GetAimRay();
 
-                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
+                        ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
                         aimRay.origin,
                         Util.QuaternionSafeLookRotation(aimRay.direction),
                         base.gameObject,
@@ -68,20 +69,8 @@ namespace HenryMod.SkillStates
                         null,
                         Ferroshot.launchForce);
 
-                }
-
-
-
-                base.characterBody.AddSpreadBloom(1.5f);
-                EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
-                Util.PlaySound("HenryShootPistol", base.gameObject);
-
-                if (base.isAuthority)
-                {
-                    Ray aimRay = base.GetAimRay();
-
-
-
+                        yield return new WaitForSeconds(.1f);
+                    }
                 }
             }
         }
@@ -92,7 +81,8 @@ namespace HenryMod.SkillStates
 
             if (base.fixedAge >= this.fireTime)
             {
-                this.Fire();
+                CoroutineRunner.RunCoroutine(Fire());
+                //this.Fire();
             }
 
             if (base.fixedAge >= this.duration && base.isAuthority)
