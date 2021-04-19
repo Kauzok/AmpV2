@@ -37,7 +37,7 @@ namespace HenryMod.Modules
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Fulmination");
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Throw a bomb for <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a continuous stream of electricity that deals <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style> per second for 6 seconds.");
             #endregion
 
             #region Achievements

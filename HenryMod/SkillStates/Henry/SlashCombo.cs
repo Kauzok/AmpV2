@@ -12,7 +12,7 @@ namespace HenryMod.SkillStates
 
             this.damageType = DamageType.Shock5s;
             this.damageCoefficient = Modules.StaticValues.swordDamageCoefficient;
-            this.procCoefficient = .1f; //determines length of the shock
+            this.procCoefficient = .1f; //determines length of the shock -> need to figure out how to lower proc chance, should be 15%
             this.pushForce = 300f;
             this.bonusForce = Vector3.zero;
             this.baseDuration = .8f;

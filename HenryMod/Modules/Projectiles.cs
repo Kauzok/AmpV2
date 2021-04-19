@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using AncientScepter;
+using R2API;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -51,7 +52,7 @@ namespace HenryMod.Modules
 
             InitializeFerroshotContact(ferroshotContact);
             ferroshotContact.destroyOnWorld = true;
-            ferroshotContact.impactEffect = Modules.Assets.bombExplosionEffect;
+            ferroshotContact.impactEffect = EntityStates.Commando.CommandoWeapon.FirePistol2.hitEffectPrefab;
 
         }
         private static void InitializeFerroshotContact(ProjectileSingleTargetImpact ferroshotContact)
