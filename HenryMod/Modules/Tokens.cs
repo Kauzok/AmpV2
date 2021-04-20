@@ -40,6 +40,11 @@ namespace HenryMod.Modules
             LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a continuous stream of electricity that deals <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style> per second for 6 seconds.");
             #endregion
 
+            #region Special
+            LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Fulmination");
+            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a continuous stream of electricity that deals <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style> per second for 6 seconds.");
+            #endregion
+
             #region Achievements
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Henry: Mastery");
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Henry, beat the game or obliterate on Monsoon.");

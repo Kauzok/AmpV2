@@ -154,8 +154,8 @@ namespace HenryMod.Modules.Survivors
             Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
             #endregion
 
-            #region Special
-            SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            #region Specials
+            SkillDef chainSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_HENRY_BODY_SPECIAL_BOMB_NAME",
                 skillNameToken = prefix + "_HENRY_BODY_SPECIAL_BOMB_NAME",
@@ -179,7 +179,32 @@ namespace HenryMod.Modules.Survivors
                 stockToConsume = 1
             });
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, bombSkillDef);
+            SkillDef lightningSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "BattlemageBombardment",
+                skillNameToken = prefix + "BattlemageBombardment",
+                skillDescriptionToken = prefix + "BattlemageBombardmentDescription",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.VoltaicBombardment)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 10f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1
+            }); ;
+
+
+            Modules.Skills.AddSpecialSkills(bodyPrefab, chainSkillDef, lightningSkillDef);
             #endregion
         }
 
