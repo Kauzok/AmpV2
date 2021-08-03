@@ -25,7 +25,8 @@ namespace HenryMod.SkillStates
 			this.targetIndicator = new Indicator(base.gameObject, null);
 
 			Ray aimRay = this.GetAimRay();
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+			//GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 			gameObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			CharacterBody characterBody = this.characterBody;
 			NetworkUser networkUser;

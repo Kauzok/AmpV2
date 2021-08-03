@@ -25,28 +25,29 @@ namespace HenryMod.SkillStates
 
         public override void OnEnter()
         {
-            
+
             base.OnEnter();
-            FireOrbGlaive();
             this.stopwatch = 0f;
-            this.entryDuration = EntityStates.Mage.Weapon.Flamethrower.baseEntryDuration / this.attackSpeedStat;
-            this.huntressTracker = base.GetComponent<HuntressTracker>();
-            this.flamethrowerDuration = EntityStates.Mage.Weapon.Flamethrower.baseFlamethrowerDuration;
+            this.entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
+            this.flamethrowerDuration = Fulmination.baseFlamethrowerDuration;
             Transform modelTransform = base.GetModelTransform();
             if (base.characterBody)
             {
-                
-                base.characterBody.SetAimTimer(this.entryDuration + this.flamethrowerDuration);
+                base.characterBody.SetAimTimer(this.entryDuration + this.flamethrowerDuration + 1f);
             }
-     
-            float num = this.flamethrowerDuration * EntityStates.Mage.Weapon.Flamethrower.tickFrequency;
-            this.tickDamageCoefficient = EntityStates.Mage.Weapon.Flamethrower.totalDamageCoefficient / num;
-            if (base.isAuthority && base.characterBody && this.huntressTracker)
+            if (modelTransform)
             {
-                this.initialOrbTarget = this.huntressTracker.GetTrackingTarget();
+                this.childLocator = modelTransform.GetComponent<ChildLocator>();
+                this.leftMuzzleTransform = this.childLocator.FindChild("MuzzleLeft");
+                this.rightMuzzleTransform = this.childLocator.FindChild("MuzzleRight");
+            }
+            float num = this.flamethrowerDuration * Fulmination.tickFrequency;
+            this.tickDamageCoefficient = Fulmination.totalDamageCoefficient / num;
+            if (base.isAuthority && base.characterBody)
+            {
                 this.isCrit = Util.CheckRoll(this.critStat, base.characterBody.master);
             }
-            base.PlayAnimation("Gesture, Additive", "PrepFlamethrower", "Flamethrower.playbackRate", this.entryDuration);
+            base.PlayAnimation("Gesture, Additive", "PrepFlamethrower", "Flamethrower.playbackRate", this.entryDuration); ;
         }
 
         public override void OnExit()
@@ -57,59 +58,18 @@ namespace HenryMod.SkillStates
 
             base.OnExit();
 
-            if (!this.hasTriedToThrowGlaive)
-            {
-                this.FireOrbGlaive();
-            }
-            if (!this.hasSuccessfullyThrownGlaive && NetworkServer.active)
-            {
-                base.skillLocator.secondary.AddOneStock();
-            }
 
         }
-        private void FireOrbGlaive()
-        {
-            if (!NetworkServer.active || this.hasTriedToThrowGlaive)
-            {
-                return;
-            }
-            this.hasTriedToThrowGlaive = true;
-
-            LightningOrb lightningOrb = new LightningOrb();
-            
-            lightningOrb.lightningType = LightningOrb.LightningType.Ukulele;
-            lightningOrb.damageValue = base.characterBody.damage * Fulmination.damageCoefficient;
-            lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);
-            lightningOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
-            lightningOrb.attacker = base.gameObject;
-            lightningOrb.procCoefficient = 1f;
-            lightningOrb.bouncesRemaining = 2;
-            lightningOrb.speed = 500f;
-            lightningOrb.bouncedObjects = new List<HealthComponent>();
-            lightningOrb.range = 500f;
-            lightningOrb.damageCoefficientPerBounce = 4f;
-            HurtBox hurtBox = this.initialOrbTarget;
-            if (hurtBox)
-            {
-                this.hasSuccessfullyThrownGlaive = true;
-                Transform transform = this.childLocator.FindChild("HandR");
-                EffectManager.SimpleMuzzleFlash(EntityStates.Mage.Weapon.FireLaserbolt.impactEffectPrefab, base.gameObject, "HandR", true);
-                lightningOrb.origin = transform.position;
-                lightningOrb.target = hurtBox;
-                OrbManager.instance.AddOrb(lightningOrb);
-                
-            }
-        }
+      
 
         private void FireGauntlet(string muzzleString)
         {
             Ray aimRay = base.GetAimRay();
             if (base.isAuthority)
             {
-                FireOrbGlaive();
+             
                 new BulletAttack
                 {
-
                     owner = base.gameObject,
                     weapon = base.gameObject,
                     origin = aimRay.origin,
@@ -139,14 +99,6 @@ namespace HenryMod.SkillStates
         {
             base.FixedUpdate();
 
-            if (!this.hasTriedToThrowGlaive /* && this.animator.GetFloat("ThrowGlaive.fire") > 0f */)
-            {
-                if (this.chargeEffect)
-                {
-                    EntityState.Destroy(this.chargeEffect);
-                }
-                this.FireOrbGlaive();
-            }
             this.stopwatch += Time.fixedDeltaTime;
             if (this.stopwatch >= this.entryDuration && !this.hasBegunFlamethrower)
             {
@@ -154,7 +106,18 @@ namespace HenryMod.SkillStates
               
                 Util.PlaySound(EntityStates.Mage.Weapon.Flamethrower.startAttackSoundString, base.gameObject);
                 base.PlayAnimation("Gesture, Additive", "Flamethrower", "Flamethrower.playbackRate", this.flamethrowerDuration);
-             
+          
+                        this.leftFlamethrowerTransform = UnityEngine.Object.Instantiate<GameObject>(this.flamethrowerEffectPrefab).transform;
+            
+                        this.rightFlamethrowerTransform = UnityEngine.Object.Instantiate<GameObject>(this.flamethrowerEffectPrefab).transform;
+                
+            
+                        this.leftFlamethrowerTransform.GetComponent<ScaleParticleSystemDuration>().newDuration = this.flamethrowerDuration;
+                
+                
+                        this.rightFlamethrowerTransform.GetComponent<ScaleParticleSystemDuration>().newDuration = this.flamethrowerDuration;
+                    
+                
                 this.FireGauntlet("MuzzleCenter");
             }
             if (this.hasBegunFlamethrower)
@@ -195,17 +158,6 @@ namespace HenryMod.SkillStates
             return InterruptPriority.Skill;
         }
 
-        public override void OnSerialize(NetworkWriter writer)
-        {
-            writer.Write(HurtBoxReference.FromHurtBox(this.initialOrbTarget));
-        }
-
-        // Token: 0x06004192 RID: 16786 RVA: 0x00105F90 File Offset: 0x00104190
-        public override void OnDeserialize(NetworkReader reader)
-        {
-            this.initialOrbTarget = reader.ReadHurtBoxReference().ResolveHurtBox();
-        }
-
         [SerializeField]
         public GameObject flamethrowerEffectPrefab;
 
@@ -229,7 +181,7 @@ namespace HenryMod.SkillStates
         public static float baseFlamethrowerDuration = 2f;
 
         // Token: 0x0400367A RID: 13946
-        public static float totalDamageCoefficient = 1.2f;
+        public static float totalDamageCoefficient = 4f;
 
         // Token: 0x0400367B RID: 13947
         public static float procCoefficientPerTick;
