@@ -2,7 +2,11 @@
 - WIP Battlemage, a melee/range hybrid who fights with electromagnetic attacks. Right now he's just a slightly modified henrymod though. Updated to new HenryMod template.
 
 ## To-Do
-- Literally everything lmao
+- Finish Skill Code
+- Animations
+- Character Model
+- Skill Art (For UI)
+- Custom Skill Effects
 
 
 ## What's What?
