@@ -9,6 +9,7 @@ using RoR2;
 
 namespace HenryMod.SkillStates.BaseStates
 {
+    //orb meant to be used to implement chain lightning function for fulmination skill
    public class FulminationOrb : LightningOrb
     {
         public override void Begin()

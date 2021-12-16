@@ -23,6 +23,7 @@ namespace HenryMod.SkillStates
 
      
 
+        //lol idk i ripped this from the artificer's flamethrower code
         public override void OnEnter()
         {
 
@@ -62,6 +63,8 @@ namespace HenryMod.SkillStates
         }
       
 
+        //actual damaging attack here, declares a bullet-type (hitscan) attack and its details/properties
+
         private void FireGauntlet(string muzzleString)
         {
             Ray aimRay = base.GetAimRay();
@@ -95,6 +98,8 @@ namespace HenryMod.SkillStates
             }
         }
 
+
+        //i think this is supposed to be the timer for how long the attack lasts, not sure though
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -137,7 +142,7 @@ namespace HenryMod.SkillStates
             }
         }
 
-       
+       //animation code, again ripped straight from artificer
         private void UpdateFlamethrowerEffect()
         {
             Ray aimRay = base.GetAimRay();
