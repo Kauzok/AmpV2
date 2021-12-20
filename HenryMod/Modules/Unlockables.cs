@@ -47,7 +47,7 @@ namespace HenryMod.Modules
                 prerequisiteAchievementIdentifier = instance.PrerequisiteUnlockableIdentifier,
                 nameToken = instance.AchievementNameToken,
                 descriptionToken = instance.AchievementDescToken,
-                iconPath = instance.spritePath,
+                achievedIcon = instance.Sprite,
                 type = instance.GetType(),
                 serverTrackerType = (serverTracked ? instance.GetType() : null),
             };
@@ -84,12 +84,8 @@ where TDelegate : Delegate
         public static ILCursor CallDel_<TDelegate>(this ILCursor cursor, TDelegate target)
             where TDelegate : Delegate => cursor.CallDel_(target, out _);
 
-        // I might have entirly messed up this function so I will leave it how it was before, but it was giving an error.
-        //private static void Init_Il(ILContext il) => new ILCursor(il)
-        //.GotoNext(MoveType.AfterLabel, x => x.MatchCallOrCallvirt(typeof(UnlockableCatalog), nameof(UnlockableCatalog.SetUnlockableDefs)))
-        //.CallDel_(ArrayHelper.AppendDel(unlockableDefs));
         private static void Init_Il(ILContext il) => new ILCursor(il)
-    .GotoNext(MoveType.AfterLabel, x => x.MatchCallOrCallvirt(typeof(UnlockableCatalog), nameof(UnlockableCatalog.GetUnlockableDef)))
+    .GotoNext(MoveType.AfterLabel, x => x.MatchCallOrCallvirt(typeof(UnlockableCatalog), nameof(UnlockableCatalog.SetUnlockableDefs)))
     .CallDel_(ArrayHelper.AppendDel(unlockableDefs));
 
         private static void CollectAchievementDefs(ILContext il)
@@ -138,7 +134,7 @@ where TDelegate : Delegate
         string PrerequisiteUnlockableIdentifier { get; }
         string UnlockableNameToken { get; }
         string AchievementDescToken { get; }
-        string spritePath { get; }
+        Sprite Sprite { get; }
         Func<string> GetHowToUnlock { get; }
         Func<string> GetUnlocked { get; }
     }
@@ -164,7 +160,7 @@ where TDelegate : Delegate
         public abstract string PrerequisiteUnlockableIdentifier { get; }
         public abstract string UnlockableNameToken { get; }
         public abstract string AchievementDescToken { get; }
-        public abstract string spritePath { get; }
+        public abstract Sprite Sprite { get; }
         public abstract Func<string> GetHowToUnlock { get; }
         public abstract Func<string> GetUnlocked { get; }
         #endregion
@@ -180,6 +176,13 @@ where TDelegate : Delegate
             base.OnUninstall();
         }
         public override Single ProgressForAchievement() => base.ProgressForAchievement();
+        public override BodyIndex LookUpRequiredBodyIndex()
+        {
+            return base.LookUpRequiredBodyIndex();
+        }
+        public override void OnBodyRequirementBroken() => base.OnBodyRequirementBroken();
+        public override void OnBodyRequirementMet() => base.OnBodyRequirementMet();
+        public override bool wantsBodyCallbacks { get => base.wantsBodyCallbacks; }
         #endregion
     }
 }
