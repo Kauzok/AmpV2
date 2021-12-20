@@ -55,6 +55,9 @@ namespace HenryMod.Modules
             ferroshotContact.impactEffect = EntityStates.Commando.CommandoWeapon.FirePistol2.hitEffectPrefab;
 
         }
+
+      
+
         private static void InitializeFerroshotContact(ProjectileSingleTargetImpact ferroshotContact)
         {
 
@@ -65,6 +68,8 @@ namespace HenryMod.Modules
 
             ProjectileImpactExplosion bombImpactExplosion = bombPrefab.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(bombImpactExplosion);
+
+            
 
             bombImpactExplosion.blastRadius = 16f;
             bombImpactExplosion.destroyOnEnemy = true;

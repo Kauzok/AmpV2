@@ -18,7 +18,7 @@ namespace HenryMod.Modules
 
             entityStates.Add(typeof(Ferroshot));
             
-            entityStates.Add(typeof(BaseBoltSkill));
+            entityStates.Add(typeof(BoltVehicle));
             entityStates.Add(typeof(Bolt));
 
             entityStates.Add(typeof(BaseLightningAim));

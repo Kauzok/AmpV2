@@ -2,13 +2,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using RoR2;
 
-namespace RoR2
+
+namespace HenryMod.SkillStates
 {
 	// Token: 0x0200028D RID: 653
 	[RequireComponent(typeof(VehicleSeat))]
 	[RequireComponent(typeof(Rigidbody))]
-	public class BaseBoltSkill : BaseSkillState, ICameraStateProvider
+	public class BoltVehicle : MonoBehaviour, ICameraStateProvider
 	{
 
 
@@ -81,25 +83,10 @@ namespace RoR2
 					origin = base.transform.position,
 					scale = this.blastRadius
 				};
+				explosionEffectPrefab = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("ElectricExplosion"));
+
 				EffectManager.SpawnEffect(this.explosionEffectPrefab, effectData, true);
-				new BlastAttack
-				{
-					attacker = currentPassengerBody.gameObject,
-					baseDamage = this.blastDamageCoefficient * currentPassengerBody.damage,
-					baseForce = this.blastForce,
-					bonusForce = this.blastBonusForce,
-					attackerFiltering = AttackerFiltering.NeverHit,
-					crit = currentPassengerBody.RollCrit(),
-					damageColorIndex = DamageColorIndex.Item,
-					damageType = this.blastDamageType,
-					falloffModel = this.blastFalloffModel,
-					inflictor = base.gameObject,
-					position = base.transform.position,
-					procChainMask = default(ProcChainMask),
-					procCoefficient = this.blastProcCoefficient,
-					radius = this.blastRadius,
-					teamIndex = currentPassengerBody.teamComponent.teamIndex
-				}.Fire();
+		
 			}
 			Util.PlaySound(this.explosionSoundString, base.gameObject);
 			UnityEngine.Object.Destroy(base.gameObject);
@@ -183,16 +170,16 @@ namespace RoR2
 
 		// Token: 0x04000D53 RID: 3411
 		[Header("Vehicle Parameters")]
-		public float duration = 3f;
+		public float duration = 10f;
 
 		// Token: 0x04000D54 RID: 3412
-		public float initialSpeed = 120f;
+		public float initialSpeed = 50f;
 
 		// Token: 0x04000D55 RID: 3413
-		public float targetSpeed = 40f;
+		public float targetSpeed = 50f;
 
 		// Token: 0x04000D56 RID: 3414
-		public float acceleration = 20f;
+		public float acceleration = 1000f;
 
 		// Token: 0x04000D57 RID: 3415
 		public float cameraLerpTime = 1f;
@@ -230,7 +217,7 @@ namespace RoR2
 
 		// Token: 0x04000D62 RID: 3426
 		[Header("Overlap Parameters")]
-		public float overlapDamageCoefficient;
+		public float overlapDamageCoefficient = .5f;
 
 		// Token: 0x04000D63 RID: 3427
 		public float overlapProcCoefficient;

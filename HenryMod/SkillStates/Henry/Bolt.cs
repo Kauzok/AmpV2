@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 namespace HenryMod.SkillStates
 {
 
-	public class Bolt : BaseBoltSkill
+	public class Bolt : BaseSkillState
 	{
 		public CharacterBody characterBody;
 		public HealthComponent healthComponent;
@@ -15,6 +15,7 @@ namespace HenryMod.SkillStates
 		public TeamComponent teamComponent;
 		public Indicator targetIndicator;
 		public CameraRigController camera;
+		public FireballVehicle vehicle;
 
 		//copied volcanic egg code
 		public override void OnEnter()
@@ -26,6 +27,7 @@ namespace HenryMod.SkillStates
 			this.targetIndicator = new Indicator(base.gameObject, null);
 			this.camera = base.GetComponent<CameraRigController>();
 
+
 			Ray aimRay = this.GetAimRay();
 
 			//uncomment line below to change the object used as a vehicle to the one within the mod's asset bundle; it's glitchy as fuck and needs to be fixed so we can actually make some changes
@@ -34,8 +36,13 @@ namespace HenryMod.SkillStates
 			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill works as a copy of the volcanic egg essentially right now	
 			//GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
+			gameObject.AddComponent<BoltVehicle>();
+			
 			//assigns the player to the seat of the vehicle
 			gameObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
+
+
+		
 			CharacterBody characterBody = this.characterBody;
 			NetworkUser networkUser;
 			if (characterBody == null)
