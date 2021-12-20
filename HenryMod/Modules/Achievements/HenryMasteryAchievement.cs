@@ -12,7 +12,7 @@ namespace HenryMod.Modules.Achievements
         public override string PrerequisiteUnlockableIdentifier { get; } = HenryPlugin.developerPrefix + "_HENRY_BODY_UNLOCKABLE_REWARD_ID";
         public override string UnlockableNameToken { get; } = HenryPlugin.developerPrefix + "_HENRY_BODY_MASTERYUNLOCKABLE_UNLOCKABLE_NAME";
         public override string AchievementDescToken { get; } = HenryPlugin.developerPrefix + "_HENRY_BODY_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC";
-        public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement");
+        public override string spritePath { get; } = "texMasteryAchievement";
 
         public override Func<string> GetHowToUnlock { get; } = (() => Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", new object[]
                             {
@@ -25,7 +25,7 @@ namespace HenryMod.Modules.Achievements
                                 Language.GetString(HenryPlugin.developerPrefix + "_HENRY_BODY_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC")
                             }));
 
-        public override BodyIndex LookUpRequiredBodyIndex()
+        public BodyIndex LookUpRequiredBodyIndex()
         {
             return BodyCatalog.FindBodyIndex(Modules.Survivors.MyCharacter.instance.bodyName);
         }
