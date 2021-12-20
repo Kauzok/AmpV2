@@ -1,19 +1,14 @@
-﻿using EntityStates;
-using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System;
+using RoR2;
 
-namespace RoR2
+
+public class BoltVehicle : MonoBehaviour, ICameraStateProvider
 {
-	// Token: 0x0200028D RID: 653
-	[RequireComponent(typeof(VehicleSeat))]
-	[RequireComponent(typeof(Rigidbody))]
-	public class BaseBoltSkill : BaseSkillState, ICameraStateProvider
-	{
-
-
-		// Token: 0x06000E25 RID: 3621 RVA: 0x0003A68C File Offset: 0x0003888C
-		private void Awake()
+    private void Awake()
 		{
 			this.vehicleSeat = base.GetComponent<VehicleSeat>();
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
@@ -82,7 +77,7 @@ namespace RoR2
 					scale = this.blastRadius
 				};
 				EffectManager.SpawnEffect(this.explosionEffectPrefab, effectData, true);
-		
+
 			}
 			Util.PlaySound(this.explosionSoundString, base.gameObject);
 			UnityEngine.Object.Destroy(base.gameObject);
@@ -253,6 +248,12 @@ namespace RoR2
 
 		// Token: 0x04000D6F RID: 3439
 		private float overlapResetAge;
-	}
+  
+
+
+
+
 }
+
+
 
