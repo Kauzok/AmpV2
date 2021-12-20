@@ -82,7 +82,24 @@ namespace RoR2
 					scale = this.blastRadius
 				};
 				EffectManager.SpawnEffect(this.explosionEffectPrefab, effectData, true);
-		
+				new BlastAttack
+				{
+					attacker = currentPassengerBody.gameObject,
+					baseDamage = this.blastDamageCoefficient * currentPassengerBody.damage,
+					baseForce = this.blastForce,
+					bonusForce = this.blastBonusForce,
+					attackerFiltering = AttackerFiltering.NeverHit,
+					crit = currentPassengerBody.RollCrit(),
+					damageColorIndex = DamageColorIndex.Item,
+					damageType = this.blastDamageType,
+					falloffModel = this.blastFalloffModel,
+					inflictor = base.gameObject,
+					position = base.transform.position,
+					procChainMask = default(ProcChainMask),
+					procCoefficient = this.blastProcCoefficient,
+					radius = this.blastRadius,
+					teamIndex = currentPassengerBody.teamComponent.teamIndex
+				}.Fire();
 			}
 			Util.PlaySound(this.explosionSoundString, base.gameObject);
 			UnityEngine.Object.Destroy(base.gameObject);
@@ -169,13 +186,13 @@ namespace RoR2
 		public float duration = 3f;
 
 		// Token: 0x04000D54 RID: 3412
-		public float initialSpeed = 50f;
+		public float initialSpeed = 120f;
 
 		// Token: 0x04000D55 RID: 3413
-		public float targetSpeed = 50f;
+		public float targetSpeed = 40f;
 
 		// Token: 0x04000D56 RID: 3414
-		public float acceleration = 1000f;
+		public float acceleration = 20f;
 
 		// Token: 0x04000D57 RID: 3415
 		public float cameraLerpTime = 1f;

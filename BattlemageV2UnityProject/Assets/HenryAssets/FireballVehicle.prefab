@@ -2809,19 +2809,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 3
-  initialSpeed: 50
-  targetSpeed: 50
-  acceleration: 1000
+  initialSpeed: 5
+  targetSpeed: 30
+  acceleration: 120
   cameraLerpTime: 1
   detonateOnCollision: 0
   explosionEffectPrefab: {fileID: 0}
-  blastDamageCoefficient: 0
-  blastRadius: 0
-  blastForce: 0
+  blastDamageCoefficient: 8
+  blastRadius: 8
+  blastForce: 3000
   blastFalloffModel: 0
   blastDamageType: 0
   blastBonusForce: {x: 0, y: 0, z: 0}
-  blastProcCoefficient: 0
+  blastProcCoefficient: 1
   explosionSoundString: Play_item_proc_missile_explo
   overlapDamageCoefficient: 5
   overlapProcCoefficient: 1
@@ -8475,7 +8475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836042764803461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 0.83, z: -0.1}
+  m_LocalPosition: {x: 0.877, y: 0.83, z: -0.115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4282536431346700}
