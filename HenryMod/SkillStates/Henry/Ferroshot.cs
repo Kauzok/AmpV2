@@ -3,6 +3,8 @@ using RoR2;
 using UnityEngine;
 using RoR2.Projectile;
 using System.Collections;
+using UnityEngine.Networking;
+using BepInEx;
 
 namespace HenryMod.SkillStates
 {
@@ -17,30 +19,52 @@ namespace HenryMod.SkillStates
         private Ray ferroshotRay;
         private Vector3 newpos;
         public static float launchForce = 150f;
+        public static int numOfBullets = 6;
 
         private Animator animator;
 
         public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
+        public static GameObject ferroshotPrefabBasic = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("FireballVehicle 1");
 
         private float duration;
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
+        private GameObject[] bullets = new GameObject[numOfBullets];
 
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = Ferroshot.baseDuration / this.attackSpeedStat;
+            this.duration = baseDuration / this.attackSpeedStat;
             this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
             this.muzzleString = "Muzzle";
+
+            Ray aimRay = base.GetAimRay();
+
+            //GameObject bullet = UnityEngine.Object.Instantiate<GameObject>(
+            //ferroshotPrefabBasic,
+            //aimRay.origin + new Vector3(0, 0, 10),
+            //Quaternion.LookRotation(aimRay.direction));
+
+            //ferroshotPrefabBasic.AddComponent<CustomController>();
+            Destroy(ferroshotPrefabBasic.GetComponent<VehicleSeat>());
+            Destroy(ferroshotPrefabBasic.GetComponent<CameraTargetParams>());
+            Destroy(ferroshotPrefabBasic.GetComponent<DestroyOnDestroy>());
+            Destroy(ferroshotPrefabBasic.GetComponent<HitBoxGroup>());
+
+
+            Destroy(ferroshotPrefabBasic.GetComponent<NetworkIdentity>());
+            Destroy(ferroshotPrefabBasic.GetComponent<NetworkTransform>());
+            Destroy(ferroshotPrefabBasic.GetComponent<AkGameObj>());
+            Destroy(ferroshotPrefabBasic.GetComponent<AkEvent>());
+
 
             base.PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);// 3f * this.duration);
         }
 
         public override void OnExit()
         {
-
             base.OnExit();
         }
 
@@ -51,23 +75,36 @@ namespace HenryMod.SkillStates
 
                 this.hasFired = true;
                 Util.PlaySound("HenryBombThrow", base.gameObject);
-
+                GameObject bullet;
                 if (base.isAuthority)
                 {
+                    
                     for(int i = 0; i<6; i++)
                     {
+                        // Get current aim ray of the character
                         Ray aimRay = base.GetAimRay();
 
-                        ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
+                        MonoBehaviour.print("Spawinign");
+
+                        // Spawn the prefab of the bolt under the character as a parent 
+                        bullets[i] = UnityEngine.Object.Instantiate<GameObject>(
+                            ferroshotPrefabBasic, 
+                            aimRay.origin + new Vector3(0,4,0), 
+                            Quaternion.LookRotation(aimRay.direction));
+
+                        //NetworkServer.Spawn(bullets[i]);
+
+                        // Spawn the projectile
+                        /*ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
                         aimRay.origin,
                         Util.QuaternionSafeLookRotation(aimRay.direction),
                         base.gameObject,
-                        Ferroshot.damageCoefficient * this.damageStat,
-                        Ferroshot.launchForce,
+                        damageCoefficient * this.damageStat,
+                        launchForce,
                         base.RollCrit(),
                         DamageColorIndex.Default,
                         null,
-                        Ferroshot.launchForce);
+                        launchForce);*/
 
                         yield return new WaitForSeconds(.1f);
                     }
@@ -81,7 +118,7 @@ namespace HenryMod.SkillStates
 
             if (base.fixedAge >= this.fireTime)
             {
-                CoroutineRunner.RunCoroutine(Fire());
+                base.characterBody.StartCoroutine(Fire());
                 //this.Fire();
             }
 
@@ -95,6 +132,32 @@ namespace HenryMod.SkillStates
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.PrioritySkill;
+        }
+    }
+}
+
+public class CustomController : NetworkBehaviour
+{
+    public float waitDuration;
+    public float speed;
+
+    //new private Rigidbody rigidbody;
+    private float age = 0.0f;
+    private bool moved = false;
+
+    void Start()
+    {
+        //rigidbody = GetComponent<Rigidbody>();
+        //rigidbody.velocity = Vector3.zero;
+    }
+
+    void FixedUpdate()
+    {
+        age += Time.fixedDeltaTime;
+        if (!moved && age > waitDuration)
+        {
+            //rigidbody.velocity = transform.forward * speed;
+            moved = true;
         }
     }
 }

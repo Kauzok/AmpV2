@@ -42,7 +42,6 @@ namespace HenryMod.Modules
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
-
             ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>().rotationSpeed = 0f;
 
 
