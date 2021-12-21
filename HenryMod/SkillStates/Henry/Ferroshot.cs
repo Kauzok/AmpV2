@@ -24,7 +24,7 @@ namespace HenryMod.SkillStates
         private Animator animator;
 
         public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
-        public static GameObject ferroshotPrefabBasic = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("FireballVehicle 1");
+        public static GameObject ferroshotPrefabBasic = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Spike");
 
         private float duration;
         private float fireTime;
@@ -48,16 +48,7 @@ namespace HenryMod.SkillStates
             //Quaternion.LookRotation(aimRay.direction));
 
             //ferroshotPrefabBasic.AddComponent<CustomController>();
-            Destroy(ferroshotPrefabBasic.GetComponent<VehicleSeat>());
-            Destroy(ferroshotPrefabBasic.GetComponent<CameraTargetParams>());
-            Destroy(ferroshotPrefabBasic.GetComponent<DestroyOnDestroy>());
-            Destroy(ferroshotPrefabBasic.GetComponent<HitBoxGroup>());
-
-
-            Destroy(ferroshotPrefabBasic.GetComponent<NetworkIdentity>());
-            Destroy(ferroshotPrefabBasic.GetComponent<NetworkTransform>());
-            Destroy(ferroshotPrefabBasic.GetComponent<AkGameObj>());
-            Destroy(ferroshotPrefabBasic.GetComponent<AkEvent>());
+          
 
 
             base.PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);// 3f * this.duration);

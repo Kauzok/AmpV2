@@ -3,6 +3,9 @@ using R2API.Utils;
 using RoR2;
 using System.Security;
 using System.Security.Permissions;
+using HenryMod;
+using EntityStates;
+using UnityEngine;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -67,24 +70,66 @@ namespace HenryMod
         {
             // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
         }
 
+
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo info)
+        {
+
+
+
+            orig(self, info);
+
+        }
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
             orig(self);
+            /* GameObject gameObject = new GameObject();
+            
 
             // a simple stat hook, adds armor after stats are recalculated
             if (self)
             {
-                if (self.HasBuff(Modules.Buffs.armorBuff))
+                if (self.HasBuff(Modules.Buffs.chargeDebuff))
                 {
-                    self.armor += 300f;
-                }
+                    new BlastAttack
+                    {
+                        attacker = ,
+                        baseDamage = 4f,
+                        baseForce = 2f,
+                        attackerFiltering = AttackerFiltering.NeverHit,
+                        crit = base.RollCrit(),
+                        damageColorIndex = DamageColorIndex.Item,
+                        damageType = DamageType.Generic,
+                        falloffModel = BlastAttack.FalloffModel.None,
+                        inflictor = base.gameObject,
+                        position = self.corePosition,
+                        procChainMask = default(ProcChainMask),
+                        procCoefficient = 1f,
+                        radius = 3f,
+                        teamIndex = Modules.Assets.teamComponent.teamIndex
+                    }.Fire();
 
-                if (self.HasBuff(Modules.Buffs.speedBuff))
-                    self.moveSpeed += 200f;
+                    self.RemoveBuff(Modules.Buffs.chargeDebuff);
+                } 
+
+
+                if (self.HasBuff(Modules.Buffs.chargeBuildup)) {
+                    int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
+
+                    if (chargeCount >= 3)
+                    {
+                        self.AddBuff(Modules.Buffs.chargeDebuff);
+                    }
+                
+                }
+                */
 
             }
+
+
+
         }
+
     }
-}

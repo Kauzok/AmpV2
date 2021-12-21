@@ -21,6 +21,7 @@ namespace HenryMod.SkillStates
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
 			this.rigidbody = base.GetComponent<Rigidbody>();
+			
 		}
 
 		// Token: 0x06000E2A RID: 3626 RVA: 0x0003A7B0 File Offset: 0x000389B0
@@ -47,55 +48,63 @@ namespace HenryMod.SkillStates
 			{
 				return;
 			}
-			Vector3 aimDirection = this.vehicleSeat.currentPassengerInputBank.aimDirection;
-			this.rigidbody.rotation = Quaternion.LookRotation(aimDirection);
-			this.rigidbody.velocity = aimDirection * this.initialSpeed;
-			CharacterBody currentPassengerBody = this.vehicleSeat.currentPassengerBody;
-			this.overlapAttack = new OverlapAttack
+			Vector3 aimDirection = vehicleSeat.currentPassengerInputBank.aimDirection;
+			rigidbody.rotation = Quaternion.LookRotation(aimDirection);
+			rigidbody.velocity = aimDirection * initialSpeed;
+			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
+			overlapAttack = new OverlapAttack
 			{
 				attacker = currentPassengerBody.gameObject,
-				damage = this.overlapDamageCoefficient * currentPassengerBody.damage,
-				pushAwayForce = this.overlapForce,
+				damage = overlapDamageCoefficient * currentPassengerBody.damage,
+				pushAwayForce = overlapForce,
 				isCrit = currentPassengerBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,
 				inflictor = base.gameObject,
 				procChainMask = default(ProcChainMask),
-				procCoefficient = this.overlapProcCoefficient,
+				procCoefficient = overlapProcCoefficient,
 				teamIndex = currentPassengerBody.teamComponent.teamIndex,
 				hitBoxGroup = base.gameObject.GetComponent<HitBoxGroup>(),
-				hitEffectPrefab = this.overlapHitEffectPrefab
+				hitEffectPrefab = overlapHitEffectPrefab
 			};
+			overlapAttack.Fire();
+			
+			
 		}
+
+		private void applyCharge(HealthComponent healthComponent)
+        {
+			healthComponent.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+        }
 
 		// Token: 0x06000E2C RID: 3628 RVA: 0x0003A92C File Offset: 0x00038B2C
 		private void DetonateServer()
 		{
-			if (this.hasDetonatedServer)
+			if (hasDetonatedServer)
 			{
 				return;
 			}
-			this.hasDetonatedServer = true;
-			CharacterBody currentPassengerBody = this.vehicleSeat.currentPassengerBody;
+			hasDetonatedServer = true;
+			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
 			if (currentPassengerBody)
 			{
 				EffectData effectData = new EffectData
 				{
 					origin = base.transform.position,
-					scale = this.blastRadius
+					scale = blastRadius
 				};
-				explosionEffectPrefab = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("ElectricExplosion"));
+				explosionEffectPrefab = Modules.Assets.bombExplosionEffect;
 
-				EffectManager.SpawnEffect(this.explosionEffectPrefab, effectData, true);
+				EffectManager.SpawnEffect(explosionEffectPrefab, effectData, true);
 		
 			}
-			Util.PlaySound(this.explosionSoundString, base.gameObject);
+			Util.PlaySound(explosionSoundString, base.gameObject);
 			UnityEngine.Object.Destroy(base.gameObject);
 		}
 
 		// Token: 0x06000E2D RID: 3629 RVA: 0x0003AA74 File Offset: 0x00038C74
 		private void FixedUpdate()
 		{
-			if (!this.vehicleSeat)
+			if (!vehicleSeat)
 			{
 				return;
 			}
@@ -103,26 +112,28 @@ namespace HenryMod.SkillStates
 			{
 				return;
 			}
-			this.age += Time.fixedDeltaTime;
+			age += Time.fixedDeltaTime;
 			this.overlapFireAge += Time.fixedDeltaTime;
 			this.overlapResetAge += Time.fixedDeltaTime;
+
+			
 			if (NetworkServer.active)
 			{
-				if (this.overlapFireAge > 1f / this.overlapFireFrequency)
+				if (overlapFireAge > 1f / overlapFireFrequency)
 				{
-					if (this.overlapAttack.Fire(null))
+					if (overlapAttack.Fire(null))
 					{
-						this.age = Mathf.Max(0f, this.age - this.overlapVehicleDurationBonusPerHit);
+						age = Mathf.Max(0f, age - overlapVehicleDurationBonusPerHit);
 					}
-					this.overlapFireAge = 0f;
+					overlapFireAge = 0f;
 				}
-				if (this.overlapResetAge >= 1f / this.overlapResetFrequency)
+				if (overlapResetAge >= 1f / overlapResetFrequency)
 				{
-					this.overlapAttack.ResetIgnoredHealthComponents();
-					this.overlapResetAge = 0f;
+					overlapAttack.ResetIgnoredHealthComponents();
+					overlapResetAge = 0f;
 				}
 			}
-			Ray originalAimRay = this.vehicleSeat.currentPassengerInputBank.GetAimRay();
+			Ray originalAimRay = vehicleSeat.currentPassengerInputBank.GetAimRay();
 			float num;
 			originalAimRay = CameraRigController.ModifyAimRayIfApplicable(originalAimRay, base.gameObject, out num);
 			Vector3 velocity = this.rigidbody.velocity;
@@ -130,9 +141,9 @@ namespace HenryMod.SkillStates
 			Vector3 a = Vector3.MoveTowards(velocity, target, this.acceleration * Time.fixedDeltaTime);
 			this.rigidbody.MoveRotation(Quaternion.LookRotation(originalAimRay.direction));
 			this.rigidbody.AddForce(a - velocity, ForceMode.VelocityChange);
-			if (NetworkServer.active && this.duration <= this.age)
+			if (NetworkServer.active && duration <= age)
 			{
-				this.DetonateServer();
+				DetonateServer();
 			}
 		}
 
@@ -182,7 +193,7 @@ namespace HenryMod.SkillStates
 		public float acceleration = 1000f;
 
 		// Token: 0x04000D57 RID: 3415
-		public float cameraLerpTime = 1f;
+		public float cameraLerpTime = .5f;
 
 		// Token: 0x04000D58 RID: 3416
 		[Header("Blast Parameters")]
@@ -220,16 +231,16 @@ namespace HenryMod.SkillStates
 		public float overlapDamageCoefficient = .5f;
 
 		// Token: 0x04000D63 RID: 3427
-		public float overlapProcCoefficient;
+		public float overlapProcCoefficient = 1f;
 
 		// Token: 0x04000D64 RID: 3428
-		public float overlapForce;
+		public float overlapForce = .5f;
 
 		// Token: 0x04000D65 RID: 3429
-		public float overlapFireFrequency;
+		public float overlapFireFrequency = 100f;
 
 		// Token: 0x04000D66 RID: 3430
-		public float overlapResetFrequency;
+		public float overlapResetFrequency = 1f;
 
 		// Token: 0x04000D67 RID: 3431
 		public float overlapVehicleDurationBonusPerHit;

@@ -10,7 +10,7 @@ namespace HenryMod.SkillStates
 {
     public class Fulmination : BaseState
     {
-        public static float damageCoefficient = 16f;
+        public static float damageCoefficient = 4f;
         public static float procCoefficient = 1f;
         public static float baseDuration = 0.65f;
         public static float throwForce = 80f;
