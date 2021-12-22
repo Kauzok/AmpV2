@@ -19,6 +19,8 @@ namespace HenryMod.Modules
         internal static GameObject swordHitImpactEffect;
 
         internal static GameObject bombExplosionEffect;
+        internal static GameObject electricExplosionEffect;
+        internal static GameObject electricStreamEffect;
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
@@ -85,6 +87,11 @@ namespace HenryMod.Modules
             swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
 
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
+
+
+            electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
+
+            electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
 
             if (bombExplosionEffect)
             {

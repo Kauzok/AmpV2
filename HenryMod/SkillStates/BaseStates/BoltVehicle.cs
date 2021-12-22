@@ -78,7 +78,7 @@ namespace HenryMod.SkillStates
 			if (hurtbox.healthComponent.gameObject.GetComponent<Tracker>() == null)
             {
 				hurtbox.healthComponent.gameObject.AddComponent<Tracker>();
-				var tracker = hurtbox.healthComponent.GetComponent<Tracker>();
+	
 
 				//assigns tracker values
 				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().owner = vehicleSeat.currentPassengerBody.gameObject;
@@ -87,6 +87,7 @@ namespace HenryMod.SkillStates
 			}
 			
             hurtbox.healthComponent.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+			
 
 
 
@@ -111,9 +112,9 @@ namespace HenryMod.SkillStates
 					origin = base.transform.position,
 					scale = blastRadius
 				};
-				explosionEffectPrefab = Modules.Assets.bombExplosionEffect;
+				exitEffectPrefab = Modules.Assets.electricExplosionEffect;
 
-				EffectManager.SpawnEffect(explosionEffectPrefab, effectData, true);
+				EffectManager.SpawnEffect(exitEffectPrefab, effectData, true);
 		
 			}
 			Util.PlaySound(explosionSoundString, base.gameObject);
@@ -229,7 +230,7 @@ namespace HenryMod.SkillStates
 		public bool detonateOnCollision;
 
 		// Token: 0x04000D59 RID: 3417
-		public GameObject explosionEffectPrefab;
+		public GameObject exitEffectPrefab;
 
 		// Token: 0x04000D5A RID: 3418
 		public float blastDamageCoefficient;
@@ -266,7 +267,7 @@ namespace HenryMod.SkillStates
 		public float overlapForce = .5f;
 
 		// Token: 0x04000D65 RID: 3429
-		public float overlapFireFrequency = 70f;
+		public float overlapFireFrequency = 30f;
 
 		// Token: 0x04000D66 RID: 3430
 		public float overlapResetFrequency = 1f;

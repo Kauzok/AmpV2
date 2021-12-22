@@ -82,6 +82,7 @@ namespace HenryMod
                 info.rejected = true;
             }
 
+            
 
             orig(self, info);
 
@@ -91,15 +92,14 @@ namespace HenryMod
            
             if (self)
             {
-
+                /*
                 if (self.HasBuff(Modules.Buffs.chargeDebuff))
                 {
-                    
-                    new BlastAttack
+                   new BlastAttack
                     {
                         attacker = self.gameObject.GetComponent<Tracker>().owner,
                         baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
-                        baseForce = 2f,
+                        baseForce = 1f,
                         attackerFiltering = AttackerFiltering.NeverHit,
                         crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
                         damageColorIndex = DamageColorIndex.Item,
@@ -112,11 +112,12 @@ namespace HenryMod
                         radius = 10f,
                         teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
                     }.Fire();
+               
 
-                    Destroy(self.gameObject.GetComponent<Tracker>());
+                   //Destroy(self.gameObject.GetComponent<Tracker>());
                     self.RemoveBuff(Modules.Buffs.chargeDebuff);
                     
-                }
+                } */
 
 
                 if (self.HasBuff(Modules.Buffs.chargeBuildup))
@@ -125,13 +126,48 @@ namespace HenryMod
 
                     if (chargeCount >= 3)
                     {
-                        self.AddBuff(Modules.Buffs.chargeDebuff);
-                        for (int i = 0; i < chargeCount; i++)
+                        new BlastAttack
                         {
-                            self.RemoveBuff(Modules.Buffs.chargeBuildup);
-                        }
+                            attacker = self.gameObject.GetComponent<Tracker>().owner,
+                            baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
+                            baseForce = 1f,
+                            attackerFiltering = AttackerFiltering.NeverHit,
+                            crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
+                            damageColorIndex = DamageColorIndex.Item,
+                            damageType = DamageType.Generic,
+                            falloffModel = BlastAttack.FalloffModel.None,
+                            inflictor = self.gameObject.GetComponent<Tracker>().owner,
+                            position = self.corePosition,
+                            procChainMask = default(ProcChainMask),
+                            procCoefficient = 1f,
+                            radius = 10f,
+                            teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
+                        }.Fire();
+
+                      /*  new BlastAttack
+                        {
+                            attacker = self.gameObject.GetComponent<Tracker>().owner,
+                            baseDamage = 1.5f * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
+                            baseForce = 1f,
+                            attackerFiltering = AttackerFiltering.NeverHit,
+                            crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
+                            damageColorIndex = DamageColorIndex.Item,
+                            damageType = DamageType.Generic,
+                            falloffModel = BlastAttack.FalloffModel.None,
+                            inflictor = self.gameObject.GetComponent<Tracker>().owner,
+                            position = self.corePosition,
+                            procChainMask = default(ProcChainMask),
+                            procCoefficient = 1f,
+                            radius = 10f,
+                            teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
+                        }.Fire(); */
+
+                        //self.AddBuff(Modules.Buffs.chargeDebuff);
+                        self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
+                      
                         
                     }
+
 
                 }
 

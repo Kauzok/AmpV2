@@ -102,19 +102,27 @@ namespace HenryMod.SkillStates
         //i think this is supposed to be the timer for how long the attack lasts, not sure though
         public override void FixedUpdate()
         {
+            lightningEffectPrefab = Modules.Assets.electricStreamEffect;
             base.FixedUpdate();
 
             this.stopwatch += Time.fixedDeltaTime;
             if (this.stopwatch >= this.entryDuration && !this.hasBegunFlamethrower)
             {
                 this.hasBegunFlamethrower = true;
-              
+                EffectData effectData = new EffectData
+                {
+                    origin = base.transform.position,
+                    scale = 10f
+                };
+
                 Util.PlaySound(EntityStates.Mage.Weapon.Flamethrower.startAttackSoundString, base.gameObject);
                 base.PlayAnimation("Gesture, Additive", "Flamethrower", "Flamethrower.playbackRate", this.flamethrowerDuration);
-          
-                        this.leftFlamethrowerTransform = UnityEngine.Object.Instantiate<GameObject>(this.flamethrowerEffectPrefab).transform;
+                EffectManager.SpawnEffect(lightningEffectPrefab, effectData, true);
+
+
+                this.leftFlamethrowerTransform = UnityEngine.Object.Instantiate<GameObject>(this.lightningEffectPrefab).transform;
             
-                        this.rightFlamethrowerTransform = UnityEngine.Object.Instantiate<GameObject>(this.flamethrowerEffectPrefab).transform;
+                        this.rightFlamethrowerTransform = UnityEngine.Object.Instantiate<GameObject>(this.lightningEffectPrefab).transform;
                 
             
                         this.leftFlamethrowerTransform.GetComponent<ScaleParticleSystemDuration>().newDuration = this.flamethrowerDuration;
@@ -164,7 +172,7 @@ namespace HenryMod.SkillStates
         }
 
         [SerializeField]
-        public GameObject flamethrowerEffectPrefab;
+        public GameObject lightningEffectPrefab;
 
         // Token: 0x04003674 RID: 13940
         public static GameObject impactEffectPrefab;
