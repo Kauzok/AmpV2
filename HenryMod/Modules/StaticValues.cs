@@ -24,6 +24,8 @@ namespace HenryMod.Modules
 
         internal const float chargeDuration = 5;
 
+        internal const float chargeDamageCoefficient = 4f;
+
 
 
     }

@@ -3,7 +3,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2;
-
+using System.Collections.Generic;
+using System.Timers;
 
 namespace HenryMod.SkillStates
 {
@@ -17,7 +18,7 @@ namespace HenryMod.SkillStates
 		// Token: 0x06000E25 RID: 3621 RVA: 0x0003A68C File Offset: 0x0003888C
 		private void Awake()
 		{
-			this.vehicleSeat = base.GetComponent<VehicleSeat>();
+			vehicleSeat = base.GetComponent<VehicleSeat>();
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
 			this.rigidbody = base.GetComponent<Rigidbody>();
@@ -52,6 +53,7 @@ namespace HenryMod.SkillStates
 			rigidbody.rotation = Quaternion.LookRotation(aimDirection);
 			rigidbody.velocity = aimDirection * initialSpeed;
 			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
+			currentPassengerBody.AddBuff(Modules.Buffs.invulnerableBuff);
 			overlapAttack = new OverlapAttack
 			{
 				attacker = currentPassengerBody.gameObject,
@@ -66,15 +68,31 @@ namespace HenryMod.SkillStates
 				hitBoxGroup = base.gameObject.GetComponent<HitBoxGroup>(),
 				hitEffectPrefab = overlapHitEffectPrefab
 			};
-			overlapAttack.Fire();
 			
 			
 		}
 
-		private void applyCharge(HealthComponent healthComponent)
+		private void applyCharge(HurtBox hurtbox)
         {
-			healthComponent.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
-        }
+			//if component doesn't have tracker, add it
+			if (hurtbox.healthComponent.gameObject.GetComponent<Tracker>() == null)
+            {
+				hurtbox.healthComponent.gameObject.AddComponent<Tracker>();
+				var tracker = hurtbox.healthComponent.GetComponent<Tracker>();
+
+				//assigns tracker values
+				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().owner = vehicleSeat.currentPassengerBody.gameObject;
+				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().ownerBody = vehicleSeat.currentPassengerBody;
+				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().victim = hurtbox.gameObject;
+			}
+			
+            hurtbox.healthComponent.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+
+
+
+			//test line below
+			//hurtbox.healthComponent.body.AddBuff(RoR2Content.Buffs.OnFire);
+		}
 
 		// Token: 0x06000E2C RID: 3628 RVA: 0x0003A92C File Offset: 0x00038B2C
 		private void DetonateServer()
@@ -85,6 +103,7 @@ namespace HenryMod.SkillStates
 			}
 			hasDetonatedServer = true;
 			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
+			currentPassengerBody.RemoveBuff(Modules.Buffs.invulnerableBuff);
 			if (currentPassengerBody)
 			{
 				EffectData effectData = new EffectData
@@ -101,6 +120,7 @@ namespace HenryMod.SkillStates
 			UnityEngine.Object.Destroy(base.gameObject);
 		}
 
+		
 		// Token: 0x06000E2D RID: 3629 RVA: 0x0003AA74 File Offset: 0x00038C74
 		private void FixedUpdate()
 		{
@@ -116,22 +136,30 @@ namespace HenryMod.SkillStates
 			this.overlapFireAge += Time.fixedDeltaTime;
 			this.overlapResetAge += Time.fixedDeltaTime;
 
-			
+
 			if (NetworkServer.active)
 			{
+
+				
 				if (overlapFireAge > 1f / overlapFireFrequency)
 				{
-					if (overlapAttack.Fire(null))
+					var hits = new List<HurtBox>();
+					overlapAttack.Fire(hits);
+					//figure out how to delay this reset
+					foreach (HurtBox hit in hits)
 					{
-						age = Mathf.Max(0f, age - overlapVehicleDurationBonusPerHit);
+
+						applyCharge(hit);
+
+
 					}
-					overlapFireAge = 0f;
 				}
 				if (overlapResetAge >= 1f / overlapResetFrequency)
 				{
 					overlapAttack.ResetIgnoredHealthComponents();
 					overlapResetAge = 0f;
-				}
+				} 
+
 			}
 			Ray originalAimRay = vehicleSeat.currentPassengerInputBank.GetAimRay();
 			float num;
@@ -153,6 +181,7 @@ namespace HenryMod.SkillStates
 			if (this.detonateOnCollision && NetworkServer.active)
 			{
 				this.DetonateServer();
+			
 			}
 		}
 
@@ -193,7 +222,7 @@ namespace HenryMod.SkillStates
 		public float acceleration = 1000f;
 
 		// Token: 0x04000D57 RID: 3415
-		public float cameraLerpTime = .5f;
+		public float cameraLerpTime = .25f;
 
 		// Token: 0x04000D58 RID: 3416
 		[Header("Blast Parameters")]
@@ -237,7 +266,7 @@ namespace HenryMod.SkillStates
 		public float overlapForce = .5f;
 
 		// Token: 0x04000D65 RID: 3429
-		public float overlapFireFrequency = 100f;
+		public float overlapFireFrequency = 70f;
 
 		// Token: 0x04000D66 RID: 3430
 		public float overlapResetFrequency = 1f;

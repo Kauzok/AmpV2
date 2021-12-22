@@ -10,6 +10,7 @@ namespace HenryMod.Modules
         internal static BuffDef armorBuff;
         internal static BuffDef chargeDebuff;
         internal static BuffDef chargeBuildup;
+        internal static BuffDef invulnerableBuff;
 
 
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
@@ -17,9 +18,9 @@ namespace HenryMod.Modules
         internal static void RegisterBuffs()
         {
             armorBuff = AddNewBuff("HenryArmorBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
-            chargeDebuff = AddNewBuff("BattlemageChargeDebuff", Resources.Load<Sprite>("None"), Color.cyan, false, false);
-            chargeBuildup= AddNewBuff("BattlemageChargeBuildup", Resources.Load<Sprite>("None"), Color.cyan, false, false);
-
+            chargeDebuff = AddNewBuff("BattlemageChargeDebuff", Resources.Load<Sprite>("None"), Color.red, false, true);
+            chargeBuildup= AddNewBuff("BattlemageChargeBuildup", Resources.Load<Sprite>("None"), Color.cyan, true, true);
+            invulnerableBuff = AddNewBuff("BattlemageInvulnerability", Resources.Load<Sprite>("None"), Color.black, false, false);
         }
 
         // simple helper method

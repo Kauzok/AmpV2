@@ -83,6 +83,8 @@ namespace HenryMod.SkillStates
                             aimRay.origin + new Vector3(0,4,0), 
                             Quaternion.LookRotation(aimRay.direction));
 
+                        NetworkServer.Spawn(bullets[i]);
+
                         //NetworkServer.Spawn(bullets[i]);
 
                         // Spawn the projectile

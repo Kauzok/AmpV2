@@ -6,6 +6,7 @@ using System.Security.Permissions;
 using HenryMod;
 using EntityStates;
 using UnityEngine;
+using HenryMod.SkillStates;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -76,7 +77,10 @@ namespace HenryMod
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo info)
         {
-
+            if (self.body.HasBuff(Modules.Buffs.invulnerableBuff))
+            {
+                info.rejected = true;
+            }
 
 
             orig(self, info);
@@ -84,52 +88,60 @@ namespace HenryMod
         }
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
-            orig(self);
-            /* GameObject gameObject = new GameObject();
-            
-
-            // a simple stat hook, adds armor after stats are recalculated
+           
             if (self)
             {
+
                 if (self.HasBuff(Modules.Buffs.chargeDebuff))
                 {
+                    
                     new BlastAttack
                     {
-                        attacker = ,
-                        baseDamage = 4f,
+                        attacker = self.gameObject.GetComponent<Tracker>().owner,
+                        baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
                         baseForce = 2f,
                         attackerFiltering = AttackerFiltering.NeverHit,
-                        crit = base.RollCrit(),
+                        crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
                         damageColorIndex = DamageColorIndex.Item,
                         damageType = DamageType.Generic,
                         falloffModel = BlastAttack.FalloffModel.None,
-                        inflictor = base.gameObject,
+                        inflictor = self.gameObject.GetComponent<Tracker>().owner,
                         position = self.corePosition,
                         procChainMask = default(ProcChainMask),
                         procCoefficient = 1f,
-                        radius = 3f,
-                        teamIndex = Modules.Assets.teamComponent.teamIndex
+                        radius = 10f,
+                        teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
                     }.Fire();
 
+                    Destroy(self.gameObject.GetComponent<Tracker>());
                     self.RemoveBuff(Modules.Buffs.chargeDebuff);
-                } 
+                    
+                }
 
 
-                if (self.HasBuff(Modules.Buffs.chargeBuildup)) {
+                if (self.HasBuff(Modules.Buffs.chargeBuildup))
+                {
                     int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
 
                     if (chargeCount >= 3)
                     {
                         self.AddBuff(Modules.Buffs.chargeDebuff);
+                        for (int i = 0; i < chargeCount; i++)
+                        {
+                            self.RemoveBuff(Modules.Buffs.chargeBuildup);
+                        }
+                        
                     }
-                
+
                 }
-                */
+
 
             }
 
 
+            orig(self);
 
         }
 
     }
+}
