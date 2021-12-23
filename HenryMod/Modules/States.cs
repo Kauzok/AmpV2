@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using RoR2;
 using EntityStates.Huntress;
+using HenryMod.SkillStates.Henry;
 
 namespace HenryMod.Modules
 {
@@ -22,7 +23,9 @@ namespace HenryMod.Modules
             entityStates.Add(typeof(Bolt));
 
             entityStates.Add(typeof(BaseLightningAim));
-            entityStates.Add(typeof(VoltaicBombardment));
+            entityStates.Add(typeof(VoltaicBombardmentFire));
+            entityStates.Add(typeof(CallVoltaicBombardment));
+            entityStates.Add(typeof(VoltaicBombardmentAim));
 
             entityStates.Add(typeof(Fulmination));
         }

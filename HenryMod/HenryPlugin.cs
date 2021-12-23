@@ -82,10 +82,15 @@ namespace HenryMod
                 info.rejected = true;
             }
 
+            /* if (R2API.DamageAPI.HasModdedDamageType(info))
+            {
+                self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+            } */
+
             
 
             orig(self, info);
-
+            
         }
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {

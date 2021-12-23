@@ -11,15 +11,18 @@ namespace HenryMod.Modules
     {
         internal static GameObject bombPrefab;
         internal static GameObject ferroshotPrefab;
+        internal static GameObject lightningPrefab;
 
         internal static void RegisterProjectiles()
         {
             // only separating into separate methods for my sanity
-            CreateBomb();
+           //CreateBomb();
             CreateFerroshot();
+          //  CreateLightning();
 
-            AddProjectile(bombPrefab);
+         //  AddProjectile(bombPrefab);
             AddProjectile(ferroshotPrefab);
+          //  AddProjectile(lightningPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -28,7 +31,7 @@ namespace HenryMod.Modules
         }
         private static void CreateFerroshot()
         {
-            ferroshotPrefab = CloneProjectilePrefab("LunarShardProjectile", "Ferroshot");
+           ferroshotPrefab = CloneProjectilePrefab("LunarShardProjectile", "Ferroshot");
 
             ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
             ferroshotPrefab.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
@@ -55,12 +58,19 @@ namespace HenryMod.Modules
 
         }
 
+        private static void CreateLightning()
+        {
+            lightningPrefab = CloneProjectilePrefab("LunarShardProjectile", "Lightning");
+            
+        }
+
       
 
         private static void InitializeFerroshotContact(ProjectileSingleTargetImpact ferroshotContact)
         {
 
         }
+
         private static void CreateBomb()
         {
             bombPrefab = CloneProjectilePrefab("CommandoGrenadeProjectile", "HenryBombProjectile");

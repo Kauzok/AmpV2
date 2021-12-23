@@ -26,6 +26,8 @@ namespace HenryMod.Modules
 
         internal const float chargeDamageCoefficient = 4f;
 
+        internal const float lightningStrikeCoefficient = 8f;
+
 
 
     }

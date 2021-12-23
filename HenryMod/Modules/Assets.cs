@@ -21,6 +21,7 @@ namespace HenryMod.Modules
         internal static GameObject bombExplosionEffect;
         internal static GameObject electricExplosionEffect;
         internal static GameObject electricStreamEffect;
+        internal static GameObject electricImpactEffect;
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
@@ -84,10 +85,12 @@ namespace HenryMod.Modules
             // feel free to delete everything in here and load in your own assets instead
             // it should work fine even if left as is- even if the assets aren't in the bundle
 
+           
             swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
 
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 
+            electricImpactEffect = LoadEffect("ElectricitySphere", "HenryBombExplosion");
 
             electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
 

@@ -1,6 +1,7 @@
 ﻿using HenryMod.SkillStates.BaseStates;
 using RoR2;
 using UnityEngine;
+using RoR2.WwiseUtils;
 
 namespace HenryMod.SkillStates
 {
@@ -10,7 +11,7 @@ namespace HenryMod.SkillStates
         {
             this.hitboxName = "Sword";
 
-            this.damageType = DamageType.Shock5s;
+            this.damageType = DamageType.Generic;
             this.damageCoefficient = Modules.StaticValues.swordDamageCoefficient;
             this.procCoefficient = .1f; //determines length of the shock -> need to figure out how to lower proc chance, should be 15%
             this.pushForce = 300f;
@@ -23,6 +24,7 @@ namespace HenryMod.SkillStates
             this.attackRecoil = 0.5f;
             this.hitHopVelocity = 4f;
 
+            
             this.swingSoundString = "HenrySwordSwing";
             this.hitSoundString = "";
             this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
@@ -37,12 +39,17 @@ namespace HenryMod.SkillStates
         protected override void PlayAttackAnimation()
         {
             base.PlayAttackAnimation();
+           
         }
 
         protected override void PlaySwingEffect()
         {
             base.PlaySwingEffect();
         }
+
+       
+      
+
 
         protected override void OnHitEnemyAuthority()
         {

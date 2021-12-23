@@ -72,7 +72,7 @@ namespace HenryMod.SkillStates
 			
 		}
 
-		private void applyCharge(HurtBox hurtbox)
+		public void applyCharge(HurtBox hurtbox)
         {
 			//if component doesn't have tracker, add it
 			if (hurtbox.healthComponent.gameObject.GetComponent<Tracker>() == null)
