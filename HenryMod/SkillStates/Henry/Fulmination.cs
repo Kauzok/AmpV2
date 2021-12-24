@@ -21,30 +21,22 @@ namespace HenryMod.SkillStates
 			{
 				base.characterBody.SetAimTimer(this.entryDuration + this.flamethrowerDuration + 1f);
 			}
-			
+
 			float num = this.flamethrowerDuration * Fulmination.tickFrequency;
 			this.tickDamageCoefficient = Fulmination.totalDamageCoefficient / num;
-			if (base.isAuthority && base.characterBody)
-			{
-				this.isCrit = Util.CheckRoll(this.critStat, base.characterBody.master);
-			}
+	
 		}
 
 		// Token: 0x06003F52 RID: 16210 RVA: 0x000FA6E8 File Offset: 0x000F88E8
 		public override void OnExit()
 		{
-			Util.PlaySound(Fulmination.endAttackSoundString, base.gameObject);
-			base.PlayCrossfade("Gesture, Additive", "ExitFlamethrower", 0.1f);
-		
-			if (this.fulminationTransform)
-			{
 				EntityState.Destroy(this.fulminationTransform.gameObject);
-			}
+			
 			base.OnExit();
 		}
 
 		// Token: 0x06003F53 RID: 16211 RVA: 0x000FA75C File Offset: 0x000F895C
-		private void FireGauntlet(string muzzleString)
+		private void FireGauntlet()
 		{
 			Ray aimRay = base.GetAimRay();
 			if (base.isAuthority)
@@ -56,16 +48,15 @@ namespace HenryMod.SkillStates
 					origin = aimRay.origin,
 					aimVector = aimRay.direction,
 					minSpread = 0f,
-					damage = this.tickDamageCoefficient * this.damageStat,
-					force = Fulmination.force,
-					muzzleName = muzzleString,
-					hitEffectPrefab = Fulmination.impactEffectPrefab,
-					isCrit = this.isCrit,
+					damage = Modules.StaticValues.fulminationDamageCoefficient * base.characterBody.damage,
+					force = 2f,
+					hitEffectPrefab = Modules.Assets.electricImpactEffect,
+					isCrit = base.characterBody.RollCrit(),
 					radius = Fulmination.radius,
 					falloffModel = BulletAttack.FalloffModel.None,
 					stopperMask = LayerIndex.world.mask,
-					procCoefficient = Fulmination.procCoefficientPerTick,
-					maxDistance = this.maxDistance,
+					procCoefficient = 1f,
+					maxDistance = 50f,
 					smartCollision = true,
 					damageType = (Util.CheckRoll(Fulmination.ignitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic)
 				}.Fire();
@@ -81,22 +72,11 @@ namespace HenryMod.SkillStates
 			if (this.stopwatch >= this.entryDuration && !this.hasBegunFlamethrower)
 			{
 				this.hasBegunFlamethrower = true;
-				Util.PlaySound(Fulmination.startAttackSoundString, base.gameObject);
-				base.PlayAnimation("Gesture, Additive", "Flamethrower", "Flamethrower.playbackRate", this.flamethrowerDuration);
-				if (this.childLocator)
-				{
-					Transform transform2 = this.childLocator.FindChild("MuzzleRight");
+
+				this.fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
 				
-					if (transform2)
-					{
-						this.fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(this.flamethrowerEffectPrefab, transform2).transform;
-					}
-					if (this.fulminationTransform)
-					{
-						this.fulminationTransform.GetComponent<ScaleParticleSystemDuration>().newDuration = this.flamethrowerDuration;
-					}
-				}
-				this.FireGauntlet("MuzzleCenter");
+
+				this.FireGauntlet();
 			}
 			if (this.hasBegunFlamethrower)
 			{
@@ -104,7 +84,7 @@ namespace HenryMod.SkillStates
 				if (this.flamethrowerStopwatch > 1f / Fulmination.tickFrequency)
 				{
 					this.flamethrowerStopwatch -= 1f / Fulmination.tickFrequency;
-					this.FireGauntlet("MuzzleCenter");
+					this.FireGauntlet();
 				}
 				this.UpdateFlamethrowerEffect();
 			}
@@ -121,9 +101,9 @@ namespace HenryMod.SkillStates
 			Ray aimRay = base.GetAimRay();
 			Vector3 direction = aimRay.direction;
 			Vector3 direction2 = aimRay.direction;
-			if (this.fulminationTransform)
+			if (fulminationTransform)
 			{
-				this.fulminationTransform.forward = direction2;
+				fulminationTransform.forward = direction2;
 			}
 		}
 
@@ -163,7 +143,7 @@ namespace HenryMod.SkillStates
 		public static float procCoefficientPerTick;
 
 		// Token: 0x04003681 RID: 13953
-		public static float tickFrequency;
+		public static float tickFrequency = 5f;
 
 		// Token: 0x04003682 RID: 13954
 		public static float force = 20f;
@@ -190,7 +170,7 @@ namespace HenryMod.SkillStates
 		private float stopwatch;
 
 		// Token: 0x0400368A RID: 13962
-		private float entryDuration;
+		public float entryDuration = .5f;
 
 		// Token: 0x0400368B RID: 13963
 		private float flamethrowerDuration;

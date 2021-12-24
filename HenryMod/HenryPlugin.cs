@@ -131,7 +131,18 @@ namespace HenryMod
 
                     if (chargeCount >= 3)
                     {
-                        new BlastAttack
+                        GameObject chargeExplosion;
+
+                        EffectData effectData = new EffectData
+                        {
+                            origin = self.corePosition,
+                            scale = 10f
+                        };
+                          chargeExplosion = Modules.Assets.electricExplosionEffect;
+                          EffectManager.SpawnEffect(chargeExplosion, effectData, true);
+
+
+                            new BlastAttack
                         {
                             attacker = self.gameObject.GetComponent<Tracker>().owner,
                             baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
@@ -145,9 +156,10 @@ namespace HenryMod
                             position = self.corePosition,
                             procChainMask = default(ProcChainMask),
                             procCoefficient = 1f,
-                            radius = 10f,
+                            radius = 12f,
                             teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
                         }.Fire();
+                        
 
                       /*  new BlastAttack
                         {

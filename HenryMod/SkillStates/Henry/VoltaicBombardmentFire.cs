@@ -96,7 +96,7 @@ namespace HenryMod.SkillStates.Henry
                     crit = base.characterBody.RollCrit(),
                     damageColorIndex = DamageColorIndex.Item,
                     damageType = DamageType.Generic,
-                    falloffModel = BlastAttack.FalloffModel.Linear,
+                    falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
                     position = this.boltPosition,
                     procChainMask = default(ProcChainMask),
@@ -104,6 +104,8 @@ namespace HenryMod.SkillStates.Henry
                     radius = 7f,
                     teamIndex = base.characterBody.teamComponent.teamIndex
                 };
+
+                
                 lightningStrike.Fire(); 
 
 

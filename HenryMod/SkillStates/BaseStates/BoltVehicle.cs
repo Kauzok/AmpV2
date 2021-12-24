@@ -16,8 +16,9 @@ namespace HenryMod.SkillStates
 
 
 		// Token: 0x06000E25 RID: 3621 RVA: 0x0003A68C File Offset: 0x0003888C
-		private void Awake()
+		public void Awake()
 		{
+			hasDetonatedServer = false;
 			vehicleSeat = base.GetComponent<VehicleSeat>();
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
@@ -64,7 +65,7 @@ namespace HenryMod.SkillStates
 				damageColorIndex = DamageColorIndex.Item,
 				inflictor = base.gameObject,
 				procChainMask = default(ProcChainMask),
-				procCoefficient = overlapProcCoefficient,
+				procCoefficient = 1f,
 				teamIndex = currentPassengerBody.teamComponent.teamIndex,
 				hitBoxGroup = base.gameObject.GetComponent<HitBoxGroup>(),
 				hitEffectPrefab = overlapHitEffectPrefab
@@ -96,7 +97,7 @@ namespace HenryMod.SkillStates
 		}
 
 		// Token: 0x06000E2C RID: 3628 RVA: 0x0003A92C File Offset: 0x00038B2C
-		private void DetonateServer()
+		public void DetonateServer()
 		{
 			if (hasDetonatedServer)
 			{
@@ -119,7 +120,10 @@ namespace HenryMod.SkillStates
 			}
 			Util.PlaySound(explosionSoundString, base.gameObject);
 			UnityEngine.Object.Destroy(base.gameObject);
+			
 		}
+
+		
 
 		
 		// Token: 0x06000E2D RID: 3629 RVA: 0x0003AA74 File Offset: 0x00038C74
@@ -283,7 +287,7 @@ namespace HenryMod.SkillStates
 		private float age;
 
 		// Token: 0x04000D6A RID: 3434
-		private bool hasDetonatedServer;
+		public bool hasDetonatedServer;
 
 		// Token: 0x04000D6B RID: 3435
 		private VehicleSeat vehicleSeat;

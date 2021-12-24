@@ -60,8 +60,28 @@ namespace HenryMod.SkillStates
 			{
 				NetworkServer.Spawn(gameObject);
 			}
+
 			
 		}
+		public override void FixedUpdate()
+		{
+			base.FixedUpdate();
+
+			if (base.isAuthority && !gameObject)
+			{
+				this.outer.SetNextStateToMain();
+				return;
+			}
+		}
+
+
+
+		public override void OnExit()
+        {
+
+			base.OnExit();
+
+        }
 
 
 	}
