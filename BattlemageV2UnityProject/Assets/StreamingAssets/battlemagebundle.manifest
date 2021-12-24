@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4119803202
+CRC: 2055718198
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3130f5614490315c14eefc5f7f61d65d
+    Hash: 807759f4c01f4bc272487b9d0d05d98f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 028370d250966c0be486221ae0147733
+    Hash: 22dcae6566055d8ce9cfc1000d90ede4
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -54,6 +54,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 316558884, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
+  Script: {fileID: -335047464, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
   Script: {fileID: 1788389205, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 1080798252, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
@@ -74,7 +76,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1711895128, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
+  Script: {fileID: -432102721, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
   Script: {fileID: 2137989374, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -565067572, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1835779776, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
@@ -83,6 +89,8 @@ ClassTypes:
   Script: {fileID: 816898038, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
+- Class: 114
+  Script: {fileID: 708136152, guid: e161fae64b898bc22624d03ed611378f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fc41cd48bee14034db80323ab44fbd3e, type: 3}
 - Class: 114
@@ -126,6 +134,7 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texHenrySwing2.png
 - Assets/HenryAssets/Icons/texBazookaIcon.png
 - Assets/HenryAssets/Icons/texMasteryAchievement.png
+- Assets/HenryAssets/LightningStrike.prefab
 - Assets/HenryAssets/Mesh/meshHenry.mesh
 - Assets/HenryAssets/HenryDisplay.prefab
 - Assets/HenryAssets/VFX/Mesh/meshBoxingGlove.mesh
@@ -245,8 +254,11 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texEmbers.png
 - Assets/HenryAssets/Mesh/meshVergilCoat.mesh
 - Assets/HenryAssets/VFX/Textures/texLightning.tif
+- Assets/HenryAssets/LightningStrikeImpact.prefab
+- Assets/HenryAssets/MageFlamethrowerEffect.prefab
 - Assets/HenryAssets/Animations/RestIdleIn.anim
 - Assets/HenryAssets/VFX/Materials/matRipple.mat
+- Assets/HenryAssets/texLightning1Mask.asset
 - Assets/HenryAssets/Animations/DefaultPose.anim
 - Assets/HenryAssets/Materials/matShotgun.mat
 - Assets/HenryAssets/Animations/IdleAdditive.anim

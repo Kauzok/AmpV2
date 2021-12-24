@@ -73,7 +73,7 @@ namespace HenryMod.SkillStates
                 if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
                 {
                     this.areaIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab);
-                    this.areaIndicatorInstance.transform.localScale = new Vector3(this.spellRadius, this.spellRadius, this.spellRadius);
+                    this.areaIndicatorInstance.transform.localScale = new Vector3(10f, 10f, 10f);
                 }
             }
 
@@ -81,7 +81,7 @@ namespace HenryMod.SkillStates
             {
                 if (this.areaIndicatorInstance)
                 {
-                    float maxDistance = 128f;
+                    float maxDistance = 200f;
 
                     Ray aimRay = base.GetAimRay();
                     RaycastHit raycastHit;

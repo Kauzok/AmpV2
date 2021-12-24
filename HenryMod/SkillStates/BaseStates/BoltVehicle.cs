@@ -36,8 +36,9 @@ namespace HenryMod.SkillStates
 			{
 				if (cameraRigController.target == passenger)
 				{
-					cameraRigController.SetOverrideCam(this, 0f);
-					cameraRigController.SetOverrideCam(null, this.cameraLerpTime);
+					//original values: 0f, this.cameralerptime
+					cameraRigController.SetOverrideCam(this, .5f);
+					cameraRigController.SetOverrideCam(null, .5f);
 				}
 			}
 		}
@@ -78,7 +79,6 @@ namespace HenryMod.SkillStates
 			if (hurtbox.healthComponent.gameObject.GetComponent<Tracker>() == null)
             {
 				hurtbox.healthComponent.gameObject.AddComponent<Tracker>();
-	
 
 				//assigns tracker values
 				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().owner = vehicleSeat.currentPassengerBody.gameObject;
@@ -113,7 +113,7 @@ namespace HenryMod.SkillStates
 					scale = blastRadius
 				};
 				exitEffectPrefab = Modules.Assets.electricExplosionEffect;
-
+				//exitEffectPrefab = Modules.Assets.testLightningEffect;
 				EffectManager.SpawnEffect(exitEffectPrefab, effectData, true);
 		
 			}
@@ -234,6 +234,7 @@ namespace HenryMod.SkillStates
 
 		// Token: 0x04000D5A RID: 3418
 		public float blastDamageCoefficient;
+		
 
 		// Token: 0x04000D5B RID: 3419
 		public float blastRadius;

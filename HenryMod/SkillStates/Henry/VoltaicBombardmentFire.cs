@@ -6,6 +6,8 @@ using RoR2;
 using EntityStates;
 using RoR2.Projectile;
 using HenryMod.Modules;
+using UnityEngine.Networking;
+using RoR2.Orbs;
 
 namespace HenryMod.SkillStates.Henry
 {
@@ -16,31 +18,60 @@ namespace HenryMod.SkillStates.Henry
         public float baseDuration;
         public Vector3 boltPosition;
         public Quaternion spellRotation;
-        private float duration;
+        private float duration = 1f;
         public float charge;
+        private float lightningChargeTimer;
+        public GameObject lightningStrikeEffect;
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
 
-            base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", this.duration);
+            //base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", this.duration);
 
             if (this.muzzleflashEffectPrefab)
             {
                 EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "HandL", false);
             }
-
-            this.Fire();
+            this.Fire();    
+            
         }
 
         public override void FixedUpdate()
         {
-            base.FixedUpdate();
-            if (base.isAuthority && base.fixedAge >= this.duration)
+            EffectData effectData = new EffectData
             {
-                this.outer.SetNextStateToMain();
+                origin = this.boltPosition,
+                scale = 10f,
+
+            };
+            lightningStrikeEffect = Modules.Assets.electricExplosionEffect;
+
+            EffectManager.SpawnEffect(lightningStrikeEffect, effectData, true);
+
+            lightningChargeTimer = 2f;
+            if (NetworkServer.active)
+            {
+                if (lightningChargeTimer > 0f)
+                {
+                    lightningChargeTimer -= Time.fixedDeltaTime;
+
+                    if (lightningChargeTimer <= 0f)
+                    {
+                        Fire();
+                          
+                    }
+                    
+                    
+                }
+
+                if (base.isAuthority && base.fixedAge >= this.duration)
+                {
+                    this.outer.SetNextStateToMain();
+                } 
             }
+
         }
 
         public override void OnExit()
@@ -50,6 +81,8 @@ namespace HenryMod.SkillStates.Henry
 
         private void Fire()
         {
+            
+
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();
@@ -68,36 +101,43 @@ namespace HenryMod.SkillStates.Henry
                     position = this.boltPosition,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
-                    radius = 10f,
+                    radius = 7f,
                     teamIndex = base.characterBody.teamComponent.teamIndex
                 };
-                
-                lightningStrike.Fire();
-             
+                lightningStrike.Fire(); 
 
-             /* if (this.projectilePrefab != null)
-                {
-                    FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
-                    {
-                        projectilePrefab = this.projectilePrefab,
-                        position = this.boltPosition,
-                        rotation = this.spellRotation,
-                        owner = base.gameObject,
-                        damage = this.damageStat,
-                        force = 5f,
-                        crit = base.RollCrit()
-                    };
 
-                    ProjectileManager.instance.FireProjectile(fireProjectileInfo); 
-                } */
-             
             }
-        }
+        } 
+
+            /* if (this.projectilePrefab != null)
+               {
+                   FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+                   {
+                       projectilePrefab = this.projectilePrefab,
+                       position = this.boltPosition,
+                       rotation = this.spellRotation,
+                       owner = base.gameObject,
+                       damage = this.damageStat,
+                       force = 5f,
+                       crit = base.RollCrit()
+                   };
+
+                   ProjectileManager.instance.FireProjectile(fireProjectileInfo); 
+               } */
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.PrioritySkill;
         }
+
     }
+
 }
+
+
+        
+
+
+
 
