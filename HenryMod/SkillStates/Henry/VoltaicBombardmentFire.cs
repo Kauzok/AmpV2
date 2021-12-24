@@ -20,12 +20,24 @@ namespace HenryMod.SkillStates.Henry
         public Quaternion spellRotation;
         private float duration = 1f;
         public float charge;
-        private float lightningChargeTimer;
+       static public float lightningChargeTimer = .5f;
         public GameObject lightningStrikeEffect;
+        bool hasFired;
 
         public override void OnEnter()
         {
+
             base.OnEnter();
+            EffectData effectData = new EffectData
+            {
+                origin = this.boltPosition,
+                scale = 10f,
+
+            };
+            lightningStrikeEffect = Modules.Assets.electricExplosionEffect;
+            EffectManager.SpawnEffect(lightningStrikeEffect, effectData, true);
+
+            hasFired = false;
             this.duration = this.baseDuration / this.attackSpeedStat;
 
             //base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", this.duration);
@@ -34,37 +46,25 @@ namespace HenryMod.SkillStates.Henry
             {
                 EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "HandL", false);
             }
-            this.Fire();    
+            
             
         }
 
         public override void FixedUpdate()
         {
-            EffectData effectData = new EffectData
-            {
-                origin = this.boltPosition,
-                scale = 10f,
+            base.FixedUpdate();
 
-            };
-            lightningStrikeEffect = Modules.Assets.electricExplosionEffect;
-
-            EffectManager.SpawnEffect(lightningStrikeEffect, effectData, true);
-
-            lightningChargeTimer = 2f;
-            if (NetworkServer.active)
-            {
-                if (lightningChargeTimer > 0f)
+                if (!hasFired)
                 {
-                    lightningChargeTimer -= Time.fixedDeltaTime;
-
-                    if (lightningChargeTimer <= 0f)
+                    if (base.fixedAge > lightningChargeTimer)
                     {
-                        Fire();
-                          
-                    }
-                    
-                    
+                    hasFired = true;
+                    Fire();
                 }
+
+                this.duration = .5f;
+                }
+            
 
                 if (base.isAuthority && base.fixedAge >= this.duration)
                 {
@@ -72,7 +72,7 @@ namespace HenryMod.SkillStates.Henry
                 } 
             }
 
-        }
+        
 
         public override void OnExit()
         {
