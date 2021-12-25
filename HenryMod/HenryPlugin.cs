@@ -120,7 +120,7 @@ namespace HenryMod
             {
                 if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 3)
                 {
-                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
+                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
                 }
             }
 
@@ -129,13 +129,13 @@ namespace HenryMod
             {
                 if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 3)
                 {
-                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
+                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
                 }
 
                 else if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 2)
                 {
-                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
-                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
+                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
                 }
        
 
