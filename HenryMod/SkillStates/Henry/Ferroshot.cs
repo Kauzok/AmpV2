@@ -68,9 +68,9 @@ namespace HenryMod.SkillStates
         }
 
         /// <summary>
-        /// Updates the pla
+        /// Updates the rotation and location of the bullet around the player
         /// </summary>
-        private void updateRot()
+        private void updateRotAndLoc()
         {
             // Get player aimray for settin the direction the bullets point
             Ray aimRay = base.GetAimRay();
@@ -92,9 +92,8 @@ namespace HenryMod.SkillStates
         }
 
         /// <summary>
-        /// 
+        /// Method for firing that spawns n bullets around the players over the base duration and then fires all of them at once
         /// </summary>
-        /// <returns></returns>
         IEnumerator Fire()
         {
             if (!this.hasFired)
@@ -172,10 +171,8 @@ namespace HenryMod.SkillStates
             if (base.fixedAge < this.duration)
             {
                 base.characterBody.StartCoroutine(Fire());
-                updateRot();
-            }
-
-            if (base.fixedAge >= this.duration && base.isAuthority)
+                updateRotAndLoc();
+            } else if (base.fixedAge >= this.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
                 return;
