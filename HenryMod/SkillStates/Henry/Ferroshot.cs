@@ -16,10 +16,8 @@ namespace HenryMod.SkillStates
         public static float force = 10;
         public static float recoil = 0f;
         public static float range = 600f;
-        private Ray ferroshotRay;
-        private Vector3 newpos;
         public static float launchForce = 150f;
-        public static int numOfBullets = 6;
+        private static int numOfBullets = 6;
 
         private Animator animator;
 
@@ -27,29 +25,21 @@ namespace HenryMod.SkillStates
         public static GameObject ferroshotPrefabBasic = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Spike");
 
         private float duration;
-        private float fireTime;
+        //private float fireTime;
         private bool hasFired;
         private string muzzleString;
+        private float distanceFromHead = 0.5f;
         private GameObject[] bullets = new GameObject[numOfBullets];
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.duration = baseDuration / this.attackSpeedStat;
-            this.fireTime = 0.2f * this.duration;
+            //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
             this.muzzleString = "Muzzle";
 
             Ray aimRay = base.GetAimRay();
-
-            //GameObject bullet = UnityEngine.Object.Instantiate<GameObject>(
-            //ferroshotPrefabBasic,
-            //aimRay.origin + new Vector3(0, 0, 10),
-            //Quaternion.LookRotation(aimRay.direction));
-
-            //ferroshotPrefabBasic.AddComponent<CustomController>();
-          
-
 
             base.PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);// 3f * this.duration);
         }
@@ -59,47 +49,117 @@ namespace HenryMod.SkillStates
             base.OnExit();
         }
 
+        /// <summary>
+        /// Get the offset from the players head for the bullets to spawn
+        /// </summary>
+        /// <param name="yDir"> Radian angle for rotating the point around </param>
+        /// <param name="angle"> Angle direction for placing the bullet </param>
+        /// <returns> Vector 3 for offset from aimray </returns>
+        private Vector3 getLoc(float yDir, float angle)
+        {
+            // Calculate x = Cos(yDir) * X
+            float x = Mathf.Cos(yDir) * Mathf.Cos(angle);
+            // Calcualte y = Y
+            float y = Mathf.Sin(angle);
+            // Calculate z = -Sin(yDir) * X
+            float z = -Mathf.Sin(yDir) * Mathf.Cos(angle);
+
+            return new Vector3(x, y, z) * distanceFromHead;
+        }
+
+        /// <summary>
+        /// Updates the pla
+        /// </summary>
+        private void updateRot()
+        {
+            // Get player aimray for settin the direction the bullets point
+            Ray aimRay = base.GetAimRay();
+
+            // Calculate the angle between each bullet
+            float angle = (Mathf.PI / (numOfBullets - 1));
+
+            for (int i = 0; i < numOfBullets; i ++)
+            {
+                if (bullets[i] != null)
+                {
+                    bullets[i].transform.position = aimRay.origin + getLoc(modelLocator.modelTransform.eulerAngles.y * (Mathf.PI / 180), angle * i);
+
+                    // I could want the model locator not 
+                    bullets[i].transform.rotation = Quaternion.LookRotation(aimRay.direction);
+                }
+                
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         IEnumerator Fire()
         {
             if (!this.hasFired)
             {
-
+                Ray aimRay;
                 this.hasFired = true;
                 Util.PlaySound("HenryBombThrow", base.gameObject);
-                GameObject bullet;
                 if (base.isAuthority)
                 {
-                    
-                    for(int i = 0; i<6; i++)
+                    // Calculate the angle between each bullet
+                    float angle = (Mathf.PI / (numOfBullets - 1));
+
+                    for (int i = 0; i < numOfBullets; i++)
                     {
                         // Get current aim ray of the character
-                        Ray aimRay = base.GetAimRay();
+                        aimRay = base.GetAimRay();
 
-                        MonoBehaviour.print("Spawinign");
-
-                        // Spawn the prefab of the bolt under the character as a parent 
+                        // Spawn the prefab of the bolt
                         bullets[i] = UnityEngine.Object.Instantiate<GameObject>(
                             ferroshotPrefabBasic, 
-                            aimRay.origin + new Vector3(0,4,0), 
+                            aimRay.origin + getLoc(modelLocator.modelTransform.eulerAngles.y * (Mathf.PI / 180), angle * i), 
                             Quaternion.LookRotation(aimRay.direction));
 
-                        NetworkServer.Spawn(bullets[i]);
+                        // Set the bullet as a child of the character body
+                        bullets[i].transform.parent = base.characterBody.transform;
 
-                        //NetworkServer.Spawn(bullets[i]);
+                        yield return new WaitForSeconds(this.duration / numOfBullets);
+                    }
 
-                        // Spawn the projectile
-                        /*ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
-                        aimRay.origin,
-                        Util.QuaternionSafeLookRotation(aimRay.direction),
+                    aimRay = base.GetAimRay();
+
+                    // Calculate a raycast intersection for where the player is looking
+                    RaycastHit hit;
+                    Vector3 direction;
+                    bool somethingHit = Physics.Raycast(aimRay.origin, aimRay.direction, out hit);
+
+
+                    // Loop through all of the bullets and delete them spawning a projectile in
+                    // there place facing the interction point or if no intersection the players direction
+                    for (int i = 0; i < numOfBullets; i++)
+                    {
+                        if (somethingHit)
+                        {
+                            // Calculate the directional vector for the bullet to hit the collision point and normalized to a magnitude of 1
+                            direction = (hit.point - bullets[i].transform.position).normalized;
+                        }
+                        else
+                        {
+                            direction= aimRay.direction;
+                        }
+
+                        // Spawn the projectile at the gameobjects current location
+                        ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
+                        bullets[i].transform.position,
+                        Quaternion.LookRotation(direction),
                         base.gameObject,
                         damageCoefficient * this.damageStat,
                         launchForce,
                         base.RollCrit(),
                         DamageColorIndex.Default,
                         null,
-                        launchForce);*/
+                        launchForce);
 
-                        yield return new WaitForSeconds(.1f);
+                        // Destroy bullet after spawning projectile version
+                        Destroy(bullets[i]);
                     }
                 }
             }
@@ -109,10 +169,10 @@ namespace HenryMod.SkillStates
         {
             base.FixedUpdate();
 
-            if (base.fixedAge >= this.fireTime)
+            if (base.fixedAge < this.duration)
             {
                 base.characterBody.StartCoroutine(Fire());
-                //this.Fire();
+                updateRot();
             }
 
             if (base.fixedAge >= this.duration && base.isAuthority)
