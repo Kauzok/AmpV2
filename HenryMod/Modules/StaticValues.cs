@@ -18,7 +18,11 @@ namespace HenryMod.Modules
 
         internal const float ferroshotDamageCoefficient = 1.2f;
 
-        internal const float fulminationDamageCoefficient = 4f;
+        internal const float fulminationDamageCoefficient = 1.1f;
+
+        internal const float fulminationTotalDamageCoefficient = 22f;
+
+        internal const float fulminationChargeProcCoefficient = 15f;
 
         internal const int chargeMaxStacks = 3;
 

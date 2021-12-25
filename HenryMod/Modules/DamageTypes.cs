@@ -11,10 +11,11 @@ namespace HenryMod.Modules
 {
     public class DamageTypes
     {
-       public  DamageAPI.ModdedDamageType applyCharge = new DamageAPI.ModdedDamageType();
-       public DamageAPI.ModdedDamageType apply2Charge = new DamageAPI.ModdedDamageType();
-      
-        
+        public static DamageAPI.ModdedDamageType applyCharge = DamageAPI.ReserveDamageType();
+        public static DamageAPI.ModdedDamageType apply2Charge = DamageAPI.ReserveDamageType();
+        public static DamageAPI.ModdedDamageType fulminationChain = DamageAPI.ReserveDamageType();
+
+       
         
 
     }

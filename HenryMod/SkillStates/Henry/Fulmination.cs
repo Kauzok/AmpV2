@@ -5,24 +5,27 @@ using UnityEngine.Networking;
 using RoR2.Orbs;
 using System.Collections.Generic;
 using static HenryMod.SkillStates.BaseStates.FulminationOrb;
+using R2API;
 
 namespace HenryMod.SkillStates
 {
-    public class Fulmination : BaseState
+    public class Fulmination : BaseSkillState
     {
 		public override void OnEnter()
 		{
 			base.OnEnter();
 			this.stopwatch = 0f;
 			this.entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
-			this.flamethrowerDuration = Fulmination.baseFlamethrowerDuration;
+			this.fulminationDuration = Fulmination.baseFulminationDuration;
 			
 			if (base.characterBody)
 			{
-				base.characterBody.SetAimTimer(this.entryDuration + this.flamethrowerDuration + 1f);
+				base.characterBody.SetAimTimer(this.entryDuration + this.fulminationDuration + 1f);
 			}
 
-			float num = this.flamethrowerDuration * Fulmination.tickFrequency;
+			//how many times the attack hits
+			float num = this.fulminationDuration * Fulmination.tickFrequency;
+			
 			this.tickDamageCoefficient = Fulmination.totalDamageCoefficient / num;
 	
 		}
@@ -30,7 +33,7 @@ namespace HenryMod.SkillStates
 		// Token: 0x06003F52 RID: 16210 RVA: 0x000FA6E8 File Offset: 0x000F88E8
 		public override void OnExit()
 		{
-				EntityState.Destroy(this.fulminationTransform.gameObject);
+			EntityState.Destroy(this.fulminationTransform.gameObject);
 			
 			base.OnExit();
 		}
@@ -41,14 +44,14 @@ namespace HenryMod.SkillStates
 			Ray aimRay = base.GetAimRay();
 			if (base.isAuthority)
 			{
-				new BulletAttack
+				BulletAttack lightningAttack = new BulletAttack
 				{
 					owner = base.gameObject,
 					weapon = base.gameObject,
 					origin = aimRay.origin,
 					aimVector = aimRay.direction,
 					minSpread = 0f,
-					damage = Modules.StaticValues.fulminationDamageCoefficient * base.characterBody.damage,
+					damage = this.tickDamageCoefficient * base.characterBody.damage,
 					force = 2f,
 					hitEffectPrefab = Modules.Assets.electricImpactEffect,
 					isCrit = base.characterBody.RollCrit(),
@@ -56,13 +59,25 @@ namespace HenryMod.SkillStates
 					falloffModel = BulletAttack.FalloffModel.None,
 					stopperMask = LayerIndex.world.mask,
 					procCoefficient = 1f,
-					maxDistance = 50f,
+					maxDistance = 20f,
 					smartCollision = true,
-					damageType = (Util.CheckRoll(Fulmination.ignitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic)
-				}.Fire();
+					damageType = DamageType.Generic
+				};
+				lightningAttack.AddModdedDamageType(Modules.DamageTypes.fulminationChain);
+
+				
+				//figure out how to set the charactermaster component
+				if (Util.CheckRoll(30f, base.characterBody.master))
+                {
+					lightningAttack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+                }
+
+				lightningAttack.Fire();
+				
 	
 			}
 		}
+
 
 		// Token: 0x06003F54 RID: 16212 RVA: 0x000FA894 File Offset: 0x000F8A94
 		public override void FixedUpdate()
@@ -80,15 +95,15 @@ namespace HenryMod.SkillStates
 			}
 			if (this.hasBegunFlamethrower)
 			{
-				this.flamethrowerStopwatch += Time.deltaTime;
-				if (this.flamethrowerStopwatch > 1f / Fulmination.tickFrequency)
+				this.fulminationStopwatch += Time.deltaTime;
+				if (this.fulminationStopwatch > 1f / Fulmination.tickFrequency)
 				{
-					this.flamethrowerStopwatch -= 1f / Fulmination.tickFrequency;
+					this.fulminationStopwatch -= 1f / Fulmination.tickFrequency;
 					this.FireGauntlet();
 				}
-				this.UpdateFlamethrowerEffect();
+				this.UpdateFulminationEffect();
 			}
-			if (this.stopwatch >= this.flamethrowerDuration + this.entryDuration && base.isAuthority)
+			if (this.stopwatch >= this.fulminationDuration + this.entryDuration && base.isAuthority)
 			{
 				this.outer.SetNextStateToMain();
 				return;
@@ -96,7 +111,7 @@ namespace HenryMod.SkillStates
 		}
 
 		// Token: 0x06003F55 RID: 16213 RVA: 0x000FAA48 File Offset: 0x000F8C48
-		private void UpdateFlamethrowerEffect()
+		private void UpdateFulminationEffect()
 		{
 			Ray aimRay = base.GetAimRay();
 			Vector3 direction = aimRay.direction;
@@ -131,13 +146,13 @@ namespace HenryMod.SkillStates
 		public static float radius;
 
 		// Token: 0x0400367D RID: 13949
-		public static float baseEntryDuration = 1f;
+		public static float baseEntryDuration = .5f;
 
 		// Token: 0x0400367E RID: 13950
-		public static float baseFlamethrowerDuration = 4f;
+		public static float baseFulminationDuration = 4f;
 
 		// Token: 0x0400367F RID: 13951
-		public static float totalDamageCoefficient = 1.2f;
+		public static float totalDamageCoefficient = 22f;
 
 		// Token: 0x04003680 RID: 13952
 		public static float procCoefficientPerTick;
@@ -164,16 +179,16 @@ namespace HenryMod.SkillStates
 		private float tickDamageCoefficient;
 
 		// Token: 0x04003688 RID: 13960
-		private float flamethrowerStopwatch;
+		private float fulminationStopwatch;
 
 		// Token: 0x04003689 RID: 13961
 		private float stopwatch;
 
 		// Token: 0x0400368A RID: 13962
-		public float entryDuration = .5f;
+		public float entryDuration;
 
 		// Token: 0x0400368B RID: 13963
-		private float flamethrowerDuration;
+		private float fulminationDuration;
 
 		// Token: 0x0400368C RID: 13964
 		private bool hasBegunFlamethrower;

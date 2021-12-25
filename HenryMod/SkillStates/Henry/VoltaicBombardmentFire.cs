@@ -8,6 +8,7 @@ using RoR2.Projectile;
 using HenryMod.Modules;
 using UnityEngine.Networking;
 using RoR2.Orbs;
+using R2API;
 
 namespace HenryMod.SkillStates.Henry
 {
@@ -104,7 +105,7 @@ namespace HenryMod.SkillStates.Henry
                     radius = 7f,
                     teamIndex = base.characterBody.teamComponent.teamIndex
                 };
-
+                lightningStrike.AddModdedDamageType(Modules.DamageTypes.apply2Charge);
                 
                 lightningStrike.Fire(); 
 

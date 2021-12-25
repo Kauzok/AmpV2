@@ -27,17 +27,17 @@ namespace HenryMod.Modules
 
             #region Secondary
             LanguageAPI.Add(prefix + "SECONDARY_GUN_NAME", "Gauss Cannon");
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Helpers.agilePrefix + $"Use magnetic fields to fire an array of 6 iron sand bullets, dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style> per bullet.");
+            LanguageAPI.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Helpers.agilePrefix + $"Use electromagnetic fields to fire an array of 6 iron sand bullets, dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style> per bullet.");
             #endregion
 
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_ROLL_NAME", "Bolt");
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 1.5 seconds");
+            LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 1.5 seconds.");
             #endregion
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Fulmination");
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a continuous stream of electricity that deals <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style> per second for 6 seconds.");
+            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a continuous stream of electricity that chains to nearby enemies, deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a {StaticValues.fulminationChargeProcCoefficient}% chance of applying a stack of charge each tick.");
             #endregion
 
             #region Special

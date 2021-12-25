@@ -1,12 +1,15 @@
 ﻿using BepInEx;
 using R2API.Utils;
 using RoR2;
+using R2API;
 using System.Security;
 using System.Security.Permissions;
 using HenryMod;
 using EntityStates;
 using UnityEngine;
 using HenryMod.SkillStates;
+using RoR2.Orbs;
+using System.Collections.Generic;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -21,6 +24,7 @@ namespace HenryMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
+        "DamageAPI",
     })]
 
     public class HenryPlugin : BaseUnityPlugin
@@ -82,16 +86,74 @@ namespace HenryMod
                 info.rejected = true;
             }
 
+            
+            if (info.HasModdedDamageType(Modules.DamageTypes.fulminationChain))
+            {
+                float damageCoefficient2 = 0.8f;
+                float damageValue2 = Util.OnHitProcDamage(info.damage, info.attacker.GetComponent<CharacterBody>().damage, damageCoefficient2);
+                LightningOrb lightningOrb2 = new LightningOrb();
+                lightningOrb2.origin = info.position;
+                lightningOrb2.damageValue = damageValue2;
+                lightningOrb2.isCrit = info.crit;
+                lightningOrb2.bouncesRemaining = 2;
+                lightningOrb2.teamIndex = info.attacker.GetComponent<CharacterBody>().teamComponent.teamIndex;
+                lightningOrb2.attacker = info.attacker;
+                lightningOrb2.bouncedObjects = new List<HealthComponent>
+                     {
+                        self.GetComponent<HealthComponent>()
+                      };
+                lightningOrb2.procChainMask = info.procChainMask;
+                lightningOrb2.procChainMask.AddProc(ProcType.ChainLightning);
+                lightningOrb2.procCoefficient = 0.2f;
+                lightningOrb2.lightningType = LightningOrb.LightningType.Ukulele;
+                lightningOrb2.damageColorIndex = DamageColorIndex.Item;
+                lightningOrb2.range += (float)(2);
+                HurtBox hurtBox2 = lightningOrb2.PickNextTarget(info.position);
+                if (hurtBox2)
+                {
+                    lightningOrb2.target = hurtBox2;
+                    OrbManager.instance.AddOrb(lightningOrb2);
+                }
+            }
+
+            if (info.HasModdedDamageType(Modules.DamageTypes.applyCharge))
+            {
+                if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 3)
+                {
+                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
+                }
+            }
+
+
+            if (info.HasModdedDamageType(Modules.DamageTypes.apply2Charge))
+            {
+                if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 3)
+                {
+                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
+                }
+
+                else if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 2)
+                {
+                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
+                    self.gameObject.GetComponent<CharacterBody>().AddBuff(Modules.Buffs.chargeBuildup);
+                }
+       
+
+            }
+
+
             /* if (R2API.DamageAPI.HasModdedDamageType(info))
             {
                 self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
             } */
 
-            
+
 
             orig(self, info);
             
         }
+
+        //hook for checking if body has debuff
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
            
@@ -184,6 +246,13 @@ namespace HenryMod
                       
                         
                     }
+                  /*  else if(chargeCount > 3)
+                    {
+                        for (int i = self.GetBuffCount(Modules.Buffs.chargeBuildup); i > 3; i--)
+                        {
+                            self.RemoveBuff(Modules.Buffs.chargeBuildup);
+                        }
+                    } */
 
 
                 }

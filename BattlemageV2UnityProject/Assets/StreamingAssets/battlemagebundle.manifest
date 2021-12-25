@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2055718198
+CRC: 139181261
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 807759f4c01f4bc272487b9d0d05d98f
+    Hash: 9f59d44c23ffd3a63ad9904a37b5a249
   TypeTreeHash:
     serializedVersion: 2
     Hash: 22dcae6566055d8ce9cfc1000d90ede4
@@ -134,7 +134,7 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texHenrySwing2.png
 - Assets/HenryAssets/Icons/texBazookaIcon.png
 - Assets/HenryAssets/Icons/texMasteryAchievement.png
-- Assets/HenryAssets/LightningStrike.prefab
+- Assets/HenryAssets/VFX/LightningStrike.prefab
 - Assets/HenryAssets/Mesh/meshHenry.mesh
 - Assets/HenryAssets/HenryDisplay.prefab
 - Assets/HenryAssets/VFX/Mesh/meshBoxingGlove.mesh
@@ -157,7 +157,7 @@ Assets:
 - Assets/HenryAssets/Icons/texDanteAchievement.png
 - Assets/HenryAssets/Icons/texSecondaryIcon.png
 - Assets/HenryAssets/Animations/animHenry.controller
-- Assets/HenryAssets/Electricity.prefab
+- Assets/HenryAssets/VFX/Fulmination/ElectricityChain.prefab
 - Assets/HenryAssets/VFX/Materials/matHenrySwing2.mat
 - Assets/HenryAssets/Textures/texBazooka.png
 - Assets/HenryAssets/VFX/Textures/texRipple.png
@@ -238,7 +238,8 @@ Assets:
 - Assets/HenryAssets/Materials/matSpike.mat
 - Assets/HenryAssets/VFX/Materials/matHitSparkPunch.mat
 - Assets/HenryAssets/VFX/Materials/matSwingEffect.mat
-- Assets/HenryAssets/ElectricitySphere.prefab
+- Assets/HenryAssets/VFX/Fulmination/Electricity.prefab
+- Assets/HenryAssets/VFX/Fulmination/ElectricitySphere.prefab
 - Assets/HenryAssets/Mesh/meshHenrySword.mesh
 - Assets/HenryAssets/VFX/Materials/matEmbers.mat
 - Assets/HenryAssets/Animations/AimYaw.anim
@@ -254,7 +255,7 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texEmbers.png
 - Assets/HenryAssets/Mesh/meshVergilCoat.mesh
 - Assets/HenryAssets/VFX/Textures/texLightning.tif
-- Assets/HenryAssets/LightningStrikeImpact.prefab
+- Assets/HenryAssets/VFX/LightningStrikeImpact.prefab
 - Assets/HenryAssets/MageFlamethrowerEffect.prefab
 - Assets/HenryAssets/Animations/RestIdleIn.anim
 - Assets/HenryAssets/VFX/Materials/matRipple.mat
