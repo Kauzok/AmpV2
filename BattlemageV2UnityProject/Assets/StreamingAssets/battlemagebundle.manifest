@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 139181261
+CRC: 3982234004
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9f59d44c23ffd3a63ad9904a37b5a249
+    Hash: dff72cdc94202f568e05d5a72537f1c1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 22dcae6566055d8ce9cfc1000d90ede4
@@ -194,6 +194,7 @@ Assets:
 - Assets/HenryAssets/Animations/WalkF.anim
 - Assets/HenryAssets/VFX/Materials/matPunchImpactShadow.mat
 - Assets/HenryAssets/Materials/matDante.mat
+- Assets/HenryAssets/VFX/Spike Spawn.prefab
 - Assets/HenryAssets/Animations/maskLeftArm.mask
 - Assets/HenryAssets/Mesh/MeshHenryGun.mesh
 - Assets/HenryAssets/Animations/DescendFast.anim
