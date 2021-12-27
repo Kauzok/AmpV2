@@ -20,7 +20,7 @@ namespace HenryMod.Modules
 
         internal const float fulminationDamageCoefficient = 1.1f;
 
-        internal const float fulminationTotalDamageCoefficient = 22f;
+        internal const float fulminationTotalDamageCoefficient = 20f;
 
         internal const float fulminationChargeProcCoefficient = 15f;
 

@@ -14,29 +14,25 @@ namespace HenryMod.SkillStates.Henry
 {
     public class VoltaicBombardmentFire : BaseSkillState
     {
-        public GameObject projectilePrefab = Modules.Projectiles.lightningPrefab;
         public GameObject muzzleflashEffectPrefab;
+
         public float baseDuration;
         public Vector3 boltPosition;
-        public Quaternion spellRotation;
+        public Quaternion lightningRotation;
         private float duration = 1f;
         public float charge;
        static public float lightningChargeTimer = .5f;
         public GameObject lightningStrikeEffect;
+        public GameObject lightningStrikeExplosion;
         bool hasFired;
+        public float strikeRadius = 12f;
+        public GameObject projectilePrefab = Modules.Projectiles.bombPrefab;
 
         public override void OnEnter()
         {
 
             base.OnEnter();
-            EffectData effectData = new EffectData
-            {
-                origin = this.boltPosition,
-                scale = 10f,
-
-            };
-            lightningStrikeEffect = Modules.Assets.electricExplosionEffect;
-            EffectManager.SpawnEffect(lightningStrikeEffect, effectData, true);
+          
 
             hasFired = false;
             this.duration = this.baseDuration / this.attackSpeedStat;
@@ -86,7 +82,29 @@ namespace HenryMod.SkillStates.Henry
 
             if (base.isAuthority)
             {
+
                 Ray aimRay = base.GetAimRay();
+
+                lightningStrikeEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
+               
+                lightningStrikeExplosion = Resources.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion");
+
+
+                EffectData lightning = new EffectData
+                {
+                    origin = this.boltPosition,
+                    scale = 1f,
+                };
+                
+                EffectData lightningExplosion = new EffectData
+                {
+                    origin = this.boltPosition,
+                    scale = 20f,
+
+                };
+
+                EffectManager.SpawnEffect(lightningStrikeEffect, lightning, true);
+                EffectManager.SpawnEffect(lightningStrikeExplosion, lightningExplosion, true);
 
                 BlastAttack lightningStrike = new BlastAttack
                 {
@@ -99,35 +117,41 @@ namespace HenryMod.SkillStates.Henry
                     damageType = DamageType.Generic,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
-                    position = this.boltPosition,
+                    position = this.boltPosition + Vector3.up * 10,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
-                    radius = 7f,
+                    radius = this.strikeRadius,
                     teamIndex = base.characterBody.teamComponent.teamIndex
                 };
                 lightningStrike.AddModdedDamageType(Modules.DamageTypes.apply2Charge);
-                
-                lightningStrike.Fire(); 
 
+                lightningStrike.Fire();
+
+
+                /*
+                   FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+                    {
+
+                        projectilePrefab = Modules.Projectiles.bombPrefab,
+                        position = this.boltPosition + Vector3.up * 10f,
+                        rotation = ,
+                        owner = base.gameObject,
+                        damage = this.damageStat,
+                        force = 5f,
+                        crit = base.RollCrit(),
+                        speedOverride = 10f,
+
+                        
+                       
+                  };
+                   ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+
+                 */
 
             }
         } 
 
-            /* if (this.projectilePrefab != null)
-               {
-                   FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
-                   {
-                       projectilePrefab = this.projectilePrefab,
-                       position = this.boltPosition,
-                       rotation = this.spellRotation,
-                       owner = base.gameObject,
-                       damage = this.damageStat,
-                       force = 5f,
-                       crit = base.RollCrit()
-                   };
-
-                   ProjectileManager.instance.FireProjectile(fireProjectileInfo); 
-               } */
+           
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {

@@ -19,10 +19,13 @@ namespace HenryMod.SkillStates
             public GameObject chargeEffectPrefab;
             public string chargeSoundString;
             public GameObject crosshairOverridePrefab;
-            public float spellRadius = .2f;
+            public float lightningRadius = .2f;
 
             private GameObject defaultCrosshairPrefab;
             private uint loopSoundInstanceId;
+
+        private float reticleScale = 7.5f;
+
             private float duration { get; set; }
             private Animator animator { get; set; }
             private ChildLocator childLocator { get; set; }
@@ -73,7 +76,7 @@ namespace HenryMod.SkillStates
                 if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
                 {
                     this.areaIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab);
-                    this.areaIndicatorInstance.transform.localScale = new Vector3(10f, 10f, 10f);
+                    this.areaIndicatorInstance.transform.localScale = new Vector3(reticleScale, reticleScale, reticleScale);
                 }
             }
 
@@ -147,12 +150,12 @@ namespace HenryMod.SkillStates
                     if (this.areaIndicatorInstance)
                     {
                         nextState.boltPosition = this.areaIndicatorInstance.transform.position;
-                        nextState.spellRotation = this.areaIndicatorInstance.transform.rotation;
+                        nextState.lightningRotation = this.areaIndicatorInstance.transform.rotation;
                     }
                     else
                     {
                         nextState.boltPosition = base.transform.position;
-                        nextState.spellRotation = this.areaIndicatorInstance.transform.rotation;
+                        nextState.lightningRotation = this.areaIndicatorInstance.transform.rotation;
                     }
                     this.outer.SetNextState(nextState);
                 }

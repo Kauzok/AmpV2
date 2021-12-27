@@ -24,7 +24,6 @@ namespace HenryMod.Modules
 
             entityStates.Add(typeof(BaseLightningAim));
             entityStates.Add(typeof(VoltaicBombardmentFire));
-            entityStates.Add(typeof(CallVoltaicBombardment));
             entityStates.Add(typeof(VoltaicBombardmentAim));
 
             entityStates.Add(typeof(Fulmination));

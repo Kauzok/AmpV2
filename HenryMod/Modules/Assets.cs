@@ -99,7 +99,7 @@ namespace HenryMod.Modules
 
             electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
 
-            //testLightningEffect = LoadEffect("LightningStrikeImpact", "HenryBombExplosion");
+            //testLightningEffect = LoadEffect("ElectricityChain", "HenryBombExplosion");
 
             electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
 

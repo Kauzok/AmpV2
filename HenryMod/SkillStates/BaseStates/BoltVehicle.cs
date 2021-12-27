@@ -14,9 +14,38 @@ namespace HenryMod.SkillStates
 	[RequireComponent(typeof(Rigidbody))]
 	public class BoltVehicle : MonoBehaviour, ICameraStateProvider
 	{
+		[Header("Vehicle Parameters")]
+		public float duration = 10f;
+		public float initialSpeed = 50f;
+		public float targetSpeed = 50f;
+		public float acceleration = 1000f;
+		public float cameraLerpTime = .25f;
+
+		[Header("Blast Parameters")]
+		public bool detonateOnCollision;
+		public GameObject exitEffectPrefab;
+		public string explosionSoundString;
+		public float blastRadius = 1f;
+
+		[Header("Overlap Parameters")]
+		public float overlapDamageCoefficient = .5f;
+		public float overlapProcCoefficient = 1f;
+		public float overlapForce = .5f;
+		public float overlapFireFrequency = 30f;
+		public float overlapResetFrequency = 1f;
+		public float overlapVehicleDurationBonusPerHit;
+		public GameObject overlapHitEffectPrefab;
+
+		[Header("Misc. Variables")]
+		private float age;
+		public bool hasDetonatedServer;
+		private VehicleSeat vehicleSeat;
+		private Rigidbody rigidbody;
+		private OverlapAttack overlapAttack;
+		private float overlapFireAge;
+		private float overlapResetAge;
 
 
-		// Token: 0x06000E25 RID: 3621 RVA: 0x0003A68C File Offset: 0x0003888C
 		public void Awake()
 		{
 			hasDetonatedServer = false;
@@ -27,7 +56,7 @@ namespace HenryMod.SkillStates
 			
 		}
 
-		// Token: 0x06000E2A RID: 3626 RVA: 0x0003A7B0 File Offset: 0x000389B0
+
 		private void OnPassengerExit(GameObject passenger)
 		{
 			if (NetworkServer.active)
@@ -45,7 +74,6 @@ namespace HenryMod.SkillStates
 			}
 		}
 
-		// Token: 0x06000E2B RID: 3627 RVA: 0x0003A82C File Offset: 0x00038A2C
 		private void OnPassengerEnter(GameObject passenger)
 		{
 			if (!this.vehicleSeat.currentPassengerInputBank)
@@ -75,30 +103,7 @@ namespace HenryMod.SkillStates
 			
 			
 		}
-
-		public void applyCharge(HurtBox hurtbox)
-        {
-			//if component doesn't have tracker, add it
-			if (hurtbox.healthComponent.gameObject.GetComponent<Tracker>() == null)
-            {
-				hurtbox.healthComponent.gameObject.AddComponent<Tracker>();
-
-				//assigns tracker values
-				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().owner = vehicleSeat.currentPassengerBody.gameObject;
-				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().ownerBody = vehicleSeat.currentPassengerBody;
-				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().victim = hurtbox.gameObject;
-			}
-			
-            
-			
-
-
-
-			//test line below
-			//hurtbox.healthComponent.body.AddBuff(RoR2Content.Buffs.OnFire);
-		}
-
-		// Token: 0x06000E2C RID: 3628 RVA: 0x0003A92C File Offset: 0x00038B2C
+		
 		public void DetonateServer()
 		{
 			if (hasDetonatedServer)
@@ -126,9 +131,6 @@ namespace HenryMod.SkillStates
 		}
 
 		
-
-		
-		// Token: 0x06000E2D RID: 3629 RVA: 0x0003AA74 File Offset: 0x00038C74
 		private void FixedUpdate()
 		{
 			if (!vehicleSeat)
@@ -183,7 +185,6 @@ namespace HenryMod.SkillStates
 			}
 		}
 
-		// Token: 0x06000E2E RID: 3630 RVA: 0x0003ABED File Offset: 0x00038DED
 		private void OnCollisionEnter(Collision collision)
 		{
 			if (this.detonateOnCollision && NetworkServer.active)
@@ -193,119 +194,26 @@ namespace HenryMod.SkillStates
 			}
 		}
 
-		// Token: 0x06000E2F RID: 3631 RVA: 0x00004381 File Offset: 0x00002581
 		public void GetCameraState(CameraRigController cameraRigController, ref CameraState cameraState)
 		{
 		}
 
-		// Token: 0x06000E30 RID: 3632 RVA: 0x00013F7C File Offset: 0x0001217C
 		public bool IsUserLookAllowed(CameraRigController cameraRigController)
 		{
 			return true;
 		}
 
-		// Token: 0x06000E31 RID: 3633 RVA: 0x00013F7C File Offset: 0x0001217C
 		public bool IsUserControlAllowed(CameraRigController cameraRigController)
 		{
 			return true;
 		}
 
-		// Token: 0x06000E32 RID: 3634 RVA: 0x00013F7C File Offset: 0x0001217C
 		public bool IsHudAllowed(CameraRigController cameraRigController)
 		{
 			return true;
 		}
 
-		// Token: 0x04000D53 RID: 3411
-		[Header("Vehicle Parameters")]
-		public float duration = 10f;
-
-		// Token: 0x04000D54 RID: 3412
-		public float initialSpeed = 50f;
-
-		// Token: 0x04000D55 RID: 3413
-		public float targetSpeed = 50f;
-
-		// Token: 0x04000D56 RID: 3414
-		public float acceleration = 1000f;
-
-		// Token: 0x04000D57 RID: 3415
-		public float cameraLerpTime = .25f;
-
-		// Token: 0x04000D58 RID: 3416
-		[Header("Blast Parameters")]
-		public bool detonateOnCollision;
-
-		// Token: 0x04000D59 RID: 3417
-		public GameObject exitEffectPrefab;
-
-		// Token: 0x04000D5A RID: 3418
-		public float blastDamageCoefficient;
-		
-
-		// Token: 0x04000D5B RID: 3419
-		public float blastRadius;
-
-		// Token: 0x04000D5C RID: 3420
-		public float blastForce;
-
-		// Token: 0x04000D5D RID: 3421
-		public BlastAttack.FalloffModel blastFalloffModel;
-
-		// Token: 0x04000D5E RID: 3422
-		public DamageType blastDamageType;
-
-		// Token: 0x04000D5F RID: 3423
-		public Vector3 blastBonusForce;
-
-		// Token: 0x04000D60 RID: 3424
-		public float blastProcCoefficient;
-
-		// Token: 0x04000D61 RID: 3425
-		public string explosionSoundString;
-
-		// Token: 0x04000D62 RID: 3426
-		[Header("Overlap Parameters")]
-		public float overlapDamageCoefficient = .5f;
-
-		// Token: 0x04000D63 RID: 3427
-		public float overlapProcCoefficient = 1f;
-
-		// Token: 0x04000D64 RID: 3428
-		public float overlapForce = .5f;
-
-		// Token: 0x04000D65 RID: 3429
-		public float overlapFireFrequency = 30f;
-
-		// Token: 0x04000D66 RID: 3430
-		public float overlapResetFrequency = 1f;
-
-		// Token: 0x04000D67 RID: 3431
-		public float overlapVehicleDurationBonusPerHit;
-
-		// Token: 0x04000D68 RID: 3432
-		public GameObject overlapHitEffectPrefab;
-
-		// Token: 0x04000D69 RID: 3433
-		private float age;
-
-		// Token: 0x04000D6A RID: 3434
-		public bool hasDetonatedServer;
-
-		// Token: 0x04000D6B RID: 3435
-		private VehicleSeat vehicleSeat;
-
-		// Token: 0x04000D6C RID: 3436
-		private Rigidbody rigidbody;
-
-		// Token: 0x04000D6D RID: 3437
-		private OverlapAttack overlapAttack;
-
-		// Token: 0x04000D6E RID: 3438
-		private float overlapFireAge;
-
-		// Token: 0x04000D6F RID: 3439
-		private float overlapResetAge;
+	
 	}
 }
 

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3982234004
+CRC: 3920042267
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: dff72cdc94202f568e05d5a72537f1c1
+    Hash: 73bc6800e6cd0080271940088e0d73ed
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 22dcae6566055d8ce9cfc1000d90ede4
+    Hash: 97746d86bd07f6f45b23cdce87dc7fb0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -48,6 +48,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -2051541306, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
+  Script: {fileID: -354346302, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
   Script: {fileID: -1067940895, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 953270592, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
@@ -75,6 +77,8 @@ ClassTypes:
   Script: {fileID: 296141222, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1711895128, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 1245112779, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -432102721, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
@@ -134,7 +138,6 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texHenrySwing2.png
 - Assets/HenryAssets/Icons/texBazookaIcon.png
 - Assets/HenryAssets/Icons/texMasteryAchievement.png
-- Assets/HenryAssets/VFX/LightningStrike.prefab
 - Assets/HenryAssets/Mesh/meshHenry.mesh
 - Assets/HenryAssets/HenryDisplay.prefab
 - Assets/HenryAssets/VFX/Mesh/meshBoxingGlove.mesh
@@ -277,6 +280,7 @@ Assets:
 - Assets/HenryAssets/VFX/BombExplosionEffect 1.prefab
 - Assets/HenryAssets/VFX/ElectricExplosion.prefab
 - Assets/HenryAssets/Animations/AimPitch.anim
+- Assets/HenryAssets/VFX/Fulmination/LightningOrbEffect.prefab
 - Assets/HenryAssets/VFX/Textures/texSlash.png
 - Assets/HenryAssets/Icons/texSpecialIcon.png
 - Assets/HenryAssets/Textures/texHenryDanteEmission.png

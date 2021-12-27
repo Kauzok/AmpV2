@@ -21,7 +21,7 @@ namespace HenryMod.SkillStates
         {
             this.chargeEffectPrefab = null;
             this.chargeSoundString = "Play_mage_m2_charge";
-            this.spellRadius = 15f;
+            this.lightningRadius = 15f;
 
             base.OnEnter();
 

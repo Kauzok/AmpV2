@@ -58,13 +58,28 @@ namespace HenryMod.Modules
 
         }
 
+        //projectile to be used for voltaic bombardment
         private static void CreateLightning()
         {
-            lightningPrefab = CloneProjectilePrefab("LunarShardProjectile", "Lightning");
-            
+            lightningPrefab = CloneProjectilePrefab("MageLightningBombProjectile", "Lightning");
+            lightningPrefab.GetComponent<Rigidbody>().useGravity = false;
+            HenryPlugin.Destroy(lightningPrefab.GetComponent<AntiGravityForce>());
+            HenryPlugin.Destroy(lightningPrefab.GetComponent<ProjectileProximityBeamController>());
+            HenryPlugin.Destroy(lightningPrefab.GetComponent<ProjectileImpactExplosion>());
+
+           lightningPrefab.AddComponent<ProjectileImpactExplosion>();
+           ProjectileImpactExplosion lightningExplosion = lightningPrefab.GetComponent<ProjectileImpactExplosion>();
+
+            lightningExplosion.blastRadius = 10f;
+            lightningExplosion.destroyOnEnemy = false;
+            lightningExplosion.lifetimeAfterImpact = 0f;
+            lightningExplosion.impactEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
+
+
+
         }
 
-      
+
 
         private static void InitializeFerroshotContact(ProjectileSingleTargetImpact ferroshotContact)
         {
