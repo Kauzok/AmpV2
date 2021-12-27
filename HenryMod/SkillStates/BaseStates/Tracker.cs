@@ -7,6 +7,8 @@ using RoR2;
 
 namespace HenryMod.SkillStates
 {
+
+    //tracker class used for custom debuff
     public class Tracker : MonoBehaviour
     {
        public GameObject owner;

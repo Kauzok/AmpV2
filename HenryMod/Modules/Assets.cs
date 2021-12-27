@@ -105,6 +105,8 @@ namespace HenryMod.Modules
 
             bulletSpawnEffect = LoadEffect("Spike Spawn");
 
+          
+
             if (bombExplosionEffect)
             {
                 ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();

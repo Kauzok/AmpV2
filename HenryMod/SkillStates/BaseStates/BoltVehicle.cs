@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using RoR2;
 using System.Collections.Generic;
 using System.Timers;
+using R2API;
 
 namespace HenryMod.SkillStates
 {
@@ -70,6 +71,7 @@ namespace HenryMod.SkillStates
 				hitBoxGroup = base.gameObject.GetComponent<HitBoxGroup>(),
 				hitEffectPrefab = overlapHitEffectPrefab
 			};
+			overlapAttack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
 			
 			
 		}
@@ -87,7 +89,7 @@ namespace HenryMod.SkillStates
 				hurtbox.healthComponent.gameObject.GetComponent<Tracker>().victim = hurtbox.gameObject;
 			}
 			
-            hurtbox.healthComponent.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+            
 			
 
 
@@ -154,7 +156,8 @@ namespace HenryMod.SkillStates
 					foreach (HurtBox hit in hits)
 					{
 
-						applyCharge(hit);
+						//applyCharge(hit);
+					
 
 
 					}

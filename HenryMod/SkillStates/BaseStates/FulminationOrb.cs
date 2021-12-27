@@ -78,7 +78,7 @@ namespace HenryMod.SkillStates.BaseStates
 							fulminationOrb.bouncesRemaining = this.bouncesRemaining - 1;
 							fulminationOrb.isCrit = this.isCrit;
 							fulminationOrb.bouncedObjects = this.bouncedObjects;
-							fulminationOrb.lightningType = this.lightningType;
+					
 							fulminationOrb.procChainMask = this.procChainMask;
 							fulminationOrb.procCoefficient = this.procCoefficient;
 							fulminationOrb.damageColorIndex = this.damageColorIndex;
@@ -185,36 +185,13 @@ namespace HenryMod.SkillStates.BaseStates
 		// Token: 0x0400218D RID: 8589
 		private bool failedToKill;
 
-		// Token: 0x0400218E RID: 8590
-		public FulminationOrb.LightningType lightningType;
+	
 
 		// Token: 0x0400218F RID: 8591
 		private BullseyeSearch search;
 
 		// Token: 0x02000637 RID: 1591
-		public enum LightningType
-		{
-			// Token: 0x04002192 RID: 8594
-			Ukulele,
-			// Token: 0x04002193 RID: 8595
-			Tesla,
-			// Token: 0x04002194 RID: 8596
-			BFG,
-			// Token: 0x04002195 RID: 8597
-			TreePoisonDart,
-			// Token: 0x04002196 RID: 8598
-			HuntressGlaive,
-			// Token: 0x04002197 RID: 8599
-			Loader,
-			// Token: 0x04002198 RID: 8600
-			RazorWire,
-			// Token: 0x04002199 RID: 8601
-			CrocoDisease,
-			// Token: 0x0400219A RID: 8602
-			MageLightning,
-			// Token: 0x0400219B RID: 8603
-			Count
-		}
+		
 	}
 
 

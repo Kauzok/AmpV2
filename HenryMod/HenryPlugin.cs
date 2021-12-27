@@ -10,6 +10,7 @@ using UnityEngine;
 using HenryMod.SkillStates;
 using RoR2.Orbs;
 using System.Collections.Generic;
+using HenryMod.SkillStates.BaseStates;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -87,11 +88,12 @@ namespace HenryMod
             }
 
             
+            //creates fulmination orb; essentially a copy of lightning orb but with the effect changed to our own; responsible for creating chain damage and effect
             if (info.HasModdedDamageType(Modules.DamageTypes.fulminationChain))
             {
                 float damageCoefficient2 = 0.8f;
                 float damageValue2 = Util.OnHitProcDamage(info.damage, info.attacker.GetComponent<CharacterBody>().damage, damageCoefficient2);
-                LightningOrb lightningOrb2 = new LightningOrb();
+                FulminationOrb lightningOrb2 = new FulminationOrb();
                 lightningOrb2.origin = info.position;
                 lightningOrb2.damageValue = damageValue2;
                 lightningOrb2.isCrit = info.crit;
@@ -105,7 +107,6 @@ namespace HenryMod
                 lightningOrb2.procChainMask = info.procChainMask;
                 lightningOrb2.procChainMask.AddProc(ProcType.ChainLightning);
                 lightningOrb2.procCoefficient = 0.2f;
-                lightningOrb2.lightningType = LightningOrb.LightningType.Ukulele;
                 lightningOrb2.damageColorIndex = DamageColorIndex.Item;
                 lightningOrb2.range += (float)(2);
                 HurtBox hurtBox2 = lightningOrb2.PickNextTarget(info.position);
@@ -116,42 +117,44 @@ namespace HenryMod
                 }
             }
 
+            
+            
             if (info.HasModdedDamageType(Modules.DamageTypes.applyCharge))
             {
-                if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 3)
-                {
-                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
-                }
+                applyCharge(self, info);
             }
-
 
             if (info.HasModdedDamageType(Modules.DamageTypes.apply2Charge))
             {
-                if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 3)
-                {
-                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
-                }
-
-                else if (self.GetComponent<CharacterBody>().GetBuffCount(Modules.Buffs.chargeBuildup) < 2)
-                {
-                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
-                    self.gameObject.GetComponent<CharacterBody>().AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
-                }
-       
-
+                applyCharge(self, info);
+                applyCharge(self, info);
             }
 
-
-            /* if (R2API.DamageAPI.HasModdedDamageType(info))
-            {
-                self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
-            } */
-
-
-
             orig(self, info);
-            
+
+
         }
+
+        //applies custom debuff to enemy, set owner of tracker as inflictor of damage
+        public void applyCharge(HealthComponent self, DamageInfo info)
+        {
+            if (self.gameObject.GetComponent<Tracker>() == null)
+            {
+                self.gameObject.AddComponent<Tracker>();
+
+                //assigns tracker values
+                self.gameObject.GetComponent<Tracker>().owner = info.attacker.gameObject;
+                self.gameObject.GetComponent<Tracker>().ownerBody = info.attacker.GetComponent<CharacterBody>();
+                self.gameObject.GetComponent<Tracker>().victim = self.gameObject;
+            }
+
+            self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+
+        }
+
+
+
+           
 
         //hook for checking if body has debuff
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -159,38 +162,12 @@ namespace HenryMod
            
             if (self)
             {
-                /*
-                if (self.HasBuff(Modules.Buffs.chargeDebuff))
-                {
-                   new BlastAttack
-                    {
-                        attacker = self.gameObject.GetComponent<Tracker>().owner,
-                        baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
-                        baseForce = 1f,
-                        attackerFiltering = AttackerFiltering.NeverHit,
-                        crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
-                        damageColorIndex = DamageColorIndex.Item,
-                        damageType = DamageType.Generic,
-                        falloffModel = BlastAttack.FalloffModel.None,
-                        inflictor = self.gameObject.GetComponent<Tracker>().owner,
-                        position = self.corePosition,
-                        procChainMask = default(ProcChainMask),
-                        procCoefficient = 1f,
-                        radius = 10f,
-                        teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
-                    }.Fire();
-               
-
-                   //Destroy(self.gameObject.GetComponent<Tracker>());
-                    self.RemoveBuff(Modules.Buffs.chargeDebuff);
-                    
-                } */
-
-
+             
                 if (self.HasBuff(Modules.Buffs.chargeBuildup))
                 {
                     int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
 
+               //creates charge debuff explosion as blastattack; blastattack owner is the owner of the tracker class set on hit
                     if (chargeCount >= 3)
                     {
                         GameObject chargeExplosion;
@@ -200,59 +177,34 @@ namespace HenryMod
                             origin = self.corePosition,
                             scale = 10f
                         };
-                          chargeExplosion = Modules.Assets.electricExplosionEffect;
-                          EffectManager.SpawnEffect(chargeExplosion, effectData, true);
-
+                        chargeExplosion = Modules.Assets.electricExplosionEffect;
+                        EffectManager.SpawnEffect(chargeExplosion, effectData, true); 
 
                             new BlastAttack
-                        {
-                            attacker = self.gameObject.GetComponent<Tracker>().owner,
-                            baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
-                            baseForce = 1f,
-                            attackerFiltering = AttackerFiltering.NeverHit,
-                            crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
-                            damageColorIndex = DamageColorIndex.Item,
-                            damageType = DamageType.Generic,
-                            falloffModel = BlastAttack.FalloffModel.None,
-                            inflictor = self.gameObject.GetComponent<Tracker>().owner,
-                            position = self.corePosition,
-                            procChainMask = default(ProcChainMask),
-                            procCoefficient = 1f,
-                            radius = 12f,
-                            teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
-                        }.Fire();
-                        
-
-                      /*  new BlastAttack
-                        {
-                            attacker = self.gameObject.GetComponent<Tracker>().owner,
-                            baseDamage = 1.5f * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
-                            baseForce = 1f,
-                            attackerFiltering = AttackerFiltering.NeverHit,
-                            crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
-                            damageColorIndex = DamageColorIndex.Item,
-                            damageType = DamageType.Generic,
-                            falloffModel = BlastAttack.FalloffModel.None,
-                            inflictor = self.gameObject.GetComponent<Tracker>().owner,
-                            position = self.corePosition,
-                            procChainMask = default(ProcChainMask),
-                            procCoefficient = 1f,
-                            radius = 10f,
-                            teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
-                        }.Fire(); */
-
-                        //self.AddBuff(Modules.Buffs.chargeDebuff);
+                            {
+                                attacker = self.gameObject.GetComponent<Tracker>().owner,
+                                baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
+                                baseForce = 1f,
+                                attackerFiltering = AttackerFiltering.NeverHit,
+                                crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
+                                damageColorIndex = DamageColorIndex.Item,
+                                damageType = DamageType.Generic,
+                                falloffModel = BlastAttack.FalloffModel.None,
+                                inflictor = self.gameObject.GetComponent<Tracker>().owner,
+                                position = self.corePosition,
+                                procChainMask = default(ProcChainMask),
+                                procCoefficient = 1f,
+                                radius = 12f,
+                                teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
+                            }.Fire();
+                       
+                           
+                  //removes stacks of charge after explosion
                         self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
                       
                         
                     }
-                  /*  else if(chargeCount > 3)
-                    {
-                        for (int i = self.GetBuffCount(Modules.Buffs.chargeBuildup); i > 3; i--)
-                        {
-                            self.RemoveBuff(Modules.Buffs.chargeBuildup);
-                        }
-                    } */
+               
 
 
                 }
