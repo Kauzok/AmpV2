@@ -34,7 +34,7 @@ namespace HenryMod.SkillStates
 
             public override void OnEnter()
             {
-                base.OnEnter();
+            base.OnEnter();
                 this.animator = base.GetModelAnimator();
                 this.childLocator = base.GetModelChildLocator();
 

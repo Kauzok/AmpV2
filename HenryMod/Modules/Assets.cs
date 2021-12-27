@@ -95,7 +95,7 @@ namespace HenryMod.Modules
 
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
-            electricChainEffect = LoadEffect("ElectricityChain", null);
+            electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
 
             electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
 

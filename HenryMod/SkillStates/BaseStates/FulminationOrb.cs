@@ -16,7 +16,7 @@ namespace HenryMod.SkillStates.BaseStates
 		public override void Begin()
 		{
 			base.duration = 0.1f;
-			GameObject chainEffect = new GameObject();
+			GameObject chainEffect;
 			chainEffect = Modules.Assets.electricChainEffect;
 
 			EffectData effectData = new EffectData
@@ -25,7 +25,7 @@ namespace HenryMod.SkillStates.BaseStates
 				genericFloat = base.duration
 			};
 			effectData.SetHurtBoxReference(this.target);
-			EffectManager.SpawnEffect(chainEffect, effectData, true);
+			EffectManager.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), effectData, true);
 		}
 
 		// Token: 0x06002712 RID: 10002 RVA: 0x0009D51C File Offset: 0x0009B71C
