@@ -12,7 +12,6 @@ namespace HenryMod.SkillStates.BaseStates
     //orb meant to be used to implement chain lightning function for fulmination skill
    public class FulminationOrb : Orb
     {
-		// Token: 0x06002711 RID: 10001 RVA: 0x0009D3D8 File Offset: 0x0009B5D8
 		public override void Begin()
 		{
 			base.duration = 0.1f;
@@ -103,7 +102,6 @@ namespace HenryMod.SkillStates.BaseStates
 			}
 		}
 
-		// Token: 0x06002713 RID: 10003 RVA: 0x0009D7C8 File Offset: 0x0009B9C8
 		public HurtBox PickNextTarget(Vector3 position)
 		{
 			if (this.search == null)
@@ -128,68 +126,43 @@ namespace HenryMod.SkillStates.BaseStates
 			return hurtBox;
 		}
 
-		// Token: 0x140000B7 RID: 183
-		// (add) Token: 0x06002714 RID: 10004 RVA: 0x0009D89C File Offset: 0x0009BA9C
-		// (remove) Token: 0x06002715 RID: 10005 RVA: 0x0009D8D0 File Offset: 0x0009BAD0
 		public static event Action<FulminationOrb> onFulminationOrbKilledOnAllBounces;
 
-		// Token: 0x0400217D RID: 8573
 		public float speed = 100f;
 
-		// Token: 0x0400217E RID: 8574
 		public float damageValue;
 
-		// Token: 0x0400217F RID: 8575
 		public GameObject attacker;
 
-		// Token: 0x04002180 RID: 8576
 		public GameObject inflictor;
 
-		// Token: 0x04002181 RID: 8577
 		public int bouncesRemaining;
 
-		// Token: 0x04002182 RID: 8578
 		public List<HealthComponent> bouncedObjects;
 
-		// Token: 0x04002183 RID: 8579
 		public TeamIndex teamIndex;
 
-		// Token: 0x04002184 RID: 8580
 		public bool isCrit;
 
-		// Token: 0x04002185 RID: 8581
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04002186 RID: 8582
 		public float procCoefficient = 1f;
 
-		// Token: 0x04002187 RID: 8583
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x04002188 RID: 8584
 		public float range = 20f;
 
-		// Token: 0x04002189 RID: 8585
 		public float damageCoefficientPerBounce = 1f;
 
-		// Token: 0x0400218A RID: 8586
 		public int targetsToFindPerBounce = 1;
 
-		// Token: 0x0400218B RID: 8587
 		public DamageType damageType;
 
-		// Token: 0x0400218C RID: 8588
 		private bool canBounceOnSameTarget;
 
-		// Token: 0x0400218D RID: 8589
 		private bool failedToKill;
 
-	
-
-		// Token: 0x0400218F RID: 8591
 		private BullseyeSearch search;
-
-		// Token: 0x02000637 RID: 1591
 		
 	}
 

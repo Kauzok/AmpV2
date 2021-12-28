@@ -1,12 +1,6 @@
 ﻿using System;
 using RoR2;
-using RoR2.Projectile;
 using UnityEngine;
-using EntityStates;
-using UnityEngine.Networking;
-using EntityStates.Captain;
-using HenryMod.SkillStates;
-using HenryMod.SkillStates.BaseStates;
 using HenryMod.SkillStates.Henry;
 
 
