@@ -135,7 +135,9 @@ namespace HenryMod.SkillStates
                     // there place facing the interction point or if no intersection the players direction
                     for (int i = 0; i < numOfBullets; i++)
                     {
-                        if (somethingHit)
+                        // Weird break where the bullets would lock on too close so in order to avoid that
+                        // I used a arbitrary value of 2.5 so anything too close wont fire wrong
+                        if (somethingHit && hit.distance > 2.5f)
                         {
                             // Calculate the directional vector for the bullet to hit the collision point and normalized to a magnitude of 1
                             direction = (hit.point - bullets[i].transform.position).normalized;
@@ -182,32 +184,6 @@ namespace HenryMod.SkillStates
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.PrioritySkill;
-        }
-    }
-}
-
-public class CustomController : NetworkBehaviour
-{
-    public float waitDuration;
-    public float speed;
-
-    //new private Rigidbody rigidbody;
-    private float age = 0.0f;
-    private bool moved = false;
-
-    void Start()
-    {
-        //rigidbody = GetComponent<Rigidbody>();
-        //rigidbody.velocity = Vector3.zero;
-    }
-
-    void FixedUpdate()
-    {
-        age += Time.fixedDeltaTime;
-        if (!moved && age > waitDuration)
-        {
-            //rigidbody.velocity = transform.forward * speed;
-            moved = true;
         }
     }
 }
