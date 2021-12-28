@@ -42,7 +42,7 @@ namespace HenryMod.SkillStates
 
 		private float fulminationDuration;
 
-		private bool hasBegunFlamethrower;
+		private bool hasBegunFulmination;
 
 		private Transform fulminationTransform;
 
@@ -122,16 +122,16 @@ namespace HenryMod.SkillStates
 		{
 			base.FixedUpdate();
 			this.stopwatch += Time.fixedDeltaTime;
-			if (this.stopwatch >= this.entryDuration && !this.hasBegunFlamethrower)
+			if (this.stopwatch >= this.entryDuration && !this.hasBegunFulmination)
 			{
-				this.hasBegunFlamethrower = true;
+				this.hasBegunFulmination = true;
 
 				this.fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
 
 
 				this.FireGauntlet();
 			}
-			if (this.hasBegunFlamethrower)
+			if (this.hasBegunFulmination)
 			{
 				this.fulminationStopwatch += Time.deltaTime;
 				if (this.fulminationStopwatch > 1f / Fulmination.tickFrequency)

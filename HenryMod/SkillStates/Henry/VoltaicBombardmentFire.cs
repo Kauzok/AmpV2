@@ -98,12 +98,13 @@ namespace HenryMod.SkillStates.Henry
                 
                 EffectData lightningExplosion = new EffectData
                 {
-                    origin = this.boltPosition,
-                    scale = 20f,
+                    origin = this.boltPosition + Vector3.up*4f,
+                    scale = 1f,
 
                 };
 
                 EffectManager.SpawnEffect(lightningStrikeEffect, lightning, true);
+                //adjust size and such later
                 EffectManager.SpawnEffect(lightningStrikeExplosion, lightningExplosion, true);
 
                 BlastAttack lightningStrike = new BlastAttack

@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6487077092492724182}
   - component: {fileID: 5347887276045937140}
   - component: {fileID: 2160950679960779065}
+  - component: {fileID: 4883882247745046638}
+  - component: {fileID: 4842990187675753750}
   m_Layer: 0
   m_Name: Electricity
   m_TagString: Untagged
@@ -4867,6 +4869,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 0}
+--- !u!114 &4883882247745046638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344457166417818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 816898038, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxPriority: 0
+  vfxIntensity: 0
+  optionalLights: []
+  secondaryParticleSystem: []
+--- !u!114 &4842990187675753750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344457166417818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 511512695, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectIndex: -1
+  positionAtReferencedTransform: 0
+  parentToReferencedTransform: 0
+  applyScale: 0
+  soundName: 
+  disregardZScale: 0
 --- !u!1 &4558607536804460449
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ namespace HenryMod.Modules
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
             ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>().rotationSpeed = 0f;
-
+            
 
             ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
 
@@ -55,7 +55,7 @@ namespace HenryMod.Modules
             InitializeFerroshotContact(ferroshotContact);
             ferroshotContact.destroyOnWorld = true;
             ferroshotContact.impactEffect = EntityStates.Commando.CommandoWeapon.FirePistol2.hitEffectPrefab;
-
+            
         }
 
         //projectile to be used for voltaic bombardment
@@ -78,8 +78,6 @@ namespace HenryMod.Modules
 
 
         }
-
-
 
         private static void InitializeFerroshotContact(ProjectileSingleTargetImpact ferroshotContact)
         {
