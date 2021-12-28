@@ -32,7 +32,6 @@ namespace HenryMod.SkillStates.Henry
         {
 
             base.OnEnter();
-          
 
             hasFired = false;
             this.duration = this.baseDuration / this.attackSpeedStat;
@@ -47,21 +46,23 @@ namespace HenryMod.SkillStates.Henry
             
         }
 
+        //used to set delay for attack
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
-                if (!hasFired)
+            if (!hasFired)
+            {
+                //if age of fixedupdate is > .5 seconds 
+                if (base.fixedAge > lightningChargeTimer)
                 {
-                    if (base.fixedAge > lightningChargeTimer)
-                    {
                     hasFired = true;
                     Fire();
                 }
 
+                //i dont know why but this line is necessary for the .5 second delay to actually work
                 this.duration = .5f;
-                }
-            
+            }
 
                 if (base.isAuthority && base.fixedAge >= this.duration)
                 {
@@ -87,26 +88,33 @@ namespace HenryMod.SkillStates.Henry
 
                 // lightningStrikeEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
 
+                //prefabs to use for the actual strike effect; currently a copy of the royal capacitor's effect
                 lightningStrikeEffect = Modules.Assets.lightningStrikePrefab;
+                
+                //prefab to use for the explosion effect of the lightning; currently a copy of artificer's nano bomb explosion
                 lightningStrikeExplosion = Resources.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion");
 
 
+                //effect data for lightning)
                 EffectData lightning = new EffectData
                 {
                     origin = this.boltPosition,
                     scale = 5f,
                 };
                 
+                //effect data for lightningexplosion
                 EffectData lightningExplosion = new EffectData
                 {
                     origin = this.boltPosition,
                     scale = 20f,
 
                 };
-
+                //spawns lightning/lightningexplosion effects
                 EffectManager.SpawnEffect(lightningStrikeEffect, lightning, true);
                 EffectManager.SpawnEffect(lightningStrikeExplosion, lightningExplosion, true);
 
+
+                //create blastattack
                 BlastAttack lightningStrike = new BlastAttack
                 {
                     attacker = base.gameObject,
@@ -118,6 +126,8 @@ namespace HenryMod.SkillStates.Henry
                     damageType = DamageType.Generic,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
+                   
+                    //blastattack is positioned 10 units above where the reticle is placed
                     position = this.boltPosition + Vector3.up * 10,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,

@@ -135,7 +135,7 @@ namespace HenryMod.Modules
         {
             lightningStrikePrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "lightningStrike", true);
             lightningStrikePrefab.AddComponent<NetworkIdentity>();
-
+            
 
            // lightningStrikePrefab.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
 
@@ -176,6 +176,10 @@ namespace HenryMod.Modules
 
             var orbEffect = electricChainEffect.GetComponent<OrbEffect>();
 
+
+            var bezier = electricChainEffect.transform.GetChild(0).GetComponent<BezierCurveLine>();
+
+            bezier.endTransform = electricChainEffect.transform;
 
             EffectAPI.AddEffect(mainAssetBundle.LoadAsset<GameObject>("ElectricityChain"));
 
