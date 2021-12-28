@@ -85,15 +85,16 @@ namespace HenryMod.SkillStates.Henry
 
                 Ray aimRay = base.GetAimRay();
 
-                lightningStrikeEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
-               
+                // lightningStrikeEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
+
+                lightningStrikeEffect = Modules.Assets.lightningStrikePrefab;
                 lightningStrikeExplosion = Resources.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion");
 
 
                 EffectData lightning = new EffectData
                 {
                     origin = this.boltPosition,
-                    scale = 1f,
+                    scale = 5f,
                 };
                 
                 EffectData lightningExplosion = new EffectData

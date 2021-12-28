@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3491868120
+CRC: 291243269
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0e55c19c2201f466cb895b3e2574faad
+    Hash: b45f9e9f1227136731d8958e34a5e409
   TypeTreeHash:
     serializedVersion: 2
     Hash: 97746d86bd07f6f45b23cdce87dc7fb0
@@ -232,6 +232,7 @@ Assets:
 - Assets/HenryAssets/Animations/RestIdle.anim
 - Assets/HenryAssets/Animations/ThrowBomb.anim
 - Assets/HenryAssets/Icons/texHenryIcon.png
+- Assets/HenryAssets/VFX/Fulmination/ElectricityChain 1.prefab
 - Assets/HenryAssets/Icons/texUtilityIcon.png
 - Assets/HenryAssets/Animations/Ascend.anim
 - Assets/HenryAssets/VFX/Materials/matPunchEffect.mat

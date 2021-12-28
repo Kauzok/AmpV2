@@ -26,6 +26,8 @@ namespace HenryMod
         "LanguageAPI",
         "SoundAPI",
         "DamageAPI",
+        "OrbAPI",
+        "EffectAPI",
     })]
 
     public class HenryPlugin : BaseUnityPlugin

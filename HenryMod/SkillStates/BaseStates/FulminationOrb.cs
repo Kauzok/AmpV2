@@ -28,7 +28,6 @@ namespace HenryMod.SkillStates.BaseStates
 			EffectManager.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), effectData, true);
 		}
 
-		// Token: 0x06002712 RID: 10002 RVA: 0x0009D51C File Offset: 0x0009B71C
 		public override void OnArrival()
 		{
 			if (this.target)
