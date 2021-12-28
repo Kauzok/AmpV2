@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3664881552
+CRC: 3491868120
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 281fc9a8575ce7f30a682a149a81d7b8
+    Hash: 0e55c19c2201f466cb895b3e2574faad
   TypeTreeHash:
     serializedVersion: 2
     Hash: 97746d86bd07f6f45b23cdce87dc7fb0
@@ -244,7 +244,6 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matSwingEffect.mat
 - Assets/HenryAssets/VFX/Fulmination/Electricity.prefab
 - Assets/HenryAssets/VFX/Fulmination/ElectricitySphere.prefab
-- Assets/HenryAssets/VFX/Fulmination/MageLightningOrbEffect.prefab
 - Assets/HenryAssets/Mesh/meshHenrySword.mesh
 - Assets/HenryAssets/VFX/Materials/matEmbers.mat
 - Assets/HenryAssets/Animations/AimYaw.anim
@@ -274,7 +273,6 @@ Assets:
 - Assets/HenryAssets/Icons/texGrandMasteryAchievement.png
 - Assets/HenryAssets/Animations/maskBandana.mask
 - Assets/HenryAssets/Animations/MenuIdle.anim
-- Assets/HenryAssets/VFX/Fulmination/chainOrb.prefab
 - Assets/HenryAssets/Materials/matBazooka.mat
 - Assets/HenryAssets/VFX/HenrySwordSwingEffect.prefab
 - Assets/HenryAssets/Animations/Descend.anim
@@ -282,6 +280,7 @@ Assets:
 - Assets/HenryAssets/VFX/BombExplosionEffect 1.prefab
 - Assets/HenryAssets/VFX/ElectricExplosion.prefab
 - Assets/HenryAssets/Animations/AimPitch.anim
+- Assets/HenryAssets/VFX/Fulmination/LightningOrbEffect.prefab
 - Assets/HenryAssets/VFX/Textures/texSlash.png
 - Assets/HenryAssets/Icons/texSpecialIcon.png
 - Assets/HenryAssets/Textures/texHenryDanteEmission.png

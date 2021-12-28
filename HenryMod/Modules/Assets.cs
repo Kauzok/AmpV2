@@ -5,9 +5,7 @@ using UnityEngine.Networking;
 using RoR2;
 using System.IO;
 using System.Collections.Generic;
-using RoR2.Orbs;
-using HenryMod.SkillStates;
-using HenryMod.SkillStates.BaseStates;
+using RoR2.UI;
 
 namespace HenryMod.Modules
 {
@@ -24,7 +22,7 @@ namespace HenryMod.Modules
         internal static GameObject electricExplosionEffect;
         internal static GameObject electricStreamEffect;
         internal static GameObject electricImpactEffect;
-
+        internal static GameObject testLightningEffect;
         internal static GameObject bulletSpawnEffect;
         internal static GameObject electricChainEffect;
 
@@ -91,22 +89,23 @@ namespace HenryMod.Modules
             // it should work fine even if left as is- even if the assets aren't in the bundle
 
            
-
             swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
 
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
-            
+            electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
+
             electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
+
+            //testLightningEffect = LoadEffect("ElectricityChain", "HenryBombExplosion");
 
             electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
 
             bulletSpawnEffect = LoadEffect("Spike Spawn");
 
-            CreateChainPrefab();
-
+          
 
             if (bombExplosionEffect)
             {
@@ -127,53 +126,6 @@ namespace HenryMod.Modules
             swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }
-         
-        //instantiates chain lightning effect 
-        private static void CreateChainPrefab()
-        {
-        /*   electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("chainOrb.prefab");
-           electricChainEffect.AddComponent<EffectComponent>();
-
-            var vfxChain = electricChainEffect.AddComponent<VFXAttributes>();
-            vfxChain.vfxIntensity = VFXAttributes.VFXIntensity.Low;
-            vfxChain.vfxPriority = VFXAttributes.VFXPriority.Always;
-
-            var orbEffect = electricChainEffect.AddComponent<OrbEffect>();
-            //orbEffect.startEffect = Resources.Load<GameObject>("Prefabs/Effects/ShieldBreakEffect");
-            orbEffect.startEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain.prefab");
-            orbEffect.startVelocity1 = new Vector3(-10, 10, -10);
-            orbEffect.startVelocity2 = new Vector3(10, 13, 10);
-            orbEffect.endVelocity1 = new Vector3(-10, 0, -10);
-            orbEffect.endVelocity2 = new Vector3(10, 5, 10);
-            orbEffect.movementCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
-            electricChainEffect.AddComponent<NetworkIdentity>();
-
-            if (electricChainEffect) PrefabAPI.RegisterNetworkPrefab(electricChainEffect);
-            EffectAPI.AddEffect(electricChainEffect);
-
-            OrbAPI.AddOrb(typeof(FulminationOrb)); */
-            
-
-           electricChainEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), "chainOrb", true);
-            electricChainEffect.AddComponent<NetworkIdentity>();
-
-            EffectAPI.AddEffect(mainAssetBundle.LoadAsset<GameObject>("ElectricityChain"));
-
-
-            //electricChainEffect.GetComponent<BezierCurveLine>().endTransform = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain").transform;
-
-
-
-
-
-            EffectAPI.AddEffect(electricChainEffect); 
-
-            
-
-
-        }
-
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
         {

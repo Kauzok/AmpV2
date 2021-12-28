@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 199039018961966016}
   - component: {fileID: 6487077092492724182}
   - component: {fileID: 2160950679960779065}
-  - component: {fileID: 5733436906285481090}
-  - component: {fileID: 4092294352282483101}
+  - component: {fileID: 114568113266927588}
+  - component: {fileID: 2535457906778610352}
+  - component: {fileID: 114982237662112654}
   m_Layer: 0
   m_Name: ElectricityChain
   m_TagString: Untagged
@@ -4808,7 +4809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 0}
---- !u!114 &5733436906285481090
+--- !u!114 &114568113266927588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4826,7 +4827,7 @@ MonoBehaviour:
   applyScale: 0
   soundName: 
   disregardZScale: 0
---- !u!114 &4092294352282483101
+--- !u!114 &2535457906778610352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4838,7 +4839,42 @@ MonoBehaviour:
   m_Script: {fileID: 816898038, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxPriority: 0
-  vfxIntensity: 0
+  vfxPriority: 2
+  vfxIntensity: 1
   optionalLights: []
   secondaryParticleSystem: []
+--- !u!114 &114982237662112654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344457166417818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1245112779, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObjectTransform: {fileID: 0}
+  startVelocity1: {x: 0, y: 0, z: 0}
+  startVelocity2: {x: 0, y: 0, z: 0}
+  endVelocity1: {x: 0, y: 0, z: 0}
+  endVelocity2: {x: 0, y: 0, z: 0}
+  movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bezierCurveLine: {fileID: 0}
+  faceMovement: 1
+  callArrivalIfTargetIsGone: 0
+  startEffect: {fileID: 1344457166417818}
+  startEffectScale: 1
+  startEffectCopiesRotation: 0
+  endEffect: {fileID: 1344457166417818}
+  endEffectScale: 1
+  endEffectCopiesRotation: 0
+  onArrival:
+    m_PersistentCalls:
+      m_Calls: []
