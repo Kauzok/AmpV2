@@ -16,13 +16,15 @@ namespace HenryMod.Modules.Survivors
 
         internal override ConfigEntry<bool> characterEnabled { get; set; }
 
+
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
             armor = 20f,
             armorGrowth = 0f,
             bodyName = "HenryBody",
             bodyNameToken = HenryPlugin.developerPrefix + "Battlemage",
-            bodyColor = Color.grey,
+            //Color of skill names and stuff in menu
+            bodyColor = new Color32(0, 145, 255, 255),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,
@@ -93,10 +95,13 @@ namespace HenryMod.Modules.Survivors
 
             string prefix = HenryPlugin.developerPrefix;
 
+            //creates Stormblade
             #region Primary
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_HENRY_BODY_PRIMARY_SLASH_NAME", prefix + "_HENRY_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
             #endregion
 
+
+            //creates ferroshot/gauss cannon
             #region Secondary
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -126,6 +131,7 @@ namespace HenryMod.Modules.Survivors
             Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef);
             #endregion
 
+            //creates bolt
             #region Utility
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -154,6 +160,7 @@ namespace HenryMod.Modules.Survivors
             Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
             #endregion
 
+            //creates fulmination
             #region Specials
             SkillDef chainSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -178,7 +185,7 @@ namespace HenryMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1
             });
-
+            //creates voltaic bombardment
             SkillDef lightningSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "Voltaic Bombardment",
