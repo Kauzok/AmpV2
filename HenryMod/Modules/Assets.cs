@@ -19,14 +19,22 @@ namespace HenryMod.Modules
         // particle effects
         internal static GameObject swordSwingEffect;
         internal static GameObject swordHitImpactEffect;
-
         internal static GameObject bombExplosionEffect;
+       
+        [Header("Ferroshot/Gauss Cannon Effects")]
+        internal static GameObject bulletSpawnEffect;
+
+        [Header("Bolt Effects")]
         internal static GameObject electricExplosionEffect;
+
+        [Header("Fulmination Effects")]
         internal static GameObject electricStreamEffect;
         internal static GameObject electricImpactEffect;
-        internal static GameObject lightningStrikePrefab;
-        internal static GameObject bulletSpawnEffect;
         internal static GameObject electricChainEffect;
+
+        [Header("VoltaicBombardment Effects")]
+        internal static GameObject lightningStrikePrefab;
+
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
@@ -95,17 +103,23 @@ namespace HenryMod.Modules
 
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 
+            //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
+            //on fulmination skill chain
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
 
+            //on fulmination skill use
             electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
 
-
+            //on boltvehicle exit/enter
             electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
 
+            //on ferroshot/gauss cannon skill prep
             bulletSpawnEffect = LoadEffect("Spike Spawn");
 
+
+            //functions for prefabs that require adjustments made at runtime
             CreateChainPrefab();
             CreateLightningPrefab();
 
@@ -131,6 +145,7 @@ namespace HenryMod.Modules
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }
 
+        //instantiate voltaic bombardment main effect as copy of royal capacitor's effect
         private static void CreateLightningPrefab()
         {
             lightningStrikePrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "lightningStrike", true);
@@ -142,10 +157,10 @@ namespace HenryMod.Modules
             EffectAPI.AddEffect(lightningStrikePrefab);
 
 
-
         }
-            //instantiates chain lightning effect 
-            private static void CreateChainPrefab()
+
+        //instantiates chain lightning effect 
+        private static void CreateChainPrefab()
         {
         /*   electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("chainOrb.prefab");
            electricChainEffect.AddComponent<EffectComponent>();

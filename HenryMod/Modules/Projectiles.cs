@@ -29,29 +29,30 @@ namespace HenryMod.Modules
         {
             Modules.Prefabs.projectilePrefabs.Add(projectileToAdd);
         }
+
+        //instantiates ferroshot/gauss cannon projectile
         private static void CreateFerroshot()
         {
            ferroshotPrefab = CloneProjectilePrefab("LunarShardProjectile", "Ferroshot");
 
+
+            //change damagetype of ferroshot to generic
             ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
-            ferroshotPrefab.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            ferroshotDamage.damageType = DamageType.Generic;
 
-            /* ProjectileImpactExplosion ferroshotImpactExplosion = ferroshotPrefab.GetComponent<ProjectileImpactExplosion>();
-            ferroshotImpactExplosion.blastRadius = 10f; */
-
+            //remove/nullify components from lunarshard that are unnecessary, such as the tracker and on impact explosion
             HenryPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
             HenryPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
-            
-
-            ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
-            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
-            ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>().rotationSpeed = 0f;
-
-
-            ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
-
+            HenryPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
 
+            ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
+
+            //instantiates the projectile model and associates it with the prefab
+            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
+
+            //makes ferroshot destroy itself on contact with other entities, + adds impact effect
+            ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
             InitializeFerroshotContact(ferroshotContact);
             ferroshotContact.destroyOnWorld = true;
             ferroshotContact.impactEffect = EntityStates.Commando.CommandoWeapon.FirePistol2.hitEffectPrefab;
@@ -78,8 +79,6 @@ namespace HenryMod.Modules
 
 
         }
-
-
 
         private static void InitializeFerroshotContact(ProjectileSingleTargetImpact ferroshotContact)
         {

@@ -11,22 +11,30 @@ namespace HenryMod.Modules
     public static class States
     {
         internal static List<Type> entityStates = new List<Type>();
-
+        
+        //initialize all the states to be used for skills
         internal static void RegisterStates()
         {
+            //stormblade states
             entityStates.Add(typeof(BaseMeleeAttack));
             entityStates.Add(typeof(SlashCombo));
 
+            //ferroshot states
             entityStates.Add(typeof(Ferroshot));
             
+            //bolt states
             entityStates.Add(typeof(BoltVehicle));
             entityStates.Add(typeof(Bolt));
+            
+            //fulmination states
+            entityStates.Add(typeof(Fulmination));
 
+            //voltaicbombardment states
             entityStates.Add(typeof(BaseLightningAim));
             entityStates.Add(typeof(VoltaicBombardmentFire));
             entityStates.Add(typeof(VoltaicBombardmentAim));
 
-            entityStates.Add(typeof(Fulmination));
+            
         }
     }
 }

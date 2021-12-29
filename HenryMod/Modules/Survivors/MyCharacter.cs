@@ -113,7 +113,7 @@ namespace HenryMod.Modules.Survivors
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 1.5f,
-                beginSkillCooldownOnSkillEnd = false,
+                beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,

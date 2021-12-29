@@ -48,7 +48,10 @@ namespace HenryMod.SkillStates
 
 		public void Awake()
 		{
+
 			hasDetonatedServer = false;
+
+			//sets hooks to modify scripts that comprise the character's behavior on entry and exit of a vehicleseat
 			vehicleSeat = base.GetComponent<VehicleSeat>();
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
@@ -57,6 +60,7 @@ namespace HenryMod.SkillStates
 		}
 
 
+		//calls detonateserver and returns camera back to normal
 		private void OnPassengerExit(GameObject passenger)
 		{
 			if (NetworkServer.active)
@@ -74,17 +78,26 @@ namespace HenryMod.SkillStates
 			}
 		}
 
+		//initializes vehicleseat and bolt's overlapattack
 		private void OnPassengerEnter(GameObject passenger)
 		{
 			if (!this.vehicleSeat.currentPassengerInputBank)
 			{
 				return;
 			}
+
+			//moves vehicle in direction of player's aim direction at previously set speed
 			Vector3 aimDirection = vehicleSeat.currentPassengerInputBank.aimDirection;
 			rigidbody.rotation = Quaternion.LookRotation(aimDirection);
 			rigidbody.velocity = aimDirection * initialSpeed;
+
+			//to be used as reference when need to call player's characterbody
 			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
+
+			//gives invincibility when in boltstate
 			currentPassengerBody.AddBuff(Modules.Buffs.invulnerableBuff);
+
+			//creates overlapattack for damage and applying charge on hit
 			overlapAttack = new OverlapAttack
 			{
 				attacker = currentPassengerBody.gameObject,
@@ -100,10 +113,21 @@ namespace HenryMod.SkillStates
 				hitEffectPrefab = overlapHitEffectPrefab
 			};
 			overlapAttack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
-			
-			
+
+
+			//adjusts camera on boltstate entry; will adjust later to make camera transition smoother
+			foreach (CameraRigController cameraRigController in CameraRigController.readOnlyInstancesList)
+			{
+				if (cameraRigController.target == passenger)
+				{
+					//original values: 0f, this.cameralerptime
+					cameraRigController.SetOverrideCam(this, 0f);
+					cameraRigController.SetOverrideCam(null, this.cameraLerpTime);
+				}
+			}
 		}
-		
+
+		//destroys gameobject and reverts player back to normal state
 		public void DetonateServer()
 		{
 			if (hasDetonatedServer)
@@ -111,8 +135,13 @@ namespace HenryMod.SkillStates
 				return;
 			}
 			hasDetonatedServer = true;
+
+			//same purpose as stated above
 			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
+			//removes invincibility
 			currentPassengerBody.RemoveBuff(Modules.Buffs.invulnerableBuff);
+
+			//spawns exiteffect on bolt state exit
 			if (currentPassengerBody)
 			{
 				EffectData effectData = new EffectData
@@ -131,6 +160,7 @@ namespace HenryMod.SkillStates
 		}
 
 		
+		//fixedupdate to call every tick in game to update effects, attacks, etc.
 		private void FixedUpdate()
 		{
 			if (!vehicleSeat)
@@ -147,23 +177,19 @@ namespace HenryMod.SkillStates
 
 
 			if (NetworkServer.active)
-			{
-
-				
+			{ 
+				//fires the overlapattack
 				if (overlapFireAge > 1f / overlapFireFrequency)
 				{
-					var hits = new List<HurtBox>();
-					overlapAttack.Fire(hits);
-					//figure out how to delay this reset
-					foreach (HurtBox hit in hits)
-					{
+					overlapAttack.Fire();
 
-						//applyCharge(hit);
+					//just a relic from when i was applying the charge debuff manually; keepin in case i need it for testing
+					/* var hits = new List<HurtBox>();
+					foreach (HurtBox hit in hits) { }*/
 					
-
-
-					}
 				}
+
+				//resets ignored health components of the overlapattack at a frequency determined by vars; this is what determines how often the attack will apply itself to a hurtbox
 				if (overlapResetAge >= 1f / overlapResetFrequency)
 				{
 					overlapAttack.ResetIgnoredHealthComponents();
@@ -171,6 +197,8 @@ namespace HenryMod.SkillStates
 				} 
 
 			}
+			
+			//vectors and stuff to keep the playercharacter moving in boltstate
 			Ray originalAimRay = vehicleSeat.currentPassengerInputBank.GetAimRay();
 			float num;
 			originalAimRay = CameraRigController.ModifyAimRayIfApplicable(originalAimRay, base.gameObject, out num);
@@ -179,12 +207,15 @@ namespace HenryMod.SkillStates
 			Vector3 a = Vector3.MoveTowards(velocity, target, this.acceleration * Time.fixedDeltaTime);
 			this.rigidbody.MoveRotation(Quaternion.LookRotation(originalAimRay.direction));
 			this.rigidbody.AddForce(a - velocity, ForceMode.VelocityChange);
+
+			//ends skill once time is up
 			if (NetworkServer.active && duration <= age)
 			{
 				DetonateServer();
 			}
 		}
 
+		//calls detonateserver on contact with an entity if detonateoncollision is active
 		private void OnCollisionEnter(Collision collision)
 		{
 			if (this.detonateOnCollision && NetworkServer.active)
