@@ -24,7 +24,7 @@ namespace HenryMod.Modules
         [Header("Ferroshot/Gauss Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
 
-        [Header("Bolt Effects")]
+        [Header("Bolt/Charge Effects")]
         internal static GameObject electricExplosionEffect;
 
         [Header("Fulmination Effects")]

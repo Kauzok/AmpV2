@@ -32,9 +32,7 @@ namespace HenryMod
 
     public class HenryPlugin : BaseUnityPlugin
     {
-        // if you don't change these you're giving permission to deprecate the mod-
-        //  please change the names to your own stuff, thanks
-        //   this shouldn't even have to be said
+  
         public const string MODUID = "com.NeonThink.Battlemage";
         public const string MODNAME = "Battlemage";
         public const string MODVERSION = "1.0.0";
@@ -120,12 +118,13 @@ namespace HenryMod
             }
 
             
-            
+            //apply charge if damageType is applycharge
             if (info.HasModdedDamageType(Modules.DamageTypes.applyCharge))
             {
                 applyCharge(self, info);
             }
 
+            //apply charge twice if damageType is apply2charge
             if (info.HasModdedDamageType(Modules.DamageTypes.apply2Charge))
             {
                 applyCharge(self, info);
@@ -137,19 +136,20 @@ namespace HenryMod
 
         }
 
-        //applies custom debuff to enemy, set owner of tracker as inflictor of damage
+        //applies custom debuff/tracker component
         public void applyCharge(HealthComponent self, DamageInfo info)
         {
             if (self.gameObject.GetComponent<Tracker>() == null)
             {
                 self.gameObject.AddComponent<Tracker>();
-
-                //assigns tracker values
+                
+                //assigns tracker values for purposes of creating the charge explosion's damage properties if/when the body gains 3 stacks of charge
                 self.gameObject.GetComponent<Tracker>().owner = info.attacker.gameObject;
                 self.gameObject.GetComponent<Tracker>().ownerBody = info.attacker.GetComponent<CharacterBody>();
                 self.gameObject.GetComponent<Tracker>().victim = self.gameObject;
             }
 
+            //apply one stack of chargebuildup
             self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
 
         }
@@ -158,30 +158,32 @@ namespace HenryMod
 
            
 
-        //hook for checking if body has debuff
+        //hook for checking if body has chargedebuff
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
            
             if (self)
             {
              
+                //check if body has chargebuildup buff
                 if (self.HasBuff(Modules.Buffs.chargeBuildup))
                 {
                     int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
-
-               //creates charge debuff explosion as blastattack; blastattack owner is the owner of the tracker class set on hit
+                    //if body has more than 3 stacks of charge, make new blastattack with effect
                     if (chargeCount >= 3)
                     {
-                        GameObject chargeExplosion;
 
+                        GameObject chargeExplosion;
                         EffectData effectData = new EffectData
                         {
                             origin = self.corePosition,
                             scale = 10f
                         };
+                        //declare and spawn charge explosion effect
                         chargeExplosion = Modules.Assets.electricExplosionEffect;
                         EffectManager.SpawnEffect(chargeExplosion, effectData, true); 
 
+                        //creates charge explosion centered at the body with the debuff
                             new BlastAttack
                             {
                                 attacker = self.gameObject.GetComponent<Tracker>().owner,
@@ -201,7 +203,7 @@ namespace HenryMod
                             }.Fire();
                        
                            
-                  //removes stacks of charge after explosion
+                         //removes stacks of charge after explosion
                         self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
                       
                         

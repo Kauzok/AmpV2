@@ -2,6 +2,7 @@
 
 namespace HenryMod.Modules
 {
+    //static values for use in skillstates and other references for easy adjustment
     internal static class StaticValues
     {
         internal static string descriptionText = "The Battlemage is a melee/range hybrid that focuses on consistently dealing damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
