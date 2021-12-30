@@ -10,6 +10,7 @@
 - Bolt
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
+  - Adjust camera transition
   - Fix cooldown starting early
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
@@ -25,13 +26,6 @@
 - Character Model
 - Character Model Animations
 - Skill Icons
-
-## What's What?
-- Bolt: Turns player into a bolt of electricity, giving them free movement and 500% movement speed. Might want to add extra hurtbox filtering in the future, and adjust effect/camera lerp time, and maybe decrease movement speed but otherwise functions well.
-
-- Fulmination: Fires out a consistent stream of lightning for 5 seconds that chains to other enemies. Need to adjust chain effect.
-
-- Voltaic Bombardment: Consider adjusting attacktype to projectile.
 
 ## Changelog
 `0.0.1`
