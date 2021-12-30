@@ -32,7 +32,7 @@
 - Fulmination: Fires out a consistent stream of lightning for 5 seconds that chains to other enemies. Need to adjust chain effect.
 
 - Voltaic Bombardment: Consider adjusting attacktype to projectile.
-- 
+
 ## Changelog
 `0.0.1`
 - Initial release
