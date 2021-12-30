@@ -2,7 +2,6 @@
 - WIP Battlemage, a melee/range hybrid who fights with electromagnetic attacks. Updated to new HenryMod template.
 
 ## Skills To Do
-
 - Stormblade
   - Animations and the like
  
@@ -22,9 +21,10 @@
   - Adjust hitbox to make it hit higher
   - Consider scaling up VFX
  
+ ## Other To-Do
 - Cleanup code base, finish comments
-- Animations
 - Character Model
+- Character Model Animations
 - Skill Art (For UI)
 - Custom Skill Effects
 
