@@ -11,6 +11,7 @@
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
   - Fix cooldown starting early
+  - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
   - Fix chain effect
   - Add SFX
