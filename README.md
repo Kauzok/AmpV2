@@ -14,6 +14,7 @@
 - Fulmination
   - Fix chain effect
   - Add SFX
+  - Adjust position of VFX, and fix warning when instantiating as gameobject
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
   - Consider scaling up VFX
