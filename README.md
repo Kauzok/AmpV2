@@ -6,7 +6,7 @@
   - Animations and the like
 - Ferroshot
   - Add SFX for spike spawn/launch
-  - Create on impact effect
+  - Create on impact VFX
 - Bolt
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
