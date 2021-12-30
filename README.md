@@ -24,8 +24,7 @@
 - Cleanup code base, finish comments
 - Character Model
 - Character Model Animations
-- Skill Art (For UI)
-- Custom Skill Effects
+- Skill Icons
 
 ## What's What?
 - Bolt: Turns player into a bolt of electricity, giving them free movement and 500% movement speed. Might want to add extra hurtbox filtering in the future, and adjust effect/camera lerp time, and maybe decrease movement speed but otherwise functions well.
