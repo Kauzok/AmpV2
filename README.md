@@ -4,19 +4,15 @@
 ## Skills To Do
 - Stormblade
   - Animations and the like
- 
 - Ferroshot
   - Add SFX for spike spawn/launch
   - Create on impact effect
-  
 - Bolt
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
-
 - Fulmination
   - Fix chain effect
   - Add SFX
- 
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
   - Consider scaling up VFX
