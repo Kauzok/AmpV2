@@ -10,6 +10,7 @@
 - Bolt
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
+  - Fix cooldown starting early
 - Fulmination
   - Fix chain effect
   - Add SFX
