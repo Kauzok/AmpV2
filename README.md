@@ -20,7 +20,6 @@
   - Adjust position of VFX, and fix warning when instantiating as gameobject
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
-  - Consider scaling up VFX
  
  ## Other To-Do
 - Cleanup code base, finish comments
