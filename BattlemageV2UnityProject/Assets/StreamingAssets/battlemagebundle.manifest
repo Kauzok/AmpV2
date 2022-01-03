@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 291243269
+CRC: 4220911794
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b45f9e9f1227136731d8958e34a5e409
+    Hash: a98a2a71a0c86337b4e298bef00c8b63
   TypeTreeHash:
     serializedVersion: 2
     Hash: 97746d86bd07f6f45b23cdce87dc7fb0
@@ -226,6 +226,7 @@ Assets:
 - Assets/HenryAssets/Materials/matVergil.mat
 - Assets/HenryAssets/Materials/matHitboxPreview.mat
 - Assets/HenryAssets/Animations/IdleIn.anim
+- Assets/HenryAssets/VFX/Fulmination/MageLightningOrbEffect.prefab
 - Assets/HenryAssets/VFX/Materials/matSwingShadow.mat
 - Assets/HenryAssets/Textures/texHenryJediEmission.png
 - Assets/HenryAssets/Mesh/meshDanteCoat.mesh
@@ -281,7 +282,6 @@ Assets:
 - Assets/HenryAssets/VFX/BombExplosionEffect 1.prefab
 - Assets/HenryAssets/VFX/ElectricExplosion.prefab
 - Assets/HenryAssets/Animations/AimPitch.anim
-- Assets/HenryAssets/VFX/Fulmination/LightningOrbEffect.prefab
 - Assets/HenryAssets/VFX/Textures/texSlash.png
 - Assets/HenryAssets/Icons/texSpecialIcon.png
 - Assets/HenryAssets/Textures/texHenryDanteEmission.png

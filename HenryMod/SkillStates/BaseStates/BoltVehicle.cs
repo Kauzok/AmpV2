@@ -15,11 +15,12 @@ namespace HenryMod.SkillStates
 	public class BoltVehicle : MonoBehaviour, ICameraStateProvider
 	{
 		[Header("Vehicle Parameters")]
-		public float duration = 10f;
+		public float duration = 2f;
 		public float initialSpeed = 50f;
 		public float targetSpeed = 50f;
 		public float acceleration = 1000f;
 		public float cameraLerpTime = .25f;
+		public bool exitAllowed;
 
 		[Header("Blast Parameters")]
 		public bool detonateOnCollision;
@@ -55,8 +56,16 @@ namespace HenryMod.SkillStates
 			vehicleSeat = base.GetComponent<VehicleSeat>();
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
+
+			//makes it so you can't exit the state manually
+			this.vehicleSeat.exitVehicleAllowedCheck.AddCallback(new CallbackCheck<Interactability, CharacterBody>.CallbackDelegate(this.CheckExitAllowed));
 			this.rigidbody = base.GetComponent<Rigidbody>();
 			
+		}
+
+		private void CheckExitAllowed(CharacterBody characterBody, ref Interactability? resultOverride)
+		{
+			resultOverride = new Interactability?(this.exitAllowed ? Interactability.Available : Interactability.Disabled);
 		}
 
 
@@ -65,7 +74,7 @@ namespace HenryMod.SkillStates
 		{
 			if (NetworkServer.active)
 			{
-				this.DetonateServer();
+				DetonateServer();
 			}
 			foreach (CameraRigController cameraRigController in CameraRigController.readOnlyInstancesList)
 			{

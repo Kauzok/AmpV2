@@ -11,7 +11,6 @@ namespace HenryMod.SkillStates
 	public class Bolt : BaseSkillState
 	{
 		private float duration;
-		private bool hasDetonated;
 
 		//copied volcanic egg code
 		public override void OnEnter()
@@ -35,7 +34,7 @@ namespace HenryMod.SkillStates
 
             //sets duration of skill equal to what it's set to in boltvehicle
             duration = gameObject.GetComponent<BoltVehicle>().duration;
-			hasDetonated = gameObject.GetComponent<BoltVehicle>().hasDetonatedServer;
+
 
             //not sure what this does, think it's something with making it work with multiplayer but since i just copy pasted from volcanic egg for this part it's anyone's guess
             #region   
