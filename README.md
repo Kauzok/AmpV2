@@ -12,7 +12,6 @@
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
   - Adjust camera transition
-  - Remove "Detonate" text and ability
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
   - Fix chain effect
