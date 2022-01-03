@@ -87,6 +87,16 @@ namespace HenryMod
                 info.rejected = true;
             }
 
+           
+            //unused passive that makes body immune to shock damage
+            /*( if (self.body.baseNameToken == "HENRY_BODY")
+            {
+               if (info.damageType == DamageType.Shock5s)
+                {
+                    info.rejected = true;
+                }
+            } */
+
             
             //creates fulmination orb; essentially a copy of lightning orb but with the effect changed to our own; responsible for creating chain damage and effect
             if (info.HasModdedDamageType(Modules.DamageTypes.fulminationChain))

@@ -55,6 +55,7 @@ namespace HenryMod.Modules
             ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
             InitializeFerroshotContact(ferroshotContact);
             ferroshotContact.destroyOnWorld = true;
+            
             ferroshotContact.impactEffect = EntityStates.Commando.CommandoWeapon.FirePistol2.hitEffectPrefab;
 
         }

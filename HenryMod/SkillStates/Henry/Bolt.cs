@@ -2,6 +2,7 @@
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
+using HenryMod.SkillStates;
 
 
 namespace HenryMod.SkillStates
@@ -9,11 +10,15 @@ namespace HenryMod.SkillStates
 
 	public class Bolt : BaseSkillState
 	{
-		
+		private float duration;
+		private bool hasDetonated;
 
 		//copied volcanic egg code
 		public override void OnEnter()
 		{
+
+			base.OnEnter();
+			
 
 			Ray aimRay = this.GetAimRay();
 
@@ -25,64 +30,71 @@ namespace HenryMod.SkillStates
 			gameObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			gameObject.AddComponent<HitBox>();
 
-			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
-			//GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+            //declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
+            //GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
+            //sets duration of skill equal to what it's set to in boltvehicle
+            duration = gameObject.GetComponent<BoltVehicle>().duration;
+			hasDetonated = gameObject.GetComponent<BoltVehicle>().hasDetonatedServer;
 
-			//not sure what this does, think it's something with making it work with multiplayer but since i just copy pasted from volcanic egg for this part it's anyone's guess
+            //not sure what this does, think it's something with making it work with multiplayer but since i just copy pasted from volcanic egg for this part it's anyone's guess
+            #region   
+            
 			CharacterBody characterBody = this.characterBody;
-			NetworkUser networkUser;
-			if (characterBody == null)
-			{
-				networkUser = null;
-			}
-			else
-			{
-				CharacterMaster master = characterBody.master;
-				if (master == null)
+				NetworkUser networkUser;
+				if (characterBody == null)
 				{
 					networkUser = null;
 				}
 				else
 				{
-					PlayerCharacterMasterController playerCharacterMasterController = master.playerCharacterMasterController;
-					networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
+					CharacterMaster master = characterBody.master;
+					if (master == null)
+					{
+						networkUser = null;
+					}
+					else
+					{
+						PlayerCharacterMasterController playerCharacterMasterController = master.playerCharacterMasterController;
+						networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
+					}
 				}
-			}
-			NetworkUser networkUser2 = networkUser;
-			if (networkUser2)
+				NetworkUser networkUser2 = networkUser;
+				if (networkUser2)
+				{
+					NetworkServer.SpawnWithClientAuthority(gameObject, networkUser2.gameObject);
+				}
+				else
+				{
+					NetworkServer.Spawn(gameObject);
+				}
+            #endregion
+
+        }
+
+
+        //basic fixedupdate override, you know the drill
+        //need to figure out what to add in order to make the skill switch states only if detonateserver is called so cooldown will only start after
+        public override void FixedUpdate()
+		{
+	
+			base.FixedUpdate();
+
+			if (fixedAge >= duration && isAuthority)
 			{
-				NetworkServer.SpawnWithClientAuthority(gameObject, networkUser2.gameObject);
-			}
-			else
-			{
-				NetworkServer.Spawn(gameObject);
+				this.outer.SetNextStateToMain();
+				
+				return;
+
 			}
 
 			
-		}
 
-		//basic fixedupdate override, you know the drill
-		//need to figure out what to add in order to make the skill switch states only if detonateserver is called so cooldown will only start after
-		public override void FixedUpdate()
-		{
-			base.FixedUpdate();
-
-			if (base.isAuthority && !gameObject)
-			{
-				this.outer.SetNextStateToMain();
-				return;
-			}
 		}
 
 
-		
-		public override void OnExit()
-        {
 
-			base.OnExit();
-
-        }
+	
 
 
 	}
