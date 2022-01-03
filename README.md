@@ -12,7 +12,7 @@
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
   - Adjust camera transition
-  - Fix cooldown starting early
+  - Remove "Detonate" text and ability
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
   - Fix chain effect
@@ -20,7 +20,6 @@
   - Adjust position of VFX, and fix warning when instantiating as gameobject
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
-  - Consider scaling up VFX
  
  ## Other To-Do
 - Cleanup code base, finish comments
