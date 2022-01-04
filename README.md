@@ -9,7 +9,7 @@
   - Reduce range
 - Bolt
   - Add SFX for entry/state/exit
-  - Add VFX for entry/exit
+  - Adjust VFX for entry
   - Adjust camera transition
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
