@@ -5,8 +5,12 @@ using RoR2.WwiseUtils;
 
 namespace HenryMod.SkillStates
 {
+    
+
     public class SlashCombo : BaseMeleeAttack
     {
+        float chargeProc = 100f;
+
         public override void OnEnter()
         {
             this.hitboxName = "Sword";
@@ -23,18 +27,19 @@ namespace HenryMod.SkillStates
             this.hitStopDuration = 0.012f;
             this.attackRecoil = 0.5f;
             this.hitHopVelocity = 4f;
-
-            
             this.swingSoundString = "HenrySwordSwing";
             this.hitSoundString = "";
             this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
             this.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
-
             this.impactSound = Modules.Assets.swordHitSoundEvent.index;
+
+            
+
 
             base.OnEnter();
         }
+
 
         protected override void PlayAttackAnimation()
         {

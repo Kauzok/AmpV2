@@ -17,8 +17,12 @@ namespace HenryMod.Modules
              + "< ! > Lorentz Cannon can be used as either a source of even more damage while using Stormblade, or for continuing to apply damage even outside of melee range." + Environment.NewLine + Environment.NewLine
              + "< ! > Bolt's movement speed and invulnerability make it a great ability for entering and exiting close-ranged combat." + Environment.NewLine + Environment.NewLine
              + "< ! > Fulmination and Voltaic Bombardment are great for dealing damage to many enemies at once, or melting a single strong enemy." + Environment.NewLine + Environment.NewLine;
-
+        
+        internal static float boltBlastDamageCoefficient = .2f;
+        
         internal const float swordDamageCoefficient = 2f;
+
+        internal const float stormbladeChargeProcCoefficient = 20f;
 
         internal const float gunDamageCoefficient = 4.2f;
 

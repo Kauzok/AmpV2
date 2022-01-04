@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 201027935
+CRC: 4198909586
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 30d667a19cafa4788df04f1f4487ad92
+    Hash: 5127773b90dde0bdd8e5b06b0ac588cb
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 99a79ccdaa7d6a0a0443736a742a81cc
+    Hash: fc9579087e78d13b5f888b999e512394
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -37,8 +37,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 95
   Script: {instanceID: 0}
-- Class: 96
-  Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
@@ -56,6 +54,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 316558884, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
+  Script: {fileID: -335047464, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
   Script: {fileID: 1788389205, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 1080798252, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
@@ -64,21 +64,19 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 511512695, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
-  Script: {fileID: 344246068, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
   Script: {fileID: -875252823, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 1783796254, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1294804675, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
-  Script: {fileID: 296141222, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
   Script: {fileID: -1711895128, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 1245112779, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 2137989374, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -565067572, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1835779776, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
@@ -123,7 +121,6 @@ Assets:
 - Assets/HenryAssets/Animations/maskAimBazooka.mask
 - Assets/HenryAssets/Icons/texShotgunIcon.png
 - Assets/HenryAssets/VFX/Materials/matAnimeShapes.mat
-- Assets/HenryAssets/FireballTest.prefab
 - Assets/HenryAssets/VFX/Textures/texPunchImpactShadow.png
 - Assets/HenryAssets/Materials/matBazookaRocket.mat
 - Assets/HenryAssets/Icons/texPrimaryIcon.png
@@ -139,7 +136,6 @@ Assets:
 - Assets/HenryAssets/Icons/texPassiveIcon.png
 - Assets/HenryAssets/VFX/Textures/texFire.tga
 - Assets/HenryAssets/Animations/Jump.anim
-- Assets/HenryAssets/FireballVehicleDamageEffect.prefab
 - Assets/HenryAssets/Mesh/meshHenryNeo.mesh
 - Assets/HenryAssets/Animations/WalkR.anim
 - Assets/HenryAssets/VFX/HenryDustEffect.prefab
@@ -166,6 +162,7 @@ Assets:
 - Assets/HenryAssets/Model.prefab
 - Assets/HenryAssets/Icons/texHenryAchievement.png
 - Assets/HenryAssets/Animations/WalkB.anim
+- Assets/HenryAssets/Mesh/donut5Mesh.asset
 - Assets/HenryAssets/BoltVehicle.prefab
 - Assets/HenryAssets/Animations/maskGesture.mask
 - Assets/HenryAssets/VFX/Materials/matPunchImpact.mat
@@ -200,6 +197,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matTrail.mat
 - Assets/HenryAssets/Materials/matHenryJedi.mat
 - Assets/HenryAssets/VFX/Materials/matHitSpark.mat
+- Assets/HenryAssets/VFX/Bolt/BoltEnterEffect.prefab
 - Assets/HenryAssets/Mesh/meshNeoCoat.mesh
 - Assets/HenryAssets/Animations/ShootGun.anim
 - Assets/HenryAssets/Animations/SprintF.anim
@@ -254,12 +252,12 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texEmbers.png
 - Assets/HenryAssets/Mesh/meshVergilCoat.mesh
 - Assets/HenryAssets/VFX/Textures/texLightning.tif
-- Assets/HenryAssets/MageFlamethrowerEffect.prefab
 - Assets/HenryAssets/Animations/RestIdleIn.anim
 - Assets/HenryAssets/VFX/Materials/matRipple.mat
 - Assets/HenryAssets/texLightning1Mask.asset
 - Assets/HenryAssets/Animations/DefaultPose.anim
 - Assets/HenryAssets/Materials/matShotgun.mat
+- Assets/HenryAssets/TeleportOutBoom.prefab
 - Assets/HenryAssets/Animations/IdleAdditive.anim
 - Assets/HenryAssets/Trail21.mat
 - Assets/HenryAssets/Icons/texBazookaFireIcon.png

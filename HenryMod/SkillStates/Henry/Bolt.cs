@@ -11,6 +11,7 @@ namespace HenryMod.SkillStates
 	public class Bolt : BaseSkillState
 	{
 		private float duration;
+		private float delay = 1f;
 
 		//copied volcanic egg code
 		public override void OnEnter()
@@ -76,8 +77,14 @@ namespace HenryMod.SkillStates
         //need to figure out what to add in order to make the skill switch states only if detonateserver is called so cooldown will only start after
         public override void FixedUpdate()
 		{
-	
+
 			base.FixedUpdate();
+
+			if (fixedAge >= delay)
+			{
+
+			}
+
 
 			if (fixedAge >= duration && isAuthority)
 			{

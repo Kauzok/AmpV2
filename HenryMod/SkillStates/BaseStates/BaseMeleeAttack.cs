@@ -5,6 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Orbs;
+using R2API;
 
 
 namespace HenryMod.SkillStates.BaseStates
@@ -18,6 +19,7 @@ namespace HenryMod.SkillStates.BaseStates
         protected DamageType damageType = DamageType.Generic;
         protected float damageCoefficient = 3.5f;
         protected float procCoefficient = 1f;
+        protected float chargeProc = Modules.StaticValues.stormbladeChargeProcCoefficient;
         protected float pushForce = 300f;
         protected Vector3 bonusForce = Vector3.zero;
         protected float baseDuration = 1f;
@@ -28,6 +30,8 @@ namespace HenryMod.SkillStates.BaseStates
         protected float attackRecoil = 0.75f;
         protected float hitHopVelocity = 4f;
         protected bool cancelled = false;
+        
+
 
         protected string swingSoundString = "";
         protected string hitSoundString = "";
@@ -82,6 +86,18 @@ namespace HenryMod.SkillStates.BaseStates
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
             this.attack.impactSound = this.impactSound;
+
+            chargeChance(chargeProc);
+
+        }
+
+        //code for adding a chance of applying the charge debuff; percent chance is set with chargeProc var
+        protected virtual void chargeChance(float chance)
+        {
+            if (Util.CheckRoll(chance, base.characterBody.master))
+            {
+               this.attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+            }
         }
 
         protected virtual void PlayAttackAnimation()

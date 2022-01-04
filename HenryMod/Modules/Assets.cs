@@ -20,13 +20,18 @@ namespace HenryMod.Modules
         internal static GameObject swordSwingEffect;
         internal static GameObject swordHitImpactEffect;
         internal static GameObject bombExplosionEffect;
-       
+
+        [Header("Charge Effects")]
+        internal static GameObject chargeExplosionEffect;
+
+
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
         internal static GameObject bulletImpactEffect;
 
-        [Header("Bolt/Charge Effects")]
-        internal static GameObject electricExplosionEffect;
+        [Header("Bolt Effects")]
+        internal static GameObject boltExitEffect;
+        internal static GameObject boltEnterEffect;
 
         [Header("Fulmination Effects")]
         internal static GameObject electricStreamEffect;
@@ -114,7 +119,8 @@ namespace HenryMod.Modules
             electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
 
             //on boltvehicle exit/enter
-            electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
+            CreateBoltExitPrefab();
+            CreateBoltEnterPrefab();
 
             //on ferroshot/
             //skill prep
@@ -127,7 +133,7 @@ namespace HenryMod.Modules
             //functions for prefabs that require adjustments made at runtime
             CreateChainPrefab();
             CreateLightningPrefab();
-
+            
           
 
             if (bombExplosionEffect)
@@ -150,14 +156,38 @@ namespace HenryMod.Modules
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }
 
+        private static void CreateBoltExitPrefab()
+        {
+            //electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
+            boltExitEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion"), "boltExitEffect", true);
+            boltExitEffect.AddComponent<NetworkIdentity>();
+            boltExitEffect.AddComponent<EffectComponent>();
+
+
+            EffectAPI.AddEffect(boltExitEffect);
+        }
+
+
+        private static void CreateBoltEnterPrefab()
+        {
+            boltEnterEffect = mainAssetBundle.LoadAsset<GameObject>("BoltEnterEffect");
+            boltEnterEffect.AddComponent<NetworkIdentity>();
+            boltEnterEffect.AddComponent<VFXAttributes>();
+
+            EffectAPI.AddEffect(boltEnterEffect);
+
+
+        }
+
+
+
         //instantiate voltaic bombardment main effect as copy of royal capacitor's effect
         private static void CreateLightningPrefab()
         {
             lightningStrikePrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "lightningStrike", true);
             lightningStrikePrefab.AddComponent<NetworkIdentity>();
-            
 
-           // lightningStrikePrefab.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
+            // lightningStrikePrefab.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
 
             EffectAPI.AddEffect(lightningStrikePrefab);
 

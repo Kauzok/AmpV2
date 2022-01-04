@@ -187,11 +187,12 @@ namespace HenryMod
                         EffectData effectData = new EffectData
                         {
                             origin = self.corePosition,
-                            scale = 10f
+                            scale = 5f
                         };
                         //declare and spawn charge explosion effect
-                        chargeExplosion = Modules.Assets.electricExplosionEffect;
-                        EffectManager.SpawnEffect(chargeExplosion, effectData, true); 
+                        chargeExplosion = Modules.Assets.chargeExplosionEffect;
+
+                        //EffectManager.SpawnEffect(chargeExplosion, effectData, true); 
 
                         //creates charge explosion centered at the body with the debuff
                             new BlastAttack

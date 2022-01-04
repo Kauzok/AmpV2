@@ -30,7 +30,7 @@ namespace HenryMod.Modules
 
             #region Primary
             LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Stormblade");
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.swordDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.swordDamageCoefficient}% damage</style>. Strikes have a <style=cIsDamage>{StaticValues.stormbladeChargeProcCoefficient}%</style> chance of applying charge");
             #endregion
 
             #region Secondary
@@ -40,7 +40,7 @@ namespace HenryMod.Modules
 
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Bolt");
-            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 1.5 seconds.");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 2 seconds.");
             #endregion
 
             #region Special

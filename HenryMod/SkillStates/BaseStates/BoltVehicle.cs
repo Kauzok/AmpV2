@@ -15,11 +15,12 @@ namespace HenryMod.SkillStates
 	public class BoltVehicle : MonoBehaviour, ICameraStateProvider
 	{
 		[Header("Vehicle Parameters")]
-		public float duration = 2f;
+		public float duration = 2.5f;
 		public float initialSpeed = 50f;
 		public float targetSpeed = 50f;
 		public float acceleration = 1000f;
 		public float cameraLerpTime = .25f;
+		public GameObject enterEffectPrefab;
 		public bool exitAllowed;
 
 		[Header("Blast Parameters")]
@@ -27,6 +28,7 @@ namespace HenryMod.SkillStates
 		public GameObject exitEffectPrefab;
 		public string explosionSoundString;
 		public float blastRadius = 1f;
+		private BlastAttack boltBlast;
 
 		[Header("Overlap Parameters")]
 		public float overlapDamageCoefficient = .5f;
@@ -45,9 +47,9 @@ namespace HenryMod.SkillStates
 		private OverlapAttack overlapAttack;
 		private float overlapFireAge;
 		private float overlapResetAge;
+        private float blastDamageCoefficient = Modules.StaticValues.boltBlastDamageCoefficient;
 
-
-		public void Awake()
+        public void Awake()
 		{
 
 			hasDetonatedServer = false;
@@ -59,6 +61,7 @@ namespace HenryMod.SkillStates
 
 			//makes it so you can't exit the state manually
 			this.vehicleSeat.exitVehicleAllowedCheck.AddCallback(new CallbackCheck<Interactability, CharacterBody>.CallbackDelegate(this.CheckExitAllowed));
+
 			this.rigidbody = base.GetComponent<Rigidbody>();
 			
 		}
@@ -94,6 +97,15 @@ namespace HenryMod.SkillStates
 			{
 				return;
 			}
+			
+			EffectData enterEffectData = new EffectData
+			{
+				origin = vehicleSeat.currentPassengerBody.corePosition,
+				scale = 10f
+			};
+			enterEffectPrefab = Modules.Assets.boltEnterEffect;
+
+			EffectManager.SpawnEffect(enterEffectPrefab, enterEffectData, true);
 
 			//moves vehicle in direction of player's aim direction at previously set speed
 			Vector3 aimDirection = vehicleSeat.currentPassengerInputBank.aimDirection;
@@ -122,6 +134,8 @@ namespace HenryMod.SkillStates
 				hitEffectPrefab = overlapHitEffectPrefab
 			};
 			overlapAttack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+
+		
 
 
 			//adjusts camera on boltstate entry; will adjust later to make camera transition smoother
@@ -156,13 +170,34 @@ namespace HenryMod.SkillStates
 				EffectData effectData = new EffectData
 				{
 					origin = base.transform.position,
-					scale = blastRadius
+					scale = 1.5f
 				};
-				exitEffectPrefab = Modules.Assets.electricExplosionEffect;
+				exitEffectPrefab = Modules.Assets.boltExitEffect;
 				//exitEffectPrefab = Modules.Assets.testLightningEffect;
 				EffectManager.SpawnEffect(exitEffectPrefab, effectData, true);
 		
 			}
+			//spawns blastattack that applies charge and deals 20% damage on exit
+			boltBlast = new BlastAttack
+			{
+				attacker = currentPassengerBody.gameObject,
+				baseDamage = this.blastDamageCoefficient * currentPassengerBody.damage,
+				baseForce = 0f,
+				attackerFiltering = AttackerFiltering.NeverHit,
+				crit = currentPassengerBody.RollCrit(),
+				damageColorIndex = DamageColorIndex.Item,
+				damageType = DamageType.Generic,
+				falloffModel = BlastAttack.FalloffModel.Linear,
+				inflictor = base.gameObject,
+				position = base.transform.position,
+				procChainMask = default(ProcChainMask),
+				procCoefficient = 1f,
+				radius = 10f,
+				teamIndex = currentPassengerBody.teamComponent.teamIndex
+			};
+			boltBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+			boltBlast.Fire();
+
 			Util.PlaySound(explosionSoundString, base.gameObject);
 			UnityEngine.Object.Destroy(base.gameObject);
 			
