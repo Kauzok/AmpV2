@@ -7,7 +7,6 @@
 - Ferroshot
   - Add SFX for spike spawn/launch
   - Reduce range
-  - Create on impact VFX
 - Bolt
   - Add SFX for entry/state/exit
   - Add VFX for entry/exit
