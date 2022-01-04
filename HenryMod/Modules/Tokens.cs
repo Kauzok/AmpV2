@@ -37,7 +37,7 @@ namespace HenryMod.Modules
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Fulmination");
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a continuous stream of electricity that chains to nearby enemies, deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a {StaticValues.fulminationChargeProcCoefficient}% chance of applying a stack of charge each tick.");
+            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a chaining stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of charge.");
             #endregion
 
             #region Special
