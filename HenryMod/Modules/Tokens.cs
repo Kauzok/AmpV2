@@ -8,11 +8,19 @@ namespace HenryMod.Modules
         internal static void AddTokens()
         {
             #region Henry
-            string prefix = HenryPlugin.developerPrefix + "_HENRY_BODY_";
+            string prefix = HenryPlugin.developerPrefix + "_BATTLEMAGE_BODY_";
 
             #region Skins
             LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");
             LanguageAPI.Add(prefix + "MASTERY_SKIN_NAME", "Alternate");
+            #endregion
+
+            #region Descriptions
+            LanguageAPI.Add(prefix + "NAME", Modules.StaticValues.characterName);
+            LanguageAPI.Add(prefix + "SUBTITLE", Modules.StaticValues.characterSubtitle);
+            LanguageAPI.Add(prefix + "DESCRIPTION", Modules.StaticValues.descriptionText);
+            LanguageAPI.Add(prefix + "OUTRO_FLAVOR", Modules.StaticValues.characterOutro);
+            LanguageAPI.Add(prefix + "OUTRO_FAILURE", Modules.StaticValues.characterOutroFailure);
             #endregion
 
             #region Passive
@@ -26,18 +34,18 @@ namespace HenryMod.Modules
             #endregion
 
             #region Secondary
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_NAME", "Lorentz Cannon");
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Helpers.agilePrefix + $"Use electromagnetic fields to fire an array of 6 iron sand bullets, dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style> per bullet.");
+            LanguageAPI.Add(prefix + "SECONDARY_FERROSHOT_NAME", "Lorentz Cannon");
+            LanguageAPI.Add(prefix + "SECONDARY_FERROSHOT_DESCRIPTION", Helpers.agilePrefix + $"Use electromagnetic fields to fire an array of <style=cIsDamage>6</style> iron sand bullets, each dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Utility
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_NAME", "Bolt");
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 1.5 seconds.");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Bolt");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 1.5 seconds.");
             #endregion
 
             #region Special
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Fulmination");
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Fire a chaining stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of charge.");
+            LanguageAPI.Add(prefix + "SPECIAL_CHAIN_NAME", "Fulmination");
+            LanguageAPI.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a chaining stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of charge.");
             #endregion
 
             #region Special

@@ -10,6 +10,8 @@ namespace HenryMod.Modules.Survivors
     internal class MyCharacter : SurvivorBase
     {
         internal override string bodyName { get; set; } = "Henry";
+        //Uncomment this line once you've gotten the model setup in unity
+        //internal override string bodyName { get; set; } = "Battlemage";
 
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }
@@ -22,11 +24,12 @@ namespace HenryMod.Modules.Survivors
             armor = 20f,
             armorGrowth = 0f,
             bodyName = "HenryBody",
-            bodyNameToken = HenryPlugin.developerPrefix + "Battlemage",
+            bodyNameToken = HenryPlugin.developerPrefix + "_BATTLEMAGE_BODY_NAME",
             //Color of skill names and stuff in menu
             bodyColor = new Color32(0, 145, 255, 255),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
+
             damage = 12f,
             moveSpeed = 8.5f,
             healthGrowth = 33f,
@@ -34,7 +37,7 @@ namespace HenryMod.Modules.Survivors
             jumpCount = 1,
             //jumpPower = 18f,
             maxHealth = 110f,
-            subtitleNameToken = HenryPlugin.developerPrefix + "_HENRY_BODY_SUBTITLE",
+            subtitleNameToken = HenryPlugin.developerPrefix + "_BATTLEMAGE_BODY_BATTLEMAGE_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
@@ -99,17 +102,18 @@ namespace HenryMod.Modules.Survivors
 
             //creates Stormblade
             #region Primary
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_HENRY_BODY_PRIMARY_SLASH_NAME", prefix + "_HENRY_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_BATTLEMAGE_BODY_PRIMARY_SLASH_NAME", prefix + "_BATTLEMAGE_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
             #endregion
 
+            
 
             //creates ferroshot/Lorentz Cannon
             #region Secondary
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillName = prefix + "_BATTLEMAGE_BODY_SECONDARY_FERROSHOT_NAME",
+                skillNameToken = prefix + "_BATTLEMAGE_BODY_SECONDARY_FERROSHOT_NAME",
+                skillDescriptionToken = prefix + "_BATTLEMAGE_BODY_SECONDARY_FERROSHOT_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Ferroshot)),
                 activationStateMachineName = "Slide",
@@ -135,11 +139,11 @@ namespace HenryMod.Modules.Survivors
 
             //creates bolt
             #region Utility
-            SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            SkillDef dashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_UTILITY_ROLL_DESCRIPTION",
+                skillName = prefix + "_BATTLEMAGE_BODY_UTILITY_DASH_NAME",
+                skillNameToken = prefix + "_BATTLEMAGE_BODY_UTILITY_DASH_NAME",
+                skillDescriptionToken = prefix + "_BATTLEMAGE_BODY_UTILITY_DASH_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Bolt)),
                 activationStateMachineName = "Slide",
@@ -159,16 +163,16 @@ namespace HenryMod.Modules.Survivors
                 stockToConsume = 1
             });
 
-            Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
+            Modules.Skills.AddUtilitySkills(bodyPrefab, dashSkillDef);
             #endregion
 
             //creates fulmination
             #region Specials
             SkillDef chainSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_SPECIAL_BOMB_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_SPECIAL_BOMB_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_SPECIAL_BOMB_DESCRIPTION",
+                skillName = prefix + "_BATTLEMAGE_BODY_SPECIAL_CHAIN_NAME",
+                skillNameToken = prefix + "_BATTLEMAGE_BODY_SPECIAL_CHAIN_NAME",
+                skillDescriptionToken = prefix + "_BATTLEMAGE_BODY_SPECIAL_CHAIN_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Fulmination)),
                 activationStateMachineName = "Slide",
@@ -191,7 +195,7 @@ namespace HenryMod.Modules.Survivors
             SkillDef lightningSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "Voltaic Bombardment",
-                skillNameToken = prefix + "_BATTLEMAGE_BODY_SPECIAL_LIGHTNING_NANE",
+                skillNameToken = prefix + "_BATTLEMAGE_BODY_SPECIAL_LIGHTNING_NAME",
                 skillDescriptionToken = prefix + "_BATTLEMAGE_BODY_SPECIAL_LIGHTNING_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.VoltaicBombardmentAim)),
@@ -232,7 +236,7 @@ namespace HenryMod.Modules.Survivors
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(HenryPlugin.developerPrefix + "_HENRY_BODY_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(HenryPlugin.developerPrefix + "_BATTLEMAGE_BODY_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRenderers,
                 mainRenderer,
@@ -270,7 +274,7 @@ namespace HenryMod.Modules.Survivors
                 masteryMat
             });
 
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(HenryPlugin.developerPrefix + "_HENRY_BODY_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(HenryPlugin.developerPrefix + "_BATTLEMAGE_BODY_MASTERY_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
                 masteryRendererInfos,
                 mainRenderer,

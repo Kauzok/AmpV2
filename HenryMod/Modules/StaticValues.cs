@@ -5,6 +5,13 @@ namespace HenryMod.Modules
     //static values for use in skillstates and other references for easy adjustment
     internal static class StaticValues
     {
+
+        public const string characterName = "Battlemage";
+        public const string characterSubtitle = "Electromagnetic Warrior";
+        public const string characterOutro = "..and so he left, with an unquestionable freedom.";
+        public const string characterOutroFailure = "..and so he vanished, imprisoned for eternity.";
+
+
         internal static string descriptionText = "The Battlemage is a melee/range hybrid that focuses on consistently dealing damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Stormblade is good at paralyzing enemies for easy damage, but keep in mind you can only paralyze so many enemies at once." + Environment.NewLine + Environment.NewLine
              + "< ! > Lorentz Cannon can be used as either a source of even more damage while using Stormblade, or for continuing to apply damage even outside of melee range." + Environment.NewLine + Environment.NewLine
