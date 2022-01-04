@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4220911794
+CRC: 201027935
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a98a2a71a0c86337b4e298bef00c8b63
+    Hash: 30d667a19cafa4788df04f1f4487ad92
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 97746d86bd07f6f45b23cdce87dc7fb0
+    Hash: 99a79ccdaa7d6a0a0443736a742a81cc
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -56,8 +56,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 316558884, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
-  Script: {fileID: -335047464, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
   Script: {fileID: 1788389205, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 1080798252, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
@@ -80,11 +78,7 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1245112779, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
-  Script: {fileID: -432102721, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
   Script: {fileID: 2137989374, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: -565067572, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1835779776, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
@@ -93,8 +87,6 @@ ClassTypes:
   Script: {fileID: 816898038, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
-- Class: 114
-  Script: {fileID: 708136152, guid: e161fae64b898bc22624d03ed611378f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fc41cd48bee14034db80323ab44fbd3e, type: 3}
 - Class: 114
@@ -197,7 +189,7 @@ Assets:
 - Assets/HenryAssets/Animations/WalkF.anim
 - Assets/HenryAssets/VFX/Materials/matPunchImpactShadow.mat
 - Assets/HenryAssets/Materials/matDante.mat
-- Assets/HenryAssets/VFX/Spike Spawn.prefab
+- Assets/HenryAssets/VFX/Ferroshot/Spike Spawn.prefab
 - Assets/HenryAssets/Animations/maskLeftArm.mask
 - Assets/HenryAssets/Mesh/MeshHenryGun.mesh
 - Assets/HenryAssets/Animations/DescendFast.anim
@@ -236,6 +228,7 @@ Assets:
 - Assets/HenryAssets/VFX/Fulmination/ElectricityChain 1.prefab
 - Assets/HenryAssets/Icons/texUtilityIcon.png
 - Assets/HenryAssets/Animations/Ascend.anim
+- Assets/HenryAssets/VFX/Ferroshot/SpikeImpact.prefab
 - Assets/HenryAssets/VFX/Materials/matPunchEffect.mat
 - Assets/HenryAssets/SpikeGhost.prefab
 - Assets/HenryAssets/VFX/Textures/texPunchImpact.png
@@ -261,7 +254,6 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texEmbers.png
 - Assets/HenryAssets/Mesh/meshVergilCoat.mesh
 - Assets/HenryAssets/VFX/Textures/texLightning.tif
-- Assets/HenryAssets/VFX/LightningStrikeImpact.prefab
 - Assets/HenryAssets/MageFlamethrowerEffect.prefab
 - Assets/HenryAssets/Animations/RestIdleIn.anim
 - Assets/HenryAssets/VFX/Materials/matRipple.mat
@@ -279,7 +271,6 @@ Assets:
 - Assets/HenryAssets/VFX/HenrySwordSwingEffect.prefab
 - Assets/HenryAssets/Animations/Descend.anim
 - Assets/HenryAssets/Textures/texHenryDante.png
-- Assets/HenryAssets/VFX/BombExplosionEffect 1.prefab
 - Assets/HenryAssets/VFX/ElectricExplosion.prefab
 - Assets/HenryAssets/Animations/AimPitch.anim
 - Assets/HenryAssets/VFX/Textures/texSlash.png

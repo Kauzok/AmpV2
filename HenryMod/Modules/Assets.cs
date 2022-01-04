@@ -21,8 +21,9 @@ namespace HenryMod.Modules
         internal static GameObject swordHitImpactEffect;
         internal static GameObject bombExplosionEffect;
        
-        [Header("Ferroshot/Gauss Cannon Effects")]
+        [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
+        internal static GameObject bulletImpactEffect;
 
         [Header("Bolt/Charge Effects")]
         internal static GameObject electricExplosionEffect;
@@ -115,8 +116,12 @@ namespace HenryMod.Modules
             //on boltvehicle exit/enter
             electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
 
-            //on ferroshot/gauss cannon skill prep
+            //on ferroshot/
+            //skill prep
             bulletSpawnEffect = LoadEffect("Spike Spawn");
+
+            //on ferroshot/Lorentz Cannon spike collision
+            bulletImpactEffect = LoadEffect("SpikeImpact");
 
 
             //functions for prefabs that require adjustments made at runtime

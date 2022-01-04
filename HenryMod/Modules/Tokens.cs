@@ -26,7 +26,7 @@ namespace HenryMod.Modules
             #endregion
 
             #region Secondary
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_NAME", "Gauss Cannon");
+            LanguageAPI.Add(prefix + "SECONDARY_GUN_NAME", "Lorentz Cannon");
             LanguageAPI.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Helpers.agilePrefix + $"Use electromagnetic fields to fire an array of 6 iron sand bullets, dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style> per bullet.");
             #endregion
 

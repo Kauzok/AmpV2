@@ -89,11 +89,11 @@ namespace HenryMod
 
            
             //unused passive that makes body immune to shock damage
-            /*( if (self.body.baseNameToken == "HENRY_BODY")
+            /* if (self.body.baseNameToken == "HENRY_BODY")
             {
                if (info.damageType == DamageType.Shock5s)
                 {
-                    info.rejected = true;
+                    
                 }
             } */
 
@@ -208,7 +208,7 @@ namespace HenryMod
                                 position = self.corePosition,
                                 procChainMask = default(ProcChainMask),
                                 procCoefficient = 1f,
-                                radius = 12f,
+                                radius = 13f,
                                 teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
                             }.Fire();
                        

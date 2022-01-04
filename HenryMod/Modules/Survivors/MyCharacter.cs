@@ -28,9 +28,11 @@ namespace HenryMod.Modules.Survivors
             characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,
+            moveSpeed = 8.5f,
             healthGrowth = 33f,
             healthRegen = 1.5f,
             jumpCount = 1,
+            //jumpPower = 18f,
             maxHealth = 110f,
             subtitleNameToken = HenryPlugin.developerPrefix + "_HENRY_BODY_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
@@ -101,7 +103,7 @@ namespace HenryMod.Modules.Survivors
             #endregion
 
 
-            //creates ferroshot/gauss cannon
+            //creates ferroshot/Lorentz Cannon
             #region Secondary
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -171,7 +173,7 @@ namespace HenryMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Fulmination)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 6f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -195,7 +197,7 @@ namespace HenryMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.VoltaicBombardmentAim)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 8f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
