@@ -19,7 +19,8 @@
   - Adjust position of VFX, and fix warning when instantiating as gameobject
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
- 
+- Charge Passive
+  - Add VFX/SFX
  ## Other To-Do
 - Cleanup code base, finish comments
 - Fix name tokens
