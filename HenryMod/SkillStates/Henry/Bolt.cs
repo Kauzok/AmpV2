@@ -27,6 +27,7 @@ namespace HenryMod.SkillStates
 
 			//adds boltvehicle to the bolt prefab and assigns character to bolt prefab's vehicle seat, finalizing the gameobject that will act as the primary enactor of the bolt skill
 			gameObject.AddComponent<BoltVehicle>();
+			Destroy(gameObject.GetComponent<CameraTargetParams>());
 			gameObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			gameObject.AddComponent<HitBox>();
 

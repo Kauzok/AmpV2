@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4198909586
+CRC: 3120513889
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5127773b90dde0bdd8e5b06b0ac588cb
+    Hash: 3faed632fd21144b226ade6054a8d7a0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: fc9579087e78d13b5f888b999e512394
+    Hash: 7d8d3eedc0f67f96468b84a8369f9d65
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -99,8 +99,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 115
   Script: {instanceID: 0}
-- Class: 120
-  Script: {instanceID: 0}
 - Class: 135
   Script: {instanceID: 0}
 - Class: 136
@@ -154,6 +152,7 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texRipple.png
 - Assets/HenryAssets/VFX/ImpactHenrySlash.prefab
 - Assets/HenryAssets/VFX/Mesh/meshSwing.asset
+- Assets/HenryAssets/BoltVehicle 1.prefab
 - Assets/HenryAssets/VFX/HenryBazookaMuzzleFlash.prefab
 - Assets/HenryAssets/VFX/HenryFistSwingEffect.prefab
 - Assets/HenryAssets/Mesh/meshVergil.mesh
@@ -235,6 +234,7 @@ Assets:
 - Assets/HenryAssets/Materials/matSpike.mat
 - Assets/HenryAssets/VFX/Materials/matHitSparkPunch.mat
 - Assets/HenryAssets/VFX/Materials/matSwingEffect.mat
+- Assets/HenryAssets/VFX/Fulmination/ElectricityStream.prefab
 - Assets/HenryAssets/VFX/Fulmination/Electricity.prefab
 - Assets/HenryAssets/VFX/Fulmination/ElectricitySphere.prefab
 - Assets/HenryAssets/Mesh/meshHenrySword.mesh
@@ -265,6 +265,7 @@ Assets:
 - Assets/HenryAssets/Icons/texGrandMasteryAchievement.png
 - Assets/HenryAssets/Animations/maskBandana.mask
 - Assets/HenryAssets/Animations/MenuIdle.anim
+- Assets/HenryAssets/VFX/Fulmination/MageFlamethrowerEffect.prefab
 - Assets/HenryAssets/Materials/matBazooka.mat
 - Assets/HenryAssets/VFX/HenrySwordSwingEffect.prefab
 - Assets/HenryAssets/Animations/Descend.anim

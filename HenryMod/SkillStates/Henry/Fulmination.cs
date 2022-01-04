@@ -125,9 +125,9 @@ namespace HenryMod.SkillStates
 			if (this.stopwatch >= this.entryDuration && !this.hasBegunFlamethrower)
 			{
 				this.hasBegunFlamethrower = true;
-
+	
 				this.fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
-
+		
 
 				this.FireGauntlet();
 			}
@@ -153,10 +153,9 @@ namespace HenryMod.SkillStates
 		{
 			Ray aimRay = base.GetAimRay();
 			Vector3 direction = aimRay.direction;
-			Vector3 direction2 = aimRay.direction;
 			if (fulminationTransform)
 			{
-				fulminationTransform.forward = direction2;
+				fulminationTransform.forward = direction;
 			}
 		}
 

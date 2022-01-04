@@ -116,7 +116,7 @@ namespace HenryMod.Modules
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
 
             //on fulmination skill use
-            electricStreamEffect = LoadEffect("Electricity", "HenryBombExplosion");
+            CreateStreamPrefab();
 
             //on boltvehicle exit/enter
             CreateBoltExitPrefab();
@@ -154,6 +154,14 @@ namespace HenryMod.Modules
 
             swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
+        }
+
+        private static void CreateStreamPrefab()
+        {
+            electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");
+            electricStreamEffect.AddComponent<NetworkIdentity>();
+
+
         }
 
         private static void CreateBoltExitPrefab()

@@ -15,12 +15,13 @@ namespace HenryMod.SkillStates
 	public class BoltVehicle : MonoBehaviour, ICameraStateProvider
 	{
 		[Header("Vehicle Parameters")]
-		public float duration = 2.5f;
+		public float duration = 2f;
 		public float initialSpeed = 50f;
 		public float targetSpeed = 50f;
 		public float acceleration = 1000f;
 		public float cameraLerpTime = .25f;
 		public GameObject enterEffectPrefab;
+		public string enterSoundString;
 		public bool exitAllowed;
 
 		[Header("Blast Parameters")]
@@ -37,7 +38,7 @@ namespace HenryMod.SkillStates
 		public float overlapFireFrequency = 30f;
 		public float overlapResetFrequency = 1f;
 		public float overlapVehicleDurationBonusPerHit;
-		public GameObject overlapHitEffectPrefab;
+		public GameObject overlapHitEffectPrefab = Modules.Assets.electricImpactEffect;
 
 		[Header("Misc. Variables")]
 		private float age;
@@ -98,14 +99,15 @@ namespace HenryMod.SkillStates
 				return;
 			}
 			
+			//code for enter effect/sound
 			EffectData enterEffectData = new EffectData
 			{
 				origin = vehicleSeat.currentPassengerBody.corePosition,
 				scale = 10f
 			};
-			enterEffectPrefab = Modules.Assets.boltEnterEffect;
-
+			enterEffectPrefab = Modules.Assets.boltExitEffect;
 			EffectManager.SpawnEffect(enterEffectPrefab, enterEffectData, true);
+			Util.PlaySound(enterSoundString, base.gameObject);
 
 			//moves vehicle in direction of player's aim direction at previously set speed
 			Vector3 aimDirection = vehicleSeat.currentPassengerInputBank.aimDirection;
@@ -135,11 +137,8 @@ namespace HenryMod.SkillStates
 			};
 			overlapAttack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
 
-		
-
-
 			//adjusts camera on boltstate entry; will adjust later to make camera transition smoother
-			foreach (CameraRigController cameraRigController in CameraRigController.readOnlyInstancesList)
+			/*foreach (CameraRigController cameraRigController in CameraRigController.readOnlyInstancesList)
 			{
 				if (cameraRigController.target == passenger)
 				{
@@ -147,7 +146,7 @@ namespace HenryMod.SkillStates
 					cameraRigController.SetOverrideCam(this, 0f);
 					cameraRigController.SetOverrideCam(null, this.cameraLerpTime);
 				}
-			}
+			} */
 		}
 
 		//destroys gameobject and reverts player back to normal state
