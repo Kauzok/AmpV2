@@ -11,7 +11,8 @@ namespace HenryMod.SkillStates
 	public class Bolt : BaseSkillState
 	{
 		private float duration;
-		private float delay = 1f;
+		private float delay = .2f;
+		public GameObject boltObject;
 
 		//copied volcanic egg code
 		public override void OnEnter()
@@ -23,19 +24,19 @@ namespace HenryMod.SkillStates
 			Ray aimRay = this.GetAimRay();
 
 			//instantiate bolt prefab to be used in tandem with boltvehicle class
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("BoltVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+			boltObject = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("BoltVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			//adds boltvehicle to the bolt prefab and assigns character to bolt prefab's vehicle seat, finalizing the gameobject that will act as the primary enactor of the bolt skill
-			gameObject.AddComponent<BoltVehicle>();
-			Destroy(gameObject.GetComponent<CameraTargetParams>());
-			gameObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
-			gameObject.AddComponent<HitBox>();
+			boltObject.AddComponent<BoltVehicle>();
+			Destroy(boltObject.GetComponent<CameraTargetParams>());
+			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
+			boltObject.AddComponent<HitBox>();
 
             //declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
             //GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
             //sets duration of skill equal to what it's set to in boltvehicle
-            duration = gameObject.GetComponent<BoltVehicle>().duration;
+            duration = boltObject.GetComponent<BoltVehicle>().duration;
 
 
             //not sure what this does, think it's something with making it work with multiplayer but since i just copy pasted from volcanic egg for this part it's anyone's guess
@@ -75,25 +76,29 @@ namespace HenryMod.SkillStates
 
 
         //basic fixedupdate override, you know the drill
-        //need to figure out what to add in order to make the skill switch states only if detonateserver is called so cooldown will only start after
+        //makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
         public override void FixedUpdate()
 		{
 
 			base.FixedUpdate();
 
-			if (fixedAge >= delay)
-			{
-
-			}
-
-
-			if (fixedAge >= duration && isAuthority)
-			{
-				this.outer.SetNextStateToMain();
+			if (fixedAge > delay)
+            {
+				//makes skill cancel if they hit the button again
+				if (base.inputBank.skill3.justPressed)
+				{
+					boltObject.GetComponent<BoltVehicle>().DetonateServer();
+					this.outer.SetNextStateToMain();
+				}
 				
-				return;
-
 			}
+		
+
+			if (!boltObject)
+            {
+				this.outer.SetNextStateToMain();
+            }
+	
 
 			
 

@@ -6,7 +6,7 @@ using HenryMod.SkillStates.Henry;
 
 namespace HenryMod.SkillStates
 {
-	// Token: 0x02000B11 RID: 2833
+	
 	public class VoltaicBombardmentAim : BaseLightningAim
 	{
         private GameObject chargeEffect;
