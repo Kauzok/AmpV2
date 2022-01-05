@@ -3,7 +3,7 @@
 
 ## Skills To Do
 - Stormblade
-  - Animations and the like
+  - Animations, SFX and the like
 - Ferroshot
   - Add SFX for spike spawn/launch
   - Reduce range
