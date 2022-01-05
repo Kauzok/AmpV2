@@ -20,6 +20,8 @@ namespace HenryMod.SkillStates
 
 		public EffectData fulminationData;
 
+		public static float delayTime = .2f;
+
 		public static float baseEntryDuration = .5f;
 
 		public static float baseFulminationDuration = 4f;
@@ -141,9 +143,19 @@ namespace HenryMod.SkillStates
 				}
 				this.UpdateFulminationEffect();
 			}
+
+			//lets player cancel ability by pressing key again; weird error showed up when i added this, so check this out if fulmination exhibits any strange behavior
+			if (fixedAge > delayTime)
+            {
+				if (base.inputBank.skill4.justPressed && base.isAuthority)
+                {
+					this.outer.SetNextStateToMain();
+                }
+            }
+
 			if (this.stopwatch >= this.fulminationDuration + this.entryDuration && base.isAuthority)
 			{
-				this.outer.SetNextStateToMain();
+				this.outer.SetNextStateToMain();  
 				return;
 			}
 		}

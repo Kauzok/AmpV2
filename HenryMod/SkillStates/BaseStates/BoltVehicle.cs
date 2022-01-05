@@ -124,6 +124,7 @@ namespace HenryMod.SkillStates
 			{
 				attacker = currentPassengerBody.gameObject,
 				damage = overlapDamageCoefficient * currentPassengerBody.damage,
+				damageType = DamageType.Stun1s,
 				pushAwayForce = overlapForce,
 				isCrit = currentPassengerBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,

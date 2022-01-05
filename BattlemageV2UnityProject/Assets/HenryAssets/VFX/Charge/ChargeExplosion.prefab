@@ -29,8 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 13, y: 13, z: 13}
   m_Children:
-  - {fileID: 5472328514582891}
-  - {fileID: 357570879744608424}
+  - {fileID: 5441722290220383559}
+  - {fileID: 1628752917239363700}
   - {fileID: 1624926933425963240}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5056,7 +5056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923e9eee481689c4196336cc8cc22b9b, type: 3}
---- !u!4 &5472328514582891 stripped
+--- !u!4 &5441722290220383559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7417304331100669363, guid: 923e9eee481689c4196336cc8cc22b9b,
     type: 3}
@@ -5156,7 +5156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bd62b964de2a9d4582461ae4946b3a9, type: 3}
---- !u!4 &357570879744608424 stripped
+--- !u!4 &1628752917239363700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4675719290678593798, guid: 8bd62b964de2a9d4582461ae4946b3a9,
     type: 3}
