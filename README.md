@@ -1,9 +1,9 @@
 ## Battlemage
-- WIP Battlemage, a melee/range hybrid who fights with electromagnetic attacks. Updated to new HenryMod template.
+- WIP Battlemage, a melee/range hybrid who fights with electromagnetic attacks. Updated to new HenryMod template. New name Amp, will change name tokens later.
 
 ## Skills To Do
 - Stormblade
-  - Animations and the like
+  - Animations, SFX and the like
 - Ferroshot
   - Add SFX for spike spawn/launch
   - Reduce range
@@ -25,6 +25,7 @@
 - Character Model
 - Character Model Animations
 - Skill Icons
+- If I can get my hands on the material hopoo uses for the artificer's lightning effects i will be so happy god please
 
 ## Changelog
 `0.0.1`
