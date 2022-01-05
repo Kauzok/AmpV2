@@ -9,7 +9,6 @@
   - Reduce range
 - Bolt
   - Add SFX for entry/state/exit
-  - Adjust VFX for entry
   - Make sure effect for multiplayer is still good
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
