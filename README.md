@@ -1,5 +1,5 @@
 ## Battlemage
-- WIP Battlemage, a melee/range hybrid who fights with electromagnetic attacks. Updated to new HenryMod template.
+- WIP Battlemage, a melee/range hybrid who fights with electromagnetic attacks. Updated to new HenryMod template. New name Amp, will change name tokens later.
 
 ## Skills To Do
 - Stormblade
