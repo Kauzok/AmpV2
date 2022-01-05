@@ -8,13 +8,13 @@ namespace HenryMod.Modules
 
         public const string characterName = "Battlemage";
         public const string characterSubtitle = "Electromagnetic Warrior";
-        public const string characterOutro = "..and so he left, with an unquestionable freedom.";
-        public const string characterOutroFailure = "..and so he vanished, imprisoned for eternity.";
+        public const string characterOutro = "..and so he left, with an undeniable freedom.";
+        public const string characterOutroFailure = "..and so he vanished, a slave for eternity.";
 
 
         internal static string descriptionText = "The Battlemage is a melee/range hybrid that focuses on consistently dealing damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Stormblade is good at paralyzing enemies for easy damage, but keep in mind you can only paralyze so many enemies at once." + Environment.NewLine + Environment.NewLine
-             + "< ! > Lorentz Cannon can be used as either a source of even more damage while using Stormblade, or for continuing to apply damage even outside of melee range." + Environment.NewLine + Environment.NewLine
+             + "< ! > Lorentz Cannon can be used as either a source of extra damage while using Stormblade, or for continuing to apply damage even outside of melee range." + Environment.NewLine + Environment.NewLine
              + "< ! > Bolt's movement speed and invulnerability make it a great ability for entering and exiting close-ranged combat." + Environment.NewLine + Environment.NewLine
              + "< ! > Fulmination and Voltaic Bombardment are great for dealing damage to many enemies at once, or melting a single strong enemy." + Environment.NewLine + Environment.NewLine;
         
@@ -22,7 +22,7 @@ namespace HenryMod.Modules
         
         internal const float swordDamageCoefficient = 2f;
 
-        internal const float stormbladeChargeProcCoefficient = 25f;
+        internal const float stormbladeChargeProcCoefficient = 20f;
 
         internal const float gunDamageCoefficient = 4.2f;
 
@@ -34,7 +34,7 @@ namespace HenryMod.Modules
 
         internal const float fulminationTotalDamageCoefficient = 20f;
 
-        internal const float fulminationChargeProcCoefficient = 20f;
+        internal const float fulminationChargeProcCoefficient = 25f;
 
         internal const int chargeMaxStacks = 3;
 

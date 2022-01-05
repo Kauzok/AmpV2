@@ -9,6 +9,7 @@ using EntityStates;
 using UnityEngine;
 using HenryMod.SkillStates;
 using RoR2.Orbs;
+using HenryMod.Modules;
 using System.Collections.Generic;
 using HenryMod.SkillStates.BaseStates;
 
@@ -182,17 +183,18 @@ namespace HenryMod
                     //if body has more than 3 stacks of charge, make new blastattack with effect
                     if (chargeCount >= 3)
                     {
-
+                        Transform transform2;
                         GameObject chargeExplosion;
+                        GameObject chargeExplosion2;
                         EffectData effectData = new EffectData
                         {
                             origin = self.corePosition,
-                            scale = 5f
+                            scale = 1f,
                         };
                         //declare and spawn charge explosion effect
-                        chargeExplosion = Modules.Assets.chargeExplosionEffect;
-
-                        //EffectManager.SpawnEffect(chargeExplosion, effectData, true); 
+                        chargeExplosion = Assets.chargeExplosionEffect;
+                     
+                        EffectManager.SpawnEffect(chargeExplosion, effectData, true); 
 
                         //creates charge explosion centered at the body with the debuff
                             new BlastAttack
@@ -209,7 +211,7 @@ namespace HenryMod
                                 position = self.corePosition,
                                 procChainMask = default(ProcChainMask),
                                 procCoefficient = 1f,
-                                radius = 13f,
+                                radius = 7f,
                                 teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
                             }.Fire();
                        

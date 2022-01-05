@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 611390397
+CRC: 2214078236
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: abc19014cc58939bc2a858b08555f138
+    Hash: ec3e8352c3784933f99a4f97c8e3987f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 193bb9fb1ec437ad9e97578dc80637a0
@@ -170,6 +170,7 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texFistSwing.png
 - Assets/HenryAssets/VFX/Bolt/MatBoltEnter.mat
 - Assets/HenryAssets/Animations/LightImpact.anim
+- Assets/HenryAssets/VFX/Charge/Flash, Blue Variant.prefab
 - Assets/HenryAssets/Model.prefab
 - Assets/HenryAssets/Icons/texHenryAchievement.png
 - Assets/HenryAssets/Animations/WalkB.anim
@@ -191,14 +192,18 @@ Assets:
 - Assets/HenryAssets/Spike.prefab
 - Assets/HenryAssets/VFX/BombExplosionEffect.prefab
 - Assets/HenryAssets/Animations/Slash2.anim
+- Assets/HenryAssets/VFX/Charge/Test.mat
 - Assets/HenryAssets/Mesh/meshYamato.mesh
 - Assets/HenryAssets/VFX/Textures/texDust.png
+- Assets/HenryAssets/VFX/Charge/Test2.mat
 - Assets/HenryAssets/VFX/Textures/texHitSpark.png
+- Assets/HenryAssets/VFX/Charge/7UCQFmH.png
 - Assets/HenryAssets/Materials/matBoxingGlove.mat
 - Assets/HenryAssets/Materials/matHenryAlt.mat
 - Assets/HenryAssets/Animations/WalkF.anim
 - Assets/HenryAssets/VFX/Materials/matPunchImpactShadow.mat
 - Assets/HenryAssets/Materials/matDante.mat
+- Assets/HenryAssets/VFX/Charge/Flash, Directional 1.prefab
 - Assets/HenryAssets/VFX/Ferroshot/Spike Spawn.prefab
 - Assets/HenryAssets/VFX/Bolt/AssassinDaggerMesh.asset
 - Assets/HenryAssets/Animations/maskLeftArm.mask
@@ -208,6 +213,7 @@ Assets:
 - Assets/HenryAssets/HenryBazookaRocketGhost.prefab
 - Assets/HenryAssets/Icons/texScepterSpecialIcon.png
 - Assets/HenryAssets/VFX/Materials/matFistSwing.mat
+- Assets/HenryAssets/VFX/Charge/ChargeExplosion.prefab
 - Assets/HenryAssets/Mesh/meshDante.mesh
 - Assets/HenryAssets/VFX/Materials/matTrail.mat
 - Assets/HenryAssets/Materials/matHenryJedi.mat
@@ -217,11 +223,13 @@ Assets:
 - Assets/HenryAssets/Animations/ShootGun.anim
 - Assets/HenryAssets/Animations/SprintF.anim
 - Assets/HenryAssets/Mesh/meshHenrySwordAlt.mesh
+- Assets/HenryAssets/VFX/Charge/lOfYSnE.png
 - Assets/HenryAssets/Textures/texHenry.png
 - Assets/HenryAssets/Icons/texBazookaOutIcon.png
 - Assets/HenryAssets/Animations/maskAimPitch.mask
 - Assets/HenryAssets/Icons/texUziIcon.png
 - Assets/HenryAssets/VFX/Bolt/texLightning1Mask.asset
+- Assets/HenryAssets/VFX/Charge/Mat.png
 - Assets/HenryAssets/VFX/Bolt/texLightning2Mask.asset
 - Assets/HenryAssets/Materials/matHenryNeo.mat
 - Assets/HenryAssets/VFX/Mesh/meshPunchShockwave.mesh
@@ -267,6 +275,7 @@ Assets:
 - Assets/HenryAssets/Textures/texHenryVergil.png
 - Assets/HenryAssets/Mesh/meshUzi.mesh
 - Assets/HenryAssets/VFX/Materials/matSlash.mat
+- Assets/HenryAssets/VFX/Charge/ChargeExplosion 1.prefab
 - Assets/HenryAssets/Icons/texPistolIcon.png
 - Assets/HenryAssets/VFX/Materials/matDust.mat
 - Assets/HenryAssets/VFX/Textures/texSmoke.png
@@ -290,13 +299,18 @@ Assets:
 - Assets/HenryAssets/Animations/maskBandana.mask
 - Assets/HenryAssets/Animations/MenuIdle.anim
 - Assets/HenryAssets/VFX/Fulmination/MageFlamethrowerEffect.prefab
+- Assets/HenryAssets/VFX/Charge/MageLightningBombExplosion 1.prefab
 - Assets/HenryAssets/Materials/matBazooka.mat
 - Assets/HenryAssets/VFX/HenrySwordSwingEffect.prefab
 - Assets/HenryAssets/Animations/Descend.anim
 - Assets/HenryAssets/Textures/texHenryDante.png
+- Assets/HenryAssets/VFX/Charge/AlphaSelfIllum.shader
+- Assets/HenryAssets/VFX/Charge/New Material.mat
 - Assets/HenryAssets/VFX/ElectricExplosion.prefab
 - Assets/HenryAssets/VFX/Bolt/Lightning.prefab
 - Assets/HenryAssets/Animations/AimPitch.anim
+- Assets/HenryAssets/VFX/Charge/Matrix, Dynamic 1.prefab
+- Assets/HenryAssets/VFX/Charge/ChargeExplosionObject.prefab
 - Assets/HenryAssets/VFX/Textures/texSlash.png
 - Assets/HenryAssets/Icons/texSpecialIcon.png
 - Assets/HenryAssets/Textures/texHenryDanteEmission.png

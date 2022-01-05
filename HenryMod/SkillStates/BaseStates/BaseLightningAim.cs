@@ -20,7 +20,6 @@ namespace HenryMod.SkillStates
             public string chargeSoundString;
             public GameObject crosshairOverridePrefab;
             public float lightningRadius = .2f;
-
             private GameObject defaultCrosshairPrefab;
             private uint loopSoundInstanceId;
 

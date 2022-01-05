@@ -112,6 +112,9 @@ namespace HenryMod.Modules
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
+            //on charge explosion when 3 procs are reached
+            CreateChargePrefab();
+
             //on fulmination skill chain
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
 
@@ -122,8 +125,7 @@ namespace HenryMod.Modules
             CreateBoltExitPrefab();
             CreateBoltEnterPrefab();
 
-            //on ferroshot/
-            //skill prep
+            //on ferroshot/Lorentz Cannon skill prep
             bulletSpawnEffect = LoadEffect("Spike Spawn");
 
             //on ferroshot/Lorentz Cannon spike collision
@@ -156,11 +158,24 @@ namespace HenryMod.Modules
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }
 
+        private static void CreateChargePrefab()
+        {
+           chargeExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("ChargeExplosion");
+           chargeExplosionEffect.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
+            chargeExplosionEffect.AddComponent<VFXAttributes>();
+            chargeExplosionEffect.AddComponent<EffectComponent>();
+            chargeExplosionEffect.AddComponent<NetworkIdentity>();
+
+            EffectAPI.AddEffect(chargeExplosionEffect);
+
+
+
+        }
+
         private static void CreateStreamPrefab()
         {
             electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");
             electricStreamEffect.AddComponent<NetworkIdentity>();
-
 
         }
 
@@ -169,8 +184,6 @@ namespace HenryMod.Modules
             //electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
             boltExitEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion"), "boltExitEffect", true);
             boltExitEffect.AddComponent<NetworkIdentity>();
-            boltExitEffect.AddComponent<EffectComponent>();
-
 
             EffectAPI.AddEffect(boltExitEffect);
         }

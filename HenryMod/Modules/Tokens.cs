@@ -30,7 +30,7 @@ namespace HenryMod.Modules
 
             #region Primary
             LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Stormblade");
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.swordDamageCoefficient}% damage</style>. Strikes have a <style=cIsDamage>{StaticValues.stormbladeChargeProcCoefficient}%</style> chance of applying charge");
+            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.swordDamageCoefficient}% damage</style>. Strikes have a <style=cIsDamage>{StaticValues.stormbladeChargeProcCoefficient}%</style> chance of applying charge.");
             #endregion
 
             #region Secondary

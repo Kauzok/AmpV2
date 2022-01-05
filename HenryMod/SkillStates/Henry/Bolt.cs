@@ -14,7 +14,6 @@ namespace HenryMod.SkillStates
 		private float delay = .2f;
 		public GameObject boltObject;
 
-		//copied volcanic egg code
 		public override void OnEnter()
 		{
 
@@ -64,11 +63,11 @@ namespace HenryMod.SkillStates
 				NetworkUser networkUser2 = networkUser;
 				if (networkUser2)
 				{
-					NetworkServer.SpawnWithClientAuthority(gameObject, networkUser2.gameObject);
+					NetworkServer.SpawnWithClientAuthority(boltObject, networkUser2.gameObject);
 				}
 				else
 				{
-					NetworkServer.Spawn(gameObject);
+					NetworkServer.Spawn(boltObject);
 				}
             #endregion
 
@@ -93,7 +92,7 @@ namespace HenryMod.SkillStates
 				
 			}
 		
-
+			//exit if boltobject is destroyed
 			if (!boltObject)
             {
 				this.outer.SetNextStateToMain();
