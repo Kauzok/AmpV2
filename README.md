@@ -25,6 +25,7 @@
 - Character Model
 - Character Model Animations
 - Skill Icons
+- If I can get my hands on the material hopoo uses for the mage's lightning effects i will be so happy god please
 
 ## Changelog
 `0.0.1`
