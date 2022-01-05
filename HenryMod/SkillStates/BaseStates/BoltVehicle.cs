@@ -27,7 +27,7 @@ namespace HenryMod.SkillStates
 		[Header("Blast Parameters")]
 		public bool detonateOnCollision;
 		public GameObject exitEffectPrefab;
-		public string explosionSoundString;
+		public string exitSoundString = "Play_mage_m2_impact_elec_v2_02";
 		public float blastRadius = 1f;
 		private BlastAttack boltBlast;
 
@@ -105,7 +105,7 @@ namespace HenryMod.SkillStates
 				origin = vehicleSeat.currentPassengerBody.corePosition,
 				scale = 10f
 			};
-			enterEffectPrefab = Modules.Assets.boltExitEffect;
+			enterEffectPrefab = Modules.Assets.boltEnterEffect;
 			EffectManager.SpawnEffect(enterEffectPrefab, enterEffectData, true);
 			Util.PlaySound(enterSoundString, base.gameObject);
 
@@ -197,7 +197,7 @@ namespace HenryMod.SkillStates
 			boltBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
 			boltBlast.Fire();
 
-			Util.PlaySound(explosionSoundString, base.gameObject);
+			Util.PlaySound(exitSoundString, base.gameObject);
 			UnityEngine.Object.Destroy(base.gameObject);
 			
 		}

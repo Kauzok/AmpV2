@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3120513889
+CRC: 1345964823
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3faed632fd21144b226ade6054a8d7a0
+    Hash: e92df459ffd2fef9c690b17cb31e6752
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 7d8d3eedc0f67f96468b84a8369f9d65
+    Hash: 193bb9fb1ec437ad9e97578dc80637a0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -69,6 +69,10 @@ ClassTypes:
   Script: {fileID: 1783796254, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1294804675, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 296141222, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 2011550347, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1711895128, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
@@ -140,27 +144,36 @@ Assets:
 - Assets/HenryAssets/Animations/SprintL.anim
 - Assets/HenryAssets/Materials/matRebellion.mat
 - Assets/HenryAssets/VFX/Materials/matSmoke.mat
+- Assets/HenryAssets/VFX/Bolt/BoltEnter.prefab
+- Assets/HenryAssets/VFX/Bolt/texLightning3Mask.asset
 - Assets/HenryAssets/VFX/Textures/texSwingEffect.png
 - Assets/HenryAssets/Textures/texBoxingGlove.png
 - Assets/HenryAssets/Animations/maskAimYaw.mask
 - Assets/HenryAssets/Icons/texDanteAchievement.png
 - Assets/HenryAssets/Icons/texSecondaryIcon.png
 - Assets/HenryAssets/Animations/animHenry.controller
+- Assets/HenryAssets/VFX/Bolt/texMageMatrixMaskDirectional.asset
+- Assets/HenryAssets/VFX/Bolt/texMageMatrixMask.asset
 - Assets/HenryAssets/VFX/Fulmination/ElectricityChain.prefab
 - Assets/HenryAssets/VFX/Materials/matHenrySwing2.mat
 - Assets/HenryAssets/Textures/texBazooka.png
 - Assets/HenryAssets/VFX/Textures/texRipple.png
 - Assets/HenryAssets/VFX/ImpactHenrySlash.prefab
+- Assets/HenryAssets/VFX/Bolt/PlasmaExplosionEffect 1.prefab
 - Assets/HenryAssets/VFX/Mesh/meshSwing.asset
+- Assets/HenryAssets/VFX/Bolt/IceRingGemstoneMesh.asset
 - Assets/HenryAssets/BoltVehicle 1.prefab
 - Assets/HenryAssets/VFX/HenryBazookaMuzzleFlash.prefab
 - Assets/HenryAssets/VFX/HenryFistSwingEffect.prefab
+- Assets/HenryAssets/VFX/Bolt/Flash, Blue.prefab
 - Assets/HenryAssets/Mesh/meshVergil.mesh
 - Assets/HenryAssets/VFX/Textures/texFistSwing.png
+- Assets/HenryAssets/VFX/Bolt/MatBoltEnter.mat
 - Assets/HenryAssets/Animations/LightImpact.anim
 - Assets/HenryAssets/Model.prefab
 - Assets/HenryAssets/Icons/texHenryAchievement.png
 - Assets/HenryAssets/Animations/WalkB.anim
+- Assets/HenryAssets/VFX/Bolt/whiteflash.png
 - Assets/HenryAssets/Mesh/donut5Mesh.asset
 - Assets/HenryAssets/BoltVehicle.prefab
 - Assets/HenryAssets/Animations/maskGesture.mask
@@ -171,6 +184,7 @@ Assets:
 - Assets/HenryAssets/Animations/animHenryMenu.controller
 - Assets/HenryAssets/Icons/texVergilAchievement.png
 - Assets/HenryAssets/Textures/texShotgun.png
+- Assets/HenryAssets/VFX/Bolt/MageLightningBombExplosion.prefab
 - Assets/HenryAssets/Animations/WalkL.anim
 - Assets/HenryAssets/Animations/maskImpact.mask
 - Assets/HenryAssets/Animations/Idle.anim
@@ -186,8 +200,10 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matPunchImpactShadow.mat
 - Assets/HenryAssets/Materials/matDante.mat
 - Assets/HenryAssets/VFX/Ferroshot/Spike Spawn.prefab
+- Assets/HenryAssets/VFX/Bolt/AssassinDaggerMesh.asset
 - Assets/HenryAssets/Animations/maskLeftArm.mask
 - Assets/HenryAssets/Mesh/MeshHenryGun.mesh
+- Assets/HenryAssets/VFX/Bolt/texMageLaserMask.asset
 - Assets/HenryAssets/Animations/DescendFast.anim
 - Assets/HenryAssets/HenryBazookaRocketGhost.prefab
 - Assets/HenryAssets/Icons/texScepterSpecialIcon.png
@@ -205,6 +221,8 @@ Assets:
 - Assets/HenryAssets/Icons/texBazookaOutIcon.png
 - Assets/HenryAssets/Animations/maskAimPitch.mask
 - Assets/HenryAssets/Icons/texUziIcon.png
+- Assets/HenryAssets/VFX/Bolt/texLightning1Mask.asset
+- Assets/HenryAssets/VFX/Bolt/texLightning2Mask.asset
 - Assets/HenryAssets/Materials/matHenryNeo.mat
 - Assets/HenryAssets/VFX/Mesh/meshPunchShockwave.mesh
 - Assets/HenryAssets/Materials/matRoy.mat
@@ -237,12 +255,15 @@ Assets:
 - Assets/HenryAssets/VFX/Fulmination/ElectricityStream.prefab
 - Assets/HenryAssets/VFX/Fulmination/Electricity.prefab
 - Assets/HenryAssets/VFX/Fulmination/ElectricitySphere.prefab
+- Assets/HenryAssets/VFX/Bolt/RebarMesh.asset
+- Assets/HenryAssets/VFX/Bolt/VultureWingFeatherMesh.asset
 - Assets/HenryAssets/Mesh/meshHenrySword.mesh
 - Assets/HenryAssets/VFX/Materials/matEmbers.mat
 - Assets/HenryAssets/Animations/AimYaw.anim
 - Assets/HenryAssets/HenryBombGhost.prefab
 - Assets/HenryAssets/Mesh/meshPistol.mesh
 - Assets/HenryAssets/Icons/texStingerIcon.png
+- Assets/HenryAssets/VFX/Bolt/MatBoltEffect.mat
 - Assets/HenryAssets/Textures/texHenryVergil.png
 - Assets/HenryAssets/Mesh/meshUzi.mesh
 - Assets/HenryAssets/VFX/Materials/matSlash.mat
@@ -252,12 +273,15 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texEmbers.png
 - Assets/HenryAssets/Mesh/meshVergilCoat.mesh
 - Assets/HenryAssets/VFX/Textures/texLightning.tif
+- Assets/HenryAssets/VFX/Bolt/MegaTeleporterProngMesh.asset
 - Assets/HenryAssets/Animations/RestIdleIn.anim
 - Assets/HenryAssets/VFX/Materials/matRipple.mat
 - Assets/HenryAssets/texLightning1Mask.asset
 - Assets/HenryAssets/Animations/DefaultPose.anim
 - Assets/HenryAssets/Materials/matShotgun.mat
+- Assets/HenryAssets/VFX/Bolt/Test.mat
 - Assets/HenryAssets/TeleportOutBoom.prefab
+- Assets/HenryAssets/VFX/Bolt/texLightningStrikeOnHit.asset
 - Assets/HenryAssets/Animations/IdleAdditive.anim
 - Assets/HenryAssets/Trail21.mat
 - Assets/HenryAssets/Icons/texBazookaFireIcon.png
@@ -271,6 +295,7 @@ Assets:
 - Assets/HenryAssets/Animations/Descend.anim
 - Assets/HenryAssets/Textures/texHenryDante.png
 - Assets/HenryAssets/VFX/ElectricExplosion.prefab
+- Assets/HenryAssets/VFX/Bolt/Lightning.prefab
 - Assets/HenryAssets/Animations/AimPitch.anim
 - Assets/HenryAssets/VFX/Textures/texSlash.png
 - Assets/HenryAssets/Icons/texSpecialIcon.png

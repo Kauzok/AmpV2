@@ -22,7 +22,7 @@ namespace HenryMod.Modules
         
         internal const float swordDamageCoefficient = 2f;
 
-        internal const float stormbladeChargeProcCoefficient = 20f;
+        internal const float stormbladeChargeProcCoefficient = 25f;
 
         internal const float gunDamageCoefficient = 4.2f;
 
@@ -34,7 +34,7 @@ namespace HenryMod.Modules
 
         internal const float fulminationTotalDamageCoefficient = 20f;
 
-        internal const float fulminationChargeProcCoefficient = 15f;
+        internal const float fulminationChargeProcCoefficient = 20f;
 
         internal const int chargeMaxStacks = 3;
 

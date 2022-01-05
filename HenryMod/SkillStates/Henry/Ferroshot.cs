@@ -100,7 +100,9 @@ namespace HenryMod.SkillStates
             {
                 Ray aimRay;
                 this.hasFired = true;
-                Util.PlaySound("HenryBombThrow", base.gameObject);
+                Util.PlaySound("Play_mage_m2_impact_elec_v2_02", base.gameObject);
+                
+
                 if (base.isAuthority)
                 {
                     // Calculate the angle between each bullet

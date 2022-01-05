@@ -178,9 +178,10 @@ namespace HenryMod.Modules
 
         private static void CreateBoltEnterPrefab()
         {
-            boltEnterEffect = mainAssetBundle.LoadAsset<GameObject>("BoltEnterEffect");
+            boltEnterEffect = mainAssetBundle.LoadAsset<GameObject>("BoltEnter");
             boltEnterEffect.AddComponent<NetworkIdentity>();
             boltEnterEffect.AddComponent<VFXAttributes>();
+            boltEnterEffect.AddComponent<EffectComponent>();
 
             EffectAPI.AddEffect(boltEnterEffect);
 
