@@ -3,7 +3,8 @@
 
 ## Skills To Do
 - Stormblade
-  - Animations, SFX and the like
+  - Animations and the like
+  - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
 - Ferroshot
   - Make spike prep SFX cancel on fire
   - Reduce range
