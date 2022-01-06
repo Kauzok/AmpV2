@@ -5,20 +5,20 @@
 - Stormblade
   - Animations, SFX and the like
 - Ferroshot
-  - Add SFX for spike spawn/launch
+  - Make spike prep SFX cancel on fire
   - Reduce range
 - Bolt
-  - Add SFX for entry/state/exit
+  - Adjust sfx for state
   - Make sure effect for multiplayer is still good
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
   - Fix chain effect
-  - Add SFX
+  - Adjust exit state SFX
   - Adjust position of VFX
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
 - Charge Passive
-  - Add SFX
+  - Adjust SFX, figure out how to make it play consistently
  ## Other To-Do
 - Cleanup code base, finish comments
 - Fix name tokens
