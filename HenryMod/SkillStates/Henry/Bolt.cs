@@ -13,6 +13,8 @@ namespace HenryMod.SkillStates
 		private float duration;
 		private float delay = .2f;
 		public GameObject boltObject;
+		
+		
 
 		public override void OnEnter()
 		{
@@ -33,9 +35,6 @@ namespace HenryMod.SkillStates
 
             //declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
             //GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
-
-            //sets duration of skill equal to what it's set to in boltvehicle
-            duration = boltObject.GetComponent<BoltVehicle>().duration;
 
 
             //not sure what this does, think it's something with making it work with multiplayer but since i just copy pasted from volcanic egg for this part it's anyone's guess

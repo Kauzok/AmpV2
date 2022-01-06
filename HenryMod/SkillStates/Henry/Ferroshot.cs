@@ -19,6 +19,11 @@ namespace HenryMod.SkillStates
         public static float launchForce = 150f;
         private static int numOfBullets = 6;
 
+        //soundbank items
+        private string launchString = Modules.StaticValues.ferroshotLaunchAlterString;
+        private string prepString = Modules.StaticValues.ferroshotPrepAlterString;
+        private uint stopPrepID;
+
         private Animator animator;
 
         public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
@@ -42,10 +47,12 @@ namespace HenryMod.SkillStates
             Ray aimRay = base.GetAimRay();
 
             base.PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);// 3f * this.duration);
+
         }
 
         public override void OnExit()
         {
+            
             base.OnExit();
         }
 
@@ -100,7 +107,6 @@ namespace HenryMod.SkillStates
             {
                 Ray aimRay;
                 this.hasFired = true;
-                Util.PlaySound("Play_mage_m2_impact_elec_v2_02", base.gameObject);
                 
 
                 if (base.isAuthority)
@@ -112,6 +118,10 @@ namespace HenryMod.SkillStates
                     {
                         // Get current aim ray of the character
                         aimRay = base.GetAimRay();
+
+                        //Play sound, and get ID of last sound to cancel
+                        stopPrepID = Util.PlaySound(prepString, base.gameObject);
+                        
 
                         // Spawn the prefab of the bolt
                         bullets[i] = UnityEngine.Object.Instantiate<GameObject>(
@@ -148,6 +158,8 @@ namespace HenryMod.SkillStates
                         {
                             direction= aimRay.direction;
                         }
+                        //cancel prep sfx
+                        AkSoundEngine.StopPlayingID(stopPrepID);
 
                         // Spawn the projectile at the gameobjects current location
                         ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
@@ -161,9 +173,16 @@ namespace HenryMod.SkillStates
                         null,
                         launchForce);
 
+                        
                         // Destroy bullet after spawning projectile version
                         Destroy(bullets[i]);
+
                     }
+                    //play ferroshot launch effect from soundbank
+                    Util.PlaySound(launchString, base.gameObject);
+                  
+                    
+                    
                 }
             }
         }

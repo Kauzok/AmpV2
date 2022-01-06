@@ -183,9 +183,8 @@ namespace HenryMod
                     //if body has more than 3 stacks of charge, make new blastattack with effect
                     if (chargeCount >= 3)
                     {
-                        Transform transform2;
                         GameObject chargeExplosion;
-                        GameObject chargeExplosion2;
+                     
                         EffectData effectData = new EffectData
                         {
                             origin = self.corePosition,
@@ -193,11 +192,15 @@ namespace HenryMod
                         };
                         //declare and spawn charge explosion effect
                         chargeExplosion = Assets.chargeExplosionEffect;
-                     
-                        EffectManager.SpawnEffect(chargeExplosion, effectData, true); 
+                        
+                       
+
+                        EffectManager.SpawnEffect(chargeExplosion, effectData, true);
+                      
+                        //AkSoundEngine.PostEvent(Modules.StaticValues.chargeExplosionString, self.gameObject);
 
                         //creates charge explosion centered at the body with the debuff
-                            new BlastAttack
+                        new BlastAttack
                             {
                                 attacker = self.gameObject.GetComponent<Tracker>().owner,
                                 baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
@@ -214,9 +217,9 @@ namespace HenryMod
                                 radius = 7f,
                                 teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
                             }.Fire();
-                       
-                           
-                         //removes stacks of charge after explosion
+
+                        
+                        //removes stacks of charge after explosion
                         self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
                       
                         

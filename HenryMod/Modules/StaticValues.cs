@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace HenryMod.Modules
 {
@@ -22,7 +23,7 @@ namespace HenryMod.Modules
         
         internal const float swordDamageCoefficient = 2f;
 
-        internal const float stormbladeChargeProcCoefficient = 20f;
+        internal const float stormbladeChargeProcCoefficient = 100f;
 
         internal const float gunDamageCoefficient = 4.2f;
 
@@ -43,6 +44,35 @@ namespace HenryMod.Modules
         internal const float chargeDamageCoefficient = 4f;
 
         internal const float lightningStrikeCoefficient = 10f;
+
+
+        [Header("Charge Sound Strings")]
+        internal const string chargeExplosionString = "PlayChargeExplosion";
+
+        [Header("Stormblade Sound Strings")]
+        internal const string stormbladeSwing1String = "PlayStormbladeSwing1";
+        internal const string stormbladeSwing2String = "PlayStormbladeSwing2";
+
+        [Header("Ferroshot/Gauss Cannon Sound Strings")]
+        internal const string ferroshotPrepString = "PlayFerroshotCreate";
+        internal const string ferroshotLaunchString = "PlayFerroshotLaunch";
+        internal const string ferroshotLaunchAlterString = "PlayFerroshotLaunchAlter";
+        internal const string ferroshotPrepAlterString = "PlayFerroshotCreateAlter";
+
+        [Header("Bolt Sound Strings")]
+        internal const string boltState2SecString = "PlayBoltState2sec";
+        internal const string boltStateFullString = "PlayBoltStateFull";
+        internal const string boltEnterString = "PlayBoltEnter";
+        internal const string boltExitString = "PlayBoltExit";
+
+        [Header("Fulmination Sound Strings")]
+        internal const string fulminationEnterString = "PlayFulminationEnter";
+        internal const string fulminationStateString = "PlayFulminationState";
+        internal const string fulminationExitString = "PlayFulminationExit";
+        internal const string fulminationExitAlterString = "PlayFulminationExitAlter";
+     
+
+
 
 
 

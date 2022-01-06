@@ -24,7 +24,6 @@ namespace HenryMod.Modules
         [Header("Charge Effects")]
         internal static GameObject chargeExplosionEffect;
 
-
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
         internal static GameObject bulletImpactEffect;
@@ -32,7 +31,7 @@ namespace HenryMod.Modules
         [Header("Bolt Effects")]
         internal static GameObject boltExitEffect;
         internal static GameObject boltEnterEffect;
-
+        
         [Header("Fulmination Effects")]
         internal static GameObject electricStreamEffect;
         internal static GameObject electricImpactEffect;
@@ -44,6 +43,7 @@ namespace HenryMod.Modules
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
+        internal static NetworkSoundEventDef chargeExplosionSound;
 
         // lists of assets to add to contentpack
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
@@ -91,7 +91,16 @@ namespace HenryMod.Modules
                 manifestResourceStream2.Read(array, 0, array.Length);
                 SoundAPI.SoundBanks.Add(array);
             }
+
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("HenryMod.AmpSoundbank.bnk"))
+            {
+                byte[] array = new byte[manifestResourceStream2.Length];
+                manifestResourceStream2.Read(array, 0, array.Length);
+                SoundAPI.SoundBanks.Add(array);
+            }
         }
+
+        
 
         internal static void PopulateAssets()
         {
@@ -103,9 +112,9 @@ namespace HenryMod.Modules
 
             // feel free to delete everything in here and load in your own assets instead
             // it should work fine even if left as is- even if the assets aren't in the bundle
-
-           
             swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
+
+          
 
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 

@@ -18,15 +18,17 @@ namespace HenryMod.SkillStates
 		public float initialSpeed = 50f;
 		public float targetSpeed = 50f;
 		public float acceleration = 1000f;
+		public string stateSoundString = Modules.StaticValues.boltState2SecString;
 		public float cameraLerpTime = .25f;
 		public GameObject enterEffectPrefab;
-		public string enterSoundString;
+		public string enterSoundString = Modules.StaticValues.boltEnterString;
 		public bool exitAllowed;
+		public uint stopID;
 
 		[Header("Blast Parameters")]
 		public bool detonateOnCollision;
 		public GameObject exitEffectPrefab;
-		public string exitSoundString = "Play_mage_m2_impact_elec_v2_02";
+		public string exitSoundString = Modules.StaticValues.boltExitString;
 		public float blastRadius = 1f;
 		private BlastAttack boltBlast;
 
@@ -107,6 +109,7 @@ namespace HenryMod.SkillStates
 			enterEffectPrefab = Modules.Assets.boltEnterEffect;
 			EffectManager.SpawnEffect(enterEffectPrefab, enterEffectData, true);
 			Util.PlaySound(enterSoundString, base.gameObject);
+		
 
 			//moves vehicle in direction of player's aim direction at previously set speed
 			Vector3 aimDirection = vehicleSeat.currentPassengerInputBank.aimDirection;
@@ -147,6 +150,10 @@ namespace HenryMod.SkillStates
 					cameraRigController.SetOverrideCam(null, this.cameraLerpTime);
 				}
 			} */
+
+			//play state sound
+			stopID = Util.PlaySound(stateSoundString, base.gameObject);
+			
 		}
 
 		//destroys gameobject and reverts player back to normal state
@@ -197,7 +204,13 @@ namespace HenryMod.SkillStates
 			boltBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
 			boltBlast.Fire();
 
-			Util.PlaySound(exitSoundString, base.gameObject);
+			//stop state sound
+			AkSoundEngine.StopPlayingID(stopID, 0);
+
+			//play exit sound
+			AkSoundEngine.PostEvent(exitSoundString, base.gameObject);
+			
+			//destroy vehicle
 			UnityEngine.Object.Destroy(base.gameObject);
 			
 		}

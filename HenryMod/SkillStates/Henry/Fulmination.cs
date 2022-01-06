@@ -42,6 +42,14 @@ namespace HenryMod.SkillStates
 
 		public float entryDuration;
 
+		public string enterSoundString = Modules.StaticValues.fulminationEnterString;
+
+		public string attackSoundString = Modules.StaticValues.fulminationStateString;
+
+		public string endSoundString = Modules.StaticValues.fulminationExitAlterString;
+
+		public uint stopSoundID;
+
 		private float fulminationDuration;
 
 		private bool hasBegunFlamethrower;
@@ -61,6 +69,8 @@ namespace HenryMod.SkillStates
 			{
 				base.characterBody.SetAimTimer(this.entryDuration + this.fulminationDuration + 1f);
 			}
+			//play enter sound
+			Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
 
 			//how many times the attack hits
 			float num = this.fulminationDuration * Fulmination.tickFrequency;
@@ -71,7 +81,12 @@ namespace HenryMod.SkillStates
 
 		public override void OnExit()
 		{
+			//remove effect and stop sound
 			EntityState.Destroy(this.fulminationTransform.gameObject);
+			AkSoundEngine.StopPlayingID(stopSoundID, 0);
+
+			//play exit sound
+			Util.PlaySound(endSoundString, base.gameObject);
 
 			base.OnExit();
 		}
@@ -128,8 +143,11 @@ namespace HenryMod.SkillStates
 			{
 				this.hasBegunFlamethrower = true;
 	
+				//instantiate effect as gameobject to transform
 				this.fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
-		
+
+				//play sound and set stopID
+				stopSoundID = Util.PlaySound(attackSoundString, base.gameObject);
 
 				this.FireGauntlet();
 			}
@@ -176,6 +194,8 @@ namespace HenryMod.SkillStates
 		{
 			return InterruptPriority.Skill;
 		}
+
+		
 
 	
 
