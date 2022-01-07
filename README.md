@@ -5,7 +5,7 @@
 - Stormblade
   - Animations and the like
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
-  - Add on hit VFX/SFX
+  - Add on hit VFX
 - Ferroshot
   - Make spike prep SFX cancel on fire
   - Reduce range
