@@ -52,6 +52,10 @@ namespace HenryMod.Modules
         [Header("Stormblade Sound Strings")]
         internal const string stormbladeSwing1String = "PlayStormbladeSwing1";
         internal const string stormbladeSwing2String = "PlayStormbladeSwing2";
+        internal const string stormbladeHit1String = "PlayStormbladeHit1";
+        internal const string stormbladeHit2String = "PlayStormbladeHit2";
+        internal const string stormbladeHit3String = "PlayStormbladeHit3";
+        internal const string stormbladeHit4String = "PlayStormbladeHit4";
 
         [Header("Ferroshot/Gauss Cannon Sound Strings")]
         internal const string ferroshotPrepString = "PlayFerroshotCreate";

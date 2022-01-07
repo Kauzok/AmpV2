@@ -178,7 +178,6 @@ namespace HenryMod.SkillStates
 			}
 		}
 
-		// Token: 0x06003F55 RID: 16213 RVA: 0x000FAA48 File Offset: 0x000F8C48
 		private void UpdateFulminationEffect()
 		{
 			Ray aimRay = base.GetAimRay();

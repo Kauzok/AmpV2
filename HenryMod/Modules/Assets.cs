@@ -44,6 +44,7 @@ namespace HenryMod.Modules
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
         internal static NetworkSoundEventDef chargeExplosionSound;
+        internal static NetworkSoundEventDef stormbladeHitSoundEvent;
 
         // lists of assets to add to contentpack
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
@@ -114,7 +115,7 @@ namespace HenryMod.Modules
             // it should work fine even if left as is- even if the assets aren't in the bundle
             swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
 
-          
+            stormbladeHitSoundEvent = CreateNetworkSoundEventDef(Modules.StaticValues.stormbladeHit4String);
 
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 
