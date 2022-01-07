@@ -15,6 +15,7 @@
 - Fulmination
   - Fix chain effect
   - Adjust position of VFX
+  - Consider looking into fixedupdate NRE (doesnt do anything but might cause unseen issues)
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
 - Charge Passive
