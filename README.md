@@ -10,7 +10,6 @@
   - Make spike prep SFX cancel on fire
   - Reduce range
 - Bolt
-  - Adjust sfx for state
   - Make sure effect for multiplayer is still good
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
