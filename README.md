@@ -15,7 +15,6 @@
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
   - Fix chain effect
-  - Adjust exit state SFX
   - Adjust position of VFX
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
