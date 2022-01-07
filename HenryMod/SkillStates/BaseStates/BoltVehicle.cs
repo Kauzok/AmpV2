@@ -18,7 +18,7 @@ namespace HenryMod.SkillStates
 		public float initialSpeed = 50f;
 		public float targetSpeed = 50f;
 		public float acceleration = 1000f;
-		public string stateSoundString = Modules.StaticValues.boltState2SecString;
+		public string stateSoundString = Modules.StaticValues.boltState2SecWindString;
 		public float cameraLerpTime = .25f;
 		public GameObject enterEffectPrefab;
 		public string enterSoundString = Modules.StaticValues.boltEnterString;
@@ -127,7 +127,6 @@ namespace HenryMod.SkillStates
 			{
 				attacker = currentPassengerBody.gameObject,
 				damage = overlapDamageCoefficient * currentPassengerBody.damage,
-				damageType = DamageType.Stun1s,
 				pushAwayForce = overlapForce,
 				isCrit = currentPassengerBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,
@@ -192,7 +191,7 @@ namespace HenryMod.SkillStates
 				attackerFiltering = AttackerFiltering.NeverHit,
 				crit = currentPassengerBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,
-				damageType = DamageType.Generic,
+				damageType = DamageType.Stun1s,
 				falloffModel = BlastAttack.FalloffModel.Linear,
 				inflictor = base.gameObject,
 				position = base.transform.position,

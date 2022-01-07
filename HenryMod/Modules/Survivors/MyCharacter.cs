@@ -104,7 +104,6 @@ namespace HenryMod.Modules.Survivors
             #region Primary
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_BATTLEMAGE_BODY_PRIMARY_SLASH_NAME", prefix + "_BATTLEMAGE_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
             #endregion
-
             
 
             //creates ferroshot/Lorentz Cannon
@@ -153,7 +152,7 @@ namespace HenryMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+                interruptPriority = EntityStates.InterruptPriority.Vehicle,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
                 mustKeyPress = false,

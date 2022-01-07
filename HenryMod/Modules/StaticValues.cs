@@ -21,9 +21,9 @@ namespace HenryMod.Modules
         
         internal static float boltBlastDamageCoefficient = .2f;
         
-        internal const float swordDamageCoefficient = 2f;
+        internal const float stormbladeDamageCoefficient = 2f;
 
-        internal const float stormbladeChargeProcCoefficient = 100f;
+        internal const float stormbladeChargeProcCoefficient = 20f;
 
         internal const float gunDamageCoefficient = 4.2f;
 
@@ -64,6 +64,8 @@ namespace HenryMod.Modules
         internal const string boltStateFullString = "PlayBoltStateFull";
         internal const string boltEnterString = "PlayBoltEnter";
         internal const string boltExitString = "PlayBoltExit";
+        internal const string boltState2SecWindString = "PlayBoltStateWind";
+        internal const string boltState2SecAlterString = "PlayBoltState2SecAlter";
 
         [Header("Fulmination Sound Strings")]
         internal const string fulminationEnterString = "PlayFulminationEnter";

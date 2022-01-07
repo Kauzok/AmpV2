@@ -72,7 +72,7 @@ namespace HenryMod.SkillStates
 
         }
 
-
+		
         //basic fixedupdate override, you know the drill
         //makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
         public override void FixedUpdate()

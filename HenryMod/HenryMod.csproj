@@ -21,6 +21,9 @@
 
   <ItemGroup>
     <EmbeddedResource Include="AmpSoundbank.bnk" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="HenryBank.bnk" />
     <EmbeddedResource Include="battlemagebundle" />
   </ItemGroup>

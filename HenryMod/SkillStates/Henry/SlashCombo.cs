@@ -16,7 +16,7 @@ namespace HenryMod.SkillStates
             this.hitboxName = "Sword";
 
             this.damageType = DamageType.Generic;
-            this.damageCoefficient = Modules.StaticValues.swordDamageCoefficient;
+            this.damageCoefficient = Modules.StaticValues.stormbladeDamageCoefficient;
             this.procCoefficient = .1f; //determines length of the shock -> need to figure out how to lower proc chance, should be 15%
             this.pushForce = 300f;
             this.bonusForce = Vector3.zero;
@@ -27,7 +27,7 @@ namespace HenryMod.SkillStates
             this.hitStopDuration = 0.012f;
             this.attackRecoil = 0.5f;
             this.hitHopVelocity = 4f;
-            this.swingSoundString = "HenrySwordSwing";
+            this.swingSoundString = Modules.StaticValues.stormbladeSwing1String;
             this.hitSoundString = "";
             this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
