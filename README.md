@@ -23,6 +23,7 @@
  ## Other To-Do
 - Cleanup code base, finish comments
 - Fix name tokens
+- Lore text
 - Character Model
 - Character Model Animations
 - Skill Icons
