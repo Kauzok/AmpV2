@@ -19,9 +19,9 @@ namespace HenryMod.Modules
         {
             armorBuff = AddNewBuff("HenryArmorBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
             //charge debuff
-            chargeBuildup= AddNewBuff("BattlemageChargeBuildup", Resources.Load<Sprite>("None"), Color.cyan, true, true);
+            chargeBuildup= AddNewBuff("AmpChargeBuildup", Resources.Load<Sprite>("None"), Color.cyan, true, true);
             //invulnerability for use in bolt; using this instead of built-in invincibility buffs to avoid conflicts
-            invulnerableBuff = AddNewBuff("BattlemageInvulnerability", Resources.Load<Sprite>("None"), Color.black, false, false);
+            invulnerableBuff = AddNewBuff("AmpInvulnerability", Resources.Load<Sprite>("None"), Color.black, false, false);
         }
 
         // simple helper method

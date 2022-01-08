@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AmpSoundbank.bnk" />
+    <None Remove="&#xD;&#xA;		  Soundbank.bnk" />
     <None Remove="Battlemagebundle" />
     <None Remove="&#xD;&#xA;		  .bnk" />
     <None Remove="Modules\Survivors\Henry.cs~RF6221a098.TMP" />
@@ -25,7 +25,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="HenryBank.bnk" />
-    <EmbeddedResource Include="battlemagebundle" />
+    <EmbeddedResource Include="ampbundle" />
+	<ApplicationDefinition Include="AmpSoundbank.bnk" />
   </ItemGroup>
 
   <ItemGroup>

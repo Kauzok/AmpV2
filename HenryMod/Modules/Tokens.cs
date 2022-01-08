@@ -8,7 +8,7 @@ namespace HenryMod.Modules
         internal static void AddTokens()
         {
             #region Henry
-            string prefix = HenryPlugin.developerPrefix + "_BATTLEMAGE_BODY_";
+            string prefix = HenryPlugin.developerPrefix + "_AMP_BODY_";
 
             #region Skins
             LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");
@@ -25,7 +25,7 @@ namespace HenryMod.Modules
 
             #region Passive
             LanguageAPI.Add(prefix + "PASSIVE_NAME", "Charge");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "The battlemage's electrifying attacks build up stacks of 'charge' on an enemy. When 3 stacks are reached, the electric charge accumulated on the enemy is released in a devastating burst of static electricity that damages the target and all enemies near it for <style=cIsDamage>400% damage</style>.");
+            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Amp's electrifying attacks build up stacks of 'charge' on an enemy. When 3 stacks are reached, the electric charge accumulated on the enemy is released in a devastating burst of static electricity that damages the target and all enemies near it for <style=cIsDamage>400% damage</style>.");
             #endregion
 
             #region Primary

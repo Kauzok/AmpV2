@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2214078236
+CRC: 309938172
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ec3e8352c3784933f99a4f97c8e3987f
+    Hash: 2e945cc871069f09d30b9665745e0781
   TypeTreeHash:
     serializedVersion: 2
     Hash: 193bb9fb1ec437ad9e97578dc80637a0
@@ -204,6 +204,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matPunchImpactShadow.mat
 - Assets/HenryAssets/Materials/matDante.mat
 - Assets/HenryAssets/VFX/Charge/Flash, Directional 1.prefab
+- Assets/HenryAssets/VFX/Charge/texMageMatrixMaskDirectional.asset
 - Assets/HenryAssets/VFX/Ferroshot/Spike Spawn.prefab
 - Assets/HenryAssets/VFX/Bolt/AssassinDaggerMesh.asset
 - Assets/HenryAssets/Animations/maskLeftArm.mask

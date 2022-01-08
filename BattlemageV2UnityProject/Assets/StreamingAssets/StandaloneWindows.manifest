@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 2189727755
+CRC: 3664188403
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: battlemagebundle
+      Name: ampbundle
       Dependencies: {}

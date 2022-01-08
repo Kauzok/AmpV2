@@ -142,7 +142,7 @@ namespace HenryMod.SkillStates
                     Vector3 direction;
                     bool somethingHit = Physics.Raycast(aimRay.origin, aimRay.direction, out hit);
 
-
+                        
                     // Loop through all of the bullets and delete them spawning a projectile in
                     // there place facing the interction point or if no intersection the players direction
                     for (int i = 0; i < numOfBullets; i++)
@@ -158,8 +158,8 @@ namespace HenryMod.SkillStates
                         {
                             direction= aimRay.direction;
                         }
-                        //cancel prep sfx
-                        AkSoundEngine.StopPlayingID(stopPrepID);
+                        
+                       
 
                         // Spawn the projectile at the gameobjects current location
                         ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
@@ -178,6 +178,8 @@ namespace HenryMod.SkillStates
                         Destroy(bullets[i]);
 
                     }
+                    //cancel prep sfx
+                    AkSoundEngine.StopPlayingID(stopPrepID);
                     //play ferroshot launch effect from soundbank
                     Util.PlaySound(launchString, base.gameObject);
                   

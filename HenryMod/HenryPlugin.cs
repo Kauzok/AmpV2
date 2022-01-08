@@ -34,8 +34,8 @@ namespace HenryMod
     public class HenryPlugin : BaseUnityPlugin
     {
   
-        public const string MODUID = "com.NeonThink.Battlemage";
-        public const string MODNAME = "Battlemage";
+        public const string MODUID = "com.NeonThink.Amp";
+        public const string MODNAME = "Amp";
         public const string MODVERSION = "1.0.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
