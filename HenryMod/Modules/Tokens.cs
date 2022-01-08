@@ -20,6 +20,7 @@ namespace HenryMod.Modules
             LanguageAPI.Add(prefix + "SUBTITLE", Modules.StaticValues.characterSubtitle);
             LanguageAPI.Add(prefix + "DESCRIPTION", Modules.StaticValues.descriptionText);
             LanguageAPI.Add(prefix + "OUTRO_FLAVOR", Modules.StaticValues.characterOutro);
+            LanguageAPI.Add(prefix + "LORE", Modules.StaticValues.characterLore);
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", Modules.StaticValues.characterOutroFailure);
             #endregion
 
