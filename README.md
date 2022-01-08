@@ -5,7 +5,7 @@
 - Stormblade
   - Animations and the like
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
-  - Add on hit VFX/SFX
+  - Add swing/on hit VFX
 - Ferroshot
   - Make spike prep SFX cancel on fire
   - Reduce range
@@ -19,10 +19,11 @@
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
 - Charge Passive
-  - Adjust SFX, figure out how to make it play consistently
+  - Adjust SFX play method?
  ## Other To-Do
 - Cleanup code base, finish comments
 - Fix name tokens
+- Lore text
 - Character Model
 - Character Model Animations
 - Skill Icons
