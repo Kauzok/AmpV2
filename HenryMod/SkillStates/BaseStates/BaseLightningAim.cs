@@ -7,10 +7,10 @@ using RoR2.Projectile;
 using UnityEngine.Networking;
 using RoR2.Orbs;
 using RoR2.Skills;
-using HenryMod.SkillStates.BaseStates;
-using HenryMod.SkillStates.Henry; 
+using AmpMod.SkillStates.BaseStates;
+using AmpMod.SkillStates.Amp; 
 
-namespace HenryMod.SkillStates
+namespace AmpMod.SkillStates
 {
     // Token: 0x02000B12 RID: 2834
     public abstract class BaseLightningAim : BaseSkillState

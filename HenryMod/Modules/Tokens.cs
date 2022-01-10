@@ -1,14 +1,14 @@
 ﻿using R2API;
 using System;
 
-namespace HenryMod.Modules
+namespace AmpMod.Modules
 {//need to fix the charactername and description not showing up
     internal static class Tokens
     {
         internal static void AddTokens()
         {
             #region Henry
-            string prefix = HenryPlugin.developerPrefix + "_AMP_BODY_";
+            string prefix = AmpPlugin.developerPrefix + "_AMP_BODY_";
 
             #region Skins
             LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");

@@ -5,7 +5,7 @@ using UnityEngine;
 using Unity;
 using RoR2;
 
-namespace HenryMod.SkillStates
+namespace AmpMod.SkillStates
 {
 
     //tracker class used for custom debuff

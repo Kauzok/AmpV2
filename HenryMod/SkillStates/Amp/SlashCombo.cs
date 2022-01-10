@@ -1,9 +1,10 @@
-﻿using HenryMod.SkillStates.BaseStates;
+﻿using AmpMod.SkillStates.BaseStates;
 using RoR2;
 using UnityEngine;
 using RoR2.WwiseUtils;
+using AmpMod.SkillStates.BaseStates;
 
-namespace HenryMod.SkillStates
+namespace AmpMod.SkillStates
 {
     
 

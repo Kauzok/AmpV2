@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using RoR2;
 using UnityEngine;
-using HenryMod;
+
 using R2API;
 
 
-namespace HenryMod.Modules
+namespace AmpMod.Modules
 {
     //Declare damage types; effects are created with hooks in HenryPlugin.cs
     public class DamageTypes

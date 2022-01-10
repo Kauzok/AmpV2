@@ -5,7 +5,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HenryMod.Modules
+namespace AmpMod.Modules
 {
     internal static class Projectiles
     {
@@ -41,11 +41,11 @@ namespace HenryMod.Modules
             ferroshotDamage.damageType = DamageType.Generic;
 
             //remove/nullify components from lunarshard that are unnecessary, such as the tracker and on impact explosion
-            HenryPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
-            HenryPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
-            HenryPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
-            HenryPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>());
 
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
@@ -68,9 +68,9 @@ namespace HenryMod.Modules
         {
             lightningPrefab = CloneProjectilePrefab("MageLightningBombProjectile", "Lightning");
             lightningPrefab.GetComponent<Rigidbody>().useGravity = false;
-            HenryPlugin.Destroy(lightningPrefab.GetComponent<AntiGravityForce>());
-            HenryPlugin.Destroy(lightningPrefab.GetComponent<ProjectileProximityBeamController>());
-            HenryPlugin.Destroy(lightningPrefab.GetComponent<ProjectileImpactExplosion>());
+            AmpPlugin.Destroy(lightningPrefab.GetComponent<AntiGravityForce>());
+            AmpPlugin.Destroy(lightningPrefab.GetComponent<ProjectileProximityBeamController>());
+            AmpPlugin.Destroy(lightningPrefab.GetComponent<ProjectileImpactExplosion>());
 
            lightningPrefab.AddComponent<ProjectileImpactExplosion>();
            ProjectileImpactExplosion lightningExplosion = lightningPrefab.GetComponent<ProjectileImpactExplosion>();

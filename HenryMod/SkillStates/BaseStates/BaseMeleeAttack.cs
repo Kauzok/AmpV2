@@ -8,7 +8,7 @@ using RoR2.Orbs;
 using R2API;
 
 
-namespace HenryMod.SkillStates.BaseStates
+namespace AmpMod.SkillStates.BaseStates
 {
     public class BaseMeleeAttack : BaseSkillState
     {

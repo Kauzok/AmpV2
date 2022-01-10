@@ -1,12 +1,12 @@
-﻿using HenryMod.SkillStates;
-using HenryMod.SkillStates.BaseStates;
+﻿using AmpMod.SkillStates;
+using AmpMod.SkillStates.BaseStates;
 using System.Collections.Generic;
 using System;
 using RoR2;
 using EntityStates.Huntress;
-using HenryMod.SkillStates.Henry;
+using AmpMod.SkillStates.Amp;
 
-namespace HenryMod.Modules
+namespace AmpMod.Modules
 {
     public static class States
     {

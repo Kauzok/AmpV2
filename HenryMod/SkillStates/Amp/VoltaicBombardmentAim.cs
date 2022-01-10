@@ -1,10 +1,10 @@
 ﻿using System;
 using RoR2;
 using UnityEngine;
-using HenryMod.SkillStates.Henry;
+using AmpMod.SkillStates.Amp;
 
 
-namespace HenryMod.SkillStates
+namespace AmpMod.SkillStates
 {
 	
 	public class VoltaicBombardmentAim : BaseLightningAim

@@ -5,12 +5,12 @@ using UnityEngine;
 using RoR2;
 using EntityStates;
 using RoR2.Projectile;
-using HenryMod.Modules;
+using AmpMod.Modules;
 using UnityEngine.Networking;
 using RoR2.Orbs;
 using R2API;
 
-namespace HenryMod.SkillStates.Henry
+namespace AmpMod.SkillStates.Amp
 {
     public class VoltaicBombardmentFire : BaseSkillState
     {

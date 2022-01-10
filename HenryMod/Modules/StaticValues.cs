@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace HenryMod.Modules
+namespace AmpMod.Modules
 {
     //static values for use in skillstates and other references for easy adjustment
     internal static class StaticValues
@@ -21,12 +21,12 @@ namespace HenryMod.Modules
 
         internal static string characterLore = "How long has it been? He pondered, and quickly decided it did not matter. Time had become irrelevant; all he knew was his duty. To find. To capture. To fight. To kill.\n\n"
             + "Electrocute.\n\n"
-            + "An orphan, they said. Saved from a life spent in darkened alleyways, the only caveat being that he work for them without question. They called themselves scientists. He called them slavers. For any disobedience was swiftly punished with high-voltage retaliation.\n\n"
+            + "An orphan, they said. Saved from a life spent in darkened alleyways, the only caveat being that he work for them without question. They called themselves scientists. He called them slavers. For any disobedience was swiftly treated with high-voltage punishment.\n\n"
             + "Electrocute.\n\n"
             + "A new mission, they told him. Obtain an artifact from a desolate planet. The details were left out; if he died, they would simply use another. But when he touched the artifact, sparks flew. Images of a faraway planet, lush and teeming with life, flashed into his mind. He stumbled back, confused. What did this mean? What was this artifact? He knew if he followed the message, he’d find the answers. But first, there was something he must do. For he saw the planet, but also the truth. \n\n"
             + "He was an orphan, yes. But an artificial one.\n\n"
             + "Electrocute.\n\n"
-            + "The trail back to headquarters was stained with blood. He didn't have to go back. With his power, he could've escaped and never returned. But he wanted vengeance.\n\n"
+            + "The trail back to headquarters was stained with blood. He didn't have to go back. With his power, he could've escaped and never returned. But he wanted vengeance. For himself, and for the parents he had never met.\n\n"
             + "Electrocute.\n\n"
             + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the bullets refuse to hit their target. The last thing they see is a terrifying, magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
             + "Electrocute.";

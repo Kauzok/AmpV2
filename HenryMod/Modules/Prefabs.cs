@@ -3,7 +3,7 @@ using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HenryMod.Modules
+namespace AmpMod.Modules
 {
     // module for creating body prefabs and whatnot
     // recommended to simply avoid touching this unless you REALLY need to
@@ -20,10 +20,10 @@ namespace HenryMod.Modules
 
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
-            string fullNameString = HenryPlugin.developerPrefix + "_" + namePrefix + "_BODY_NAME";
-            string fullDescString = HenryPlugin.developerPrefix + "_" + namePrefix + "_BODY_DESCRIPTION";
-            string fullOutroString = HenryPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FLAVOR";
-            string fullFailureString = HenryPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FAILURE";
+            string fullNameString = AmpPlugin.developerPrefix + "_" + namePrefix + "_BODY_NAME";
+            string fullDescString = AmpPlugin.developerPrefix + "_" + namePrefix + "_BODY_DESCRIPTION";
+            string fullOutroString = AmpPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FLAVOR";
+            string fullFailureString = AmpPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FAILURE";
 
             SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
             survivorDef.bodyPrefab = bodyPrefab;
@@ -194,9 +194,9 @@ namespace HenryMod.Modules
 
         private static GameObject CreateModel(GameObject main, string modelName)
         {
-            HenryPlugin.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
-            HenryPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
-            HenryPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
+            AmpPlugin.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
+            AmpPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
+            AmpPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
 
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName) == null)
             {

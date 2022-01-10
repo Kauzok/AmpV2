@@ -7,7 +7,7 @@ using RoR2.Orbs;
 using UnityEngine;
 using RoR2;
 
-namespace HenryMod.SkillStates.BaseStates
+namespace AmpMod.SkillStates.BaseStates
 {
     //orb meant to be used to implement chain lightning function for fulmination skill
    public class FulminationOrb : Orb

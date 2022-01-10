@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Orbs;
 using System.Collections.Generic;
-using static HenryMod.SkillStates.BaseStates.FulminationOrb;
+using static AmpMod.SkillStates.BaseStates.FulminationOrb;
 using R2API;
 
-namespace HenryMod.SkillStates
+namespace AmpMod.SkillStates
 {
 	public class Fulmination : BaseSkillState
 	{

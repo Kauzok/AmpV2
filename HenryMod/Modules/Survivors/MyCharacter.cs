@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HenryMod.Modules.Survivors
+namespace AmpMod.Modules.Survivors
 {
     internal class MyCharacter : SurvivorBase
     {
@@ -24,7 +24,7 @@ namespace HenryMod.Modules.Survivors
             armor = 20f,
             armorGrowth = 0f,
             bodyName = "HenryBody",
-            bodyNameToken = HenryPlugin.developerPrefix + "_AMP_BODY_NAME",
+            bodyNameToken = AmpPlugin.developerPrefix + "_AMP_BODY_NAME",
             //Color of skill names and stuff in menu
             bodyColor = new Color32(0, 145, 255, 255),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Henry"),
@@ -37,7 +37,7 @@ namespace HenryMod.Modules.Survivors
             jumpCount = 1,
             //jumpPower = 18f,
             maxHealth = 110f,
-            subtitleNameToken = HenryPlugin.developerPrefix + "_AMP_BODY_SUBTITLE",
+            subtitleNameToken = AmpPlugin.developerPrefix + "_AMP_BODY_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
@@ -98,7 +98,7 @@ namespace HenryMod.Modules.Survivors
         {
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
-            string prefix = HenryPlugin.developerPrefix;
+            string prefix = AmpPlugin.developerPrefix;
 
             //creates Stormblade
             #region Primary
@@ -235,7 +235,7 @@ namespace HenryMod.Modules.Survivors
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(HenryPlugin.developerPrefix + "_AMP_BODY_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_AMP_BODY_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRenderers,
                 mainRenderer,
@@ -273,7 +273,7 @@ namespace HenryMod.Modules.Survivors
                 masteryMat
             });
 
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(HenryPlugin.developerPrefix + "_AMP_BODY_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_AMP_BODY_MASTERY_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
                 masteryRendererInfos,
                 mainRenderer,

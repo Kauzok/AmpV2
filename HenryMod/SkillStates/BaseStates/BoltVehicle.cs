@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Timers;
 using R2API;
 
-namespace HenryMod.SkillStates
+namespace AmpMod.SkillStates
 {
 	[RequireComponent(typeof(VehicleSeat))]
 	[RequireComponent(typeof(Rigidbody))]

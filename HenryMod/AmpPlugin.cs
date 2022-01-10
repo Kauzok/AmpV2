@@ -4,19 +4,18 @@ using RoR2;
 using R2API;
 using System.Security;
 using System.Security.Permissions;
-using HenryMod;
 using EntityStates;
 using UnityEngine;
-using HenryMod.SkillStates;
+using AmpMod.SkillStates;
 using RoR2.Orbs;
-using HenryMod.Modules;
 using System.Collections.Generic;
-using HenryMod.SkillStates.BaseStates;
+using AmpMod.SkillStates.BaseStates;
+using AmpMod.Modules;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
-namespace HenryMod
+namespace AmpMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
@@ -31,7 +30,7 @@ namespace HenryMod
         "EffectAPI",
     })]
 
-    public class HenryPlugin : BaseUnityPlugin
+    public class AmpPlugin : BaseUnityPlugin
     {
   
         public const string MODUID = "com.NeonThink.Amp";
@@ -41,7 +40,7 @@ namespace HenryMod
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "NT";
 
-        public static HenryPlugin instance;
+        public static AmpPlugin instance;
 
         private void Awake()
         {

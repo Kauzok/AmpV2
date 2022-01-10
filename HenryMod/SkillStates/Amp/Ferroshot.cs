@@ -6,7 +6,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using BepInEx;
 
-namespace HenryMod.SkillStates
+namespace AmpMod.SkillStates
 {
     public class Ferroshot : BaseSkillState
     {
