@@ -22,6 +22,7 @@
   - Adjust hitbox to make it hit higher
 - Charge Passive
   - Fix effect and animation playing more than intended in multiplayer
+  - Consider making VFX more visible
 - Cleanup code base, finish comments
 - Fix name tokens
 - Character Model
