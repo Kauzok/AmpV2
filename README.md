@@ -21,8 +21,7 @@
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
 - Charge Passive
-  - Adjust SFX play method?
- ## Other To-Do
+  - Fix effect and animation playing more than intended in multiplayer
 - Cleanup code base, finish comments
 - Fix name tokens
 - Character Model
