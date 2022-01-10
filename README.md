@@ -10,8 +10,9 @@
 - Ferroshot
   - Make spike prep SFX cancel on fire
   - Reduce range
+  - Make prep gameobject spawn properly in multiplayer
 - Bolt
-  - Make sure effect for multiplayer is still good
+  - Make skill work for multiplayer
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
   - Fix chain effect
