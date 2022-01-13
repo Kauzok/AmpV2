@@ -12,7 +12,6 @@
   - Reduce range
   - Make prep gameobject spawn properly in multiplayer
 - Bolt
-  - Make skill work for multiplayer
   - Fix effect shaking when running into objects
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
