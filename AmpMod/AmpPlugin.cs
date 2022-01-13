@@ -63,6 +63,7 @@ namespace AmpMod
 
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
+
             Hook();
         }
 

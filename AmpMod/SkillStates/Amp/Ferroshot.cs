@@ -27,7 +27,7 @@ namespace AmpMod.SkillStates
         private Animator animator;
 
         public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
-        public static GameObject ferroshotPrefabBasic = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Spike");
+        public static GameObject ferroshotPrefabBasic = Modules.Assets.bulletPrepItem;
 
         private float duration;
         //private float fireTime;
@@ -122,7 +122,7 @@ namespace AmpMod.SkillStates
                         //Play sound, and get ID of last sound to cancel
                         stopPrepID = Util.PlaySound(prepString, base.gameObject);
                         
-
+                        
                         // Spawn the prefab of the bolt
                         bullets[i] = UnityEngine.Object.Instantiate<GameObject>(
                             ferroshotPrefabBasic, 

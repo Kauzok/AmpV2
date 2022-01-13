@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4222059627
+CRC: 526145513
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8fd2e6f1e29e4932a4df418d909b7626
+    Hash: 464fe2f328fa18187097160ad1c79f6f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 193bb9fb1ec437ad9e97578dc80637a0
+    Hash: f575cb7b5a87b222fb5ebc6047b569a5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -37,6 +37,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 95
   Script: {instanceID: 0}
+- Class: 96
+  Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
@@ -50,8 +52,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -1067940895, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
-  Script: {fileID: 953270592, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
   Script: {fileID: 316558884, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -335047464, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
@@ -63,6 +63,8 @@ ClassTypes:
   Script: {fileID: -960361785, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 511512695, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 344246068, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -875252823, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
@@ -120,6 +122,7 @@ ClassTypes:
 - Class: 319
   Script: {instanceID: 0}
 Assets:
+- Assets/HenryAssets/FireballVehicle.prefab
 - Assets/HenryAssets/Animations/maskAimBazooka.mask
 - Assets/HenryAssets/Icons/texShotgunIcon.png
 - Assets/HenryAssets/VFX/Materials/matAnimeShapes.mat

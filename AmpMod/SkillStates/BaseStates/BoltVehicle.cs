@@ -58,13 +58,14 @@ namespace AmpMod.SkillStates
 
 			//sets hooks to modify scripts that comprise the character's behavior on entry and exit of a vehicleseat
 			vehicleSeat = base.GetComponent<VehicleSeat>();
+			this.rigidbody = base.GetComponent<Rigidbody>();
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
 
 			//makes it so you can't exit the vehicleseat manually; since i allow the player to do that in the actual bolt code, this is really just to remove the annoying prompt that shows up when this is enabled
 			vehicleSeat.exitVehicleAllowedCheck.AddCallback(new CallbackCheck<Interactability, CharacterBody>.CallbackDelegate(this.CheckExitAllowed));
 
-			this.rigidbody = base.GetComponent<Rigidbody>();
+			
 			
 		}
 
@@ -252,16 +253,18 @@ namespace AmpMod.SkillStates
 				} 
 
 			}
+		
+				//vectors and stuff to keep the playercharacter moving in boltstate
+				Ray originalAimRay = vehicleSeat.currentPassengerInputBank.GetAimRay();
+				float num;
+				originalAimRay = CameraRigController.ModifyAimRayIfApplicable(originalAimRay, base.gameObject, out num);
+				Vector3 velocity = this.rigidbody.velocity;
+				Vector3 target = originalAimRay.direction * this.targetSpeed;
+				Vector3 a = Vector3.MoveTowards(velocity, target, this.acceleration * Time.fixedDeltaTime);
+				this.rigidbody.MoveRotation(Quaternion.LookRotation(originalAimRay.direction));
+				this.rigidbody.AddForce(a - velocity, ForceMode.VelocityChange);
 			
-			//vectors and stuff to keep the playercharacter moving in boltstate
-			Ray originalAimRay = vehicleSeat.currentPassengerInputBank.GetAimRay();
-			float num;
-			originalAimRay = CameraRigController.ModifyAimRayIfApplicable(originalAimRay, base.gameObject, out num);
-			Vector3 velocity = this.rigidbody.velocity;
-			Vector3 target = originalAimRay.direction * this.targetSpeed;
-			Vector3 a = Vector3.MoveTowards(velocity, target, this.acceleration * Time.fixedDeltaTime);
-			this.rigidbody.MoveRotation(Quaternion.LookRotation(originalAimRay.direction));
-			this.rigidbody.AddForce(a - velocity, ForceMode.VelocityChange);
+	
 
 			//ends skill once time is up
 			if (NetworkServer.active && duration <= age)

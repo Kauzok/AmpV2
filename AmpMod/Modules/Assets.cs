@@ -26,11 +26,13 @@ namespace AmpMod.Modules
 
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
+        internal static GameObject bulletPrepItem;
         internal static GameObject bulletImpactEffect;
 
         [Header("Bolt Effects")]
         internal static GameObject boltExitEffect;
         internal static GameObject boltEnterEffect;
+        internal static GameObject boltVehicle;
         
         [Header("Fulmination Effects")]
         internal static GameObject electricStreamEffect;
@@ -131,9 +133,12 @@ namespace AmpMod.Modules
             //on fulmination skill use
             CreateStreamPrefab();
 
-            //on boltvehicle exit/enter
+            //on boltvehicle exit/state/enter
             CreateBoltExitPrefab();
+            CreateBoltVehicle();
             CreateBoltEnterPrefab();
+
+            CreateBulletPrep();
 
             //on ferroshot/Lorentz Cannon skill prep
             bulletSpawnEffect = LoadEffect("Spike Spawn");
@@ -141,6 +146,7 @@ namespace AmpMod.Modules
             //on ferroshot/Lorentz Cannon spike collision
             bulletImpactEffect = LoadEffect("SpikeImpact");
 
+            
 
             //functions for prefabs that require adjustments made at runtime
             CreateChainPrefab();
@@ -167,6 +173,32 @@ namespace AmpMod.Modules
             swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }
+
+        private static void CreateBoltVehicle()
+        {
+            boltVehicle = mainAssetBundle.LoadAsset<GameObject>("BoltVehicle");
+            //boltVehicle = Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle");
+
+            //adds boltvehicle to the bolt prefab finalizing the gameobject that will act as the primary enactor of the bolt skill
+            boltVehicle.AddComponent<SkillStates.BoltVehicle>();
+
+            //i dont know why this is necessary because the prefab already has a networkidentity component
+            //i mean seriously i tried adding this out of sheer frustration and i cannot believe it worked
+            //i dont know why it worked but don't remove this line otherwise the bolt skill will become mad laggy
+            boltVehicle.AddComponent<NetworkIdentity>();
+
+            PrefabAPI.RegisterNetworkPrefab(boltVehicle);
+        }
+
+
+        private static void CreateBulletPrep()
+        {
+            bulletPrepItem = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Spike");
+            bulletPrepItem.AddComponent<NetworkIdentity>();
+
+            PrefabAPI.RegisterNetworkPrefab(bulletPrepItem);
+        }
+     
 
         private static void CreateChargePrefab()
         {

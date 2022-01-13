@@ -7,7 +7,7 @@ namespace AmpMod.Modules
     {
         internal static void AddTokens()
         {
-            #region Henry
+            #region Amp
             string prefix = AmpPlugin.developerPrefix + "_AMP_BODY_";
 
             #region Skins
@@ -26,7 +26,7 @@ namespace AmpMod.Modules
 
             #region Passive
             LanguageAPI.Add(prefix + "PASSIVE_NAME", "Charge");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Amp's electrifying attacks build up stacks of 'charge' on an enemy. When 3 stacks are reached, the electric charge accumulated on the enemy is released in a devastating burst of static electricity that damages the target and all enemies near it for <style=cIsDamage>400% damage</style>.");
+            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Amp's electrifying attacks build up stacks of 'charge' on an enemy. When 3 stacks are reached, the electric charge accumulated on the enemy is released in a devastating burst of static electricity that damages the target and all enemies near it for <style=cIsDamage>400%</style> damage.");
             #endregion
 
             #region Primary
@@ -41,7 +41,7 @@ namespace AmpMod.Modules
 
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Bolt");
-            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION",  $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 2 seconds.");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 2 seconds. Contact with enemies in this form will apply one stack of charge and deal <style=cISDamage>20%</style> damage.");
             #endregion
 
             #region Special
