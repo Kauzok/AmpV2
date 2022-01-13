@@ -27,6 +27,10 @@ namespace AmpMod.Modules
             primaryFamily.variants = new SkillFamily.Variant[0];
             skillLocator.primary._skillFamily = primaryFamily;
 
+            //for making passive
+            CreatePassiveSkill(skillLocator);
+           
+
             skillLocator.secondary = targetPrefab.AddComponent<GenericSkill>();
             SkillFamily secondaryFamily = ScriptableObject.CreateInstance<SkillFamily>();
             (secondaryFamily as ScriptableObject).name = targetPrefab.name + "SecondaryFamily";
@@ -45,10 +49,19 @@ namespace AmpMod.Modules
             specialFamily.variants = new SkillFamily.Variant[0];
             skillLocator.special._skillFamily = specialFamily;
 
+
             skillFamilies.Add(primaryFamily);
             skillFamilies.Add(secondaryFamily);
             skillFamilies.Add(utilityFamily);
             skillFamilies.Add(specialFamily);
+        }
+
+       internal static void CreatePassiveSkill(SkillLocator skillLocator)
+        {
+            string prefix = AmpPlugin.developerPrefix + "_AMP_BODY_";
+            skillLocator.passiveSkill.enabled = true;
+            skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
+            skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
         }
 
         // this could all be a lot cleaner but at least it's simple and easy to work with

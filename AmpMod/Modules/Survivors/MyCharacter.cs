@@ -100,12 +100,15 @@ namespace AmpMod.Modules.Survivors
 
             string prefix = AmpPlugin.developerPrefix;
 
+
+
+
+
             //creates Stormblade
             #region Primary
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_AMP_BODY_PRIMARY_SLASH_NAME", prefix + "_AMP_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
             #endregion
             
-
             //creates ferroshot/Lorentz Cannon
             #region Secondary
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo

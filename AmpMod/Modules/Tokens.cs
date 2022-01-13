@@ -26,12 +26,12 @@ namespace AmpMod.Modules
 
             #region Passive
             LanguageAPI.Add(prefix + "PASSIVE_NAME", "Charge");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Amp's electrifying attacks build up stacks of 'charge' on an enemy. When 3 stacks are reached, the electric charge accumulated on the enemy is released in a devastating burst of static electricity that damages the target and all enemies near it for <style=cIsDamage>400%</style> damage.");
+            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Certain attacks build up stacks of <color=#0091ff>charge</color> on an enemy. When 3 stacks are reached, a burst of static electricity is released that damages the target and enemies near it for <style=cIsDamage>400%</style> damage.");
             #endregion
 
             #region Primary
             LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Stormblade");
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.stormbladeDamageCoefficient}% damage</style>. Strikes have a <style=cIsDamage>{StaticValues.stormbladeChargeProcCoefficient}%</style> chance of applying charge.");
+            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.stormbladeDamageCoefficient}% damage</style>. Strikes have a <style=cIsDamage>{StaticValues.stormbladeChargeProcCoefficient}%</style> chance of applying <color=#0091ff>charge</color>.");
             #endregion
 
             #region Secondary
@@ -46,12 +46,12 @@ namespace AmpMod.Modules
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_CHAIN_NAME", "Fulmination");
-            LanguageAPI.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a chaining stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of charge.");
+            LanguageAPI.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a chaining stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of <color=#0091ff>charge</color>.");
             #endregion
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_NAME", "Voltaic Bombardment");
-            LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"Summon a lightning bolt that strikes the targeted area, damaging all enemies in the vicinity for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"Summon a lightning bolt that strikes the targeted area, damaging all enemies in the vicinity for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style> and applying two stacks of <color=#0091ff>charge</color>.");
             #endregion
 
             #region Achievements
