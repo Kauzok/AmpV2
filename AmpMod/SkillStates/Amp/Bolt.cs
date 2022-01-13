@@ -17,75 +17,128 @@ namespace AmpMod.SkillStates
 		public GameObject boltObject;
 		public InputBankTest inputBank;
 		public CharacterMaster master;
-        private bool hasEffectiveAuthority;
-		public CharacterBody characterBod;
+		private bool hasEffectiveAuthority;
+		public NetworkUser networkUser;
+		public NetworkUser networkUser2;
 
 		private void UpdateAuthority()
 		{
 			this.hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
 		}
 
-	
+
 
 
 		public override void OnEnter()
 		{
-				if (!NetworkServer.active) return;
+			if (!NetworkServer.active) return;
 
-				characterBod = base.GetComponent<CharacterBody>();
 
-				base.OnEnter();
-				UpdateAuthority();
-				
-				Ray aimRay = GetAimRay();
-				
-				//instantiate bolt prefab to be used in tandem with boltvehicle class
-				boltObject = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.boltVehicle, aimRay.origin, Quaternion.LookRotation(aimRay.direction));
-				
-				//declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
-				//boltObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+			base.OnEnter();
+			UpdateAuthority();
 
-				boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
-				NetworkServer.Spawn(boltObject);	
+			Ray aimRay = GetAimRay();
+
+			//instantiate bolt prefab to be used in tandem with boltvehicle class
+			boltObject = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.boltVehicle, aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+
+			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
+			//boltObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+
+			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
+			//NetworkServer.Spawn(boltObject);	
+
+
+			//stuff to make it work with multiplayer
+			CharacterBody characterBody = this.characterBody;
+
+			if (characterBody == null)
+			{
+				networkUser = null;
+			}
+			else
+			{
+				CharacterMaster master = characterBody.master;
+				if (master == null)
+				{
+					networkUser = null;
+				}
+				else
+				{
+					PlayerCharacterMasterController playerCharacterMasterController = master.playerCharacterMasterController;
+					networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
+				}
+			}
+			networkUser2 = networkUser;
+
+			if (networkUser2)
+			{
+				NetworkServer.SpawnWithClientAuthority(boltObject, networkUser2.gameObject);
+			}
+			else
+			{
+				NetworkServer.Spawn(boltObject);
+			}
 		}
 
 
-			//basic fixedupdate override, you know the drill
-			//makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
-			public override void FixedUpdate()
+		//basic fixedupdate override, you know the drill
+		//makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
+		public override void FixedUpdate()
+		{
+
+			base.FixedUpdate();
+
+			if (NetworkServer.active)
 			{
 
-				base.FixedUpdate();
-
-				if (NetworkServer.active)
-            {
-				if (fixedAge > delay)
+				if (networkUser2 == networkUser)
 				{
-					//makes skill cancel if they hit the button again
-					if (base.inputBank.skill3.justPressed)
+					if (fixedAge > delay)
 					{
-						boltObject.GetComponent<BoltVehicle>().DetonateServer();
-						this.outer.SetNextStateToMain();
+						//makes skill cancel if they hit the button again
+						if (networkUser2.masterController.bodyInputs.skill3.justPressed)
+						{
+							boltObject.GetComponent<BoltVehicle>().DetonateServer();
+							this.outer.SetNextStateToMain();
+						}
+
+
 					}
 
 				}
-
-				//exit if boltobject is destroyed
-				if (!boltObject)
+				else
 				{
-					this.outer.SetNextStateToMain();
+
+					if (fixedAge > delay)
+					{
+						//makes skill cancel if they hit the button again
+						if (base.inputBank.skill3.justPressed)
+						{
+							boltObject.GetComponent<BoltVehicle>().DetonateServer();
+							this.outer.SetNextStateToMain();
+						}
+
+					}
 				}
-			}	
-
-				
 
 
-			} 
+					//exit if boltobject is destroyed
+					if (!boltObject)
+					{
+						this.outer.SetNextStateToMain();
+					}
+				}
 
 
 
 
+			}
+
+
+
+
+
+		}
 
 	}
-
-}

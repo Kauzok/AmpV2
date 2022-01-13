@@ -192,6 +192,7 @@ namespace AmpMod
                             origin = self.corePosition,
                             scale = 1f,
                         };
+
                         //declare and spawn charge explosion effect
                         chargeExplosion = Assets.chargeExplosionEffect;
                         EffectManager.SpawnEffect(chargeExplosion, effectData, true);
@@ -199,8 +200,7 @@ namespace AmpMod
                         //plays chargesound; right now the sound plays on amp instead of wherever the enemy's gameobject because
                         //if the enemy is killed by the charge explosion the sound won't play. at the very least it plays right now, but need to figure out
                         //how to fix this so it's not a bandaid solution
-
-                            Util.PlaySound(Modules.StaticValues.chargeExplosionString, base.gameObject);
+                        Util.PlaySound(Modules.StaticValues.chargeExplosionString, base.gameObject);
                         
 
                         //creates charge explosion centered at the body with the debuff

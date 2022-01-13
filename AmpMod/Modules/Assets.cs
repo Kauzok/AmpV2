@@ -125,7 +125,8 @@ namespace AmpMod.Modules
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
             //on charge explosion when 3 procs are reached
-            CreateChargePrefab();
+            //CreateChargePrefab();
+            chargeExplosionEffect = LoadEffect("ChargeExplosion");
 
             //on fulmination skill chain
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
@@ -181,11 +182,7 @@ namespace AmpMod.Modules
 
             //adds boltvehicle to the bolt prefab finalizing the gameobject that will act as the primary enactor of the bolt skill
             boltVehicle.AddComponent<SkillStates.BoltVehicle>();
-
-            //i dont know why this is necessary because the prefab already has a networkidentity component
-            //i mean seriously i tried adding this out of sheer frustration and i cannot believe it worked
-            //i dont know why it worked but don't remove this line otherwise the bolt skill will become mad laggy
-            boltVehicle.AddComponent<NetworkIdentity>();
+            
 
             PrefabAPI.RegisterNetworkPrefab(boltVehicle);
         }
@@ -194,7 +191,7 @@ namespace AmpMod.Modules
         private static void CreateBulletPrep()
         {
             bulletPrepItem = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Spike");
-            bulletPrepItem.AddComponent<NetworkIdentity>();
+            
 
             PrefabAPI.RegisterNetworkPrefab(bulletPrepItem);
         }
@@ -203,12 +200,12 @@ namespace AmpMod.Modules
         private static void CreateChargePrefab()
         {
            chargeExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("ChargeExplosion");
-           chargeExplosionEffect.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
-            chargeExplosionEffect.AddComponent<VFXAttributes>();
-            chargeExplosionEffect.AddComponent<EffectComponent>();
-            chargeExplosionEffect.AddComponent<NetworkIdentity>();
+           
+           chargeExplosionEffect.AddComponent<VFXAttributes>();
+           chargeExplosionEffect.AddComponent<EffectComponent>();
+           chargeExplosionEffect.AddComponent<NetworkIdentity>();
 
-            EffectAPI.AddEffect(chargeExplosionEffect);
+           EffectAPI.AddEffect(chargeExplosionEffect);
 
 
 
