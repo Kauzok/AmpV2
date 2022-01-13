@@ -47,6 +47,8 @@ namespace AmpMod.Modules
 
         internal const float fulminationTotalDamageCoefficient = 20f;
 
+        internal const float boltOverlapDamageCoefficient = .5f;
+
         internal const float fulminationChargeProcCoefficient = 25f;
 
         internal const int chargeMaxStacks = 3;

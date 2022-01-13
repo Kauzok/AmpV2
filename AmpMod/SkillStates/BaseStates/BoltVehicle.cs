@@ -33,7 +33,7 @@ namespace AmpMod.SkillStates
 		private BlastAttack boltBlast;
 
 		[Header("Overlap Parameters")]
-		public float overlapDamageCoefficient = .5f;
+		public float overlapDamageCoefficient = Modules.StaticValues.boltOverlapDamageCoefficient;
 		public float overlapProcCoefficient = 1f;
 		public float overlapForce = .5f;
 		public float overlapFireFrequency = 30f;
@@ -187,7 +187,7 @@ namespace AmpMod.SkillStates
 			boltBlast = new BlastAttack
 			{
 				attacker = currentPassengerBody.gameObject,
-				baseDamage = this.blastDamageCoefficient * currentPassengerBody.damage,
+				baseDamage = blastDamageCoefficient * currentPassengerBody.damage,
 				baseForce = 0f,
 				attackerFiltering = AttackerFiltering.NeverHit,
 				crit = currentPassengerBody.RollCrit(),

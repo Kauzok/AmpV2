@@ -41,7 +41,7 @@ namespace AmpMod.Modules
 
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Bolt");
-            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", $"Transform into electricity, gaining invulnerability, free movement, and <style=cIsUtility>500% movement speed</style> for 2 seconds. Contact with enemies in this form will apply one stack of charge and deal <style=cISDamage>20%</style> damage.");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", $"Transform into electricity, gaining <style=cIsUtility>invulnerability</style>, <style=cIsUtility>free movement</style>, and <style=cIsUtility>500% movement speed</style> for 2 seconds. Contact with enemies in this form will apply <color=#0091ff>charge</color> and deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage.");
             #endregion
 
             #region Special
