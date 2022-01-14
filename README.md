@@ -11,7 +11,8 @@
   - Make spike prep SFX cancel on fire
   - Reduce range
   - Make prep gameobject spawn properly in multiplayer
-- Bolt
+- Bolt 
+  - Make it cancellable/fix skill not exiting in multiplayer
   - Fix effect shaking when running into objects
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Fulmination
