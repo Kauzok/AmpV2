@@ -44,7 +44,7 @@ namespace AmpMod.SkillStates.BaseStates
         public float duration;
         private bool hasFired;
         private float hitPauseTimer;
-        private OverlapAttack attack;
+        public OverlapAttack attack;
         protected bool inHitPause;
         private bool hasHopped;
         protected float stopwatch;
@@ -87,18 +87,14 @@ namespace AmpMod.SkillStates.BaseStates
             this.attack.isCrit = base.RollCrit();
             this.attack.impactSound = this.impactSound;
 
-            chargeChance(chargeProc);
 
         }
 
-        //code for adding a chance of applying the charge debuff; percent chance is set with chargeProc var
-        protected virtual void chargeChance(float chance)
-        {
-            if (Util.CheckRoll(chance, base.characterBody.master))
-            {
-               this.attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
-            }
-        }
+ 
+
+        
+
+        
 
         protected virtual void PlayAttackAnimation()
         {

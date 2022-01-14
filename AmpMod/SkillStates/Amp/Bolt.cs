@@ -92,53 +92,28 @@ namespace AmpMod.SkillStates
 			if (NetworkServer.active)
 			{
 
-				if (networkUser2 == networkUser)
+				if (fixedAge > delay)
 				{
-					if (fixedAge > delay)
+					//makes skill cancel if they hit the button again
+					if (base.inputBank.skill3.justPressed)
 					{
-						//makes skill cancel if they hit the button again
-						if (networkUser2.masterController.bodyInputs.skill3.justPressed)
-						{
-							boltObject.GetComponent<BoltVehicle>().DetonateServer();
-							this.outer.SetNextStateToMain();
-						}
-
-
-					}
-
-				}
-				else
-				{
-
-					if (fixedAge > delay)
-					{
-						//makes skill cancel if they hit the button again
-						if (base.inputBank.skill3.justPressed)
-						{
-							boltObject.GetComponent<BoltVehicle>().DetonateServer();
-							this.outer.SetNextStateToMain();
-						}
-
-					}
-				}
-
-
-					//exit if boltobject is destroyed
-					if (!boltObject)
-					{
+						boltObject.GetComponent<BoltVehicle>().DetonateServer();
 						this.outer.SetNextStateToMain();
 					}
+
 				}
 
 
-
+				//exit if boltobject is destroyed
+				if (!boltObject)
+				{
+					this.outer.SetNextStateToMain();
+				}
 
 			}
-
-
-
-
 
 		}
 
 	}
+
+}

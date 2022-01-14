@@ -46,7 +46,7 @@ namespace AmpMod.Modules
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_CHAIN_NAME", "Fulmination");
-            LanguageAPI.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a chaining stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of <color=#0091ff>charge</color>.");
+            LanguageAPI.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a <style=cIsUtility>chaining</style> stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of <color=#0091ff>charge</color>.");
             #endregion
 
             #region Special

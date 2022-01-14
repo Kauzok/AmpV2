@@ -125,8 +125,8 @@ namespace AmpMod.Modules
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
             //on charge explosion when 3 procs are reached
-            //CreateChargePrefab();
-            chargeExplosionEffect = LoadEffect("ChargeExplosion");
+            CreateChargePrefab();
+            //chargeExplosionEffect = LoadEffect("ChargeExplosion");
 
             //on fulmination skill chain
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
@@ -204,6 +204,7 @@ namespace AmpMod.Modules
            chargeExplosionEffect.AddComponent<VFXAttributes>();
            chargeExplosionEffect.AddComponent<EffectComponent>();
            chargeExplosionEffect.AddComponent<NetworkIdentity>();
+
 
            EffectAPI.AddEffect(chargeExplosionEffect);
 
