@@ -21,6 +21,7 @@
   - Consider looking into fixedupdate NRE (doesnt do anything but might cause unseen issues)
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
+  - Adjust tesselation vfx size
 - Charge Passive
   - Fix effect and animation playing more than intended in multiplayer
   - Consider making VFX more visible
