@@ -29,7 +29,7 @@
 - Character Model
 - Character Model Animations
 - Skill Icons
-- If I can get my hands on the material hopoo uses for the artificer's lightning effects i will be so happy god please i'll make so many vfx adjustments please
+- Switch VFX Shaders to cloud remap
 
 ## Changelog
 `0.0.1`
