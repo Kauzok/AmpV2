@@ -7,7 +7,7 @@
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
   - Add swing/on hit VFX
   - Limit sfx sound so hitting multiple enemies doesn't make it super loud
-- Ferroshot
+- Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Reduce range
   - Make prep gameobject spawn properly in multiplayer
