@@ -45,15 +45,8 @@ namespace AmpMod.SkillStates
         }
 
         //code for adding a chance of applying the charge debuff; percent chance is set with chargeProc var
-        protected void chargeChance(float chance, OverlapAttack attack)
-        {
-
-            if (Util.CheckRoll(chance, base.characterBody.master))
-            {
-                attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
-            }
-        }
-
+      /*  c
+      */
 
         protected override void PlayAttackAnimation()
         {

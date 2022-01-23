@@ -58,7 +58,7 @@ namespace AmpMod.SkillStates
 
 			//sets hooks to modify scripts that comprise the character's behavior on entry and exit of a vehicleseat
 			vehicleSeat = base.GetComponent<VehicleSeat>();
-			this.rigidbody = base.GetComponent<Rigidbody>();
+			rigidbody = base.GetComponent<Rigidbody>();
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
 
@@ -208,7 +208,7 @@ namespace AmpMod.SkillStates
 			AkSoundEngine.StopPlayingID(stopID, 0);
 
 			//play exit sound
-			AkSoundEngine.PostEvent(exitSoundString, base.gameObject);
+			Util.PlaySound(exitSoundString, base.gameObject);
 			
 			//destroy vehicle
 			UnityEngine.Object.Destroy(base.gameObject);
@@ -233,7 +233,8 @@ namespace AmpMod.SkillStates
 
 
 			if (NetworkServer.active)
-			{ 
+			{
+
 				//fires the overlapattack
 				if (overlapFireAge > 1f / overlapFireFrequency)
 				{

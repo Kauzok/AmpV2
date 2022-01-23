@@ -81,6 +81,7 @@ namespace AmpMod.SkillStates
 
 		public override void OnExit()
 		{
+
 			//remove effect and stop sound
 			EntityState.Destroy(this.fulminationTransform.gameObject);
 			AkSoundEngine.StopPlayingID(stopSoundID, 0);
@@ -88,7 +89,10 @@ namespace AmpMod.SkillStates
 			//play exit sound
 			Util.PlaySound(endSoundString, base.gameObject);
 
+
+
 			base.OnExit();
+
 		}
 
 		private void FireGauntlet()
@@ -168,6 +172,7 @@ namespace AmpMod.SkillStates
 				if (base.inputBank.skill4.justPressed && base.isAuthority)
                 {
 					this.outer.SetNextStateToMain();
+					return;
                 }
             }
 

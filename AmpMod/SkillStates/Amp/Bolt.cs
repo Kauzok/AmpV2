@@ -46,11 +46,12 @@ namespace AmpMod.SkillStates
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
-			//NetworkServer.Spawn(boltObject);	
+            //NetworkServer.Spawn(boltObject);	
 
 
-			//stuff to make it work with multiplayer
-			CharacterBody characterBody = this.characterBody;
+            //stuff to make it work with multiplayer
+            #region networking
+            CharacterBody characterBody = this.characterBody;
 
 			if (characterBody == null)
 			{
@@ -80,17 +81,23 @@ namespace AmpMod.SkillStates
 				NetworkServer.Spawn(boltObject);
 			}
 		}
+			#endregion
 
 
-		//basic fixedupdate override, you know the drill
-		//makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
-		public override void FixedUpdate()
+        //basic fixedupdate override, you know the drill
+        //makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
+        public override void FixedUpdate()
 		{
 
 			base.FixedUpdate();
 
 			if (NetworkServer.active)
 			{
+
+				if (networkUser2)
+                {
+					
+                }
 
 				if (fixedAge > delay)
 				{

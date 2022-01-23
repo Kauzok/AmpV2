@@ -152,18 +152,24 @@ namespace AmpMod
         //applies custom debuff/tracker component
         public void applyCharge(HealthComponent self, DamageInfo info)
         {
-            if (self.gameObject.GetComponent<Tracker>() == null)
+
+            //if gameobject doesn't have tracker give it one/assign its values
+            if (!self.gameObject.GetComponent<Tracker>())
             {
+                Debug.Log("adding tracker");
                 self.gameObject.AddComponent<Tracker>();
+
+                var tracker = self.gameObject.GetComponent<Tracker>();
                 
                 //assigns tracker values for purposes of creating the charge explosion's damage properties if/when the body gains 3 stacks of charge
-                self.gameObject.GetComponent<Tracker>().owner = info.attacker.gameObject;
-                self.gameObject.GetComponent<Tracker>().ownerBody = info.attacker.GetComponent<CharacterBody>();
-                self.gameObject.GetComponent<Tracker>().victim = self.gameObject;
+                tracker.owner = info.attacker.gameObject;
+                tracker.ownerBody = info.attacker.GetComponent<CharacterBody>();
+                tracker.victim = self.gameObject;
             }
 
             //apply one stack of chargebuildup
-            self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+            self.body.AddTimedBuff(Buffs.chargeBuildup, StaticValues.chargeDuration, StaticValues.chargeMaxStacks);
+            
 
         }
 
@@ -179,54 +185,59 @@ namespace AmpMod
             {
              
                 //check if body has chargebuildup buff
-                if (self.HasBuff(Modules.Buffs.chargeBuildup))
+                if (self.HasBuff(Buffs.chargeBuildup))
                 {
+
                     int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
                     //if body has more than 3 stacks of charge, make new blastattack with effect
                     if (chargeCount >= 3)
                     {
+
                         GameObject chargeExplosion;
                      
                         EffectData effectData = new EffectData
                         {
                             origin = self.corePosition,
-                            scale = 1f,
                         };
-
-                        //declare and spawn charge explosion effect
+                            
+                        //set and spawn charge explosion effect
                         chargeExplosion = Assets.chargeExplosionEffect;
                         EffectManager.SpawnEffect(chargeExplosion, effectData, true);
 
-                        //plays chargesound; right now the sound plays on amp instead of wherever the enemy's gameobject because
-                        //if the enemy is killed by the charge explosion the sound won't play. at the very least it plays right now, but need to figure out
-                        //how to fix this so it's not a bandaid solution
-                        Util.PlaySound(Modules.StaticValues.chargeExplosionString, base.gameObject);
-                        
+                        var tracker = self.gameObject.GetComponent<Tracker>();
 
-                        //creates charge explosion centered at the body with the debuff
-                        new BlastAttack
-                            {
-                                attacker = self.gameObject.GetComponent<Tracker>().owner,
-                                baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
-                                baseForce = 1f,
-                                attackerFiltering = AttackerFiltering.NeverHit,
-                                crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
-                                damageColorIndex = DamageColorIndex.Item,
-                                damageType = DamageType.Generic,
-                                falloffModel = BlastAttack.FalloffModel.None,
-                                inflictor = self.gameObject.GetComponent<Tracker>().owner,
-                                position = self.corePosition,
-                                procChainMask = default(ProcChainMask),
-                                procCoefficient = 1f,
-                                radius = 7f,
-                                teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
-                            }.Fire();
+                        if (!tracker)
+                        {
+                            Debug.Log("no tracker found");
+                        }
+                        //the networking of this blastattack is very messed up, prolly cuz of tracker vals, so fix that
+                        BlastAttack chargeBlast;
 
-                        
-                        //removes stacks of charge after explosion
+                        /*  chargeBlast = new BlastAttack
+                          {
+                              attacker = tracker.owner,
+                              baseDamage = StaticValues.chargeDamageCoefficient * tracker.ownerBody.damage,
+                              baseForce = 1f,
+                              attackerFiltering = AttackerFiltering.NeverHit,
+                              crit = tracker.ownerBody.RollCrit(),
+                              damageColorIndex = DamageColorIndex.Item,
+                              damageType = DamageType.Generic,
+                              falloffModel = BlastAttack.FalloffModel.None,
+                              inflictor = tracker.owner,
+                              position = self.corePosition,
+                              procChainMask = default(ProcChainMask),
+                              procCoefficient = 1f,
+                              radius = 7f,
+                              teamIndex = tracker.ownerBody.teamComponent.teamIndex
+                          }; 
+
+                        chargeBlast.Fire();  */
+
+
+
+                        //removes stacks of charge
                         self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
-                      
-                        
+
                     }
                
 

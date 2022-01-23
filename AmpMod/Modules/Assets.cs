@@ -23,6 +23,7 @@ namespace AmpMod.Modules
 
         [Header("Charge Effects")]
         internal static GameObject chargeExplosionEffect;
+       
 
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
@@ -119,14 +120,17 @@ namespace AmpMod.Modules
 
             stormbladeHitSoundEvent = CreateNetworkSoundEventDef(Modules.StaticValues.stormbladeHit4String);
 
+            chargeExplosionSound = CreateNetworkSoundEventDef(Modules.StaticValues.chargeExplosionString);
+
+
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
             //on charge explosion when 3 procs are reached
-            CreateChargePrefab();
-            //chargeExplosionEffect = LoadEffect("ChargeExplosion");
+            //CreateChargePrefab();
+            chargeExplosionEffect = LoadEffect("ChargeExplosion", Modules.StaticValues.chargeExplosionString);
 
             //on fulmination skill chain
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");

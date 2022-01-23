@@ -106,7 +106,7 @@ namespace AmpMod.SkillStates.Amp
                 EffectData lightningExplosion = new EffectData
                 {
                     origin = this.boltPosition,
-                    scale = 20f,
+                    scale = 1f,
 
                 };
                 //spawns lightning/lightningexplosion effects

@@ -88,13 +88,16 @@ namespace AmpMod.SkillStates.BaseStates
             this.attack.impactSound = this.impactSound;
 
 
+
+        }
+        protected void chargeChance(float chance, OverlapAttack attack)
+        {
+            if (Util.CheckRoll(chance, base.characterBody.master))
+            {
+                attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+            }
         }
 
- 
-
-        
-
-        
 
         protected virtual void PlayAttackAnimation()
         {
@@ -151,6 +154,8 @@ namespace AmpMod.SkillStates.BaseStates
                     base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
                 }
             }
+
+            chargeChance(Modules.StaticValues.stormbladeChargeProcCoefficient, this.attack);
 
             if (base.isAuthority)
             {
