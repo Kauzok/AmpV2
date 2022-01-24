@@ -5,6 +5,7 @@
 - Stormblade
   - Animations and the like
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
+  - Fix checkroll behavior
   - Add swing/on hit VFX
   - Limit sfx sound so hitting multiple enemies doesn't make it super loud
 - Lorentz Cannon
