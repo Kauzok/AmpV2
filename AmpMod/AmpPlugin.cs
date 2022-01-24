@@ -11,6 +11,7 @@ using RoR2.Orbs;
 using System.Collections.Generic;
 using AmpMod.SkillStates.BaseStates;
 using AmpMod.Modules;
+using UnityEngine.Networking;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -177,60 +178,68 @@ namespace AmpMod
            
             if (self)
             {
-             
-                //check if body has chargebuildup buff
-                if (self.HasBuff(Modules.Buffs.chargeBuildup))
+
+                if (NetworkServer.active)
                 {
-                    int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
-                    //if body has more than 3 stacks of charge, make new blastattack with effect
-                    if (chargeCount >= 3)
+                    //check if body has chargebuildup buff
+                    if (self.HasBuff(Buffs.chargeBuildup))
                     {
-                        GameObject chargeExplosion;
-                     
-                        EffectData effectData = new EffectData
+
+                        int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
+                        //if body has more than 3 stacks of charge, make new blastattack with effect
+                        if (chargeCount >= 3)
                         {
-                            origin = self.corePosition,
-                            scale = 1f,
-                        };
 
-                        //declare and spawn charge explosion effect
-                        chargeExplosion = Assets.chargeExplosionEffect;
-                        EffectManager.SpawnEffect(chargeExplosion, effectData, true);
+                            GameObject chargeExplosion;
 
-                        //plays chargesound; right now the sound plays on amp instead of wherever the enemy's gameobject because
-                        //if the enemy is killed by the charge explosion the sound won't play. at the very least it plays right now, but need to figure out
-                        //how to fix this so it's not a bandaid solution
-                        Util.PlaySound(Modules.StaticValues.chargeExplosionString, base.gameObject);
-                        
-
-                        //creates charge explosion centered at the body with the debuff
-                        new BlastAttack
+                            EffectData effectData = new EffectData
                             {
-                                attacker = self.gameObject.GetComponent<Tracker>().owner,
-                                baseDamage = Modules.StaticValues.chargeDamageCoefficient * self.gameObject.GetComponent<Tracker>().ownerBody.damage,
+                                origin = self.corePosition,
+                            };
+
+                            //set and spawn charge explosion effect
+                            chargeExplosion = Assets.chargeExplosionEffect;
+                            EffectManager.SpawnEffect(chargeExplosion, effectData, true);
+
+                            var tracker = self.gameObject.GetComponent<Tracker>();
+
+                            if (!tracker)
+                            {
+                                Debug.Log("no tracker found");
+                            }
+                            //the networking of this blastattack is very messed up, prolly cuz of tracker vals, so fix that
+                            BlastAttack chargeBlast;
+
+                            chargeBlast = new BlastAttack
+                            {
+                                attacker = tracker.owner,
+                                baseDamage = StaticValues.chargeDamageCoefficient * tracker.ownerBody.damage,
                                 baseForce = 1f,
                                 attackerFiltering = AttackerFiltering.NeverHit,
-                                crit = self.gameObject.GetComponent<Tracker>().ownerBody.RollCrit(),
+                                crit = tracker.ownerBody.RollCrit(),
                                 damageColorIndex = DamageColorIndex.Item,
                                 damageType = DamageType.Generic,
                                 falloffModel = BlastAttack.FalloffModel.None,
-                                inflictor = self.gameObject.GetComponent<Tracker>().owner,
+                                inflictor = tracker.owner,
                                 position = self.corePosition,
                                 procChainMask = default(ProcChainMask),
                                 procCoefficient = 1f,
                                 radius = 7f,
-                                teamIndex = self.gameObject.GetComponent<Tracker>().ownerBody.teamComponent.teamIndex
-                            }.Fire();
+                                teamIndex = tracker.ownerBody.teamComponent.teamIndex
+                            };
 
-                        
-                        //removes stacks of charge after explosion
-                        self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
-                      
-                        
+                            chargeBlast.Fire();
+
+
+
+                            //removes stacks of charge
+                            self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
+
+                        }
+
+
+
                     }
-               
-
-
                 }
 
 
