@@ -47,7 +47,7 @@ namespace AmpMod.SkillStates
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			//NetworkServer.Spawn(boltObject);	
-
+			inputBank = boltObject.GetComponent<BoltVehicle>().
 
 			//stuff to make it work with multiplayer
 			CharacterBody characterBody = this.characterBody;
@@ -82,6 +82,12 @@ namespace AmpMod.SkillStates
 		}
 
 
+		public override InterruptPriority GetMinimumInterruptPriority()
+		{
+			return InterruptPriority.Skill;
+		}
+
+
 		//basic fixedupdate override, you know the drill
 		//makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
 		public override void FixedUpdate()
@@ -103,10 +109,10 @@ namespace AmpMod.SkillStates
 
 				}
 
-
 				//exit if boltobject is destroyed
 				if (!boltObject)
 				{
+					Debug.LogWarning("no bolt object found");
 					this.outer.SetNextStateToMain();
 				}
 

@@ -90,11 +90,15 @@ namespace AmpMod.SkillStates.BaseStates
 
         }
 
- 
+        protected void chargeChance(float chance, OverlapAttack attack)
+        {
 
-        
+            if (Util.CheckRoll(chance, base.characterBody.master))
+            {
+                attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+            }
+        }
 
-        
 
         protected virtual void PlayAttackAnimation()
         {
@@ -154,6 +158,7 @@ namespace AmpMod.SkillStates.BaseStates
 
             if (base.isAuthority)
             {
+                chargeChance(Modules.StaticValues.stormbladeChargeProcCoefficient, this.attack);
                 if (this.attack.Fire())
                 {
                     this.OnHitEnemyAuthority();

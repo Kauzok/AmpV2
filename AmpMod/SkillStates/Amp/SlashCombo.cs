@@ -36,24 +36,13 @@ namespace AmpMod.SkillStates
             this.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
             this.impactSound = Modules.Assets.stormbladeHitSoundEvent.index;
 
-            //chargeChance(20f, this.attack);
-            
-            
-
+        
 
             base.OnEnter();
         }
 
         //code for adding a chance of applying the charge debuff; percent chance is set with chargeProc var
-        protected void chargeChance(float chance, OverlapAttack attack)
-        {
-
-            if (Util.CheckRoll(chance, base.characterBody.master))
-            {
-                attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
-            }
-        }
-
+   
 
         protected override void PlayAttackAnimation()
         {
