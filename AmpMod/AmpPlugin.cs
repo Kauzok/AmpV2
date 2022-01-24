@@ -203,11 +203,7 @@ namespace AmpMod
 
                             var tracker = self.gameObject.GetComponent<Tracker>();
 
-                            if (!tracker)
-                            {
-                                Debug.Log("no tracker found");
-                            }
-                            //the networking of this blastattack is very messed up, prolly cuz of tracker vals, so fix that
+                            //create and fire charge blastattack centered on enemy 
                             BlastAttack chargeBlast;
 
                             chargeBlast = new BlastAttack
