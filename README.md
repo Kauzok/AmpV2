@@ -24,6 +24,8 @@
   - Adjust tessellation vfx size
 - Charge Passive
   - Consider making VFX more visible
+
+## Misc. To Do
 - Cleanup code base, finish comments
 - Fix name tokens
 - Character Model
