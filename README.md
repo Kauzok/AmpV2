@@ -23,8 +23,9 @@
   - Adjust hitbox to make it hit higher
   - Adjust tessellation vfx size
 - Charge Passive
-  - Fix effect and animation playing more than intended in multiplayer
   - Consider making VFX more visible
+
+## Misc. To Do
 - Cleanup code base, finish comments
 - Fix name tokens
 - Character Model
