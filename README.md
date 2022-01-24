@@ -16,6 +16,8 @@
   - Make it cancellable/fix skill not exiting in multiplayer
   - Fix effect shaking when running into objects
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
+- Galvanic Leap
+  - Add skill
 - Fulmination
   - Fix chain effect
   - Adjust position of VFX
