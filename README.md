@@ -16,13 +16,15 @@
   - Make it cancellable/fix skill not exiting in multiplayer
   - Fix effect shaking when running into objects
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
+- Pulse Leap
+  - Add skill
 - Fulmination
   - Fix chain effect
   - Adjust position of VFX
   - Consider looking into fixedupdate NRE (doesnt do anything but might cause unseen issues)
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
-  - Adjust tessellation vfx size
+  - Figure out why tesselation vfx is only affected on clients
 - Charge Passive
   - Consider making VFX more visible
 
