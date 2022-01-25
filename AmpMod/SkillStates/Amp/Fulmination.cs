@@ -168,6 +168,7 @@ namespace AmpMod.SkillStates
 				if (base.inputBank.skill4.justPressed && base.isAuthority)
                 {
 					this.outer.SetNextStateToMain();
+					return;
                 }
             }
 

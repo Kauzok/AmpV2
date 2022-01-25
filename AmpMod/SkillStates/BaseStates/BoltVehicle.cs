@@ -94,7 +94,7 @@ namespace AmpMod.SkillStates
 		}
 
 		//initializes vehicleseat and bolt's overlapattack
-		private void OnPassengerEnter(GameObject passenger)
+		public void OnPassengerEnter(GameObject passenger)
 		{
 			if (!this.vehicleSeat.currentPassengerInputBank)
 			{
@@ -153,6 +153,7 @@ namespace AmpMod.SkillStates
 
 			//play state sound
 			stopID = Util.PlaySound(stateSoundString, base.gameObject);
+			Debug.Log(stopID);
 			
 		}
 
@@ -206,9 +207,10 @@ namespace AmpMod.SkillStates
 
 			//stop state sound
 			AkSoundEngine.StopPlayingID(stopID, 0);
+			Debug.Log("Stopping" + stopID);
 
 			//play exit sound
-			AkSoundEngine.PostEvent(exitSoundString, base.gameObject);
+			Util.PlaySound(exitSoundString, base.gameObject);
 			
 			//destroy vehicle
 			UnityEngine.Object.Destroy(base.gameObject);

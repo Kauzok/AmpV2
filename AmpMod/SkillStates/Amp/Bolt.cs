@@ -12,7 +12,7 @@ namespace AmpMod.SkillStates
 
 	public class Bolt : BaseSkillState
 	{
-		private float duration;
+		private float duration = 2f;
 		private float delay = .2f;
 		public GameObject boltObject;
 		public InputBankTest inputBank;
@@ -25,9 +25,6 @@ namespace AmpMod.SkillStates
 		{
 			this.hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
 		}
-
-
-
 
 		public override void OnEnter()
 		{
@@ -47,8 +44,7 @@ namespace AmpMod.SkillStates
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			//NetworkServer.Spawn(boltObject);	
-			inputBank = boltObject.GetComponent<BoltVehicle>().
-
+			inputBank = boltObject.GetComponent<VehicleSeat>().currentPassengerInputBank;
 			//stuff to make it work with multiplayer
 			CharacterBody characterBody = this.characterBody;
 
@@ -79,47 +75,48 @@ namespace AmpMod.SkillStates
 			{
 				NetworkServer.Spawn(boltObject);
 			}
-		}
-
-
-		public override InterruptPriority GetMinimumInterruptPriority()
-		{
-			return InterruptPriority.Skill;
-		}
-
+		
+		} 
 
 		//basic fixedupdate override, you know the drill
-		//makes it so cooldown only starts when boltObject is destroyed, .i.e. when the player manually cancels or when duration runs out
+		//makes it so cooldown only starts when boltObject is destroyed, i.e. when the player manually cancels or when duration runs out
 		public override void FixedUpdate()
 		{
 
 			base.FixedUpdate();
-
-			if (NetworkServer.active)
-			{
 
 				if (fixedAge > delay)
 				{
 					//makes skill cancel if they hit the button again
 					if (base.inputBank.skill3.justPressed)
 					{
-						boltObject.GetComponent<BoltVehicle>().DetonateServer();
 						this.outer.SetNextStateToMain();
+						return;
 					}
 
-				}
-
-				//exit if boltobject is destroyed
-				if (!boltObject)
+				//if duration runs out cancel skill
+				if (fixedAge > duration)
 				{
-					Debug.LogWarning("no bolt object found");
 					this.outer.SetNextStateToMain();
+					return;
+
 				}
 
 			}
 
+				
+
 		}
 
-	}
+		//called in onExit instead of fixedUpdate to make it play nice with networking
+        public override void OnExit()
+        {
+            base.OnExit();
+			if (!NetworkServer.active) return;
+
+			boltObject.GetComponent<BoltVehicle>().DetonateServer();
+        }
+
+    }
 
 }
