@@ -77,6 +77,14 @@ namespace AmpMod.SkillStates
 		//calls detonateserver and returns camera back to normal
 		private void OnPassengerExit(GameObject passenger)
 		{
+
+			//stop state sound
+			AkSoundEngine.StopPlayingID(stopID, 0);
+			//Debug.Log("Stopping" + stopID);
+
+			//play exit sound
+			Util.PlaySound(exitSoundString, base.gameObject);
+
 			if (NetworkServer.active)
 			{
 				DetonateServer();
@@ -151,9 +159,7 @@ namespace AmpMod.SkillStates
 			} */
 
 			//play state sound
-			stopID = Util.PlaySound(stateSoundString, base.gameObject);
-			Debug.Log(stopID);
-			
+			stopID = Util.PlaySound(stateSoundString, base.gameObject);			
 		}
 
 		//destroys gameobject and reverts player back to normal state
@@ -204,13 +210,6 @@ namespace AmpMod.SkillStates
 			boltBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
 			boltBlast.Fire();
 
-			//stop state sound
-			AkSoundEngine.StopPlayingID(stopID, 0);
-			//Debug.Log("Stopping" + stopID);
-
-			//play exit sound
-			Util.PlaySound(exitSoundString, base.gameObject);
-			
 			//destroy vehicle
 			UnityEngine.Object.Destroy(base.gameObject);
 			
