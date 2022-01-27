@@ -15,13 +15,14 @@
 - Bolt 
   - Make skill sfx cancel properly in multiplayer on early end/play exit sound
   - Fix effect shaking when running into objects
+  - Consider adjusting entry VFX for visibility
+  - Look into "Received networktransform data for an object that doesn't exist" warning
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Pulse Leap
   - Add skill
 - Fulmination
   - Fix chain effect
   - Adjust position of VFX
-  - Fix OnExit NRE to stop causing conflicts with bolt
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
   - Figure out why tessellation vfx is only affected on clients
