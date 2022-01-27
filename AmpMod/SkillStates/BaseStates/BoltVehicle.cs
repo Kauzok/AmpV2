@@ -266,13 +266,6 @@ namespace AmpMod.SkillStates
 				this.rigidbody.MoveRotation(Quaternion.LookRotation(originalAimRay.direction));
 				this.rigidbody.AddForce(a - velocity, ForceMode.VelocityChange);
 			
-	
-
-			//ends skill once time is up
-			if (NetworkServer.active && duration <= age)
-			{
-				DetonateServer();
-			}
 		}
 
 		//calls detonateserver on contact with an entity if detonateoncollision is active

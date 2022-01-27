@@ -17,6 +17,7 @@ namespace AmpMod.SkillStates
 		public GameObject boltObject;
 		public InputBankTest inputBank;
 		public CharacterMaster master;
+		public bool naturalEnd;
 		private bool hasEffectiveAuthority;
 		public NetworkUser networkUser;
 		public NetworkUser networkUser2;
@@ -32,7 +33,7 @@ namespace AmpMod.SkillStates
 
 
 			base.OnEnter();
-			UpdateAuthority();
+		
 
 			Ray aimRay = GetAimRay();
 
@@ -43,8 +44,8 @@ namespace AmpMod.SkillStates
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
-			//NetworkServer.Spawn(boltObject);	
-			inputBank = boltObject.GetComponent<VehicleSeat>().currentPassengerInputBank;
+		//	NetworkServer.Spawn(boltObject);
+		
 			//stuff to make it work with multiplayer
 			CharacterBody characterBody = this.characterBody;
 
@@ -74,8 +75,8 @@ namespace AmpMod.SkillStates
 			else
 			{
 				NetworkServer.Spawn(boltObject);
-			}
-		
+			} 
+
 		} 
 
 		//basic fixedupdate override, you know the drill
@@ -85,37 +86,42 @@ namespace AmpMod.SkillStates
 
 			base.FixedUpdate();
 
-				if (fixedAge > delay)
-				{
-					//makes skill cancel if they hit the button again
-					if (base.inputBank.skill3.justPressed)
-					{
-						this.outer.SetNextStateToMain();
-						return;
-					}
-
-				//if duration runs out cancel skill
-				if (fixedAge > duration)
+			if (fixedAge > delay)
+			{
+				//makes skill cancel if they hit the button again
+				if (base.inputBank.skill3.justPressed && base.isAuthority)
 				{
 					this.outer.SetNextStateToMain();
 					return;
-
 				}
 
 			}
+				//if duration runs out cancel skill
+			if (fixedAge > duration && base.isAuthority)
+			{
+				this.outer.SetNextStateToMain();
+			
+				return;
 
-				
+			}
 
 		}
 
 		//called in onExit instead of fixedUpdate to make it play nice with networking
         public override void OnExit()
         {
-            base.OnExit();
 			if (!NetworkServer.active) return;
+			base.OnExit();
 
-			boltObject.GetComponent<BoltVehicle>().DetonateServer();
-        }
+
+			//boltObject.GetComponent<BoltVehicle>().DetonateServer();
+			var bolt = boltObject?.GetComponent<BoltVehicle>();
+			if (bolt)
+			{
+				bolt.DetonateServer();
+			}
+
+		}
 
     }
 

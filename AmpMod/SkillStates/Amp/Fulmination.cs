@@ -52,7 +52,7 @@ namespace AmpMod.SkillStates
 
 		private float fulminationDuration;
 
-		private bool hasBegunFlamethrower;
+		private bool hasBegunFulmination;
 
 		private Transform fulminationTransform;
 
@@ -81,14 +81,16 @@ namespace AmpMod.SkillStates
 
 		public override void OnExit()
 		{
-			//remove effect and stop sound
-			EntityState.Destroy(this.fulminationTransform.gameObject);
-			AkSoundEngine.StopPlayingID(stopSoundID, 0);
-
 			//play exit sound
 			Util.PlaySound(endSoundString, base.gameObject);
+			AkSoundEngine.StopPlayingID(stopSoundID, 0);
 
+			//remove effect and stop sound
+			Destroy(this.fulminationTransform.gameObject);
+		
+			
 			base.OnExit();
+
 		}
 
 		private void FireGauntlet()
@@ -139,9 +141,9 @@ namespace AmpMod.SkillStates
 		{
 			base.FixedUpdate();
 			this.stopwatch += Time.fixedDeltaTime;
-			if (this.stopwatch >= this.entryDuration && !this.hasBegunFlamethrower)
+			if (this.stopwatch >= this.entryDuration && !this.hasBegunFulmination)
 			{
-				this.hasBegunFlamethrower = true;
+				this.hasBegunFulmination = true;
 	
 				//instantiate effect as gameobject to transform
 				this.fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
@@ -151,7 +153,7 @@ namespace AmpMod.SkillStates
 
 				this.FireGauntlet();
 			}
-			if (this.hasBegunFlamethrower)
+			if (this.hasBegunFulmination)
 			{
 				this.fulminationStopwatch += Time.deltaTime;
 				if (this.fulminationStopwatch > 1f / Fulmination.tickFrequency)
