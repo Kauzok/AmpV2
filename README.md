@@ -25,7 +25,7 @@
   - Fix OnExit NRE to stop causing conflicts with bolt
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
-  - Figure out why tesselation vfx is only affected on clients
+  - Figure out why tessellation vfx is only affected on clients
 - Charge Passive
   - Consider making VFX more visible
 
