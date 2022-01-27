@@ -4,8 +4,8 @@
 ## Skills To Do
 - Stormblade
   - Animations and the like
-  - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
   - Fix checkroll behavior
+  - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
   - Add swing/on hit VFX
   - Limit sfx sound so hitting multiple enemies doesn't make it super loud
 - Lorentz Cannon
@@ -13,18 +13,19 @@
   - Reduce range
   - Make prep gameobject spawn properly in multiplayer
 - Bolt 
-  - Make it cancellable/fix skill not exiting in multiplayer
+  - Make skill sfx cancel properly in multiplayer on early end/play exit sound
   - Fix effect shaking when running into objects
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Pulse Leap
   - Add skill
 - Fulmination
   - Fix chain effect
+  - Fix checkroll behavior
   - Adjust position of VFX
-  - Consider looking into fixedupdate NRE (doesnt do anything but might cause unseen issues)
+  - Fix OnExit NRE to stop causing conflicts with bolt
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
-  - Figure out why tesselation vfx is only affected on clients
+  - Figure out why tessellation vfx is only affected on clients
 - Charge Passive
   - Consider making VFX more visible
 
