@@ -26,7 +26,6 @@ namespace AmpMod.SkillStates
 		public uint stopID;
 
 		[Header("Blast Parameters")]
-		public bool detonateOnCollision;
 		public GameObject exitEffectPrefab;
 		public string exitSoundString = Modules.StaticValues.boltExitString;
 		public float blastRadius = 1f;
@@ -207,7 +206,7 @@ namespace AmpMod.SkillStates
 
 			//stop state sound
 			AkSoundEngine.StopPlayingID(stopID, 0);
-			Debug.Log("Stopping" + stopID);
+			//Debug.Log("Stopping" + stopID);
 
 			//play exit sound
 			Util.PlaySound(exitSoundString, base.gameObject);
@@ -223,7 +222,7 @@ namespace AmpMod.SkillStates
 		{
 			if (!vehicleSeat)
 			{
-				return;
+				return;	
 			}
 			if (!this.vehicleSeat.currentPassengerInputBank)
 			{
@@ -268,15 +267,6 @@ namespace AmpMod.SkillStates
 			
 		}
 
-		//calls detonateserver on contact with an entity if detonateoncollision is active
-		private void OnCollisionEnter(Collision collision)
-		{
-			if (this.detonateOnCollision && NetworkServer.active)
-			{
-				this.DetonateServer();
-			
-			}
-		}
 
 		public void GetCameraState(CameraRigController cameraRigController, ref CameraState cameraState)
 		{

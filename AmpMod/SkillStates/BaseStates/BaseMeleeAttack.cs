@@ -92,11 +92,15 @@ namespace AmpMod.SkillStates.BaseStates
 
         protected void chargeChance(float chance, OverlapAttack attack)
         {
-
-            if (Util.CheckRoll(chance, base.characterBody.master))
+            if (base.isAuthority && base.characterBody)
             {
-                attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+                if (Util.CheckRoll(chance, base.characterBody.master))
+                {
+                    attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+                }
             }
+            
+       
         }
 
 

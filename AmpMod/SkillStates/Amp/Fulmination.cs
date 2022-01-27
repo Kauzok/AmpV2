@@ -6,68 +6,57 @@ using RoR2.Orbs;
 using System.Collections.Generic;
 using static AmpMod.SkillStates.BaseStates.FulminationOrb;
 using R2API;
+using System;
 
 namespace AmpMod.SkillStates
 {
 	public class Fulmination : BaseSkillState
 	{
 
+		[Header("Effect Variables")]
 		public GameObject lightningEffectPrefab = Modules.Assets.electricStreamEffect;
-
 		public static GameObject impactEffectPrefab = Modules.Assets.electricImpactEffect;
-
-		public static float radius;
-
 		public EffectData fulminationData;
+		private Transform fulminationTransform;
 
-		public static float delayTime = .2f;
-
-		public static float baseEntryDuration = .5f;
-
-		public static float baseFulminationDuration = 4f;
-
+		[Header("Attack Variables")]
+		public static float radius;
+		public static float tickFrequency = 5f;
+		public static float force = 20f;
+		private float tickDamageCoefficient;
+		public static float procCoefficientPerTick;
 		public static float totalDamageCoefficient = 22f;
 
-		public static float procCoefficientPerTick;
-
-		public static float tickFrequency = 5f;
-
-		public static float force = 20f;
-
-		private float tickDamageCoefficient;
-
-		private float fulminationStopwatch;
-
-		private float stopwatch;
-
-		public float entryDuration;
-
+		[Header("Sounds")]
 		public string enterSoundString = Modules.StaticValues.fulminationEnterString;
-
 		public string attackSoundString = Modules.StaticValues.fulminationStateString;
-
 		public string endSoundString = Modules.StaticValues.fulminationExitAlterString;
-
 		public uint stopSoundID;
 
+		[Header("Duration/Timer Variables")]
+		public static float delayTime = .2f;
+		public static float baseEntryDuration = .5f;
+		public static float baseFulminationDuration = 4f;
+		private float fulminationStopwatch;
+		private float stopwatch;
+		public float entryDuration;
 		private float fulminationDuration;
-
 		private bool hasBegunFulmination;
 
-		private Transform fulminationTransform;
+		
 
 
 
 		public override void OnEnter()
 		{
 			base.OnEnter();
-			this.stopwatch = 0f;
-			this.entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
-			this.fulminationDuration = Fulmination.baseFulminationDuration;
+			stopwatch = 0f;
+			entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
+			fulminationDuration = Fulmination.baseFulminationDuration;
 
 			if (base.characterBody)
 			{
-				base.characterBody.SetAimTimer(this.entryDuration + this.fulminationDuration + 1f);
+				base.characterBody.SetAimTimer(entryDuration + fulminationDuration + 1f);
 			}
 			//play enter sound
 			Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
@@ -83,17 +72,20 @@ namespace AmpMod.SkillStates
 		{
 			//play exit sound
 			Util.PlaySound(endSoundString, base.gameObject);
+
+			//stop sound
 			AkSoundEngine.StopPlayingID(stopSoundID, 0);
 
-			//remove effect and stop sound
-			Destroy(this.fulminationTransform.gameObject);
-		
-			
+			if (fulminationTransform.gameObject)
+            {
+				EntityState.Destroy(fulminationTransform.gameObject);
+			}
+
 			base.OnExit();
 
 		}
 
-		private void FireGauntlet()
+		private void FireLightning()
 		{
 			Ray aimRay = base.GetAimRay();
 			if (base.isAuthority)
@@ -138,30 +130,30 @@ namespace AmpMod.SkillStates
 
 
 		public override void FixedUpdate()
-		{
+		{	
 			base.FixedUpdate();
-			this.stopwatch += Time.fixedDeltaTime;
-			if (this.stopwatch >= this.entryDuration && !this.hasBegunFulmination)
+			stopwatch += Time.fixedDeltaTime;
+			if (stopwatch >= entryDuration && !hasBegunFulmination)
 			{
-				this.hasBegunFulmination = true;
+				hasBegunFulmination = true;
 	
 				//instantiate effect as gameobject to transform
-				this.fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
+				fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
 
 				//play sound and set stopID
 				stopSoundID = Util.PlaySound(attackSoundString, base.gameObject);
 
-				this.FireGauntlet();
+				FireLightning();
 			}
-			if (this.hasBegunFulmination)
+			if (hasBegunFulmination)
 			{
-				this.fulminationStopwatch += Time.deltaTime;
-				if (this.fulminationStopwatch > 1f / Fulmination.tickFrequency)
+				fulminationStopwatch += Time.deltaTime;
+				if (fulminationStopwatch > 1f / Fulmination.tickFrequency)
 				{
-					this.fulminationStopwatch -= 1f / Fulmination.tickFrequency;
-					this.FireGauntlet();
+					fulminationStopwatch -= 1f / Fulmination.tickFrequency;
+					FireLightning();
 				}
-				this.UpdateFulminationEffect();
+				UpdateFulminationEffect();
 			}
 
 			//lets player cancel ability by pressing key again; weird error showed up when i added this, so check this out if fulmination exhibits any strange behavior
@@ -172,15 +164,20 @@ namespace AmpMod.SkillStates
 					this.outer.SetNextStateToMain();
 					return;
                 }
-            }
+            } 
 
-			if (this.stopwatch >= this.fulminationDuration + this.entryDuration && base.isAuthority)
+			//ends skill when time runs out
+			if (stopwatch >= fulminationDuration + entryDuration && base.isAuthority)
 			{
-				this.outer.SetNextStateToMain();  
+				this.outer.SetNextStateToMain();
+					
 				return;
 			}
+			
+			
 		}
 
+		//update effect of lightning stream; make it point where player is facing
 		private void UpdateFulminationEffect()
 		{
 			Ray aimRay = base.GetAimRay();
