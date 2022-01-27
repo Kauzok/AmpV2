@@ -20,7 +20,6 @@
   - Add skill
 - Fulmination
   - Fix chain effect
-  - Fix checkroll behavior
   - Adjust position of VFX
   - Fix OnExit NRE to stop causing conflicts with bolt
 - Voltaic Bombardment
