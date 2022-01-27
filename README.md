@@ -13,7 +13,6 @@
   - Reduce range
   - Make prep gameobject spawn properly in multiplayer
 - Bolt 
-  - Make skill sfx cancel properly in multiplayer on early end/play exit sound
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
   - Look into "Received networktransform data for an object that doesn't exist" warning
