@@ -80,7 +80,6 @@ namespace AmpMod.SkillStates
 
 			//stop state sound
 			AkSoundEngine.StopPlayingID(stopID, 0);
-			//Debug.Log("Stopping" + stopID);
 
 			//play exit sound
 			Util.PlaySound(exitSoundString, base.gameObject);

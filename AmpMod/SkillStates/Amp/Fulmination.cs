@@ -70,18 +70,23 @@ namespace AmpMod.SkillStates
 
 		public override void OnExit()
 		{
+
 			//play exit sound
 			Util.PlaySound(endSoundString, base.gameObject);
 
 			//stop sound
 			AkSoundEngine.StopPlayingID(stopSoundID, 0);
 
-			if (fulminationTransform.gameObject)
-            {
-				EntityState.Destroy(fulminationTransform.gameObject);
-			}
+				if (fulminationTransform)
+                {
+					EntityState.Destroy(fulminationTransform.gameObject);
+
+				}
+
+
 
 			base.OnExit();
+
 
 		}
 
