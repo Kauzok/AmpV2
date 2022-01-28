@@ -3,7 +3,6 @@ using RoR2;
 using R2API;
 using UnityEngine;
 using RoR2.WwiseUtils;
-using AmpMod.SkillStates.BaseStates;
 
 namespace AmpMod.SkillStates
 {
