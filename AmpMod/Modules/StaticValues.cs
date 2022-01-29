@@ -10,7 +10,7 @@ namespace AmpMod.Modules
         public const string characterName = "Amp";
         public const string characterSubtitle = "Electromagnetic Warrior";
         public const string characterOutro = "..and so he left, with an undeniable freedom.";
-        public const string characterOutroFailure = "..and so he vanished, a slave for eternity.";
+        public const string characterOutroFailure = "..and so he vanished, imprisoned for eternity.";
 
 
         internal static string descriptionText = "Amp is a melee/range hybrid that focuses on consistently dealing damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
@@ -23,8 +23,7 @@ namespace AmpMod.Modules
             + "Electrocute.\n\n"
             + "An orphan, they said. Saved from a life spent in darkened alleyways, the only caveat being that he work for them without question. They called themselves scientists. He called them slavers. For any disobedience was swiftly treated with high-voltage punishment.\n\n"
             + "Electrocute.\n\n"
-            + "A new mission, they told him. Obtain an artifact from a desolate planet. The details were left out; if he died, they would simply use another. But when he touched the artifact, sparks flew. Images of a faraway planet, lush and teeming with life, flashed into his mind. He stumbled back, confused. What did this mean? What was this artifact? He knew if he followed the message, he’d find the answers. But first, there was something he must do. For he saw the planet, but also the truth. \n\n"
-            + "He was an orphan, yes. But an artificial one.\n\n"
+            + "A new mission, they told him. Obtain an artifact from a desolate planet, said to be a remnant of the forge of a dead god. The details were left out; if he died, they would simply use another. But when he touched the artifact, sparks flew. Images of a faraway planet, lush and teeming with life, flashed into his mind. He stumbled back, confused. What did this mean? What was this artifact? He knew if he followed the message, he’d find the answers. But first, there was something he must do. \n\n"
             + "Electrocute.\n\n"
             + "The trail back to headquarters was stained with blood. He didn't have to go back. With his power, he could've escaped and never returned. But he wanted vengeance. For himself, and for the parents he had never met.\n\n"
             + "Electrocute.\n\n"

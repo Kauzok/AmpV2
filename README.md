@@ -21,7 +21,7 @@
   - Add skill
 - Fulmination
   - Fix chain effect
-  - Fix OnExit NRE messing up Bolt skill
+  - Keep an eye out for OnExit NRE; *should* be fixed but not sure yet
   - Adjust position of VFX
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
