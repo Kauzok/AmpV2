@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using AmpMod.SkillStates.BaseStates;
 using AmpMod.Modules;
 using UnityEngine.Networking;
+using System.Collections.ObjectModel;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -42,6 +43,8 @@ namespace AmpMod
         public const string developerPrefix = "NT";
 
         public static AmpPlugin instance;
+   
+
 
         private void Awake()
         {
@@ -76,11 +79,115 @@ namespace AmpMod
 
         private void Hook()
         {
-            // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
+            On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
+
         }
 
+        //Mithrix quotes for when Amp is present
+        private void BrotherSpeechDriver_DoInitialSightResponse(On.RoR2.CharacterSpeech.BrotherSpeechDriver.orig_DoInitialSightResponse orig, RoR2.CharacterSpeech.BrotherSpeechDriver self)
+        {
+            bool isAmpThere = false;
+
+            ReadOnlyCollection<CharacterBody> characterBodies = CharacterBody.readOnlyInstancesList;
+            for (int i = 0; i < characterBodies.Count; i++)
+            {
+                //BodyIndex AmpIndex = characterBodies[i].bodyIndex;
+               // isAmpThere |= (AmpIndex == BodyCatalog.FindBodyIndex(Modules.Survivors.MyCharacter.instance.bodyName));
+
+                string ampName = characterBodies[i].baseNameToken;
+                isAmpThere |= (ampName == developerPrefix + "_AMP_BODY_NAME");
+            }
+
+            if (isAmpThere)
+            {
+                RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
+                {
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_SEE_AMP_1"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_SEE_AMP_2"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_SEE_AMP_3"
+                    },
+                      new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = ""
+                    }
+
+                };
+
+                self.SendReponseFromPool(responsePool);
+            }
+
+            orig(self);
+        }
+
+        //Same as above but for mithrix kill quotes, consider changing to bodyIndex check method used in brothersightresponse
+        private void BrotherSpeechDriver_OnBodyKill(On.RoR2.CharacterSpeech.BrotherSpeechDriver.orig_OnBodyKill orig, RoR2.CharacterSpeech.BrotherSpeechDriver self, DamageReport damageReport)
+        {
+            if (damageReport.victimBody)
+            {
+                if (damageReport.victimBody.baseNameToken == AmpPlugin.developerPrefix + "_AMP_BODY_NAME")
+                {
+                    RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
+                    {
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_KILL_AMP_1"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_KILL_AMP_2"
+                    },
+                         new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = ""
+                    }
+
+                    };
+
+                    self.SendReponseFromPool(responsePool);
+                }
+            }
+
+            orig(self, damageReport);
+        }
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo info)
         {
@@ -167,10 +274,6 @@ namespace AmpMod
             self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
 
         }
-
-
-
-           
 
         //hook for checking if body has chargedebuff
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)

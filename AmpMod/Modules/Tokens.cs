@@ -60,6 +60,15 @@ namespace AmpMod.Modules
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Henry: Mastery");
             #endregion
             #endregion
+
+            #region Mithrix Quotes
+            LanguageAPI.Add("MITHRIX_SEE_AMP_1", "The power of a wurm... but still weak.");
+            LanguageAPI.Add("MITHRIX_SEE_AMP_2", "Watch, brother. Another of your creations dies today.");
+            LanguageAPI.Add("MITHRIX_SEE_AMP_3", "Your weak arcs cannot harm me.");
+
+            LanguageAPI.Add("MITHRIX_KILL_AMP_1", "In another life, you may have been a useful servant.");
+            LanguageAPI.Add("MITHRIX_KILL_AMP_2", "Frail sparks.");
+            #endregion
         }
     }
 }
