@@ -10,6 +10,7 @@
   - Limit sfx sound so hitting multiple enemies doesn't make it super loud
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
+  - Adjust range
   - Make prep gameobject spawn properly in multiplayer
 - Magnetic Vortex
   - Add skill
