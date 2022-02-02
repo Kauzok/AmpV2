@@ -12,6 +12,8 @@
   - Make spike prep SFX cancel on fire
   - Reduce range
   - Make prep gameobject spawn properly in multiplayer
+- Magnetic Vortex
+  - Add skill
 - Bolt 
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
