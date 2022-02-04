@@ -127,7 +127,7 @@ namespace AmpMod.SkillStates
 			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
 
 			//gives invincibility when in boltstate
-			currentPassengerBody.AddBuff(Modules.Buffs.invulnerableBuff);
+			if (NetworkServer.active) currentPassengerBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
 
 			//creates overlapattack for damage and applying charge on hit
 			overlapAttack = new OverlapAttack
@@ -173,7 +173,7 @@ namespace AmpMod.SkillStates
 			//same purpose as stated above
 			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
 			//removes invincibility
-			currentPassengerBody.RemoveBuff(Modules.Buffs.invulnerableBuff);
+			if (NetworkServer.active) currentPassengerBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
 			//spawns exiteffect on bolt state exit
 			if (currentPassengerBody)

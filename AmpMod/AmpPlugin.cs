@@ -191,11 +191,7 @@ namespace AmpMod
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo info)
         {
-            if (self.body.HasBuff(Modules.Buffs.invulnerableBuff))
-            {
-                info.rejected = true;
-            }
-
+           
            
             //unused passive that makes body immune to shock damage
             /* if (self.body.baseNameToken == "HENRY_BODY")

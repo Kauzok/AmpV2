@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3484775628
+CRC: 219218598
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b9b967c71ea9ca2180046c7d95d47598
+    Hash: ec0c6301e1e6096c9da7e425c3d31cb6
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2420e010b524d129ca3bdc960d336e45
+    Hash: 3e965967ddef1ee6ab1f3796a4ea31f9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -76,13 +76,29 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 2011550347, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
+  Script: {fileID: 488236779, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
   Script: {fileID: 1245112779, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -1848696948, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 1790887305, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -270136354, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -1819008361, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 1324642361, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 2137989374, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -565067572, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1684102569, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -1895344032, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -662483879, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -1835779776, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
@@ -174,6 +190,7 @@ Assets:
 - Assets/HenryAssets/VFX/Bolt/Flash, Blue.prefab
 - Assets/HenryAssets/Mesh/meshVergil.mesh
 - Assets/HenryAssets/VFX/Textures/texFistSwing.png
+- Assets/HenryAssets/VFX/StormbladeSwing.prefab
 - Assets/HenryAssets/VFX/Bolt/MatBoltEnter.mat
 - Assets/HenryAssets/Animations/LightImpact.anim
 - Assets/HenryAssets/VFX/Charge/Flash, Blue Variant.prefab
@@ -188,6 +205,7 @@ Assets:
 - Assets/HenryAssets/LoaderLightningOrbEffect.prefab
 - Assets/HenryAssets/Mesh/meshHenryAlt.mesh
 - Assets/HenryAssets/Textures/texHenryJedi.png
+- Assets/HenryAssets/GravSphere.prefab
 - Assets/HenryAssets/Animations/SprintR.anim
 - Assets/HenryAssets/Animations/animHenryMenu.controller
 - Assets/HenryAssets/Icons/texVergilAchievement.png

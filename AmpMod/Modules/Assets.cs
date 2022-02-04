@@ -171,7 +171,8 @@ namespace AmpMod.Modules
                 };
             }
 
-            swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
+            //swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
+            swordSwingEffect = Assets.LoadEffect("StormbladeSwing", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }
 
