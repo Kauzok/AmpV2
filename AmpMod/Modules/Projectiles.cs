@@ -47,9 +47,12 @@ namespace AmpMod.Modules
             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>());
 
+            ferroshotPrefab.AddComponent<DestroyOnTimer>();
+
+            ferroshotPrefab.GetComponent<DestroyOnTimer>().duration = 2;
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
-            //instantiates the projectile model and associates it with the prefab
+            //instantiates the  projectile model and associates it with the prefab
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
             
   

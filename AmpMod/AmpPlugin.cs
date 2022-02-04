@@ -58,7 +58,7 @@ namespace AmpMod
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Tokens.AddTokens(); // register name tokens
             Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
-
+            
             // create your survivor here
             new Modules.Survivors.MyCharacter().Initialize();
 

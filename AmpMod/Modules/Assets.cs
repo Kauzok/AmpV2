@@ -129,7 +129,7 @@ namespace AmpMod.Modules
             chargeExplosionEffect = LoadEffect("ChargeExplosion", StaticValues.chargeExplosionString);
 
             //on fulmination skill chain
-            electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
+            //electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
 
             //on fulmination skill use
             CreateStreamPrefab();
@@ -240,7 +240,7 @@ namespace AmpMod.Modules
 
 
         }
-
+         
 
 
         //instantiate voltaic bombardment main effect as copy of royal capacitor's effect
@@ -259,43 +259,44 @@ namespace AmpMod.Modules
         //instantiates chain lightning effect 
         private static void CreateChainPrefab()
         {
-        /*   electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("chainOrb.prefab");
-           electricChainEffect.AddComponent<EffectComponent>();
 
-            var vfxChain = electricChainEffect.AddComponent<VFXAttributes>();
-            vfxChain.vfxIntensity = VFXAttributes.VFXIntensity.Low;
-            vfxChain.vfxPriority = VFXAttributes.VFXPriority.Always;
+            electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ChainLightningEffect");
+            //electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbEffect");
 
-            var orbEffect = electricChainEffect.AddComponent<OrbEffect>();
-            //orbEffect.startEffect = Resources.Load<GameObject>("Prefabs/Effects/ShieldBreakEffect");
-            orbEffect.startEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain.prefab");
-            orbEffect.startVelocity1 = new Vector3(-10, 10, -10);
-            orbEffect.startVelocity2 = new Vector3(10, 13, 10);
-            orbEffect.endVelocity1 = new Vector3(-10, 0, -10);
-            orbEffect.endVelocity2 = new Vector3(10, 5, 10);
-            orbEffect.movementCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+            /*   electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("chainOrb.prefab");
+                 electricChainEffect.AddComponent<EffectComponent>();
+
+                var vfxChain = electricChainEffect.AddComponent<VFXAttributes>();
+                vfxChain.vfxIntensity = VFXAttributes.VFXIntensity.Low;
+                vfxChain.vfxPriority = VFXAttributes.VFXPriority.Always;
+            */
+
+
+            /* var orbEffect = electricChainEffect.GetComponent<OrbEffect>();
+             //orbEffect.startEffect = Resources.Load<GameObject>("Prefabs/Effects/ShieldBreakEffect");
+             //orbEffect.startEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain.prefab");
+             orbEffect.startVelocity1 = new Vector3(-10, 10, -10);
+             orbEffect.startVelocity2 = new Vector3(10, 13, 10);
+             orbEffect.endVelocity1 = new Vector3(-10, 0, -10);
+             orbEffect.endVelocity2 = new Vector3(10, 5, 10);
+             orbEffect.movementCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);*/
+
+            // electricChainEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), "chainOrb", true);
+
+
 
             electricChainEffect.AddComponent<NetworkIdentity>();
 
-            if (electricChainEffect) PrefabAPI.RegisterNetworkPrefab(electricChainEffect);
-            EffectAPI.AddEffect(electricChainEffect);
-
-            OrbAPI.AddOrb(typeof(FulminationOrb)); */
-            
-
-           electricChainEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), "chainOrb", true);
-           electricChainEffect.AddComponent<NetworkIdentity>();
-
-            var orbEffect = electricChainEffect.GetComponent<OrbEffect>();
+            // var orbEffect = electricChainEffect.GetComponent<OrbEffect>();
 
 
-            var bezier = electricChainEffect.transform.GetChild(0).GetComponent<BezierCurveLine>();
+            // var bezier = electricChainEffect.transform.GetChild(0).GetComponent<BezierCurveLine>();
 
-            bezier.endTransform = electricChainEffect.transform;
+            // bezier.endTransform = electricChainEffect.transform;
 
-            EffectAPI.AddEffect(mainAssetBundle.LoadAsset<GameObject>("ElectricityChain"));
+            //EffectAPI.AddEffect(mainAssetBundle.LoadAsset<GameObject>("ElectricityChain"));
 
-
+            //EffectAPI.AddEffect(mainAssetBundle.LoadAsset<GameObject>("ElectricityChain"));
             //electricChainEffect.GetComponent<BezierCurveLine>().endTransform = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain").transform;
 
             EffectAPI.AddEffect(electricChainEffect); 

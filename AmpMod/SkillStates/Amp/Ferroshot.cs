@@ -16,7 +16,7 @@ namespace AmpMod.SkillStates
         public static float force = 10;
         public static float recoil = 0f;
         public static float range = 600f;
-        public static float launchForce = 150f;
+        public static float launchForce = 200f;
         private static int numOfBullets = 6;
 
         //soundbank items
