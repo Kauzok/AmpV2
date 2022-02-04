@@ -21,9 +21,10 @@ namespace AmpMod.SkillStates
 
 		[Header("Attack Variables")]
 		public static float radius;
-		public static float tickFrequency = 5f;
+		public static float basetickFrequency = 5f;
+		public static float tickFrequency;
 		public static float force = 20f;
-		private float tickDamageCoefficient;
+		private float tickDamageCoefficient = 1.1f;
 		public static float procCoefficientPerTick;
 		public static float totalDamageCoefficient = 22f;
 
@@ -61,10 +62,9 @@ namespace AmpMod.SkillStates
 			//play enter sound
 			Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
 
-			//how many times the attack hits
-			float num = this.fulminationDuration * Fulmination.tickFrequency;
+			//determines how many times the attack hits based off of 
+			tickFrequency = basetickFrequency * this.attackSpeedStat;
 
-			this.tickDamageCoefficient = Fulmination.totalDamageCoefficient / num;
 
 		}
 
