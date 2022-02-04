@@ -27,7 +27,6 @@
   - Fix chain effect
   - Keep an eye out for OnExit NRE; *should* be fixed but not sure yet
   - Adjust position of VFX
-  - Make tick rate scale with attack speed
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
   - Figure out why tessellation vfx is only affected on clients
