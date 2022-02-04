@@ -17,9 +17,9 @@
 - Bolt 
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
-  - Look into "Received networktransform data for an object that doesn't exist" warning
+  - Look into "Received networktransform data for an object that doesn't exist" warning\
+  - Consider making tickrate scale with attack speed
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
-  - Fix calling of invincibility buff
 - Pulse Leap
   - Add skill
 - Fulmination
