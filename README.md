@@ -6,7 +6,6 @@
   - Animations and the like
   - Fix checkroll behavior
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
-  - Add swing/on hit VFX
   - Limit sfx sound so hitting multiple enemies doesn't make it super loud
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
