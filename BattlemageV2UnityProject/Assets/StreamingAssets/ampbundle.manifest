@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 219218598
+CRC: 3701696779
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ec0c6301e1e6096c9da7e425c3d31cb6
+    Hash: fb0ce2883d2de191074ac76b651394c7
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3e965967ddef1ee6ab1f3796a4ea31f9
@@ -166,6 +166,7 @@ Assets:
 - Assets/HenryAssets/Animations/SprintL.anim
 - Assets/HenryAssets/Materials/matRebellion.mat
 - Assets/HenryAssets/VFX/Materials/matSmoke.mat
+- Assets/HenryAssets/VFX/Materials/HitSparkEffect.mat
 - Assets/HenryAssets/VFX/Bolt/BoltEnter.prefab
 - Assets/HenryAssets/VFX/Bolt/texLightning3Mask.asset
 - Assets/HenryAssets/VFX/Textures/texSwingEffect.png
@@ -181,12 +182,14 @@ Assets:
 - Assets/HenryAssets/Textures/texBazooka.png
 - Assets/HenryAssets/VFX/Textures/texRipple.png
 - Assets/HenryAssets/VFX/ImpactHenrySlash.prefab
+- Assets/HenryAssets/VFX/StormbladeHit.prefab
 - Assets/HenryAssets/VFX/Bolt/PlasmaExplosionEffect 1.prefab
 - Assets/HenryAssets/VFX/Mesh/meshSwing.asset
 - Assets/HenryAssets/VFX/Bolt/IceRingGemstoneMesh.asset
 - Assets/HenryAssets/BoltVehicle 1.prefab
 - Assets/HenryAssets/VFX/HenryBazookaMuzzleFlash.prefab
 - Assets/HenryAssets/VFX/HenryFistSwingEffect.prefab
+- Assets/HenryAssets/VFX/Materials/matHitSpark 1.mat
 - Assets/HenryAssets/VFX/Bolt/Flash, Blue.prefab
 - Assets/HenryAssets/Mesh/meshVergil.mesh
 - Assets/HenryAssets/VFX/Textures/texFistSwing.png
@@ -202,7 +205,6 @@ Assets:
 - Assets/HenryAssets/BoltVehicle.prefab
 - Assets/HenryAssets/Animations/maskGesture.mask
 - Assets/HenryAssets/VFX/Materials/matPunchImpact.mat
-- Assets/HenryAssets/LoaderLightningOrbEffect.prefab
 - Assets/HenryAssets/Mesh/meshHenryAlt.mesh
 - Assets/HenryAssets/Textures/texHenryJedi.png
 - Assets/HenryAssets/GravSphere.prefab
@@ -217,6 +219,7 @@ Assets:
 - Assets/HenryAssets/Animations/Idle.anim
 - Assets/HenryAssets/Spike.prefab
 - Assets/HenryAssets/VFX/BombExplosionEffect.prefab
+- Assets/HenryAssets/VFX/Materials/matSwingEffect 1.mat
 - Assets/HenryAssets/Animations/Slash2.anim
 - Assets/HenryAssets/VFX/Charge/Test.mat
 - Assets/HenryAssets/Mesh/meshYamato.mesh

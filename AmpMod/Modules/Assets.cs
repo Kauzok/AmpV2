@@ -173,7 +173,8 @@ namespace AmpMod.Modules
 
             //swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordSwingEffect = Assets.LoadEffect("StormbladeSwing", true);
-            swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
+            //swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
+            swordHitImpactEffect = Assets.LoadEffect("StormbladeHit");
         }
 
         private static void CreateBoltVehicle()
