@@ -28,7 +28,6 @@
   - Adjust hitbox to make it hit higher
   - Figure out why tessellation vfx is only affected on clients
 - Charge Passive
-  - Consider making VFX more visible
 
 ## Misc. To Do
 - Cleanup code base, finish comments
