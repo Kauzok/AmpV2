@@ -34,7 +34,7 @@ namespace AmpMod.Modules
         
         internal const float stormbladeDamageCoefficient = 2f;
 
-        internal const float stormbladeChargeProcCoefficient = 20f;
+        internal const float stormbladeChargeProcCoefficient = 100f;
 
         internal const float gunDamageCoefficient = 4.2f;
 

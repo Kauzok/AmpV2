@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3701696779
+CRC: 3232963330
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fb0ce2883d2de191074ac76b651394c7
+    Hash: 9ce003678ca5cb4409b8fee599e0cff7
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3e965967ddef1ee6ab1f3796a4ea31f9
@@ -158,6 +158,7 @@ Assets:
 - Assets/HenryAssets/Textures/texHenryAlt.png
 - Assets/HenryAssets/Icons/texPassiveIcon.png
 - Assets/HenryAssets/VFX/Textures/texFire.tga
+- Assets/HenryAssets/VFX/Materials/HitSparkEffect 1.mat
 - Assets/HenryAssets/Animations/Jump.anim
 - Assets/HenryAssets/VFX/Fulmination/TarTether.prefab
 - Assets/HenryAssets/Mesh/meshHenryNeo.mesh
@@ -211,6 +212,7 @@ Assets:
 - Assets/HenryAssets/Animations/SprintR.anim
 - Assets/HenryAssets/Animations/animHenryMenu.controller
 - Assets/HenryAssets/Icons/texVergilAchievement.png
+- Assets/HenryAssets/VFX/Materials/matSlash 1.mat
 - Assets/HenryAssets/Textures/texShotgun.png
 - Assets/HenryAssets/VFX/Bolt/MageLightningBombExplosion.prefab
 - Assets/HenryAssets/Animations/WalkL.anim
@@ -221,10 +223,8 @@ Assets:
 - Assets/HenryAssets/VFX/BombExplosionEffect.prefab
 - Assets/HenryAssets/VFX/Materials/matSwingEffect 1.mat
 - Assets/HenryAssets/Animations/Slash2.anim
-- Assets/HenryAssets/VFX/Charge/Test.mat
 - Assets/HenryAssets/Mesh/meshYamato.mesh
 - Assets/HenryAssets/VFX/Textures/texDust.png
-- Assets/HenryAssets/VFX/Charge/Test2.mat
 - Assets/HenryAssets/VFX/Textures/texHitSpark.png
 - Assets/HenryAssets/VFX/Charge/7UCQFmH.png
 - Assets/HenryAssets/Materials/matBoxingGlove.mat
@@ -334,7 +334,7 @@ Assets:
 - Assets/HenryAssets/Animations/Descend.anim
 - Assets/HenryAssets/Textures/texHenryDante.png
 - Assets/HenryAssets/VFX/Charge/AlphaSelfIllum.shader
-- Assets/HenryAssets/VFX/Charge/New Material.mat
+- Assets/HenryAssets/VFX/Charge/matInvisible.mat
 - Assets/HenryAssets/VFX/ElectricExplosion.prefab
 - Assets/HenryAssets/VFX/Bolt/Lightning.prefab
 - Assets/HenryAssets/Animations/AimPitch.anim

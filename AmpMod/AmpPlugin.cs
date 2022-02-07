@@ -144,6 +144,7 @@ namespace AmpMod
             }
 
             orig(self);
+           
         }
 
         //Same as above but for mithrix kill quotes, consider changing to bodyIndex check method used in brothersightresponse

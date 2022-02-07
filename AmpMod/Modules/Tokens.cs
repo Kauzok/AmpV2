@@ -62,11 +62,11 @@ namespace AmpMod.Modules
             #endregion
 
             #region Mithrix Quotes
-            LanguageAPI.Add("MITHRIX_SEE_AMP_1", "The power of a wurm... but still weak.");
-            LanguageAPI.Add("MITHRIX_SEE_AMP_2", "Watch, brother. Another of your creations dies today.");
-            LanguageAPI.Add("MITHRIX_SEE_AMP_3", "Your weak arcs cannot harm me.");
+            LanguageAPI.Add("MITHRIX_SEE_AMP_1", "You wield stolen power. Relinquish it through death.");
+            LanguageAPI.Add("MITHRIX_SEE_AMP_2", "Watch, brother. I will prove the fragility of your constructs.");
+            LanguageAPI.Add("MITHRIX_SEE_AMP_3", "The power of a wurm... but still weak.");
 
-            LanguageAPI.Add("MITHRIX_KILL_AMP_1", "In another life, you may have been a useful servant.");
+            LanguageAPI.Add("MITHRIX_KILL_AMP_1", "A pity. You may have been a useful servant.");
             LanguageAPI.Add("MITHRIX_KILL_AMP_2", "Frail sparks.");
             #endregion
         }
