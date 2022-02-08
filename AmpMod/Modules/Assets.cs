@@ -119,7 +119,7 @@ namespace AmpMod.Modules
 
             stormbladeHitSoundEvent = CreateNetworkSoundEventDef(Modules.StaticValues.stormbladeHit4String);
 
-            bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
+     
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
@@ -153,23 +153,7 @@ namespace AmpMod.Modules
             CreateChainPrefab();
             CreateLightningPrefab();
             
-          
-
-            if (bombExplosionEffect)
-            {
-                ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
-                shakeEmitter.amplitudeTimeDecay = true;
-                shakeEmitter.duration = 0.5f;
-                shakeEmitter.radius = 200f;
-                shakeEmitter.scaleShakeRadiusWithLocalScale = false;
-
-                shakeEmitter.wave = new Wave
-                {
-                    amplitude = 1f,
-                    frequency = 40f,
-                    cycleOffset = 0f
-                };
-            }
+       
 
             //swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordSwingEffect = Assets.LoadEffect("StormbladeSwing", true);

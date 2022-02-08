@@ -9,7 +9,7 @@ using R2API;
 
 namespace AmpMod.Modules
 {
-    //Declare damage types; effects are created with hooks in HenryPlugin.cs
+    //Declare damage types; effects are created with hooks in AmpPlugin.cs
     public class DamageTypes
     {
 

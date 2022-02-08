@@ -43,13 +43,17 @@ namespace AmpMod.Modules
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Bolt");
             LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", $"Transform into electricity, gaining <style=cIsUtility>invulnerability</style>, <style=cIsUtility>free movement</style>, and <style=cIsUtility>500% movement speed</style> for 2 seconds. Contact with enemies in this form will apply <color=#0091ff>charge</color> and deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage.");
             #endregion
+            #region Utility2
+            LanguageAPI.Add(prefix + "UTILITY_BOOST_NAME", "Pulse Leap");
+            LanguageAPI.Add(prefix + "UTILITY_BOOST_DESCRIPTION", $"Magnetically <style=cIsUtility>boost</style> yourself forward, creating an explosion that deals <style=cIsDamage>{100f * StaticValues.boostDamageCoefficient}% damage</style> and applies <color=#0091ff>charge</color>. Can boost up to <style=cIsUtility>3 times</style>.");
+            #endregion
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_CHAIN_NAME", "Fulmination");
             LanguageAPI.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a <style=cIsUtility>chaining</style> stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of applying a stack of <color=#0091ff>charge</color>.");
             #endregion
 
-            #region Special
+            #region Special2
             LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_NAME", "Voltaic Bombardment");
             LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"Summon a lightning bolt that strikes the targeted area, damaging all enemies in the vicinity for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style> and applying two stacks of <color=#0091ff>charge</color>.");
             #endregion

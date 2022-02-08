@@ -165,7 +165,32 @@ namespace AmpMod.Modules.Survivors
                 stockToConsume = 1
             });
 
-            Modules.Skills.AddUtilitySkills(bodyPrefab, dashSkillDef);
+            SkillDef boostSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_AMP_BODY_UTILITY_BOOST_NAME",
+                skillNameToken = prefix + "_AMP_BODY_UTILITY_BOOST_NAME",
+                skillDescriptionToken = prefix + "_AMP_BODY_UTILITY_BOOST_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PulseLeap)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 3,
+                baseRechargeInterval = 4f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1
+            });
+
+
+            Modules.Skills.AddUtilitySkills(bodyPrefab, dashSkillDef, boostSkillDef);
             #endregion
 
             //creates fulmination

@@ -30,33 +30,37 @@ namespace AmpMod.Modules
             + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the bullets refuse to hit their target. The last thing they see is a terrifying, magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
             + "Electrocute.";
 
-        internal static float boltBlastDamageCoefficient = .2f;
-        
-        internal const float stormbladeDamageCoefficient = 2f;
 
-        internal const float stormbladeChargeProcCoefficient = 100f;
 
-        internal const float gunDamageCoefficient = 4.2f;
 
-        internal const float bombDamageCoefficient = 4f;
-
-        internal const float ferroshotDamageCoefficient = 1.4f;
-
-        internal const float fulminationDamageCoefficient = 1.1f;
-
-        internal const float fulminationTotalDamageCoefficient = 20f;
-
-        internal const float boltOverlapDamageCoefficient = .5f;
-
-        internal const float fulminationChargeProcCoefficient = 25f;
-
+        [Header("Charge Values")]
         internal const int chargeMaxStacks = 3;
-
         internal const float chargeDuration = 5;
-
         internal const float chargeDamageCoefficient = 4f;
 
+        [Header("Stormblade Values")]
+        internal const float stormbladeDamageCoefficient = 2f;
+        internal const float stormbladeChargeProcCoefficient = 100f;
+
+        [Header("Lorentz Cannon Values")]
+        internal const float ferroshotDamageCoefficient = 1.4f;
+
+        [Header("Bolt Values")]
+        internal static float boltBlastDamageCoefficient = .2f;
+        internal const float boltOverlapDamageCoefficient = .5f;
+
+        [Header("Pulse Leap Values")]
+        internal const float boostDamageCoefficient = 2.5f;
+
+        [Header("Fulmination Values")]
+        internal const float fulminationDamageCoefficient = 1.1f;
+        internal const float fulminationTotalDamageCoefficient = 20f;
+        internal const float fulminationChargeProcCoefficient = 25f;
+
+        [Header("Voltaic Bombardment Values")]
         internal const float lightningStrikeCoefficient = 10f;
+       
+
 
 
         [Header("Charge Sound Strings")]
