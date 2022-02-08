@@ -19,9 +19,10 @@
   - Look into "Received networktransform data for an object that doesn't exist" warning\
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Pulse Leap
-  - Add skill
+  - Adjust VFX
+  - Fix direction of burst when moving backwards but aiming forwards while grounded
 - Fulmination
-  - Fix chain effect
+  - Consider adjusting chain effect
   - Keep an eye out for OnExit NRE; *should* be fixed but not sure yet
   - Adjust position of VFX
 - Voltaic Bombardment
