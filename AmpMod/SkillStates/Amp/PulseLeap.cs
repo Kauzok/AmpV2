@@ -12,8 +12,7 @@ namespace AmpMod.SkillStates
     class PulseLeap : BaseSkillState
     {
  
-        private float speedCoefficient = 15f;
-        private BlastAttack boltBlast;
+        private BlastAttack boostBlast;
         private string launchSound = Modules.StaticValues.boltExitString;
         private float launchDamage = Modules.StaticValues.boostDamageCoefficient;
         private GameObject launchEffect;
@@ -38,7 +37,7 @@ namespace AmpMod.SkillStates
         //create blastAttack on launch
         public void FireLaunchBlast()
         {
-            boltBlast = new BlastAttack
+            boostBlast = new BlastAttack
             {
                 attacker = base.gameObject,
                 baseDamage = launchDamage * base.characterBody.damage,
@@ -56,8 +55,8 @@ namespace AmpMod.SkillStates
                 teamIndex = base.characterBody.teamComponent.teamIndex
             };
 
-            boltBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
-            boltBlast.Fire();
+            boostBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+            boostBlast.Fire();
 
             EffectData effectData = new EffectData
             {
@@ -82,7 +81,7 @@ namespace AmpMod.SkillStates
                 if (base.characterMotor.isGrounded)
                 {
                    
-                        base.characterMotor.velocity.y = initialGroundedHopCoefficient;
+                 base.characterMotor.velocity.y = initialGroundedHopCoefficient;
                     
 
                     base.characterMotor.Motor.ForceUnground();
