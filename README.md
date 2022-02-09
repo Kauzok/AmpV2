@@ -13,6 +13,9 @@
   - Make prep gameobject spawn properly in multiplayer
 - Tesla Shot
   - Add skill
+- Storm Orbs
+  - Add skill
+  - Desc: Fire 3 slow moving lightning orbs that detonate on hit, dealing 280% damage and applying charge.
 - Magnetic Vortex
   - Add skill
 - Bolt 
