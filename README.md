@@ -11,6 +11,8 @@
   - Make spike prep SFX cancel on fire
   - Adjust range
   - Make prep gameobject spawn properly in multiplayer
+- Tesla Shot
+  - Add skill
 - Magnetic Vortex
   - Add skill
 - Bolt 
