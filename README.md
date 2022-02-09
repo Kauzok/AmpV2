@@ -16,7 +16,7 @@
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
 - Storm Orbs
   - Add skill
-  - Desc: Fire 3 slow moving lightning orbs that detonate on hit, dealing 280% damage and applying charge.
+  - Desc: Fire 3 slow moving lightning orbs that detonate on hit, dealing 350% damage and applying charge.
 - Magnetic Vortex
   - Add skill
 - Bolt 
