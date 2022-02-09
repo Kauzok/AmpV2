@@ -174,7 +174,7 @@ namespace AmpMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PulseLeap)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 3,
-                baseRechargeInterval = 4f,
+                baseRechargeInterval = 5f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,

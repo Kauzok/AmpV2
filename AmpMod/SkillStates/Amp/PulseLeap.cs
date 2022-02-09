@@ -6,7 +6,6 @@ using UnityEngine;
 using EntityStates;
 using R2API;
 using UnityEngine.Networking;
-using AmpMod;
 
 namespace AmpMod.SkillStates
 {
@@ -18,22 +17,25 @@ namespace AmpMod.SkillStates
         private string launchSound = Modules.StaticValues.boltExitString;
         private float launchDamage = Modules.StaticValues.boostDamageCoefficient;
         private GameObject launchEffect;
-
+        private float aerialBoostCoefficient = 50f;
+        private float groundXZBoostCoefficient = 50f;
+        private float groundYBoostCoefficient = 30f;
+        private float initialGroundedHopCoefficient = 10f;
+        private float shortHopThreshold = .2f;
 
 
         public override void OnEnter()
         { 
 
             base.OnEnter();
-
+            Debug.Log(base.GetAimRay().direction.y);
 
             Util.PlaySound(launchSound, base.gameObject);
-       
-            
            
 
         }
 
+        //create blastAttack on launch
         public void FireLaunchBlast()
         {
             boltBlast = new BlastAttack
@@ -76,21 +78,35 @@ namespace AmpMod.SkillStates
             {
                 
 
+                //makes it so boost uses absolute value of y component when grounded so they cant just aim downwards and make the explosion w/o launching
                 if (base.characterMotor.isGrounded)
                 {
+                   
+                        base.characterMotor.velocity.y = initialGroundedHopCoefficient;
+                    
+
                     base.characterMotor.Motor.ForceUnground();
-                    base.characterMotor.velocity = new Vector3(base.GetAimRay().direction.x * 50, 40*Math.Abs(base.GetAimRay().direction.y), base.GetAimRay().direction.z * 50);
+                    //base.characterMotor.velocity.y = 0;
+
+                    //launch in direction of aimray
+                    base.characterMotor.velocity += new Vector3(base.GetAimRay().direction.x * groundXZBoostCoefficient, Math.Abs(base.GetAimRay().direction.y)*groundYBoostCoefficient, base.GetAimRay().direction.z * groundXZBoostCoefficient);
                 }
+
                 else
                 {
-                    base.characterMotor.velocity = base.GetAimRay().direction * 50f;
+                    //set y velocity = 0 to make aerial boosting actually useful
+                    base.characterMotor.velocity.y = 0;
+
+                    //launch in direction of aimray
+                    base.characterMotor.velocity += base.GetAimRay().direction * aerialBoostCoefficient;
+
                 }
                 
                 
                 FireLaunchBlast();
             }
 
-           
+            
 
             if (base.isAuthority)
             {
@@ -98,13 +114,7 @@ namespace AmpMod.SkillStates
             }
         }
 
-        public override void OnExit()
-        {
-          
-
-            base.OnExit();
-        }
-
+        //hook to charactermotor to remove fall damage
         private void CharacterMotor_onHitGround(ref CharacterMotor.HitGroundInfo hitGroundInfo)
         {
             if (base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
@@ -112,14 +122,26 @@ namespace AmpMod.SkillStates
                 base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
             }
 
-            // TODO: May need to redo the flag assignment?
+ 
 
             base.characterMotor.onHitGround -= this.CharacterMotor_onHitGround;
         }
 
-       
 
-        //public override void UpdateAnimationParameters() => base.UpdateAnimationParameters();
+        public override void OnExit()
+        {
+
+            //remove fall damage check
+            if (NetworkServer.active && !base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
+            {
+                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                base.characterMotor.onHitGround += this.CharacterMotor_onHitGround;
+            }
+
+            base.OnExit();
+        }
+
+ 
 
     }
 }

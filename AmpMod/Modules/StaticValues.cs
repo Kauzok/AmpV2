@@ -50,7 +50,7 @@ namespace AmpMod.Modules
         internal const float boltOverlapDamageCoefficient = .5f;
 
         [Header("Pulse Leap Values")]
-        internal const float boostDamageCoefficient = 2.5f;
+        internal const float boostDamageCoefficient = 3.2f;
 
         [Header("Fulmination Values")]
         internal const float fulminationDamageCoefficient = 1.1f;
