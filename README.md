@@ -15,7 +15,9 @@
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
 - Magnetic Vortex
-  - Fix VFX
+  - Add vortex spawn VFX
+  - Adjust vortex VFX
+  - Adjust singularity projectile VFX
   - Add damage over time
   - Add SFX
 - Bolt 
