@@ -14,11 +14,10 @@
 - Tesla Shot
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
-- Storm Orbs
-  - Add skill
-  - Desc: Fire 3 slow moving lightning orbs that detonate on hit, dealing 350% damage and applying charge.
 - Magnetic Vortex
-  - Add skill
+  - Fix VFX
+  - Add damage over time
+  - Add SFX
 - Bolt 
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
