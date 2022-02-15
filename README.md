@@ -20,6 +20,7 @@
   - Adjust vortex VFX
   - Adjust singularity projectile VFX
   - Add damage over time
+  - Consider adding explosion at end
   - Add SFX
 - Bolt 
   - Fix effect shaking when running into objects
