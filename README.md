@@ -32,7 +32,6 @@
   - Fix direction of burst when moving backwards but aiming forwards while grounded
 - Fulmination
   - Consider adjusting chain effect
-  - Keep an eye out for OnExit NRE; *should* be fixed but not sure yet
   - Adjust position of VFX
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
