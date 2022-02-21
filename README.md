@@ -27,6 +27,7 @@
   - Consider adjusting entry VFX for visibility
   - Look into "Received networktransform data for an object that doesn't exist" warning
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
+  - Fix player being able to use stormblade while in state
 - Pulse Leap
   - Adjust VFX
   - Fix direction of burst when moving backwards but aiming forwards while grounded
