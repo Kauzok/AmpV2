@@ -19,9 +19,12 @@ namespace AmpMod.Modules
             entityStates.Add(typeof(BaseMeleeAttack));
             entityStates.Add(typeof(SlashCombo));
 
-            //ferroshot states
+            //Lorentz Cannon states
             entityStates.Add(typeof(Ferroshot));
-            
+
+            //magnetic vortex states
+            entityStates.Add(typeof(Vortex));
+
             //bolt states
             entityStates.Add(typeof(BoltVehicle));
             entityStates.Add(typeof(Bolt));

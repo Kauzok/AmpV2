@@ -33,6 +33,7 @@ namespace AmpMod.SkillStates
 
 
 			base.OnEnter();
+
 		
 
 			Ray aimRay = GetAimRay();
@@ -86,6 +87,9 @@ namespace AmpMod.SkillStates
 
 			base.FixedUpdate();
 
+	
+
+
 			if (fixedAge > delay)
 			{
 				//makes skill cancel if they hit the button again
@@ -107,8 +111,12 @@ namespace AmpMod.SkillStates
 
 		}
 
+		protected virtual void HandlePrimaryAttack()
+		{
+		}
+
 		//called in onExit instead of fixedUpdate to make it play nice with networking
-        public override void OnExit()
+		public override void OnExit()
         {
 			if (!NetworkServer.active) return;
 			base.OnExit();

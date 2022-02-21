@@ -563,7 +563,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.06132078, g: 0.75194144, b: 1, a: 1}
-  m_Intensity: 30.38
+  m_Intensity: 20.38
   m_Range: 15.25
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -897,8 +897,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.05
+      scalar: 0.4
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5268,7 +5268,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 2100000, guid: 60c4f99d55be7ee44a8521d1da5a59c6, type: 2}
+  - {fileID: 2100000, guid: 14335fd1ae42a0c40bd5f6b5c1446dcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

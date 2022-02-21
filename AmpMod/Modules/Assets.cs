@@ -29,6 +29,9 @@ namespace AmpMod.Modules
         internal static GameObject bulletPrepItem;
         internal static GameObject bulletImpactEffect;
 
+        [Header("Magnetic Vortex Effects")]
+        internal static GameObject vortexBlackholePrefab;
+
         [Header("Bolt Effects")]
         internal static GameObject boltExitEffect;
         internal static GameObject boltEnterEffect;
@@ -133,6 +136,7 @@ namespace AmpMod.Modules
 
             //on fulmination skill use
             CreateStreamPrefab();
+            CreateChainPrefab();
 
             //on boltvehicle exit/state/enter
             CreateBoltExitPrefab();
@@ -147,11 +151,13 @@ namespace AmpMod.Modules
             //on ferroshot/Lorentz Cannon spike collision
             bulletImpactEffect = LoadEffect("SpikeImpact");
 
-            
+            //on magnetic vortex blackhole spawn
+            CreateVortexBlackhole();
 
             //functions for prefabs that require adjustments made at runtime
-            CreateChainPrefab();
+
             CreateLightningPrefab();
+            
             
        
 
@@ -173,7 +179,15 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(boltVehicle);
         }
 
+        private static void CreateVortexBlackhole()
+        {
+           vortexBlackholePrefab = mainAssetBundle.LoadAsset<GameObject>("VortexSphere");
+           vortexBlackholePrefab.AddComponent<SkillStates.RadialDamage>();
+         
 
+            PrefabAPI.RegisterNetworkPrefab(vortexBlackholePrefab);
+
+        }
         private static void CreateBulletPrep()
         {
             bulletPrepItem = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Spike");
@@ -247,43 +261,10 @@ namespace AmpMod.Modules
         {
 
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ChainLightningEffect");
-            //electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbEffect");
-
-            /*   electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("chainOrb.prefab");
-                 electricChainEffect.AddComponent<EffectComponent>();
-
-                var vfxChain = electricChainEffect.AddComponent<VFXAttributes>();
-                vfxChain.vfxIntensity = VFXAttributes.VFXIntensity.Low;
-                vfxChain.vfxPriority = VFXAttributes.VFXPriority.Always;
-            */
-
-
-            /* var orbEffect = electricChainEffect.GetComponent<OrbEffect>();
-             //orbEffect.startEffect = Resources.Load<GameObject>("Prefabs/Effects/ShieldBreakEffect");
-             //orbEffect.startEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain.prefab");
-             orbEffect.startVelocity1 = new Vector3(-10, 10, -10);
-             orbEffect.startVelocity2 = new Vector3(10, 13, 10);
-             orbEffect.endVelocity1 = new Vector3(-10, 0, -10);
-             orbEffect.endVelocity2 = new Vector3(10, 5, 10);
-             orbEffect.movementCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);*/
-
-            // electricChainEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), "chainOrb", true);
-
-
+         
 
             electricChainEffect.AddComponent<NetworkIdentity>();
 
-            // var orbEffect = electricChainEffect.GetComponent<OrbEffect>();
-
-
-            // var bezier = electricChainEffect.transform.GetChild(0).GetComponent<BezierCurveLine>();
-
-            // bezier.endTransform = electricChainEffect.transform;
-
-            //EffectAPI.AddEffect(mainAssetBundle.LoadAsset<GameObject>("ElectricityChain"));
-
-            //EffectAPI.AddEffect(mainAssetBundle.LoadAsset<GameObject>("ElectricityChain"));
-            //electricChainEffect.GetComponent<BezierCurveLine>().endTransform = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain").transform;
 
             EffectAPI.AddEffect(electricChainEffect); 
 

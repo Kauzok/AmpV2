@@ -40,10 +40,14 @@ namespace AmpMod.Modules
 
         [Header("Stormblade Values")]
         internal const float stormbladeDamageCoefficient = 2f;
-        internal const float stormbladeChargeProcCoefficient = 100f;
+        internal const float stormbladeChargeProcCoefficient = 20f;
 
         [Header("Lorentz Cannon Values")]
         internal const float ferroshotDamageCoefficient = 1.4f;
+
+        [Header("Magnetic Vortex Values")]
+        internal const float vortexDamageCoefficient = 1.4f;
+        internal const float vortexExplosionCoefficient = 2.7f;
 
         [Header("Bolt Values")]
         internal static float boltBlastDamageCoefficient = .2f;
@@ -58,7 +62,7 @@ namespace AmpMod.Modules
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
-        internal const float lightningStrikeCoefficient = 10f;
+        internal const float lightningStrikeCoefficient = 18f;
        
 
 

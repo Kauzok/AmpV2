@@ -205,7 +205,7 @@ namespace AmpMod
 
             
             //creates fulmination orb; essentially a copy of lightning orb but with the effect changed to our own; responsible for creating chain damage and effect
-            if (info.HasModdedDamageType(Modules.DamageTypes.fulminationChain))
+            if (info.HasModdedDamageType(DamageTypes.fulminationChain))
             {
                 float damageCoefficient2 = 0.8f;
                 float damageValue2 = Util.OnHitProcDamage(info.damage, info.attacker.GetComponent<CharacterBody>().damage, damageCoefficient2);
@@ -235,13 +235,13 @@ namespace AmpMod
 
             
             //apply charge if damageType is applycharge
-            if (info.HasModdedDamageType(Modules.DamageTypes.applyCharge))
+            if (info.HasModdedDamageType(DamageTypes.applyCharge))
             {
                 applyCharge(self, info);
             }
 
             //apply charge twice if damageType is apply2charge
-            if (info.HasModdedDamageType(Modules.DamageTypes.apply2Charge))
+            if (info.HasModdedDamageType(DamageTypes.apply2Charge))
             {
                 applyCharge(self, info);
                 applyCharge(self, info);

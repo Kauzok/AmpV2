@@ -3019,6 +3019,15 @@ ParticleSystem:
           inWeight: 0.3333333
           outWeight: 0.3333333
         - serializedVersion: 3
+          time: 0.8451085
+          value: 0.6268631
+          inSlope: 0.09084818
+          outSlope: 0.09084818
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
           time: 1
           value: 0.6343288
           inSlope: 0
@@ -3106,7 +3115,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 1
+    separateAxes: 0
   RotationModule:
     enabled: 0
     x:

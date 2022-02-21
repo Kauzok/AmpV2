@@ -10,6 +10,7 @@ namespace AmpMod.SkillStates
 {
     public class Ferroshot : BaseSkillState
     {
+        //projectile vars
         public static float damageCoefficient = Modules.StaticValues.ferroshotDamageCoefficient;
         public static float procCoefficient = 1f;
         public static float baseDuration = 1f;
@@ -55,7 +56,7 @@ namespace AmpMod.SkillStates
             
             base.OnExit();
         }
-
+        
         /// <summary>
         /// Get the offset from the players head for the bullets to spawn
         /// </summary>

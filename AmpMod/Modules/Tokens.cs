@@ -39,10 +39,16 @@ namespace AmpMod.Modules
             LanguageAPI.Add(prefix + "SECONDARY_FERROSHOT_DESCRIPTION", Helpers.agilePrefix + $"Use electromagnetic fields to fire an array of <style=cIsDamage>6</style> iron sand bullets, each dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style>.");
             #endregion
 
+            #region Secondary2
+            LanguageAPI.Add(prefix + "SECONDARY_VORTEX_NAME", "Magnetic Vortex");
+            LanguageAPI.Add(prefix + "SECONDARY_VORTEX_DESCRIPTION", Helpers.agilePrefix + $"Launch a magnetic singularity that <style=cIsUtility>pulls enemies into it</style> for <style=cIsDamage>{100f * StaticValues.vortexDamageCoefficient}% damage</style> per second, and explodes for <style=cIsDamage>{100f * StaticValues.vortexExplosionCoefficient}% damage</style>.");
+            #endregion
+
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Bolt");
             LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", $"Transform into electricity, gaining <style=cIsUtility>invulnerability</style>, <style=cIsUtility>free movement</style>, and <style=cIsUtility>500% movement speed</style> for 2 seconds. Contact with enemies in this form will apply <color=#0091ff>charge</color> and deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage.");
             #endregion
+
             #region Utility2
             LanguageAPI.Add(prefix + "UTILITY_BOOST_NAME", "Pulse Leap");
             LanguageAPI.Add(prefix + "UTILITY_BOOST_DESCRIPTION", $"Magnetically <style=cIsUtility>boost</style> yourself forward, creating an explosion that deals <style=cIsDamage>{100f * StaticValues.boostDamageCoefficient}% damage</style> and applies <color=#0091ff>charge</color>. Can boost up to <style=cIsUtility>3 times</style>.");

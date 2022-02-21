@@ -11,6 +11,7 @@ namespace AmpMod.Modules
     {
         internal static GameObject bombPrefab;
         internal static GameObject ferroshotPrefab;
+        internal static GameObject vortexPrefab;
         internal static GameObject lightningPrefab;
 
         internal static void RegisterProjectiles()
@@ -18,11 +19,13 @@ namespace AmpMod.Modules
             // only separating into separate methods for my sanity
            //CreateBomb();
             CreateFerroshot();
+            CreateVortex();
           //  CreateLightning();
 
          //  AddProjectile(bombPrefab);
             AddProjectile(ferroshotPrefab);
-          //  AddProjectile(lightningPrefab);
+            AddProjectile(vortexPrefab);
+          // AddProjectile(lightningPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -63,6 +66,28 @@ namespace AmpMod.Modules
             ferroshotContact.destroyOnWorld = true;
             ferroshotContact.impactEffect = Modules.Assets.bulletImpactEffect;
             
+
+        }
+
+        private static void CreateVortex()
+        {
+            vortexPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("VortexProjectile");
+            ProjectileController vortexController = vortexPrefab.GetComponent<ProjectileController>();
+            //instantiates the  projectile model and associates it with the prefab
+            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("VortexEffect") != null) vortexController.ghostPrefab = CreateGhostPrefab("VortexEffect");
+
+            
+
+            /*
+            vortexPrefab = CloneProjectilePrefab("LunarShardProjectile", "Vortex");
+            ProjectileDamage vortexDamage = vortexPrefab.GetComponent<ProjectileDamage>();
+            vortexDamage.damageType = DamageType.Generic;
+
+            //remove/nullify components from lunarshard that are unnecessary, such as the tracker and on impact explosion
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>()); */
 
         }
 

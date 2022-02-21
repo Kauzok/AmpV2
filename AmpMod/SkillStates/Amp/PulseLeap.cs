@@ -20,14 +20,13 @@ namespace AmpMod.SkillStates
         private float groundXZBoostCoefficient = 50f;
         private float groundYBoostCoefficient = 30f;
         private float initialGroundedHopCoefficient = 10f;
-        private float shortHopThreshold = .2f;
 
 
         public override void OnEnter()
         { 
 
             base.OnEnter();
-            Debug.Log(base.GetAimRay().direction.y);
+            
 
             Util.PlaySound(launchSound, base.gameObject);
            
@@ -64,7 +63,7 @@ namespace AmpMod.SkillStates
                 scale = 1.5f
             };
             launchEffect = Modules.Assets.boltExitEffect;
-            //exitEffectPrefab = Modules.Assets.testLightningEffect;
+            //exitEffectPrefab = Modules.Assnhbvets.testLightningEffect;
             EffectManager.SpawnEffect(launchEffect, effectData, true);
 
 
