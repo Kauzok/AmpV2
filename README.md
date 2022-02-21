@@ -17,10 +17,9 @@
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add vortex spawn VFX
-  - Adjust vortex VFX
+  - Adjust vortex/explosion VFX
   - Adjust singularity projectile VFX
   - Add damage over time
-  - Consider adding explosion at end
   - Add SFX
 - Bolt 
   - Fix effect shaking when running into objects
