@@ -14,22 +14,25 @@
 - Tesla Shot
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
-- Storm Orbs
-  - Add skill
-  - Desc: Fire 3 slow moving lightning orbs that detonate on hit, dealing 350% damage and applying charge.
 - Magnetic Vortex
-  - Add skill
+  - Consider adding ability to remotely detonate vortex
+  - Add vortex spawn VFX
+  - Adjust vortex VFX
+  - Adjust singularity projectile VFX
+  - Add damage over time
+  - Consider adding explosion at end
+  - Add SFX
 - Bolt 
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
   - Look into "Received networktransform data for an object that doesn't exist" warning
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
+  - Fix player being able to use stormblade while in state
 - Pulse Leap
   - Adjust VFX
   - Fix direction of burst when moving backwards but aiming forwards while grounded
 - Fulmination
   - Consider adjusting chain effect
-  - Keep an eye out for OnExit NRE; *should* be fixed but not sure yet
   - Adjust position of VFX
 - Voltaic Bombardment
   - Adjust hitbox to make it hit higher
