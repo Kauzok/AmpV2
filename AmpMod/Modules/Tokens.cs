@@ -26,7 +26,7 @@ namespace AmpMod.Modules
 
             #region Passive
             LanguageAPI.Add(prefix + "PASSIVE_NAME", "Charge");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Certain attacks build up stacks of <color=#0091ff>charge</color> on an enemy. When 3 stacks are reached, a burst of static electricity is released that damages the target and enemies near it for <style=cIsDamage>400%</style> damage.");
+            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Certain attacks build up <color=#0091ff>charge</color> on an enemy. When 3 stacks are reached, a burst of static electricity is released that damages the target and enemies near it for <style=cIsDamage>400%</style> damage.");
             #endregion
 
             #region Primary

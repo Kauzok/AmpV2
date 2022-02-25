@@ -52,6 +52,7 @@ namespace AmpMod.SkillStates
                     vortexDamage.radius = 5f;
                     vortexDamage.finalBlastDamage = explodeDamage;
                     vortexDamage.attacker = base.gameObject;
+                    vortexDamage.duration = Modules.Assets.vortexBlackholePrefab.GetComponent<ProjectileSimple>().lifetime;
                     blastPosition = vortexDamage.transform.position;
 
 

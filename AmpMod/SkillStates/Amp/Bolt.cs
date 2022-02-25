@@ -24,7 +24,7 @@ namespace AmpMod.SkillStates
 
 		private void UpdateAuthority()
 		{
-			this.hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
+			hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
 		}
 
 		public override void OnEnter()
@@ -34,7 +34,6 @@ namespace AmpMod.SkillStates
 
 			base.OnEnter();
 
-		
 
 			Ray aimRay = GetAimRay();
 
@@ -45,7 +44,7 @@ namespace AmpMod.SkillStates
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
-		//	NetworkServer.Spawn(boltObject);
+			//NetworkServer.Spawn(boltObject);
 		
 			//stuff to make it work with multiplayer
 			CharacterBody characterBody = this.characterBody;
@@ -109,10 +108,6 @@ namespace AmpMod.SkillStates
 
 			}
 
-		}
-
-		protected virtual void HandlePrimaryAttack()
-		{
 		}
 
 		//called in onExit instead of fixedUpdate to make it play nice with networking

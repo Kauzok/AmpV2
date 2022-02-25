@@ -23,11 +23,11 @@ namespace AmpMod.Modules
             + "Electrocute.\n\n"
             + "An orphan, they said. Saved from a life spent in darkened alleyways, the only caveat being that he work for them without question. They called themselves scientists. He called them slavers. For any disobedience was swiftly treated with high-voltage punishment.\n\n"
             + "Electrocute.\n\n"
-            + "A new mission, they told him. Obtain an artifact from a desolate planet, said to be a remnant of the forge of a dead god. The details were left out; if he died, they would simply use another. But when he touched the artifact, sparks flew. Images of a faraway planet, lush and teeming with life, flashed into his mind. He stumbled back, confused. What did this mean? What was this artifact? He knew if he followed the message, he’d find the answers. But first, there was something he must do. \n\n"
+            + "A new mission, they told him. Obtain an artifact from a desolate planet, said to contain the final remnant of a dead god's power. The details were left out; if he died, they would simply use another. But when he touched the artifact, sparks flew. Images of a faraway planet, lush and teeming with life, flashed into his mind. He stumbled back, confused. What did this mean? What was this artifact? He knew if he followed the message, he’d find the answers. But first, there was something he must do. \n\n"
             + "Electrocute.\n\n"
             + "The trail back to headquarters was stained with blood. He didn't have to go back. With his power, he could've escaped and never returned. But he wanted vengeance.\n\n"
             + "Electrocute.\n\n"
-            + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the bullets refuse to hit their target. The last thing they see is a terrifying, magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
+            + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the bullets freeze in mid-air, refusing to hit their target. The last thing they see is a terrifying, magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
             + "Electrocute.";
 
 
@@ -46,8 +46,8 @@ namespace AmpMod.Modules
         internal const float ferroshotDamageCoefficient = 1.4f;
 
         [Header("Magnetic Vortex Values")]
-        internal const float vortexDamageCoefficient = 1.4f;
-        internal const float vortexExplosionCoefficient = 2.7f;
+        internal const float vortexDamageCoefficient = 1f;
+        internal const float vortexExplosionCoefficient = 2.5f;
 
         [Header("Bolt Values")]
         internal static float boltBlastDamageCoefficient = .2f;
@@ -62,7 +62,7 @@ namespace AmpMod.Modules
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
-        internal const float lightningStrikeCoefficient = 18f;
+        internal const float lightningStrikeCoefficient = 17f;
        
 
 

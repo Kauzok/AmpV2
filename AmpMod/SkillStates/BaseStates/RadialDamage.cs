@@ -12,32 +12,28 @@ namespace AmpMod.SkillStates
 	public class RadialDamage : MonoBehaviour
 	{
 
-		public float radius;
-
-		public float damageResetAge = 0f;
-		public float damageResetFrequency = 1f;
-
+		[Header("Damage Tick Parameters")]
 		public float blastDamage;
-		public float finalBlastDamage;
 		private float interval = 1f;
 		private float damageTimer;
+		public DamageInfo damageInfo = new DamageInfo();
 
-		private float timer;
-
-		private SphereSearch sphereSearch;
-
-		public GameObject attacker;
-		public CharacterBody charBody;
-		public Vector3 position;
-
+		[Header("Damaging Object Parameters")]
 		protected Transform transform;
 		protected TeamFilter teamFilter;
 
+		[Header("Final Blast Parameters")]
 		public BlastAttack radialBlast;
+		public float finalBlastDamage;
+		private float timer;
 
-		public DamageInfo damageInfo = new DamageInfo();
-
-
+		[Header("Damage Owner/Positional Parameters")]
+		public GameObject attacker;
+		public CharacterBody charBody;
+		public Vector3 position;
+		public float radius = 10f;
+		private SphereSearch sphereSearch;
+		public float duration;
 
 		private void Awake()
 		{
@@ -45,6 +41,7 @@ namespace AmpMod.SkillStates
 			this.teamFilter = base.GetComponent<TeamFilter>();
 			this.sphereSearch = new SphereSearch();
 
+			//declare explosion to be used on vortex destruction
 			radialBlast = new BlastAttack
 			{
 				attacker = attacker.gameObject,
@@ -66,42 +63,30 @@ namespace AmpMod.SkillStates
 		}
 
 
-
 		private void FixedUpdate()
 		{
 
-
-			/* if (NetworkServer.active)
-            {
-
-
-				damageResetAge += Time.fixedDeltaTime;
-				//fires the overlapattack
-				if (damageResetAge >= 1f / damageResetFrequency)
-				{
-					radialBlast.Fire();
-
-				}
-
-			}*/
-
 			timer += Time.fixedDeltaTime;
 			this.damageTimer -= Time.fixedDeltaTime;
+			
+			//calls the damage function three times, once every second starting on object spawn
 			if (this.damageTimer <= 0f && NetworkServer.active)
 			{
 				damageTimer = interval;	
 				searchAndDamage();
 			}
 
-			if (timer >= 3-Time.fixedDeltaTime && NetworkServer.active)
+			//fires the final vortex explosion after the damage function has been called thrice
+			if (timer >= duration-Time.fixedDeltaTime && NetworkServer.active)
             {
 				radialBlast.Fire();
 				timer = 0f;
             }
-			
-
 
 		}
+
+
+		//function for applying damage to characters in a radius
 		protected void ApplyDamage(HurtBox hurtBox)
 		{
 			if (!hurtBox)
@@ -109,8 +94,10 @@ namespace AmpMod.SkillStates
 				return;
 			}
 			HealthComponent healthComponent = hurtBox.healthComponent;
+
 			if (healthComponent && NetworkServer.active)
 			{
+				//declare damageinfo with attacker object and characterbody set through vars
 				damageInfo = new DamageInfo
 				{
 					attacker = attacker,
@@ -119,45 +106,48 @@ namespace AmpMod.SkillStates
 					crit = charBody.RollCrit(),
 					damageType = DamageType.Generic,
 					procChainMask = default(ProcChainMask),
+
+					//change inflictor?
 					inflictor = base.gameObject,
 					position = hurtBox.healthComponent.body.corePosition
 				};
+
+				//apply damage info
+				hurtBox.healthComponent.TakeDamage(damageInfo);
 			}
-
-			//this causes an error with R2API, no clue why lmao
-
-			hurtBox.healthComponent.TakeDamage(damageInfo);
-
+				
 		}
 
 
 		private void searchAndDamage()
 		{
+			//get a list of hurtboxes with a spheresearch 
 			List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
 			SearchForTargets(list);
 			int i = 0;
 			int count = list.Count;
 			while (i < count)
 			{
+				//apply damage to every hurtbox in the list
 				ApplyDamage(list[i]);
 				i++;
 			}
 
 		}
 
-
+		//search for hurtboxes in a radius centered at the vortex object
 		protected void SearchForTargets(List<HurtBox> dest)
 		{
-			this.sphereSearch.mask = LayerIndex.entityPrecise.mask;
-			this.sphereSearch.origin = this.transform.position;
-			this.sphereSearch.radius = this.radius + 7f;
-			this.sphereSearch.queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
-			this.sphereSearch.RefreshCandidates();
-			this.sphereSearch.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(this.teamFilter.teamIndex));
-			this.sphereSearch.OrderCandidatesByDistance();
-			this.sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
-			this.sphereSearch.GetHurtBoxes(dest);
-			this.sphereSearch.ClearCandidates();
+			sphereSearch.mask = LayerIndex.entityPrecise.mask;
+			sphereSearch.origin = this.transform.position;
+			sphereSearch.radius = this.radius;
+			sphereSearch.queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
+			sphereSearch.RefreshCandidates();
+			sphereSearch.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(this.teamFilter.teamIndex));
+			sphereSearch.OrderCandidatesByDistance();
+			sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
+			sphereSearch.GetHurtBoxes(dest);
+			sphereSearch.ClearCandidates();
 		}
 
 

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1830312474
+CRC: 565744027
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 324251653f60efc167f49a4d534ced4b
+    Hash: 0545ea61ebc00c044b21d36e9fe52289
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7a803657d5996bb315a0792b5e76674e
@@ -299,6 +299,7 @@ Assets:
 - Assets/HenryAssets/Mesh/meshHenrySword.mesh
 - Assets/HenryAssets/VFX/Materials/matEmbers.mat
 - Assets/HenryAssets/Animations/AimYaw.anim
+- Assets/HenryAssets/VortexEffect 1.prefab
 - Assets/HenryAssets/HenryBombGhost.prefab
 - Assets/HenryAssets/Mesh/meshPistol.mesh
 - Assets/HenryAssets/Icons/texStingerIcon.png
