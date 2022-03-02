@@ -19,7 +19,6 @@
   - Add vortex spawn VFX
   - Adjust vortex/explosion VFX
   - Adjust singularity projectile VFX
-  - Add damage over time
   - Add SFX
 - Bolt 
   - Fix effect shaking when running into objects
