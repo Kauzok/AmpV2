@@ -1,5 +1,5 @@
 ## Amp
-- WIP Amp, a melee/range hybrid who fights with electromagnetic attacks. Updated to new HenryMod template. Original name battlemage, will adjust other name tokens later.
+- WIP Amp, a melee/range hybrid who fights with electromagnetic attacks. Original name battlemage, will adjust other name tokens later.
 
 ## Skills To Do
 - Stormblade
