@@ -44,6 +44,7 @@
 - Character Model
 - Character Model Animations
 - Skill Icons
+- Item Displays
 - Switch VFX Shaders to cloud remap
 
 ## Changelog
