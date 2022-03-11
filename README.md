@@ -28,7 +28,7 @@
   - Fix player being able to use stormblade while in state
 - Lightning Crash
   - Add Skill
-  - Desc: Charge up a lightning-infused dash and charge forward, dealing 300% damage to enemies you hit and exploding for 800-1400% damage on end.
+  - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
 - Pulse Leap
   - Adjust VFX
   - Fix direction of burst when moving backwards but aiming forwards while grounded
