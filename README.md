@@ -33,7 +33,7 @@
   - Consider adjusting chain effect
   - Adjust position of VFX
 - Voltaic Bombardment
-  - Adjust hitbox to make it hit higher
+  - Fix sound
   - Figure out why tessellation vfx is only affected on clients
 - Charge Passive
   - Complete! I think.
