@@ -48,6 +48,7 @@
 - Character Model Animations
 - Skill Icons
 - Item Displays
+- Fix method of loading in assetbundles/soundbanks
 - Switch VFX Shaders to cloud remap
 
 ## Changelog
