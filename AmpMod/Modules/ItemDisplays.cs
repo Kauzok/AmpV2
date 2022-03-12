@@ -8,6 +8,8 @@ namespace AmpMod.Modules
     {
         private static Dictionary<string, GameObject> itemDisplayPrefabs = new Dictionary<string, GameObject>();
 
+
+        [SystemInitializer(typeof(ItemCatalog), typeof(BodyCatalog))]
         internal static void PopulateDisplays()
         {
             PopulateFromBody("Commando");
@@ -15,8 +17,10 @@ namespace AmpMod.Modules
             PopulateFromBody("Mage");
         }
 
+     
         private static void PopulateFromBody(string bodyName)
         {
+
             ItemDisplayRuleSet itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
 
             ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
@@ -40,7 +44,7 @@ namespace AmpMod.Modules
                 }
             }
         }
-
+        
         internal static GameObject LoadDisplay(string name)
         {
             if (itemDisplayPrefabs.ContainsKey(name.ToLower()))

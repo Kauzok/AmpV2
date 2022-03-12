@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using AmpMod.SkillStates.BaseStates;
 using AmpMod.Modules;
 using UnityEngine.Networking;
+using HG.Reflection;
 using System.Collections.ObjectModel;
 
 [module: UnverifiableCode]
@@ -45,10 +46,11 @@ namespace AmpMod
         public static AmpPlugin instance;
    
 
-
+        
         private void Awake()
         {
             instance = this;
+            
 
             // load assets and read config
             Modules.Assets.Initialize();
@@ -57,16 +59,17 @@ namespace AmpMod
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Tokens.AddTokens(); // register name tokens
-            Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
-            
+           // Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+
+           
             // create your survivor here
             new Modules.Survivors.MyCharacter().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
 
-            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
-
+            //RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+            RoR2Application.onLoad += SetItemDisplays;
 
             Hook();
         }
@@ -75,6 +78,14 @@ namespace AmpMod
         {
             // have to set item displays later now because they require direct object references..
             Modules.Survivors.MyCharacter.instance.SetItemDisplays();
+            RoR2Application.onLoad += SetItemDisplays;
+        }
+
+        private static void SetItemDisplays()
+        {
+            ItemDisplays.PopulateDisplays();
+            Modules.Survivors.MyCharacter.instance.SetItemDisplays();
+            
         }
 
         private void Hook()
