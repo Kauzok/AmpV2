@@ -22,6 +22,7 @@
 - Bolt 
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
+  - Fix not being able to exit ability if remaining charges are left
   - Look into "Received networktransform data for an object that doesn't exist" warning
   - Potentially work on hitbox filtering to avoid hitting same enemy twice
   - Fix player being able to use stormblade while in state
@@ -45,7 +46,7 @@
 - Character Model
 - Character Model Animations
 - Skill Icons
-- Item Displays
+- New Item Displays/Adjust old item displays
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
 
