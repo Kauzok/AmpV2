@@ -1,6 +1,5 @@
 ## Amp
-- WIP Amp, a melee/range hybrid who fights with electromagnetic attacks. Original name battlemage, will adjust other name tokens later. Need to update for survivors of the void.
-
+- WIP Amp, a melee/range hybrid who fights with electromagnetic attacks. Original name battlemage, will adjust other name tokens later. Updated for SoTV
 ## Skills To Do
 - Stormblade
   - Animations and the like
@@ -48,7 +47,7 @@
 - Character Model Animations
 - Skill Icons
 - Item Displays
-- Fix method of loading in assetbundles/soundbanks
+- Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
 
 ## Changelog
