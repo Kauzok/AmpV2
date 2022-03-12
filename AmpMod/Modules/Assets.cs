@@ -31,6 +31,7 @@ namespace AmpMod.Modules
 
         [Header("Magnetic Vortex Effects")]
         internal static GameObject vortexBlackholePrefab;
+        internal static GameObject vortexExplosionEffect;
 
         [Header("Bolt Effects")]
         internal static GameObject boltExitEffect;
@@ -56,7 +57,7 @@ namespace AmpMod.Modules
         internal static List<EffectDef> effectDefs = new List<EffectDef>();
 
         // cache these and use to create our own materials
-        internal static Shader hotpoo = Resources.Load<Shader>("Shaders/Deferred/HGStandard");
+        internal static Shader hotpoo = RoR2.LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
         internal static Material commandoMat;
         private static string[] assetNames = new string[0];
 
@@ -122,7 +123,7 @@ namespace AmpMod.Modules
 
             stormbladeHitSoundEvent = CreateNetworkSoundEventDef(Modules.StaticValues.stormbladeHit4String);
 
-     
+            
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
@@ -143,9 +144,8 @@ namespace AmpMod.Modules
             CreateBoltVehicle();
             CreateBoltEnterPrefab();
 
-            CreateBulletPrep();
-
             //on ferroshot/Lorentz Cannon skill prep
+            CreateBulletPrep();
             bulletSpawnEffect = LoadEffect("Spike Spawn");
 
             //on ferroshot/Lorentz Cannon spike collision
@@ -156,7 +156,7 @@ namespace AmpMod.Modules
 
             //functions for prefabs that require adjustments made at runtime
 
-            CreateLightningPrefab();
+            //CreateLightningPrefab();
             
             
        
@@ -170,7 +170,7 @@ namespace AmpMod.Modules
         private static void CreateBoltVehicle()
         {
             boltVehicle = mainAssetBundle.LoadAsset<GameObject>("BoltVehicle");
-            //boltVehicle = Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle");
+            //boltVehicle = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle");
 
             //adds boltvehicle to the bolt prefab finalizing the gameobject that will act as the primary enactor of the bolt skill
             boltVehicle.AddComponent<SkillStates.BoltVehicle>();
@@ -183,14 +183,19 @@ namespace AmpMod.Modules
         {
            vortexBlackholePrefab = mainAssetBundle.LoadAsset<GameObject>("VortexSphere");
            vortexBlackholePrefab.AddComponent<SkillStates.RadialDamage>();
-         
+           
 
             PrefabAPI.RegisterNetworkPrefab(vortexBlackholePrefab);
 
+            vortexExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("VortexExplosion");
+            AddNewEffectDef(vortexExplosionEffect);
+
         }
+
         private static void CreateBulletPrep()
         {
-            bulletPrepItem = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Spike");
+            bulletPrepItem = mainAssetBundle.LoadAsset<GameObject>("Spike");
+           
             
 
             PrefabAPI.RegisterNetworkPrefab(bulletPrepItem);
@@ -206,7 +211,7 @@ namespace AmpMod.Modules
            chargeExplosionEffect.AddComponent<NetworkIdentity>();
 
 
-           EffectAPI.AddEffect(chargeExplosionEffect);
+            AddNewEffectDef(chargeExplosionEffect);
 
 
 
@@ -222,10 +227,10 @@ namespace AmpMod.Modules
         private static void CreateBoltExitPrefab()
         {
             //electricExplosionEffect = LoadEffect("ElectricExplosion", "HenryBombExplosion");
-            boltExitEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion"), "boltExitEffect", true);
+            boltExitEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion"), "boltExitEffect", true);
             boltExitEffect.AddComponent<NetworkIdentity>();
 
-            EffectAPI.AddEffect(boltExitEffect);
+            AddNewEffectDef(boltExitEffect);
         }
 
 
@@ -236,7 +241,7 @@ namespace AmpMod.Modules
             boltEnterEffect.AddComponent<VFXAttributes>();
             boltEnterEffect.AddComponent<EffectComponent>();
 
-            EffectAPI.AddEffect(boltEnterEffect);
+            AddNewEffectDef(boltEnterEffect);
 
 
         }
@@ -246,12 +251,12 @@ namespace AmpMod.Modules
         //instantiate voltaic bombardment main effect as copy of royal capacitor's effect
         private static void CreateLightningPrefab()
         {
-            lightningStrikePrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "lightningStrike", true);
+            lightningStrikePrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "lightningStrike", true);
             lightningStrikePrefab.AddComponent<NetworkIdentity>();
 
             // lightningStrikePrefab.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
 
-            EffectAPI.AddEffect(lightningStrikePrefab);
+            AddNewEffectDef(lightningStrikePrefab);
 
 
         }
@@ -266,7 +271,7 @@ namespace AmpMod.Modules
             electricChainEffect.AddComponent<NetworkIdentity>();
 
 
-            EffectAPI.AddEffect(electricChainEffect); 
+            AddNewEffectDef(electricChainEffect);
 
             
 
@@ -275,9 +280,9 @@ namespace AmpMod.Modules
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
         {
-            if (Resources.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName) == null) return null;
+            if (RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName) == null) return null;
 
-            GameObject newTracer = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName), newTracerName, true);
+            GameObject newTracer = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName), newTracerName, true);
 
             if (!newTracer.GetComponent<EffectComponent>()) newTracer.AddComponent<EffectComponent>();
             if (!newTracer.GetComponent<VFXAttributes>()) newTracer.AddComponent<VFXAttributes>();
@@ -355,8 +360,8 @@ namespace AmpMod.Modules
 
         internal static GameObject LoadCrosshair(string crosshairName)
         {
-            if (Resources.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair") == null) return Resources.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair");
-            return Resources.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
+            if (RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair") == null) return RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair");
+            return RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
         }
 
         private static GameObject LoadEffect(string resourceName)
@@ -428,7 +433,7 @@ namespace AmpMod.Modules
 
         public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
         {
-            if (!commandoMat) commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+            if (!commandoMat) commandoMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
 
             Material mat = UnityEngine.Object.Instantiate<Material>(commandoMat);
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);

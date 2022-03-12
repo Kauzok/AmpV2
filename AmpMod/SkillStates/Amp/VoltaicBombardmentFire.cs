@@ -15,18 +15,17 @@ namespace AmpMod.SkillStates.Amp
     public class VoltaicBombardmentFire : BaseSkillState
     {
         public GameObject muzzleflashEffectPrefab;
-
         public float baseDuration;
         public Vector3 boltPosition;
         public Quaternion lightningRotation;
         private float duration = 1f;
         public float charge;
-       static public float lightningChargeTimer = .5f;
+        static public float lightningChargeTimer = .5f;
         public GameObject lightningStrikeEffect;
         public GameObject lightningStrikeExplosion;
         bool hasFired;
         public float strikeRadius = 12f;
-        public GameObject projectilePrefab = Modules.Projectiles.bombPrefab;
+        
 
         public override void OnEnter()
         {
@@ -61,7 +60,7 @@ namespace AmpMod.SkillStates.Amp
                 }
 
                 //i dont know why but this line is necessary for the .5 second delay to actually work
-                this.duration = .5f;
+                duration = .5f;
             }
 
                 if (base.isAuthority && base.fixedAge >= this.duration)
@@ -86,13 +85,13 @@ namespace AmpMod.SkillStates.Amp
 
                 Ray aimRay = base.GetAimRay();
 
-                // lightningStrikeEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
+                // lightningStrikeEffect = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
 
-                //prefabs to use for the actual strike effect; currently a copy of the royal capacitor's effect
-                lightningStrikeEffect = Modules.Assets.lightningStrikePrefab;
-                
-                //prefab to use for the explosion effect of the lightning; currently a copy of artificer's nano bomb explosion
-                lightningStrikeExplosion = Resources.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion");
+                //prefabs to use for the actual strike effect; a copy of the royal capacitor's effect
+                lightningStrikeEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
+
+                //prefab to use for the explosion effect of the lightning; a copy of artificer's nano bomb explosion
+                lightningStrikeExplosion = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion");
 
 
                 //effect data for lightning)
@@ -120,7 +119,7 @@ namespace AmpMod.SkillStates.Amp
                     attacker = base.gameObject,
                     baseDamage = Modules.StaticValues.lightningStrikeCoefficient * base.characterBody.damage,
                     baseForce = 2f,
-                    attackerFiltering = AttackerFiltering.NeverHit,
+                    attackerFiltering = AttackerFiltering.NeverHitSelf,
                     crit = base.characterBody.RollCrit(),
                     damageColorIndex = DamageColorIndex.Item,
                     damageType = DamageType.Generic,

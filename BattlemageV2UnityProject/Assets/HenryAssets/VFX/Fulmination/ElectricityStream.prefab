@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 362569107612524360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 2137989374, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialDuration: 4
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 362569107612524360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1788389205, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 4
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 362569107612524360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1080798252, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Script: {fileID: 1080798252, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 601169680844081993}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 362569107612524360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -960361785, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Root: {fileID: 0}

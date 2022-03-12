@@ -311,7 +311,7 @@ namespace AmpMod
                                 attacker = tracker.owner,
                                 baseDamage = StaticValues.chargeDamageCoefficient * tracker.ownerBody.damage,
                                 baseForce = 1f,
-                                attackerFiltering = AttackerFiltering.NeverHit,
+                                attackerFiltering = AttackerFiltering.NeverHitSelf,
                                 crit = tracker.ownerBody.RollCrit(),
                                 damageColorIndex = DamageColorIndex.Item,
                                 damageType = DamageType.Generic,

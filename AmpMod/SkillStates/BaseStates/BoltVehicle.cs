@@ -194,7 +194,7 @@ namespace AmpMod.SkillStates
 				attacker = currentPassengerBody.gameObject,
 				baseDamage = blastDamageCoefficient * currentPassengerBody.damage,
 				baseForce = 0f,
-				attackerFiltering = AttackerFiltering.NeverHit,
+				attackerFiltering = AttackerFiltering.NeverHitSelf,
 				crit = currentPassengerBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,
 				damageType = DamageType.Stun1s,

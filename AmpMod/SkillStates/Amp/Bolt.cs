@@ -41,7 +41,7 @@ namespace AmpMod.SkillStates
 			boltObject = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.boltVehicle, aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
-			//boltObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+			//boltObject = UnityEngine.Object.Instantiate<GameObject>(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			//NetworkServer.Spawn(boltObject);

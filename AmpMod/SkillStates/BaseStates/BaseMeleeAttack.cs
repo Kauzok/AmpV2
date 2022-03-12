@@ -7,7 +7,6 @@ using UnityEngine.Networking;
 using RoR2.Orbs;
 using R2API;
 
-
 namespace AmpMod.SkillStates.BaseStates
 {
     public class BaseMeleeAttack : BaseSkillState

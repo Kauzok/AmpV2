@@ -5,6 +5,7 @@ using RoR2;
 using UnityEngine;
 using EntityStates;
 using R2API;
+using KinematicCharacterController;
 using UnityEngine.Networking;
 
 namespace AmpMod.SkillStates
@@ -41,7 +42,7 @@ namespace AmpMod.SkillStates
                 attacker = base.gameObject,
                 baseDamage = launchDamage * base.characterBody.damage,
                 baseForce = 0f,
-                attackerFiltering = AttackerFiltering.NeverHit,
+                attackerFiltering = AttackerFiltering.NeverHitSelf,
                 crit = base.characterBody.RollCrit(),
                 damageColorIndex = DamageColorIndex.Item,
                 damageType = DamageType.Stun1s,

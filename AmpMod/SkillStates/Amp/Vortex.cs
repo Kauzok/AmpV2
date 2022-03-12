@@ -11,10 +11,11 @@ namespace AmpMod.SkillStates
     class Vortex : BaseSkillState
     {
         public static float tickDamage = Modules.StaticValues.vortexDamageCoefficient;
-        public float duration;
         public GameObject Vortexprefab = Modules.Projectiles.vortexPrefab;
         public float explodeDamage = Modules.StaticValues.vortexExplosionCoefficient;
         public Vector3 blastPosition;
+        private GameObject destroyExplosionEffect = Modules.Assets.vortexExplosionEffect;
+        
 
         public override void OnEnter()
         {
@@ -53,6 +54,7 @@ namespace AmpMod.SkillStates
                     vortexDamage.finalBlastDamage = explodeDamage;
                     vortexDamage.attacker = base.gameObject;
                     vortexDamage.duration = Modules.Assets.vortexBlackholePrefab.GetComponent<ProjectileSimple>().lifetime;
+                    vortexDamage.explosionEffect = destroyExplosionEffect;
                     blastPosition = vortexDamage.transform.position;
 
 

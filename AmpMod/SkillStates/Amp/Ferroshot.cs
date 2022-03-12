@@ -27,7 +27,7 @@ namespace AmpMod.SkillStates
 
         private Animator animator;
 
-        public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
+        public static GameObject tracerEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
         public static GameObject ferroshotPrefabBasic = Modules.Assets.bulletPrepItem;
 
         private float duration;

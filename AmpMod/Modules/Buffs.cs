@@ -15,7 +15,7 @@ namespace AmpMod.Modules
         internal static void RegisterBuffs()
         {
             //charge debuff
-            chargeBuildup= AddNewBuff("AmpChargeBuildup", Resources.Load<Sprite>("None"), Color.cyan, true, true);
+            chargeBuildup= AddNewBuff("AmpChargeBuildup", RoR2.LegacyResourcesAPI.Load<Sprite>("None"), Color.cyan, true, true);
         }
 
         // simple helper method

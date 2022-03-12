@@ -60,7 +60,7 @@ namespace AmpMod.SkillStates
 
                 base.PlayAnimation("Gesture, Override", "ChargeSpell", "Spell.playbackRate", 0.4f);
                 this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
-                this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
+                this.defaultCrosshairPrefab = base.characterBody._defaultCrosshairPrefab;
 
                 if (base.cameraTargetParams)
                 {
@@ -69,10 +69,10 @@ namespace AmpMod.SkillStates
 
                 if (this.crosshairOverridePrefab)
                 {
-                    base.characterBody.crosshairPrefab = this.crosshairOverridePrefab;
+                    base.characterBody._defaultCrosshairPrefab = this.crosshairOverridePrefab;
                 }
 
-                if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
+            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
                 {
                     this.areaIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab);
                     this.areaIndicatorInstance.transform.localScale = new Vector3(reticleScale, reticleScale, reticleScale);
@@ -102,11 +102,11 @@ namespace AmpMod.SkillStates
 
             public override void OnExit()
             {
-                if (this.crosshairOverridePrefab)
-                {
-                    base.characterBody.crosshairPrefab = this.defaultCrosshairPrefab;
-                }
-                else
+            if (this.crosshairOverridePrefab)
+            {
+                base.characterBody._defaultCrosshairPrefab = this.defaultCrosshairPrefab;
+            }
+            else
                 {
                     base.characterBody.hideCrosshair = false;
                 }
@@ -125,10 +125,10 @@ namespace AmpMod.SkillStates
 
                 if (base.cameraTargetParams)
                 {
-                    base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+                    //base.cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Standard);
                 }
 
-                EntityState.Destroy(this.chargeEffectInstance);
+            EntityState.Destroy(this.chargeEffectInstance);
                 base.OnExit();
             }
         public virtual void HandlePrimaryAttack()

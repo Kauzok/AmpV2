@@ -38,7 +38,7 @@ namespace AmpMod.Modules.Survivors
             //jumpPower = 18f,
             maxHealth = 110f,
             subtitleNameToken = AmpPlugin.developerPrefix + "_AMP_BODY_SUBTITLE",
-            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+            podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
         internal static Material henryMat = Modules.Assets.CreateMaterial("matHenry");
@@ -153,7 +153,7 @@ namespace AmpMod.Modules.Survivors
                 interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -183,7 +183,7 @@ namespace AmpMod.Modules.Survivors
                 interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -1913,7 +1913,7 @@ localScale = new Vector3(0.2845F, 0.2845F, 0.2845F),
                 }
             });
 
-            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+    /*        itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Items.CooldownOnCrit,
                 displayRuleGroup = new DisplayRuleGroup
@@ -1932,7 +1932,7 @@ localScale = new Vector3(0.2789F, 0.2789F, 0.2789F),
                         }
                     }
                 }
-            });
+            }); */
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
@@ -2301,7 +2301,7 @@ localScale = new Vector3(0.1F, 0.1F, 0.1F),
                 }
             });
 
-            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+          /*  itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Items.Incubator,
                 displayRuleGroup = new DisplayRuleGroup
@@ -2320,7 +2320,7 @@ localScale = new Vector3(0.0528F, 0.0528F, 0.0528F),
                         }
                     }
                 }
-            });
+            }); */
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {

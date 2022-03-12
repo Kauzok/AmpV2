@@ -26,6 +26,7 @@ namespace AmpMod.SkillStates
 		public BlastAttack radialBlast;
 		public float finalBlastDamage;
 		private float timer;
+		public GameObject explosionEffect;
 
 		[Header("Damage Owner/Positional Parameters")]
 		public GameObject attacker;
@@ -47,7 +48,7 @@ namespace AmpMod.SkillStates
 				attacker = attacker.gameObject,
 				baseDamage = finalBlastDamage * charBody.damage,
 				baseForce = 0f,
-				attackerFiltering = AttackerFiltering.NeverHit,
+				attackerFiltering = AttackerFiltering.NeverHitSelf,
 				crit = charBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,
 				damageType = DamageType.Generic,
@@ -59,6 +60,11 @@ namespace AmpMod.SkillStates
 				radius = radius,
 				teamIndex = this.teamFilter.teamIndex
 			};
+
+			
+			
+			//exitEffectPrefab = Modules.Assets.testLightningEffect;
+			
 
 		}
 
@@ -80,6 +86,13 @@ namespace AmpMod.SkillStates
 			if (timer >= duration-Time.fixedDeltaTime && NetworkServer.active)
             {
 				radialBlast.Fire();
+				EffectData effectData = new EffectData
+				{
+					origin = this.transform.position,
+					scale = 1.5f
+				};
+
+				EffectManager.SpawnEffect(explosionEffect, effectData, true);
 				timer = 0f;
             }
 
