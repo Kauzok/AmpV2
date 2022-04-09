@@ -19,7 +19,7 @@
   - Adjust vortex/explosion VFX
   - Adjust singularity projectile VFX
   - Add SFX
-- Bolt 
+- Surge
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
   - Fix not being able to exit ability if remaining charges are left
