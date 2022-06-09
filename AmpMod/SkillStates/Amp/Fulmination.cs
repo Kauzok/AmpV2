@@ -18,6 +18,9 @@ namespace AmpMod.SkillStates
 		public static GameObject impactEffectPrefab = Modules.Assets.electricImpactEffect;
 		public EffectData fulminationData;
 		private Transform fulminationTransform;
+		private Transform handLTransform;
+		private ChildLocator childLocator;
+
 
 		[Header("Attack Variables")]
 		public static float radius;
@@ -54,17 +57,21 @@ namespace AmpMod.SkillStates
 			stopwatch = 0f;
 			entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
 			fulminationDuration = Fulmination.baseFulminationDuration;
+			Transform modelTransform = base.GetModelTransform();
 
 			if (base.characterBody)
-			{
-				base.characterBody.SetAimTimer(entryDuration + fulminationDuration + 1f);
+            {
+                base.characterBody.SetAimTimer(entryDuration + fulminationDuration + 1f);
+				childLocator = modelTransform.GetComponent<ChildLocator>();
+				handLTransform = childLocator.FindChild("HandL");
 			}
-			//play enter sound
-			Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
+            //play enter sound
+            Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
 
 			//determines how many times the attack hits based off of 
 			tickFrequency = basetickFrequency * this.attackSpeedStat;
 
+			base.PlayAnimation("Fulminate, Override", "FulminateStart", "Shootgun.PlaybackRate", entryDuration);
 
 		}
 
@@ -77,6 +84,8 @@ namespace AmpMod.SkillStates
 			//stop sound
 			AkSoundEngine.StopPlayingID(stopSoundID, 0);
 
+			
+
 				if (fulminationTransform)
                 {
 					EntityState.Destroy(fulminationTransform.gameObject);
@@ -84,13 +93,13 @@ namespace AmpMod.SkillStates
 				}
 
 
-
+			base.PlayCrossfade("Fulminate, Override", "FulminateEnd", 0.1f);
 			base.OnExit();
 
 
 		}
 
-		private void FireLightning()
+		private void FireLightning(String muzzleString)
 		{
 			Ray aimRay = base.GetAimRay();
 			if (base.isAuthority)
@@ -106,6 +115,7 @@ namespace AmpMod.SkillStates
 					minSpread = 0f,
 					damage = this.tickDamageCoefficient * base.characterBody.damage,
 					force = 2f,
+					muzzleName = muzzleString,
 					hitEffectPrefab = Modules.Assets.electricImpactEffect,
 					isCrit = base.characterBody.RollCrit(),
 					radius = Fulmination.radius,
@@ -141,14 +151,28 @@ namespace AmpMod.SkillStates
 			if (stopwatch >= entryDuration && !hasBegunFulmination)
 			{
 				hasBegunFulmination = true;
-	
+				
+				if (childLocator)
+                {
+					Transform transform = childLocator.FindChild("HandL");
+					
+					if (transform)
+					{
+						fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
+					}
+
+
+				}
+
 				//instantiate effect as gameobject to transform
-				fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
+				//fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
 
 				//play sound and set stopID
 				stopSoundID = Util.PlaySound(attackSoundString, base.gameObject);
+				base.PlayAnimation("Fulminate, Override", "FulminateHold", "Shoot.Playbackrate", baseFulminationDuration);
 
-				FireLightning();
+
+				FireLightning("HandL");
 			}
 			if (hasBegunFulmination)
 			{
@@ -156,7 +180,7 @@ namespace AmpMod.SkillStates
 				if (fulminationStopwatch > 1f / Fulmination.tickFrequency)
 				{
 					fulminationStopwatch -= 1f / Fulmination.tickFrequency;
-					FireLightning();
+					FireLightning("HandL");
 				}
 				UpdateFulminationEffect();
 			}

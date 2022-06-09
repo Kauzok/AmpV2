@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 114196050411266161}
   - component: {fileID: 114069003198884968}
   - component: {fileID: 136473445913943510}
+  - component: {fileID: -7221275643235391356}
   m_Layer: 14
   m_Name: VortexProjectile
   m_TagString: Untagged
@@ -101,7 +102,9 @@ MonoBehaviour:
   ghostPrefab: {fileID: 0}
   ghostTransformAnchor: {fileID: 0}
   startSound: 
+  cannotBeDeleted: 0
   flightSoundLoop: {fileID: 0}
+  canImpactOnTrigger: 0
   allowPrediction: 0
   owner: {fileID: 0}
   procCoefficient: 1
@@ -148,13 +151,16 @@ MonoBehaviour:
   m_Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionSoundString: 
   falloffModel: 0
   blastRadius: 2
   blastDamageCoefficient: 0
   blastProcCoefficient: 1
   blastAttackerFiltering: 0
   bonusBlastForce: {x: 0, y: 0, z: 0}
+  canRejectForce: 1
+  projectileHealthComponent: {fileID: 0}
+  explosionEffect: {fileID: 0}
+  explosionSoundString: 
   fireChildren: 1
   childrenProjectilePrefab: {fileID: 1685504830071866, guid: 812cd384604470d4fbf0c474dd42716e,
     type: 3}
@@ -162,9 +168,19 @@ MonoBehaviour:
   childrenDamageCoefficient: 0
   minAngleOffset: {x: 0, y: 0, z: 0}
   maxAngleOffset: {x: 0, y: 0, z: 0}
+  minRollDegrees: 0
+  rangeRollDegrees: 0
+  minPitchDegrees: 0
+  rangePitchDegrees: 0
   useLocalSpaceForChildren: 0
-  projectileHealthComponent: {fileID: 0}
-  explosionEffect: {fileID: 0}
+  applyDot: 0
+  dotIndex: -1
+  dotDuration: 0
+  dotDamageMultiplier: 1
+  applyMaxStacksFromAttacker: 0
+  maxStacksFromAttacker: 4294967295
+  calculateTotalDamage: 0
+  totalDamageMultiplier: 0
   impactEffect: {fileID: 0}
   lifetimeExpiredSoundString: 
   lifetimeExpiredSound: {fileID: 0}
@@ -188,8 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desiredForwardSpeed: 70
   lifetime: 4
+  lifetimeExpiredEffect: {fileID: 0}
+  desiredForwardSpeed: 70
   updateAfterFiring: 1
   enableVelocityOverLifetime: 0
   velocityOverLifetime:
@@ -227,6 +244,8 @@ MonoBehaviour:
   force: 0
   damageColorIndex: 0
   damageType: 0
+  useDotMaxStacksFromAttacker: 0
+  dotMaxStacksFromAttacker: 4294967295
 --- !u!136 &136473445913943510
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -241,3 +260,29 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7221275643235391356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712367373351762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1390580703, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114582545111237915}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

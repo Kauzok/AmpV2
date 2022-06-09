@@ -106,6 +106,7 @@ namespace AmpMod.SkillStates.BaseStates
         protected virtual void PlayAttackAnimation()
         {
             base.PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), "Slash.playbackRate", this.duration, 0.05f);
+           
         }
 
         public override void OnExit()

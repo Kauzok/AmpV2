@@ -11,7 +11,8 @@ namespace AmpMod.Modules
         public const string characterSubtitle = "Electromagnetic Warrior";
         public const string characterOutro = "..and so he left, with an undeniable freedom.";
         public const string characterOutroFailure = "..and so he vanished, imprisoned for eternity.";
-
+        public const string chargeDesc = "<style=cKeywordName>Charged</style>" + "<style=cSub>Applies one stack of <color=#0091ff>charge</color> to an enemy.</style>";
+        public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
 
         internal static string descriptionText = "Amp is a melee/range hybrid that focuses on consistently dealing damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Stormblade is good at paralyzing enemies for easy damage, but keep in mind you can only paralyze so many enemies at once." + Environment.NewLine + Environment.NewLine
@@ -25,9 +26,9 @@ namespace AmpMod.Modules
             + "Electrocute.\n\n"
             + "A new mission, they told him. Obtain an artifact from a desolate planet, said to contain the final remnant of a dead god's power. The details were left out; if he died, they would simply use another. But when he touched the artifact, sparks flew. Images of a faraway planet, lush and teeming with life, flashed into his mind. He stumbled back, confused. What did this mean? What was this artifact? He knew if he followed the message, he’d find the answers. But first, there was something he must do. \n\n"
             + "Electrocute.\n\n"
-            + "The trail back to headquarters was stained with blood. He didn't have to go back. With his power, he could've escaped and never returned. But he wanted vengeance.\n\n"
+            + "The trail back to headquarters was stained with blood. He didn't have to go back. With his new power, he could've escaped and never returned. But he wanted vengeance.\n\n"
             + "Electrocute.\n\n"
-            + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the bullets freeze in mid-air, refusing to hit their target. The last thing they see is a terrifying, magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
+            + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the bullets freeze mid-air, refusing to hit their target. The last thing they see is a terrifying, magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
             + "Electrocute.";
 
 
@@ -62,7 +63,7 @@ namespace AmpMod.Modules
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
-        internal const float lightningStrikeCoefficient = 17f;
+        internal const float lightningStrikeCoefficient = 16.5f;
        
 
 
@@ -83,6 +84,13 @@ namespace AmpMod.Modules
         internal const string ferroshotLaunchString = "PlayFerroshotLaunch";
         internal const string ferroshotLaunchAlterString = "PlayFerroshotLaunchAlter";
         internal const string ferroshotPrepAlterString = "PlayFerroshotCreateAlter";
+
+        [Header("Magnetic Vortex Sound Strings")]
+        internal const string vortexLoopString = "PlayVortexLoop";
+        internal const string vortexShootString = "PlayVortexShoot";
+        internal const string vortexFlightLoopString = "PlayVortexFlightLoop";
+        internal const string vortexFlightLoopStringAlt = "PlayVortexFlightLoopAlter2";
+        internal const string vortexExplosionString = "PlayVortexExplosion";
 
         [Header("Bolt Sound Strings")]
         internal const string boltState2SecString = "PlayBoltState2sec";

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using RoR2;
 using EntityStates;
-using RoR2.Projectile;
-using AmpMod.Modules;
 using UnityEngine.Networking;
-using RoR2.Orbs;
+using RoR2.Projectile;
 using R2API;
 
 namespace AmpMod.SkillStates.Amp
@@ -25,17 +20,21 @@ namespace AmpMod.SkillStates.Amp
         public GameObject lightningStrikeExplosion;
         bool hasFired;
         public float strikeRadius = 12f;
-        
+        protected Animator animator;
+
+
 
         public override void OnEnter()
         {
 
             base.OnEnter();
 
+            animator = base.GetModelAnimator();
             hasFired = false;
             this.duration = this.baseDuration / this.attackSpeedStat;
+            animator.SetBool("HasFired", true);
+            base.PlayAnimation("LeftArm, Override", "SummonLightning", "Spell.playbackRate", .5f);
 
-            //base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", this.duration);
 
             if (this.muzzleflashEffectPrefab)
             {
@@ -49,7 +48,7 @@ namespace AmpMod.SkillStates.Amp
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            
             if (!hasFired)
             {
                 //if age of fixedupdate is > .5 seconds 
@@ -74,6 +73,7 @@ namespace AmpMod.SkillStates.Amp
         public override void OnExit()
         {
             base.OnExit();
+            animator.SetBool("HasFired", false);
         }
 
         private void Fire()
@@ -134,29 +134,9 @@ namespace AmpMod.SkillStates.Amp
                     teamIndex = base.characterBody.teamComponent.teamIndex
                 };
                 lightningStrike.AddModdedDamageType(Modules.DamageTypes.apply2Charge);
-
+                
                 lightningStrike.Fire();
 
-
-                /*
-                   FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
-                    {
-
-                        projectilePrefab = Modules.Projectiles.bombPrefab,
-                        position = this.boltPosition + Vector3.up * 10f,
-                        rotation = ,
-                        owner = base.gameObject,
-                        damage = this.damageStat,
-                        force = 5f,
-                        crit = base.RollCrit(),
-                        speedOverride = 10f,
-
-                        
-                       
-                  };
-                   ProjectileManager.instance.FireProjectile(fireProjectileInfo);
-
-                 */
 
             }
         } 

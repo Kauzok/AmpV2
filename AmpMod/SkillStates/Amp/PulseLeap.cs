@@ -30,7 +30,7 @@ namespace AmpMod.SkillStates
             
 
             Util.PlaySound(launchSound, base.gameObject);
-           
+            base.PlayAnimation("LeftArm, Override", "Boost", "ShootGun.playbackRate", 0.4f);
 
         }
 
@@ -123,7 +123,7 @@ namespace AmpMod.SkillStates
 
  
 
-            base.characterMotor.onHitGround -= this.CharacterMotor_onHitGround;
+            base.characterMotor.onHitGroundServer -= this.CharacterMotor_onHitGround;
         }
 
 
@@ -134,7 +134,7 @@ namespace AmpMod.SkillStates
             if (NetworkServer.active && !base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
             {
                 base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-                base.characterMotor.onHitGround += this.CharacterMotor_onHitGround;
+                base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
             }
 
             base.OnExit();

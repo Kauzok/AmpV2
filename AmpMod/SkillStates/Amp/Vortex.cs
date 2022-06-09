@@ -15,6 +15,7 @@ namespace AmpMod.SkillStates
         public float explodeDamage = Modules.StaticValues.vortexExplosionCoefficient;
         public Vector3 blastPosition;
         private GameObject destroyExplosionEffect = Modules.Assets.vortexExplosionEffect;
+        private string ShootString = Modules.StaticValues.vortexShootString;
         
 
         public override void OnEnter()
@@ -23,7 +24,7 @@ namespace AmpMod.SkillStates
 
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
-
+            base.PlayAnimation("LeftArm, Override", "ShootProjectileFast", null, .2f);
            
                        
 
@@ -40,6 +41,8 @@ namespace AmpMod.SkillStates
                 this.outer.SetNextStateToMain();
             }
         }
+
+        //fire vortex projectile
         private void Fire()
         {
             if (base.isAuthority)
@@ -47,6 +50,8 @@ namespace AmpMod.SkillStates
                 Ray aimRay = base.GetAimRay();
                 if (Vortexprefab != null)
                 {
+                    
+                    //set vars for the radial damage component of the vortex blackhole prefab
                     var vortexDamage = Modules.Assets.vortexBlackholePrefab.GetComponent<RadialDamage>();
                     vortexDamage.blastDamage = tickDamage;
                     vortexDamage.charBody = base.characterBody;
@@ -71,7 +76,10 @@ namespace AmpMod.SkillStates
                     ModifyProjectile(ref fireProjectileInfo);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
-            
+
+                //play shoot sound
+                Util.PlaySound(ShootString, base.gameObject);
+                
             }
         }
 

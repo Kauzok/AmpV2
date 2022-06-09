@@ -7,10 +7,9 @@ using RoR2.Projectile;
 using UnityEngine.Networking;
 using RoR2.Orbs;
 using RoR2.Skills;
-using AmpMod.SkillStates.BaseStates;
 using AmpMod.SkillStates.Amp; 
 
-namespace AmpMod.SkillStates
+namespace AmpMod.SkillStates.BaseStates
 {
     // Token: 0x02000B12 RID: 2834
     public abstract class BaseLightningAim : BaseSkillState
@@ -58,7 +57,9 @@ namespace AmpMod.SkillStates
                     }
                 }
 
-                base.PlayAnimation("Gesture, Override", "ChargeSpell", "Spell.playbackRate", 0.4f);
+                base.PlayAnimation("LeftArm, Override", "ChargeLightning", "Spell.playbackRate", 0.4f);
+                base.PlayAnimation("LeftArm, Override", "HoldLightning", "Spell.playbackRate", 0.4f);
+
                 this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
                 this.defaultCrosshairPrefab = base.characterBody._defaultCrosshairPrefab;
 

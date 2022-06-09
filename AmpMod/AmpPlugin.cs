@@ -63,7 +63,7 @@ namespace AmpMod
 
            
             // create your survivor here
-            new Modules.Survivors.MyCharacter().Initialize();
+            new Modules.Survivors.Amp().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
@@ -77,14 +77,14 @@ namespace AmpMod
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             // have to set item displays later now because they require direct object references..
-            Modules.Survivors.MyCharacter.instance.SetItemDisplays();
+            Modules.Survivors.Amp.instance.SetItemDisplays();
             RoR2Application.onLoad += SetItemDisplays;
         }
 
         private static void SetItemDisplays()
         {
             ItemDisplays.PopulateDisplays();
-            Modules.Survivors.MyCharacter.instance.SetItemDisplays();
+            Modules.Survivors.Amp.instance.SetItemDisplays();
             
         }
 

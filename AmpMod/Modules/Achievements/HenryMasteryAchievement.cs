@@ -27,7 +27,7 @@ namespace AmpMod.Modules.Achievements
 
         public override BodyIndex LookUpRequiredBodyIndex()
         {
-            return BodyCatalog.FindBodyIndex(Modules.Survivors.MyCharacter.instance.bodyName);
+            return BodyCatalog.FindBodyIndex(Modules.Survivors.Amp.instance.bodyName);
         }
 
         public void ClearCheck(Run run, RunReport runReport)

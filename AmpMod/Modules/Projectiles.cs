@@ -4,6 +4,7 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
+using RoR2.Audio;
 
 namespace AmpMod.Modules
 {
@@ -56,7 +57,7 @@ namespace AmpMod.Modules
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
             //instantiates the  projectile model and associates it with the prefab
-            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
+            if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
             
   
 
@@ -64,19 +65,32 @@ namespace AmpMod.Modules
             ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
             InitializeFerroshotContact(ferroshotContact);
             ferroshotContact.destroyOnWorld = true;
-            ferroshotContact.impactEffect = Modules.Assets.bulletImpactEffect;
+            ferroshotContact.impactEffect = Assets.bulletImpactEffect;
             
 
         }
 
         private static void CreateVortex()
         {
-            vortexPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("VortexProjectile");
+            vortexPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("VortexProjectile");
             ProjectileController vortexController = vortexPrefab.GetComponent<ProjectileController>();
             //instantiates the  projectile model and associates it with the prefab
-            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("VortexEffect") != null) vortexController.ghostPrefab = CreateGhostPrefab("VortexEffect");
+            if (Assets.mainAssetBundle.LoadAsset<GameObject>("VortexEffect") != null) vortexController.ghostPrefab = CreateGhostPrefab("VortexEffect");
+           
+            //code for giving flight loop sound to vortex projectile and making it stop on contact
+          /*  LoopSoundDef flightLoop = new LoopSoundDef();
+            flightLoop.startSoundName = StaticValues.vortexFlightLoopString;
+            vortexPrefab.GetComponent<ProjectileController>().flightSoundLoop = flightLoop; */
 
-            
+            var stopSound = vortexPrefab.AddComponent<SkillStates.BaseStates.StopLoop>();
+            stopSound.SoundEventToPlay = StaticValues.vortexFlightLoopStringAlt;
+            stopSound.SoundId = 2447326215;
+
+
+
+
+
+
 
             /*
             vortexPrefab = CloneProjectilePrefab("LunarShardProjectile", "Vortex");

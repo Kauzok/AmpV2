@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using RoR2;
 using RoR2.Orbs;
 using System.IO;
+using RoR2.Projectile;
 using System.Collections.Generic;
 using RoR2.UI;
 
@@ -49,7 +50,8 @@ namespace AmpMod.Modules
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
-        internal static NetworkSoundEventDef chargeExplosionSound;
+        internal static NetworkSoundEventDef vortexLoopSoundEvent;
+        internal static NetworkSoundEventDef vortexFlightLoopSoundEvent;
         internal static NetworkSoundEventDef stormbladeHitSoundEvent;
 
         // lists of assets to add to contentpack
@@ -61,7 +63,7 @@ namespace AmpMod.Modules
         internal static Material commandoMat;
         private static string[] assetNames = new string[0];
 
-        // CHANGE THIS
+        
         private const string assetbundleName = "ampbundle";
 
         internal static void Initialize()
@@ -92,12 +94,7 @@ namespace AmpMod.Modules
 
         internal static void LoadSoundbank()
         {
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("AmpMod.HenryBank.bnk"))
-            {
-                byte[] array = new byte[manifestResourceStream2.Length];
-                manifestResourceStream2.Read(array, 0, array.Length);
-                SoundAPI.SoundBanks.Add(array);
-            }
+ 
 
             using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("AmpMod.AmpSoundbank.bnk"))
             {
@@ -121,9 +118,14 @@ namespace AmpMod.Modules
             // it should work fine even if left as is- even if the assets aren't in the bundle
             swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
 
-            stormbladeHitSoundEvent = CreateNetworkSoundEventDef(Modules.StaticValues.stormbladeHit4String);
+            stormbladeHitSoundEvent = CreateNetworkSoundEventDef(StaticValues.stormbladeHit4String);
 
-            
+            //create magnetic vortex projectile flight loop event
+            vortexFlightLoopSoundEvent = CreateNetworkSoundEventDef(StaticValues.vortexFlightLoopString);
+
+            //magnetic vortex loop sound effect
+            vortexLoopSoundEvent = CreateNetworkSoundEventDef(StaticValues.vortexLoopString);
+
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
@@ -159,7 +161,7 @@ namespace AmpMod.Modules
             //CreateLightningPrefab();
             
             
-       
+        
 
             //swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordSwingEffect = Assets.LoadEffect("StormbladeSwing", true);
@@ -179,6 +181,7 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(boltVehicle);
         }
 
+
         private static void CreateVortexBlackhole()
         {
            vortexBlackholePrefab = mainAssetBundle.LoadAsset<GameObject>("VortexSphere");
@@ -188,6 +191,7 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(vortexBlackholePrefab);
 
             vortexExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("VortexExplosion");
+            
             AddNewEffectDef(vortexExplosionEffect);
 
         }

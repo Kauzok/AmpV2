@@ -1,8 +1,6 @@
-﻿using System;
-using RoR2;
-using UnityEngine;
+﻿using UnityEngine;
 using AmpMod.SkillStates.Amp;
-
+using AmpMod.SkillStates.BaseStates;
 
 namespace AmpMod.SkillStates
 {

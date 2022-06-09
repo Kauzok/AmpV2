@@ -47,7 +47,7 @@ namespace AmpMod.SkillStates
 
             Ray aimRay = base.GetAimRay();
 
-            base.PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);// 3f * this.duration);
+            base.PlayAnimation("LeftArm, Override", "ShootProjectile", "ShootProjectile.playbackRate", 1.8f*this.duration);// 3f * this.duration);
 
         }
 

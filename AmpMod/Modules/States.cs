@@ -27,7 +27,7 @@ namespace AmpMod.Modules
 
             //bolt states
             entityStates.Add(typeof(BoltVehicle));
-            entityStates.Add(typeof(Bolt));
+            entityStates.Add(typeof(Surge));
 
             //pulse leap states
             entityStates.Add(typeof(PulseLeap));

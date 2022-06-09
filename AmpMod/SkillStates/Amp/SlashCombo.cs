@@ -18,7 +18,7 @@ namespace AmpMod.SkillStates
 
             this.damageType = DamageType.Generic;
             this.damageCoefficient = Modules.StaticValues.stormbladeDamageCoefficient;
-            this.procCoefficient = .1f; //determines length of the shock -> need to figure out how to lower proc chance, should be 15%
+            this.procCoefficient = .1f; 
             this.pushForce = 300f;
             this.bonusForce = Vector3.zero;
             this.baseDuration = .8f;
