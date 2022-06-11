@@ -2,7 +2,6 @@
 - WIP Amp, a melee/range hybrid who fights with electromagnetic attacks. Original name battlemage, will adjust other name tokens later. Updated for SoTV
 ## Skills To Do
 - Stormblade
-  - Animations and the like
   - Fix checkroll behavior
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
   - Limit sfx sound so hitting multiple enemies doesn't make it super loud
@@ -17,8 +16,6 @@
   - Consider adding ability to remotely detonate vortex
   - Add vortex spawn VFX
   - Adjust vortex/explosion VFX
-  - Adjust singularity projectile VFX
-  - Add SFX
 - Surge
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
@@ -29,24 +26,18 @@
 - Thunder Crash
   - Add Skill
   - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
-- Pulse Leap
-  - Adjust VFX
 - Fulmination
   - Consider adjusting chain effect
-  - Adjust position of VFX
-- Voltaic Bombardment
-  - Fix sound
-  - Figure out why tessellation vfx is only affected on clients
-- Charge Passive
-  - Complete! I think.
+
+## Item Displays To Do
+- Fix frost relic item display/revise current displays
+- Adjust masking of model for limb replacement
 
 ## Misc. To Do
 - Cleanup code base, finish comments
 - Fix name tokens
-- Character Model
-- Character Model Animations
+- Alternate Skins
 - Skill Icons
-- New Item Displays/Adjust old item displays
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
 
