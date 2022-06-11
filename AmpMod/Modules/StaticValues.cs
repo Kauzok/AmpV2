@@ -15,10 +15,10 @@ namespace AmpMod.Modules
         public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
 
         internal static string descriptionText = "Amp is a melee/range hybrid that focuses on consistently dealing damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
-             + "< ! > Stormblade is good at paralyzing enemies for easy damage, but keep in mind you can only paralyze so many enemies at once." + Environment.NewLine + Environment.NewLine
+             + "< ! > Stormblade can be used in tandem with all of Amp's non-utility abilities, so keep slashing!" + Environment.NewLine + Environment.NewLine
              + "< ! > Lorentz Cannon can be used as either a source of extra damage while using Stormblade, or for continuing to apply damage even outside of melee range." + Environment.NewLine + Environment.NewLine
-             + "< ! > Bolt's movement speed and invulnerability make it a great ability for entering and exiting close-ranged combat." + Environment.NewLine + Environment.NewLine
-             + "< ! > Fulmination and Voltaic Bombardment are great for dealing damage to many enemies at once, or melting a single strong enemy." + Environment.NewLine + Environment.NewLine;
+             + "< ! > If you can control it, Surge can be used to deal an easy 400% damage by running back and forth into enemies to quickly charge them." + Environment.NewLine + Environment.NewLine
+             + "< ! > Voltaic Bombardment hits much higher than the indicator shows, so use it to instantly take down weak flying enemies." + Environment.NewLine + Environment.NewLine;
 
         internal static string characterLore = "How long has it been? He pondered, and quickly decided it did not matter. Time had become irrelevant; all he knew was his duty. To find. To capture. To fight. To kill.\n\n"
             + "Electrocute.\n\n"

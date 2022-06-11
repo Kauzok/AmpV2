@@ -125,7 +125,7 @@ namespace AmpMod.SkillStates.Amp
                     damageType = DamageType.Generic,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
-                   
+                    
                     //blastattack is positioned 10 units above where the reticle is placed
                     position = this.boltPosition + Vector3.up * 10,
                     procChainMask = default(ProcChainMask),

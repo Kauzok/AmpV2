@@ -446,6 +446,8 @@ MonoBehaviour:
     transform: {fileID: 5414985102366510366}
   - name: SpineBase
     transform: {fileID: 7675753682722217121}
+  - name: HandR
+    transform: {fileID: 6803126343668026776}
 --- !u!1 &965365872548736040
 GameObject:
   m_ObjectHideFlags: 0

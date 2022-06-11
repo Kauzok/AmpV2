@@ -186,6 +186,12 @@ namespace AmpMod.SkillStates.BaseStates
         {
             base.FixedUpdate();
 
+            if (base.characterBody.currentVehicle)
+            {
+                this.outer.SetNextStateToMain();
+                return;
+            }
+
             this.hitPauseTimer -= Time.fixedDeltaTime;
 
             if (this.hitPauseTimer <= 0f && this.inHitPause)
@@ -194,7 +200,7 @@ namespace AmpMod.SkillStates.BaseStates
                 this.inHitPause = false;
                 base.characterMotor.velocity = this.storedVelocity;
             }
-
+        
             if (!this.inHitPause)
             {
                 this.stopwatch += Time.fixedDeltaTime;
