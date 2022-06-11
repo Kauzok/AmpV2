@@ -28,7 +28,7 @@
   - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
 - Fulmination
   - Consider adjusting chain effect
--Fix frost relic item display/revise current displays
+- Fix frost relic item display/revise current displays
 
 ## Misc. To Do
 - Cleanup code base, finish comments
