@@ -32,6 +32,10 @@
 - Fix frost relic item display/revise current displays
 - Adjust masking of model for limb replacement
 
+## VFX To Do
+- Add electricity VFX to sword
+- Finish footsteps
+
 ## Misc. To Do
 - Cleanup code base, finish comments
 - Fix name tokens
