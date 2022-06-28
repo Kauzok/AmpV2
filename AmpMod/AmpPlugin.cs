@@ -234,7 +234,7 @@ namespace AmpMod
                 lightningOrb2.procChainMask = info.procChainMask;
                 lightningOrb2.procChainMask.AddProc(ProcType.ChainLightning);
                 lightningOrb2.procCoefficient = 0.2f;
-                lightningOrb2.damageColorIndex = DamageColorIndex.Item;
+                lightningOrb2.damageColorIndex = DamageColorIndex.Default;
                 lightningOrb2.range += (float)(2);
                 HurtBox hurtBox2 = lightningOrb2.PickNextTarget(info.position);
                 if (hurtBox2)
@@ -242,9 +242,10 @@ namespace AmpMod
                     lightningOrb2.target = hurtBox2;
                     OrbManager.instance.AddOrb(lightningOrb2);
                 }
+                
             }
 
-            
+
             //apply charge if damageType is applycharge
             if (info.HasModdedDamageType(DamageTypes.applyCharge))
             {

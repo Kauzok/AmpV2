@@ -23,18 +23,17 @@ namespace AmpMod.Modules
             LanguageAPI.Add(prefix + "OUTRO_FLAVOR", Modules.StaticValues.characterOutro);
             LanguageAPI.Add(prefix + "LORE", Modules.StaticValues.characterLore);
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", Modules.StaticValues.characterOutroFailure);
-            LanguageAPI.Add("KEYWORD_CHARGE", StaticValues.chargeDesc);
-            LanguageAPI.Add("KEYWORD_DOUBLECHARGE", StaticValues.doubleChargeDesc);
+            LanguageAPI.Add(prefix + "KEYWORD_CHARGE", StaticValues.chargeDesc);
+            LanguageAPI.Add(prefix + "KEYWORD_DOUBLECHARGE", StaticValues.doubleChargeDesc);
             #endregion
 
             #region Passive
             LanguageAPI.Add(prefix + "PASSIVE_NAME", "Charge");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", $"Certain attacks build up charge on enemies. Upon reaching 3 stacks, a burst of static electricity is released that damages all enemies in the vicinity for <style=cIsDamage>{100f * StaticValues.chargeDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", $"Attacks have a varying chance of applying <color=#0091ff>charge</color> on enemies.");
             #endregion
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.stormbladeDamageCoefficient}% damage</style>. Strikes have a <style=cIsDamage>{StaticValues.stormbladeChargeProcCoefficient}%</style> chance of being <color=#0091ff>charged</color>.");
 
             #region Primary
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Stormblade");
+            LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Modified Shockblade");
             LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Slash continuously with your electrified sword for <style=cIsDamage>{100f * StaticValues.stormbladeDamageCoefficient}% damage</style>. Strikes have a <style=cIsDamage>{StaticValues.stormbladeChargeProcCoefficient}%</style> chance of being <color=#0091ff>charged</color>.");
             #endregion
 
@@ -50,7 +49,7 @@ namespace AmpMod.Modules
 
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Surge");
-            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", chargedPrefix + $"Transform into electricity, gaining <style=cIsUtility>invulnerability</style>, <style=cIsUtility>free movement</style>, and <style=cIsUtility>500% movement speed</style> for 2 seconds. Deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage on contact.");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", chargedPrefix + $"Transform into lightning, becoming <style=cIsUtility>invulnerable</style> for 2 seconds. Deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage on contact. Explode on exit for <style=cIsDamage>{100f * StaticValues.boltBlastDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Utility2
@@ -69,9 +68,9 @@ namespace AmpMod.Modules
             #endregion
 
             #region Achievements
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Henry: Mastery");
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Henry, beat the game or obliterate on Monsoon.");
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Henry: Mastery");
+            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Amp: Mastery");
+            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Amp, beat the game or obliterate on Monsoon.");
+            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Amp: Mastery");
             #endregion
             #endregion
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46db7493cef12cc43894dc8bbd9bd3b7
+guid: 1e6196d7feb55914ea6b93fe4f5d54b3
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -22,6 +22,15 @@ ModelImporter:
       74: 5103038409124767413
     second: metarig|DescendFastAnim
   - first:
+      74: -6677741250055076237
+    second: metarig|DescendMediumAnim
+  - first:
+      74: 771048025044824491
+    second: metarig|DescendTransitionAnim
+  - first:
+      74: -9198604193634931437
+    second: metarig|DescendTransitionAnimAlt
+  - first:
       74: -228361543212558789
     second: metarig|FulminateEndAnim
   - first:
@@ -40,6 +49,9 @@ ModelImporter:
       74: -8725716219930221739
     second: metarig|IdleIn
   - first:
+      74: -3761688645674945260
+    second: metarig|IdleLandingAnim
+  - first:
       74: -2743064210669983909
     second: metarig|JumpAnim
   - first:
@@ -55,6 +67,9 @@ ModelImporter:
       74: 5398823519762854749
     second: metarig|LobbyAnim2
   - first:
+      74: -8961157487246376153
+    second: metarig|LobbyIdleAnim
+  - first:
       74: 8861676265120307798
     second: metarig|QuickFireAnim
   - first:
@@ -64,11 +79,17 @@ ModelImporter:
       74: 8100979937771649684
     second: metarig|RestIdleInAnim
   - first:
-      74: 8835517927894966609
-    second: metarig|RunAnim
+      74: -5852114552204175453
+    second: metarig|RollAnim
   - first:
       74: -709923097195841899
     second: metarig|RunAnimAlt
+  - first:
+      74: -4980504011491078757
+    second: metarig|RunAnimAlt.002
+  - first:
+      74: 4573299244456165133
+    second: metarig|RunAnimAltBackup
   - first:
       74: -358051518371823138
     second: metarig|SidewalkLAnim
@@ -82,6 +103,9 @@ ModelImporter:
       74: 7893770103981077369
     second: metarig|SlashAnim2
   - first:
+      74: -33198447335292639
+    second: metarig|SlashAnim3
+  - first:
       74: -3612831659443827942
     second: metarig|SummonHoldAnim
   - first:
@@ -90,9 +114,6 @@ ModelImporter:
   - first:
       74: -8317680753499618869
     second: metarig|SummonStartAnim
-  - first:
-      74: -7258677292641093596
-    second: metarig|SurgeExitAnim
   - first:
       74: -2757768632656079243
     second: metarig|ThrowAnimAerialDown

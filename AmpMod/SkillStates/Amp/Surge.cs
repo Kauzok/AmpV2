@@ -109,11 +109,31 @@ namespace AmpMod.SkillStates
 			}
 
 		}
-
 		//called in onExit instead of fixedUpdate to make it play nice with networking
+
+		private void CharacterMotor_onHitGround(ref CharacterMotor.HitGroundInfo hitGroundInfo)
+		{
+			if (base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
+			{
+				base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+			}
+
+
+
+			base.characterMotor.onHitGroundServer -= this.CharacterMotor_onHitGround;
+		}
+
+
 		public override void OnExit()
         {
 			if (!NetworkServer.active) return;
+			if (NetworkServer.active && !base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
+			{
+				base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+				base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
+			}
+
+
 			base.OnExit();
 
 

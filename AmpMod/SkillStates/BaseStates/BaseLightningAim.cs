@@ -15,7 +15,7 @@ namespace AmpMod.SkillStates.BaseStates
     public abstract class BaseLightningAim : BaseSkillState
     {
             protected abstract VoltaicBombardmentFire GetNextState();
-            public GameObject chargeEffectPrefab;
+            public GameObject chargeEffectPrefab = Modules.Assets.lightningMuzzleChargePrefab;
             public string chargeSoundString;
             public GameObject crosshairOverridePrefab;
             public float lightningRadius = .2f;

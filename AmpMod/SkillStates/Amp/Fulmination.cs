@@ -1,10 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using UnityEngine;
-using UnityEngine.Networking;
-using RoR2.Orbs;
-using System.Collections.Generic;
-using static AmpMod.SkillStates.BaseStates.FulminationOrb;
+using RoR2.Skills;
 using R2API;
 using System;
 
@@ -29,7 +26,8 @@ namespace AmpMod.SkillStates
 		public static float force = 20f;
 		private float tickDamageCoefficient = 1.1f;
 		public static float procCoefficientPerTick;
-		public static float totalDamageCoefficient = 22f;
+		public static float totalDamageCoefficient = Modules.StaticValues.fulminationTotalDamageCoefficient;
+		public static float minimumDuration = 1f;
 
 		[Header("Sounds")]
 		public string enterSoundString = Modules.StaticValues.fulminationEnterString;
@@ -46,13 +44,14 @@ namespace AmpMod.SkillStates
 		public float entryDuration;
 		private float fulminationDuration;
 		private bool hasBegunFulmination;
-
-		
+		private GenericSkill specialSlot;
+		public static SkillDef cancelSkillDef;
 
 
 
 		public override void OnEnter()
 		{
+		
 			base.OnEnter();
 			stopwatch = 0f;
 			entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
@@ -70,8 +69,13 @@ namespace AmpMod.SkillStates
 
 			//determines how many times the attack hits based off of 
 			tickFrequency = basetickFrequency * this.attackSpeedStat;
-
 			base.PlayAnimation("Fulminate, Override", "FulminateStart", "Shootgun.PlaybackRate", entryDuration);
+
+			specialSlot = base.skillLocator.special;
+			if (this.specialSlot ) //&& cancelSkillDef != null)
+			{
+				this.specialSlot.SetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+			}
 
 		}
 
@@ -84,9 +88,13 @@ namespace AmpMod.SkillStates
 			//stop sound
 			AkSoundEngine.StopPlayingID(stopSoundID, 0);
 
-			
+			if (specialSlot && cancelSkillDef != null)
+			{
+				specialSlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+			}
 
-				if (fulminationTransform)
+
+			if (fulminationTransform)
                 {
 					EntityState.Destroy(fulminationTransform.gameObject);
 
@@ -147,11 +155,14 @@ namespace AmpMod.SkillStates
 		public override void FixedUpdate()
 		{	
 			base.FixedUpdate();
+			
 			stopwatch += Time.fixedDeltaTime;
 			if (stopwatch >= entryDuration && !hasBegunFulmination)
 			{
 				hasBegunFulmination = true;
 				
+
+				//code for making electricity vfx come out of left hand
 				if (childLocator)
                 {
 					Transform transform = childLocator.FindChild("HandL");
@@ -171,9 +182,11 @@ namespace AmpMod.SkillStates
 				stopSoundID = Util.PlaySound(attackSoundString, base.gameObject);
 				base.PlayAnimation("Fulminate, Override", "FulminateHold", "Shoot.Playbackrate", baseFulminationDuration);
 
-
+				//fire actual damage dealing bulletattack
 				FireLightning("HandL");
 			}
+
+			//updates effect to point forward and fires attack repeatedly to create a consistent damage dealing stream
 			if (hasBegunFulmination)
 			{
 				fulminationStopwatch += Time.deltaTime;
@@ -185,11 +198,12 @@ namespace AmpMod.SkillStates
 				UpdateFulminationEffect();
 			}
 
-			//lets player cancel ability by pressing key again; weird error showed up when i added this, so check this out if fulmination exhibits any strange behavior
+			//lets player cancel ability by pressing key again
 			if (fixedAge > delayTime)
             {
 				if (base.inputBank.skill4.justPressed && base.isAuthority)
                 {
+					
 					this.outer.SetNextStateToMain();
 					return;
                 }
@@ -220,12 +234,15 @@ namespace AmpMod.SkillStates
 
 		public override InterruptPriority GetMinimumInterruptPriority()
 		{
-			return InterruptPriority.Skill;
+
+			return InterruptPriority.Any;
+
+
 		}
 
-		
 
-	
+
+
 
 
 

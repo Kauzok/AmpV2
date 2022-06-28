@@ -120,7 +120,13 @@ namespace AmpMod.Modules.Survivors
 
             //creates Stormblade
             #region Primary
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_AMP_BODY_PRIMARY_SLASH_NAME", prefix + "_AMP_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"), true));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), 
+                "Weapon", 
+                prefix + "_AMP_BODY_PRIMARY_SLASH_NAME", 
+                prefix + "_AMP_BODY_PRIMARY_SLASH_DESCRIPTION", 
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"), 
+                true, 
+                new String[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" } ));
             #endregion
             
             //creates ferroshot/Lorentz Cannon
@@ -194,7 +200,7 @@ namespace AmpMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+                interruptPriority = EntityStates.InterruptPriority.Vehicle,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
                 mustKeyPress = true,
@@ -202,7 +208,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_CHARGE" }
+                keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             });
 
             //creates pulse leap
@@ -228,7 +234,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_CHARGE" }
+                keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             });
 
 
@@ -251,15 +257,15 @@ namespace AmpMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+                interruptPriority = EntityStates.InterruptPriority.Any,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE", "KEYWORD_CHARGE"}
+                keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             });
             //creates voltaic bombardment
             SkillDef lightningSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -284,7 +290,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE", "KEYWORD_DOUBLECHARGE" }
+                keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_DOUBLECHARGE" }
             }); ;
 
 
@@ -728,9 +734,9 @@ localScale = new Vector3(0.14F, 0.14F, 0.14F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySnail"),
-childName = "UpperArmR",
-localPos = new Vector3(-0.27238F, -0.03064F, -0.046F),
-localAngles = new Vector3(10.33257F, 173.6221F, 237.7811F),
+childName = "ShoulderPadR",
+localPos = new Vector3(0.14493F, -0.05156F, -0.06698F),
+localAngles = new Vector3(343.7478F, 38.27175F, 218.0296F),
 localScale = new Vector3(0.0289F, 0.0289F, 0.0289F),
                             limbMask = LimbFlags.None
                         }
@@ -792,7 +798,7 @@ localScale = new Vector3(0.15F, 0.15F, 0.15F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBoneCrown"),
 childName = "Head",
-localPos = new Vector3(-0.00444F, 0.14529F, -0.01377F),
+localPos = new Vector3(-0.00444F, 0.14593F, 0.01455F),
 localAngles = new Vector3(0F, 0F, 0F),
 localScale = new Vector3(0.7F, 1F, 0.8F),
                             limbMask = LimbFlags.None
@@ -973,10 +979,10 @@ localScale = new Vector3(0.5253F, 0.5253F, 0.5253F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWarhammer"),
-childName = "Chest",
-localPos = new Vector3(0.07059F, 0.05441F, -0.23115F),
-localAngles = new Vector3(41.24521F, 105.6311F, 110.5397F),
-localScale = new Vector3(0.1F, 0.1F, 0.1F),
+childName = "SwordPlace",
+localPos = new Vector3(0.00669F, 0.74569F, 0.01183F),
+localAngles = new Vector3(270.5253F, 20.60868F, 102.6117F),
+localScale = new Vector3(0.23446F, 0.23222F, 0.23844F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -1415,7 +1421,7 @@ localScale = new Vector3(0.5672F, 0.5672F, 0.5672F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFirework"),
-childName = "Muzzle",
+childName = "SwordPlace",
 localPos = new Vector3(0.0086F, 0.0069F, 0.0565F),
 localAngles = new Vector3(0F, 0F, 0F),
 localScale = new Vector3(0.1194F, 0.1194F, 0.1194F),
@@ -1478,9 +1484,9 @@ localScale = new Vector3(0.02F, 0.02F, 0.02F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBeetleGland"),
-childName = "UpperArmL",
-localPos = new Vector3(0.03352F, -0.09048F, 0.03845F),
-localAngles = new Vector3(1.58526F, 4.49832F, 244.1126F),
+childName = "ShoulderPadL",
+localPos = new Vector3(0.00491F, 0.05476F, -0.03538F),
+localAngles = new Vector3(338.5466F, 259.3557F, 308.004F),
 localScale = new Vector3(0.0553F, 0.0553F, 0.0553F),
                             limbMask = LimbFlags.None
                         }
@@ -3176,9 +3182,9 @@ localScale = new Vector3(0.08F, 0.08F, 0.08F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayTriTipVoid"),
 childName = "Chest",
-localPos = new Vector3(-0.10199F, 0.26749F, 0.06012F),
-localAngles = new Vector3(34.45827F, 127.2111F, 93.75602F),
-localScale = new Vector3(0.2615F, 0.2615F, 0.2615F),
+localPos = new Vector3(-0.16512F, 0.32029F, 0.06909F),
+localAngles = new Vector3(37.35773F, 117.0752F, 95.88142F),
+localScale = new Vector3(0.18F, 0.18F, 0.18F),
                             limbMask = LimbFlags.None
                         }
 }

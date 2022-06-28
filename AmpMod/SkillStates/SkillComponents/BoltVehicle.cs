@@ -209,6 +209,7 @@ namespace AmpMod.SkillStates
 			boltBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
 			boltBlast.Fire();
 
+			
 			//destroy vehicle
 			UnityEngine.Object.Destroy(base.gameObject);
 			

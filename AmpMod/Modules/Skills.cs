@@ -63,14 +63,16 @@ namespace AmpMod.Modules
             skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCharge");
             skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
+            skillLocator.passiveSkill.keywordToken = prefix + "KEYWORD_CHARGE";
         }
 
         // this could all be a lot cleaner but at least it's simple and easy to work with
         internal static void AddPrimarySkill(GameObject targetPrefab, SkillDef skillDef)
         {
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
-
+            
             SkillFamily skillFamily = skillLocator.primary.skillFamily;
+           
 
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
@@ -85,6 +87,7 @@ namespace AmpMod.Modules
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
 
             SkillFamily skillFamily = skillLocator.secondary.skillFamily;
+           
 
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
@@ -146,7 +149,7 @@ namespace AmpMod.Modules
             }
         }
 
-        internal static SkillDef CreatePrimarySkillDef(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile)
+        internal static SkillDef CreatePrimarySkillDef(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens)
         {
             SkillDef skillDef = ScriptableObject.CreateInstance<SkillDef>();
 
@@ -171,8 +174,8 @@ namespace AmpMod.Modules
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 0;
             skillDef.stockToConsume = 0;
-
-            if (agile) skillDef.keywordTokens = new string[] { "KEYWORD_AGILE" };
+            skillDef.keywordTokens = keywordTokens;
+            
 
             skillDefs.Add(skillDef);
 

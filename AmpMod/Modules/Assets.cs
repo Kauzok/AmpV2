@@ -46,6 +46,7 @@ namespace AmpMod.Modules
 
         [Header("VoltaicBombardment Effects")]
         internal static GameObject lightningStrikePrefab;
+        internal static GameObject lightningMuzzleChargePrefab;
 
 
         // networked hit sounds
@@ -129,6 +130,9 @@ namespace AmpMod.Modules
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
+
+            //on voltaic bombardment charge
+            lightningMuzzleChargePrefab = LoadEffect("HandSpark", null);
 
             //on charge explosion when 3 procs are reached
             //CreateChargePrefab();

@@ -21,16 +21,27 @@ namespace AmpMod.SkillStates
         private float groundXZBoostCoefficient = 50f;
         private float groundYBoostCoefficient = 30f;
         private float initialGroundedHopCoefficient = 10f;
+        private ChildLocator childLocator;
 
 
         public override void OnEnter()
         { 
 
             base.OnEnter();
-            
 
+            Transform modelTransform = base.GetModelTransform();
+            childLocator = modelTransform.GetComponent<ChildLocator>();
+
+            if (!base.characterMotor.isGrounded && base.GetAimRay().direction.y < .5) {
+            base.PlayAnimation("Fulminate, Override", "BoostAerial", "ShootGun.playbackRate", .1f);
+            }
+            else
+            {
+               base.PlayAnimation("Fulminate, Override", "BoostGrounded", "ShootGun.playbackRate", .1f);
+            }
+            
             Util.PlaySound(launchSound, base.gameObject);
-            base.PlayAnimation("LeftArm, Override", "Boost", "ShootGun.playbackRate", 0.4f);
+            
 
         }
 
@@ -60,8 +71,8 @@ namespace AmpMod.SkillStates
 
             EffectData effectData = new EffectData
             {
-                origin = base.transform.position,
-                scale = 1.5f
+                origin = childLocator.FindChild("FootL").position,
+                scale = 1.5f,
             };
             launchEffect = Modules.Assets.boltExitEffect;
             //exitEffectPrefab = Modules.Assnhbvets.testLightningEffect;

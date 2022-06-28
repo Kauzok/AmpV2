@@ -48,11 +48,13 @@ namespace AmpMod.Modules
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileTargetComponent>());
             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>());
 
             ferroshotPrefab.AddComponent<DestroyOnTimer>();
-
+            ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedTargeting>();
+            ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedHoming>();
             ferroshotPrefab.GetComponent<DestroyOnTimer>().duration = 2;
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
