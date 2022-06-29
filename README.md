@@ -32,9 +32,13 @@
 - Fix frost relic item display/revise current displays
 - Adjust masking of model for limb replacement
 
+## Animations To Do
+- Make lorentz cannon animation more visible
+- Adjust sideways walks?
+
 ## VFX To Do
-- Add electricity VFX to sword
 - Finish footsteps
+- Add muzzle vfx for voltaic bombardment & fulmination
 
 ## Misc. To Do
 - Cleanup code base, finish comments
