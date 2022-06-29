@@ -4,7 +4,6 @@
 - Stormblade
   - Fix checkroll behavior
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
-  - Limit sfx sound so hitting multiple enemies doesn't make it super loud
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Adjust range
@@ -21,20 +20,25 @@
   - Consider adjusting entry VFX for visibility
   - Fix not being able to exit ability if remaining charges are left
   - Look into "Received networktransform data for an object that doesn't exist" warning
-  - Potentially work on hitbox filtering to avoid hitting same enemy twice
 - Thunder Crash
   - Add Skill
   - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
 - Fulmination
   - Consider adjusting chain effect
+- Reminding Tempest
+  - Summon an overloading worm with 300% health, and ALL of your items.
 
 ## Item Displays To Do
 - Fix frost relic item display/revise current displays
 - Adjust masking of model for limb replacement
 
+## Animations To Do
+- Make lorentz cannon animation more visible
+- Adjust sideways walks?
+
 ## VFX To Do
-- Add electricity VFX to sword
 - Finish footsteps
+- Add muzzle vfx for voltaic bombardment & fulmination
 
 ## Misc. To Do
 - Cleanup code base, finish comments
