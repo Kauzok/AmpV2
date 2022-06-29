@@ -198,6 +198,7 @@ namespace AmpMod.SkillStates
             {
                 base.characterBody.StartCoroutine(Fire());
                 updateRotAndLoc();
+
             } else if (base.fixedAge >= this.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();

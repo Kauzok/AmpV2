@@ -21,13 +21,14 @@ namespace AmpMod.SkillStates
 
 		[Header("Attack Variables")]
 		public static float radius;
-		public static float basetickFrequency = 5f;
+		public static float basetickFrequency = 6f;
 		public static float tickFrequency;
 		public static float force = 20f;
-		private float tickDamageCoefficient = 1.1f;
+		private float tickDamageCoefficient;
 		public static float procCoefficientPerTick;
 		public static float totalDamageCoefficient = Modules.StaticValues.fulminationTotalDamageCoefficient;
 		public static float minimumDuration = 1f;
+		public static float baseticktotal;
 
 		[Header("Sounds")]
 		public string enterSoundString = Modules.StaticValues.fulminationEnterString;
@@ -46,6 +47,7 @@ namespace AmpMod.SkillStates
 		private bool hasBegunFulmination;
 		private GenericSkill specialSlot;
 		public static SkillDef cancelSkillDef;
+		string prefix = AmpPlugin.developerPrefix;
 
 
 
@@ -53,29 +55,61 @@ namespace AmpMod.SkillStates
 		{
 		
 			base.OnEnter();
-			stopwatch = 0f;
-			entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
-			fulminationDuration = Fulmination.baseFulminationDuration;
-			Transform modelTransform = base.GetModelTransform();
 
-			if (base.characterBody)
-            {
-                base.characterBody.SetAimTimer(entryDuration + fulminationDuration + 1f);
-				childLocator = modelTransform.GetComponent<ChildLocator>();
-				handLTransform = childLocator.FindChild("HandL");
-			}
-            //play enter sound
-            Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
+	
+				stopwatch = 0f;
+				entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
+				fulminationDuration = Fulmination.baseFulminationDuration;
+				Transform modelTransform = base.GetModelTransform();
 
-			//determines how many times the attack hits based off of 
-			tickFrequency = basetickFrequency * this.attackSpeedStat;
-			base.PlayAnimation("Fulminate, Override", "FulminateStart", "Shootgun.PlaybackRate", entryDuration);
+				if (base.characterBody)
+				{
+					base.characterBody.SetAimTimer(entryDuration + fulminationDuration + 1f);
+					childLocator = modelTransform.GetComponent<ChildLocator>();
+					handLTransform = childLocator.FindChild("HandL");
+				}
+				//play enter sound
+				Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
 
+				//determines how many times the attack hits based off of attackspeed
+				tickFrequency = basetickFrequency * this.attackSpeedStat;
+				
+				//determines damage of each tick based off of total damage and base tick frequency
+				baseticktotal = Mathf.CeilToInt(basetickFrequency * fulminationDuration);
+				tickDamageCoefficient = totalDamageCoefficient / baseticktotal;
+
+				//play animation
+				base.PlayAnimation("Fulminate, Override", "FulminateStart", "Shootgun.PlaybackRate", entryDuration);
+
+				cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+				{
+					skillName = prefix + "_AMP_BODY_SPECIAL_CHAIN_NAME",
+					skillNameToken = prefix + "_AMP_BODY_SPECIAL_CHAIN_NAME",
+					skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CHAIN_DESCRIPTION",
+					//skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFulmination"),
+					activationStateMachineName = "Slide",
+					baseMaxStock = 0,
+					baseRechargeInterval = 0,
+					beginSkillCooldownOnSkillEnd = false,
+					canceledFromSprinting = false,
+					forceSprintDuringState = false,
+					fullRestockOnAssign = false,
+					interruptPriority = EntityStates.InterruptPriority.Any,
+					resetCooldownTimerOnUse = false,
+					isCombatSkill = false,
+					mustKeyPress = true,
+					cancelSprintingOnActivation = false,
+					rechargeStock = 0,
+					requiredStock = 0,
+					stockToConsume = 0,
+				});
+
+			
 			specialSlot = base.skillLocator.special;
-			if (this.specialSlot ) //&& cancelSkillDef != null)
+			if (this.specialSlot && cancelSkillDef != null)
 			{
 				this.specialSlot.SetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-			}
+			} 
 
 		}
 
@@ -121,7 +155,7 @@ namespace AmpMod.SkillStates
 					origin = aimRay.origin,
 					aimVector = aimRay.direction,
 					minSpread = 0f,
-					damage = this.tickDamageCoefficient * base.characterBody.damage,
+					damage = tickDamageCoefficient * base.characterBody.damage,
 					force = 2f,
 					muzzleName = muzzleString,
 					hitEffectPrefab = Modules.Assets.electricImpactEffect,
@@ -155,7 +189,8 @@ namespace AmpMod.SkillStates
 		public override void FixedUpdate()
 		{	
 			base.FixedUpdate();
-			
+	
+
 			stopwatch += Time.fixedDeltaTime;
 			if (stopwatch >= entryDuration && !hasBegunFulmination)
 			{
@@ -203,7 +238,6 @@ namespace AmpMod.SkillStates
             {
 				if (base.inputBank.skill4.justPressed && base.isAuthority)
                 {
-					
 					this.outer.SetNextStateToMain();
 					return;
                 }
@@ -235,7 +269,7 @@ namespace AmpMod.SkillStates
 		public override InterruptPriority GetMinimumInterruptPriority()
 		{
 
-			return InterruptPriority.Any;
+			return InterruptPriority.Skill;
 
 
 		}
