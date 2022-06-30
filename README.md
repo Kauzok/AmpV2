@@ -35,6 +35,7 @@
 ## Animations To Do
 - Make lorentz cannon animation more visible
 - Adjust sideways walks?
+- Change idle-to-rest animation
 
 ## VFX To Do
 - Finish footsteps
