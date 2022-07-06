@@ -42,6 +42,7 @@
 - Finish footsteps
 - Add muzzle vfx for voltaic bombardment & fulmination
 - Add helmet/chest glow
+- VFX/SFX for lobby animation
 
 ## Misc. To Do
 - Cleanup code base, finish comments
