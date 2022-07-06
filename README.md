@@ -25,8 +25,9 @@
   - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
 - Fulmination
   - Consider adjusting chain effect
-- Reminding Tempest
-  - Summon an overloading worm with 300% health, and ALL of your items.
+- Bulwark of Storms
+  - Summon an overloading worm with 300% health, and ALL of your items. 
+  - Adjust worm's interctions with diosbestfriend
 
 ## Item Displays To Do
 - Fix frost relic item display/revise current displays
