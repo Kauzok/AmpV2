@@ -28,6 +28,8 @@
 - Bulwark of Storms
   - Summon an overloading worm with 300% health, and ALL of your items. 
   - Adjust worm's interctions with diosbestfriend
+- Charge
+  - Add in alternate effect asides from just damage
 
 ## Item Displays To Do
 - Fix frost relic item display/revise current displays
@@ -37,6 +39,7 @@
 - Make lorentz cannon animation more visible
 - Adjust sideways walks?
 - Change idle-to-rest animation
+- Add animation to worm summoning skill
 
 ## VFX To Do
 - Finish footsteps
