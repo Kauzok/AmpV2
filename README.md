@@ -41,6 +41,7 @@
 ## VFX To Do
 - Finish footsteps
 - Add muzzle vfx for voltaic bombardment & fulmination
+- Add helmet/chest glow
 
 ## Misc. To Do
 - Cleanup code base, finish comments
