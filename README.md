@@ -12,6 +12,9 @@
 - Tesla Shot
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
+-Heat Shock
+  - Add skill
+  - Desc: Perform a powerful sweeping slash with your sword, setting enemies aflame and dealing 600% damage.
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add vortex spawn VFX
