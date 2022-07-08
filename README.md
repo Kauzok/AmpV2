@@ -8,7 +8,6 @@
   - Make spike prep SFX cancel on fire
   - Adjust range
   - Make prep gameobject spawn properly in multiplayer
-  - Add charged homing
 - Tesla Shot
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
