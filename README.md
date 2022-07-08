@@ -30,7 +30,7 @@
 - Fulmination
   - Consider adjusting chain effect
 - Bulwark of Storms
-  - Summon an overloading worm with 300% health, and ALL of your items. 
+  - Add VFX & SFX to channelling
   - Adjust worm's interctions with diosbestfriend
 - Charge
   - Add in alternate effect asides from just damage
