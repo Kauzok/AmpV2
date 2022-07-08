@@ -42,10 +42,7 @@
 - Adjust masking of model for limb replacement
 
 ## Animations To Do
-- Make lorentz cannon animation more visible
 - Adjust sideways walks?
-- Change idle-to-rest animation
-- Add animation to worm summoning skill
 
 ## VFX To Do
 - Finish footsteps
