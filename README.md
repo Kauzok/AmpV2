@@ -15,6 +15,7 @@
 - Heat Shock
   - Add skill
   - Desc: Perform a powerful sweeping slash with your sword for 600% damage, leaving a firey trail that burns enemies.
+  - Make unlockable
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add vortex spawn VFX
