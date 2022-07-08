@@ -19,6 +19,7 @@
   - Consider adding ability to remotely detonate vortex
   - Add vortex spawn VFX
   - Adjust vortex/explosion VFX
+  - Add field representing vortex range/or tendrils
 - Surge
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
