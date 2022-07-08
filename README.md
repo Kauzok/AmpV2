@@ -33,6 +33,7 @@
   - Consider adjusting chain effect
 - Bulwark of Storms
   - Add VFX & SFX to channelling
+  - Make unlockable
 - Charge
   - Add in alternate effect asides from just damage
 
