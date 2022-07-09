@@ -7,6 +7,7 @@
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Adjust range
+  - Make animation scale properly with attack speed
   - Make prep gameobject spawn properly in multiplayer
 - Tesla Shot
   - Add skill
