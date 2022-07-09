@@ -18,6 +18,7 @@
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add vortex spawn VFX
+  - Add muzzle charge
   - Add slight charge delay before firing
   - Adjust vortex/explosion VFX
   - Add field representing vortex range/or tendrils
