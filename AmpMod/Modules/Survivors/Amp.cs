@@ -31,7 +31,7 @@ namespace AmpMod.Modules.Survivors
             characterPortrait = Modules.Assets.LoadCharacterIcon("Amp"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,
-            moveSpeed = 8.5f,
+            moveSpeed = 7.5f,
             healthGrowth = 33f,
             healthRegen = 1.5f,
             jumpCount = 1,
@@ -41,7 +41,7 @@ namespace AmpMod.Modules.Survivors
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
-        internal static Material henryMat = Modules.Assets.CreateMaterial("matHenry");
+        //internal static Material henryMat = Modules.Assets.CreateMaterial("matHenry");
         internal static Material swordMat = Modules.Assets.CreateMaterial("matSword");
         internal static Material suitMat = Modules.Assets.CreateMaterial("matSuit");
         internal override int mainRendererIndex { get; set; } = 1;
@@ -106,6 +106,9 @@ namespace AmpMod.Modules.Survivors
 
             Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
             Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
+
+            Transform spinSlashTransform = childLocator.FindChild("SpinSlashHitbox");
+            Modules.Prefabs.SetupHitbox(model, spinSlashTransform, "SpinSlash");
         }
 
         internal override void InitializeSkills()
@@ -118,8 +121,8 @@ namespace AmpMod.Modules.Survivors
 
 
 
-            //creates Stormblade
             #region Primary
+            //creates Stormblade
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), 
                 "Weapon", 
                 prefix + "_AMP_BODY_PRIMARY_SLASH_NAME", 
@@ -128,9 +131,10 @@ namespace AmpMod.Modules.Survivors
                 true, 
                 new String[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" } ));
             #endregion
-            
-            //creates ferroshot/Lorentz Cannon
+
+
             #region Secondary
+            //creates ferroshot/Lorentz Cannon
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_AMP_BODY_SECONDARY_FERROSHOT_NAME",
@@ -153,7 +157,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
+                keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             });
 
             SkillDef vortexSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -181,11 +185,38 @@ namespace AmpMod.Modules.Survivors
                 keywordTokens = new string[] { "KEYWORD_AGILE" }
             });
 
-            Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef, vortexSkillDef);
+            SkillDef burnSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_AMP_BODY_SECONDARY_HEATSHOCK_NAME",
+                skillNameToken = prefix + "_AMP_BODY_SECONDARY_HEATSHOCK_NAME",
+                skillDescriptionToken = prefix + "_AMP_BODY_SECONDARY_HEATSHOCK_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texLorentz"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HeatShock)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 3.5f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                //keywordTokens = new string[] { "KEYWORD_AGILE" }
+            });
+
+
+            Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef, vortexSkillDef, burnSkillDef);
             #endregion
 
-            //creates bolt
+
             #region Utility
+            //creates bolt
             SkillDef dashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_AMP_BODY_UTILITY_DASH_NAME",
@@ -195,12 +226,13 @@ namespace AmpMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Surge)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 6f,
+                baseRechargeInterval = 8f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
-                fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Vehicle,
+                //fullRestockOnAssign = true,
+                fullRestockOnAssign = false,
+                interruptPriority = EntityStates.InterruptPriority.Any,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
                 mustKeyPress = true,
@@ -241,8 +273,9 @@ namespace AmpMod.Modules.Survivors
             Modules.Skills.AddUtilitySkills(bodyPrefab, dashSkillDef, boostSkillDef);
             #endregion
 
-            //creates fulmination
+
             #region Specials
+            //creates fulmination
             SkillDef chainSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_AMP_BODY_SPECIAL_CHAIN_NAME",
@@ -256,7 +289,8 @@ namespace AmpMod.Modules.Survivors
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
-                fullRestockOnAssign = true,
+                fullRestockOnAssign = false,
+                // fullRestockOnAssign = true,
                 interruptPriority = EntityStates.InterruptPriority.Any,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
@@ -270,7 +304,7 @@ namespace AmpMod.Modules.Survivors
             //creates voltaic bombardment
             SkillDef lightningSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "Voltaic Bombardment",
+                skillName = prefix + "_AMP_BODY_SPECIAL_LIGHTNING_NAME",
                 skillNameToken = prefix + "_AMP_BODY_SPECIAL_LIGHTNING_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_LIGHTNING_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texVoltaic"),
@@ -291,10 +325,40 @@ namespace AmpMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_DOUBLECHARGE" }
+            });
+            //creates 
+            SkillDef wormSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_AMP_BODY_SPECIAL_WORM_NAME",
+                skillNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_NAME",
+                skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_WORM_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texVoltaic"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ChannelWurm)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 45f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = true,
+                forceSprintDuringState = false,
+                // fullRestockOnAssign = true,
+                fullRestockOnAssign = false,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                //keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_DOUBLECHARGE" }
+
+
             }); ;
 
+            ;
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, chainSkillDef, lightningSkillDef);
+
+            Modules.Skills.AddSpecialSkills(bodyPrefab, chainSkillDef, lightningSkillDef, wormSkillDef);
             #endregion
         }
 
@@ -385,7 +449,7 @@ namespace AmpMod.Modules.Survivors
 
 
             // add item displays here
-            //  HIGHLY recommend using KingEnderBrine's ItemDisplayPlacementHelper mod for this
+            // HIGHLY recommend using KingEnderBrine's ItemDisplayPlacementHelper mod for this
             #region Item Displays
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {

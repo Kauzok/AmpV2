@@ -13,9 +13,9 @@ namespace AmpMod.SkillStates.SkillComponents
 
 		private void FixedUpdate()
 		{
-			if (target && !target.gameObject.activeSelf /*&& target.GetComponent<HurtBox>().healthComponent.body.HasBuff(Modules.Buffs.chargeBuildup) */)
+			if (this.target && !this.target.gameObject.activeSelf /*&& target.GetComponent<HurtBox>().healthComponent.body.HasBuff(Modules.Buffs.chargeBuildup) */)
 			{
-				target = null;
+				this.target = null;
 			}
 		}
 	}

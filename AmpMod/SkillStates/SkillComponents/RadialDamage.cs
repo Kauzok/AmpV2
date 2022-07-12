@@ -37,12 +37,16 @@ namespace AmpMod.SkillStates
 		public float radius = 10f;
 		private SphereSearch sphereSearch;
 		public float duration;
+		private string spawnSound = Modules.StaticValues.vortexSpawnString;
 
 		private void Awake()
 		{
 			this.transform = base.GetComponent<Transform>();
 			this.teamFilter = base.GetComponent<TeamFilter>();
 			this.sphereSearch = new SphereSearch();
+			
+			//play spawn sound i don't care if this isn't a good way to code things i'm not making a separate component for this
+			AkSoundEngine.PostEvent(spawnSound, gameObject);
 
 			//play looping vortex sound
 			AkSoundEngine.PostEvent(loopString, gameObject);

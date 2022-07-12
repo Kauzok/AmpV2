@@ -29,16 +29,22 @@ namespace AmpMod.Modules
         internal static GameObject bulletSpawnEffect;
         internal static GameObject bulletPrepItem;
         internal static GameObject bulletImpactEffect;
+        internal static GameObject ampBulletMuzzleEffect;
 
         [Header("Magnetic Vortex Effects")]
         internal static GameObject vortexBlackholePrefab;
         internal static GameObject vortexExplosionEffect;
+        internal static GameObject vortexMuzzleEffect;
 
         [Header("Bolt Effects")]
         internal static GameObject boltExitEffect;
         internal static GameObject boltEnterEffect;
         internal static GameObject boltVehicle;
-        
+
+        [Header("Bolt Effects")]
+        internal static GameObject heatSwing;
+        internal static GameObject heatHit;
+
         [Header("Fulmination Effects")]
         internal static GameObject electricStreamEffect;
         internal static GameObject electricImpactEffect;
@@ -54,6 +60,8 @@ namespace AmpMod.Modules
         internal static NetworkSoundEventDef vortexLoopSoundEvent;
         internal static NetworkSoundEventDef vortexFlightLoopSoundEvent;
         internal static NetworkSoundEventDef stormbladeHitSoundEvent;
+        internal static NetworkSoundEventDef heatShockSwingSoundEvent;
+        internal static NetworkSoundEventDef heatShockHitSoundEvent;
 
         // lists of assets to add to contentpack
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
@@ -127,6 +135,9 @@ namespace AmpMod.Modules
             //magnetic vortex loop sound effect
             vortexLoopSoundEvent = CreateNetworkSoundEventDef(StaticValues.vortexLoopString);
 
+            //heatshock hit & swing sound events
+            heatShockHitSoundEvent = CreateNetworkSoundEventDef(StaticValues.heatHitString);
+            heatShockSwingSoundEvent = CreateNetworkSoundEventDef(StaticValues.heatSwingString);
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
@@ -145,6 +156,10 @@ namespace AmpMod.Modules
             CreateStreamPrefab();
             CreateChainPrefab();
 
+            //on heatshock use
+            heatHit = Assets.LoadEffect("heatHit");
+            heatSwing = Assets.LoadEffect("heatSwing 1", true);
+
             //on boltvehicle exit/state/enter
             CreateBoltExitPrefab();
             CreateBoltVehicle();
@@ -153,6 +168,7 @@ namespace AmpMod.Modules
             //on ferroshot/Lorentz Cannon skill prep
             CreateBulletPrep();
             bulletSpawnEffect = LoadEffect("Spike Spawn");
+            //CreateBulletMuzzle();
 
             //on ferroshot/Lorentz Cannon spike collision
             bulletImpactEffect = LoadEffect("SpikeImpact");
@@ -160,8 +176,10 @@ namespace AmpMod.Modules
             //on magnetic vortex blackhole spawn
             CreateVortexBlackhole();
 
-            //functions for prefabs that require adjustments made at runtime
+            //magnetic vortex muzzle
+            CreateVortexMuzzle();
 
+            //functions for prefabs that require adjustments made at runtime
             //CreateLightningPrefab();
             
             
@@ -185,7 +203,6 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(boltVehicle);
         }
 
-
         private static void CreateVortexBlackhole()
         {
            vortexBlackholePrefab = mainAssetBundle.LoadAsset<GameObject>("VortexSphere");
@@ -197,18 +214,31 @@ namespace AmpMod.Modules
             vortexExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("VortexExplosion");
             
             AddNewEffectDef(vortexExplosionEffect);
+            AddNewEffectDef(mainAssetBundle.LoadAsset<GameObject>("VortexSpawnExplosion"));
 
+        }
+
+        private static void CreateVortexMuzzle()
+        {
+            vortexMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("VortexMuzzleObject");
+            
         }
 
         private static void CreateBulletPrep()
         {
             bulletPrepItem = mainAssetBundle.LoadAsset<GameObject>("Spike");
-           
+            //bulletPrepItem.AddComponent<NetworkIdentity>();
             
 
             PrefabAPI.RegisterNetworkPrefab(bulletPrepItem);
         }
      
+        private static void CreateBulletMuzzle()
+        {
+            ampBulletMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("FerroshotMuzzleObject");
+
+            PrefabAPI.RegisterNetworkPrefab(ampBulletMuzzleEffect);
+        }
 
         private static void CreateChargePrefab()
         {

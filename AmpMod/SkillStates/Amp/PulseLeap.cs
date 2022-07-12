@@ -33,7 +33,7 @@ namespace AmpMod.SkillStates
             childLocator = modelTransform.GetComponent<ChildLocator>();
 
             if (!base.characterMotor.isGrounded && base.GetAimRay().direction.y < .5) {
-            base.PlayAnimation("Fulminate, Override", "BoostAerial", "ShootGun.playbackRate", .1f);
+            base.PlayAnimation("FullBody, Override", "BoostAerial", "ShootGun.playbackRate", .1f);
             }
             else
             {

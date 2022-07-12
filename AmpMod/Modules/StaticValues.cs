@@ -45,6 +45,10 @@ namespace AmpMod.Modules
 
         [Header("Lorentz Cannon Values")]
         internal const float ferroshotDamageCoefficient = 1.6f;
+        
+        [Header("Heat Shock Values")]
+        internal const float spinSlashDamageCoefficient = 6f;
+        internal const float fireTrailTickDamageCoefficient = 1.5f;
 
         [Header("Magnetic Vortex Values")]
         internal const float vortexDamageCoefficient = 1f;
@@ -63,7 +67,7 @@ namespace AmpMod.Modules
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
-        internal const float lightningStrikeCoefficient = 16.5f;
+        internal const float lightningStrikeCoefficient = 12.5f;
        
 
 
@@ -86,11 +90,18 @@ namespace AmpMod.Modules
         internal const string ferroshotPrepAlterString = "PlayFerroshotCreateAlter";
 
         [Header("Magnetic Vortex Sound Strings")]
+        internal const string vortexChargeString = "PlayVortexCharge";
         internal const string vortexLoopString = "PlayVortexLoop";
         internal const string vortexShootString = "PlayVortexShoot";
         internal const string vortexFlightLoopString = "PlayVortexFlightLoop";
+        internal const string vortexSpawnString = "PlayVortexSpawn";
         internal const string vortexFlightLoopStringAlt = "PlayVortexFlightLoopAlter2";
         internal const string vortexExplosionString = "PlayVortexExplosion";
+
+        [Header("HeatShock Sound Strings")]
+        internal const string heatSwingString = "PlayHeatShockSwing";
+        internal const string heatHitString = "PlayHeatShockHit";
+        internal const string heatChargeString = "PlayHeatShockCharge";
 
         [Header("Bolt Sound Strings")]
         internal const string boltState2SecString = "PlayBoltState2sec";

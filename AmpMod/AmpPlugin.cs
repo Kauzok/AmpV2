@@ -280,7 +280,7 @@ namespace AmpMod
             }
 
             //apply one stack of chargebuildup
-            self.body.AddTimedBuff(Modules.Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+            self.body.AddTimedBuff(Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
 
         }
 

@@ -13,7 +13,7 @@ namespace AmpMod.Modules
 
             #region Skins
             LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add(prefix + "MASTERY_SKIN_NAME", "Alternate");
+            LanguageAPI.Add(prefix + "MASTERY_SKIN_NAME", "Red Sprite");
             #endregion
 
             #region Descriptions
@@ -39,7 +39,7 @@ namespace AmpMod.Modules
 
             #region Secondary
             LanguageAPI.Add(prefix + "SECONDARY_FERROSHOT_NAME", "Lorentz Cannon");
-            LanguageAPI.Add(prefix + "SECONDARY_FERROSHOT_DESCRIPTION", Helpers.agilePrefix + $"Use electromagnetic fields to fire an array of <style=cIsDamage>6</style> iron sand bullets, each dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SECONDARY_FERROSHOT_DESCRIPTION", Helpers.agilePrefix + $"Use electromagnetic fields to fire an array of <style=cIsDamage>6</style> iron sand bullets, each dealing <style=cIsDamage>{100f * StaticValues.ferroshotDamageCoefficient}% damage</style>. Bullets <style=cIsUtility>home</style> onto <color=#0091ff>charged</color> enemies.");
             #endregion
 
             #region Secondary2
@@ -47,9 +47,17 @@ namespace AmpMod.Modules
             LanguageAPI.Add(prefix + "SECONDARY_VORTEX_DESCRIPTION", Helpers.agilePrefix + $"Launch a magnetic singularity that <style=cIsUtility>pulls enemies into it</style> for <style=cIsDamage>{100f * StaticValues.vortexDamageCoefficient}% damage</style> per second, and explodes for <style=cIsDamage>{100f * StaticValues.vortexExplosionCoefficient}% damage</style>.");
             #endregion
 
+            #region Secondary3
+            LanguageAPI.Add(prefix + "SECONDARY_HEATSHOCK_NAME", "Heat Shock");
+            LanguageAPI.Add(prefix + "SECONDARY_HEATSHOCK_DESCRIPTION",  $"Perform a powerful sweeping slash with your sword for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage, leaving a firey trail that <style=cIsDamage>burns</style> enemies.");
+
+            #endregion
+
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Surge");
-            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", chargedPrefix + $"Transform into lightning, becoming <style=cIsUtility>invulnerable</style> for 2 seconds. Deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage on contact. Explode on exit for <style=cIsDamage>{100f * StaticValues.boltBlastDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", chargedPrefix + $"Transform into lightning, becoming <style=cIsUtility>invulnerable</style> for 1.5 seconds. Deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage on contact. Explode on exit for <style=cIsDamage>{100f * StaticValues.boltBlastDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_CANCELDASH_NAME", "Cancel Surge");
+            LanguageAPI.Add(prefix + "SPECIAL_CANCELDASH_DESCRIPTION", "Exit Surge early.");
             #endregion
 
             #region Utility2
@@ -60,17 +68,35 @@ namespace AmpMod.Modules
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_CHAIN_NAME", "Fulmination");
             LanguageAPI.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a <style=cIsUtility>chaining</style> stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of being <color=#0091ff>charged</color>.");
+            LanguageAPI.Add(prefix + "SPECIAL_CANCELCHAIN_NAME", "Cancel Fulmination");
+            LanguageAPI.Add(prefix + "SPECIAL_CANCELCHAIN_DESCRIPTION", "Exit Fulmination early.");
             #endregion
 
             #region Special2
             LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_NAME", "Voltaic Bombardment");
-            LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"<color=#0091ff>Double Charged</color>. Summon a lightning bolt that strikes the targeted area, damaging all enemies in the vicinity for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"<color=#0091ff>Double Charged</color>. Summon a lightning bolt for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>.");
+            #endregion
+
+            #region Special3
+            LanguageAPI.Add(prefix + "SPECIAL_WORM_NAME", "Bulwark of Storms");
+            LanguageAPI.Add(prefix + "SPECIAL_WORM_DISPLAY_NAME", "Melvin");
+            LanguageAPI.Add(prefix + "SPECIAL_WORM_DESCRIPTION", Helpers.agilePrefix + $"<style=cIsUtility>Channel</style> for 3 seconds, then summon an overloading worm for <style=cIsUtility>30 seconds</style> that has <style=cIsHealing>300% your health</style> and inherits ALL your items.");
+            LanguageAPI.Add(prefix + "SPECIAL_WORMCANCEL_NAME", "Return");
+            LanguageAPI.Add(prefix + "SPECIAL_WORMCANCEL_DESCRIPTION", "Return Melvin to the depths.");
             #endregion
 
             #region Achievements
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Amp: Mastery");
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Amp, beat the game or obliterate on Monsoon.");
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Amp: Mastery");
+
+            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_NAME", "Amp: Usurper");
+            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_DESC", "As Amp, land the killing blow on an overloading worm.");
+            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_UNLOCKABLE_NAME", "Amp: Usurper");
+
+            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_NAME", "Amp: Usurper");
+            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_DESC", "As Amp, land the killing blow on an overloading worm");
+            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_UNLOCKABLE_NAME", "Amp: Mastery");
             #endregion
             #endregion
 

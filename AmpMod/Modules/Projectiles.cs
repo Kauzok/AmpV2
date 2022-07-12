@@ -48,17 +48,19 @@ namespace AmpMod.Modules
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileDirectionalTargetFinder>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileTargetComponent>());
+
             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>());
 
-            ferroshotPrefab.AddComponent<DestroyOnTimer>();
+            ferroshotPrefab.AddComponent<DestroyOnTimer>().duration = .7f;
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedTargeting>();
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedHoming>();
-            ferroshotPrefab.GetComponent<DestroyOnTimer>().duration = 2;
+            ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedDirectionFinder>();
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
-            //instantiates the  projectile model and associates it with the prefab
+            //instantiates the projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
             
   
@@ -78,7 +80,8 @@ namespace AmpMod.Modules
             ProjectileController vortexController = vortexPrefab.GetComponent<ProjectileController>();
             //instantiates the  projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("VortexEffect") != null) vortexController.ghostPrefab = CreateGhostPrefab("VortexEffect");
-           
+
+            
             //code for giving flight loop sound to vortex projectile and making it stop on contact
           /*  LoopSoundDef flightLoop = new LoopSoundDef();
             flightLoop.startSoundName = StaticValues.vortexFlightLoopString;

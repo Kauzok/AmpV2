@@ -207,7 +207,7 @@ namespace AmpMod.Modules
             skillDef.rechargeStock = skillDefInfo.rechargeStock;
             skillDef.requiredStock = skillDefInfo.requiredStock;
             skillDef.stockToConsume = skillDefInfo.stockToConsume;
-
+            
             skillDef.keywordTokens = skillDefInfo.keywordTokens;
 
             skillDefs.Add(skillDef);

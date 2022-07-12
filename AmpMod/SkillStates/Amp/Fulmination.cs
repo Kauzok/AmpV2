@@ -57,52 +57,53 @@ namespace AmpMod.SkillStates
 			base.OnEnter();
 
 	
-				stopwatch = 0f;
-				entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
-				fulminationDuration = Fulmination.baseFulminationDuration;
-				Transform modelTransform = base.GetModelTransform();
+			stopwatch = 0f;
+			entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
+			fulminationDuration = Fulmination.baseFulminationDuration;
+			Transform modelTransform = base.GetModelTransform();
 
-				if (base.characterBody)
-				{
-					base.characterBody.SetAimTimer(entryDuration + fulminationDuration + 1f);
-					childLocator = modelTransform.GetComponent<ChildLocator>();
-					handLTransform = childLocator.FindChild("HandL");
-				}
-				//play enter sound
-				Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
+			if (base.characterBody)
+			{
+				base.characterBody.SetAimTimer(entryDuration + fulminationDuration + 1f);
+				childLocator = modelTransform.GetComponent<ChildLocator>();
+				handLTransform = childLocator.FindChild("HandL");
+			}
 
-				//determines how many times the attack hits based off of attackspeed
-				tickFrequency = basetickFrequency * this.attackSpeedStat;
+			//play enter sound
+			Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
+
+			//determines how many times the attack hits based off of attackspeed
+			tickFrequency = basetickFrequency * this.attackSpeedStat;
 				
-				//determines damage of each tick based off of total damage and base tick frequency
-				baseticktotal = Mathf.CeilToInt(basetickFrequency * fulminationDuration);
-				tickDamageCoefficient = totalDamageCoefficient / baseticktotal;
+			//determines damage of each tick based off of total damage and base tick frequency
+			baseticktotal = Mathf.CeilToInt(basetickFrequency * fulminationDuration);
+			tickDamageCoefficient = totalDamageCoefficient / baseticktotal;
 
-				//play animation
-				base.PlayAnimation("Fulminate, Override", "FulminateStart", "Shootgun.PlaybackRate", entryDuration);
+			//play animation
+			base.PlayAnimation("Fulminate, Override", "FulminateStart", "Shootgun.PlaybackRate", entryDuration);
 
-				cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-				{
-					skillName = prefix + "_AMP_BODY_SPECIAL_CHAIN_NAME",
-					skillNameToken = prefix + "_AMP_BODY_SPECIAL_CHAIN_NAME",
-					skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CHAIN_DESCRIPTION",
-					//skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFulmination"),
-					activationStateMachineName = "Slide",
-					baseMaxStock = 0,
-					baseRechargeInterval = 0,
-					beginSkillCooldownOnSkillEnd = false,
-					canceledFromSprinting = false,
-					forceSprintDuringState = false,
-					fullRestockOnAssign = false,
-					interruptPriority = EntityStates.InterruptPriority.Any,
-					resetCooldownTimerOnUse = false,
-					isCombatSkill = false,
-					mustKeyPress = true,
-					cancelSprintingOnActivation = false,
-					rechargeStock = 0,
-					requiredStock = 0,
-					stockToConsume = 0,
-				});
+			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+			{
+				skillName = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_NAME",
+				skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_NAME",
+				skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_DESCRIPTION",
+				skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelFulmination"),
+				activationStateMachineName = "Slide",
+				baseMaxStock = 0,
+				baseRechargeInterval = 0,
+				beginSkillCooldownOnSkillEnd = false,
+				canceledFromSprinting = false,
+				forceSprintDuringState = false,
+				fullRestockOnAssign = false,
+				interruptPriority = EntityStates.InterruptPriority.Any,
+				resetCooldownTimerOnUse = false,
+				isCombatSkill = false,
+				mustKeyPress = true,
+				cancelSprintingOnActivation = false,
+				rechargeStock = 0,
+				requiredStock = 0,
+				stockToConsume = 0,
+			}); 
 
 			
 			specialSlot = base.skillLocator.special;
@@ -116,17 +117,20 @@ namespace AmpMod.SkillStates
 		public override void OnExit()
 		{
 
+			if (specialSlot && cancelSkillDef)
+			{
+				specialSlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+			}
+
+			base.OnExit();
+
 			//play exit sound
 			Util.PlaySound(endSoundString, base.gameObject);
 
 			//stop sound
 			AkSoundEngine.StopPlayingID(stopSoundID, 0);
 
-			if (specialSlot && cancelSkillDef != null)
-			{
-				specialSlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-			}
-
+		
 
 			if (fulminationTransform)
                 {
@@ -136,7 +140,7 @@ namespace AmpMod.SkillStates
 
 
 			base.PlayCrossfade("Fulminate, Override", "FulminateEnd", 0.1f);
-			base.OnExit();
+			
 
 
 		}
@@ -146,7 +150,7 @@ namespace AmpMod.SkillStates
 			Ray aimRay = base.GetAimRay();
 			if (base.isAuthority)
 			{
-
+				
 				//damage dealing component of fulmination
 				BulletAttack lightningAttack = new BulletAttack
 				{
@@ -269,9 +273,7 @@ namespace AmpMod.SkillStates
 		public override InterruptPriority GetMinimumInterruptPriority()
 		{
 
-			return InterruptPriority.Skill;
-
-
+			return InterruptPriority.Any;
 		}
 
 

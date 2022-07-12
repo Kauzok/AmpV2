@@ -28,8 +28,8 @@ using RoR2;
 				
 				if (this.targetComponent.target)
 				{
-					if (targetComponent.target.GetComponent<HurtBox>().healthComponent.body.HasBuff(Modules.Buffs.chargeBuildup))
-					{
+					//if (targetComponent.target.GetComponent<HurtBox>().healthComponent.body.HasBuff(Modules.Buffs.chargeBuildup))
+					
 
 					Vector3 vector = this.targetComponent.target.transform.position - this.transform.position;
 					if (this.yAxisOnly)
@@ -39,8 +39,9 @@ using RoR2;
 					if (vector != Vector3.zero)
 					{
 						this.transform.forward = Vector3.RotateTowards(this.transform.forward, vector, this.rotationSpeed * 0.017453292f * Time.fixedDeltaTime, 0f);
+						//Debug.Log("homing");
 					}
-					}
+					
 					
 					/* else if (!targetComponent.target.gameObject.GetComponent<CharacterBody>())
 					{
@@ -49,7 +50,7 @@ using RoR2;
 				}
 			}
 
-			// Token: 0x040042E7 RID: 17127
+		// Token: 0x040042E7 RID: 17127
 			[Tooltip("Constrains rotation to the Y axis only.")]
 			public bool yAxisOnly = false;
 

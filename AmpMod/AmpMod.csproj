@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="HenryBank.bnk" />
     <EmbeddedResource Include="ampbundle" />
 	<ApplicationDefinition Include="AmpSoundbank.bnk" />
   </ItemGroup>
@@ -193,7 +192,7 @@
   </Target>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="xcopy /Y &quot;D:\Modding\RoR2\Battlemage V2\BattlemageV2\BattlemageV2UnityProject\AssetBundles\StandaloneWindows\ampbundle&quot; &quot;$(ProjectDir)&quot;" />
+    <Exec Command="xcopy /Y &quot;D:\Modding\RoR2\Battlemage V2\BattlemageV2\BattlemageV2UnityProject\AssetBundles\StandaloneWindows\ampbundle&quot; &quot;$(ProjectDir)&quot;&#xD;&#xA;xcopy /Y &quot;D:\Modding\RoR2\Battlemage V2\AmpSFX\GeneratedSoundBanks\Windows\AmpSoundbank.bnk&quot; &quot;$(ProjectDir)&quot;" />
   </Target>
 
 </Project>

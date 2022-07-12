@@ -11,6 +11,7 @@ namespace AmpMod.SkillStates
     public class SlashCombo : BaseMeleeAttack
     {
         float chargeProc = 100f;
+       
 
         public override void OnEnter()
         {
@@ -21,10 +22,10 @@ namespace AmpMod.SkillStates
             this.procCoefficient = .1f; 
             this.pushForce = 300f;
             this.bonusForce = Vector3.zero;
-            this.baseDuration = .8f;
-            this.attackStartTime = 0.2f;
-            this.attackEndTime = 0.4f;
-            this.baseEarlyExitTime = 0.4f;
+            this.baseDuration = .8f;//.96f;
+            this.attackStartTime = .2f;//.24f;
+            this.attackEndTime = 0.4f;//.48f;
+            this.baseEarlyExitTime = 0.4f;//.48f;
             this.hitStopDuration = 0.012f;
             this.attackRecoil = 0.5f;
             this.hitHopVelocity = 4f;
@@ -34,6 +35,7 @@ namespace AmpMod.SkillStates
             this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
             this.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
             this.impactSound = Modules.Assets.stormbladeHitSoundEvent.index;
+            //this.hitStopDuration = EntityStates.Merc.GroundLight.hitPauseDuration;
 
         
 

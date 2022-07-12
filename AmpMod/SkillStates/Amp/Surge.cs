@@ -3,8 +3,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using AmpMod.SkillStates;
-using R2API;
-
+using RoR2.Skills;
 
 namespace AmpMod.SkillStates
 {
@@ -12,7 +11,7 @@ namespace AmpMod.SkillStates
 
 	public class Surge : BaseSkillState
 	{
-		private float duration = 2f;
+		private float duration = 1.5f;
 		private float delay = .2f;
 		public GameObject boltObject;
 		public InputBankTest inputBank;
@@ -21,6 +20,9 @@ namespace AmpMod.SkillStates
 		private bool hasEffectiveAuthority;
 		public NetworkUser networkUser;
 		public NetworkUser networkUser2;
+		private GenericSkill utilitySlot;
+		public static SkillDef cancelSkillDef;
+		string prefix = AmpPlugin.developerPrefix;
 
 		private void UpdateAuthority()
 		{
@@ -44,10 +46,11 @@ namespace AmpMod.SkillStates
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
-			//NetworkServer.Spawn(boltObject);
-		
-			//stuff to make it work with multiplayer
-			CharacterBody characterBody = this.characterBody;
+            //NetworkServer.Spawn(boltObject);
+
+			#region Skill Networking
+            //stuff to make it work with multiplayer
+            CharacterBody characterBody = this.characterBody;
 
 			if (characterBody == null)
 			{
@@ -75,9 +78,40 @@ namespace AmpMod.SkillStates
 			else
 			{
 				NetworkServer.Spawn(boltObject);
-			} 
+			}
+			#endregion
 
-		} 
+			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+			{
+				skillName = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
+				skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
+				skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_DESCRIPTION",
+				skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelSurge"),
+				activationStateMachineName = "Slide",
+				baseMaxStock = 0,
+				baseRechargeInterval = 0,
+				beginSkillCooldownOnSkillEnd = false,
+				canceledFromSprinting = false,
+				forceSprintDuringState = false,
+				fullRestockOnAssign = false,
+				interruptPriority = EntityStates.InterruptPriority.Any,
+				resetCooldownTimerOnUse = false,
+				isCombatSkill = false,
+				mustKeyPress = true,
+				cancelSprintingOnActivation = false,
+				rechargeStock = 0,
+				requiredStock = 0,
+				stockToConsume = 0,
+			});
+
+
+			utilitySlot = base.skillLocator.utility;	
+			if (this.utilitySlot && cancelSkillDef != null)
+			{
+				this.utilitySlot.SetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+			}
+		}
+
 
 		//basic fixedupdate override, you know the drill
 		//makes it so cooldown only starts when boltObject is destroyed, i.e. when the player manually cancels or when duration runs out
@@ -133,6 +167,10 @@ namespace AmpMod.SkillStates
 				base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
 			}
 
+			if (utilitySlot && cancelSkillDef)
+			{
+				utilitySlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+			}
 
 			base.OnExit();
 
@@ -146,6 +184,9 @@ namespace AmpMod.SkillStates
 
 		}
 
-    }
+
+
+
+	}
 
 }

@@ -3075,6 +3075,8 @@ Transform:
   - {fileID: 822830079138637100}
   - {fileID: 3026329029812069149}
   - {fileID: 7974622914499324161}
+  - {fileID: 7705844718675240532}
+  - {fileID: 8459546826536089811}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3164,8 +3166,12 @@ MonoBehaviour:
     transform: {fileID: 6803126343668026776}
   - name: FootL
     transform: {fileID: 7418396721569314196}
+  - name: SpinSlashHitbox
+    transform: {fileID: 7705844718675240532}
   - name: FootR
     transform: {fileID: 4137967635977395953}
+  - name: HeatSwing
+    transform: {fileID: 8459546826536089811}
 --- !u!114 &5233461734227876635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5574,6 +5580,36 @@ Transform:
   m_Father: {fileID: 5535428172806706316}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5587608373756271160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8459546826536089811}
+  m_Layer: 0
+  m_Name: HeatSwing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8459546826536089811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587608373756271160}
+  m_LocalRotation: {x: 0.016901538, y: -0.12942736, z: -0.9830979, w: -0.12837988}
+  m_LocalPosition: {x: 0, y: 2.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 466900384232268528}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: -15, y: 0, z: -194.87999}
 --- !u!1 &5673274944716274292
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,6 +5932,36 @@ Transform:
   - {fileID: 8493905889225227440}
   m_Father: {fileID: 8589478167078274590}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6061272876685301761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7705844718675240532}
+  m_Layer: 0
+  m_Name: SpinSlashHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7705844718675240532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6061272876685301761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.231, z: 3}
+  m_LocalScale: {x: 15, y: 6, z: 15}
+  m_Children: []
+  m_Father: {fileID: 466900384232268528}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6073396169887277819
 GameObject:

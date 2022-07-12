@@ -35,6 +35,12 @@ namespace AmpMod.Modules
             //fulmination states
             entityStates.Add(typeof(Fulmination));
 
+            //bulwark of storms states
+            entityStates.Add(typeof(BaseChannelWurm));
+            entityStates.Add(typeof(SummonWurm));
+            entityStates.Add(typeof(ChannelWurm));
+            entityStates.Add(typeof(CancelWurm));
+
             //voltaicbombardment states
             entityStates.Add(typeof(BaseLightningAim));
             entityStates.Add(typeof(VoltaicBombardmentFire));

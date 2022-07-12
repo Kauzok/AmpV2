@@ -14,7 +14,7 @@ namespace AmpMod.SkillStates
 	public class BoltVehicle : MonoBehaviour, ICameraStateProvider
 	{
 		[Header("Vehicle Parameters")]
-		public float duration = 2f;
+		public float duration = 1.5f;
 		public float initialSpeed = 50f;
 		public float targetSpeed = 50f;
 		public float acceleration = 1000f;
@@ -146,16 +146,6 @@ namespace AmpMod.SkillStates
 			};
 			overlapAttack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
 
-			//adjusts camera on boltstate entry; will adjust later to make camera transition smoother
-			/*foreach (CameraRigController cameraRigController in CameraRigController.readOnlyInstancesList)
-			{
-				if (cameraRigController.target == passenger)
-				{
-					//original values: 0f, this.cameralerptime
-					cameraRigController.SetOverrideCam(this, 0f);
-					cameraRigController.SetOverrideCam(null, this.cameraLerpTime);
-				}
-			} */
 
 			//play state sound
 			stopID = Util.PlaySound(stateSoundString, base.gameObject);			

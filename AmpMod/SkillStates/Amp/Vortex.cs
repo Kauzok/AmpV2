@@ -16,35 +16,86 @@ namespace AmpMod.SkillStates
         public Vector3 blastPosition;
         private GameObject destroyExplosionEffect = Modules.Assets.vortexExplosionEffect;
         private string ShootString = Modules.StaticValues.vortexShootString;
-        
+        private Animator animator;
+        private GameObject muzzleEffectPrefab = Modules.Assets.vortexMuzzleEffect;
+        private string chargeString = Modules.StaticValues.vortexChargeString;
+        private uint stopCharge;
+        private ChildLocator childLocator;
+        private Transform leftMuzzleTransform;
+        private float chargeTime = .75f;
+        private float duration = 1f;
+        private bool hasMuzzleEffect;
+        private bool hasFired;
+        private Transform fireMuzzleTransform;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            
 
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
-            base.PlayAnimation("LeftArm, Override", "ShootProjectileFast", null, .2f);
-           
-                       
+            animator = base.GetModelAnimator();
+            base.PlayAnimation("Gesture, Override", "LaunchVortex", null, this.duration);
+            animator.SetBool("isUsingIndependentSkill", true);
+            stopCharge = Util.PlaySound(chargeString, base.gameObject);
+            Transform modelTransform = base.GetModelTransform();
+
+            if (modelTransform)
+            {
+                this.childLocator = modelTransform.GetComponent<ChildLocator>();
+                this.leftMuzzleTransform = this.childLocator.FindChild("HandL");
+
+            }
+
+
 
         }
+
+       
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (!hasMuzzleEffect)
+            {
+                hasMuzzleEffect = true;
+                if (this.childLocator)
+                {
+                    
+                    {
+                         fireMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, leftMuzzleTransform).transform;
+                         Debug.Log("Spawning Muzzle Effect");
 
-            Fire();
+                    }
 
-            if (base.isAuthority)
+                }
+            }
+
+
+            if (fixedAge >= chargeTime && base.isAuthority && !hasFired)
+            {
+                Fire();
+                hasFired = true;
+            }
+
+            if (fixedAge >= duration)
             {
                 this.outer.SetNextStateToMain();
             }
+            
         }
 
         //fire vortex projectile
         private void Fire()
         {
+            AkSoundEngine.StopPlayingID(stopCharge, 0);
+            if (fireMuzzleTransform)
+            {
+                EntityState.Destroy(fireMuzzleTransform.gameObject);
+            }
+
+
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();
@@ -87,8 +138,17 @@ namespace AmpMod.SkillStates
         {
         }
 
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
         public override void OnExit()
         {
+
+
+            //base.PlayAnimation("Gesture, Override", "BufferEmpty");
+            animator.SetBool("isUsingIndependentSkill", false);
             base.OnExit();
         }
 

@@ -22,7 +22,7 @@ namespace AmpMod.SkillStates.BaseStates
             private GameObject defaultCrosshairPrefab;
             private uint loopSoundInstanceId;
 
-        private float reticleScale = 7.5f;
+            private float reticleScale = 7.5f;
 
             private float duration { get; set; }
             private Animator animator { get; set; }
@@ -40,22 +40,18 @@ namespace AmpMod.SkillStates.BaseStates
                 {
                     Transform transform = this.childLocator.FindChild("HandL");
 
-                    if (transform && this.chargeEffectPrefab)
-                    {
-                        this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
-                        this.chargeEffectInstance.transform.parent = transform;
-                        ScaleParticleSystemDuration component = this.chargeEffectInstance.GetComponent<ScaleParticleSystemDuration>();
-                        ObjectScaleCurve component2 = this.chargeEffectInstance.GetComponent<ObjectScaleCurve>();
-                        if (component)
-                        {
-                            component.newDuration = this.duration;
-                        }
-                        if (component2)
-                        {
-                            component2.timeMax = this.duration;
-                        }
-                    }
+                if (transform && this.chargeEffectPrefab)
+                {
+                    this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
+                    this.chargeEffectInstance.transform.parent = transform;
+
+                    ScaleParticleSystemDuration scaleParticleSystemDuration = this.chargeEffectInstance.GetComponent<ScaleParticleSystemDuration>();
+                    ObjectScaleCurve scaleCurve = this.chargeEffectInstance.GetComponent<ObjectScaleCurve>();
+
+                    if (scaleParticleSystemDuration) scaleParticleSystemDuration.newDuration = this.duration;
+                    if (scaleCurve) scaleCurve.timeMax = this.duration;
                 }
+            }
 
                 base.PlayAnimation("LeftArm, Override", "ChargeLightning", "Spell.playbackRate", 0.4f);
                 base.PlayAnimation("LeftArm, Override", "HoldLightning", "Spell.playbackRate", 0.4f);
@@ -129,7 +125,7 @@ namespace AmpMod.SkillStates.BaseStates
                     //base.cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Standard);
                 }
 
-            EntityState.Destroy(this.chargeEffectInstance);
+                EntityState.Destroy(this.chargeEffectInstance);
                 base.OnExit();
             }
         public virtual void HandlePrimaryAttack()

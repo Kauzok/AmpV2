@@ -54,39 +54,51 @@ namespace AmpMod.SkillStates.BaseStates
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = this.baseDuration / this.attackSpeedStat;
-            this.earlyExitTime = this.baseEarlyExitTime / this.attackSpeedStat;
-            this.hasFired = false;
             this.animator = base.GetModelAnimator();
-            base.StartAimMode(0.5f + this.duration, false);
-            base.characterBody.outOfCombatStopwatch = 0f;
-            this.animator.SetBool("attacking", true);
 
-            HitBoxGroup hitBoxGroup = null;
-            Transform modelTransform = base.GetModelTransform();
-
-            if (modelTransform)
+            if (this.animator.GetBool("isUsingIndependentSkill") == true)
             {
-                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
+                hasFired = true;
+                base.OnExit();
+
             }
 
-            this.PlayAttackAnimation();
+            else
+            {
+                this.duration = this.baseDuration / this.attackSpeedStat;
+                this.earlyExitTime = this.baseEarlyExitTime / this.attackSpeedStat;
+                this.hasFired = false;
+                
+                base.StartAimMode(0.5f + this.duration, false);
+                base.characterBody.outOfCombatStopwatch = 0f;
+                this.animator.SetBool("attacking", true);
 
-            this.attack = new OverlapAttack();
-            this.attack.damageType = this.damageType;
-            this.attack.attacker = base.gameObject;
-            this.attack.inflictor = base.gameObject;
-            this.attack.teamIndex = base.GetTeam();
-            this.attack.damage = this.damageCoefficient * this.damageStat;
-            this.attack.procCoefficient = this.procCoefficient;
-            this.attack.hitEffectPrefab = this.hitEffectPrefab;
-            this.attack.forceVector = this.bonusForce;
-            this.attack.pushAwayForce = this.pushForce;
-            this.attack.hitBoxGroup = hitBoxGroup;
-            this.attack.isCrit = base.RollCrit();
-            this.attack.impactSound = this.impactSound;
+                HitBoxGroup hitBoxGroup = null;
+                Transform modelTransform = base.GetModelTransform();
+
+                if (modelTransform)
+                {
+                    hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
+                }
 
 
+                this.PlayAttackAnimation();
+
+                this.attack = new OverlapAttack();
+                this.attack.damageType = this.damageType;
+                this.attack.attacker = base.gameObject;
+                this.attack.inflictor = base.gameObject;
+                this.attack.teamIndex = base.GetTeam();
+                this.attack.damage = this.damageCoefficient * this.damageStat;
+                this.attack.procCoefficient = this.procCoefficient;
+                this.attack.hitEffectPrefab = this.hitEffectPrefab;
+                this.attack.forceVector = this.bonusForce;
+                this.attack.pushAwayForce = this.pushForce;
+                this.attack.hitBoxGroup = hitBoxGroup;
+                this.attack.isCrit = base.RollCrit();
+                this.attack.impactSound = this.impactSound;
+
+            }
         }
 
         protected void chargeChance(float chance, OverlapAttack attack)
