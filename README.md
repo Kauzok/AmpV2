@@ -11,7 +11,7 @@
 - Tesla Shot
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
-- Heat Shock
+- Plasma Slash
   - Add skill
   - Desc: Perform a powerful sweeping slash with your sword for 600% damage, leaving a firey trail that burns enemies.
   - Make unlockable
