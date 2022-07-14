@@ -6,7 +6,6 @@
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
-  - Make animation scale properly with attack speed
   - Make prep gameobject spawn properly in multiplayer
 - Tesla Shot
   - Add skill
