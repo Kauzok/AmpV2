@@ -38,7 +38,6 @@
 
 ## Animations To Do
 - Adjust sideways walks?
-- Make heatshock aerial animation
 
 ## VFX To Do
 - Finish footsteps
