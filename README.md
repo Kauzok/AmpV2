@@ -11,7 +11,6 @@
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
 - Plasma Slash
-  - Add fire trail
   - Make unlockable
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
