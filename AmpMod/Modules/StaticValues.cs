@@ -46,29 +46,31 @@ namespace AmpMod.Modules
         [Header("Lorentz Cannon Values")]
         internal const float ferroshotDamageCoefficient = 1.6f;
         
-        [Header("Heat Shock Values")]
-        internal const float spinSlashDamageCoefficient = 6f;
+        [Header("Plasma Slash Values")]
+        internal const float spinSlashDamageCoefficient = 7f;
         internal const float fireTrailTickDamageCoefficient = 1.5f;
+        internal const float fireBeamDamageCoefficient = 5f;
 
         [Header("Magnetic Vortex Values")]
-        internal const float vortexDamageCoefficient = 1f;
-        internal const float vortexExplosionCoefficient = 2.5f;
+        internal const float vortexDamageCoefficient = 1.5f;
+        internal const float vortexExplosionCoefficient = 4f;
 
         [Header("Bolt Values")]
         internal static float boltBlastDamageCoefficient = 3f;
         internal const float boltOverlapDamageCoefficient = 1f;
 
         [Header("Pulse Leap Values")]
-        internal const float boostDamageCoefficient = 3.4f;
+        internal const float boostDamageCoefficient = 4f;
 
         [Header("Fulmination Values")]
         internal const float fulminationDamageCoefficient = 1.1f;
-        internal const float fulminationTotalDamageCoefficient = 23f;
+        internal const float fulminationTotalDamageCoefficient = 24f;
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
         internal const float lightningStrikeCoefficient = 12.5f;
-       
+
+        [Header("Bulwark of Storm Values")]
 
 
 
@@ -98,10 +100,11 @@ namespace AmpMod.Modules
         internal const string vortexFlightLoopStringAlt = "PlayVortexFlightLoopAlter2";
         internal const string vortexExplosionString = "PlayVortexExplosion";
 
-        [Header("HeatShock Sound Strings")]
+        [Header("Plasma Slash Sound Strings")]
         internal const string heatSwingString = "PlayHeatShockSwing";
         internal const string heatHitString = "PlayHeatShockHit";
         internal const string heatChargeString = "PlayHeatShockCharge";
+        internal const string plasmaExplosionString = "PlayPlasmaExplosion";
 
         [Header("Bolt Sound Strings")]
         internal const string boltState2SecString = "PlayBoltState2sec";
@@ -116,10 +119,10 @@ namespace AmpMod.Modules
         internal const string fulminationStateString = "PlayFulminationState";
         internal const string fulminationExitString = "PlayFulminationExit";
         internal const string fulminationExitAlterString = "PlayFulminationExitAlter";
-     
 
-
-
+        [Header("Bulwark of Storms Sound Strings")]
+        internal const string wormChargeString = "PlayWormCharge";
+        internal const string wormSummonString = "PlayWormSummon";
 
 
     }

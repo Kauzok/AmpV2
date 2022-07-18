@@ -44,13 +44,24 @@ namespace AmpMod
         public const string developerPrefix = "NT";
 
         public static AmpPlugin instance;
-   
+
+        //dictionary for swapping out stubbed shaders for in game shaders
+        public static Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
+        {
+            {"stubbed hopoo games/deferred/standard", "shaders/deferred/hgstandard"},
+            {"fake ror/hopoo games/fx/hgcloud intersection remap", "shaders/fx/hgintersectioncloudremap" },
+            {"fake ror/hopoo games/fx/hgcloud remap", "shaders/fx/hgcloudremap" }
+        };
+
 
         
         private void Awake()
         {
             instance = this;
-            
+
+
+
+
 
             // load assets and read config
             Modules.Assets.Initialize();
@@ -61,7 +72,17 @@ namespace AmpMod
             Modules.Tokens.AddTokens(); // register name tokens
            // Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
+            //material shader autoconversion
+            var materialAssets = Assets.mainAssetBundle.LoadAllAssets<Material>();
            
+            foreach (Material material in materialAssets)
+            {
+                if (!material.shader.name.StartsWith("stubbed")) { continue; }
+
+                var replacementShader = Resources.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]);
+                if (replacementShader) { material.shader = replacementShader; }
+            }
+
             // create your survivor here
             new Modules.Survivors.Amp().Initialize();
 
@@ -70,6 +91,8 @@ namespace AmpMod
 
             //RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             RoR2Application.onLoad += SetItemDisplays;
+
+
 
             Hook();
         }

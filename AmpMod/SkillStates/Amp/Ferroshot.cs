@@ -35,6 +35,7 @@ namespace AmpMod.SkillStates
 
         private float totalDuration;
         private float fireDuration;
+        private float chargeDuration;
         //private float fireTime;
         private bool hasFired;
         private float distanceFromHead = 0.5f;
@@ -48,13 +49,14 @@ namespace AmpMod.SkillStates
             base.OnEnter();
             this.totalDuration = baseDuration / this.attackSpeedStat;
             fireDuration = FIRE_TIME_PERCENTAGE * totalDuration;
+            chargeDuration = totalDuration - fireDuration;
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
             
 
             Ray aimRay = base.GetAimRay();
-            base.PlayAnimation("Worm, Override", "ShootProjectile", "LorentzCannon.playbackRate", .04f);//1.7f*this.totalDuration);// 1.8f * this.duration);
-            Debug.Log("total duration = " + totalDuration);
+            base.PlayAnimation("Worm, Override", "ShootProjectile", "LorentzCannon.playbackRate", 1.2f*totalDuration);//1.7f*this.totalDuration);// 1.8f * this.duration);
+            //Debug.Log("total duration = " + totalDuration);
             Transform modelTransform = base.GetModelTransform();
 
             if (modelTransform)
@@ -147,11 +149,13 @@ namespace AmpMod.SkillStates
                         
                         
                     // Spawn the prefab of the bolt
+                    
                     bullets[i] = UnityEngine.Object.Instantiate<GameObject>(
                         ferroshotPrefabBasic, 
                         aimRay.origin + getLoc(modelLocator.modelTransform.eulerAngles.y * (Mathf.PI / 180), angle * i), 
                         Quaternion.LookRotation(aimRay.direction));
 
+                    //NetworkServer.Spawn(bullets[i]);
                     // Set the bullet as a child of the character body
                     bullets[i].transform.parent = base.characterBody.transform;
 

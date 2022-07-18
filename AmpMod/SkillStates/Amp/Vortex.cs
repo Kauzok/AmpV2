@@ -22,8 +22,10 @@ namespace AmpMod.SkillStates
         private uint stopCharge;
         private ChildLocator childLocator;
         private Transform leftMuzzleTransform;
-        private float chargeTime = .75f;
-        private float duration = 1f;
+        private float baseChargeTime = .75f;
+        private float baseDuration = 1f;
+        private float chargeTime;
+        private float duration;
         private bool hasMuzzleEffect;
         private bool hasFired;
         private Transform fireMuzzleTransform;
@@ -36,7 +38,9 @@ namespace AmpMod.SkillStates
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
             animator = base.GetModelAnimator();
-            base.PlayAnimation("Gesture, Override", "LaunchVortex", null, this.duration);
+            duration = baseDuration / this.attackSpeedStat;
+            chargeTime = baseChargeTime / this.attackSpeedStat;
+            base.PlayAnimation("Gesture, Override", "LaunchVortex", "BaseSkill.playbackRate", duration);
             animator.SetBool("isUsingIndependentSkill", true);
             stopCharge = Util.PlaySound(chargeString, base.gameObject);
             Transform modelTransform = base.GetModelTransform();

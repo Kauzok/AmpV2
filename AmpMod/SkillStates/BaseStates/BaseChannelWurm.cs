@@ -15,21 +15,24 @@ namespace AmpMod.SkillStates
         protected abstract SummonWurm GetNextState();
         private ChildLocator childLocator;
         private Animator animator;
-        private float channelDuration = 3f;
+        private float baseChannelDuration = 3f;
+        private float channelDuration;
         private bool hasBegunChannelling;
         private bool hasChannelled;
+        private string chargeSoundString = Modules.StaticValues.wormChargeString;
+        private uint stopChargeID;
 
         public override void OnEnter()
         {
             base.OnEnter();
             animator = base.GetModelAnimator();
             animator.SetBool("IsChannelling", true);
-
+            channelDuration = baseChannelDuration / this.attackSpeedStat;
             base.PlayAnimation("Worm, Override", "WormChannelStart", "LorentzCannon.Playbackrate", 1.4f);
 
             if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.Slow50);
 
-
+            stopChargeID = Util.PlaySound(chargeSoundString, base.gameObject);
         }
 
 
@@ -43,7 +46,7 @@ namespace AmpMod.SkillStates
             if (!hasBegunChannelling)
             {
                 hasBegunChannelling = true;
-                base.PlayAnimation("Worm, Override", "WormChannel", "LorentzCannon.Playbackrate", channelDuration);
+                base.PlayAnimation("Worm, Override", "WormChannel", "LorentzCannon.Playbackrate", baseChannelDuration);
 
             }
             if (base.inputBank.skill1.justPressed && base.isAuthority)
@@ -70,6 +73,7 @@ namespace AmpMod.SkillStates
         {
             base.OnExit();
             animator.SetBool("IsChannelling", false);
+            AkSoundEngine.StopPlayingID(stopChargeID, 0);
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
             if (!hasChannelled)

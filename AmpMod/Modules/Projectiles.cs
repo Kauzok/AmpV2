@@ -14,19 +14,22 @@ namespace AmpMod.Modules
         internal static GameObject ferroshotPrefab;
         internal static GameObject vortexPrefab;
         internal static GameObject lightningPrefab;
+        internal static GameObject fireBeamPrefab;
 
         internal static void RegisterProjectiles()
         {
             // only separating into separate methods for my sanity
-           //CreateBomb();
+            //CreateBomb();
             CreateFerroshot();
             CreateVortex();
-          //  CreateLightning();
+            CreateFireBeam();
+            //CreateLightning();
 
-         //  AddProjectile(bombPrefab);
+            //AddProjectile(bombPrefab);
             AddProjectile(ferroshotPrefab);
             AddProjectile(vortexPrefab);
-          // AddProjectile(lightningPrefab);
+            AddProjectile(fireBeamPrefab);
+            //AddProjectile(lightningPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -54,12 +57,15 @@ namespace AmpMod.Modules
             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>());
 
+           
+
             ferroshotPrefab.AddComponent<DestroyOnTimer>().duration = .7f;
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedTargeting>();
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedHoming>();
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedDirectionFinder>();
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
+            ferroshotController.procCoefficient = 1f;
             //instantiates the projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
             
@@ -110,6 +116,15 @@ namespace AmpMod.Modules
 
         }
 
+        private static void CreateFireBeam()
+        {
+            fireBeamPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("HeatProjectile");
+            ProjectileController heatController = fireBeamPrefab.GetComponent<ProjectileController>();
+            if (Assets.mainAssetBundle.LoadAsset<GameObject>("HeatProjectileGhost") != null) heatController.ghostPrefab = CreateGhostPrefab("HeatProjectileGhost");
+
+            //fireBeamPrefab.GetComponent<ProjectileImpactExplosion>().lifetimeExpiredSound = Assets.plasmaExplosionSoundEvent;
+           // FireExplosion.blastDamageCoefficient = 3f;
+        }
         //projectile to be used for voltaic bombardment
         private static void CreateLightning()
         {

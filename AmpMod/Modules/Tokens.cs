@@ -48,14 +48,14 @@ namespace AmpMod.Modules
             #endregion
 
             #region Secondary3
-            LanguageAPI.Add(prefix + "SECONDARY_HEATSHOCK_NAME", "Heat Shock");
-            LanguageAPI.Add(prefix + "SECONDARY_HEATSHOCK_DESCRIPTION",  $"Perform a powerful sweeping slash with your sword for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage, leaving a firey trail that <style=cIsDamage>burns</style> enemies.");
+            LanguageAPI.Add(prefix + "SECONDARY_PLASMASLASH_NAME", "Plasma Slash");
+            LanguageAPI.Add(prefix + "SECONDARY_PLASMASLASH_DESCRIPTION",  $"Perform a sweeping slash with your sword for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage, <style=cIsDamage>burning</style> enemies. If in the air, launch a <style=cIsDamage>burning</style> wave of plasma for <style=cIsDamage>{100f * StaticValues.fireBeamDamageCoefficient}%</style> damage.");
 
             #endregion
 
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_DASH_NAME", "Surge");
-            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", chargedPrefix + $"Transform into lightning, becoming <style=cIsUtility>invulnerable</style> for 1.5 seconds. Deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage on contact. Explode on exit for <style=cIsDamage>{100f * StaticValues.boltBlastDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "UTILITY_DASH_DESCRIPTION", chargedPrefix + $"Transform into lightning, becoming <style=cIsUtility>invulnerable</style>. Deal <style=cIsDamage>{100f * StaticValues.boltOverlapDamageCoefficient}%</style> damage on contact. Explode on exit for <style=cIsDamage>{100f * StaticValues.boltBlastDamageCoefficient}% damage</style>.");
             LanguageAPI.Add(prefix + "SPECIAL_CANCELDASH_NAME", "Cancel Surge");
             LanguageAPI.Add(prefix + "SPECIAL_CANCELDASH_DESCRIPTION", "Exit Surge early.");
             #endregion

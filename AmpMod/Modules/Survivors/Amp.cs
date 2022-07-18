@@ -118,9 +118,6 @@ namespace AmpMod.Modules.Survivors
             string prefix = AmpPlugin.developerPrefix;
 
 
-
-
-
             #region Primary
             //creates Stormblade
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), 
@@ -169,7 +166,7 @@ namespace AmpMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Vortex)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 6.5f,
+                baseRechargeInterval = 9f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -187,11 +184,11 @@ namespace AmpMod.Modules.Survivors
 
             SkillDef burnSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_AMP_BODY_SECONDARY_HEATSHOCK_NAME",
-                skillNameToken = prefix + "_AMP_BODY_SECONDARY_HEATSHOCK_NAME",
-                skillDescriptionToken = prefix + "_AMP_BODY_SECONDARY_HEATSHOCK_DESCRIPTION",
+                skillName = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_NAME",
+                skillNameToken = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_NAME",
+                skillDescriptionToken = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texLorentz"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HeatShock)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PLASMASLASH)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 3.5f,

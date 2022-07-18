@@ -4,17 +4,21 @@ using System.Text;
 using EntityStates;
 using RoR2;
 using UnityEngine;
+using RoR2.Projectile;
 using UnityEngine.Networking;
 using RoR2.Audio;
 
 
 namespace AmpMod.SkillStates
 {
-    class HeatShock : BaseSkillState
+    class PLASMASLASH : BaseSkillState
     {
 
-        private float duration = .75f;
+        private float baseTotalDuration = .75f;
+        private float baseChargeDuration = .5f;
         protected string hitboxName = "SpinSlash";
+        private float chargeDuration;
+        private float totalDuration;
         public OverlapAttack attack;
         protected DamageType damageType = DamageType.IgniteOnHit;
         protected float damageCoefficient = Modules.StaticValues.spinSlashDamageCoefficient;
@@ -24,7 +28,12 @@ namespace AmpMod.SkillStates
         protected float stopwatch;
         private ChildLocator childLocator;
         protected Animator animator;
+        private bool hasMuzzleEffect;
+       
+        private Transform fireAOE;
+
         private DamageTrail fireTrail;
+        private GameObject muzzleEffectPrefab = Modules.Assets.plasmaMuzzle;
         private float fireDamageCoefficient = Modules.StaticValues.fireTrailTickDamageCoefficient;
         protected float pushForce = 300f;
         protected Vector3 bonusForce = Vector3.zero;
@@ -35,12 +44,18 @@ namespace AmpMod.SkillStates
         protected string swingSoundString = Modules.StaticValues.heatSwingString;
         private String muzzleString = "HeatSwing";
         private bool inGroundedState;
+        private Transform swordMuzzle;
+        public static float shortHopVelocity = 0f;
+        private GameObject fireBeamPrefab = Modules.Projectiles.fireBeamPrefab;
+        private float fireBeamDamage = Modules.StaticValues.fireBeamDamageCoefficient;
 
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.animator = base.GetModelAnimator();
+            chargeDuration = this.baseChargeDuration / this.attackSpeedStat;
+            totalDuration = this.baseTotalDuration / this.attackSpeedStat;
             animator.SetBool("isUsingIndependentSkill", true);
 
             //Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
@@ -50,12 +65,15 @@ namespace AmpMod.SkillStates
             if (modelTransform)
             {
                 hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
+                this.childLocator = modelTransform.GetComponent<ChildLocator>();
+                this.swordMuzzle = this.childLocator.FindChild("SwordPlace");
             }
 
             if (isGrounded)
             {
+
                 inGroundedState = true;
-                base.PlayAnimation("FullBody, Override", "SpinningSlash", null, this.duration);
+                base.PlayAnimation("FullBody, Override", "SpinningSlash", "BaseSkill.playbackRate", this.totalDuration);//this.baseDuration);
                 stopChargeSound = Util.PlaySound(chargeSoundString, base.gameObject);
                 this.attack = new OverlapAttack();
                 this.attack.damageType = this.damageType;
@@ -74,7 +92,9 @@ namespace AmpMod.SkillStates
 
             else if (!isGrounded)
             {
-
+                stopChargeSound = Util.PlaySound(chargeSoundString, base.gameObject);
+                inGroundedState = false;
+                base.PlayAnimation("FullBody, Override", "SpinningSlash", "BaseSkill.playbackRate", this.totalDuration);
 
             }
       
@@ -82,12 +102,43 @@ namespace AmpMod.SkillStates
 
         }
 
+        protected virtual void ModifyProjectile(ref FireProjectileInfo projectileInfo)
+        {
+
+        }
+        
+        private void FireAerialAttack()
+        {
+            if (base.isAuthority)
+            {
+
+                Ray aimRay = base.GetAimRay();
+                AkSoundEngine.StopPlayingID(stopChargeSound, 0);
+                if (fireBeamPrefab) {
+
+                    Util.PlaySound(swingSoundString, base.gameObject);
+                    FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+                    {
+
+                        projectilePrefab = fireBeamPrefab,
+                        position = aimRay.origin,
+                        rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
+                        owner = base.gameObject,
+                        damage = fireBeamDamage*base.characterBody.damage,
+                        //force = fireBeamPrefab.GetComponent<ProjectileSimple>().desiredForwardSpeed,
+                        crit = base.RollCrit()
+                    };
+                    ModifyProjectile(ref fireProjectileInfo);
+                    ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+                }
+            }
+        }
+
         private void FireGroundAttack()
         {
             if (!this.hasFired)
             {
                 this.hasFired = true;
-               
                 AkSoundEngine.StopPlayingID(stopChargeSound, 0);
                 //Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
                 Util.PlaySound(swingSoundString, base.gameObject);
@@ -100,10 +151,9 @@ namespace AmpMod.SkillStates
 
             if (base.isAuthority)
             {
-                if (this.attack.Fire())
-                {
-
-                }
+                attack.Fire();
+               
+                Debug.Log("Spawning Fire");
             }
 
         }
@@ -111,18 +161,51 @@ namespace AmpMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            
+            
+            if (!hasMuzzleEffect)
+            {
+                hasMuzzleEffect = true;
+                swordMuzzle = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, swordMuzzle).transform;
+            }
+
+
             if (inGroundedState)
             {
                 //fireTrail.transform.position = childLocator.FindChild("SwordPlace").position;
-                if (fixedAge > .5f && !hasFired)
+                if (fixedAge > chargeDuration && !hasFired)
                 {
                     FireGroundAttack();
                     hasFired = true;
                     Debug.Log("firing");
+                    if (swordMuzzle) EntityState.Destroy(swordMuzzle.gameObject);
                 }
-                if (fixedAge >= duration)
+                if (fixedAge >= totalDuration)
                 {
                     this.outer.SetNextStateToMain();
+                }
+            }
+            else if (!inGroundedState)
+            {
+                if (base.characterMotor)
+                {
+                    if (!hasFired)
+                    {
+                        base.characterMotor.velocity.y = shortHopVelocity;
+                    }
+                    
+                    if (fixedAge > chargeDuration && !hasFired)
+                    {
+                        FireAerialAttack();
+                        hasFired = true;
+                        if (swordMuzzle) EntityState.Destroy(swordMuzzle.gameObject);
+                        Debug.Log("firing");
+                        //base.characterMotor.velocity.y = base.characterMotor.velocity.y;
+                    }
+                    if (fixedAge >= totalDuration)
+                    {
+                        this.outer.SetNextStateToMain();
+                    }
                 }
             }
       

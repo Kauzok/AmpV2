@@ -21,6 +21,7 @@ namespace AmpMod.SkillStates
         private bool hasSpawned;
         private float wormLifeDuration = 30f;
         private Animator animator;
+        private string summonSoundString = Modules.StaticValues.wormSummonString;
 
 
         public override void OnEnter()
@@ -28,6 +29,8 @@ namespace AmpMod.SkillStates
 
             base.OnEnter();
             base.PlayAnimation("Worm, Override", "WormChannelRelease", null, 1.4F);
+
+            
 
             animator = base.GetModelAnimator();
 
@@ -54,8 +57,6 @@ namespace AmpMod.SkillStates
                 requiredStock = 0,
                 stockToConsume = 0,
             });
-
-
             specialSlot = base.skillLocator.special;
             if (this.specialSlot && cancelSkillDef != null)
             {
@@ -76,6 +77,8 @@ namespace AmpMod.SkillStates
         {
             GameObject masterPrefab = MasterCatalog.FindMasterPrefab("ElectricWormMaster");
 
+            Util.PlaySound(summonSoundString, base.gameObject);
+
             //body.baseMaxHealth = 1f;
 
 
@@ -90,7 +93,7 @@ namespace AmpMod.SkillStates
                 ignoreTeamMemberLimit = false,
                 teamIndexOverride = TeamIndex.Player,
                 summonerBodyObject = characterBody.gameObject,
-                position = characterBody.corePosition + new Vector3(0, -3, 2),
+                position = characterBody.corePosition + new Vector3(0, 0, 2),
                 rotation = characterBody.transform.rotation,
                 inventoryToCopy = characterBody.inventory,
                 inventoryItemCopyFilter = index => index != RoR2Content.Items.ExtraLife.itemIndex,
@@ -107,13 +110,14 @@ namespace AmpMod.SkillStates
             //wormMaster = wormSummon.Perform(); 
             wormMaster.onBodyStart += SetupWorm;
 
-            //Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
-            for (int i = 0; i <= wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex)+1; i++)
+            Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
+            for (int i = -1; i <= wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex)+1; i++)
             {
                 wormMaster.inventory.RemoveItem(RoR2Content.Items.ExtraLife.itemIndex);
             }
 
-            //Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
+
+            Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
 
             for (int i = 0; i <= wormMaster.inventory.GetItemCount(DLC1Content.Items.ExtraLifeVoid.itemIndex)+1; i++)
             {

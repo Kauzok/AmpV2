@@ -15,13 +15,15 @@ namespace AmpMod.SkillStates.BaseStates
     public abstract class BaseLightningAim : BaseSkillState
     {
             protected abstract VoltaicBombardmentFire GetNextState();
-            public GameObject chargeEffectPrefab = Modules.Assets.lightningMuzzleChargePrefab;
+        public GameObject chargeEffectPrefab;
             public string chargeSoundString;
             public GameObject crosshairOverridePrefab;
             public float lightningRadius = .2f;
             private GameObject defaultCrosshairPrefab;
             private uint loopSoundInstanceId;
-
+        private bool hasMuzzleEffect;
+            private Transform leftMuzzleTransform;
+        private Transform fireMuzzleTransform;
             private float reticleScale = 7.5f;
 
             private float duration { get; set; }
@@ -32,27 +34,21 @@ namespace AmpMod.SkillStates.BaseStates
 
             public override void OnEnter()
             {
-            base.OnEnter();
+
+                base.OnEnter();
                 this.animator = base.GetModelAnimator();
                 this.childLocator = base.GetModelChildLocator();
 
-                if (this.childLocator)
+                Transform modelTransform = base.GetModelTransform();
+
+                if (modelTransform)
                 {
-                    Transform transform = this.childLocator.FindChild("HandL");
+                this.childLocator = modelTransform.GetComponent<ChildLocator>();
+                this.leftMuzzleTransform = this.childLocator.FindChild("HandL");
 
-                if (transform && this.chargeEffectPrefab)
-                {
-                    this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
-                    this.chargeEffectInstance.transform.parent = transform;
-
-                    ScaleParticleSystemDuration scaleParticleSystemDuration = this.chargeEffectInstance.GetComponent<ScaleParticleSystemDuration>();
-                    ObjectScaleCurve scaleCurve = this.chargeEffectInstance.GetComponent<ObjectScaleCurve>();
-
-                    if (scaleParticleSystemDuration) scaleParticleSystemDuration.newDuration = this.duration;
-                    if (scaleCurve) scaleCurve.timeMax = this.duration;
                 }
-            }
 
+                
                 base.PlayAnimation("LeftArm, Override", "ChargeLightning", "Spell.playbackRate", 0.4f);
                 base.PlayAnimation("LeftArm, Override", "HoldLightning", "Spell.playbackRate", 0.4f);
 
@@ -139,11 +135,31 @@ namespace AmpMod.SkillStates.BaseStates
                 base.FixedUpdate();
                 //base.characterBody.isSprinting = false;
                 base.StartAimMode(0.5f, false);
+               if (!hasMuzzleEffect)
+               {
+                    hasMuzzleEffect = true;
+                    if (this.childLocator)
+                    {
+                    
+                        {
+                             fireMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(chargeEffectPrefab, leftMuzzleTransform).transform;
+                             Debug.Log("Spawning Muzzle Effect");
+
+                        }
+
+                    }
+               }
 
                 if (base.isAuthority && !this.IsKeyDownAuthority()) //base.inputBank.skill1.justPressed)
                 {
                     VoltaicBombardmentFire nextState = this.GetNextState();
-                    if (this.areaIndicatorInstance)
+
+                if (fireMuzzleTransform)
+                {
+                    EntityState.Destroy(fireMuzzleTransform.gameObject);
+                }
+
+                if (this.areaIndicatorInstance)
                     {
                         nextState.boltPosition = this.areaIndicatorInstance.transform.position;
                         nextState.lightningRotation = this.areaIndicatorInstance.transform.rotation;

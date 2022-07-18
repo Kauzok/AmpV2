@@ -10,14 +10,14 @@ namespace AmpMod.SkillStates
 	public class Fulmination : BaseSkillState
 	{
 
-		[Header("Effect Variables")]
+		[Header("Effect/Animation Variables")]
 		public GameObject lightningEffectPrefab = Modules.Assets.electricStreamEffect;
 		public static GameObject impactEffectPrefab = Modules.Assets.electricImpactEffect;
 		public EffectData fulminationData;
 		private Transform fulminationTransform;
 		private Transform handLTransform;
 		private ChildLocator childLocator;
-
+		private Animator animator;
 
 		[Header("Attack Variables")]
 		public static float radius;
@@ -61,6 +61,7 @@ namespace AmpMod.SkillStates
 			entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
 			fulminationDuration = Fulmination.baseFulminationDuration;
 			Transform modelTransform = base.GetModelTransform();
+			animator = base.GetModelAnimator();
 
 			if (base.characterBody)
 			{
@@ -80,7 +81,12 @@ namespace AmpMod.SkillStates
 			tickDamageCoefficient = totalDamageCoefficient / baseticktotal;
 
 			//play animation
-			base.PlayAnimation("Fulminate, Override", "FulminateStart", "Shootgun.PlaybackRate", entryDuration);
+			base.PlayAnimation("Fulminate, Override", "FulminateStart", "BaseSkill.playbackRate", entryDuration);
+
+			animator.SetBool("isUsingIndependentSkill", true);
+
+			animator.SetBool("isFulminating", true);
+			
 
 			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
 			{
@@ -138,7 +144,8 @@ namespace AmpMod.SkillStates
 
 				}
 
-
+			animator.SetBool("isFulminating", false);
+			animator.SetBool("isUsingIndependentSkill", false);
 			base.PlayCrossfade("Fulminate, Override", "FulminateEnd", 0.1f);
 			
 
@@ -200,6 +207,8 @@ namespace AmpMod.SkillStates
 			{
 				hasBegunFulmination = true;
 				
+				//allows amp to start slashing again
+				animator.SetBool("isUsingIndependentSkill", false);
 
 				//code for making electricity vfx come out of left hand
 				if (childLocator)

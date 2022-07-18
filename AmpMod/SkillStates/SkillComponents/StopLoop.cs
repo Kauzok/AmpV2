@@ -17,7 +17,7 @@ namespace AmpMod.SkillStates.BaseStates
             if (!Played)
             {
                 Played = true;
-                SoundId = AkSoundEngine.PostEvent(SoundEventToPlay, gameObject);
+                SoundId = AkSoundEngine.PostEvent(SoundEventToPlay, this.gameObject);
             }
         }
 

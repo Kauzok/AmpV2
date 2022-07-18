@@ -41,9 +41,13 @@ namespace AmpMod.Modules
         internal static GameObject boltEnterEffect;
         internal static GameObject boltVehicle;
 
-        [Header("Bolt Effects")]
+        [Header("HeatShock Effects")]
         internal static GameObject heatSwing;
         internal static GameObject heatHit;
+        internal static GameObject heatExplosion;
+        internal static NetworkSoundEventDef plasmaExplosionSoundEvent;
+        internal static GameObject plasmaMuzzle;
+        internal static GameObject fireTrail;
 
         [Header("Fulmination Effects")]
         internal static GameObject electricStreamEffect;
@@ -139,11 +143,14 @@ namespace AmpMod.Modules
             heatShockHitSoundEvent = CreateNetworkSoundEventDef(StaticValues.heatHitString);
             heatShockSwingSoundEvent = CreateNetworkSoundEventDef(StaticValues.heatSwingString);
 
+            //plasma slash explosion sound events
+            plasmaExplosionSoundEvent = CreateNetworkSoundEventDef(StaticValues.plasmaExplosionString);
+
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
-            //on voltaic bombardment charge
-            lightningMuzzleChargePrefab = LoadEffect("HandSpark", null);
+            //on voltaic bombardment aim
+            CreateLightningCharge();
 
             //on charge explosion when 3 procs are reached
             //CreateChargePrefab();
@@ -159,6 +166,7 @@ namespace AmpMod.Modules
             //on heatshock use
             heatHit = Assets.LoadEffect("heatHit");
             heatSwing = Assets.LoadEffect("heatSwing 1", true);
+            CreateHeatExplosion();
 
             //on boltvehicle exit/state/enter
             CreateBoltExitPrefab();
@@ -233,6 +241,12 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(bulletPrepItem);
         }
      
+        private static void CreateHeatExplosion()
+        {
+            AddNewEffectDef(mainAssetBundle.LoadAsset<GameObject>("HeatExplosionEffect"), Modules.StaticValues.plasmaExplosionString);
+            plasmaMuzzle = mainAssetBundle.LoadAsset<GameObject>("PlasmaMuzzleEffect");
+            fireTrail = mainAssetBundle.LoadAsset<GameObject>("PlasmaTrailObject");
+        }
         private static void CreateBulletMuzzle()
         {
             ampBulletMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("FerroshotMuzzleObject");
@@ -255,6 +269,12 @@ namespace AmpMod.Modules
 
         }
 
+        private static void CreateLightningCharge()
+        {
+           
+            lightningMuzzleChargePrefab = mainAssetBundle.LoadAsset<GameObject>("HandSpark");
+            AddNewEffectDef(lightningMuzzleChargePrefab);
+        }
         private static void CreateStreamPrefab()
         {
             electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");

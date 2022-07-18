@@ -110,7 +110,7 @@ namespace AmpMod.SkillStates.Amp
                 };
                 //spawns lightning/lightningexplosion effects
                 EffectManager.SpawnEffect(lightningStrikeEffect, lightning, true);
-                EffectManager.SpawnEffect(lightningStrikeExplosion, lightningExplosion, true);
+                //EffectManager.SpawnEffect(lightningStrikeExplosion, lightningExplosion, true);
 
 
                 //create blastattack
