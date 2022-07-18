@@ -25,6 +25,9 @@
   - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
 - Fulmination
   - Consider adjusting chain effect
+  - Add muzzle vfx
+- Voltaic Bombardment
+  - Adjust muzzle vfx?
 - Bulwark of Storms
   - Add VFX & SFX to channelling
   - Make unlockable
@@ -40,7 +43,6 @@
 
 ## VFX To Do
 - Finish footsteps
-- Add muzzle vfx for voltaic bombardment & fulmination
 - Add helmet/chest glow
 - VFX/SFX for lobby animation
 
