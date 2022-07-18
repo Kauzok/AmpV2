@@ -51,6 +51,7 @@
 - Skill Icons
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
+- Add configs
 
 ## Changelog
 `0.0.1`
