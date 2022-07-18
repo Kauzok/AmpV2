@@ -6,21 +6,14 @@
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
-  - Make animation scale properly with attack speed
   - Make prep gameobject spawn properly in multiplayer
 - Tesla Shot
   - Add skill
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
-- Heat Shock
-  - Add skill
-  - Desc: Perform a powerful sweeping slash with your sword for 600% damage, leaving a firey trail that burns enemies.
+- Plasma Slash
   - Make unlockable
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
-  - Add vortex spawn VFX
-  - Add muzzle SFX
-  - Add slight charge delay before firing
-  - Adjust vortex/explosion VFX
   - Add field representing vortex range/or tendrils
 - Surge
   - Fix effect shaking when running into objects
@@ -44,7 +37,6 @@
 
 ## Animations To Do
 - Adjust sideways walks?
-- Make heatshock aerial animation
 
 ## VFX To Do
 - Finish footsteps
@@ -59,6 +51,7 @@
 - Skill Icons
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
+- Add configs
 
 ## Changelog
 `0.0.1`
