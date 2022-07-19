@@ -43,8 +43,7 @@
 
 ## VFX To Do
 - Finish footsteps
-- Add helmet/chest glow
-- VFX/SFX for lobby animation
+- Consider modifying helmet/chest glow
 
 ## Misc. To Do
 - Cleanup code base, finish comments
