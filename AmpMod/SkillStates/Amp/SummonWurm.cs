@@ -17,6 +17,7 @@ namespace AmpMod.SkillStates
         public static SkillDef cancelSkillDef;
         public static CharacterMaster wormMaster;
         public CharacterBody wormBody;
+        public static GameObject wormExplosion = Modules.Assets.wormExplosionEffect;
         public static object src = new SummonWurm();
         private bool hasSpawned;
         private float wormLifeDuration = 30f;
@@ -81,11 +82,19 @@ namespace AmpMod.SkillStates
 
             //body.baseMaxHealth = 1f;
 
+            EffectData wormExplosionData = new EffectData
+            {
+                origin = base.characterBody.corePosition,
+                scale = 1f,
+            };
+            EffectManager.SpawnEffect(wormExplosion, wormExplosionData, true) ;
+
+
 
             //figure out why this doesnt make worm follow amp
             //masterPrefab.gameObject.GetComponent<BaseAI>().leader.gameObject = characterBody.gameObject;
             //masterPrefab.GetComponent<HealthComponent>().health = 3*base.characterBody.maxHealth;
-           
+
 
             MasterSummon wormSummon = new MasterSummon
             {
@@ -149,9 +158,9 @@ namespace AmpMod.SkillStates
         {
             body.baseMaxHealth = 3f * base.characterBody.baseMaxHealth;
             //body.baseMaxHealth = 10f;
-            body.baseMoveSpeed = 0f;
+          /*  body.baseMoveSpeed = 0f;
             body.moveSpeed = 0f;
-            body.baseRegen = 0f;
+            body.baseRegen = 0f; */
             body.statsDirty = true;
             //Debug.Log(wormBody.baseMaxHealth);
             //Debug.Log(wormBody.maxHealth);

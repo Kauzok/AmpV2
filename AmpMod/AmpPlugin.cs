@@ -14,6 +14,7 @@ using AmpMod.Modules;
 using UnityEngine.Networking;
 using HG.Reflection;
 using System.Collections.ObjectModel;
+using UnityEngine.AddressableAssets;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -48,7 +49,7 @@ namespace AmpMod
         //dictionary for swapping out stubbed shaders for in game shaders
         public static Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
         {
-            {"stubbed hopoo games/deferred/standard", "shaders/deferred/hgstandard"},
+            {"stubbedshader/deferred/standard", "shaders/deferred/hgstandard"},
             {"fake ror/hopoo games/fx/hgcloud intersection remap", "shaders/fx/hgintersectioncloudremap" },
             {"fake ror/hopoo games/fx/hgcloud remap", "shaders/fx/hgcloudremap" }
         };
@@ -72,16 +73,19 @@ namespace AmpMod
             Modules.Tokens.AddTokens(); // register name tokens
            // Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
-            //material shader autoconversion
+         /*   //material shader autoconversion
             var materialAssets = Assets.mainAssetBundle.LoadAllAssets<Material>();
            
             foreach (Material material in materialAssets)
             {
-                if (!material.shader.name.StartsWith("stubbed")) { continue; }
+                if (!material.shader.name.StartsWith("Stubbed")) { continue; }
 
-                var replacementShader = Resources.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]);
-                if (replacementShader) { material.shader = replacementShader; }
-            }
+                //var replacementShader = Addressables.LoadAssetAsync<Shader>(material.shader.name.ToLower()).WaitForCompletion();
+                var replacementShader = LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]); //LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]);
+                if (replacementShader) { material.shader = replacementShader; Debug.Log("Replacing Shader"); }
+                if (!replacementShader) { Debug.Log("No Shader Found"); }
+                
+            } */
 
             // create your survivor here
             new Modules.Survivors.Amp().Initialize();

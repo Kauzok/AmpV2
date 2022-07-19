@@ -46,9 +46,10 @@ namespace AmpMod.Modules.Survivors
             {
                 InitializeUnlockables();
 
+
                 bodyPrefab = Modules.Prefabs.CreatePrefab(bodyName + "Body", "mdl" + bodyName, bodyInfo);
                 bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(characterMainState);
-
+               
                 Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos, mainRendererIndex);
 
                 displayPrefab = Modules.Prefabs.CreateDisplayPrefab(bodyName + "Display", bodyPrefab, bodyInfo);
@@ -62,6 +63,9 @@ namespace AmpMod.Modules.Survivors
                 InitializeDoppelganger();
             }
         }
+      
+
+
 
         internal virtual void InitializeUnlockables()
         {

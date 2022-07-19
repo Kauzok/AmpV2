@@ -41,7 +41,7 @@ namespace AmpMod.Modules
         internal static GameObject boltEnterEffect;
         internal static GameObject boltVehicle;
 
-        [Header("HeatShock Effects")]
+        [Header("Plasma Slash Effects")]
         internal static GameObject heatSwing;
         internal static GameObject heatHit;
         internal static GameObject heatExplosion;
@@ -57,6 +57,9 @@ namespace AmpMod.Modules
         [Header("VoltaicBombardment Effects")]
         internal static GameObject lightningStrikePrefab;
         internal static GameObject lightningMuzzleChargePrefab;
+
+        [Header("Bulwark of Storms Effects")]
+        internal static GameObject wormExplosionEffect;
 
 
         // networked hit sounds
@@ -187,6 +190,9 @@ namespace AmpMod.Modules
             //magnetic vortex muzzle
             CreateVortexMuzzle();
 
+            //on bulwark of storms use
+            CreateWormEffects();
+
             //functions for prefabs that require adjustments made at runtime
             //CreateLightningPrefab();
             
@@ -275,6 +281,13 @@ namespace AmpMod.Modules
             lightningMuzzleChargePrefab = mainAssetBundle.LoadAsset<GameObject>("HandSpark");
             AddNewEffectDef(lightningMuzzleChargePrefab);
         }
+
+        private static void CreateWormEffects()
+        {
+            wormExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("WormExplosionEffect");
+            AddNewEffectDef(wormExplosionEffect);
+        }
+        
         private static void CreateStreamPrefab()
         {
             electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");
@@ -491,10 +504,11 @@ namespace AmpMod.Modules
 
         public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
         {
-            if (!commandoMat) commandoMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+         /*   if (!commandoMat) commandoMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
 
             Material mat = UnityEngine.Object.Instantiate<Material>(commandoMat);
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+
 
             if (!tempMat)
             {
@@ -507,9 +521,18 @@ namespace AmpMod.Modules
             mat.SetTexture("_MainTex", tempMat.GetTexture("_MainTex"));
             mat.SetColor("_EmColor", emissionColor);
             mat.SetFloat("_EmPower", emission);
-            mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
+            //mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
+            mat.SetTexture("_EmTex", mainAssetBundle.LoadAsset<Texture>("texEmission"));
+            
+            if (!mainAssetBundle.LoadAsset<Texture>("texEmission"))
+            {
+                Debug.Log("No Emission Map");
+            }
             mat.SetFloat("_NormalStrength", normalStrength);
+            //mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/deferred/hgstandard"); */
+            Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
+            mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/deferred/hgstandard");
             return mat;
         }
 

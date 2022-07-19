@@ -84,6 +84,8 @@ namespace AmpMod.Modules.Survivors
         internal override UnlockableDef characterUnlockableDef { get; set; }
         private static UnlockableDef masterySkinUnlockableDef;
 
+
+
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
@@ -359,13 +361,49 @@ namespace AmpMod.Modules.Survivors
             #endregion
         }
 
+        public static GameObject UpdateGameObjectShader(GameObject originalModel, bool dither = true)
+        {
+
+            GameObject result;
+            if (originalModel)
+            {
+                foreach (MeshRenderer meshRenderer in originalModel.GetComponentsInChildren<MeshRenderer>())
+                {
+
+                    if (meshRenderer)
+                    {
+                        meshRenderer.material.shader = HGstandard;
+                        Debug.Log("Changing shaders");
+                        if (dither)
+                        {
+                            Debug.Log("Adding dither");
+                            meshRenderer.material.EnableKeyword("DITHER");
+                        }
+                    }
+                }
+                result = originalModel;
+            }
+            else
+            {
+                result = null;
+            }
+            return result;
+        }
+        public static Shader HGstandard = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
+
+
+
+
         internal override void InitializeSkins()
         {
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
-            CharacterModel characterModel = model.GetComponent<CharacterModel>();
 
-            ModelSkinController skinController = model.AddComponent<ModelSkinController>();
-            ChildLocator childLocator = model.GetComponent<ChildLocator>();
+            GameObject updatedModel = UpdateGameObjectShader(model);
+
+            CharacterModel characterModel = updatedModel.GetComponent<CharacterModel>();
+
+            ModelSkinController skinController = updatedModel.AddComponent<ModelSkinController>();
+            ChildLocator childLocator = updatedModel.GetComponent<ChildLocator>();
 
             SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
@@ -378,14 +416,14 @@ namespace AmpMod.Modules.Survivors
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRenderers,
                 mainRenderer,
-                model);
+                updatedModel);
 
             defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
                 {
                     mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("Sword"),
-                    renderer = defaultRenderers[0].renderer
+                    renderer = defaultRenderers[0].renderer,
                 },
                 new SkinDef.MeshReplacement
                 {
@@ -401,6 +439,7 @@ namespace AmpMod.Modules.Survivors
 
             skins.Add(defaultSkin);
             #endregion
+
 
             #region MasterySkin
             Material masteryMat = Modules.Assets.CreateMaterial("matHenryAlt");
