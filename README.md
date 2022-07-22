@@ -27,7 +27,8 @@
   - Consider adjusting chain effect
   - Add muzzle vfx
 - Voltaic Bombardment
-  - Adjust muzzle vfx?
+  - Adjust muzzle vfx
+  - Add
 - Bulwark of Storms
   - Add VFX & SFX to channelling
   - Make unlockable
