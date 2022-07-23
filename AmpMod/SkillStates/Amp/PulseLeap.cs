@@ -22,12 +22,20 @@ namespace AmpMod.SkillStates
         private float groundYBoostCoefficient = 30f;
         private float initialGroundedHopCoefficient = 10f;
         private ChildLocator childLocator;
+        private Vector3 boostVelocity;
+        private float charge = 1f;
+
+        public float minLungeSpeed = 30f;
+
+        public float maxLungeSpeed = 100f;
 
 
         public override void OnEnter()
         { 
 
             base.OnEnter();
+
+            
 
             Transform modelTransform = base.GetModelTransform();
             childLocator = modelTransform.GetComponent<ChildLocator>();
@@ -81,38 +89,50 @@ namespace AmpMod.SkillStates
 
         }
 
+        private void DoBoost()
+        {
+            if (base.characterMotor.isGrounded)
+            {
+                //makes it so boost uses absolute value of y component when grounded so they cant just aim downwards and make the explosion w/o launching
+                base.characterMotor.velocity.y = initialGroundedHopCoefficient;
+
+
+                base.characterMotor.Motor.ForceUnground();
+                //base.characterMotor.velocity.y = 0;
+
+                //launch in direction of aimray
+                base.characterMotor.velocity += new Vector3(base.GetAimRay().direction.x * groundXZBoostCoefficient, Math.Abs(base.GetAimRay().direction.y) * groundYBoostCoefficient, base.GetAimRay().direction.z * groundXZBoostCoefficient);
+            }
+
+            else
+            {
+                //set y velocity = 0 to make aerial boosting actually useful
+                base.characterMotor.velocity.y = 0;
+
+                //launch in direction of aimray
+                base.characterMotor.velocity += base.GetAimRay().direction * aerialBoostCoefficient;
+
+            }
+
+
+        }
+
+        public static Vector3 CalculateLungeVelocity(Vector3 currentVelocity, Vector3 aimDirection, float charge, float lungeSpeed)
+        {
+            currentVelocity = ((Vector3.Dot(currentVelocity, aimDirection) < 0f) ? Vector3.zero : Vector3.Project(currentVelocity, aimDirection));
+            return currentVelocity + aimDirection * lungeSpeed;
+        }
+
+
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             if (base.characterMotor)
             {
-                
 
-                //makes it so boost uses absolute value of y component when grounded so they cant just aim downwards and make the explosion w/o launching
-                if (base.characterMotor.isGrounded)
-                {
-                   
-                 base.characterMotor.velocity.y = initialGroundedHopCoefficient;
-                    
+                base.characterMotor.velocity = boostVelocity;
 
-                    base.characterMotor.Motor.ForceUnground();
-                    //base.characterMotor.velocity.y = 0;
-
-                    //launch in direction of aimray
-                    base.characterMotor.velocity += new Vector3(base.GetAimRay().direction.x * groundXZBoostCoefficient, Math.Abs(base.GetAimRay().direction.y)*groundYBoostCoefficient, base.GetAimRay().direction.z * groundXZBoostCoefficient);
-                }
-
-                else
-                {
-                    //set y velocity = 0 to make aerial boosting actually useful
-                    base.characterMotor.velocity.y = 0;
-
-                    //launch in direction of aimray
-                    base.characterMotor.velocity += base.GetAimRay().direction * aerialBoostCoefficient;
-
-                }
-                
-                
                 FireLaunchBlast();
             }
 

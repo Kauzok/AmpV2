@@ -21,6 +21,7 @@ namespace AmpMod.SkillStates.BaseStates
             }
         }
 
+
         void OnDisable()
         {
             AkSoundEngine.StopPlayingID(SoundId);

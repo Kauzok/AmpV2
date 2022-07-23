@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2628864206
+CRC: 669853316
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2e770a7f9270fc942640cdf487bfba36
+    Hash: faea10bb8c9322357a77dbe79012a62e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 29b6929560bd48c82d57e041b0b8a741
@@ -189,7 +189,6 @@ Assets:
 - Assets/HenryAssets/Mesh/meshHenryNeo.mesh
 - Assets/HenryAssets/Animations/WalkR.anim
 - Assets/HenryAssets/VFX/HenryDustEffect.prefab
-- Assets/HenryAssets/AmpAnims/mdlAmpUpdatedRuns.fbx
 - Assets/HenryAssets/Animations/SprintL.anim
 - Assets/HenryAssets/Materials/matRebellion.mat
 - Assets/HenryAssets/VFX/Vortex/VortexSpawnExplosion.prefab
@@ -259,6 +258,7 @@ Assets:
 - Assets/HenryAssets/Animations/maskGesture.mask
 - Assets/HenryAssets/VFX/Materials/matPunchImpact.mat
 - Assets/HenryAssets/AmpAnims/metarig_RollAnim.anim
+- Assets/HenryAssets/AmpAnims/mdlAmpnewAnims.fbx
 - Assets/HenryAssets/Mesh/meshHenryAlt.mesh
 - Assets/HenryAssets/Textures/texHenryJedi.png
 - Assets/HenryAssets/VFX/Vortex/VortexSphere.prefab
@@ -390,6 +390,7 @@ Assets:
 - Assets/HenryAssets/Icons/texHenryIcon.png
 - Assets/HenryAssets/VFX/Fulmination/ElectricityChain 1.prefab
 - Assets/HenryAssets/VFX/HeatShock/HeatSwing 1.prefab
+- Assets/HenryAssets/LobbyExplosion.prefab
 - Assets/HenryAssets/Icons/texUtilityIcon.png
 - Assets/HenryAssets/Animations/Ascend.anim
 - Assets/HenryAssets/VFX/Ferroshot/SpikeImpact.prefab
@@ -505,6 +506,7 @@ Assets:
 - Assets/HenryAssets/VFX/Vortex/VortexMuzzleEffect.prefab
 - Assets/HenryAssets/VFX/Charge/Matrix, Dynamic 1.prefab
 - Assets/HenryAssets/AmpAnims/metarig_DescendFastAnim.anim
+- Assets/HenryAssets/AmpAnims/metarig_PulseAnim.anim
 - Assets/HenryAssets/Shaders/deferred/hgsnowtopped.shader
 - Assets/HenryAssets/VFX/Charge/ChargeExplosionObject.prefab
 - Assets/HenryAssets/VFX/Textures/texSlash.png

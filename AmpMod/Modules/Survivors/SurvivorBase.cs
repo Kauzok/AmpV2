@@ -53,7 +53,7 @@ namespace AmpMod.Modules.Survivors
                 Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos, mainRendererIndex);
 
                 displayPrefab = Modules.Prefabs.CreateDisplayPrefab(bodyName + "Display", bodyPrefab, bodyInfo);
-
+                
                 Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, bodyName.ToUpper(), characterUnlockableDef, 101f);
 
                 InitializeHitboxes();
@@ -61,6 +61,9 @@ namespace AmpMod.Modules.Survivors
                 InitializeSkins();
                 InitializeItemDisplays();
                 InitializeDoppelganger();
+
+                var menuSound = displayPrefab.AddComponent<SkillStates.SkillComponents.PlayMenuSound>();
+                menuSound.soundString = "PlayLobbyEntrance";
             }
         }
       

@@ -41,6 +41,10 @@ namespace AmpMod.Modules
         internal static GameObject boltEnterEffect;
         internal static GameObject boltVehicle;
 
+        [Header("Pulse Leap Effects")]
+        internal static GameObject pulseBlastEffect;
+        internal static GameObject pulseMuzzleEffect;
+
         [Header("Plasma Slash Effects")]
         internal static GameObject heatSwing;
         internal static GameObject heatHit;
@@ -61,6 +65,8 @@ namespace AmpMod.Modules
         [Header("Bulwark of Storms Effects")]
         internal static GameObject wormExplosionEffect;
 
+        [Header("Lobby Effects")]
+        internal static GameObject lobbyEntranceEffect;
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
@@ -130,10 +136,8 @@ namespace AmpMod.Modules
                 return;
             }
 
-            // feel free to delete everything in here and load in your own assets instead
-            // it should work fine even if left as is- even if the assets aren't in the bundle
-            swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
 
+            //shockblade hit
             stormbladeHitSoundEvent = CreateNetworkSoundEventDef(StaticValues.stormbladeHit4String);
 
             //create magnetic vortex projectile flight loop event
@@ -184,6 +188,9 @@ namespace AmpMod.Modules
             //on ferroshot/Lorentz Cannon spike collision
             bulletImpactEffect = LoadEffect("SpikeImpact");
 
+            //on pulse leap use
+            CreatePulseBlastPrefab();  
+
             //on magnetic vortex blackhole spawn
             CreateVortexBlackhole();
 
@@ -204,6 +211,8 @@ namespace AmpMod.Modules
             //swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
             swordHitImpactEffect = Assets.LoadEffect("StormbladeHit");
         }
+
+
 
         private static void CreateBoltVehicle()
         {
@@ -303,8 +312,18 @@ namespace AmpMod.Modules
 
             AddNewEffectDef(boltExitEffect);
         }
+        
+        private static void CreatePulseBlastPrefab()
+        {
+            pulseBlastEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffect", true);
+            pulseBlastEffect.AddComponent<NetworkIdentity>();
 
+            pulseMuzzleEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffect", true);
+            pulseMuzzleEffect.AddComponent<NetworkIdentity>();
 
+            AddNewEffectDef(pulseBlastEffect);
+            AddNewEffectDef(pulseMuzzleEffect);
+        }
         private static void CreateBoltEnterPrefab()
         {
             boltEnterEffect = mainAssetBundle.LoadAsset<GameObject>("BoltEnter");

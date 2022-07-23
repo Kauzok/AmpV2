@@ -198,7 +198,7 @@ namespace AmpMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = true,
@@ -249,11 +249,11 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_AMP_BODY_UTILITY_BOOST_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_UTILITY_BOOST_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PulseLeap)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.AltPulseLeap)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 3,
                 baseRechargeInterval = 5f,
-                beginSkillCooldownOnSkillEnd = true,
+                beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
@@ -266,7 +266,7 @@ namespace AmpMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
                 keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
-            });
+            }) ;
 
 
             Modules.Skills.AddUtilitySkills(bodyPrefab, dashSkillDef, boostSkillDef);

@@ -64,6 +64,7 @@ namespace AmpMod.Modules
             skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
             skillLocator.passiveSkill.keywordToken = prefix + "KEYWORD_CHARGE";
+            
         }
 
         // this could all be a lot cleaner but at least it's simple and easy to work with

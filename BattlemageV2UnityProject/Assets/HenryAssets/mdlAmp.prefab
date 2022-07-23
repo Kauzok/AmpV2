@@ -3005,6 +3005,36 @@ Transform:
   m_Father: {fileID: 466900384232268528}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &752143503939991360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5551271746585929861}
+  m_Layer: 0
+  m_Name: SwordTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5551271746585929861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752143503939991360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0087, y: 0.8259, z: 0.0054}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3906928285675411611}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &831199771539714290
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,6 +3202,8 @@ MonoBehaviour:
     transform: {fileID: 4137967635977395953}
   - name: HeatSwing
     transform: {fileID: 8459546826536089811}
+  - name: SwordTip
+    transform: {fileID: 5551271746585929861}
 --- !u!114 &5233461734227876635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5516,6 +5548,7 @@ Transform:
   m_Children:
   - {fileID: 66792481224847077}
   - {fileID: 4174838504220997466}
+  - {fileID: 5551271746585929861}
   m_Father: {fileID: 6803126343668026776}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
