@@ -28,7 +28,7 @@
   - Add muzzle vfx
 - Voltaic Bombardment
   - Adjust muzzle vfx
-  - Add
+  - Add self-hit properties
 - Bulwark of Storms
   - Add VFX & SFX to channelling
   - Make unlockable
