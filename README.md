@@ -12,6 +12,7 @@
   - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
 - Plasma Slash
   - Make unlockable
+  - Change damagetype to strong burn if enemy is charged
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
