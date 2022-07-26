@@ -16,6 +16,7 @@
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
+  - Change sound origin
 - Surge
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
