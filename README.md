@@ -28,6 +28,7 @@
 - Fulmination
   - Consider adjusting chain effect
   - Add muzzle vfx
+  - Add flair
 - Voltaic Bombardment
   - Adjust muzzle vfx
   - Add self-hit properties
