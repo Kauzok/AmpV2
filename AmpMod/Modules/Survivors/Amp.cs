@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.Skills;
 using System;
+using R2API;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -93,7 +94,8 @@ namespace AmpMod.Modules.Survivors
 
         internal override void InitializeUnlockables()
         {
-            masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.MasteryAchievement>(true);
+            //masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.AmpMasteryAchievement>(true);
+            masterySkinUnlockableDef = UnlockableAPI.AddUnlockable<Achievements.AmpMasteryAchievement>();
         }
 
         internal override void InitializeDoppelganger()
@@ -257,7 +259,7 @@ namespace AmpMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
                 mustKeyPress = true,
@@ -315,7 +317,7 @@ namespace AmpMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = true,

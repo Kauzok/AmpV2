@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4096456494
+CRC: 405641
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 21802199593bdacecb598349061e369a
+    Hash: 4aca377a5099684f17434fed9f6416c8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 563193c04493c63ca97f43d6de582e3e
@@ -187,6 +187,7 @@ Assets:
 - Assets/HenryAssets/Textures/Atlases/Materials/ShackleRAtlas.mat
 - Assets/HenryAssets/Shaders/postprocess/hgoutlinehighlight.shader
 - Assets/HenryAssets/Animations/Jump.anim
+- Assets/HenryAssets/EmissionSprite2.png
 - Assets/HenryAssets/Mesh/meshHenryNeo.mesh
 - Assets/HenryAssets/Animations/WalkR.anim
 - Assets/HenryAssets/VFX/HenryDustEffect.prefab
@@ -444,6 +445,7 @@ Assets:
 - Assets/HenryAssets/VFX/Vortex/VortexEffect 1.prefab
 - Assets/HenryAssets/HenryBombGhost.prefab
 - Assets/HenryAssets/Mesh/meshPistol.mesh
+- Assets/HenryAssets/EmissionSprite.png
 - Assets/HenryAssets/Icons/texStingerIcon.png
 - Assets/HenryAssets/VFX/Bolt/MatBoltEffect.mat
 - Assets/HenryAssets/AmpAnims/metarig_SummonReleaseAnim.anim
