@@ -74,13 +74,13 @@ namespace AmpMod.Modules
 
             #region Special2
             LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_NAME", "Voltaic Bombardment");
-            LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"<color=#0091ff>Double Charged</color>. Summon a lightning bolt for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"<color=#0091ff>Double Charged</color>. Summon a lightning bolt for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>. Hit yourself or allies with the bolt to become <style=cIsUtility>overcharged</style>, boosting attack and movement speed.");
             #endregion
 
             #region Special3
             LanguageAPI.Add(prefix + "SPECIAL_WORM_NAME", "Bulwark of Storms");
             LanguageAPI.Add(prefix + "SPECIAL_WORM_DISPLAY_NAME", "Melvin");
-            LanguageAPI.Add(prefix + "SPECIAL_WORM_DESCRIPTION", Helpers.agilePrefix + $"<style=cIsUtility>Channel</style> for 3 seconds, then summon an overloading worm for <style=cIsUtility>30 seconds</style> that has <style=cIsHealing>300% your health</style> and inherits ALL your items.");
+            LanguageAPI.Add(prefix + "SPECIAL_WORM_DESCRIPTION",  $"<style=cIsUtility>Channel</style> for 3 seconds, then summon an overloading worm for <style=cIsUtility>30 seconds</style> that has <style=cIsHealing>300% your health</style> and inherits ALL your items.");
             LanguageAPI.Add(prefix + "SPECIAL_WORMCANCEL_NAME", "Return");
             LanguageAPI.Add(prefix + "SPECIAL_WORMCANCEL_DESCRIPTION", "Return Melvin to the depths.");
             #endregion

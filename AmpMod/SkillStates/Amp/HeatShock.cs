@@ -220,6 +220,10 @@ namespace AmpMod.SkillStates
         public override void OnExit()
         {
             base.OnExit();
+                
+            if (swordMuzzle) EntityState.Destroy(swordMuzzle.gameObject);
+            if (!hasFired) AkSoundEngine.StopPlayingID(stopChargeSound, 0);
+
             animator.SetBool("isUsingIndependentSkill", false);
         }
     }

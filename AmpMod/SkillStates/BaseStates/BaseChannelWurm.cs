@@ -43,6 +43,11 @@ namespace AmpMod.SkillStates
         {
             base.FixedUpdate();
 
+            if (animator.GetBool("attacking"))
+            {
+                this.outer.SetNextStateToMain();
+            }
+
             if (!hasBegunChannelling)
             {
                 hasBegunChannelling = true;

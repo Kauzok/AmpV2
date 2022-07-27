@@ -4,6 +4,8 @@ using EntityStates;
 using UnityEngine.Networking;
 using RoR2.Projectile;
 using R2API;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace AmpMod.SkillStates.Amp
 {
@@ -14,14 +16,16 @@ namespace AmpMod.SkillStates.Amp
         public Vector3 boltPosition;
         public Quaternion lightningRotation;
         private float duration = 1f;
+        private Vector3 strikePosition;
         public float charge;
         static public float lightningChargeTimer = .5f;
         public GameObject lightningStrikeEffect;
         public GameObject lightningStrikeExplosion;
+        private float overchargeDuration = Modules.StaticValues.overChargeDuration;
         bool hasFired;
         public float strikeRadius = 12f;
         protected Animator animator;
-
+        private string AmpName = "NT_AMP_BODY_NAME";
 
 
         public override void OnEnter()
@@ -34,7 +38,7 @@ namespace AmpMod.SkillStates.Amp
             this.duration = this.baseDuration / this.attackSpeedStat;
             animator.SetBool("HasFired", true);
             base.PlayAnimation("LeftArm, Override", "SummonLightning", "Spell.playbackRate", .5f);
-
+            strikePosition = this.boltPosition + Vector3.up * 10;
 
             if (this.muzzleflashEffectPrefab)
             {
@@ -42,6 +46,51 @@ namespace AmpMod.SkillStates.Amp
             }
             
             
+        }
+
+        public void LightningSearch()
+        {
+
+            /* BullseyeSearch search = new BullseyeSearch
+             {
+                 teamMaskFilter = TeamMask.all,
+                 filterByLoS = false,
+                 searchOrigin = strikePosition,
+                 searchDirection = Random.onUnitSphere,
+                 sortMode = BullseyeSearch.SortMode.Distance,
+                 maxDistanceFilter = 12f,
+                 maxAngleFilter = 360f
+             };
+             Debug.Log("searching");
+
+             search.RefreshCandidates();
+
+             HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
+             if (target)
+             {
+                 if (target.healthComponent && target.healthComponent.body)
+                 {
+                     if (target.healthComponent.body.baseNameToken == AmpName)
+                     {
+                         base.characterBody.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+
+                     }
+                 }
+             } */
+            ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(base.characterBody.teamComponent.teamIndex);
+            float num = 144f;
+            Vector3 position = strikePosition;
+            for (int i = 0; i < teamMembers.Count; i++)
+            {
+                if ((teamMembers[i].transform.position - position).sqrMagnitude <= num)
+                {
+                    CharacterBody body = teamMembers[i].GetComponent<CharacterBody>();
+                    if (body)
+                    {
+                        body.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+                    }
+                }
+            }
         }
 
         //used to set delay for attack
@@ -82,6 +131,7 @@ namespace AmpMod.SkillStates.Amp
 
             if (base.isAuthority)
             {
+                
 
                 Ray aimRay = base.GetAimRay();
 
@@ -125,9 +175,9 @@ namespace AmpMod.SkillStates.Amp
                     damageType = DamageType.Generic,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
-                    
+
                     //blastattack is positioned 10 units above where the reticle is placed
-                    position = this.boltPosition + Vector3.up * 10,
+                    position = strikePosition,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
                     radius = this.strikeRadius,
@@ -136,6 +186,7 @@ namespace AmpMod.SkillStates.Amp
                 lightningStrike.AddModdedDamageType(Modules.DamageTypes.apply2Charge);
                 
                 lightningStrike.Fire();
+                LightningSearch();
 
 
             }

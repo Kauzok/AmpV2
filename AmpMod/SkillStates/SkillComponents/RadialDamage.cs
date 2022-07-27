@@ -1,6 +1,7 @@
 ﻿using RoR2;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using RoR2.Audio;
 using System.Collections.Generic;
 using HG;
 using UnityEngine.Networking;
@@ -29,6 +30,7 @@ namespace AmpMod.SkillStates
 		public GameObject explosionEffect;
 		private string explosionString = Modules.StaticValues.vortexExplosionString;        
 		private string loopString = Modules.StaticValues.vortexLoopString;
+		
 
 		[Header("Damage Owner/Positional Parameters")]
 		public GameObject attacker;
@@ -44,12 +46,19 @@ namespace AmpMod.SkillStates
 			this.transform = base.GetComponent<Transform>();
 			this.teamFilter = base.GetComponent<TeamFilter>();
 			this.sphereSearch = new SphereSearch();
-			
+
 			//play spawn sound i don't care if this isn't a good way to code things i'm not making a separate component for this
-			AkSoundEngine.PostEvent(spawnSound, gameObject);
+			//AkSoundEngine.PostEvent(spawnSound, gameObject);
+			PointSoundManager.EmitSoundServer(Modules.Assets.vortexSpawnSoundEvent.index, this.transform.position);
+
+			//NetworkSoundEventDef spawnEvent;
+
+			//PointSoundManager.EmitSoundServer(vortexS.index, base.transform.position);
 
 			//play looping vortex sound
-			AkSoundEngine.PostEvent(loopString, gameObject);
+			//AkSoundEngine.PostEvent(loopString, gameObject);
+			PointSoundManager.EmitSoundServer(Modules.Assets.vortexLoopSoundEvent.index, this.transform.position);
+
 			//declare explosion to be used on vortex destruction
 			radialBlast = new BlastAttack
 			{

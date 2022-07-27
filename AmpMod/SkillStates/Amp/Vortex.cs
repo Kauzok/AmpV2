@@ -22,7 +22,7 @@ namespace AmpMod.SkillStates
         private uint stopCharge;
         private ChildLocator childLocator;
         private Transform leftMuzzleTransform;
-        private float baseChargeTime = .75f;
+        private float baseChargeTime = .6f;
         private float baseDuration = 1f;
         private float chargeTime;
         private float duration;

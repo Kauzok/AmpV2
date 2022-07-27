@@ -14,7 +14,7 @@ namespace AmpMod.Modules
         public const string chargeDesc = "<style=cKeywordName>Charged</style>" + "<style=cSub>Applies one stack of <color=#0091ff>charge</color> to an enemy. On three stacks, create a <style=cIsUtility>shocking</style> static electricity explosion dealing <style=cIsDamage>400% damage</style>.";
         public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
 
-        internal static string descriptionText = "Amp is an agile melee-range hybrid that focuses on consistently dealing damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
+        internal static string descriptionText = "Amp is an agile melee-range hybrid that focuses on dealing heavy AOE damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Modified Shockblade can be used in tandem with most of Amp's non-utility abilities, so keep slashing!" + Environment.NewLine + Environment.NewLine
              + "< ! > Each of Lorentz Cannon's projectiles counts as its own, so use it to rack up status effects fast." + Environment.NewLine + Environment.NewLine
              + "< ! > If you can control it, Surge can be used to deal an easy 400% damage by running back and forth into enemies to quickly charge them." + Environment.NewLine + Environment.NewLine
@@ -69,6 +69,9 @@ namespace AmpMod.Modules
 
         [Header("Voltaic Bombardment Values")]
         internal const float lightningStrikeCoefficient = 12.5f;
+        internal const float overChargeDuration = 3f;
+        internal const float overchargeMoveSpeed = 2.5f;
+        internal const float overchargeAttackSpeed = .3f;
 
         [Header("Bulwark of Storm Values")]
 

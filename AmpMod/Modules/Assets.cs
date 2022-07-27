@@ -73,6 +73,7 @@ namespace AmpMod.Modules
         internal static NetworkSoundEventDef vortexLoopSoundEvent;
         internal static NetworkSoundEventDef vortexFlightLoopSoundEvent;
         internal static NetworkSoundEventDef stormbladeHitSoundEvent;
+        internal static NetworkSoundEventDef vortexSpawnSoundEvent;
         internal static NetworkSoundEventDef heatShockSwingSoundEvent;
         internal static NetworkSoundEventDef heatShockHitSoundEvent;
 
@@ -145,6 +146,9 @@ namespace AmpMod.Modules
 
             //magnetic vortex loop sound effect
             vortexLoopSoundEvent = CreateNetworkSoundEventDef(StaticValues.vortexLoopString);
+
+            //magnetic vortex spawn sound effect
+            vortexSpawnSoundEvent = CreateNetworkSoundEventDef(StaticValues.vortexSpawnString);
 
             //heatshock hit & swing sound events
             heatShockHitSoundEvent = CreateNetworkSoundEventDef(StaticValues.heatHitString);
@@ -288,7 +292,7 @@ namespace AmpMod.Modules
         {
            
             lightningMuzzleChargePrefab = mainAssetBundle.LoadAsset<GameObject>("HandSpark");
-            AddNewEffectDef(lightningMuzzleChargePrefab);
+            //AddNewEffectDef(lightningMuzzleChargePrefab);
         }
 
         private static void CreateWormEffects()
@@ -320,6 +324,8 @@ namespace AmpMod.Modules
 
             pulseMuzzleEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffect", true);
             pulseMuzzleEffect.AddComponent<NetworkIdentity>();
+
+            AmpPlugin.Destroy(pulseMuzzleEffect.GetComponent<EffectComponent>());
 
             AddNewEffectDef(pulseBlastEffect);
             AddNewEffectDef(pulseMuzzleEffect);

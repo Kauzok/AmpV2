@@ -80,10 +80,13 @@ namespace AmpMod.SkillStates
 			baseticktotal = Mathf.CeilToInt(basetickFrequency * fulminationDuration);
 			tickDamageCoefficient = totalDamageCoefficient / baseticktotal;
 
+			animator.SetBool("isUsingIndependentSkill", true);
+
+
 			//play animation
 			base.PlayAnimation("Fulminate, Override", "FulminateStart", "BaseSkill.playbackRate", entryDuration);
 
-			animator.SetBool("isUsingIndependentSkill", true);
+			
 
 			animator.SetBool("isFulminating", true);
 			
@@ -228,7 +231,7 @@ namespace AmpMod.SkillStates
 
 				//play sound and set stopID
 				stopSoundID = Util.PlaySound(attackSoundString, base.gameObject);
-				base.PlayAnimation("Fulminate, Override", "FulminateHold", "Shoot.Playbackrate", baseFulminationDuration);
+				//base.PlayAnimation("Fulminate, Override", "FulminateHold", "BaseSkill.playbackRate", baseFulminationDuration);
 
 				//fire actual damage dealing bulletattack
 				FireLightning("HandL");

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 669853316
+CRC: 4096456494
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: faea10bb8c9322357a77dbe79012a62e
+    Hash: 21802199593bdacecb598349061e369a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 29b6929560bd48c82d57e041b0b8a741
+    Hash: 563193c04493c63ca97f43d6de582e3e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,11 +42,11 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+- Class: 114
   Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
 - Class: 114
   Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -118,19 +118,19 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 114
+  Script: {fileID: 816898038, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 511512695, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 2011550347, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 296141222, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
   Script: {fileID: -1835779776, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -875252823, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
-  Script: {fileID: 511512695, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: 816898038, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
   Script: {fileID: -335047464, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: 296141222, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: 2011550347, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 120
@@ -172,6 +172,7 @@ Assets:
 - Assets/HenryAssets/Textures/Atlases/Materials/ForearmLAtlas.mat
 - Assets/HenryAssets/Mesh/meshHenry.mesh
 - Assets/HenryAssets/Textures/Atlases/Materials/ShoulderLAtlas.mat
+- Assets/HenryAssets/SpriteSuitMesh.mesh
 - Assets/HenryAssets/HenryDisplay.prefab
 - Assets/HenryAssets/VFX/Mesh/meshBoxingGlove.mesh
 - Assets/HenryAssets/Textures/Atlases/Materials/SwordAtlas.mat
@@ -201,10 +202,10 @@ Assets:
 - Assets/HenryAssets/Textures/texBoxingGlove.png
 - Assets/HenryAssets/AmpAnims/maskAmpFulminate.mask
 - Assets/HenryAssets/Animations/maskAimYaw.mask
-- Assets/HenryAssets/SuitAtlas5.png
 - Assets/HenryAssets/Icons/texDanteAchievement.png
 - Assets/HenryAssets/Shaders/deferred/hgwavycloth.shader
 - Assets/HenryAssets/Icons/texSecondaryIcon.png
+- Assets/HenryAssets/mdlAmpMasteryColorsRealFinal.fbx
 - Assets/HenryAssets/Animations/animHenry.controller
 - Assets/HenryAssets/VFX/Bolt/texMageMatrixMaskDirectional.asset
 - Assets/HenryAssets/Shaders/ui/hguicustomblend.shader
@@ -242,6 +243,7 @@ Assets:
 - Assets/HenryAssets/VFX/Stormblade/StormbladeSwing.prefab
 - Assets/HenryAssets/AmpAnims/AnimAmp 1.controller
 - Assets/HenryAssets/VFX/Bolt/MatBoltEnter.mat
+- Assets/HenryAssets/AmpAnims/metarig_FulminateRunHoldAnim.anim
 - Assets/HenryAssets/Animations/LightImpact.anim
 - Assets/HenryAssets/VFX/Charge/Flash, Blue Variant.prefab
 - Assets/HenryAssets/AmpAnims/metarig_VortexLaunchAnim.anim
@@ -255,10 +257,10 @@ Assets:
 - Assets/HenryAssets/Shaders/deferred/hgtriplanarterrainblend.shader
 - Assets/HenryAssets/BoltVehicle.prefab
 - Assets/HenryAssets/HandSparkEffect.prefab
+- Assets/HenryAssets/matSpriteSuit.mat
 - Assets/HenryAssets/Animations/maskGesture.mask
 - Assets/HenryAssets/VFX/Materials/matPunchImpact.mat
 - Assets/HenryAssets/AmpAnims/metarig_RollAnim.anim
-- Assets/HenryAssets/AmpAnims/mdlAmpnewAnims.fbx
 - Assets/HenryAssets/Mesh/meshHenryAlt.mesh
 - Assets/HenryAssets/Textures/texHenryJedi.png
 - Assets/HenryAssets/VFX/Vortex/VortexSphere.prefab
@@ -305,6 +307,7 @@ Assets:
 - Assets/HenryAssets/Shaders/environment/hgdistantwater.shader
 - Assets/HenryAssets/Icons/texFulmination.png
 - Assets/HenryAssets/Textures/Atlases/Materials/BaseMeshAtlas.mat
+- Assets/HenryAssets/AmpAnims/mdlAmpUpdatedRuns.fbx
 - Assets/HenryAssets/VFX/Bulwark/matWormExplosion.mat
 - Assets/HenryAssets/AmpAnims/metarig_JumpAnim.anim
 - Assets/HenryAssets/AmpAnims/metarig_WalkAnim 1.anim
@@ -313,6 +316,7 @@ Assets:
 - Assets/HenryAssets/VFX/Bolt/AssassinDaggerMesh.asset
 - Assets/HenryAssets/Animations/maskLeftArm.mask
 - Assets/HenryAssets/Mesh/MeshHenryGun.mesh
+- Assets/HenryAssets/SpriteSwordAtlas.png
 - Assets/HenryAssets/VFX/Fulmination/ChainLightningEffect.prefab
 - Assets/HenryAssets/VFX/Bolt/texMageLaserMask.asset
 - Assets/HenryAssets/Animations/DescendFast.anim
@@ -347,12 +351,12 @@ Assets:
 - Assets/HenryAssets/AmpDisplay.prefab
 - Assets/HenryAssets/Textures/texHenry.png
 - Assets/HenryAssets/Icons/texBazookaOutIcon.png
-- Assets/HenryAssets/SuitAtlas2.png
 - Assets/HenryAssets/HandSpark.prefab
 - Assets/HenryAssets/Textures/Atlases/Materials/ShackleLAtlas.mat
 - Assets/HenryAssets/Animations/maskAimPitch.mask
 - Assets/HenryAssets/Icons/texUziIcon.png
 - Assets/HenryAssets/AmpAnims/metarig_HeatShockAnim.anim
+- Assets/HenryAssets/VFX/PulseLeap/PulseMuzzleObject.prefab
 - Assets/HenryAssets/VFX/Bolt/texLightning1Mask.asset
 - Assets/HenryAssets/AmpAnims/metarig_DescendMediumAnim.anim
 - Assets/HenryAssets/VFX/Charge/Mat.png
@@ -402,6 +406,7 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texPunchImpact.png
 - Assets/HenryAssets/Shaders/ui/hguiignorez.shader
 - Assets/HenryAssets/AmpAnims/metarig_LaunchAnim 1.anim
+- Assets/HenryAssets/spriteSuitAtlas.png
 - Assets/HenryAssets/mdlHenry.prefab
 - Assets/HenryAssets/Mesh/meshRebellion.mesh
 - Assets/HenryAssets/Materials/matSpike.mat
@@ -460,12 +465,12 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_FulminateEndAnim.anim
 - Assets/HenryAssets/Animations/RestIdleIn.anim
 - Assets/HenryAssets/VFX/Materials/matRipple.mat
+- Assets/HenryAssets/AmpAnims/metarig_PulseExitAnim.anim
 - Assets/HenryAssets/Textures/Atlases/Materials/BicepLAtlas.mat
 - Assets/HenryAssets/texLightning1Mask.asset
 - Assets/HenryAssets/Textures/Atlases/BaseAtlas.png
 - Assets/HenryAssets/Icons/texLorentz.png
 - Assets/HenryAssets/Animations/DefaultPose.anim
-- Assets/HenryAssets/SuitAtlas6.png
 - Assets/HenryAssets/Materials/matShotgun.mat
 - Assets/HenryAssets/VFX/Bolt/Test.mat
 - Assets/HenryAssets/AmpAnims/metarig_AimPitch.anim
@@ -515,9 +520,8 @@ Assets:
 - Assets/HenryAssets/Textures/texHenryDanteEmission.png
 - Assets/HenryAssets/Animations/MenuIdleIn.anim
 - Assets/HenryAssets/VFX/ImpactHenryPunch.prefab
-- Assets/HenryAssets/SuitAtlas.png
 - Assets/HenryAssets/AmpAnims/metarig_WalkAnim.anim
-- Assets/HenryAssets/SuitAtlas3.png
+- Assets/HenryAssets/matSpriteSword.mat
 - Assets/HenryAssets/Animations/Slash1.anim
 - Assets/HenryAssets/VFX/HenryBazookaExplosionEffect.prefab
 - Assets/HenryAssets/Animations/Roll.anim

@@ -203,6 +203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198464213672787702, guid: 48924b1b0b8acdb4fa433b41d1df6028,
         type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 198464213672787702, guid: 48924b1b0b8acdb4fa433b41d1df6028,
+        type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 1.2
       objectReference: {fileID: 0}
@@ -215,7 +220,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: c441ff513cdc26a4a9b16f1d6e534e70, type: 2}
+      objectReference: {fileID: 2100000, guid: 14335fd1ae42a0c40bd5f6b5c1446dcd, type: 2}
     m_RemovedComponents:
     - {fileID: 5295473917629420755, guid: 48924b1b0b8acdb4fa433b41d1df6028, type: 3}
     - {fileID: 6487077092492724182, guid: 48924b1b0b8acdb4fa433b41d1df6028, type: 3}

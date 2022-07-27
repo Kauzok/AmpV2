@@ -10,6 +10,7 @@ namespace AmpMod.Modules
         internal static BuffDef chargeBuildup;
         internal static BuffDef noFulmination;
         internal static BuffDef noSurge;
+        internal static BuffDef overCharge;
 
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
@@ -19,6 +20,7 @@ namespace AmpMod.Modules
             chargeBuildup = AddNewBuff("AmpChargeBuildup", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChargeDebuffAlt"), new Color32(0, 145, 255, 255), true, true);
             noSurge = AddNewBuff("AmpNoSurge", null, new Color32(0, 0, 0, 0), false, true);
             noFulmination = AddNewBuff("AmpNoFulmination", null, new Color32(0, 0, 0, 0), false, true);
+            overCharge = AddNewBuff("AmpOverCharge", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
         }
 
         // simple helper method

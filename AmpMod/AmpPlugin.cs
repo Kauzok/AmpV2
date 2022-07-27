@@ -32,6 +32,7 @@ namespace AmpMod
         "DamageAPI",
         "OrbAPI",
         "EffectAPI",
+        "RecalculateStatsAPI",
     })]
 
     public class AmpPlugin : BaseUnityPlugin
@@ -121,6 +122,7 @@ namespace AmpMod
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
+            RecalculateStatsAPI.GetStatCoefficients += overChargeStatGrant;
 
         }
 
@@ -311,7 +313,19 @@ namespace AmpMod
 
         }
 
-        //hook for checking if body has chargedebuff
+        private void overChargeStatGrant(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (body && body.HasBuff(Buffs.overCharge))
+            {
+                
+                args.baseMoveSpeedAdd += StaticValues.overchargeMoveSpeed;
+
+                
+                args.attackSpeedMultAdd +=  StaticValues.overchargeAttackSpeed;
+            }
+        }
+
+        //hook for checking if body has chargedebuff/overcharge buff
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
            
@@ -320,6 +334,7 @@ namespace AmpMod
 
                 if (NetworkServer.active)
                 {
+                    
                     //check if body has chargebuildup buff
                     if (self.HasBuff(Buffs.chargeBuildup))
                     {
