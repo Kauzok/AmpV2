@@ -22,6 +22,7 @@ namespace AmpMod.Modules
         //on hit chain to enemies with fulmination's chain effect
         public static DamageAPI.ModdedDamageType fulminationChain = DamageAPI.ReserveDamageType();
 
+        public static DamageAPI.ModdedDamageType strongBurnIfCharged = DamageAPI.ReserveDamageType();
        
         
 

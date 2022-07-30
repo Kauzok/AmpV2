@@ -13,14 +13,17 @@ namespace AmpMod.SkillStates
 		[Header("Effect/Animation Variables")]
 		public GameObject lightningEffectPrefab = Modules.Assets.electricStreamEffect;
 		public static GameObject impactEffectPrefab = Modules.Assets.electricImpactEffect;
+		private GameObject muzzleEffectPrefab = Modules.Assets.electricMuzzleEffect;
 		public EffectData fulminationData;
 		private Transform fulminationTransform;
+		private Transform muzzleTransform;
 		private Transform handLTransform;
 		private ChildLocator childLocator;
+		private bool hasMuzzleEffect;
 		private Animator animator;
 
 		[Header("Attack Variables")]
-		public static float radius;
+		public static float radius = 1f;
 		public static float basetickFrequency = 6f;
 		public static float tickFrequency;
 		public static float force = 20f;
@@ -39,7 +42,7 @@ namespace AmpMod.SkillStates
 		[Header("Duration/Timer Variables")]
 		public static float delayTime = .2f;
 		public static float baseEntryDuration = .5f;
-		public static float baseFulminationDuration = 4f;
+		public static float baseFulminationDuration = 3f;
 		private float fulminationStopwatch;
 		private float stopwatch;
 		public float entryDuration;
@@ -69,6 +72,7 @@ namespace AmpMod.SkillStates
 				childLocator = modelTransform.GetComponent<ChildLocator>();
 				handLTransform = childLocator.FindChild("HandL");
 			}
+
 
 			//play enter sound
 			Util.PlaySound(Modules.StaticValues.fulminationEnterString, base.gameObject);
@@ -131,6 +135,8 @@ namespace AmpMod.SkillStates
 				specialSlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 			}
 
+
+
 			base.OnExit();
 
 			//play exit sound
@@ -146,6 +152,10 @@ namespace AmpMod.SkillStates
 					EntityState.Destroy(fulminationTransform.gameObject);
 
 				}
+			if (muzzleTransform)
+            {
+				EntityState.Destroy(muzzleTransform.gameObject);
+            }
 
 			animator.SetBool("isFulminating", false);
 			animator.SetBool("isUsingIndependentSkill", false);
@@ -203,13 +213,22 @@ namespace AmpMod.SkillStates
 		public override void FixedUpdate()
 		{	
 			base.FixedUpdate();
-	
+			
+			if (!hasMuzzleEffect)
+            {
+				muzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, handLTransform).transform;
+				hasMuzzleEffect = true;
+				Debug.Log("Spawning Muzzle Effect");
+			}
+
 
 			stopwatch += Time.fixedDeltaTime;
 			if (stopwatch >= entryDuration && !hasBegunFulmination)
 			{
 				hasBegunFulmination = true;
-				
+				EntityState.Destroy(muzzleTransform.gameObject);
+				hasMuzzleEffect = false;
+
 				//allows amp to start slashing again
 				animator.SetBool("isUsingIndependentSkill", false);
 
@@ -220,6 +239,12 @@ namespace AmpMod.SkillStates
 					
 					if (transform)
 					{
+						if (muzzleTransform)
+						{
+							EntityState.Destroy(muzzleTransform.gameObject);
+						}
+
+
 						fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
 					}
 

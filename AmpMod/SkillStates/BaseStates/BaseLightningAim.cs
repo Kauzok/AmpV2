@@ -49,8 +49,8 @@ namespace AmpMod.SkillStates.BaseStates
                 }
 
                 
-                base.PlayAnimation("LeftArm, Override", "ChargeLightning", "Spell.playbackRate", 0.4f);
-                base.PlayAnimation("LeftArm, Override", "HoldLightning", "Spell.playbackRate", 0.4f);
+                base.PlayAnimation("LeftArm, Override", "ChargeLightning", "BaseSkill.playbackRate", 0.4f);
+                base.PlayAnimation("LeftArm, Override", "HoldLightning", "BaseSkill.playbackRate", 0.4f);
 
                 this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
                 this.defaultCrosshairPrefab = base.characterBody._defaultCrosshairPrefab;
@@ -76,7 +76,7 @@ namespace AmpMod.SkillStates.BaseStates
             {
                 if (this.areaIndicatorInstance)
                 {
-                    float maxDistance = 200f;
+                    float maxDistance = 100f;
 
                     Ray aimRay = base.GetAimRay();
                     RaycastHit raycastHit;

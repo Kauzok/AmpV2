@@ -17,7 +17,7 @@ namespace AmpMod.SkillStates
         public static SkillDef cancelSkillDef;
         public static CharacterMaster wormMaster;
         public CharacterBody wormBody;
-        public static GameObject wormExplosion = Modules.Assets.wormExplosionEffect;
+        public static GameObject wormExplosion;
         public static object src = new SummonWurm();
         private bool hasSpawned;
         private float wormLifeDuration = 30f;
@@ -29,7 +29,7 @@ namespace AmpMod.SkillStates
         {
 
             base.OnEnter();
-            base.PlayAnimation("Worm, Override", "WormChannelRelease", null, 1.4F);
+            base.PlayAnimation("Worm, Override", "WormChannelRelease", "BaseSkill.playbackRate", .5f);
 
             
 
@@ -78,16 +78,12 @@ namespace AmpMod.SkillStates
         {
             GameObject masterPrefab = MasterCatalog.FindMasterPrefab("ElectricWormMaster");
 
+
             Util.PlaySound(summonSoundString, base.gameObject);
 
             //body.baseMaxHealth = 1f;
 
-            EffectData wormExplosionData = new EffectData
-            {
-                origin = base.characterBody.corePosition,
-                scale = 1f,
-            };
-            EffectManager.SpawnEffect(wormExplosion, wormExplosionData, true) ;
+            EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
 
 
 

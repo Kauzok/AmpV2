@@ -24,8 +24,7 @@ namespace AmpMod.SkillStates.BaseStates
 				genericFloat = base.duration
 			};
 			effectData.SetHurtBoxReference(this.target);
-			//EffectManager.SpawnEffect(
-			//<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), effectData, true);
+			//EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), effectData, true);
 			EffectManager.SpawnEffect(chainEffect, effectData, true);
 		
 		}

@@ -57,6 +57,7 @@ namespace AmpMod.Modules
         internal static GameObject electricStreamEffect;
         internal static GameObject electricImpactEffect;
         internal static GameObject electricChainEffect;
+        internal static GameObject electricMuzzleEffect;
 
         [Header("VoltaicBombardment Effects")]
         internal static GameObject lightningStrikePrefab;
@@ -156,9 +157,6 @@ namespace AmpMod.Modules
 
             //plasma slash explosion sound events
             plasmaExplosionSoundEvent = CreateNetworkSoundEventDef(StaticValues.plasmaExplosionString);
-
-            //on fulmination skill contact
-            electricImpactEffect = LoadEffect("ElectricitySphere", null);
 
             //on voltaic bombardment aim
             CreateLightningCharge();
@@ -303,7 +301,18 @@ namespace AmpMod.Modules
         
         private static void CreateStreamPrefab()
         {
+
+            CreateVFXMaterial("matMageLightningLaser");
+            CreateVFXMaterial("matLightningStrike");
+
             electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");
+
+            electricMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("FulminationMuzzleObject");
+
+            //CreateVFXMaterial("lightningEffect");
+
+            //on fulmination skill contact
+            electricImpactEffect = LoadEffect("ElectricitySphere 1", null);
             electricStreamEffect.AddComponent<NetworkIdentity>();
 
         }
@@ -558,6 +567,14 @@ namespace AmpMod.Modules
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
             mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/deferred/hgstandard");
+            return mat;
+        }
+
+        public static Material CreateVFXMaterial(string materialName)
+        {
+            Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+
+            mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
             return mat;
         }
 

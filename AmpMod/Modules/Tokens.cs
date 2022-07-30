@@ -49,7 +49,7 @@ namespace AmpMod.Modules
 
             #region Secondary3
             LanguageAPI.Add(prefix + "SECONDARY_PLASMASLASH_NAME", "Plasma Slash");
-            LanguageAPI.Add(prefix + "SECONDARY_PLASMASLASH_DESCRIPTION",  $"Perform a sweeping slash with your sword for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage, <style=cIsDamage>burning</style> enemies. If in the air, launch a <style=cIsDamage>burning</style> wave of plasma for <style=cIsDamage>{100f * StaticValues.fireBeamDamageCoefficient}%</style> damage.");
+            LanguageAPI.Add(prefix + "SECONDARY_PLASMASLASH_DESCRIPTION",  $"Perform a sweeping slash with your sword for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage, <style=cIsDamage>burning</style> enemies. If in the air, launch a <style=cIsDamage>burning</style> wave of plasma for <style=cIsDamage>{100f * StaticValues.fireBeamDamageCoefficient}%</style> damage. <color=#0091ff>Charged</color> enemies <style=cIsDamage>burn stronger</style>.");
 
             #endregion
 

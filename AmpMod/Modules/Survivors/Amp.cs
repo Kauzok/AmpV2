@@ -192,7 +192,7 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texLorentz"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PLASMASLASH)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PlasmaSlash)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 3.5f,
@@ -208,7 +208,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                //keywordTokens = new string[] { "KEYWORD_AGILE" }
+                keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             });
 
 
@@ -259,7 +259,7 @@ namespace AmpMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
                 mustKeyPress = true,

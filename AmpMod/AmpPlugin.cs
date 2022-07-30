@@ -118,7 +118,7 @@ namespace AmpMod
 
         private void Hook()
         {
-            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            //On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
@@ -243,6 +243,20 @@ namespace AmpMod
                 }
             } */
 
+            if (info.HasModdedDamageType(DamageTypes.strongBurnIfCharged))
+            {
+                if (self.body.HasBuff(Buffs.chargeBuildup))
+                {
+                    DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.StrongerBurn);
+                }
+
+                else
+                {
+                    DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.Burn);
+                }
+                
+            }
+
             
             //creates fulmination orb; essentially a copy of lightning orb but with the effect changed to our own; responsible for creating chain damage and effect
             if (info.HasModdedDamageType(DamageTypes.fulminationChain))
@@ -319,14 +333,26 @@ namespace AmpMod
             {
                 
                 args.baseMoveSpeedAdd += StaticValues.overchargeMoveSpeed;
-
-                
                 args.attackSpeedMultAdd +=  StaticValues.overchargeAttackSpeed;
+                
+               /* if (body.modelLocator.modelTransform)
+                {
+                    CharacterModel component = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
+                    if (component)
+                    {
+                        var temporaryOverlay = base.gameObject.AddComponent<TemporaryOverlay>();
+                        temporaryOverlay.duration = StaticValues.overChargeDuration;
+                        temporaryOverlay.destroyComponentOnEnd = true;
+                        temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matIsShocked");
+                        temporaryOverlay.AddToCharacerModel(component); 
+                    }
+                } */
+
             }
         }
 
         //hook for checking if body has chargedebuff/overcharge buff
-        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+      /*  private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
            
             if (self)
@@ -396,9 +422,9 @@ namespace AmpMod
             }
 
 
-            orig(self);
+            orig(self); 
 
-        }
+        } */
 
     }
 }

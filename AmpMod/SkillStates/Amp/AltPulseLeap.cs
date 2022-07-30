@@ -21,7 +21,8 @@ namespace AmpMod.SkillStates
         private Vector3 initialLaunchVelocity;
         private float blastRadius = 11f;
         private float flyDuration = .15f; //.4f;
-        private float exitDuration = 1f;//1.5f;
+        private float exitAnimDuration = .75f;
+        private float exitDuration = 1.2f;//1f;
         private Transform modelTransform;
         private bool hasResetRot;
         private bool hasFlown;
@@ -260,10 +261,10 @@ namespace AmpMod.SkillStates
 
                
                 base.characterMotor.disableAirControlUntilCollision = false;
-                this.rotator.ResetRotation(0.5f);
+                this.rotator.ResetRotation(0.3f);
                 hasResetRot = true;
                 base.characterMotor.velocity.y = 0f;
-                this.PlayAnimation("FullBody, Override", "PulseExit", "BaseSkill.playbackRate", this.exitDuration);
+                this.PlayAnimation("FullBody, Override", "PulseExit", "BaseSkill.playbackRate", exitAnimDuration);//this.exitDuration);
                 hasFlown = true;
 
             }
@@ -287,6 +288,8 @@ namespace AmpMod.SkillStates
         }
 
 
+
+
         public override void OnExit()
         {
 
@@ -296,6 +299,7 @@ namespace AmpMod.SkillStates
                 base.characterMotor.disableAirControlUntilCollision = false;
                 this.rotator.ResetRotation(0.5f);
                 hasResetRot = true;
+                this.PlayAnimation("FullBody, Override", "PulseExit", "BaseSkill.playbackRate", exitAnimDuration);
 
             }
             animator.SetBool("isFlying", false);
