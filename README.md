@@ -34,7 +34,7 @@
   - Add flair
 - Voltaic Bombardment
   - Adjust muzzle vfx
-  - Add self-hit properties
+  - Add self-hit properties in multiplayer
 - Bulwark of Storms
   - Add VFX & SFX to channelling
   - Make unlockable
