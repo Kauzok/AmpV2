@@ -24,6 +24,7 @@
   - Look into "Received networktransform data for an object that doesn't exist" warning
 - Pulse Leap
   - Adjust exit animation
+  - Make explosion deal damage in multiplayer
 - Thunder Crash
   - Add Skill
   - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
