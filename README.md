@@ -7,9 +7,6 @@
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
-- Tesla Shot
-  - Add skill
-  - Desc: Charge and fire a piercing beam of electricity, dealing 400% - 1400% damage and applying charge.
 - Plasma Slash
   - Make unlockable
   - Make effect show up in multiplayer
