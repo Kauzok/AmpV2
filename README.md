@@ -2,7 +2,7 @@
 - WIP Amp, a melee/range hybrid who fights with electromagnetic attacks. Original name battlemage, will adjust other name tokens later. Updated for SoTV
 ## Skills To Do
 - Stormblade
-  - Fix checkroll behavior
+  - Fix checkroll behavior in multiplayer
   - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
@@ -25,19 +25,15 @@
 - Pulse Leap
   - Adjust exit animation
   - Make explosion deal damage in multiplayer
-- Thunder Crash
-  - Add Skill
-  - Desc: Charge up a lightning-infused dash and charge forward, dealing 150-300% damage to enemies you hit and exploding for 800-1400% damage on end.
+  - Make skill remove fall damage in multiplayer
 - Fulmination
   - Consider adjusting chain effect
-  - Add muzzle vfx
-  - Add flair
 - Voltaic Bombardment
   - Adjust muzzle vfx
   - Add self-hit properties in multiplayer
 - Bulwark of Storms
   - Add VFX & SFX to channelling
-  - Make worm actually spawn
+  - Make worm actually spawn in multiplayer
   - Make unlockable
 - Charge
   - Add in alternate effect asides from just damage
