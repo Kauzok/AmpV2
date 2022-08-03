@@ -14,6 +14,7 @@
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
   - Change sound origin
+  - Make explosion fx/damage & radial damage appear in multiplayer
 - Surge
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
