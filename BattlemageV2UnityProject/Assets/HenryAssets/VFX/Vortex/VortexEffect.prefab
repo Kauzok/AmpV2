@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3840823726000184351}
   - component: {fileID: 6040750299624668297}
   - component: {fileID: 3900683093873861284}
+  - component: {fileID: 3511973010390895049}
   m_Layer: 0
   m_Name: VortexEffect
   m_TagString: Untagged
@@ -4754,6 +4755,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3511973010390895049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852436468461654518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxPriority: 2
+  vfxIntensity: 0
+  optionalLights: []
+  secondaryParticleSystem: []
 --- !u!1001 &7032073098227741149
 PrefabInstance:
   m_ObjectHideFlags: 0

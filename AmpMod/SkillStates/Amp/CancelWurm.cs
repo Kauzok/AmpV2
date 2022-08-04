@@ -21,7 +21,7 @@ namespace AmpMod.SkillStates
 
             if (SummonWurm.wormMaster)
             {
-                //SummonWurm.wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = 0f;
+                SummonWurm.wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = 0f;
                 SummonWurm.wormMaster.TrueKill();
             }
             
@@ -33,11 +33,15 @@ namespace AmpMod.SkillStates
         {
             base.OnExit();
 
-            cancelSkillDef = SummonWurm.cancelSkillDef;
+           cancelSkillDef = SummonWurm.cancelSkillDef;
 
-            specialSlot = base.skillLocator.special;
+           specialSlot = base.skillLocator.special;
 
-            this.specialSlot.UnsetSkillOverride(SummonWurm.src, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            if (specialSlot && cancelSkillDef)
+            {
+                this.specialSlot.UnsetSkillOverride(SummonWurm.src, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            }
+          
             Debug.Log("Exiting");
         }
 

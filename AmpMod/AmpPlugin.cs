@@ -30,8 +30,8 @@ namespace AmpMod
         "LanguageAPI",
         "SoundAPI",
         "DamageAPI",
-        "OrbAPI",
-        "EffectAPI",
+        //"OrbAPI",
+        //"EffectAPI",
         "RecalculateStatsAPI",
     })]
 
@@ -118,7 +118,7 @@ namespace AmpMod
 
         private void Hook()
         {
-            //On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
@@ -352,7 +352,7 @@ namespace AmpMod
         }
 
         //hook for checking if body has chargedebuff/overcharge buff
-      /*  private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
            
             if (self)
@@ -424,7 +424,7 @@ namespace AmpMod
 
             orig(self); 
 
-        } */
+        } 
 
     }
 }

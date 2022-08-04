@@ -66,6 +66,7 @@ namespace AmpMod.Modules
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
             ferroshotController.procCoefficient = 1f;
+            //ferroshotController.allowPrediction = true;
             //instantiates the projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
             
@@ -76,27 +77,31 @@ namespace AmpMod.Modules
             InitializeFerroshotContact(ferroshotContact);
             ferroshotContact.destroyOnWorld = true;
             ferroshotContact.impactEffect = Assets.bulletImpactEffect;
-            
+
+            //PrefabAPI.RegisterNetworkPrefab(ferroshotPrefab);
 
         }
 
         private static void CreateVortex()
         {
             vortexPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("VortexProjectile");
+
+            
             ProjectileController vortexController = vortexPrefab.GetComponent<ProjectileController>();
             //instantiates the  projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("VortexEffect") != null) vortexController.ghostPrefab = CreateGhostPrefab("VortexEffect");
-
+            vortexController.allowPrediction = true;
             
             //code for giving flight loop sound to vortex projectile and making it stop on contact
-          /*  LoopSoundDef flightLoop = new LoopSoundDef();
-            flightLoop.startSoundName = StaticValues.vortexFlightLoopString;
-            vortexPrefab.GetComponent<ProjectileController>().flightSoundLoop = flightLoop; */
+            /*  LoopSoundDef flightLoop = new LoopSoundDef();
+              flightLoop.startSoundName = StaticValues.vortexFlightLoopString;
+              vortexPrefab.GetComponent<ProjectileController>().flightSoundLoop = flightLoop; */
 
             var stopSound = vortexPrefab.AddComponent<SkillStates.BaseStates.StopLoop>();
             stopSound.SoundEventToPlay = StaticValues.vortexFlightLoopStringAlt;
             stopSound.SoundId = 2447326215;
 
+            PrefabAPI.RegisterNetworkPrefab(vortexPrefab);
 
 
 
@@ -121,6 +126,10 @@ namespace AmpMod.Modules
             fireBeamPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("HeatProjectile");
             ProjectileController heatController = fireBeamPrefab.GetComponent<ProjectileController>();
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("HeatProjectileGhost") != null) heatController.ghostPrefab = CreateGhostPrefab("HeatProjectileGhost");
+            heatController.allowPrediction = true;
+
+            PrefabAPI.RegisterNetworkPrefab(fireBeamPrefab);
+            
 
             //fireBeamPrefab.GetComponent<ProjectileImpactExplosion>().lifetimeExpiredSound = Assets.plasmaExplosionSoundEvent;
            // FireExplosion.blastDamageCoefficient = 3f;

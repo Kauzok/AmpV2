@@ -234,12 +234,14 @@ namespace AmpMod.Modules
            vortexBlackholePrefab.AddComponent<SkillStates.RadialDamage>();
            
 
-            PrefabAPI.RegisterNetworkPrefab(vortexBlackholePrefab);
+            
 
             vortexExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("VortexExplosion");
             
-            AddNewEffectDef(vortexExplosionEffect);
+            AddNewEffectDef(vortexExplosionEffect, Modules.StaticValues.vortexExplosionString);
             AddNewEffectDef(mainAssetBundle.LoadAsset<GameObject>("VortexSpawnExplosion"));
+
+            PrefabAPI.RegisterNetworkPrefab(vortexBlackholePrefab);
 
         }
 
@@ -262,7 +264,7 @@ namespace AmpMod.Modules
         {
             AddNewEffectDef(mainAssetBundle.LoadAsset<GameObject>("HeatExplosionEffect"), Modules.StaticValues.plasmaExplosionString);
             plasmaMuzzle = mainAssetBundle.LoadAsset<GameObject>("PlasmaMuzzleEffect");
-            fireTrail = mainAssetBundle.LoadAsset<GameObject>("PlasmaTrailObject");
+            
         }
         private static void CreateBulletMuzzle()
         {

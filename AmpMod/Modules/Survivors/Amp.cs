@@ -166,7 +166,7 @@ namespace AmpMod.Modules.Survivors
                 skillName = prefix + "_AMP_BODY_SECONDARY_VORTEX_NAME",
                 skillNameToken = prefix + "_AMP_BODY_SECONDARY_VORTEX_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SECONDARY_VORTEX_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texVortex"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Vortex)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -184,14 +184,14 @@ namespace AmpMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_AGILE" }
-            });
+            }); 
 
             SkillDef burnSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_NAME",
                 skillNameToken = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SECONDARY_PLASMASLASH_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texLorentz"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPlasma"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PlasmaSlash)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -209,7 +209,7 @@ namespace AmpMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
                 keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
-            });
+            }); 
 
 
             Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef, vortexSkillDef, burnSkillDef);
@@ -244,13 +244,14 @@ namespace AmpMod.Modules.Survivors
                 keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             });
 
-            //creates pulse leap
+            //creates pulse leap 
+            
             SkillDef boostSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_AMP_BODY_UTILITY_BOOST_NAME",
                 skillNameToken = prefix + "_AMP_BODY_UTILITY_BOOST_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_UTILITY_BOOST_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPulse"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.AltPulseLeap)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 3,
@@ -270,7 +271,7 @@ namespace AmpMod.Modules.Survivors
                 keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             }) ;
 
-
+            
             Modules.Skills.AddUtilitySkills(bodyPrefab, dashSkillDef, boostSkillDef);
             #endregion
 
@@ -302,6 +303,7 @@ namespace AmpMod.Modules.Survivors
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" }
             });
+          
             //creates voltaic bombardment
             SkillDef lightningSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -333,7 +335,7 @@ namespace AmpMod.Modules.Survivors
                 skillName = prefix + "_AMP_BODY_SPECIAL_WORM_NAME",
                 skillNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_WORM_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texVoltaic"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSummon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ChannelWurm)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -354,7 +356,7 @@ namespace AmpMod.Modules.Survivors
                 //keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_DOUBLECHARGE" }
 
 
-            }); ;
+            }); 
 
             ;
 
@@ -983,22 +985,22 @@ localScale = new Vector3(0.6F, 0.6F, 0.6F),
                 displayRuleGroup = new DisplayRuleGroup
                 {
                     rules = new ItemDisplayRule[]
-        {
+                   {
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFrostRelic"),
-childName = "LowerArmL",
+childName = "Base",
 localPos = new Vector3(0.00805F, -0.13065F, -0.01686F),
 localAngles = new Vector3(274.3965F, 90F, 270F),
 localScale = new Vector3(0.6F, 0.6F, 0.6F),
                             limbMask = LimbFlags.None
                         }
-        }
+                   }
                 }
 
 
-            });
+            }); ;
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
@@ -1241,9 +1243,9 @@ localScale = new Vector3(0.1485F, 0.1485F, 0.1485F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayChargedPerforator"),
-childName = "ThighR",
-localPos = new Vector3(0.0252F, 0.16244F, 0.09254F),
-localAngles = new Vector3(323.2473F, 16.96267F, 1.0935F),
+childName = "SwordPlace",
+localPos = new Vector3(0.03629F, 0.80397F, 0.04036F),
+localAngles = new Vector3(345.3943F, 45.42331F, 181.185F),
 localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
@@ -3969,31 +3971,21 @@ localScale = new Vector3(0.1F, 0.1F, 0.1F),
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplays.LoadDisplay("DisplayTricornGhost"),
-childName = "Head",
-localPos = new Vector3(0.00309F, 0.25918F, -0.04587F),
-localAngles = new Vector3(19.50595F, 0F, 0F),
-localScale = new Vector3(0.8F, 0.8F, 0.8F),
-                            limbMask = LimbFlags.None
-                        }
-}
-                }
-            });
-            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
-            {
-                keyAsset = DLC1Content.Equipment.BossHunter,
-                displayRuleGroup = new DisplayRuleGroup
-                {
-                    rules = new ItemDisplayRule[]
-{
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBlunderbuss"),
 childName = "Base",
 localPos = new Vector3(0.80368F, 0.54514F, -0.52292F),
 localAngles = new Vector3(84.07719F, 0F, 0F),
 localScale = new Vector3(1F, 1F, 1F),
+                            limbMask = LimbFlags.None
+                        },
+                             new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayTricornGhost"),
+childName = "Head",
+localPos = new Vector3(0.00309F, 0.25918F, -0.04587F),
+localAngles = new Vector3(19.50595F, 0F, 0F),
+localScale = new Vector3(0.8F, 0.8F, 0.8F),
                             limbMask = LimbFlags.None
                         }
 }

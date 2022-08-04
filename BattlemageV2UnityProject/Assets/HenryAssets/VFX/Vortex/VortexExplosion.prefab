@@ -15317,7 +15317,6 @@ GameObject:
   - component: {fileID: 114692418935994245}
   - component: {fileID: 114834494391548045}
   - component: {fileID: 114166218500428959}
-  - component: {fileID: 114731415445235582}
   m_Layer: 0
   m_Name: VortexExplosion
   m_TagString: Untagged
@@ -15370,7 +15369,7 @@ MonoBehaviour:
   m_Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxPriority: 1
+  vfxPriority: 2
   vfxIntensity: 0
   optionalLights:
   - {fileID: 108025672574042910}
@@ -15393,36 +15392,3 @@ MonoBehaviour:
   applyScale: 1
   soundName: 
   disregardZScale: 0
---- !u!114 &114731415445235582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985914077496652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0

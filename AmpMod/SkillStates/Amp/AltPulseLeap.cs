@@ -27,7 +27,7 @@ namespace AmpMod.SkillStates
         private bool hasResetRot;
         private bool hasFlown;
         private float speedCoefficient = 20f; //25f;
-        private bool hasFired;
+        private bool hasFired = false;
         public static AnimationCurve speedCoefficientCurve = EntityStates.Mage.FlyUpState.speedCoefficientCurve;
         private Vector3 aimDirection;
         private Transform leftMuzzleTransform;
@@ -138,40 +138,33 @@ namespace AmpMod.SkillStates
         //create blastAttack on launch
         public void FireLaunchBlast()
         {
-            if (NetworkServer.active)
+
+            if (base.isAuthority)
             {
                 boostBlast = new BlastAttack
                 {
                     attacker = base.gameObject,
-                    baseDamage = launchDamage * base.characterBody.damage,
+                    baseDamage = this.launchDamage * base.characterBody.damage,
                     baseForce = 0f,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
                     crit = base.characterBody.RollCrit(),
                     damageColorIndex = DamageColorIndex.Item,
-                    damageType = DamageType.Stun1s,
+                    damageType = DamageType.Generic,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
-                    position = base.characterBody.corePosition,
+                    position = Util.GetCorePosition(base.gameObject),
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
                     radius = this.blastRadius,
                     teamIndex = base.characterBody.teamComponent.teamIndex
+
                 };
+
+                boostBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+                boostBlast.Fire();
+                //Debug.Log("Firing launch blast");
+
             }
-
-
-            boostBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
-            boostBlast.Fire();
-
-            EffectData effectData = new EffectData
-            {
-                origin = childLocator.FindChild("FootL").position,
-                scale = 1.5f,
-            };
-            //launchEffect = Modules.Assets.boltExitEffect;
-           
-            //exitEffectPrefab = Modules.Assnhbvets.testLightningEffect;
-            //EffectManager.SpawnEffect(launchEffect, effectData, true);
 
 
         }
@@ -231,6 +224,7 @@ namespace AmpMod.SkillStates
                     //test following line
                     base.SmallHop(base.characterMotor, this.smallHopVelocity);
                     base.characterMotor.velocity = Vector3.zero;
+                    Debug.Log("firing");
 
                 }
 
@@ -266,6 +260,7 @@ namespace AmpMod.SkillStates
                 base.characterMotor.velocity.y = 0f;
                 this.PlayAnimation("FullBody, Override", "PulseExit", "BaseSkill.playbackRate", exitAnimDuration);//this.exitDuration);
                 hasFlown = true;
+                animator.SetBool("isMoving", false);
 
             }
             if (base.isAuthority && fixedAge >= flyDuration + exitDuration && hasFlown)
@@ -300,6 +295,7 @@ namespace AmpMod.SkillStates
                 this.rotator.ResetRotation(0.5f);
                 hasResetRot = true;
                 this.PlayAnimation("FullBody, Override", "PulseExit", "BaseSkill.playbackRate", exitAnimDuration);
+                animator.SetBool("isMoving", false);
 
             }
             animator.SetBool("isFlying", false);

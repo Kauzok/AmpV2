@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2596640061
+CRC: 499527163
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 07cea51387d2be4a805b094ac0e6cbe7
+    Hash: a507abf784378781e01b9736b66d0572
   TypeTreeHash:
     serializedVersion: 2
     Hash: 42d017c1c62bbe36c23f740d3af33e2c
@@ -193,6 +193,7 @@ Assets:
 - Assets/HenryAssets/Atlases/EmissionSprite2.png
 - Assets/HenryAssets/Mesh/meshHenryNeo.mesh
 - Assets/HenryAssets/Icons/texMainSkin.png
+- Assets/HenryAssets/Icons/texPulse.png
 - Assets/HenryAssets/Animations/WalkR.anim
 - Assets/HenryAssets/VFX/HenryDustEffect.prefab
 - Assets/HenryAssets/Animations/SprintL.anim
@@ -308,9 +309,11 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_ThrowAnimGrounded.anim
 - Assets/HenryAssets/VFX/HeatShock/texFire.png
 - Assets/HenryAssets/AmpAnims/metarig_IdleLandingAnim.anim
+- Assets/HenryAssets/Icons/texSummon.png
 - Assets/HenryAssets/Atlases/emissionTex2.png
 - Assets/HenryAssets/Animations/WalkF.anim
 - Assets/HenryAssets/VFX/Materials/matPunchImpactShadow.mat
+- Assets/HenryAssets/Icons/texReturn.png
 - Assets/HenryAssets/VFX/Ferroshot/FerroshotMuzzleObject.prefab
 - Assets/HenryAssets/Materials/matDante.mat
 - Assets/HenryAssets/Atlases/SuitAtlas4.png
@@ -373,6 +376,7 @@ Assets:
 - Assets/HenryAssets/VFX/Bolt/texLightning1Mask.asset
 - Assets/HenryAssets/AmpAnims/metarig_DescendMediumAnim.anim
 - Assets/HenryAssets/VFX/Charge/Mat.png
+- Assets/HenryAssets/Icons/texPlasma.png
 - Assets/HenryAssets/VFX/Bolt/texLightning2Mask.asset
 - Assets/HenryAssets/AmpAnims/metarig_HeatShockAerialAnim.anim
 - Assets/HenryAssets/Materials/matHenryNeo.mat
@@ -531,6 +535,7 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_DescendFastAnim.anim
 - Assets/HenryAssets/AmpAnims/metarig_PulseAnim.anim
 - Assets/HenryAssets/Shaders/deferred/hgsnowtopped.shader
+- Assets/HenryAssets/Icons/texVortex.png
 - Assets/HenryAssets/VFX/Charge/ChargeExplosionObject.prefab
 - Assets/HenryAssets/VFX/Textures/texSlash.png
 - Assets/HenryAssets/Icons/texSpecialIcon.png

@@ -25,12 +25,16 @@ namespace AmpMod.Modules
             //magnetic vortex states
             entityStates.Add(typeof(Vortex));
 
+            //plasma slash states
+            entityStates.Add(typeof(PlasmaSlash));
+
             //bolt states
             entityStates.Add(typeof(BoltVehicle));
             entityStates.Add(typeof(Surge));
 
             //pulse leap states
             entityStates.Add(typeof(PulseLeap));
+            entityStates.Add(typeof(AltPulseLeap));
 
             //fulmination states
             entityStates.Add(typeof(Fulmination));

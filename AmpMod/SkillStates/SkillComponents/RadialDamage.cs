@@ -31,7 +31,6 @@ namespace AmpMod.SkillStates
 		private string explosionString = Modules.StaticValues.vortexExplosionString;        
 		private string loopString = Modules.StaticValues.vortexLoopString;
 		
-
 		[Header("Damage Owner/Positional Parameters")]
 		public GameObject attacker;
 		public CharacterBody charBody;
@@ -78,7 +77,6 @@ namespace AmpMod.SkillStates
 				teamIndex = this.teamFilter.teamIndex
 			};
 
-			
 
 			//exitEffectPrefab = Modules.Assets.testLightningEffect;
 
@@ -91,20 +89,20 @@ namespace AmpMod.SkillStates
 
 			timer += Time.fixedDeltaTime;
 			this.damageTimer -= Time.fixedDeltaTime;
-			
+
 			//calls the damage function three times, once every second starting on object spawn
-			if (this.damageTimer <= 0f && NetworkServer.active)
+			if (this.damageTimer <= 0f)// && NetworkServer.active)
 			{
 				damageTimer = interval;	
 				searchAndDamage();
 			}
 
 			//fires the final vortex explosion after the damage function has been called thrice
-			if (timer >= duration-Time.fixedDeltaTime && NetworkServer.active)
+			if (timer >= duration - Time.fixedDeltaTime) //&& NetworkServer.active)
             {
 				radialBlast.Fire();
 				//play explosion sound
-				AkSoundEngine.PostEvent(explosionString, gameObject);
+				//AkSoundEngine.PostEvent(explosionString, gameObject);
 
 				EffectData effectData = new EffectData
 				{
@@ -128,7 +126,7 @@ namespace AmpMod.SkillStates
 			}
 			HealthComponent healthComponent = hurtBox.healthComponent;
 
-			if (healthComponent && NetworkServer.active)
+			if (healthComponent) //&& NetworkServer.active)
 			{
 				//declare damageinfo with attacker object and characterbody set through vars
 				damageInfo = new DamageInfo
@@ -141,7 +139,7 @@ namespace AmpMod.SkillStates
 					procChainMask = default(ProcChainMask),
 
 					//change inflictor?
-					inflictor = base.gameObject,
+					inflictor = attacker.gameObject,//base.gameObject,
 					position = hurtBox.healthComponent.body.corePosition
 				};
 
@@ -182,11 +180,6 @@ namespace AmpMod.SkillStates
 			sphereSearch.GetHurtBoxes(dest);
 			sphereSearch.ClearCandidates();
 		}
-
-
-
-
-
 
 	}
 }

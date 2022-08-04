@@ -26,7 +26,11 @@ namespace AmpMod.SkillStates.SkillComponents
             if (wormBody.healthComponent.health <= 0f && wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife) == 0 && wormMaster.inventory.GetItemCount(DLC1Content.Items.ExtraLifeVoid) == 0)
             {
                 //Debug.Log("Worm has died");
-                this.specialSlot.UnsetSkillOverride(wormSkill, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                if (this.specialSlot && this.cancelSkillDef)
+                {
+                    this.specialSlot.UnsetSkillOverride(wormSkill, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                }
+
             }
         }
     }

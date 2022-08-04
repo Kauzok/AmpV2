@@ -85,7 +85,7 @@ namespace AmpMod.SkillStates.Amp
                 if ((teamMembers[i].transform.position - position).sqrMagnitude <= num)
                 {
                     CharacterBody body = teamMembers[i].GetComponent<CharacterBody>();
-                    if (body)
+                    if (body && NetworkServer.active)
                     {
                         body.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
                     }
@@ -158,6 +158,7 @@ namespace AmpMod.SkillStates.Amp
                     scale = 5f,
 
                 };
+
                 //spawns lightning/lightningexplosion effects
                 EffectManager.SpawnEffect(lightningStrikeEffect, lightning, true);
                 //EffectManager.SpawnEffect(lightningStrikeExplosion, lightningExplosion, true);

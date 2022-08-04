@@ -36,6 +36,36 @@ namespace AmpMod.SkillStates
 
 			base.OnEnter();
 
+			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+			{
+				skillName = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
+				skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
+				skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_DESCRIPTION",
+				skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelSurge"),
+				activationStateMachineName = "Slide",
+				baseMaxStock = 0,
+				baseRechargeInterval = 0,
+				beginSkillCooldownOnSkillEnd = false,
+				canceledFromSprinting = false,
+				forceSprintDuringState = false,
+				fullRestockOnAssign = false,
+				interruptPriority = EntityStates.InterruptPriority.Any,
+				resetCooldownTimerOnUse = false,
+				isCombatSkill = false,
+				mustKeyPress = true,
+				cancelSprintingOnActivation = false,
+				rechargeStock = 0,
+				requiredStock = 0,
+				stockToConsume = 0,
+			});
+
+
+			utilitySlot = base.skillLocator.utility;
+			if (this.utilitySlot && cancelSkillDef)
+			{
+				this.utilitySlot.SetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+			}
+
 
 			Ray aimRay = GetAimRay();
 
@@ -47,6 +77,7 @@ namespace AmpMod.SkillStates
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
             //NetworkServer.Spawn(boltObject);
+
 
 			#region Skill Networking
             //stuff to make it work with multiplayer
@@ -81,35 +112,7 @@ namespace AmpMod.SkillStates
 			}
 			#endregion
 
-			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-			{
-				skillName = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
-				skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
-				skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_DESCRIPTION",
-				skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelSurge"),
-				activationStateMachineName = "Slide",
-				baseMaxStock = 0,
-				baseRechargeInterval = 0,
-				beginSkillCooldownOnSkillEnd = false,
-				canceledFromSprinting = false,
-				forceSprintDuringState = false,
-				fullRestockOnAssign = false,
-				interruptPriority = EntityStates.InterruptPriority.Any,
-				resetCooldownTimerOnUse = false,
-				isCombatSkill = false,
-				mustKeyPress = true,
-				cancelSprintingOnActivation = false,
-				rechargeStock = 0,
-				requiredStock = 0,
-				stockToConsume = 0,
-			});
-
-
-			utilitySlot = base.skillLocator.utility;	
-			if (this.utilitySlot && cancelSkillDef != null)
-			{
-				this.utilitySlot.SetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-			}
+			
 		}
 
 

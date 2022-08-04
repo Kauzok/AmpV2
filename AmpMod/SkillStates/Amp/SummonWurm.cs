@@ -40,7 +40,7 @@ namespace AmpMod.SkillStates
                 skillName = prefix + "_AMP_BODY_SPECIAL_WORMCANCEL_NAME",
                 skillNameToken = prefix + "_AMP_BODY_SPECIAL_WORMCANCEL_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_WORMCANCEL_DESCRIPTION",
-                //skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFulmination"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texReturn"),
                 activationStateMachineName = "Slide",
                 activationState = new EntityStates.SerializableEntityStateType(typeof(CancelWurm)),
                 baseMaxStock = 0,
@@ -112,7 +112,6 @@ namespace AmpMod.SkillStates
             wormBody = wormMaster.GetBody();
             wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = wormLifeDuration;
             //wormMaster.gameObject.GetComponent<BaseAI>().leader.gameObject = base.characterBody.gameObject;
-            //wormMaster = wormSummon.Perform(); 
             wormMaster.onBodyStart += SetupWorm;
 
             Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
@@ -139,13 +138,6 @@ namespace AmpMod.SkillStates
             healthTracker.cancelSkillDef = cancelSkillDef;
             healthTracker.wormMaster = wormMaster;
 
-            /*if (falconMaster = wormSummon.Perform())
-            {
-                if (!falconMaster.godMode) falconMaster.ToggleGod();
-
-                falconMaster.inventory.CopyItemsFrom(characterBody.inventory);
-                falconMaster.inventory.GiveItem(RoR2Content.Items.MinionLeash);
-            }*/
         }
 
 
@@ -172,7 +164,7 @@ namespace AmpMod.SkillStates
         {
             
             base.OnExit();
-            //this.specialSlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            this.specialSlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
             //  wormBody.moveSpeed = 0f;
             // Debug.Log(wormBody.moveSpeed);
         }
