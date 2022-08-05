@@ -23,8 +23,8 @@
   - Look into "Received networktransform data for an object that doesn't exist" warning
 - Pulse Leap
   - Adjust exit animation
-  - Make explosion deal damage in multiplayer
   - Make skill remove fall damage in multiplayer
+  - Keep an eye on launchblast method in OnEnter
 - Fulmination
   - Consider adjusting chain effect
 - Voltaic Bombardment
