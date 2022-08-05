@@ -9,7 +9,6 @@
   - Make prep gameobject spawn properly in multiplayer
 - Plasma Slash
   - Make unlockable
-  - Make ghost not as laggy in multiplayer
   - Fix custom damage type in multiplayer
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
