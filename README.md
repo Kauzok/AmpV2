@@ -43,14 +43,10 @@
 - Adjust sideways walks?
 
 ## VFX To Do
-- Finish footsteps
 - Consider modifying helmet/chest glow
 
 ## Misc. To Do
 - Cleanup code base, finish comments
-- Fix name tokens
-- Alternate Skins
-- Skill Icons
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
 - Add configs
