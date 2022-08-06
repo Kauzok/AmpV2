@@ -9,7 +9,6 @@
   - Make prep gameobject spawn properly in multiplayer
 - Plasma Slash
   - Make unlockable
-  - Fix custom damage type on projectile in multiplayer
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
