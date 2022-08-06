@@ -6,6 +6,7 @@
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
+  - fix networking errors
 - Plasma Slash
   - Make unlockable
 - Magnetic Vortex
