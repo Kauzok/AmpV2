@@ -54,6 +54,7 @@
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
 - Add configs
+- Adjust character portrait
 
 ## Changelog
 `0.0.1`
