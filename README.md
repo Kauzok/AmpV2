@@ -3,7 +3,6 @@
 ## Skills To Do
 - Stormblade
   - Fix checkroll behavior in multiplayer
-  - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
