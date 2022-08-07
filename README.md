@@ -3,14 +3,12 @@
 ## Skills To Do
 - Stormblade
   - Fix checkroll behavior in multiplayer
-  - Consider adjusting swordswing2sfx to lower prominence of electricity sfx
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
+  - fix networking errors
 - Plasma Slash
   - Make unlockable
-  - Make ghost not as laggy in multiplayer
-  - Fix custom damage type in multiplayer
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
@@ -23,8 +21,8 @@
   - Look into "Received networktransform data for an object that doesn't exist" warning
 - Pulse Leap
   - Adjust exit animation
-  - Make explosion deal damage in multiplayer
   - Make skill remove fall damage in multiplayer
+  - Keep an eye on launchblast method in OnEnter
 - Fulmination
   - Consider adjusting chain effect
 - Voltaic Bombardment
@@ -43,19 +41,17 @@
 
 ## Animations To Do
 - Adjust sideways walks?
+- Make shockblade slashes look more animated
 
 ## VFX To Do
-- Finish footsteps
 - Consider modifying helmet/chest glow
 
 ## Misc. To Do
 - Cleanup code base, finish comments
-- Fix name tokens
-- Alternate Skins
-- Skill Icons
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
 - Add configs
+- Adjust character portrait
 
 ## Changelog
 `0.0.1`
