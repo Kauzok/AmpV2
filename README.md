@@ -6,9 +6,10 @@
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
-  - fix networking errors
+  - fix networking warnings
 - Plasma Slash
   - Make unlockable
+  - Fix multiplayer ghost becoming invisible
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
