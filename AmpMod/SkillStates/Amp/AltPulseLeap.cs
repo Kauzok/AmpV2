@@ -46,8 +46,12 @@ namespace AmpMod.SkillStates
         {
 
             base.OnEnter();
+
             if (base.isAuthority)
             {
+
+                FireLaunchBlast();
+
                 this.modelTransform = base.GetModelTransform();
                 animator = base.GetModelAnimator();
                 this.childLocator = this.modelTransform.GetComponent<ChildLocator>();
@@ -78,13 +82,12 @@ namespace AmpMod.SkillStates
                 this.inputSpace.rotation = Quaternion.identity;
                 this.inputSpace.localScale = Vector3.one;
 
-                
                 upSpeed = animator.GetFloat("upSpeed");
 
                 animator.SetBool("isFlying", true);
 
                 //EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "HandL", false);
-              // EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "SwordTip", false);
+                // EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "SwordTip", false);
 
 
                 this.rotator = this.modelTransform.Find("metarig").GetComponent<Rotator>();
@@ -138,9 +141,9 @@ namespace AmpMod.SkillStates
         //create blastAttack on launch
         public void FireLaunchBlast()
         {
-
             if (base.isAuthority)
             {
+
                 boostBlast = new BlastAttack
                 {
                     attacker = base.gameObject,
@@ -152,7 +155,7 @@ namespace AmpMod.SkillStates
                     damageType = DamageType.Generic,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
-                    position = Util.GetCorePosition(base.gameObject),
+                    position = base.transform.position,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
                     radius = this.blastRadius,
@@ -162,11 +165,9 @@ namespace AmpMod.SkillStates
 
                 boostBlast.AddModdedDamageType(Modules.DamageTypes.applyCharge);
                 boostBlast.Fire();
-                //Debug.Log("Firing launch blast");
-
+               // Debug.Log("Firing launch blast");
             }
-
-
+            
         }
 
         private void CreateBlinkEffect(Vector3 origin)
@@ -215,16 +216,28 @@ namespace AmpMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
             if (base.isAuthority)
             {
                 if (base.characterMotor && !hasFired)
                 {
                     hasFired = true;
-                    FireLaunchBlast();
+                    //FireLaunchBlast();
                     //test following line
-                    base.SmallHop(base.characterMotor, this.smallHopVelocity);
                     base.characterMotor.velocity = Vector3.zero;
-                    Debug.Log("firing");
+                    base.SmallHop(base.characterMotor, this.smallHopVelocity);
+                    
+                    //Debug.Log("firing");
+
+
+                    //remove fall damage check
+                    if (!base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
+                    {
+                        base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                        base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
+                        Debug.Log("removing fall dmg");
+                    }
+
 
                 }
 
@@ -246,14 +259,6 @@ namespace AmpMod.SkillStates
                     UnityEngine.Object.Destroy(this.inputSpace.gameObject);
                 }
 
-                //remove fall damage check
-                if (NetworkServer.active && !base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
-                {
-                    base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-                    base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
-                }
-
-               
                 base.characterMotor.disableAirControlUntilCollision = false;
                 this.rotator.ResetRotation(0.3f);
                 hasResetRot = true;
@@ -277,12 +282,8 @@ namespace AmpMod.SkillStates
                 base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
             }
 
-
-
             base.characterMotor.onHitGroundServer -= this.CharacterMotor_onHitGround;
         }
-
-
 
 
         public override void OnExit()
@@ -298,6 +299,11 @@ namespace AmpMod.SkillStates
                 animator.SetBool("isMoving", false);
 
             }
+
+
+
+
+
             animator.SetBool("isFlying", false);
 
             

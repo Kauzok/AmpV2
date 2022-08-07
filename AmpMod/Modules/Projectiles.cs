@@ -5,6 +5,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Audio;
+using static R2API.DamageAPI;
 
 namespace AmpMod.Modules
 {
@@ -124,6 +125,10 @@ namespace AmpMod.Modules
         private static void CreateFireBeam()
         {
             fireBeamPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("HeatProjectile");
+
+            var damageTypeComponent = fireBeamPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+            damageTypeComponent.Add(DamageTypes.strongBurnIfCharged);
+
             ProjectileController heatController = fireBeamPrefab.GetComponent<ProjectileController>();
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("HeatProjectileGhost") != null) heatController.ghostPrefab = CreateGhostPrefab("HeatProjectileGhost");
             heatController.allowPrediction = true;

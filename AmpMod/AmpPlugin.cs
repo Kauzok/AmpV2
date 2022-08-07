@@ -21,6 +21,7 @@ using UnityEngine.AddressableAssets;
 
 namespace AmpMod
 {
+
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
@@ -45,6 +46,8 @@ namespace AmpMod
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "NT";
 
+        public static BepInEx.Logging.ManualLogSource logger;
+
         public static AmpPlugin instance;
 
         //dictionary for swapping out stubbed shaders for in game shaders
@@ -62,7 +65,7 @@ namespace AmpMod
             instance = this;
 
 
-
+            logger = base.Logger;
 
 
             // load assets and read config

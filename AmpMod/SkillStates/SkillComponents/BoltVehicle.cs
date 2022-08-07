@@ -63,8 +63,6 @@ namespace AmpMod.SkillStates
 
 			//makes it so you can't exit the vehicleseat manually; since i allow the player to do that in the actual bolt code, this is really just to remove the annoying prompt that shows up when this is enabled
 			vehicleSeat.exitVehicleAllowedCheck.AddCallback(new CallbackCheck<Interactability, CharacterBody>.CallbackDelegate(this.CheckExitAllowed));
-
-			
 			
 		}
 

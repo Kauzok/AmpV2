@@ -126,7 +126,7 @@ namespace AmpMod.SkillStates
 			}
 			HealthComponent healthComponent = hurtBox.healthComponent;
 
-			if (healthComponent) //&& NetworkServer.active)
+			if (healthComponent && NetworkServer.active)
 			{
 				//declare damageinfo with attacker object and characterbody set through vars
 				damageInfo = new DamageInfo
@@ -137,8 +137,6 @@ namespace AmpMod.SkillStates
 					crit = charBody.RollCrit(),
 					damageType = DamageType.Generic,
 					procChainMask = default(ProcChainMask),
-
-					//change inflictor?
 					inflictor = attacker.gameObject,//base.gameObject,
 					position = hurtBox.healthComponent.body.corePosition
 				};

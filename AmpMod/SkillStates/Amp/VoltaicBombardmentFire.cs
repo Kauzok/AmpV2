@@ -85,10 +85,30 @@ namespace AmpMod.SkillStates.Amp
                 if ((teamMembers[i].transform.position - position).sqrMagnitude <= num)
                 {
                     CharacterBody body = teamMembers[i].GetComponent<CharacterBody>();
+                    if (body)
+                    {
+                        Debug.Log("Body Found");
+                        AmpPlugin.logger.LogMessage("dababy found");
+                    }
+                    if (NetworkServer.active)
+                    {
+                        AmpPlugin.logger.LogMessage("networkserver active");
+                        //base.characterBody.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+                    }
                     if (body && NetworkServer.active)
                     {
+                        Debug.Log("Adding Overcharge");
                         body.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+                        AmpPlugin.logger.LogMessage("adding overcharge");
+                        //body.AddBuff(Modules.Buffs.overCharge);
+
+                        if (body.HasBuff(Modules.Buffs.overCharge))
+                        {
+                            Debug.Log("buff applied");
+                        }
                     }
+
+
                 }
             }
         }

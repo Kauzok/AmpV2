@@ -121,8 +121,7 @@ namespace AmpMod.SkillStates
                 if (fireBeamPrefab) {
 
                     Util.PlaySound(swingSoundString, base.gameObject);
-                    var damageTypeComponent = fireBeamPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
-                    damageTypeComponent.Add(DamageTypes.strongBurnIfCharged);
+                   
 
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
