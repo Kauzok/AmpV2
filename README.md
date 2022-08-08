@@ -31,7 +31,7 @@
   - Add self-hit properties in multiplayer
 - Bulwark of Storms
   - Add VFX & SFX to channelling
-  - Make worm actually spawn in multiplayer
+  - Make worm unset skill override on death in multiplayer
   - Make unlockable
 - Charge
   - Add in alternate effect asides from just damage
