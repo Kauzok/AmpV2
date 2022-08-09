@@ -19,6 +19,7 @@
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
   - Fix not being able to exit ability if remaining charges are left
+  - Watch out for "received networktransform data for object that doesn't exist error"
 - Pulse Leap
   - Adjust exit animation
   - Make skill remove fall damage in multiplayer
