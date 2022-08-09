@@ -6,9 +6,10 @@
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
-  - fix networking errors
+  - make ghost follow pathway in multiplayer
 - Plasma Slash
   - Make unlockable
+  - Fix multiplayer ghost becoming invisible
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
@@ -18,7 +19,6 @@
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
   - Fix not being able to exit ability if remaining charges are left
-  - Look into "Received networktransform data for an object that doesn't exist" warning
 - Pulse Leap
   - Adjust exit animation
   - Make skill remove fall damage in multiplayer
@@ -30,7 +30,7 @@
   - Add self-hit properties in multiplayer
 - Bulwark of Storms
   - Add VFX & SFX to channelling
-  - Make worm actually spawn in multiplayer
+  - Make worm unset skill override on death in multiplayer
   - Make unlockable
 - Charge
   - Add in alternate effect asides from just damage
@@ -41,7 +41,7 @@
 
 ## Animations To Do
 - Adjust sideways walks?
-- Make shockblade slashes look more animated
+- Make shockblade slashes look more exaggerated
 
 ## VFX To Do
 - Consider modifying helmet/chest glow
