@@ -41,7 +41,7 @@
 
 ## Animations To Do
 - Adjust sideways walks?
-- Make shockblade slashes look more animated
+- Make shockblade slashes look more exaggerated
 
 ## VFX To Do
 - Consider modifying helmet/chest glow
