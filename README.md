@@ -22,7 +22,7 @@
   - Watch out for "received networktransform data for object that doesn't exist error"
 - Pulse Leap
   - Adjust exit animation
-  - Make skill remove fall damage in multiplayer
+  - Make skill remove fall damage in multiplayer & remove onexit error (possibly related?)
   - Keep an eye on launchblast method in OnEnter
 - Fulmination
   - Consider adjusting chain effect
