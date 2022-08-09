@@ -42,6 +42,7 @@
 ## Animations To Do
 - Adjust sideways walks?
 - Make shockblade slashes look more exaggerated
+- Fix weird roll -> run transition
 
 ## VFX To Do
 - Consider modifying helmet/chest glow
