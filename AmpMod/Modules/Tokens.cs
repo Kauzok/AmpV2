@@ -80,7 +80,7 @@ namespace AmpMod.Modules
             #region Special3
             LanguageAPI.Add(prefix + "SPECIAL_WORM_NAME", "Bulwark of Storms");
             LanguageAPI.Add(prefix + "SPECIAL_WORM_DISPLAY_NAME", "Melvin");
-            LanguageAPI.Add(prefix + "SPECIAL_WORM_DESCRIPTION",  $"<style=cIsUtility>Channel</style> for 3 seconds, then summon an overloading worm for <style=cIsUtility>30 seconds</style> that has <style=cIsHealing>300% your health</style> and inherits ALL your items.");
+            LanguageAPI.Add(prefix + "SPECIAL_WORM_DESCRIPTION",  $"<style=cIsUtility>Channel</style> for 3 seconds, then summon an <style=cIsDamage>Overloading Worm</style> for <style=cIsUtility>30 seconds</style> that has <style=cIsHealing>300% your health</style> and inherits ALL your items.");
             LanguageAPI.Add(prefix + "SPECIAL_WORMCANCEL_NAME", "Return");
             LanguageAPI.Add(prefix + "SPECIAL_WORMCANCEL_DESCRIPTION", "Return Melvin to the depths.");
             #endregion

@@ -21,7 +21,7 @@ namespace AmpMod.SkillStates
 
             if (SummonWurm.wormMaster)
             {
-                SummonWurm.wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = 0f;
+                //SummonWurm.wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = 0f;
                 SummonWurm.wormMaster.TrueKill();
             }
             

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4285230648
+CRC: 1995274337
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a0f920104d8429ce62010dee10bdac30
+    Hash: dd8dd632e57aec572ae5fa6be898df7c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 42d017c1c62bbe36c23f740d3af33e2c
@@ -158,6 +158,7 @@ Assets:
 - Assets/HenryAssets/FireballVehicle.prefab
 - Assets/HenryAssets/Animations/maskAimBazooka.mask
 - Assets/HenryAssets/Shaders/fx/hgdamagenumber.shader
+- Assets/HenryAssets/VFX/Ferroshot/LunarShardProjectile.prefab
 - Assets/HenryAssets/VFX/Bulwark/WormExplosionEffect.prefab
 - Assets/HenryAssets/Icons/texShotgunIcon.png
 - Assets/HenryAssets/VFX/Materials/matAnimeShapes.mat
@@ -237,6 +238,7 @@ Assets:
 - Assets/HenryAssets/VFX/HeatShock/HeatExplosionEffect.prefab
 - Assets/HenryAssets/AmpAnims/metarig_IdleIn.anim
 - Assets/HenryAssets/VFX/Mesh/meshSwing.asset
+- Assets/HenryAssets/VFX/Ferroshot/SpikeProjectile.prefab
 - Assets/HenryAssets/VFX/Bolt/IceRingGemstoneMesh.asset
 - Assets/HenryAssets/AmpAnims/metarig_SummonHoldAnim.anim
 - Assets/HenryAssets/VFX/HenryBazookaMuzzleFlash.prefab

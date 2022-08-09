@@ -2,11 +2,7 @@
 using RoR2;
 using UnityEngine;
 using RoR2.Skills;
-using JetBrains.Annotations;
-using R2API;
-using System;
-using RoR2.CharacterAI;
-using System.Collections.Generic;
+using UnityEngine.Networking;
 
 namespace AmpMod.SkillStates
 {
@@ -65,10 +61,12 @@ namespace AmpMod.SkillStates
             }
 
 
-            if (base.isAuthority)
+            if (base.characterBody)
             {
                 SpawnWorm(base.characterBody);
             }
+            
+
 
             animator.SetBool("HasChannelled", false);
 
@@ -85,76 +83,127 @@ namespace AmpMod.SkillStates
 
             EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
 
+            Debug.Log("Spawning worm");
 
 
             //figure out why this doesnt make worm follow amp
             //masterPrefab.gameObject.GetComponent<BaseAI>().leader.gameObject = characterBody.gameObject;
             //masterPrefab.GetComponent<HealthComponent>().health = 3*base.characterBody.maxHealth;
 
-
-            MasterSummon wormSummon = new MasterSummon
+            if (NetworkServer.active)
             {
-                masterPrefab = masterPrefab,
-                ignoreTeamMemberLimit = false,
-                teamIndexOverride = TeamIndex.Player,
-                summonerBodyObject = characterBody.gameObject,
-                position = characterBody.corePosition + new Vector3(0, 0, 2),
-                rotation = characterBody.transform.rotation,
-                inventoryToCopy = characterBody.inventory,
-                inventoryItemCopyFilter = index => index != RoR2Content.Items.ExtraLife.itemIndex,
 
 
-            };
+                MasterSummon wormSummon = new MasterSummon
+                {
+                    masterPrefab = masterPrefab,
+                    ignoreTeamMemberLimit = false,
+                    teamIndexOverride = TeamIndex.Player,
+                    summonerBodyObject = characterBody.gameObject,
+                    position = characterBody.corePosition + new Vector3(0, 0, 2),
+                    rotation = characterBody.transform.rotation,
+                    inventoryToCopy = characterBody.inventory,
+                    inventoryItemCopyFilter = index => index != RoR2Content.Items.ExtraLife.itemIndex,
 
 
-            wormMaster = wormSummon.Perform();
-            //wormBody.RecalculateStats();
-            wormBody = wormMaster.GetBody();
-            wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = wormLifeDuration;
-            //wormMaster.gameObject.GetComponent<BaseAI>().leader.gameObject = base.characterBody.gameObject;
-            wormMaster.onBodyStart += SetupWorm;
+                };
 
-            Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
-            for (int i = -1; i <= wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex)+1; i++)
-            {
-                wormMaster.inventory.RemoveItem(RoR2Content.Items.ExtraLife.itemIndex);
+
+                wormMaster = wormSummon.Perform();
             }
+            //wormBody.RecalculateStats();
+            
 
-
-            Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
-
-            for (int i = 0; i <= wormMaster.inventory.GetItemCount(DLC1Content.Items.ExtraLifeVoid.itemIndex)+1; i++)
+            if (wormMaster)
             {
-                wormMaster.inventory.RemoveItem(DLC1Content.Items.ExtraLifeVoid.itemIndex);
-                
+                wormBody = wormMaster.GetBody();
+
+                wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = wormLifeDuration;
+                //wormMaster.gameObject.GetComponent<BaseAI>().leader.gameObject = base.characterBody.gameObject;
+                wormMaster.onBodyStart += SetupWorm;
+                //wormMaster.onBodyDestroyed += OnWormDeath;
+
+                if (NetworkServer.active)
+                {
+                    // Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
+                    for (int i = -1; i <= wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + 1; i++)
+                    {
+                        wormMaster.inventory.RemoveItem(RoR2Content.Items.ExtraLife.itemIndex);
+                    }
+
+
+                    //Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
+
+                    for (int i = 0; i <= wormMaster.inventory.GetItemCount(DLC1Content.Items.ExtraLifeVoid.itemIndex) + 1; i++)
+                    {
+                        wormMaster.inventory.RemoveItem(DLC1Content.Items.ExtraLifeVoid.itemIndex);
+
+
+                    }
+
+                 
+                }
+
+                if (wormMaster.GetBody())
+                {
+                   Debug.Log("adding worm tracker");
+                    GameObject wormObject = wormMaster.GetBody().gameObject;
+                    var skillOverride = wormObject.AddComponent<SkillComponents.WormSkillOverride>();
+                    skillOverride.specialSlot = base.skillLocator.special;
+                    skillOverride.wormSkill = src;
+                    skillOverride.cancelSkillDef = cancelSkillDef;
+
+                    var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
+                    healthTracker.wormBody = wormMaster.GetBody();
+                   
+                    healthTracker.wormMaster = wormMaster; 
+
+                }
+
+
             }
 
             
+            
 
-            var healthTracker =  wormBody.gameObject.AddComponent<SkillComponents.WormHealthTracker>();
-            healthTracker.specialSlot = base.skillLocator.special;
-            healthTracker.wormBody = wormBody;
-            healthTracker.wormSkill = src;
-            healthTracker.cancelSkillDef = cancelSkillDef;
-            healthTracker.wormMaster = wormMaster;
+          
 
         }
 
 
+        private void OnWormDeath(CharacterBody body)
+        {
+            this.specialSlot.UnsetSkillOverride(src, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        }
 
         private void SetupWorm(CharacterBody body)
         {
+
             body.baseMaxHealth = 3f * base.characterBody.baseMaxHealth;
+
+          /*  if (NetworkServer.active)
+            {
+                body.maxHealth = 3f * base.characterBody.baseMaxHealth;
+            } */
+           
             //body.baseMaxHealth = 10f;
-          /*  body.baseMoveSpeed = 0f;
+          /* body.baseMoveSpeed = 0f;
             body.moveSpeed = 0f;
             body.baseRegen = 0f; */
-            body.statsDirty = true;
             //Debug.Log(wormBody.baseMaxHealth);
             //Debug.Log(wormBody.maxHealth);
 
             body.baseNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_DISPLAY_NAME";
-            
+
+            body.statsDirty = true;
+
+         /*   var healthTracker = body.gameObject.AddComponent<SkillComponents.WormHealthTracker>();
+            healthTracker.specialSlot = base.skillLocator.special;
+            healthTracker.wormBody = body;
+            healthTracker.wormSkill = src;
+            healthTracker.cancelSkillDef = cancelSkillDef;
+            healthTracker.wormMaster = wormMaster; */
+
         }
         
     
@@ -173,9 +222,12 @@ namespace AmpMod.SkillStates
         {
             base.FixedUpdate();
 
+            if (base.isAuthority)
+            {
+                this.outer.SetNextStateToMain();
 
-            this.outer.SetNextStateToMain();
-            
+            }
+
 
         }
      }

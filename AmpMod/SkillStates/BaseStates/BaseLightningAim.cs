@@ -15,15 +15,15 @@ namespace AmpMod.SkillStates.BaseStates
     public abstract class BaseLightningAim : BaseSkillState
     {
             protected abstract VoltaicBombardmentFire GetNextState();
-        public GameObject chargeEffectPrefab;
+            public GameObject chargeEffectPrefab;
             public string chargeSoundString;
             public GameObject crosshairOverridePrefab;
             public float lightningRadius = .2f;
             private GameObject defaultCrosshairPrefab;
             private uint loopSoundInstanceId;
-        private bool hasMuzzleEffect;
+            private bool hasMuzzleEffect;
             private Transform leftMuzzleTransform;
-        private Transform fireMuzzleTransform;
+            private Transform fireMuzzleTransform;
             private float reticleScale = 7.5f;
 
             private float duration { get; set; }

@@ -41,45 +41,46 @@ namespace AmpMod.Modules
         //instantiates ferroshot/Lorentz Cannon projectile
         private static void CreateFerroshot()
         {
-           ferroshotPrefab = CloneProjectilePrefab("LunarShardProjectile", "Ferroshot");
+            //ferroshotPrefab = CloneProjectilePrefab("LunarShardProjectile", "Ferroshot");
 
+            ferroshotPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeProjectile");
 
             //change damagetype of ferroshot to generic
-            ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
-            ferroshotDamage.damageType = DamageType.Generic;
+          //  ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
+            //.damageType = DamageType.Generic;
 
             //remove/nullify components from lunarshard that are unnecessary, such as the tracker and on impact explosion
-            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
+           /* AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileDirectionalTargetFinder>());
             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileTargetComponent>());
 
             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
-            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>());
+            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>()); */
 
            
 
-            ferroshotPrefab.AddComponent<DestroyOnTimer>().duration = .7f;
+            //ferroshotPrefab.AddComponent<DestroyOnTimer>().duration = .5f;
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedTargeting>();
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedHoming>();
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedDirectionFinder>();
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
-            ferroshotController.procCoefficient = 1f;
-            //ferroshotController.allowPrediction = true;
+         
             //instantiates the projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
-            
-  
 
+
+            ferroshotController.procCoefficient = 1f;
+            ferroshotController.allowPrediction = true;
             //makes ferroshot destroy itself on contact with other entities, + adds impact effect
             ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
             InitializeFerroshotContact(ferroshotContact);
             ferroshotContact.destroyOnWorld = true;
             ferroshotContact.impactEffect = Assets.bulletImpactEffect;
 
-            //PrefabAPI.RegisterNetworkPrefab(ferroshotPrefab);
+            PrefabAPI.RegisterNetworkPrefab(ferroshotPrefab);
 
         }
 

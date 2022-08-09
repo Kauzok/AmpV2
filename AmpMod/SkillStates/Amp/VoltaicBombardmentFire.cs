@@ -2,6 +2,7 @@
 using RoR2;
 using EntityStates;
 using UnityEngine.Networking;
+using System.Collections.Generic;
 using RoR2.Projectile;
 using R2API;
 using System.Linq;
@@ -44,73 +45,97 @@ namespace AmpMod.SkillStates.Amp
             {
                 EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "HandL", false);
             }
+   
             
-            
+
         }
 
-        public void LightningSearch()
-        {
 
-            /* BullseyeSearch search = new BullseyeSearch
+
+        /* public void LightningSearch()
+         {
+
+             /* BullseyeSearch search = new BullseyeSearch
+              {
+                  teamMaskFilter = TeamMask.all,
+                  filterByLoS = false,
+                  searchOrigin = strikePosition,
+                  searchDirection = Random.onUnitSphere,
+                  sortMode = BullseyeSearch.SortMode.Distance,
+                  maxDistanceFilter = 12f,
+                  maxAngleFilter = 360f
+              };
+              Debug.Log("searching");
+
+              search.RefreshCandidates();
+
+              HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
+              if (target)
+              {
+                  if (target.healthComponent && target.healthComponent.body)
+                  {
+                      if (target.healthComponent.body.baseNameToken == AmpName)
+                      {
+                          base.characterBody.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+
+                      }
+                  }
+              } 
+             ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(base.characterBody.teamComponent.teamIndex);
+             float maxDistance = 144f;
+             Vector3 position = strikePosition;
+             for (int i = 0; i < teamMembers.Count; i++)
              {
-                 teamMaskFilter = TeamMask.all,
-                 filterByLoS = false,
-                 searchOrigin = strikePosition,
-                 searchDirection = Random.onUnitSphere,
-                 sortMode = BullseyeSearch.SortMode.Distance,
-                 maxDistanceFilter = 12f,
-                 maxAngleFilter = 360f
-             };
-             Debug.Log("searching");
-
-             search.RefreshCandidates();
-
-             HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
-             if (target)
-             {
-                 if (target.healthComponent && target.healthComponent.body)
+                 if ((teamMembers[i].transform.position - position).sqrMagnitude <= maxDistance)
                  {
-                     if (target.healthComponent.body.baseNameToken == AmpName)
+                     CharacterBody body = teamMembers[i].GetComponent<CharacterBody>();
+                     if (body)
                      {
-                         base.characterBody.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
-
+                         Debug.Log("Body Found");
+                         AmpPlugin.logger.LogMessage("dababy found");
                      }
+                     if (NetworkServer.active)
+                     {
+                         AmpPlugin.logger.LogMessage("networkserver active");
+                         //base.characterBody.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+                     }
+                     if (body && NetworkServer.active)
+                     {
+                         Debug.Log("Adding Overcharge");
+                         body.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+                         AmpPlugin.logger.LogMessage("adding overcharge");
+                         //body.AddBuff(Modules.Buffs.overCharge);
+
+                         if (body.HasBuff(Modules.Buffs.overCharge))
+                         {
+                             Debug.Log("buff applied");
+                         }
+                     }
+
+
                  }
-             } */
+             }
+         }*/
+
+
+        public CharacterBody[] lightningSearch()
+        {
+            List<CharacterBody> buffList = new List<CharacterBody>();
+
             ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(base.characterBody.teamComponent.teamIndex);
-            float num = 144f;
+            float maxDistance = 144f;
             Vector3 position = strikePosition;
             for (int i = 0; i < teamMembers.Count; i++)
             {
-                if ((teamMembers[i].transform.position - position).sqrMagnitude <= num)
+                if ((teamMembers[i].transform.position - position).sqrMagnitude <= maxDistance)
                 {
                     CharacterBody body = teamMembers[i].GetComponent<CharacterBody>();
-                    if (body)
-                    {
-                        Debug.Log("Body Found");
-                        AmpPlugin.logger.LogMessage("dababy found");
-                    }
-                    if (NetworkServer.active)
-                    {
-                        AmpPlugin.logger.LogMessage("networkserver active");
-                        //base.characterBody.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
-                    }
-                    if (body && NetworkServer.active)
-                    {
-                        Debug.Log("Adding Overcharge");
-                        body.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
-                        AmpPlugin.logger.LogMessage("adding overcharge");
-                        //body.AddBuff(Modules.Buffs.overCharge);
-
-                        if (body.HasBuff(Modules.Buffs.overCharge))
-                        {
-                            Debug.Log("buff applied");
-                        }
-                    }
-
-
+                    buffList.Add(body);
                 }
             }
+            CharacterBody[] bodyList = buffList.ToArray();
+            return bodyList;
+
         }
 
         //used to set delay for attack
@@ -125,6 +150,28 @@ namespace AmpMod.SkillStates.Amp
                 {
                     hasFired = true;
                     Fire();
+
+                   if (NetworkServer.active)
+                    {
+                        //base.characterBody.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+                    }
+
+                    if (NetworkServer.active)
+                    {
+                        Debug.Log("networkserver active");
+                        Debug.Log(strikePosition);
+                        CharacterBody[] result = lightningSearch();
+                        foreach (CharacterBody i in result)
+                        {
+                            Debug.Log("adding buff");
+                            i.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
+                            
+                        }
+                    } 
+                    
+                   
+                   
+
                 }
 
                 //i dont know why but this line is necessary for the .5 second delay to actually work
@@ -206,14 +253,29 @@ namespace AmpMod.SkillStates.Amp
                 };
                 lightningStrike.AddModdedDamageType(Modules.DamageTypes.apply2Charge);
                 
-                lightningStrike.Fire();
-                LightningSearch();
+                
+                BlastAttack.Result result = lightningStrike.Fire();
 
+                //foreach (hitC)
 
             }
-        } 
+            
+        }
 
-           
+
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(this.boltPosition);
+            writer.Write(this.strikePosition);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            this.boltPosition = reader.ReadVector3();
+            this.strikePosition = reader.ReadVector3();
+        }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
