@@ -27,7 +27,6 @@
   - Consider adjusting chain effect
 - Voltaic Bombardment
   - Adjust muzzle vfx
-  - Add self-hit properties in multiplayer
 - Bulwark of Storms
   - Add VFX & SFX to channelling
   - Make worm unset skill override on death in multiplayer
