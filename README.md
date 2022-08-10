@@ -43,6 +43,7 @@
 - Adjust sideways walks?
 - Make shockblade slashes look more exaggerated
 - Fix weird roll -> run transition
+- Add standing still animations for shockblade, lorentz cannon, magnetic vortex & fulmination
 
 ## VFX To Do
 - Consider modifying helmet/chest glow
