@@ -1,5 +1,5 @@
 ## Amp
-- WIP Amp, a melee/range hybrid who fights with electromagnetic attacks. Original name battlemage, will adjust other name tokens later. Updated for SoTV
+- WIP Amp, a melee/range hybrid who fights with electromagnetic attacks.
 ## Skills To Do
 - Stormblade
   - Fix checkroll behavior in multiplayer
