@@ -53,6 +53,7 @@
 - Cleanup code base, finish comments
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
+- Emote and other API Support
 - Add configs
 - Adjust character portrait
 
