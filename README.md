@@ -40,7 +40,7 @@
 - Adjust masking of model for limb replacement
 
 ## Animations To Do
-- Adjust sideways walks?
+- Adjust sideways walks
 - Polish shockblade slashes
 - Fix weird roll -> run transition
 - Add standing still animations for shockblade, lorentz cannon, magnetic vortex & fulmination
