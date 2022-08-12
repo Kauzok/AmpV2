@@ -6,7 +6,7 @@
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
-  - make ghost follow pathway in multiplayer
+  - fix laggy ghost in multiplayer
 - Plasma Slash
   - Make unlockable
   - Fix multiplayer ghost becoming invisible
