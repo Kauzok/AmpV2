@@ -9,12 +9,12 @@
   - fix laggy ghost in multiplayer
 - Plasma Slash
   - Make unlockable
-  - Fix multiplayer ghost becoming invisible
+  - Fix multiplayer projectile becoming invisible
 - Magnetic Vortex
   - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
   - Change sound origin
-  - Make radial damage appear in multiplayer
+  - Make DoT appear in multiplayer
 - Surge
   - Fix effect shaking when running into objects
   - Consider adjusting entry VFX for visibility
