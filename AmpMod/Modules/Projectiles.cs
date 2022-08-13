@@ -46,20 +46,20 @@ namespace AmpMod.Modules
             ferroshotPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeProjectile");
 
             //change damagetype of ferroshot to generic
-          //  ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
+            //  ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
             //.damageType = DamageType.Generic;
 
             //remove/nullify components from lunarshard that are unnecessary, such as the tracker and on impact explosion
-           /* AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
-            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
-            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
-            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileDirectionalTargetFinder>());
-            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileTargetComponent>());
+            /* AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
+             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
+             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
+             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileDirectionalTargetFinder>());
+             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileTargetComponent>());
 
-            ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
-            AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>()); */
+             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
+             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>()); */
+            ferroshotPrefab.GetComponent<ProjectileSimple>().lifetime = 1f;
 
-           
 
             //ferroshotPrefab.AddComponent<DestroyOnTimer>().duration = .5f;
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedTargeting>();
@@ -73,7 +73,8 @@ namespace AmpMod.Modules
 
 
             ferroshotController.procCoefficient = 1f;
-            ferroshotController.allowPrediction = true;
+            
+            //ferroshotController.allowPrediction = true;
             //makes ferroshot destroy itself on contact with other entities, + adds impact effect
             ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
             InitializeFerroshotContact(ferroshotContact);
@@ -95,7 +96,7 @@ namespace AmpMod.Modules
             vortexController.allowPrediction = true;
             
             //code for giving flight loop sound to vortex projectile and making it stop on contact
-            /*  LoopSoundDef flightLoop = new LoopSoundDef();
+            /* LoopSoundDef flightLoop = new LoopSoundDef();
               flightLoop.startSoundName = StaticValues.vortexFlightLoopString;
               vortexPrefab.GetComponent<ProjectileController>().flightSoundLoop = flightLoop; */
 

@@ -16,7 +16,7 @@ namespace AmpMod.SkillStates
         private float launchDamage = Modules.StaticValues.boostDamageCoefficient;
         private GameObject launchEffect;
         private ChildLocator childLocator;
-        private float smallHopVelocity = 8f;
+        private float smallHopVelocity = 12f;
         private Vector3 lungeVelocity;
         private Vector3 initialLaunchVelocity;
         private float blastRadius = 11f;

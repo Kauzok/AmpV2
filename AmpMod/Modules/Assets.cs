@@ -232,9 +232,7 @@ namespace AmpMod.Modules
         {
            vortexBlackholePrefab = mainAssetBundle.LoadAsset<GameObject>("VortexSphere");
            vortexBlackholePrefab.AddComponent<SkillStates.RadialDamage>();
-           
-
-            
+            //vortexBlackholePrefab.GetComponent<ProjectileDamage>().damage = 2f;
 
             vortexExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("VortexExplosion");
             

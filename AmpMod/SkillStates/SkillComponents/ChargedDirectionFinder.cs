@@ -15,7 +15,7 @@ namespace AmpMod.SkillStates.SkillComponents
 	class ChargedDirectionFinder : MonoBehaviour
     {
 		[Tooltip("How far ahead the projectile should look to find a target.")]
-		public float lookRange = 80f;
+		public float lookRange = 40f;
 		
 		[Tooltip("How wide the cone of vision for this projectile is in degrees. Limit is 180.")]
 		[Range(0f, 180f)]

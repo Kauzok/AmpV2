@@ -56,7 +56,7 @@ using RoR2;
 
 			// Token: 0x040042E8 RID: 17128
 			[Tooltip("How fast to rotate in degrees per second. Rotation is linear.")]
-			public float rotationSpeed = 120;
+			public float rotationSpeed = 1080;
 
 			// Token: 0x040042E9 RID: 17129
 			private new Transform transform;

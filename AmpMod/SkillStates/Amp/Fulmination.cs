@@ -218,7 +218,7 @@ namespace AmpMod.SkillStates
             {
 				muzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, handLTransform).transform;
 				hasMuzzleEffect = true;
-				Debug.Log("Spawning Muzzle Effect");
+				//Debug.Log("Spawning Muzzle Effect");
 			}
 
 

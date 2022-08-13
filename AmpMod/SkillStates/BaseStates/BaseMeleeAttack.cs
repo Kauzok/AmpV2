@@ -28,6 +28,7 @@ namespace AmpMod.SkillStates.BaseStates
         protected float hitStopDuration = 0.012f;
         protected float attackRecoil = 0.75f;
         protected float hitHopVelocity = 4f;
+        private bool inCombo;
         protected bool cancelled = false;
         
 
@@ -117,9 +118,28 @@ namespace AmpMod.SkillStates.BaseStates
 
         protected virtual void PlayAttackAnimation()
         {
-            if (!animator.GetBool("isFulminating")) base.PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), "Slash.playbackRate", this.duration, 0.05f);
 
-            else if (animator.GetBool("isFulminating")) base.PlayCrossfade("Gesture, Override", "FulminateSlash" + (1 + swingIndex), "Slash.playbackRate", this.duration, 0.05f);
+            if (this.animator.GetBool("isFulminating"))
+            {
+                base.PlayCrossfade("Gesture, Override", "FulminateSlash" + (1 + swingIndex), "Slash.playbackRate", this.duration, 0.05f);
+            }
+            else
+            {
+                base.PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), "Slash.playbackRate", this.duration, 0.05f);
+                /* if (this.inCombo)
+               {
+                   if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) base.PlayCrossfade("FullBody, Override", "Slash1Combo", "Slash.playbackRate", this.duration, 0.05f);
+                   base.PlayCrossfade("Gesture, Override", "Slash1Combo", "Slash.playbackRate", this.duration, 0.05f);
+               }
+               else 
+               {
+                   if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) base.PlayCrossfade("FullBody, Override", "Slash" + (1 + swingIndex), "Slash.playbackRate", this.duration, 0.05f);
+                   base.PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), "Slash.playbackRate", this.duration, 0.05f);
+               } */
+
+            }
+          
+
 
 
         }
@@ -195,6 +215,7 @@ namespace AmpMod.SkillStates.BaseStates
             {
                 swingIndex = index
             });
+            inCombo = true;
         }
 
         public override void FixedUpdate()

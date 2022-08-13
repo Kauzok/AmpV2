@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 0.5
   lifetimeExpiredEffect: {fileID: 0}
-  desiredForwardSpeed: 120
+  desiredForwardSpeed: 100
   updateAfterFiring: 1
   enableVelocityOverLifetime: 0
   velocityOverLifetime:
@@ -202,8 +202,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 5.4
+  m_Radius: 0.3
+  m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7221275643235391356

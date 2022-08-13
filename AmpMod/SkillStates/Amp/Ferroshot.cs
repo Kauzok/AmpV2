@@ -17,7 +17,7 @@ namespace AmpMod.SkillStates
         public static float force = 10;
         public static float recoil = 0f;
         public static float range = 600f;
-        public static float launchForce = 200f;
+        public static float launchForce = 150f;
         private static int numOfBullets = 6;
         private const float FIRE_TIME_PERCENTAGE = .25f;
 

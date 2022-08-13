@@ -69,7 +69,7 @@ namespace AmpMod.SkillStates
                     
                     {
                          fireMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, leftMuzzleTransform).transform;
-                         Debug.Log("Spawning Muzzle Effect");
+                         //Debug.Log("Spawning Muzzle Effect");
 
                     }
 
@@ -106,18 +106,19 @@ namespace AmpMod.SkillStates
                 if (Vortexprefab != null)
                 {
                     
-                    //set vars for the radial damage component of the vortex blackhole prefab
+                  
+                     //set vars for the radial damage component of the vortex blackhole prefab
                     var vortexDamage = Modules.Assets.vortexBlackholePrefab.GetComponent<RadialDamage>();
-                    vortexDamage.blastDamage = tickDamage;
-                    vortexDamage.charBody = base.characterBody;
+                    vortexDamage.tickDamage = tickDamage * base.characterBody.damage;
+                    //vortexDamage.charBody = base.characterBody;
                     vortexDamage.radius = 5f;
-                    vortexDamage.finalBlastDamage = explodeDamage;
-                    vortexDamage.attacker = base.gameObject;
+                    vortexDamage.finalBlastDamage = explodeDamage * base.characterBody.damage;
+                    //vortexDamage.attacker = base.gameObject;
                     vortexDamage.duration = Modules.Assets.vortexBlackholePrefab.GetComponent<ProjectileSimple>().lifetime;
                     vortexDamage.explosionEffect = destroyExplosionEffect;
                     blastPosition = vortexDamage.transform.position;
 
-
+                   // Debug.Log(base.gameObject);
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
                         projectilePrefab = Vortexprefab,

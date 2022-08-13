@@ -160,7 +160,7 @@ namespace AmpMod.SkillStates
             {
                 attack.Fire();
                
-                Debug.Log("Spawning Fire");
+                //Debug.Log("Spawning Fire");
             }
 
         }
@@ -184,7 +184,7 @@ namespace AmpMod.SkillStates
                 {
                     FireGroundAttack();
                     hasFired = true;
-                    Debug.Log("firing");
+                    //Debug.Log("firing");
                     if (swordMuzzle) EntityState.Destroy(swordMuzzle.gameObject);
                 }
                 if (fixedAge >= totalDuration)
@@ -206,7 +206,7 @@ namespace AmpMod.SkillStates
                         FireAerialAttack();
                         hasFired = true;
                         if (swordMuzzle) EntityState.Destroy(swordMuzzle.gameObject);
-                        Debug.Log("firing");
+                        //Debug.Log("firing");
                         //base.characterMotor.velocity.y = base.characterMotor.velocity.y;
                     }
                     if (fixedAge >= totalDuration)
@@ -223,6 +223,10 @@ namespace AmpMod.SkillStates
             EffectManager.SimpleMuzzleFlash(this.swingEffectPrefab, base.gameObject, this.muzzleString, true);
         }
 
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
 
         public override void OnExit()
         {

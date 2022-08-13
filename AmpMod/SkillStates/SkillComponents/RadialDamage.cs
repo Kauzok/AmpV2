@@ -5,16 +5,18 @@ using RoR2.Audio;
 using System.Collections.Generic;
 using HG;
 using UnityEngine.Networking;
+using RoR2.Projectile;
 using R2API;
 
 namespace AmpMod.SkillStates
 {
-
+	[RequireComponent(typeof(ProjectileDamage))]
 	public class RadialDamage : MonoBehaviour
 	{
 
+        
 		[Header("Damage Tick Parameters")]
-		public float blastDamage;
+		public float tickDamage;
 		private float interval = 1f;
 		private float damageTimer;
 		public DamageInfo damageInfo = new DamageInfo();
@@ -30,21 +32,41 @@ namespace AmpMod.SkillStates
 		public GameObject explosionEffect;
 		private string explosionString = Modules.StaticValues.vortexExplosionString;        
 		private string loopString = Modules.StaticValues.vortexLoopString;
-		
+
 		[Header("Damage Owner/Positional Parameters")]
+		public ProjectileDamage projectileDamage;
+		public ProjectileController projectileController;
 		public GameObject attacker;
 		public CharacterBody charBody;
 		public Vector3 position;
 		public float radius = 10f;
 		private SphereSearch sphereSearch;
-		public float duration;
+		public float duration = 3f;
 		private string spawnSound = Modules.StaticValues.vortexSpawnString;
 
 		private void Awake()
 		{
+			projectileDamage = base.GetComponent<ProjectileDamage>();
+			projectileController = base.GetComponent<ProjectileController>();
+
 			this.transform = base.GetComponent<Transform>();
 			this.teamFilter = base.GetComponent<TeamFilter>();
 			this.sphereSearch = new SphereSearch();
+
+			attacker = (this.projectileController.owner ? this.projectileController.owner.gameObject : null);
+			charBody = (this.projectileController.Networkowner ? this.projectileController.Networkowner.GetComponent<CharacterBody>() : null);
+
+/*			Debug.Log(attacker);
+			Debug.Log(projectileController.Networkowner);
+
+			if (charBody)
+            {
+				Debug.Log("found characterbody");
+            }
+            else
+            {
+				Debug.Log("No charbody found");
+            } */
 
 			//play spawn sound i don't care if this isn't a good way to code things i'm not making a separate component for this
 			//AkSoundEngine.PostEvent(spawnSound, gameObject);
@@ -61,21 +83,21 @@ namespace AmpMod.SkillStates
 			//declare explosion to be used on vortex destruction
 			radialBlast = new BlastAttack
 			{
-				attacker = attacker.gameObject,
-				baseDamage = finalBlastDamage * charBody.damage,
+				attacker = this.attacker,
+				baseDamage = finalBlastDamage,
 				baseForce = 0f,
 				attackerFiltering = AttackerFiltering.NeverHitSelf,
-				crit = charBody.RollCrit(),
+				//crit = charBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,
 				damageType = DamageType.Generic,
 				falloffModel = BlastAttack.FalloffModel.None,
-				inflictor = attacker.gameObject,
+				inflictor = base.gameObject,
 				position = this.transform.position,
 				procChainMask = default(ProcChainMask),
-				procCoefficient = 1f,
+				procCoefficient = 1f,	
 				radius = radius,
 				teamIndex = this.teamFilter.teamIndex
-			};
+			}; 
 
 
 			//exitEffectPrefab = Modules.Assets.testLightningEffect;
@@ -87,15 +109,17 @@ namespace AmpMod.SkillStates
 		private void FixedUpdate()
 		{
 
-			timer += Time.fixedDeltaTime;
-			this.damageTimer -= Time.fixedDeltaTime;
+	
+				timer += Time.fixedDeltaTime;
+				this.damageTimer -= Time.fixedDeltaTime;
 
-			//calls the damage function three times, once every second starting on object spawn
-			if (this.damageTimer <= 0f)// && NetworkServer.active)
-			{
-				damageTimer = interval;	
-				searchAndDamage();
-			}
+				//calls the damage function three times, once every second starting on object spawn
+				if (this.damageTimer <= 0f)// && NetworkServer.active)
+				{
+					damageTimer = interval;
+					searchAndDamage();
+				}
+
 
 			//fires the final vortex explosion after the damage function has been called thrice
 			if (timer >= duration - Time.fixedDeltaTime) //&& NetworkServer.active)
@@ -128,16 +152,17 @@ namespace AmpMod.SkillStates
 
 			if (healthComponent && NetworkServer.active)
 			{
+				//Debug.Log("networkserver active");
 				//declare damageinfo with attacker object and characterbody set through vars
 				damageInfo = new DamageInfo
 				{
-					attacker = attacker,
-					damage = charBody.damage * blastDamage,
+					attacker = this.attacker,
+					damage = tickDamage,//charBody.damage * tickDamage,
 					force = Vector3.zero,
-					crit = charBody.RollCrit(),
+					//crit = charBody.RollCrit(),
 					damageType = DamageType.Generic,
 					procChainMask = default(ProcChainMask),
-					inflictor = attacker.gameObject,//base.gameObject,
+					inflictor = base.gameObject,
 					position = hurtBox.healthComponent.body.corePosition
 				};
 

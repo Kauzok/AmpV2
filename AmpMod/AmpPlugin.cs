@@ -33,6 +33,7 @@ namespace AmpMod
         "DamageAPI",
         //"OrbAPI",
         //"EffectAPI",
+        "UnlockableAPI",
         "RecalculateStatsAPI",
     })]
 

@@ -158,12 +158,12 @@ namespace AmpMod.SkillStates.Amp
 
                     if (NetworkServer.active)
                     {
-                        Debug.Log("networkserver active");
-                        Debug.Log(strikePosition);
+                        //Debug.Log("networkserver active");
+                       // Debug.Log(strikePosition);
                         CharacterBody[] result = lightningSearch();
                         foreach (CharacterBody i in result)
                         {
-                            Debug.Log("adding buff");
+                            //Debug.Log("adding buff");
                             i.AddTimedBuff(Modules.Buffs.overCharge, overchargeDuration);
                             
                         }

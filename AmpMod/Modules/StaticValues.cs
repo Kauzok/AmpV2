@@ -40,8 +40,8 @@ namespace AmpMod.Modules
         internal const float chargeDamageCoefficient = 4f;
 
         [Header("Stormblade Values")]
-        internal const float stormbladeDamageCoefficient = 1.4f;
-        internal const float stormbladeChargeProcCoefficient = 20f;
+        internal const float stormbladeDamageCoefficient = 1.6f;
+        internal const float stormbladeChargeProcCoefficient = 100f;
 
         [Header("Lorentz Cannon Values")]
         internal const float ferroshotDamageCoefficient = 1.6f;
@@ -57,7 +57,7 @@ namespace AmpMod.Modules
 
         [Header("Bolt Values")]
         internal static float boltBlastDamageCoefficient = 3f;
-        internal const float boltOverlapDamageCoefficient = 1f;
+        internal const float boltOverlapDamageCoefficient = 1.5f;
 
         [Header("Pulse Leap Values")]
         internal const float boostDamageCoefficient = 4f;
@@ -68,8 +68,8 @@ namespace AmpMod.Modules
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
-        internal const float lightningStrikeCoefficient = 10f;
-        internal const float overChargeDuration = 3f;
+        internal const float lightningStrikeCoefficient = 14f;
+        internal const float overChargeDuration = 5f;
         internal const float overchargeMoveSpeed = 2.5f;
         internal const float overchargeAttackSpeed = .3f;
 
