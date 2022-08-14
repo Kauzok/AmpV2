@@ -239,8 +239,13 @@ namespace AmpMod.Modules
             AddNewEffectDef(vortexExplosionEffect, Modules.StaticValues.vortexExplosionString);
             AddNewEffectDef(mainAssetBundle.LoadAsset<GameObject>("VortexSpawnExplosion"));
 
-            PrefabAPI.RegisterNetworkPrefab(vortexBlackholePrefab);
+            ChildLocator childLocator = vortexBlackholePrefab.GetComponent<ChildLocator>();
+            Transform vortexTransform = childLocator.FindChild("VortexHitbox");
+            Modules.Prefabs.SetupHitbox(vortexBlackholePrefab, vortexTransform, "VortexHitbox"); 
+            //mainAssetBundle.LoadAsset<GameObject>("VortexHitbox").gameObject.layer = LayerIndex.projectile.intVal;
 
+            PrefabAPI.RegisterNetworkPrefab(vortexBlackholePrefab);
+             
         }
 
         private static void CreateVortexMuzzle()

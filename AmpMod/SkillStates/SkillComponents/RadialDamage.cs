@@ -7,6 +7,7 @@ using HG;
 using UnityEngine.Networking;
 using RoR2.Projectile;
 using R2API;
+using System;
 
 namespace AmpMod.SkillStates
 {
@@ -16,10 +17,17 @@ namespace AmpMod.SkillStates
 
         
 		[Header("Damage Tick Parameters")]
-		public float tickDamage;
+		public float tickDamageCoefficient = Modules.StaticValues.vortexDamageCoefficient;
 		private float interval = 1f;
 		private float damageTimer;
-		public DamageInfo damageInfo = new DamageInfo();
+		private String hitboxName = "VortexHitbox";
+        public DamageInfo damageInfo = new DamageInfo();
+		public GameObject explosionEffect;
+		private OverlapAttack attack;
+		private float resetStopwatch;
+		private float fireStopwatch;
+		public float resetFrequency = 1f;
+		public float fireFrequency = 1f;
 
 		[Header("Damaging Object Parameters")]
 		protected Transform transform;
@@ -27,15 +35,17 @@ namespace AmpMod.SkillStates
 
 		[Header("Final Blast Parameters")]
 		public BlastAttack radialBlast;
-		public float finalBlastDamage;
+		public float finalBlastDamageCoefficient = Modules.StaticValues.vortexExplosionCoefficient;
 		private float timer;
-		public GameObject explosionEffect;
 		private string explosionString = Modules.StaticValues.vortexExplosionString;        
 		private string loopString = Modules.StaticValues.vortexLoopString;
 
 		[Header("Damage Owner/Positional Parameters")]
 		public ProjectileDamage projectileDamage;
 		public ProjectileController projectileController;
+		private ChildLocator childLocator;
+		private HitBoxGroup vortexHitbox;
+		private bool hasSetAttacker;
 		public GameObject attacker;
 		public CharacterBody charBody;
 		public Vector3 position;
@@ -53,20 +63,6 @@ namespace AmpMod.SkillStates
 			this.teamFilter = base.GetComponent<TeamFilter>();
 			this.sphereSearch = new SphereSearch();
 
-			attacker = (this.projectileController.owner ? this.projectileController.owner.gameObject : null);
-			charBody = (this.projectileController.Networkowner ? this.projectileController.Networkowner.GetComponent<CharacterBody>() : null);
-
-/*			Debug.Log(attacker);
-			Debug.Log(projectileController.Networkowner);
-
-			if (charBody)
-            {
-				Debug.Log("found characterbody");
-            }
-            else
-            {
-				Debug.Log("No charbody found");
-            } */
 
 			//play spawn sound i don't care if this isn't a good way to code things i'm not making a separate component for this
 			//AkSoundEngine.PostEvent(spawnSound, gameObject);
@@ -80,45 +76,73 @@ namespace AmpMod.SkillStates
 			//AkSoundEngine.PostEvent(loopString, gameObject);
 			PointSoundManager.EmitSoundServer(Modules.Assets.vortexLoopSoundEvent.index, this.transform.position);
 
-			//declare explosion to be used on vortex destruction
+
+		}
+		private void Start()
+        {
+			attacker = (this.projectileController.owner ? this.projectileController.owner.gameObject : null);
+			charBody = (attacker ? attacker.GetComponent<CharacterBody>() : null);
+			this.ResetOverlap();
+			explosionEffect = Modules.Assets.vortexExplosionEffect;
+
 			radialBlast = new BlastAttack
 			{
 				attacker = this.attacker,
-				baseDamage = finalBlastDamage,
+				baseDamage = finalBlastDamageCoefficient * charBody.damage,
 				baseForce = 0f,
 				attackerFiltering = AttackerFiltering.NeverHitSelf,
-				//crit = charBody.RollCrit(),
+				crit = charBody.RollCrit(),
 				damageColorIndex = DamageColorIndex.Item,
 				damageType = DamageType.Generic,
 				falloffModel = BlastAttack.FalloffModel.None,
 				inflictor = base.gameObject,
 				position = this.transform.position,
 				procChainMask = default(ProcChainMask),
-				procCoefficient = 1f,	
+				procCoefficient = 1f,
 				radius = radius,
 				teamIndex = this.teamFilter.teamIndex
-			}; 
+			};
 
-
-			//exitEffectPrefab = Modules.Assets.testLightningEffect;
-
-
+		}
+		private void ResetOverlap()
+		{
+			this.attack = new OverlapAttack();
+			//this.attack.procChainMask = this.projectileController.procChainMask;
+			this.attack.procCoefficient = 1f;
+			this.attack.attacker = attacker;
+			this.attack.inflictor = base.gameObject;
+			this.attack.teamIndex = TeamIndex.Player;
+			this.attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+			this.attack.damage = tickDamageCoefficient * charBody.damage;
+			this.attack.forceVector = Vector3.zero;
+			this.attack.isCrit = charBody.RollCrit();
+			this.attack.damageColorIndex = DamageColorIndex.Default;
+			this.attack.damageType = DamageType.Generic;
+			this.attack.hitBoxGroup = Array.Find<HitBoxGroup>(base.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
 		}
 
 
 		private void FixedUpdate()
 		{
 
-	
+
+			if (NetworkServer.active)
+            {
 				timer += Time.fixedDeltaTime;
 				this.damageTimer -= Time.fixedDeltaTime;
 
 				//calls the damage function three times, once every second starting on object spawn
-				if (this.damageTimer <= 0f)// && NetworkServer.active)
-				{
+					if (this.damageTimer <= 0f)// && NetworkServer.active)
+					{
 					damageTimer = interval;
-					searchAndDamage();
-				}
+					ResetOverlap();
+					attack.Fire(null);
+					//searchAndDamage();
+
+					}
+
+			}
+			
 
 
 			//fires the final vortex explosion after the damage function has been called thrice
@@ -141,68 +165,7 @@ namespace AmpMod.SkillStates
 		}
 
 
-		//function for applying damage to characters in a radius
-		protected void ApplyDamage(HurtBox hurtBox)
-		{
-			if (!hurtBox)
-			{
-				return;
-			}
-			HealthComponent healthComponent = hurtBox.healthComponent;
-
-			if (healthComponent && NetworkServer.active)
-			{
-				//Debug.Log("networkserver active");
-				//declare damageinfo with attacker object and characterbody set through vars
-				damageInfo = new DamageInfo
-				{
-					attacker = this.attacker,
-					damage = tickDamage,//charBody.damage * tickDamage,
-					force = Vector3.zero,
-					//crit = charBody.RollCrit(),
-					damageType = DamageType.Generic,
-					procChainMask = default(ProcChainMask),
-					inflictor = base.gameObject,
-					position = hurtBox.healthComponent.body.corePosition
-				};
-
-				//apply damage info
-				hurtBox.healthComponent.TakeDamage(damageInfo);
-			}
-				
-		}
-
-
-		private void searchAndDamage()
-		{
-			//get a list of hurtboxes with a spheresearch 
-			List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
-			SearchForTargets(list);
-			int i = 0;
-			int count = list.Count;
-			while (i < count)
-			{
-				//apply damage to every hurtbox in the list
-				ApplyDamage(list[i]);
-				i++;
-			}
-
-		}
-
-		//search for hurtboxes in a radius centered at the vortex object
-		protected void SearchForTargets(List<HurtBox> dest)
-		{
-			sphereSearch.mask = LayerIndex.entityPrecise.mask;
-			sphereSearch.origin = this.transform.position;
-			sphereSearch.radius = this.radius;
-			sphereSearch.queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
-			sphereSearch.RefreshCandidates();
-			sphereSearch.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(this.teamFilter.teamIndex));
-			sphereSearch.OrderCandidatesByDistance();
-			sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
-			sphereSearch.GetHurtBoxes(dest);
-			sphereSearch.ClearCandidates();
-		}
+	
 
 	}
 }

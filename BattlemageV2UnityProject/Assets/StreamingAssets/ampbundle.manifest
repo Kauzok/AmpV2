@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3997415228
+CRC: 1835564816
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: aae23310077fa5b28e163fb7440024d5
+    Hash: c6ec53058d160f5928ae7118b3f19c16
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5c206b74f6ff831a4218599656d2421e
@@ -171,7 +171,6 @@ Assets:
 - Assets/HenryAssets/Textures/Atlases/Materials/ChestAtlas.mat
 - Assets/HenryAssets/VFX/Textures/texHenrySwing2.png
 - Assets/HenryAssets/Icons/texBazookaIcon.png
-- Assets/HenryAssets/VFX/Vortex/VortexHitbox.prefab
 - Assets/HenryAssets/Textures/Atlases/Materials/ForearmLAtlas.mat
 - Assets/HenryAssets/VFX/Vortex/Sparks.prefab
 - Assets/HenryAssets/Mesh/meshHenry.mesh
@@ -465,6 +464,7 @@ Assets:
 - Assets/HenryAssets/Atlases/EmissionSprite.png
 - Assets/HenryAssets/Icons/texStingerIcon.png
 - Assets/HenryAssets/VFX/Bolt/MatBoltEffect.mat
+- Assets/HenryAssets/VFX/Vortex/VortexHitbox.prefab
 - Assets/HenryAssets/AmpAnims/metarig_SummonReleaseAnim.anim
 - Assets/HenryAssets/Textures/texHenryVergil.png
 - Assets/HenryAssets/Icons/texChargeDebuffAlt.png

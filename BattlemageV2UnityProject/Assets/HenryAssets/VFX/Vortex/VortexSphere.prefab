@@ -5223,6 +5223,7 @@ GameObject:
   - component: {fileID: 114165937340043092}
   - component: {fileID: 114387968731883287}
   - component: {fileID: 6584619878043305694}
+  - component: {fileID: 222297745494294715}
   m_Layer: 13
   m_Name: VortexSphere
   m_TagString: Untagged
@@ -5248,6 +5249,7 @@ Transform:
   - {fileID: 4534665380276661}
   - {fileID: 4024783208363444}
   - {fileID: 2640817226587647354}
+  - {fileID: 2009291624753128965}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5393,7 +5395,7 @@ MonoBehaviour:
   force: 0
   damageColorIndex: 0
   damageType: 0
-  useDotMaxStacksFromAttacker: 0
+  useDotMaxStacksFromAttacker: 1
   dotMaxStacksFromAttacker: 4294967295
 --- !u!114 &114907104243272104
 MonoBehaviour:
@@ -5483,6 +5485,21 @@ MonoBehaviour:
   damageType: 0
   useDotMaxStacksFromAttacker: 0
   dotMaxStacksFromAttacker: 4294967295
+--- !u!114 &222297745494294715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685504830071866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformPairs:
+  - name: VortexHitbox
+    transform: {fileID: 2009291624753128965}
 --- !u!1 &1716648638037725
 GameObject:
   m_ObjectHideFlags: 0
@@ -10720,6 +10737,36 @@ MonoBehaviour:
   loop: 0
   randomStart: 0
   enableNegativeLights: 0
+--- !u!1 &1482414303718207655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009291624753128965}
+  m_Layer: 13
+  m_Name: VortexHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009291624753128965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482414303718207655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 4563957655416404}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1291206613517939045
 PrefabInstance:
   m_ObjectHideFlags: 0

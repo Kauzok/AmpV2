@@ -14,7 +14,6 @@ namespace AmpMod.SkillStates
         public GameObject Vortexprefab = Modules.Projectiles.vortexPrefab;
         public float explodeDamage = Modules.StaticValues.vortexExplosionCoefficient;
         public Vector3 blastPosition;
-        private GameObject destroyExplosionEffect = Modules.Assets.vortexExplosionEffect;
         private string ShootString = Modules.StaticValues.vortexShootString;
         private Animator animator;
         private GameObject muzzleEffectPrefab = Modules.Assets.vortexMuzzleEffect;
@@ -109,14 +108,8 @@ namespace AmpMod.SkillStates
                   
                      //set vars for the radial damage component of the vortex blackhole prefab
                     var vortexDamage = Modules.Assets.vortexBlackholePrefab.GetComponent<RadialDamage>();
-                    vortexDamage.tickDamage = tickDamage * base.characterBody.damage;
-                    //vortexDamage.charBody = base.characterBody;
-                    vortexDamage.radius = 5f;
-                    vortexDamage.finalBlastDamage = explodeDamage * base.characterBody.damage;
-                    //vortexDamage.attacker = base.gameObject;
+                    //vortexDamage.radius = 5f;
                     vortexDamage.duration = Modules.Assets.vortexBlackholePrefab.GetComponent<ProjectileSimple>().lifetime;
-                    vortexDamage.explosionEffect = destroyExplosionEffect;
-                    blastPosition = vortexDamage.transform.position;
 
                    // Debug.Log(base.gameObject);
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo

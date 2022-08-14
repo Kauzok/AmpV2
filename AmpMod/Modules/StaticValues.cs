@@ -44,7 +44,7 @@ namespace AmpMod.Modules
         internal const float stormbladeChargeProcCoefficient = 100f;
 
         [Header("Lorentz Cannon Values")]
-        internal const float ferroshotDamageCoefficient = 1.6f;
+        internal const float ferroshotDamageCoefficient = 1.3f;
         
         [Header("Plasma Slash Values")]
         internal const float spinSlashDamageCoefficient = 7f;
@@ -64,7 +64,7 @@ namespace AmpMod.Modules
 
         [Header("Fulmination Values")]
         internal const float fulminationDamageCoefficient = 1.1f;
-        internal const float fulminationTotalDamageCoefficient = 24f;
+        internal const float fulminationTotalDamageCoefficient = 22f;
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
@@ -73,7 +73,7 @@ namespace AmpMod.Modules
         internal const float overchargeMoveSpeed = 2.5f;
         internal const float overchargeAttackSpeed = .3f;
 
-        [Header("Bulwark of Storm Values")]
+        [Header("Bulwark of Storms Values")]
 
 
 

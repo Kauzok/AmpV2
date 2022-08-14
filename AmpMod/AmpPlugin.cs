@@ -13,8 +13,10 @@ using AmpMod.SkillStates.BaseStates;
 using AmpMod.Modules;
 using UnityEngine.Networking;
 using HG.Reflection;
+using IL;
 using System.Collections.ObjectModel;
 using UnityEngine.AddressableAssets;
+using MonoMod.Cil;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -33,7 +35,7 @@ namespace AmpMod
         "DamageAPI",
         //"OrbAPI",
         //"EffectAPI",
-        "UnlockableAPI",
+        (nameof(UnlockableAPI)),
         "RecalculateStatsAPI",
     })]
 
@@ -100,7 +102,6 @@ namespace AmpMod
 
             //RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             RoR2Application.onLoad += SetItemDisplays;
-
 
 
             Hook();

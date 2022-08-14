@@ -47,6 +47,8 @@ namespace AmpMod.SkillStates
 
             base.OnEnter();
 
+
+
             if (base.isAuthority)
             {
 
@@ -86,9 +88,6 @@ namespace AmpMod.SkillStates
 
                 animator.SetBool("isFlying", true);
 
-                //EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "HandL", false);
-                // EffectManager.SimpleMuzzleFlash(muzzlePrefab, base.gameObject, "SwordTip", false);
-
 
                 this.rotator = this.modelTransform.Find("metarig").GetComponent<Rotator>();
                 if (!rotator) this.rotator = this.modelTransform.Find("metarig").gameObject.AddComponent<Rotator>();
@@ -96,11 +95,8 @@ namespace AmpMod.SkillStates
 
                 aimDirection = base.GetAimRay().direction;
 
-                //lungeVelocity = CalculateLungeVelocity(base.characterMotor.velocity, aimDirection, lungeSpeed);
                 
 
-                //base.characterMotor.velocity = lungeVelocity;
-                //base.characterDirection.forward = base.characterMotor.velocity.normalized;
 
                 this.rotator.SetRotation(Quaternion.LookRotation(CreateForwardRotation(), Vector3.up), flyDuration);
                 base.PlayAnimation("FullBody, Override", "PulseLeap", "BaseSkill.playbackRate", flyDuration);
@@ -116,19 +112,12 @@ namespace AmpMod.SkillStates
         }
 
 
-     /*   public void HandleMovements(Vector3 flyVector)
-        {   
-            base.characterMotor.rootMotion += flyVector * (this.moveSpeedStat * speedCoefficientCurve.Evaluate(base.fixedAge / this.flyDuration) * Time.fixedDeltaTime);
-            base.characterMotor.velocity.y = 0f;
-
-        } */
 
         public void AltHandleMovements(Vector3 flyVector)
         {
             base.characterMotor.velocity = Vector3.zero;
             base.characterMotor.rootMotion += flyVector * (this.moveSpeedStat * this.speedCoefficient * Time.fixedDeltaTime);
         }
-
 
 
 
@@ -231,12 +220,12 @@ namespace AmpMod.SkillStates
 
 
                     //remove fall damage check
-                    if (!base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
+                   /* if (!base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
                     {
                         base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
                         base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
                         Debug.Log("removing fall dmg");
-                    }
+                    } */
 
 
                 }
@@ -251,6 +240,14 @@ namespace AmpMod.SkillStates
 
             }
 
+            if (fixedAge >= flyDuration)
+            {
+                if (NetworkServer.active && !base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
+                {
+                    base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                    base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
+                }
+            }
 
             if (base.isAuthority && fixedAge >= flyDuration & !hasFlown)
             {
@@ -258,6 +255,8 @@ namespace AmpMod.SkillStates
                 {
                     UnityEngine.Object.Destroy(this.inputSpace.gameObject);
                 }
+
+
 
                 base.characterMotor.disableAirControlUntilCollision = false;
                 this.rotator.ResetRotation(0.3f);
@@ -290,23 +289,34 @@ namespace AmpMod.SkillStates
         {
 
             base.OnExit();
-            if (!hasResetRot)
+            if (base.isAuthority)
             {
-                base.characterMotor.disableAirControlUntilCollision = false;
-                this.rotator.ResetRotation(0.5f);
-                hasResetRot = true;
-                this.PlayAnimation("FullBody, Override", "PulseExit", "BaseSkill.playbackRate", exitAnimDuration);
-                animator.SetBool("isMoving", false);
+                if (!hasResetRot)
+                {
+                    if (base.characterMotor)
+                    {
+                        base.characterMotor.disableAirControlUntilCollision = false;
+                    }
+                    if (this.rotator)
+                    {
+                        this.rotator.ResetRotation(0.5f);
+                    }
 
+
+                    hasResetRot = true;
+                    this.PlayAnimation("FullBody, Override", "PulseExit", "BaseSkill.playbackRate", exitAnimDuration);
+                    animator.SetBool("isMoving", false);
+
+                }
+
+                animator.SetBool("isFlying", false);
             }
-
-
-
-
-
-            animator.SetBool("isFlying", false);
+            
+           
 
             
+
+
             //base.PlayAnimation("Body", "AscendDescend");
         }
 

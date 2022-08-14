@@ -72,7 +72,7 @@ namespace AmpMod.Modules
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
 
 
-            ferroshotController.procCoefficient = 1f;
+            ferroshotController.procCoefficient = .7f;
             
             //ferroshotController.allowPrediction = true;
             //makes ferroshot destroy itself on contact with other entities, + adds impact effect

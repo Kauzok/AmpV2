@@ -114,6 +114,7 @@ namespace AmpMod.Modules.Survivors
             Transform spinSlashTransform = childLocator.FindChild("SpinSlashHitbox");
             Modules.Prefabs.SetupHitbox(model, spinSlashTransform, "SpinSlash");
 
+            
           
         }
 
