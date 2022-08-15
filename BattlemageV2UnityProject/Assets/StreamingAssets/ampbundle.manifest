@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1835564816
+CRC: 3816530481
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c6ec53058d160f5928ae7118b3f19c16
+    Hash: 72a5a6d019c45651f2b214a326149cbb
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5c206b74f6ff831a4218599656d2421e
@@ -189,6 +189,7 @@ Assets:
 - Assets/HenryAssets/Icons/texPassiveIcon.png
 - Assets/HenryAssets/VFX/Textures/texFire.tga
 - Assets/HenryAssets/VFX/Materials/HitSparkEffect 1.mat
+- Assets/HenryAssets/Mesh/MasteryBody.mesh
 - Assets/HenryAssets/Textures/Atlases/Materials/ShackleRAtlas.mat
 - Assets/HenryAssets/Shaders/postprocess/hgoutlinehighlight.shader
 - Assets/HenryAssets/Animations/Jump.anim
@@ -348,6 +349,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matFistSwing.mat
 - Assets/HenryAssets/VFX/Charge/ChargeExplosion.prefab
 - Assets/HenryAssets/Mesh/meshDante.mesh
+- Assets/HenryAssets/Icons/texReformationSkin.png
 - Assets/HenryAssets/VFX/Materials/matTrail.mat
 - Assets/HenryAssets/Materials/matHenryJedi.mat
 - Assets/HenryAssets/VFX/Materials/matHitSpark.mat
@@ -367,6 +369,7 @@ Assets:
 - Assets/HenryAssets/VFX/Charge/lOfYSnE.png
 - Assets/HenryAssets/Icons/texCancelFulmination.png
 - Assets/HenryAssets/AmpDisplay.prefab
+- Assets/HenryAssets/mdlAmpReformation.fbx
 - Assets/HenryAssets/Textures/texHenry.png
 - Assets/HenryAssets/Icons/texBazookaOutIcon.png
 - Assets/HenryAssets/VFX/texCloudDifferenceBW2.png
@@ -381,6 +384,7 @@ Assets:
 - Assets/HenryAssets/VFX/Charge/Mat.png
 - Assets/HenryAssets/Icons/texPlasma.png
 - Assets/HenryAssets/VFX/Bolt/texLightning2Mask.asset
+- Assets/HenryAssets/AmpMastery_E.png
 - Assets/HenryAssets/Materials/matHenryNeo.mat
 - Assets/HenryAssets/AmpAnims/metarig_FulminateHoldAnim.anim
 - Assets/HenryAssets/VFX/Fulmination/FulminationMuzzleObject.prefab
@@ -452,6 +456,7 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_RestIdleInAnim.anim
 - Assets/HenryAssets/Mesh/meshHenrySword.mesh
 - Assets/HenryAssets/VFX/Materials/matEmbers.mat
+- Assets/HenryAssets/MasteryAmp.mat
 - Assets/HenryAssets/Animations/AimYaw.anim
 - Assets/HenryAssets/AmpAnims/metarig_BackwalkAnim.anim
 - Assets/HenryAssets/Icons/texAmpIcon.png
@@ -459,6 +464,7 @@ Assets:
 - Assets/HenryAssets/VFX/Fulmination/ElectricitySphere 1.prefab
 - Assets/HenryAssets/VFX/Vortex/VortexEffect 1.prefab
 - Assets/HenryAssets/HenryBombGhost.prefab
+- Assets/HenryAssets/Atlas_96606.png
 - Assets/HenryAssets/matMageLightningLaser.mat
 - Assets/HenryAssets/Mesh/meshPistol.mesh
 - Assets/HenryAssets/Atlases/EmissionSprite.png
@@ -505,6 +511,7 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_LobbyAnim2.anim
 - Assets/HenryAssets/HitSpark (1).prefab
 - Assets/HenryAssets/Trail21.mat
+- Assets/HenryAssets/Mesh/MasterySword.mesh
 - Assets/HenryAssets/Icons/texBazookaFireIcon.png
 - Assets/HenryAssets/VFX/Materials/matFire.mat
 - Assets/HenryAssets/Icons/texGrandMasteryAchievement.png
@@ -550,6 +557,7 @@ Assets:
 - Assets/HenryAssets/Materials/matSpriteSword.mat
 - Assets/HenryAssets/Animations/Slash1.anim
 - Assets/HenryAssets/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/HenryAssets/AmpMastery_N.png
 - Assets/HenryAssets/Animations/Roll.anim
 - Assets/HenryAssets/mdlAmp.prefab
 Dependencies: []

@@ -453,7 +453,6 @@ namespace AmpMod.Modules.Survivors
             Material masterySwordMat = Modules.Assets.CreateMaterial("matSpriteSword");
 
 
-
             CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
             {
                 masterySuitMat,
@@ -483,6 +482,42 @@ namespace AmpMod.Modules.Survivors
             };
 
             skins.Add(masterySkin);
+            #endregion
+
+            #region ReformationSkin
+            Material golemSuitMat = Modules.Assets.CreateMaterial("MasteryAmp");
+            Material golemSwordMat = Modules.Assets.CreateMaterial("MasteryAmp");
+
+
+
+            CharacterModel.RendererInfo[] golemRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
+            {
+                golemSuitMat,
+                golemSwordMat
+
+            });
+            
+            SkinDef golemSkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_AMP_BODY_GOLEM_SKIN_NAME",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("texReformationSkin"),
+                golemRendererInfos,
+                mainRenderer,
+                updatedModel);
+
+            golemSkin.meshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("MasteryBody"),
+                    renderer = defaultRenderers[0].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("MasterySword"),
+                    renderer = defaultRenderers[1].renderer
+                }
+            };
+
+            skins.Add(golemSkin); 
             #endregion
 
             skinController.skins = skins.ToArray();

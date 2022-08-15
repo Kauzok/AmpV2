@@ -14,6 +14,7 @@ namespace AmpMod.Modules
             #region Skins
             LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");
             LanguageAPI.Add(prefix + "MASTERY_SKIN_NAME", "Red Sprite");
+            LanguageAPI.Add(prefix + "GOLEM_SKIN_NAME", "Reformation");
             #endregion
 
             #region Descriptions
