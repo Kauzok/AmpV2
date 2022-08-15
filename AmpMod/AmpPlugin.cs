@@ -70,7 +70,6 @@ namespace AmpMod
 
             logger = base.Logger;
 
-
             // load assets and read config
             Modules.Assets.Initialize();
             Modules.Config.ReadConfig();
@@ -78,7 +77,7 @@ namespace AmpMod
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Tokens.AddTokens(); // register name tokens
-           // Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+            Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
          /*   //material shader autoconversion
             var materialAssets = Assets.mainAssetBundle.LoadAllAssets<Material>();
@@ -101,13 +100,13 @@ namespace AmpMod
             new Modules.ContentPacks().Initialize();
 
             //RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
-            RoR2Application.onLoad += SetItemDisplays;
+            //RoR2Application.onLoad += SetItemDisplays;
 
 
             Hook();
         }
 
-        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
+        /* private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             // have to set item displays later now because they require direct object references..
             Modules.Survivors.Amp.instance.SetItemDisplays();
@@ -119,7 +118,7 @@ namespace AmpMod
             ItemDisplays.PopulateDisplays();
             Modules.Survivors.Amp.instance.SetItemDisplays();
             
-        }
+        } */
 
         private void Hook()
         {

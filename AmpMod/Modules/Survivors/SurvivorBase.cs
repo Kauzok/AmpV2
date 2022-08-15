@@ -28,7 +28,8 @@ namespace AmpMod.Modules.Survivors
 
         internal abstract Type characterMainState { get; set; }
 
-        internal abstract ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
+        public virtual ItemDisplaysBase itemDisplays { get; } = null;
+
         internal abstract List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal virtual void Initialize()
@@ -91,19 +92,28 @@ namespace AmpMod.Modules.Survivors
             Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");
         }
 
-        internal virtual void InitializeItemDisplays()
-        {
-            CharacterModel characterModel = bodyPrefab.GetComponentInChildren<CharacterModel>();
 
-            itemDisplayRuleSet = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
+        public virtual void InitializeItemDisplays()
+        {
+            CharacterModel characterBodyModel = bodyPrefab.GetComponentInChildren<CharacterModel>();
+
+            ItemDisplayRuleSet itemDisplayRuleSet = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             itemDisplayRuleSet.name = "idrs" + bodyName;
 
-            characterModel.itemDisplayRuleSet = itemDisplayRuleSet;
+            characterBodyModel.itemDisplayRuleSet = itemDisplayRuleSet;
+
+            if (itemDisplays != null)
+            {
+                RoR2.ContentManagement.ContentManager.onContentPacksAssigned += SetItemDisplays;
+            }
         }
 
-        internal virtual void SetItemDisplays()
-        {
 
+        public void SetItemDisplays(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
+        {
+            CharacterModel characterBodyModel = bodyPrefab.GetComponentInChildren<CharacterModel>();
+
+            itemDisplays.SetItemDisplays(characterBodyModel.itemDisplayRuleSet);
         }
     }
 }

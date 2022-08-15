@@ -8,20 +8,19 @@ namespace AmpMod.Modules
     {
         private static Dictionary<string, GameObject> itemDisplayPrefabs = new Dictionary<string, GameObject>();
 
-
-        [SystemInitializer(typeof(ItemCatalog), typeof(BodyCatalog))]
         internal static void PopulateDisplays()
         {
-            PopulateFromBody("Commando");
-            PopulateFromBody("Croco");
-            PopulateFromBody("Mage");
+            PopulateFromBody("MageBody"); //commando is actually missing some displays
+            PopulateFromBody("LunarExploderBody"); //solely for the perfected crown
+
+            PopulateCustomLightningArm();
+
+            
         }
 
-     
         private static void PopulateFromBody(string bodyName)
         {
-
-            ItemDisplayRuleSet itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
+            ItemDisplayRuleSet itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName).GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
 
             ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
 
@@ -34,8 +33,7 @@ namespace AmpMod.Modules
                     GameObject followerPrefab = rules[j].followerPrefab;
                     if (followerPrefab)
                     {
-                        string name = followerPrefab.name;
-                        string key = name?.ToLower();
+                        string key = followerPrefab.name?.ToLowerInvariant();
                         if (!itemDisplayPrefabs.ContainsKey(key))
                         {
                             itemDisplayPrefabs[key] = followerPrefab;
@@ -44,14 +42,43 @@ namespace AmpMod.Modules
                 }
             }
         }
-        
-        internal static GameObject LoadDisplay(string name)
-        {
-            if (itemDisplayPrefabs.ContainsKey(name.ToLower()))
-            {
-                if (itemDisplayPrefabs[name.ToLower()]) return itemDisplayPrefabs[name.ToLower()];
-            }
 
+        private static void PopulateCustomLightningArm()
+        {
+            #region IgnoreThisAndRunAway
+            //seriously you don't need this
+            //I see you're still here, well if you do need this here's what you do
+            //but again you don't need this
+            //capacitor is hardcoded to track your "UpperArmR", "LowerArmR", and "HandR" bones.
+            //this is for having the lightning on custom bones in your childlocator
+
+            GameObject display = R2API.PrefabAPI.InstantiateClone(itemDisplayPrefabs["displaylightningarmright"], "DisplayLightningCustom", false);
+
+            LimbMatcher limbMatcher = display.GetComponent<LimbMatcher>();
+
+            limbMatcher.limbPairs[0].targetChildLimb = "LightningArm1";
+            limbMatcher.limbPairs[1].targetChildLimb = "LightningArm2";
+            limbMatcher.limbPairs[2].targetChildLimb = "LightningArmEnd";
+
+            itemDisplayPrefabs["displaylightningarmcustom"] = display;
+            #endregion
+        }
+
+        public static GameObject LoadDisplay(string name)
+        {
+
+            if (itemDisplayPrefabs.ContainsKey(name.ToLowerInvariant()))
+            {
+
+                if (itemDisplayPrefabs[name.ToLowerInvariant()])
+                {
+
+                    GameObject display = itemDisplayPrefabs[name.ToLowerInvariant()];
+
+                    return display;
+                }
+            }
+            //Log.Error("item display " + name + " returned null");
             return null;
         }
     }
