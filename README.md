@@ -47,6 +47,7 @@
 
 ## Misc. To Do
 - Cleanup code base, finish comments
+- Fix loud sounds
 - Switch off of unlockableAPI
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
 - Switch VFX Shaders to cloud remap
