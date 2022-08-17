@@ -1,27 +1,24 @@
 ## Amp
 - WIP Amp, a melee/range hybrid who fights with electromagnetic attacks.
 ## Skills To Do/Bug Fixing
-- Stormblade
-  - Fix checkroll behavior in multiplayer
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
+  - Add projectile trails
   - fix laggy ghost in multiplayer
 - Plasma Slash
   - Make unlockable
   - Fix multiplayer projectile becoming invisible
 - Magnetic Vortex
-  - Consider adding ability to remotely detonate vortex
   - Add field representing vortex range/or tendrils
   - Change sound origin
-  - Make DoT appear in multiplayer
+  - Increase projectile launch speed/size
 - Surge
   - Fix effect shaking when running into objects
   - Fix not being able to exit ability if remaining charges are left
   - Watch out for "received networktransform data for object that doesn't exist error"
 - Pulse Leap
   - Adjust exit animation
-  - Make skill remove fall damage in multiplayer & remove onexit error (possibly related?)
   - Keep an eye on launchblast method in OnEnter
 - Fulmination
   - Consider adjusting chain effect
