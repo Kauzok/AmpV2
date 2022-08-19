@@ -16,6 +16,7 @@
   - Add field representing vortex range/or tendrils
   - Change sound origin
   - Increase projectile launch speed/size
+  - Fix glitchy VFX
 - Surge
   - Fix effect shaking when running into objects
   - Fix not being able to exit ability if remaining charges are left
