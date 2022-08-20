@@ -149,7 +149,7 @@ namespace AmpMod.SkillStates
 			if (timer >= duration - Time.fixedDeltaTime) //&& NetworkServer.active)
             {
 				radialBlast.Fire();
-				//play explosion sound
+				//play explosion sound	
 				//AkSoundEngine.PostEvent(explosionString, gameObject);
 
 				EffectData effectData = new EffectData

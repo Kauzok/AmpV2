@@ -191,11 +191,7 @@
 
   
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(SolutionName).pdb&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;C:\Users\Adam\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Amp\BepInEx\plugins\AmpMod&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;D:\Modding\RoR2\Battlemage V2\AmpPackage&quot;" />
-  </Target>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="xcopy /Y &quot;D:\Modding\RoR2\Battlemage V2\BattlemageV2\BattlemageV2UnityProject\AssetBundles\StandaloneWindows\ampbundle&quot; &quot;$(ProjectDir)&quot;&#xD;&#xA;xcopy /Y &quot;D:\Modding\RoR2\Battlemage V2\AmpSFX\GeneratedSoundBanks\Windows\AmpSoundbank.bnk&quot; &quot;$(ProjectDir)&quot;" />
+    <Exec Command="xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;C:\Users\Adam\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\AmpTesting\BepInEx\plugins\Amp&quot;" />
   </Target>
 
 </Project>

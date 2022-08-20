@@ -398,7 +398,7 @@ namespace AmpMod
                                 attackerFiltering = AttackerFiltering.NeverHitSelf,
                                 crit = tracker.ownerBody.RollCrit(),
                                 damageColorIndex = DamageColorIndex.Item,
-                                damageType = DamageType.Shock5s,
+                                damageType = DamageType.Generic,
                                 falloffModel = BlastAttack.FalloffModel.None,
                                 inflictor = tracker.owner,
                                 position = self.corePosition,

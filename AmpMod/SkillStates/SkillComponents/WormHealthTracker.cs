@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 
 namespace AmpMod.SkillStates.SkillComponents
 {
-    [RequireComponent(typeof(WormSkillOverride))]
+
     class WormHealthTracker : MonoBehaviour
     {
         public GenericSkill specialSlot;
@@ -16,11 +16,11 @@ namespace AmpMod.SkillStates.SkillComponents
         public bool hasUnset;
         public CharacterMaster wormMaster;
         public bool hasDied;
-        private WormSkillOverride wormOverride;
+        public GameObject owner;
 
         public void Awake()
         {
-            wormOverride = base.GetComponent<WormSkillOverride>();
+            
 
         }
 
@@ -39,7 +39,8 @@ namespace AmpMod.SkillStates.SkillComponents
                 {
                     hasUnset = true;
                     //Debug.Log("unsetting overrides");
-                    wormOverride.RpcUnSetOverride();
+                    owner.GetComponent<WormSkillComponent>().RpcUnSetOverride();
+                    Debug.Log(owner);
                     //Destroy(base.gameObject);
 
                 }

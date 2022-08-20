@@ -148,19 +148,25 @@ namespace AmpMod.SkillStates
                 {
                    Debug.Log("adding worm tracker");
                     GameObject wormObject = wormMaster.GetBody().gameObject;
-                    var skillOverride = wormObject.AddComponent<SkillComponents.WormSkillOverride>();
-                    skillOverride.specialSlot = base.skillLocator.special;
-                    skillOverride.wormSkill = src;
-                    skillOverride.cancelSkillDef = cancelSkillDef;
+                    var skillOverride = base.GetComponent<SkillStates.SkillComponents.WormSkillComponent>();
 
-                    var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
-                    healthTracker.wormBody = wormMaster.GetBody();
-                   
-                    healthTracker.wormMaster = wormMaster; 
+
+                    if (NetworkServer.active)
+                    {
+                        skillOverride.specialSlot = base.skillLocator.special;
+                        skillOverride.wormSkill = src;
+                        skillOverride.cancelSkillDef = cancelSkillDef;
+
+                        var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
+                        healthTracker.wormBody = wormMaster.GetBody();
+                        healthTracker.owner = base.gameObject;
+                        healthTracker.wormMaster = wormMaster;
+                    }
+
 
                 }
 
-
+                    
             }
 
             
