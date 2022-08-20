@@ -1,6 +1,8 @@
 ## Amp
 - WIP Amp, a melee/range hybrid who fights with electromagnetic attacks.
 ## Skills To Do/Bug Fixing
+- Shockblade
+  - Further increase range
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
@@ -9,10 +11,12 @@
 - Plasma Slash
   - Make unlockable
   - Fix multiplayer projectile becoming invisible
+  - Adjust melee hitbox to make more viable
 - Magnetic Vortex
   - Add field representing vortex range/or tendrils
   - Change sound origin
   - Increase projectile launch speed/size
+  - Fix glitchy VFX
 - Surge
   - Fix effect shaking when running into objects
   - Fix not being able to exit ability if remaining charges are left
@@ -29,7 +33,7 @@
   - Make worm unset skill override on death in multiplayer
   - Make unlockable
 - Charge
-  - Add in alternate effect asides from just damage
+  - Reduce damage to 300%?
 
 ## Item Displays To Do
 - Fix frost relic item display/revise current displays
