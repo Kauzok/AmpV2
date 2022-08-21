@@ -1,4 +1,4 @@
-## Amp
+  ## Amp
 - WIP Amp, a melee/range hybrid who fights with electromagnetic attacks.
 ## Skills To Do/Bug Fixing
 - Shockblade
@@ -21,6 +21,7 @@
   - Fix effect shaking when running into objects
   - Fix not being able to exit ability if remaining charges are left
   - Watch out for "received networktransform data for object that doesn't exist error"
+  - Make momentum cancel on early exit
 - Pulse Leap
   - Adjust exit animation
   - Keep an eye on launchblast method in OnEnter
@@ -34,6 +35,8 @@
   - Make unlockable
 - Charge
   - Reduce damage to 300%?
+  - Add lingering charge/electrified debuff
+  - Consider giving adjustments with shields
 
 ## Item Displays To Do
 - Fix frost relic item display/revise current displays
@@ -44,7 +47,6 @@
 - Polish shockblade slashes
 - Fix weird roll -> run transition
 - Add standing still animations for shockblade, lorentz cannon, magnetic vortex & fulmination
-- Polish stationary landing animation
 
 ## VFX To Do
 - Consider modifying helmet/chest glow
@@ -58,8 +60,3 @@
 - Emote and other API Support
 - Add configs
 - Adjust character portrait
-
-## Changelog
-`0.0.1`
-- Initial release
-
