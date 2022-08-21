@@ -17,6 +17,8 @@ namespace AmpMod.SkillStates.SkillComponents
         public CharacterMaster wormMaster;
         public bool hasDied;
         public GameObject owner;
+        public object wormSkill;
+        public SkillDef cancelSkillDef;
 
         public void Awake()
         {
@@ -35,15 +37,7 @@ namespace AmpMod.SkillStates.SkillComponents
                     Debug.Log("Worm has died");
                 }
                
-                if (!hasUnset)
-                {
-                    hasUnset = true;
-                    //Debug.Log("unsetting overrides");
-                    owner.GetComponent<WormSkillComponent>().RpcUnSetOverride();
-                    Debug.Log(owner);
-                    //Destroy(base.gameObject);
 
-                }
 
             }
         }

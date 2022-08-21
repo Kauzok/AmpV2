@@ -38,7 +38,7 @@ namespace AmpMod.SkillStates
                 skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_WORMCANCEL_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texReturn"),
                 activationStateMachineName = "Slide",
-                activationState = new EntityStates.SerializableEntityStateType(typeof(CancelWurm)),
+                activationState = new SerializableEntityStateType(typeof(CancelWurm)),
                 baseMaxStock = 0,
                 baseRechargeInterval = 0,
                 beginSkillCooldownOnSkillEnd = false,
@@ -107,9 +107,10 @@ namespace AmpMod.SkillStates
 
 
                 };
-
+                
 
                 wormMaster = wormSummon.Perform();
+
             }
             //wormBody.RecalculateStats();
             
@@ -120,8 +121,7 @@ namespace AmpMod.SkillStates
 
                 wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = wormLifeDuration;
                 //wormMaster.gameObject.GetComponent<BaseAI>().leader.gameObject = base.characterBody.gameObject;
-                wormMaster.onBodyStart += SetupWorm;
-                //wormMaster.onBodyDestroyed += OnWormDeath;
+                wormMaster.onBodyStart += SetupWorm; Debug.Log("died");
 
                 if (NetworkServer.active)
                 {
@@ -147,21 +147,18 @@ namespace AmpMod.SkillStates
                 if (wormMaster.GetBody())
                 {
                    Debug.Log("adding worm tracker");
-                    GameObject wormObject = wormMaster.GetBody().gameObject;
-                    var skillOverride = base.GetComponent<SkillStates.SkillComponents.WormSkillComponent>();
+                   GameObject wormObject = wormMaster.GetBody().gameObject;
 
+                   wormObject.GetComponent<CharacterDeathBehavior>().deathState = new SerializableEntityStateType(typeof(BaseStates.MelvinDeathState));
 
-                    if (NetworkServer.active)
-                    {
-                        skillOverride.specialSlot = base.skillLocator.special;
-                        skillOverride.wormSkill = src;
-                        skillOverride.cancelSkillDef = cancelSkillDef;
+                    var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
+                    healthTracker.wormBody = wormMaster.GetBody();
+                    healthTracker.owner = base.gameObject;
+                    healthTracker.wormSkill = src;
+                    healthTracker.wormMaster = wormMaster;
+                    healthTracker.cancelSkillDef = cancelSkillDef;
+                    healthTracker.specialSlot = base.skillLocator.special;
 
-                        var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
-                        healthTracker.wormBody = wormMaster.GetBody();
-                        healthTracker.owner = base.gameObject;
-                        healthTracker.wormMaster = wormMaster;
-                    }
 
 
                 }
@@ -177,10 +174,6 @@ namespace AmpMod.SkillStates
         }
 
 
-        private void OnWormDeath(CharacterBody body)
-        {
-            this.specialSlot.UnsetSkillOverride(src, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-        }
 
         private void SetupWorm(CharacterBody body)
         {
