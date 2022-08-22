@@ -34,6 +34,7 @@
   - Add VFX & SFX to channelling
   - Make worm unset skill override on death in multiplayer
   - Make unlockable
+  - Make Melvin follow Amp
 - Charge
   - Reduce damage to 300%?
   - Add lingering charge/electrified debuff
