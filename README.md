@@ -22,6 +22,7 @@
   - Fix not being able to exit ability if remaining charges are left
   - Watch out for "received networktransform data for object that doesn't exist error"
   - Make momentum cancel on early exit
+  - Doesn't work correctly on clients? Look into it.
 - Pulse Leap
   - Adjust exit animation
   - Keep an eye on launchblast method in OnEnter
