@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
+using R2API;
 using UnityEngine;
 using RoR2.Skills;
 using UnityEngine.Networking;
@@ -74,8 +75,9 @@ namespace AmpMod.SkillStates
 
         private void SpawnWorm(CharacterBody characterBody)
         {
-            GameObject masterPrefab = MasterCatalog.FindMasterPrefab("ElectricWormMaster");
+            GameObject masterPrefab = Modules.Assets.melvinPrefab;
 
+           // masterPrefab.GetComponent<CharacterMaster>().GetBody().baseMaxHealth = base.characterBody.baseMaxHealth * 3f;
 
             Util.PlaySound(summonSoundString, base.gameObject);
 
@@ -104,10 +106,19 @@ namespace AmpMod.SkillStates
                     rotation = characterBody.transform.rotation,
                     inventoryToCopy = characterBody.inventory,
                     inventoryItemCopyFilter = index => index != RoR2Content.Items.ExtraLife.itemIndex,
-
+                    
 
                 };
-                
+
+                wormSummon.preSpawnSetupCallback = (master) => {
+                    master.onBodyStart += (body) =>
+                    {
+                        body.baseMaxHealth = base.characterBody.baseMaxHealth * 3f;
+                        
+
+                    };
+                };
+
 
                 wormMaster = wormSummon.Perform();
 
@@ -121,7 +132,9 @@ namespace AmpMod.SkillStates
 
                 wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = wormLifeDuration;
                 //wormMaster.gameObject.GetComponent<BaseAI>().leader.gameObject = base.characterBody.gameObject;
-                wormMaster.onBodyStart += SetupWorm; Debug.Log("died");
+                //wormMaster.onBodyStart += SetupWorm;
+               // R2API.RecalculateStatsAPI.GetStatCoefficients += recalcWorm;
+                
 
                 if (NetworkServer.active)
                 {
@@ -146,15 +159,16 @@ namespace AmpMod.SkillStates
 
                 if (wormMaster.GetBody())
                 {
-                   Debug.Log("adding worm tracker");
-                   GameObject wormObject = wormMaster.GetBody().gameObject;
+                    //Debug.Log("adding worm tracker");
+                    GameObject wormObject = wormMaster.GetBodyObject();
 
-                   wormObject.GetComponent<CharacterDeathBehavior>().deathState = new SerializableEntityStateType(typeof(BaseStates.MelvinDeathState));
+                   
 
-                    var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
+                    var healthTracker = wormObject.GetComponent<SkillComponents.WormHealthTracker>();
                     healthTracker.wormBody = wormMaster.GetBody();
                     healthTracker.owner = base.gameObject;
                     healthTracker.wormSkill = src;
+                    
                     healthTracker.wormMaster = wormMaster;
                     healthTracker.cancelSkillDef = cancelSkillDef;
                     healthTracker.specialSlot = base.skillLocator.special;
@@ -177,35 +191,43 @@ namespace AmpMod.SkillStates
 
         private void SetupWorm(CharacterBody body)
         {
-
-            body.baseMaxHealth = 3f * base.characterBody.baseMaxHealth;
-
-          /*  if (NetworkServer.active)
-            {
-                body.maxHealth = 3f * base.characterBody.baseMaxHealth;
-            } */
-           
-            //body.baseMaxHealth = 10f;
-          /* body.baseMoveSpeed = 0f;
-            body.moveSpeed = 0f;
-            body.baseRegen = 0f; */
-            //Debug.Log(wormBody.baseMaxHealth);
-            //Debug.Log(wormBody.maxHealth);
-
-            body.baseNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_DISPLAY_NAME";
-
             body.statsDirty = true;
 
-         /*   var healthTracker = body.gameObject.AddComponent<SkillComponents.WormHealthTracker>();
-            healthTracker.specialSlot = base.skillLocator.special;
-            healthTracker.wormBody = body;
-            healthTracker.wormSkill = src;
-            healthTracker.cancelSkillDef = cancelSkillDef;
-            healthTracker.wormMaster = wormMaster; */
+            //body.baseMaxHealth = 3f * base.characterBody.baseMaxHealth;
+
+            // body.maxHealth = body.baseMaxHealth;
+            //   body.baseNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_DISPLAY_NAME";
+
+            //body.statsDirty = true;
+
+            /*   var healthTracker = body.gameObject.AddComponent<SkillComponents.WormHealthTracker>();
+               healthTracker.specialSlot = base.skillLocator.special;
+               healthTracker.wormBody = body;
+               healthTracker.wormSkill = src;
+               healthTracker.cancelSkillDef = cancelSkillDef;
+               healthTracker.wormMaster = wormMaster; */
 
         }
+
+
+        private void recalcWorm(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        {
+
+
+            if (body.bodyIndex == wormBody.bodyIndex)
+            {
+                args.baseHealthAdd -= (wormBody.baseMaxHealth - base.characterBody.baseMaxHealth * 3f);
+            }
         
-    
+
+            /*   var healthTracker = body.gameObject.AddComponent<SkillComponents.WormHealthTracker>();
+               healthTracker.specialSlot = base.skillLocator.special;
+               healthTracker.wormBody = body;
+               healthTracker.wormSkill = src;
+               healthTracker.cancelSkillDef = cancelSkillDef;
+               healthTracker.wormMaster = wormMaster; */
+
+        }
 
 
         public override void OnExit()

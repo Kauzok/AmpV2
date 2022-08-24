@@ -3,9 +3,10 @@ using R2API;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2;
-using RoR2.Orbs;
+using EntityStates;
 using System.IO;
 using RoR2.Projectile;
+using UnityEngine.AddressableAssets;
 using System.Collections.Generic;
 using RoR2.UI;
 
@@ -16,6 +17,7 @@ namespace AmpMod.Modules
     {
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
+        internal static string prefix = AmpPlugin.developerPrefix;
 
         // particle effects
         internal static GameObject swordSwingEffect;
@@ -65,6 +67,8 @@ namespace AmpMod.Modules
 
         [Header("Bulwark of Storms Effects")]
         internal static GameObject wormExplosionEffect;
+        internal static GameObject melvinPrefab;
+        internal static GameObject melvinBody;
 
         [Header("Lobby Effects")]
         internal static GameObject lobbyEntranceEffect;
@@ -201,6 +205,7 @@ namespace AmpMod.Modules
 
             //on bulwark of storms use
             CreateWormEffects();
+            CreateMelvin();
 
             //functions for prefabs that require adjustments made at runtime
             //CreateLightningPrefab();
@@ -224,9 +229,38 @@ namespace AmpMod.Modules
             //adds boltvehicle to the bolt prefab finalizing the gameobject that will act as the primary enactor of the bolt skill
             boltVehicle.AddComponent<SkillStates.BoltVehicle>();
             
-
+            
             PrefabAPI.RegisterNetworkPrefab(boltVehicle);
         }
+
+        private static void CreateMelvin()
+        {
+            melvinPrefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElectricWorm/ElectricWormMaster.prefab").WaitForCompletion(), "MelvinPrefab", true);
+            
+            CharacterMaster melvinMaster = melvinPrefab.GetComponent<CharacterMaster>();
+        
+            melvinBody = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElectricWorm/ElectricWormBody.prefab").WaitForCompletion(), "MelvinBody", true);
+            var healthTracker = melvinBody.AddComponent<SkillStates.SkillComponents.WormHealthTracker>();
+
+            var melvinCharBody = melvinBody.GetComponent<CharacterBody>();
+            
+            melvinCharBody.baseNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_DISPLAY_NAME";
+            //melvinCharBody.baseMaxHealth = healthTracker.summonerHealth * 3f; //melvinCharBody.baseMaxHealth;//melvinMinionOwner.ownerMaster.GetBody().baseMaxHealth * 3f;
+            //melvinCharBody.statsDirty = true;
+
+            melvinMaster.bodyPrefab = melvinBody;
+
+            
+
+            melvinBody.GetComponent<CharacterDeathBehavior>().deathState = new SerializableEntityStateType(typeof(SkillStates.BaseStates.MelvinDeathState));
+
+            
+
+           PrefabAPI.RegisterNetworkPrefab(melvinPrefab);
+
+        }
+
+
 
         private static void CreateVortexBlackhole()
         {

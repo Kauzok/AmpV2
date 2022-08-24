@@ -61,6 +61,9 @@ namespace AmpMod.SkillStates
 			this.vehicleSeat.onPassengerEnter += this.OnPassengerEnter;
 			this.vehicleSeat.onPassengerExit += this.OnPassengerExit;
 
+			
+
+
 			//makes it so you can't exit the vehicleseat manually; since i allow the player to do that in the actual bolt code, this is really just to remove the annoying prompt that shows up when this is enabled
 			vehicleSeat.exitVehicleAllowedCheck.AddCallback(new CallbackCheck<Interactability, CharacterBody>.CallbackDelegate(this.CheckExitAllowed));
 			
@@ -78,6 +81,7 @@ namespace AmpMod.SkillStates
 
 			//stop state sound
 			AkSoundEngine.StopPlayingID(stopID, 0);
+
 
 			//play exit sound
 			Util.PlaySound(exitSoundString, base.gameObject);
@@ -104,6 +108,7 @@ namespace AmpMod.SkillStates
 			{
 				return;
 			}
+			
 			
 			//code for enter effect/sound
 			EffectData enterEffectData = new EffectData
@@ -157,6 +162,13 @@ namespace AmpMod.SkillStates
 				return;
 			}
 			hasDetonatedServer = true;
+
+			if (age < this.duration)
+			{
+				Debug.Log("exiting early vehicle");
+				//vehicleSeat.exitVelocityFraction = 0f;
+			}
+
 
 			//same purpose as stated above
 			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;

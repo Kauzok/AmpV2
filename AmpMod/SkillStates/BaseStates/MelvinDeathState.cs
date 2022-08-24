@@ -22,7 +22,7 @@ namespace AmpMod.SkillStates.BaseStates
         public void UnsetOverride()
         {
            
-            if (this.specialSlot && this.cancelSkillDef)
+            if (this.specialSlot && this.cancelSkillDef && base.isAuthority)
             {
                 Debug.Log("unsetting");
                 this.specialSlot.UnsetSkillOverride(SummonWurm.src, SummonWurm.cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);

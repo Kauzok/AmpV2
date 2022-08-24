@@ -19,6 +19,7 @@ namespace AmpMod.SkillStates.SkillComponents
         public GameObject owner;
         public object wormSkill;
         public SkillDef cancelSkillDef;
+       
 
         public void Awake()
         {

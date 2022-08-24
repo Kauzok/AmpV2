@@ -21,6 +21,8 @@ namespace AmpMod.SkillStates
 		public NetworkUser networkUser;
 		public NetworkUser networkUser2;
 		private GenericSkill utilitySlot;
+		private float ageCheck;
+		private bool exitedEarly;
 		public static SkillDef cancelSkillDef;
 		string prefix = AmpPlugin.developerPrefix;
 
@@ -123,17 +125,20 @@ namespace AmpMod.SkillStates
 
 			base.FixedUpdate();
 
-	
 
+			ageCheck += Time.fixedDeltaTime;
 
 			if (fixedAge > delay)
 			{
+
 				//makes skill cancel if they hit the button again
 				if (base.inputBank.skill3.justPressed && base.isAuthority)
 				{
 					this.outer.SetNextStateToMain();
 					return;
 				}
+
+			
 
 			}
 				//if duration runs out cancel skill
@@ -181,8 +186,15 @@ namespace AmpMod.SkillStates
 
 			//boltObject.GetComponent<BoltVehicle>().DetonateServer();
 			var bolt = boltObject?.GetComponent<BoltVehicle>();
-			if (bolt)
+			var boltSeat = boltObject?.GetComponent<VehicleSeat>();
+			/*if (bolt && ageCheck < duration)
 			{
+				Debug.Log("exiting early");
+				boltSeat.exitVelocityFraction = 0f;
+				bolt.DetonateServer();
+			} */
+			if (bolt)
+            {
 				bolt.DetonateServer();
 			}
 

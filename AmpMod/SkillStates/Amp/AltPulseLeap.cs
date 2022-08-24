@@ -21,7 +21,7 @@ namespace AmpMod.SkillStates
         private Vector3 initialLaunchVelocity;
         private float blastRadius = 11f;
         private float flyDuration = .15f; //.4f;
-        private float exitAnimDuration = .75f;
+        private float exitAnimDuration = .65f; //.75f
         private float exitDuration = 1.2f;//1f;
         private Transform modelTransform;
         private bool hasResetRot;
@@ -164,6 +164,7 @@ namespace AmpMod.SkillStates
             EffectData effectData = new EffectData();
             effectData.rotation = Util.QuaternionSafeLookRotation(aimDirection);
             effectData.origin = origin;
+            effectData.scale = .3f;
             EffectManager.SpawnEffect(blinkPrefab, effectData, false);
         }
 
