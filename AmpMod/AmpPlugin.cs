@@ -123,7 +123,6 @@ namespace AmpMod
 
         private void Hook()
         {
-            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
@@ -350,96 +349,59 @@ namespace AmpMod
                 args.baseMoveSpeedAdd += StaticValues.overchargeMoveSpeed;
                 args.attackSpeedMultAdd +=  StaticValues.overchargeAttackSpeed;
                 
-               /* if (body.modelLocator.modelTransform)
-                {
-                    CharacterModel component = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
-                    if (component)
-                    {
-                        var temporaryOverlay = base.gameObject.AddComponent<TemporaryOverlay>();
-                        temporaryOverlay.duration = StaticValues.overChargeDuration;
-                        temporaryOverlay.destroyComponentOnEnd = true;
-                        temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matIsShocked");
-                        temporaryOverlay.AddToCharacerModel(component); 
-                    }
-                } */
+                /* if (body.modelLocator.modelTransform)
+                 {
+                     CharacterModel component = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
+                     if (component)
+                     {
+                         var temporaryOverlay = base.gameObject.AddComponent<TemporaryOverlay>();
+                         temporaryOverlay.duration = StaticValues.overChargeDuration;
+                         temporaryOverlay.destroyComponentOnEnd = true;
+                         temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matIsShocked");
+                         temporaryOverlay.AddToCharacerModel(component); 
+                     }
+                 } */
 
+            }
+            
+            
+            //if body has more than 3 stacks of charge, make new blastattack with effect
+            if (NetworkServer.active && body.GetBuffCount(Modules.Buffs.chargeBuildup) >= 3)
+            {
+                EffectData effectData = new EffectData
+                {
+                    origin = body.corePosition,
+                };
+                //set and spawn charge explosion effect
+                EffectManager.SpawnEffect(Assets.chargeExplosionEffect, effectData, true);
+
+                var tracker = body.gameObject.GetComponent<Tracker>();
+
+                //create and fire charge blastattack centered on enemy 
+                BlastAttack chargeBlast;
+
+                chargeBlast = new BlastAttack
+                {
+                    attacker = tracker.owner,
+                    baseDamage = StaticValues.chargeDamageCoefficient * tracker.ownerBody.damage,
+                    baseForce = 1f,
+                    attackerFiltering = AttackerFiltering.NeverHitSelf,
+                    crit = tracker.ownerBody.RollCrit(),
+                    damageColorIndex = DamageColorIndex.Item,
+                    damageType = DamageType.Generic,
+                    falloffModel = BlastAttack.FalloffModel.None,
+                    inflictor = tracker.owner,
+                    position = body.corePosition,
+                    procChainMask = default(ProcChainMask),
+                    procCoefficient = 1f,
+                    radius = 7f,
+                    teamIndex = tracker.ownerBody.teamComponent.teamIndex
+                };
+
+                chargeBlast.Fire();
+                //removes stacks of charge
+                body.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
             }
         }
-
-        //hook for checking if body has chargedebuff/overcharge buff
-        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
-        { // TODO move this into r2api's recalculate stats
-           
-            if (self)
-            {
-
-                if (NetworkServer.active)
-                {
-                    
-                    //check if body has chargebuildup buff
-                    if (self.HasBuff(Buffs.chargeBuildup))
-                    {
-
-                        int chargeCount = self.GetBuffCount(Modules.Buffs.chargeBuildup);
-                        //if body has more than 3 stacks of charge, make new blastattack with effect
-                        if (chargeCount >= 3)
-                        {
-
-                            GameObject chargeExplosion;
-
-                            EffectData effectData = new EffectData
-                            {
-                                origin = self.corePosition,
-                            };
-
-                            //set and spawn charge explosion effect
-                            chargeExplosion = Assets.chargeExplosionEffect;
-                            EffectManager.SpawnEffect(chargeExplosion, effectData, true);
-
-                            var tracker = self.gameObject.GetComponent<Tracker>();
-
-                            //create and fire charge blastattack centered on enemy 
-                            BlastAttack chargeBlast;
-
-                            chargeBlast = new BlastAttack
-                            {
-                                attacker = tracker.owner,
-                                baseDamage = StaticValues.chargeDamageCoefficient * tracker.ownerBody.damage,
-                                baseForce = 1f,
-                                attackerFiltering = AttackerFiltering.NeverHitSelf,
-                                crit = tracker.ownerBody.RollCrit(),
-                                damageColorIndex = DamageColorIndex.Item,
-                                damageType = DamageType.Generic,
-                                falloffModel = BlastAttack.FalloffModel.None,
-                                inflictor = tracker.owner,
-                                position = self.corePosition,
-                                procChainMask = default(ProcChainMask),
-                                procCoefficient = 1f,
-                                radius = 7f,
-                                teamIndex = tracker.ownerBody.teamComponent.teamIndex
-                            };
-
-                            chargeBlast.Fire();
-
-
-
-                            //removes stacks of charge
-                            self.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
-
-                        }
-
-
-
-                    }
-                }
-
-
-            }
-
-
-            orig(self); 
-
-        } 
-
     }
 }
