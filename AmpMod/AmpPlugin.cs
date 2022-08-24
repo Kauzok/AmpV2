@@ -33,6 +33,7 @@ namespace AmpMod
         "LanguageAPI",
         "SoundAPI",
         "DamageAPI",
+        nameof(ItemAPI),
         //"OrbAPI",
         //"EffectAPI",
         (nameof(UnlockableAPI)),
@@ -333,7 +334,17 @@ namespace AmpMod
 
         private void overChargeStatGrant(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (body && body.HasBuff(Buffs.overCharge))
+            if (!body) return;
+            if (body.inventory.GetItemCount(Assets.wormHealth) > 0)
+            {
+                var ownerBody = body.master.minionOwnership.ownerMaster ? body.master.minionOwnership.ownerMaster.GetBody() : null;
+                if (ownerBody)
+                {
+                    body.baseMaxHealth = ownerBody.maxHealth * 3f;
+                }
+            }
+            
+            if (body.HasBuff(Buffs.overCharge))
             {
                 
                 args.baseMoveSpeedAdd += StaticValues.overchargeMoveSpeed;
@@ -357,7 +368,7 @@ namespace AmpMod
 
         //hook for checking if body has chargedebuff/overcharge buff
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
-        {
+        { // TODO move this into r2api's recalculate stats
            
             if (self)
             {
