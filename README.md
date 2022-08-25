@@ -6,16 +6,12 @@
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
-  - Add projectile trails
   - fix laggy ghost in multiplayer
 - Plasma Slash
   - Make unlockable
   - Fix multiplayer projectile becoming invisible
-  - Adjust melee hitbox to make more viable
 - Magnetic Vortex
   - Add field representing vortex range/or tendrils
-  - Change sound origin
-  - Increase projectile launch speed/size
   - Fix glitchy VFX
 - Surge
   - Fix effect shaking when running into objects
@@ -37,8 +33,6 @@
   - Make Melvin follow Amp
 - Charge
   - Reduce damage to 300%?
-  - Add lingering charge/electrified debuff
-  - Consider giving adjustments with shields
 
 ## Item Displays To Do
 - Fix frost relic item display/revise current displays
