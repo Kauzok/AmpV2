@@ -90,8 +90,9 @@ namespace AmpMod.Modules
         internal static Shader hotpoo = RoR2.LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
         internal static Material commandoMat;
         private static string[] assetNames = new string[0];
+        internal static ItemDef wormHealth;
 
-        
+
         private const string assetbundleName = "ampbundle";
 
         internal static void Initialize()
@@ -141,6 +142,9 @@ namespace AmpMod.Modules
                 Debug.LogError("There is no AssetBundle to load assets from.");
                 return;
             }
+
+            wormHealth = ScriptableObject.CreateInstance<ItemDef>();
+            ItemAPI.Add(new CustomItem(wormHealth, new ItemDisplayRule[0]));
 
 
             //shockblade hit

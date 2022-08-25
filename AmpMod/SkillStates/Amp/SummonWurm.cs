@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using AmpMod.Modules;
+using EntityStates;
 using RoR2;
 using R2API;
 using UnityEngine;
@@ -110,18 +111,10 @@ namespace AmpMod.SkillStates
 
                 };
 
-                wormSummon.preSpawnSetupCallback = (master) => {
-                    master.onBodyStart += (body) =>
-                    {
-                        body.baseMaxHealth = base.characterBody.baseMaxHealth * 3f;
-                        
-
-                    };
-                };
+                wormSummon.preSpawnSetupCallback = master => master.inventory.GiveItem(Assets.wormHealth);
 
 
                 wormMaster = wormSummon.Perform();
-
             }
             //wormBody.RecalculateStats();
             
