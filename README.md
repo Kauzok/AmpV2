@@ -2,7 +2,7 @@
 - WIP Amp, a melee/range hybrid who fights with electromagnetic attacks.
 ## Skills To Do/Bug Fixing
 - Shockblade
-  - Further increase range
+  - Add smear?
 - Lorentz Cannon
   - Make spike prep SFX cancel on fire
   - Make prep gameobject spawn properly in multiplayer
@@ -12,7 +12,6 @@
   - Fix multiplayer projectile becoming invisible
 - Magnetic Vortex
   - Add field representing vortex range/or tendrils
-  - Fix glitchy VFX
 - Surge
   - Fix effect shaking when running into objects
   - Fix not being able to exit ability if remaining charges are left
