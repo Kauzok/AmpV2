@@ -34,20 +34,13 @@ namespace AmpMod.SkillStates.BaseStates
         {
             base.OnEnter();
 
-            Debug.Log("died");
+            //Debug.Log("died");
 
             var SkillHolder = base.GetComponent<SkillComponents.WormHealthTracker>();
             specialSlot = SkillHolder.specialSlot;
             cancelSkillDef = SkillHolder.cancelSkillDef;
             wormSkill = SkillHolder.wormSkill;
 
-            if (NetworkServer.active)
-            {
-                Debug.Log(specialSlot);
-                Debug.Log(wormSkill);
-                Debug.Log(cancelSkillDef);
-                
-            }
 
                 
             UnsetOverride();

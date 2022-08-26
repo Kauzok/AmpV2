@@ -81,6 +81,8 @@ namespace AmpMod.Modules
             ferroshotContact.destroyOnWorld = true;
             ferroshotContact.impactEffect = Assets.bulletImpactEffect;
 
+            Assets.CreateVFXMaterial("matLorentzTrail");
+
             PrefabAPI.RegisterNetworkPrefab(ferroshotPrefab);
 
         }

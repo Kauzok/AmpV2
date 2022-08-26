@@ -42,27 +42,12 @@ namespace AmpMod.Modules.Survivors
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
-        //internal static Material henryMat = Modules.Assets.CreateMaterial("matHenry");
+       
         internal static Material swordMat = Modules.Assets.CreateMaterial("matSword");
         internal static Material suitMat = Modules.Assets.CreateMaterial("matSuit");
         internal override int mainRendererIndex { get; set; } = 1;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
-               /* new CustomRendererInfo
-                {
-                    childName = "SwordModel",
-                    material = henryMat,
-                },
-                new CustomRendererInfo
-                {
-                    childName = "GunModel",
-                    material = henryMat,
-                },
-                new CustomRendererInfo
-                {
-                    childName = "Model",
-                    material = henryMat
-                }}; */
 
                  new CustomRendererInfo
                 {
@@ -484,6 +469,7 @@ namespace AmpMod.Modules.Survivors
             skins.Add(masterySkin);
             #endregion
 
+
             #region ReformationSkin
             Material golemSuitMat = Modules.Assets.CreateMaterial("MasteryAmp");
             Material golemSwordMat = Modules.Assets.CreateMaterial("MasteryAmp");
@@ -519,6 +505,7 @@ namespace AmpMod.Modules.Survivors
 
             skins.Add(golemSkin); 
             #endregion
+
 
             skinController.skins = skins.ToArray();
         }

@@ -163,11 +163,6 @@ namespace AmpMod.SkillStates
 			}
 			hasDetonatedServer = true;
 
-			if (age < this.duration)
-			{
-				Debug.Log("exiting early vehicle");
-				//vehicleSeat.exitVelocityFraction = 0f;
-			}
 
 
 			//same purpose as stated above

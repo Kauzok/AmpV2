@@ -20,6 +20,7 @@ namespace AmpMod.SkillStates
 		private bool hasEffectiveAuthority;
 		public NetworkUser networkUser;
 		public NetworkUser networkUser2;
+		private VehicleSeat boltSeat;
 		private GenericSkill utilitySlot;
 		private float ageCheck;
 		private bool exitedEarly;
@@ -78,6 +79,7 @@ namespace AmpMod.SkillStates
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
+			//boltSeat = boltObject.GetComponent<VehicleSeat>();
             //NetworkServer.Spawn(boltObject);
 
 
@@ -183,16 +185,16 @@ namespace AmpMod.SkillStates
 
 			base.OnExit();
 
-
 			//boltObject.GetComponent<BoltVehicle>().DetonateServer();
 			var bolt = boltObject?.GetComponent<BoltVehicle>();
-			var boltSeat = boltObject?.GetComponent<VehicleSeat>();
-			/*if (bolt && ageCheck < duration)
+
+			if (bolt && ageCheck < duration)
 			{
 				Debug.Log("exiting early");
-				boltSeat.exitVelocityFraction = 0f;
+				boltObject.GetComponent<VehicleSeat>().exitVelocityFraction = 0f;
 				bolt.DetonateServer();
-			} */
+			} 
+
 			if (bolt)
             {
 				bolt.DetonateServer();

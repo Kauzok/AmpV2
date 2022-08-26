@@ -9,6 +9,7 @@ namespace AmpMod.Modules
         // armor buff gained during roll
         internal static BuffDef chargeBuildup;
         internal static BuffDef noFulmination;
+        internal static BuffDef electrified;
         internal static BuffDef noSurge;
         internal static BuffDef overCharge;
 
@@ -18,8 +19,7 @@ namespace AmpMod.Modules
         {
             //charge debuff
             chargeBuildup = AddNewBuff("AmpChargeBuildup", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChargeDebuffAlt"), new Color32(0, 145, 255, 255), true, true);
-            noSurge = AddNewBuff("AmpNoSurge", null, new Color32(0, 0, 0, 0), false, true);
-            noFulmination = AddNewBuff("AmpNoFulmination", null, new Color32(0, 0, 0, 0), false, true);
+            electrified = AddNewBuff("AmpElectrified", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texElectrified"), new Color32(76, 206, 255, 255), false, true);
             overCharge = AddNewBuff("AmpOverCharge", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
         }
 

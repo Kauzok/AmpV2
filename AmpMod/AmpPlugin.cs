@@ -68,6 +68,7 @@ namespace AmpMod
         {
             instance = this;
 
+            //On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 
             logger = base.Logger;
 
@@ -127,6 +128,7 @@ namespace AmpMod
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
             RecalculateStatsAPI.GetStatCoefficients += overChargeStatGrant;
+            RecalculateStatsAPI.GetStatCoefficients += wormItemCheck;
 
         }
 
@@ -249,7 +251,7 @@ namespace AmpMod
 
             if (info.HasModdedDamageType(DamageTypes.strongBurnIfCharged))
             {
-                if (self.body.HasBuff(Buffs.chargeBuildup))
+                if (self.body.HasBuff(Buffs.chargeBuildup) || self.body.HasBuff(Buffs.electrified))
                 {
                     DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.StrongerBurn);
                 }
@@ -316,7 +318,7 @@ namespace AmpMod
         //applies custom debuff/tracker component
         public void applyCharge(HealthComponent self, DamageInfo info)
         {
-            if (self.gameObject.GetComponent<Tracker>() == null)
+            if (!self.gameObject.GetComponent<Tracker>())
             {
                 self.gameObject.AddComponent<Tracker>();
                 
@@ -331,19 +333,32 @@ namespace AmpMod
 
         }
 
-        private void overChargeStatGrant(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+
+        private void wormItemCheck(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (!body) return;
-            if (body.inventory.GetItemCount(Assets.wormHealth) > 0)
+            if (body)
             {
-                var ownerBody = body.master.minionOwnership.ownerMaster ? body.master.minionOwnership.ownerMaster.GetBody() : null;
-                if (ownerBody)
+                if (body.inventory)
                 {
-                    body.baseMaxHealth = ownerBody.maxHealth * 3f;
+                    if (body.inventory.GetItemCount(Assets.wormHealth) > 0)
+                    {
+                        var ownerBody = body.master.minionOwnership.ownerMaster ? body.master.minionOwnership.ownerMaster.GetBody() : null;
+                        if (ownerBody)
+                        {
+                            //Debug.Log(ownerBody);
+                            body.baseMaxHealth = ownerBody.maxHealth * 3f;
+                        }
+                    }
+
                 }
             }
+        }
+
+        private void overChargeStatGrant(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        {
+          
             
-            if (body.HasBuff(Buffs.overCharge))
+            if (body && body.HasBuff(Buffs.overCharge))
             {
                 
                 args.baseMoveSpeedAdd += StaticValues.overchargeMoveSpeed;
@@ -398,10 +413,34 @@ namespace AmpMod
                     teamIndex = tracker.ownerBody.teamComponent.teamIndex
                 };
 
-                chargeBlast.Fire();
-                //removes stacks of charge
-                body.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
+                 chargeBlast.Fire();
+
+                    /* var controller = body.gameObject.GetComponent<SkillStates.SkillComponents.ElectrifiedEffectController>();
+                    if (!controller)
+                    {
+                        ModelLocator modelLocator;
+                        modelLocator = tracker.victim.GetComponent<ModelLocator>();
+                        Debug.Log("adding overlay");
+
+                        var electrifiedController = body.gameObject.AddComponent<SkillStates.SkillComponents.ElectrifiedEffectController>();
+                        electrifiedController.target = modelLocator.modelTransform.gameObject;
+                        electrifiedController.electrifiedBody = body;
+                    }
+                    */
+                    body.AddTimedBuff(Buffs.electrified, Modules.StaticValues.electrifiedDuration); 
+
+
+                    //removes stacks of charge
+                    body.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
+
+                           
+
             }
+
+
+
         }
     }
+
+
 }

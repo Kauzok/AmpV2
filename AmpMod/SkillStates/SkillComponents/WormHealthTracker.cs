@@ -23,14 +23,14 @@ namespace AmpMod.SkillStates.SkillComponents
 
         public void Awake()
         {
-            
+            wormBody = base.GetComponent<CharacterBody>();
 
         }
 
 
         private void FixedUpdate()
         {
-            if (wormBody.healthComponent.health <= 0f || wormBody.isActiveAndEnabled == false) //&& wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife) == 0 && wormMaster.inventory.GetItemCount(DLC1Content.Items.ExtraLifeVoid) == 0)
+          /*  if (wormBody.healthComponent.health <= 0f || wormBody.isActiveAndEnabled == false) //&& wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife) == 0 && wormMaster.inventory.GetItemCount(DLC1Content.Items.ExtraLifeVoid) == 0)
             {   
                 if (!hasDied)
                 {
@@ -40,7 +40,7 @@ namespace AmpMod.SkillStates.SkillComponents
                
 
 
-            }
+            } */
         }
     }
 }

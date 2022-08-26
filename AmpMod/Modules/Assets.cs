@@ -26,6 +26,8 @@ namespace AmpMod.Modules
 
         [Header("Charge Effects")]
         internal static GameObject chargeExplosionEffect;
+        internal static GameObject electrifiedOverlay;
+        internal static Material electrifiedMaterial;
 
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
@@ -143,7 +145,19 @@ namespace AmpMod.Modules
                 return;
             }
 
+            ItemDisplayRule[] nullDisplay = new ItemDisplayRule[] { };
             wormHealth = ScriptableObject.CreateInstance<ItemDef>();
+            wormHealth.name = "wormHealth";
+
+            wormHealth.tier = ItemTier.NoTier;
+            wormHealth.descriptionToken = "bruh";
+            wormHealth.loreToken = "bruh";
+            wormHealth.AutoPopulateTokens();
+
+
+          
+            // wormHealth.pickupToken = "bruh";
+
             ItemAPI.Add(new CustomItem(wormHealth, new ItemDisplayRule[0]));
 
 
@@ -172,6 +186,7 @@ namespace AmpMod.Modules
             //on charge explosion when 3 procs are reached
             //CreateChargePrefab();
             chargeExplosionEffect = LoadEffect("ChargeExplosion", StaticValues.chargeExplosionString);
+            CreateElectrified();
 
             //on fulmination skill chain
             //electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
@@ -237,6 +252,11 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(boltVehicle);
         }
 
+        private static void CreateElectrified()
+        {
+            electrifiedMaterial = CreateVFXMaterial("matIsElectrified");
+
+        }
         private static void CreateMelvin()
         {
             melvinPrefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElectricWorm/ElectricWormMaster.prefab").WaitForCompletion(), "MelvinPrefab", true);
@@ -244,7 +264,7 @@ namespace AmpMod.Modules
             CharacterMaster melvinMaster = melvinPrefab.GetComponent<CharacterMaster>();
         
             melvinBody = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElectricWorm/ElectricWormBody.prefab").WaitForCompletion(), "MelvinBody", true);
-            var healthTracker = melvinBody.AddComponent<SkillStates.SkillComponents.WormHealthTracker>();
+            //var healthTracker = melvinBody.AddComponent<SkillStates.SkillComponents.WormHealthTracker>();
 
             var melvinCharBody = melvinBody.GetComponent<CharacterBody>();
             
@@ -345,8 +365,7 @@ namespace AmpMod.Modules
         private static void CreateStreamPrefab()
         {
 
-            CreateVFXMaterial("matMageLightningLaser");
-            CreateVFXMaterial("matLightningStrike");
+ 
 
             electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");
 

@@ -116,7 +116,7 @@ namespace AmpMod.SkillStates.SkillComponents
 			CharacterBody body = result.healthComponent.body;
 			if (ignoreUnCharged)
             {
-				if (!body.HasBuff(Modules.Buffs.chargeBuildup))
+				if (!body.HasBuff(Modules.Buffs.chargeBuildup) && !body.HasBuff(Modules.Buffs.electrified))
 				{
 					return body && false;
 				}

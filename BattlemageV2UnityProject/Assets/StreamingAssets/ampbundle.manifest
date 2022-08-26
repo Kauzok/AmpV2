@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 720397774
+CRC: 645173595
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 59aa2cdad6227c4b09b0e400d4804136
+    Hash: f75cb68128e22592ddad5d081ea95d02
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5c206b74f6ff831a4218599656d2421e
@@ -156,6 +156,7 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/HenryAssets/FireballVehicle.prefab
+- Assets/HenryAssets/VFX/Materials/texCloudDifferenceBW1.png
 - Assets/HenryAssets/Animations/maskAimBazooka.mask
 - Assets/HenryAssets/Shaders/fx/hgdamagenumber.shader
 - Assets/HenryAssets/VFX/Ferroshot/LunarShardProjectile.prefab
@@ -224,6 +225,7 @@ Assets:
 - Assets/HenryAssets/VFX/Fulmination/ElectricityChain.prefab
 - Assets/HenryAssets/VFX/Materials/matHenrySwing2.mat
 - Assets/HenryAssets/Textures/texBazooka.png
+- Assets/HenryAssets/VFX/Materials/texCloudLightning1.png
 - Assets/HenryAssets/VFX/Textures/texRipple.png
 - Assets/HenryAssets/VFX/ImpactHenrySlash.prefab
 - Assets/HenryAssets/VFX/Stormblade/StormbladeHit.prefab
@@ -236,6 +238,7 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_AscendAnim.anim
 - Assets/HenryAssets/AmpAnims/maskAmpLeftArm.mask
 - Assets/HenryAssets/VFX/Materials/VortexSphere.mat
+- Assets/HenryAssets/VFX/Materials/matIsElectrified.mat
 - Assets/HenryAssets/Icons/texSurge.png
 - Assets/HenryAssets/AmpAnims/metarig_SidewalkLAnim.001.anim
 - Assets/HenryAssets/VFX/HeatShock/HeatExplosionEffect.prefab
@@ -266,7 +269,6 @@ Assets:
 - Assets/HenryAssets/Icons/texHenryAchievement.png
 - Assets/HenryAssets/Animations/WalkB.anim
 - Assets/HenryAssets/Mesh/Sword.mesh
-- Assets/HenryAssets/matLightning.mat
 - Assets/HenryAssets/VFX/Bolt/whiteflash.png
 - Assets/HenryAssets/texRampLightning2.png
 - Assets/HenryAssets/Mesh/donut5Mesh.asset
@@ -328,6 +330,7 @@ Assets:
 - Assets/HenryAssets/Shaders/environment/hgdistantwater.shader
 - Assets/HenryAssets/Icons/texFulmination.png
 - Assets/HenryAssets/Textures/Atlases/Materials/BaseMeshAtlas.mat
+- Assets/HenryAssets/VFX/Materials/matOnHelfire.mat
 - Assets/HenryAssets/VFX/Bulwark/matWormExplosion.mat
 - Assets/HenryAssets/AmpAnims/metarig_JumpAnim.anim
 - Assets/HenryAssets/AmpAnims/metarig_WalkAnim 1.anim
@@ -409,6 +412,7 @@ Assets:
 - Assets/HenryAssets/Shaders/fx/hgforwardplanet.shader
 - Assets/HenryAssets/Mesh/Suit.mesh
 - Assets/HenryAssets/Mesh/meshDanteCoat.mesh
+- Assets/HenryAssets/VFX/Materials/texRampLightning.png
 - Assets/HenryAssets/Animations/RestIdle.anim
 - Assets/HenryAssets/AmpAnims/metarig_DescendTransitionAnimAlt.anim
 - Assets/HenryAssets/VFX/Vortex/VortexExplosion.prefab
@@ -423,11 +427,13 @@ Assets:
 - Assets/HenryAssets/Shaders/fx/hgvertexonly.shader
 - Assets/HenryAssets/Textures/Atlases/Materials/ForearmRAtlas.mat
 - Assets/HenryAssets/VFX/Materials/matPunchEffect.mat
+- Assets/HenryAssets/VFX/Materials/texRampLightning2.png
 - Assets/HenryAssets/AmpAnims/metarig_LightImpactAnim.anim
 - Assets/HenryAssets/SpikeGhost.prefab
 - Assets/HenryAssets/VFX/Textures/texPunchImpact.png
 - Assets/HenryAssets/Shaders/ui/hguiignorez.shader
 - Assets/HenryAssets/AmpAnims/metarig_LaunchAnim 1.anim
+- Assets/HenryAssets/VFX/Materials/matLorentzTrail.mat
 - Assets/HenryAssets/Atlases/spriteSuitAtlas.png
 - Assets/HenryAssets/mdlHenry.prefab
 - Assets/HenryAssets/Mesh/meshRebellion.mesh
@@ -446,6 +452,7 @@ Assets:
 - Assets/HenryAssets/VFX/Fulmination/Electricity.prefab
 - Assets/HenryAssets/Shaders/environment/hggrass.shader
 - Assets/HenryAssets/Materials/MatSuit.mat
+- Assets/HenryAssets/VFX/Materials/texAlphaGradient3Mask.png
 - Assets/HenryAssets/VFX/Bolt/RebarMesh.asset
 - Assets/HenryAssets/Atlases/texEmission.png
 - Assets/HenryAssets/SwordSpark.prefab
@@ -465,7 +472,7 @@ Assets:
 - Assets/HenryAssets/VFX/Vortex/VortexEffect 1.prefab
 - Assets/HenryAssets/HenryBombGhost.prefab
 - Assets/HenryAssets/Atlas_96606.png
-- Assets/HenryAssets/matMageLightningLaser.mat
+- Assets/HenryAssets/Shaders/Hopoo_GamesFXCloud_Remap.shader
 - Assets/HenryAssets/Mesh/meshPistol.mesh
 - Assets/HenryAssets/Atlases/EmissionSprite.png
 - Assets/HenryAssets/Icons/texStingerIcon.png
@@ -541,6 +548,7 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_ThrowAnimAerialDown.anim
 - Assets/HenryAssets/VFX/Vortex/VortexMuzzleEffect.prefab
 - Assets/HenryAssets/VFX/Charge/Matrix, Dynamic 1.prefab
+- Assets/HenryAssets/VFX/Materials/texMageBoltMask.png
 - Assets/HenryAssets/texBehemothTileMask.png
 - Assets/HenryAssets/AmpAnims/metarig_DescendFastAnim.anim
 - Assets/HenryAssets/AmpAnims/metarig_PulseAnim.anim
@@ -554,6 +562,7 @@ Assets:
 - Assets/HenryAssets/Animations/MenuIdleIn.anim
 - Assets/HenryAssets/VFX/ImpactHenryPunch.prefab
 - Assets/HenryAssets/AmpAnims/metarig_WalkAnim.anim
+- Assets/HenryAssets/Icons/texElectrified.png
 - Assets/HenryAssets/Materials/matSpriteSword.mat
 - Assets/HenryAssets/Animations/Slash1.anim
 - Assets/HenryAssets/VFX/HenryBazookaExplosionEffect.prefab

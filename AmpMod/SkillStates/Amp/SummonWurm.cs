@@ -86,7 +86,7 @@ namespace AmpMod.SkillStates
 
             EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
 
-            Debug.Log("Spawning worm");
+            //Debug.Log("Spawning worm");
 
 
             //figure out why this doesnt make worm follow amp
@@ -106,7 +106,7 @@ namespace AmpMod.SkillStates
                     position = characterBody.corePosition + new Vector3(0, 0, 2),
                     rotation = characterBody.transform.rotation,
                     inventoryToCopy = characterBody.inventory,
-                    inventoryItemCopyFilter = index => index != RoR2Content.Items.ExtraLife.itemIndex,
+                    inventoryItemCopyFilter = index => index != RoR2Content.Items.ExtraLife.itemIndex && index != DLC1Content.Items.ExtraLifeVoid.itemIndex,
                     
 
                 };
@@ -116,7 +116,7 @@ namespace AmpMod.SkillStates
 
                 wormMaster = wormSummon.Perform();
             }
-            //wormBody.RecalculateStats();
+            
             
 
             if (wormMaster)
@@ -157,8 +157,8 @@ namespace AmpMod.SkillStates
 
                    
 
-                    var healthTracker = wormObject.GetComponent<SkillComponents.WormHealthTracker>();
-                    healthTracker.wormBody = wormMaster.GetBody();
+                    var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
+                   // healthTracker.wormBody = wormMaster.GetBody();
                     healthTracker.owner = base.gameObject;
                     healthTracker.wormSkill = src;
                     
