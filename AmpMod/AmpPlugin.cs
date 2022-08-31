@@ -387,10 +387,15 @@ namespace AmpMod
                 {
                     origin = body.corePosition,
                 };
-                //set and spawn charge explosion effect
-                EffectManager.SpawnEffect(Assets.chargeExplosionEffect, effectData, true);
+
+                
 
                 var tracker = body.gameObject.GetComponent<Tracker>();
+
+                GameObject chargeEffect = tracker.owner.gameObject.GetComponent<AmpLightningController>().chargeExplosion;
+                //set and spawn charge explosion effect
+                EffectManager.SpawnEffect(chargeEffect, effectData, true);
+
 
                 //create and fire charge blastattack centered on enemy 
                 BlastAttack chargeBlast;

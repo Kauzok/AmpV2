@@ -2,6 +2,7 @@
 using UnityEngine;
 using EntityStates;
 using R2API;
+using AmpMod.Modules;
 using AmpMod.SkillStates.SkillComponents;
 using KinematicCharacterController;
 using UnityEngine.Networking;
@@ -17,6 +18,7 @@ namespace AmpMod.SkillStates
         private GameObject launchEffect;
         private ChildLocator childLocator;
         private float smallHopVelocity = 12f;
+        private AmpLightningController lightningController;
         private Vector3 lungeVelocity;
         private Vector3 initialLaunchVelocity;
         private float blastRadius = 11f;
@@ -37,9 +39,9 @@ namespace AmpMod.SkillStates
         private Vector3 flyDirection;
         private float upSpeed;
         private Transform inputSpace;
-        private GameObject muzzlePrefab = Modules.Assets.pulseMuzzleEffect;
+        private GameObject muzzlePrefab;
         private Rotator rotator;
-        private GameObject blinkPrefab = Modules.Assets.pulseBlastEffect;
+        private GameObject blinkPrefab;
         private float lungeSpeed = 40f;
 
         public override void OnEnter()
@@ -47,7 +49,10 @@ namespace AmpMod.SkillStates
 
             base.OnEnter();
 
+            lightningController = base.GetComponent<AmpLightningController>();
 
+            blinkPrefab = lightningController.pulseLeapEffect;
+            muzzlePrefab = lightningController.pulseMuzzleEffect;
 
             if (base.isAuthority)
             {

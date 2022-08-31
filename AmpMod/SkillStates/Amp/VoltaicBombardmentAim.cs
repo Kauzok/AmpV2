@@ -11,7 +11,7 @@ namespace AmpMod.SkillStates
 
         public override void OnEnter()
         {
-            this.chargeEffectPrefab = Modules.Assets.lightningMuzzleChargePrefab;
+            this.chargeEffectPrefab = base.GetComponent<AmpMod.Modules.AmpLightningController>().bombardmentMuzzleEffect;
             this.chargeSoundString = "Play_mage_m2_charge";
             this.lightningRadius = 15f;
 

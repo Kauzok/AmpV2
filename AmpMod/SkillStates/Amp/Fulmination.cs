@@ -2,6 +2,7 @@
 using RoR2;
 using UnityEngine;
 using RoR2.Skills;
+using AmpMod.Modules;
 using R2API;
 using System;
 
@@ -11,10 +12,10 @@ namespace AmpMod.SkillStates
 	{
 
 		[Header("Effect/Animation Variables")]
-		public GameObject lightningEffectPrefab = Modules.Assets.electricStreamEffect;
-		public static GameObject impactEffectPrefab = Modules.Assets.electricImpactEffect;
-		private GameObject muzzleEffectPrefab = Modules.Assets.electricMuzzleEffect;
+		public GameObject lightningEffectPrefab;
+		public static GameObject impactEffectPrefab;
 		public EffectData fulminationData;
+		private AmpLightningController lightningController;
 		private Transform fulminationTransform;
 		private Transform muzzleTransform;
 		private Transform handLTransform;
@@ -59,6 +60,9 @@ namespace AmpMod.SkillStates
 		
 			base.OnEnter();
 
+			lightningController = base.GetComponent<AmpLightningController>();
+			lightningEffectPrefab = lightningController.fulminationEffect;
+			impactEffectPrefab = lightningController.fulminationHitEffect;
 	
 			stopwatch = 0f;
 			entryDuration = Fulmination.baseEntryDuration / this.attackSpeedStat;
@@ -152,10 +156,6 @@ namespace AmpMod.SkillStates
 					EntityState.Destroy(fulminationTransform.gameObject);
 
 				}
-			if (muzzleTransform)
-            {
-				EntityState.Destroy(muzzleTransform.gameObject);
-            }
 
 			animator.SetBool("isFulminating", false);
 			animator.SetBool("isUsingIndependentSkill", false);
@@ -182,7 +182,7 @@ namespace AmpMod.SkillStates
 					damage = tickDamageCoefficient * base.characterBody.damage,
 					force = 2f,
 					muzzleName = muzzleString,
-					hitEffectPrefab = Modules.Assets.electricImpactEffect,
+					hitEffectPrefab = impactEffectPrefab,
 					isCrit = base.characterBody.RollCrit(),
 					radius = Fulmination.radius,
 					falloffModel = BulletAttack.FalloffModel.None,
@@ -214,20 +214,14 @@ namespace AmpMod.SkillStates
 		{	
 			base.FixedUpdate();
 			
-			if (!hasMuzzleEffect)
-            {
-				muzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, handLTransform).transform;
-				hasMuzzleEffect = true;
-				//Debug.Log("Spawning Muzzle Effect");
-			}
 
 
 			stopwatch += Time.fixedDeltaTime;
 			if (stopwatch >= entryDuration && !hasBegunFulmination)
 			{
 				hasBegunFulmination = true;
-				EntityState.Destroy(muzzleTransform.gameObject);
-				hasMuzzleEffect = false;
+
+				
 
 				//allows amp to start slashing again
 				animator.SetBool("isUsingIndependentSkill", false);
@@ -239,13 +233,9 @@ namespace AmpMod.SkillStates
 					
 					if (transform)
 					{
-						if (muzzleTransform)
-						{
-							EntityState.Destroy(muzzleTransform.gameObject);
-						}
+						
 
-
-						fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.electricStreamEffect, transform).transform;
+						fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(lightningEffectPrefab, transform).transform;
 					}
 
 

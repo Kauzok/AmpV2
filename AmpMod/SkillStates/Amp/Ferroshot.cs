@@ -5,7 +5,7 @@ using RoR2.Projectile;
 using System.Collections;
 using UnityEngine.Networking;
 using BepInEx;
-
+using AmpMod.Modules;
 namespace AmpMod.SkillStates
 {
     public class Ferroshot : BaseSkillState
@@ -16,7 +16,9 @@ namespace AmpMod.SkillStates
         public static float baseDuration = 1f;
         public static float force = 10;
         public static float recoil = 0f;
+        private AmpLightningController lightningController;
         public static float range = 600f;
+        private GameObject bulletPrefab;
         public static float launchForce = 150f;
         private static int numOfBullets = 6;
         private const float FIRE_TIME_PERCENTAGE = .25f;
@@ -30,7 +32,7 @@ namespace AmpMod.SkillStates
         private ChildLocator childLocator;
         private Transform leftMuzzleTransform;
 
-        public static GameObject tracerEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
+
         public static GameObject ferroshotPrefabBasic = Modules.Assets.bulletPrepItem;
 
         private float totalDuration;
@@ -52,7 +54,9 @@ namespace AmpMod.SkillStates
             chargeDuration = totalDuration - fireDuration;
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
-            
+            lightningController = base.GetComponent<AmpLightningController>();
+
+            bulletPrefab = lightningController.lorentzProjectile;
 
             Ray aimRay = base.GetAimRay();
             base.PlayAnimation("Worm, Override", "ShootProjectile", "LorentzCannon.playbackRate", 1.2f*totalDuration);//1.7f*this.totalDuration);// 1.8f * this.duration);
@@ -189,7 +193,7 @@ namespace AmpMod.SkillStates
                        
 
                     // Spawn the projectile at the gameobjects current location
-                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.ferroshotPrefab,
+                    ProjectileManager.instance.FireProjectile(bulletPrefab,
                     bullets[i].transform.position,
                     Quaternion.LookRotation(direction),
                     base.gameObject,

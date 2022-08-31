@@ -19,13 +19,24 @@ namespace AmpMod.Modules
         internal static AssetBundle mainAssetBundle;
         internal static string prefix = AmpPlugin.developerPrefix;
 
-        // particle effects
+
+        [Header("Materials")]
+        internal static Material matRedLightning;
+        internal static Material matBlueLightning;
+        internal static Material matRedTrail;
+        internal static Material matBlueTrail;
+        internal static Material matPulseTrailRed;
+        internal static Material matPulseBlastRed;
+
+        [Header("Shockblade Effects")]
         internal static GameObject swordSwingEffect;
         internal static GameObject swordHitImpactEffect;
-        internal static GameObject bombExplosionEffect;
+        internal static GameObject swordSwingEffectRed;
+        internal static GameObject swordHitImpactEffectRed;
 
         [Header("Charge Effects")]
         internal static GameObject chargeExplosionEffect;
+        internal static GameObject chargeExplosionEffectRed;
         internal static GameObject electrifiedOverlay;
         internal static Material electrifiedMaterial;
 
@@ -43,11 +54,15 @@ namespace AmpMod.Modules
         [Header("Bolt Effects")]
         internal static GameObject boltExitEffect;
         internal static GameObject boltEnterEffect;
+        internal static GameObject boltExitEffectRed;
+        internal static GameObject boltEnterEffectRed;
         internal static GameObject boltVehicle;
 
         [Header("Pulse Leap Effects")]
         internal static GameObject pulseBlastEffect;
         internal static GameObject pulseMuzzleEffect;
+        internal static GameObject pulseBlastEffectRed;
+        internal static GameObject pulseMuzzleEffectRed;
 
         [Header("Plasma Slash Effects")]
         internal static GameObject heatSwing;
@@ -62,10 +77,15 @@ namespace AmpMod.Modules
         internal static GameObject electricImpactEffect;
         internal static GameObject electricChainEffect;
         internal static GameObject electricMuzzleEffect;
+        internal static GameObject electricStreamEffectRed;
+        internal static GameObject electricImpactEffectRed;
+        internal static GameObject electricChainEffectRed;
 
         [Header("VoltaicBombardment Effects")]
         internal static GameObject lightningStrikePrefab;
         internal static GameObject lightningMuzzleChargePrefab;
+        internal static GameObject lightningStrikePrefabRed;
+        internal static GameObject lightningMuzzleChargePrefabRed;
 
         [Header("Bulwark of Storms Effects")]
         internal static GameObject wormExplosionEffect;
@@ -145,17 +165,20 @@ namespace AmpMod.Modules
                 return;
             }
 
+
             ItemDisplayRule[] nullDisplay = new ItemDisplayRule[] { };
             wormHealth = ScriptableObject.CreateInstance<ItemDef>();
             wormHealth.name = "wormHealth";
 
-            wormHealth.tier = ItemTier.NoTier;
+            //wormHealth.tier = ItemTier.NoTier;
             wormHealth.descriptionToken = "bruh";
             wormHealth.loreToken = "bruh";
             wormHealth.AutoPopulateTokens();
 
+            wormHealth.deprecatedTier = ItemTier.NoTier;
 
-          
+                
+            
             // wormHealth.pickupToken = "bruh";
 
             ItemAPI.Add(new CustomItem(wormHealth, new ItemDisplayRule[0]));
@@ -180,12 +203,14 @@ namespace AmpMod.Modules
             //plasma slash explosion sound events
             plasmaExplosionSoundEvent = CreateNetworkSoundEventDef(StaticValues.plasmaExplosionString);
 
+            //materials
+            CreateMaterials();
+
             //on voltaic bombardment aim
             CreateLightningCharge();
 
             //on charge explosion when 3 procs are reached
-            //CreateChargePrefab();
-            chargeExplosionEffect = LoadEffect("ChargeExplosion", StaticValues.chargeExplosionString);
+            CreateChargePrefab();
             CreateElectrified();
 
             //on fulmination skill chain
@@ -228,18 +253,44 @@ namespace AmpMod.Modules
 
             //functions for prefabs that require adjustments made at runtime
             //CreateLightningPrefab();
-            
-            
+
+            CreateShockbladeEffects();
         
 
-            //swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
-            swordSwingEffect = Assets.LoadEffect("StormbladeSwing", true);
-            //swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
-            swordHitImpactEffect = Assets.LoadEffect("StormbladeHit");
+
         }
 
 
+        private static void CreateShockbladeEffects()
+        {
+            swordSwingEffect = Assets.LoadEffect("StormbladeSwing", true);
+            swordHitImpactEffect = Assets.LoadEffect("StormbladeHit");
+            swordSwingEffectRed = Assets.LoadEffect("StormbladeSwingRed", true);
+            swordHitImpactEffectRed = Assets.LoadEffect("StormbladeHitRed");
 
+        }
+
+        private static void CreateMaterials()
+        {
+            matRedLightning = mainAssetBundle.LoadAsset<Material>("LightningEffectRed");
+            matBlueLightning = mainAssetBundle.LoadAsset<Material>("LightningEffect");
+
+            matBlueTrail = mainAssetBundle.LoadAsset<Material>("matLorentzTrail");
+            matRedTrail = mainAssetBundle.LoadAsset<Material>("matLorentzTrailRed");
+
+            matPulseBlastRed = mainAssetBundle.LoadAsset<Material>("matPulseMuzzleRed");
+            matPulseTrailRed = mainAssetBundle.LoadAsset<Material>("matPulseMuzzleTrailRed");
+
+
+            CreateVFXMaterial("matLorentzTrail");
+            CreateVFXMaterial("matLorentzTrailRed");
+            CreateVFXMaterial("matPulseMuzzleRed");
+            CreateVFXMaterial("matPulseMuzzleTrailRed");
+            //matRedTrail.SetTexture("_RemapTex", mainAssetBundle.LoadAsset<Texture>("texRampGolem"));
+
+
+
+        }
         private static void CreateBoltVehicle()
         {
             boltVehicle = mainAssetBundle.LoadAsset<GameObject>("BoltVehicle");
@@ -251,6 +302,7 @@ namespace AmpMod.Modules
             
             PrefabAPI.RegisterNetworkPrefab(boltVehicle);
         }
+
 
         private static void CreateElectrified()
         {
@@ -336,15 +388,8 @@ namespace AmpMod.Modules
 
         private static void CreateChargePrefab()
         {
-           chargeExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("ChargeExplosion");
-           
-           chargeExplosionEffect.AddComponent<VFXAttributes>();
-           chargeExplosionEffect.AddComponent<EffectComponent>();
-           chargeExplosionEffect.AddComponent<NetworkIdentity>();
-
-
-            AddNewEffectDef(chargeExplosionEffect);
-
+            chargeExplosionEffect = LoadEffect("ChargeExplosion", StaticValues.chargeExplosionString);
+            chargeExplosionEffectRed = LoadEffect("ChargeExplosionRed", StaticValues.chargeExplosionString);
 
 
         }
@@ -353,6 +398,7 @@ namespace AmpMod.Modules
         {
            
             lightningMuzzleChargePrefab = mainAssetBundle.LoadAsset<GameObject>("HandSpark");
+            lightningMuzzleChargePrefabRed = mainAssetBundle.LoadAsset<GameObject>("HandSparkRed");
             //AddNewEffectDef(lightningMuzzleChargePrefab);
         }
 
@@ -365,9 +411,8 @@ namespace AmpMod.Modules
         private static void CreateStreamPrefab()
         {
 
- 
-
             electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");
+            electricStreamEffectRed = mainAssetBundle.LoadAsset<GameObject>("ElectricityStreamRed");
 
             electricMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("FulminationMuzzleObject");
 
@@ -375,6 +420,9 @@ namespace AmpMod.Modules
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere 1", null);
+            electricImpactEffectRed = LoadEffect("ElectricitySphereRed", null);
+
+            electricStreamEffectRed.AddComponent<NetworkIdentity>();
             electricStreamEffect.AddComponent<NetworkIdentity>();
 
         }
@@ -393,14 +441,26 @@ namespace AmpMod.Modules
             pulseBlastEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffect", true);
             pulseBlastEffect.AddComponent<NetworkIdentity>();
 
+            pulseBlastEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffectRed", true);
+            pulseBlastEffectRed.AddComponent<NetworkIdentity>();
+            
             pulseMuzzleEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffect", true);
             pulseMuzzleEffect.AddComponent<NetworkIdentity>();
 
-            AmpPlugin.Destroy(pulseMuzzleEffect.GetComponent<EffectComponent>());
+            pulseMuzzleEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffectRed", true);
+            pulseMuzzleEffectRed.AddComponent<NetworkIdentity>();
 
-            AddNewEffectDef(pulseBlastEffect);
-            AddNewEffectDef(pulseMuzzleEffect);
+            AmpPlugin.Destroy(pulseMuzzleEffect.GetComponent<EffectComponent>());
+            AmpPlugin.Destroy(pulseMuzzleEffectRed.GetComponent<EffectComponent>());
+
+
+              AddNewEffectDef(pulseBlastEffect);
+              //AddNewEffectDef(pulseMuzzleEffect); 
+
+              AddNewEffectDef(pulseBlastEffectRed);
+              //AddNewEffectDef(pulseMuzzleEffectRed);
         }
+
         private static void CreateBoltEnterPrefab()
         {
             boltEnterEffect = mainAssetBundle.LoadAsset<GameObject>("BoltEnter");
@@ -408,8 +468,14 @@ namespace AmpMod.Modules
             boltEnterEffect.AddComponent<VFXAttributes>();
             boltEnterEffect.AddComponent<EffectComponent>();
 
-            AddNewEffectDef(boltEnterEffect);
+            boltEnterEffectRed = mainAssetBundle.LoadAsset<GameObject>("BoltEnterRed");
+            boltEnterEffectRed.AddComponent<NetworkIdentity>();
+            boltEnterEffectRed.AddComponent<VFXAttributes>();
+            boltEnterEffectRed.AddComponent<EffectComponent>();
 
+
+            AddNewEffectDef(boltEnterEffect);
+            AddNewEffectDef(boltEnterEffectRed);
 
         }
          
@@ -433,14 +499,15 @@ namespace AmpMod.Modules
         {
 
             electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ChainLightningEffect");
-         
-
             electricChainEffect.AddComponent<NetworkIdentity>();
 
+            electricChainEffectRed = mainAssetBundle.LoadAsset<GameObject>("ChainLightningEffectRed");
+            electricChainEffectRed.AddComponent<NetworkIdentity>();
 
             AddNewEffectDef(electricChainEffect);
+            AddNewEffectDef(electricChainEffectRed);
 
-            
+
 
 
         }

@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
-using AmpMod.SkillStates;
+using AmpMod.Modules;
 using RoR2.Skills;
 
 namespace AmpMod.SkillStates
@@ -20,6 +20,7 @@ namespace AmpMod.SkillStates
 		private bool hasEffectiveAuthority;
 		public NetworkUser networkUser;
 		public NetworkUser networkUser2;
+		private GameObject boltVehicle;
 		private VehicleSeat boltSeat;
 		private GenericSkill utilitySlot;
 		private float ageCheck;
@@ -38,6 +39,10 @@ namespace AmpMod.SkillStates
 
 
 			base.OnEnter();
+
+			var lightningController = base.GetComponent<AmpLightningController>();
+
+			
 
 			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
 			{
@@ -73,7 +78,7 @@ namespace AmpMod.SkillStates
 			Ray aimRay = GetAimRay();
 
 			//instantiate bolt prefab to be used in tandem with boltvehicle class
-			boltObject = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.boltVehicle, aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+			boltObject = UnityEngine.Object.Instantiate<GameObject>(lightningController.surgeVehicle, aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
 			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));

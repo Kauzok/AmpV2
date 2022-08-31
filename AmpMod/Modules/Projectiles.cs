@@ -20,13 +20,11 @@ namespace AmpMod.Modules
         internal static void RegisterProjectiles()
         {
             // only separating into separate methods for my sanity
-            //CreateBomb();
             CreateFerroshot();
             CreateVortex();
             CreateFireBeam();
             //CreateLightning();
 
-            //AddProjectile(bombPrefab);
             AddProjectile(ferroshotPrefab);
             AddProjectile(vortexPrefab);
             AddProjectile(fireBeamPrefab);
@@ -81,7 +79,6 @@ namespace AmpMod.Modules
             ferroshotContact.destroyOnWorld = true;
             ferroshotContact.impactEffect = Assets.bulletImpactEffect;
 
-            Assets.CreateVFXMaterial("matLorentzTrail");
 
             PrefabAPI.RegisterNetworkPrefab(ferroshotPrefab);
 
@@ -169,27 +166,7 @@ namespace AmpMod.Modules
 
         }
 
-        private static void CreateBomb()
-        {
-            bombPrefab = CloneProjectilePrefab("CommandoGrenadeProjectile", "HenryBombProjectile");
-
-            ProjectileImpactExplosion bombImpactExplosion = bombPrefab.GetComponent<ProjectileImpactExplosion>();
-            InitializeImpactExplosion(bombImpactExplosion);
-
-            
-
-            bombImpactExplosion.blastRadius = 16f;
-            bombImpactExplosion.destroyOnEnemy = true;
-            bombImpactExplosion.lifetime = 12f;
-            bombImpactExplosion.impactEffect = Modules.Assets.bombExplosionEffect;
-            //bombImpactExplosion.lifetimeExpiredSound = Modules.Assets.CreateNetworkSoundEventDef("HenryBombExplosion");
-            bombImpactExplosion.timerAfterImpact = true;
-            bombImpactExplosion.lifetimeAfterImpact = 0.1f;
-
-            ProjectileController bombController = bombPrefab.GetComponent<ProjectileController>();
-            bombController.ghostPrefab = CreateGhostPrefab("HenryBombGhost");
-            bombController.startSound = "";
-        }
+     
 
         private static void InitializeImpactExplosion(ProjectileImpactExplosion projectileImpactExplosion)
         {

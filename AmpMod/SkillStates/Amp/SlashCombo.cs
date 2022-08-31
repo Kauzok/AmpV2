@@ -1,6 +1,7 @@
 ﻿using AmpMod.SkillStates.BaseStates;
 using RoR2;
 using R2API;
+using AmpMod;
 using UnityEngine;
 using RoR2.WwiseUtils;
 
@@ -15,6 +16,8 @@ namespace AmpMod.SkillStates
 
         public override void OnEnter()
         {
+            var lightningController = base.GetComponent<Modules.AmpLightningController>();
+
             this.hitboxName = "Sword";
 
             this.damageType = DamageType.Generic;
@@ -32,8 +35,8 @@ namespace AmpMod.SkillStates
             this.swingSoundString = Modules.StaticValues.stormbladeSwing1String;
             this.hitSoundString = "";
             this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
-            this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
-            this.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
+            this.swingEffectPrefab = lightningController.swingEffect;
+            this.hitEffectPrefab = lightningController.swingHitEffect;
             this.impactSound = Modules.Assets.stormbladeHitSoundEvent.index;
             //this.hitStopDuration = EntityStates.Merc.GroundLight.hitPauseDuration;
 

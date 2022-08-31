@@ -63,8 +63,9 @@ namespace AmpMod.Modules.Survivors
                 InitializeItemDisplays();
                 InitializeDoppelganger();
 
-               // var wormSkill = bodyPrefab.AddComponent<SkillStates.SkillComponents.WormSkillComponent>();
+                // var wormSkill = bodyPrefab.AddComponent<SkillStates.SkillComponents.WormSkillComponent>();
 
+                bodyPrefab.AddComponent<AmpLightningController>();
 
                 var menuSound = displayPrefab.AddComponent<SkillStates.SkillComponents.PlayMenuSound>();
                 menuSound.soundString = "PlayLobbyEntrance";
