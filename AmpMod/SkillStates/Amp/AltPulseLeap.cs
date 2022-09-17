@@ -73,8 +73,8 @@ namespace AmpMod.SkillStates
                         Transform leftTransform = this.childLocator.FindChild("HandL");
                         Transform swordTransform = this.childLocator.FindChild("SwordTip");
 
-                        this.leftMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.pulseMuzzleEffect, leftTransform).transform;
-                        this.swordTipTransform = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.pulseMuzzleEffect, swordTransform).transform;
+                        this.leftMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzlePrefab, leftTransform).transform;
+                        this.swordTipTransform = UnityEngine.Object.Instantiate<GameObject>(muzzlePrefab, swordTransform).transform;
 
                     } 
 

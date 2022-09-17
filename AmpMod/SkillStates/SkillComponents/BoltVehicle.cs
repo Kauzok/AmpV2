@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using RoR2;
 using System.Collections.Generic;
 using System.Timers;
+using AmpMod.Modules;
 using R2API;
 
 namespace AmpMod.SkillStates
@@ -16,6 +17,7 @@ namespace AmpMod.SkillStates
 		[Header("Vehicle Parameters")]
 		public float duration = 1.5f;
 		public float initialSpeed = 50f;
+		private AmpLightningController lightningController;
 		public float targetSpeed = 50f;
 		public float acceleration = 1000f;
 		public string stateSoundString = Modules.StaticValues.boltState2SecWindString;
@@ -108,7 +110,11 @@ namespace AmpMod.SkillStates
 			{
 				return;
 			}
-			
+
+			if (vehicleSeat.currentPassengerBody)
+            {
+				lightningController = vehicleSeat.currentPassengerBody.gameObject.GetComponent<AmpLightningController>();
+			}
 			
 			//code for enter effect/sound
 			EffectData enterEffectData = new EffectData
@@ -116,7 +122,7 @@ namespace AmpMod.SkillStates
 				origin = vehicleSeat.currentPassengerBody.corePosition,
 				scale = 10f
 			};
-			enterEffectPrefab = Modules.Assets.boltEnterEffect;
+			enterEffectPrefab = lightningController.surgeEnter;
 			EffectManager.SpawnEffect(enterEffectPrefab, enterEffectData, true);
 			Util.PlaySound(enterSoundString, base.gameObject);
 		
@@ -178,7 +184,7 @@ namespace AmpMod.SkillStates
 					origin = base.transform.position,
 					scale = 1.5f
 				};
-				exitEffectPrefab = Modules.Assets.boltExitEffect;
+				exitEffectPrefab = lightningController.surgeExitEffect;
 				//exitEffectPrefab = Modules.Assets.testLightningEffect;
 				EffectManager.SpawnEffect(exitEffectPrefab, effectData, true);
 		

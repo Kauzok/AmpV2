@@ -9,7 +9,7 @@ using RoR2.Projectile;
 using UnityEngine.AddressableAssets;
 using System.Collections.Generic;
 using RoR2.UI;
-
+using UnityEngine.Rendering.PostProcessing;
 
 namespace AmpMod.Modules
 {
@@ -25,8 +25,19 @@ namespace AmpMod.Modules
         internal static Material matBlueLightning;
         internal static Material matRedTrail;
         internal static Material matBlueTrail;
-        internal static Material matPulseTrailRed;
-        internal static Material matPulseBlastRed;
+        internal static Material matLightningLongRed;
+        internal static Material matLightningMatrixRed;
+        internal static Material matLightningSphereRed;
+        internal static Material matDirectionalMatrixRed;
+        internal static Material matHitSpark;
+        internal static Material matRing;
+        internal static Material matTracerBright;
+        internal static Texture texRampRedLightning;
+        internal static Material matPulseTriRed;
+        internal static Material matLightningStrikeRed;
+        internal static Color redLightningColor = new Color32(191, 2, 0, 255);
+        internal static Color lightRedLightningColor = new Color32(255, 100, 100, 255);
+        internal static Color darkRedLightningColor = new Color32(103, 0, 0, 255);
 
         [Header("Shockblade Effects")]
         internal static GameObject swordSwingEffect;
@@ -50,6 +61,7 @@ namespace AmpMod.Modules
         internal static GameObject vortexBlackholePrefab;
         internal static GameObject vortexExplosionEffect;
         internal static GameObject vortexMuzzleEffect;
+        internal static GameObject vortexMuzzleEffectRed;
 
         [Header("Bolt Effects")]
         internal static GameObject boltExitEffect;
@@ -252,7 +264,7 @@ namespace AmpMod.Modules
             CreateMelvin();
 
             //functions for prefabs that require adjustments made at runtime
-            //CreateLightningPrefab();
+            CreateLightningPrefab();
 
             CreateShockbladeEffects();
         
@@ -272,20 +284,30 @@ namespace AmpMod.Modules
 
         private static void CreateMaterials()
         {
+
+            List<Material> matList = new List<Material>();
+
             matRedLightning = mainAssetBundle.LoadAsset<Material>("LightningEffectRed");
             matBlueLightning = mainAssetBundle.LoadAsset<Material>("LightningEffect");
 
-            matBlueTrail = mainAssetBundle.LoadAsset<Material>("matLorentzTrail");
-            matRedTrail = mainAssetBundle.LoadAsset<Material>("matLorentzTrailRed");
+            matBlueTrail = CreateVFXMaterial("matLorentzTrail");
+            matRedTrail = CreateVFXMaterial("matLorentzTrailRed");
 
-            matPulseBlastRed = mainAssetBundle.LoadAsset<Material>("matPulseMuzzleRed");
-            matPulseTrailRed = mainAssetBundle.LoadAsset<Material>("matPulseMuzzleTrailRed");
+            matLightningMatrixRed = CreateVFXMaterial("matLightningMatrixRed");
+            matLightningLongRed = CreateVFXMaterial("matLightningLongRed");
+            matPulseTriRed = CreateVFXMaterial("matPulseMuzzleTriRed");
+            matDirectionalMatrixRed = CreateVFXMaterial("matDirectionalMatrixRed");
+           // matTracerBright = CreateVFXMaterial("matTracerBright");
+            matRing = CreateVFXMaterial("matOmniRing2");
+            matHitSpark = CreateVFXMaterial("matOmniHitspark3");
+            matLightningStrikeRed = CreateVFXMaterial("matLightningStrikeRed");
+
+            matLightningSphereRed = CreateIntersectMaterial("matLightningSphereRed");
+
+            texRampRedLightning = mainAssetBundle.LoadAsset<Texture>("texRampLightningRed");
 
 
-            CreateVFXMaterial("matLorentzTrail");
-            CreateVFXMaterial("matLorentzTrailRed");
-            CreateVFXMaterial("matPulseMuzzleRed");
-            CreateVFXMaterial("matPulseMuzzleTrailRed");
+    
             //matRedTrail.SetTexture("_RemapTex", mainAssetBundle.LoadAsset<Texture>("texRampGolem"));
 
 
@@ -337,7 +359,6 @@ namespace AmpMod.Modules
         }
 
 
-
         private static void CreateVortexBlackhole()
         {
            vortexBlackholePrefab = mainAssetBundle.LoadAsset<GameObject>("VortexSphere");
@@ -361,7 +382,7 @@ namespace AmpMod.Modules
         private static void CreateVortexMuzzle()
         {
             vortexMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("VortexMuzzleObject");
-            
+            vortexMuzzleEffectRed = mainAssetBundle.LoadAsset<GameObject>("VortexMuzzleObjectRed");
         }
 
         private static void CreateBulletPrep()
@@ -433,7 +454,40 @@ namespace AmpMod.Modules
             boltExitEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion"), "boltExitEffect", true);
             boltExitEffect.AddComponent<NetworkIdentity>();
 
+            boltExitEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion"), "boltExitEffectRed", true);
+
             AddNewEffectDef(boltExitEffect);
+            AddNewEffectDef(boltExitEffectRed);
+
+            Transform boltExitTransform = boltExitEffectRed.transform;
+            foreach(Transform child in boltExitTransform)
+            {
+                switch (child.name)
+                {
+                    case "Matrix, Dynamic":
+                        var main = child.GetComponent<ParticleSystem>().main;
+                        main.startColor = redLightningColor;
+                        child.GetComponent<ParticleSystemRenderer>().trailMaterial = matLightningLongRed;
+                        break;
+                    case "Matrix, Billboard":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningMatrixRed);
+                        break;
+                    case "Point light":
+                        child.GetComponent<Light>().color = redLightningColor;
+                        break;
+                    case "Flash, Directional":
+                        var main2 = child.GetComponent<ParticleSystem>().main;
+                        main2.startColor = redLightningColor;
+                        break;
+                    case "Matrix, Directional":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matDirectionalMatrixRed);
+                        break;
+                    case "Flash, Blue":
+                        var main3 = child.GetComponent<ParticleSystem>().main;
+                        main3.startColor = darkRedLightningColor;
+                        break;
+                }
+            }
         }
         
         private static void CreatePulseBlastPrefab()
@@ -442,6 +496,7 @@ namespace AmpMod.Modules
             pulseBlastEffect.AddComponent<NetworkIdentity>();
 
             pulseBlastEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffectRed", true);
+            //pulseBlastEffectRed = mainAssetBundle.LoadAsset<GameObject>("pulseBlastRed");
             pulseBlastEffectRed.AddComponent<NetworkIdentity>();
             
             pulseMuzzleEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffect", true);
@@ -449,6 +504,120 @@ namespace AmpMod.Modules
 
             pulseMuzzleEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffectRed", true);
             pulseMuzzleEffectRed.AddComponent<NetworkIdentity>();
+
+          //  Material triMaterial = UnityEngine.Material.Instantiate(LegacyResourcesAPI.Load<Material>("matMageMatrixTriLightning"));
+          //  triMaterial.SetTexture("_RemapTex", texRampRedLightning);
+
+
+            Transform muzzleParticleTransform = pulseMuzzleEffectRed.transform.GetChild(0);
+            foreach (Transform child in muzzleParticleTransform)
+            {
+                switch (child.name)
+                {
+                    case "Matrix, Billboard":
+                        child.GetComponent<ParticleSystemRenderer>().material = matLightningMatrixRed;
+                        break;
+                    case "Flash":
+                        var main = child.GetComponent<ParticleSystem>().main;
+                        main.startColor = redLightningColor;
+                        break;
+                    case "Point light":
+                        child.GetComponent<Light>().color = redLightningColor;
+                        break;
+                    case "Smoke":
+                        break;
+                    case "Matrix, Mesh":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matPulseTriRed);
+                        break;
+                    case "Spinner":
+                        child.GetComponentInChildren<TrailRenderer>().SetMaterial(matLightningLongRed);
+                        break;
+                }
+            }
+
+            Transform blastEffectTransform = pulseBlastEffectRed.transform;
+            foreach (Transform child in blastEffectTransform)
+            {
+                switch (child.name)
+                {
+                    case "Flash, Blue":
+                        var main = child.GetComponent<ParticleSystem>().main;
+                        main.startColor = redLightningColor;
+                        break;
+                    case "Scaled Hitspark 3 (Random Color)":
+                        var main2 = child.GetComponent<ParticleSystem>().main;
+                        main2.startColor = redLightningColor;
+                        break;
+                    case "Impact Shockwave":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matRing);
+                        var main3 = child.GetComponent<ParticleSystem>().main;
+                        main3.startColor = redLightningColor;
+                        break;
+                    case "Matrix, Directional":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matDirectionalMatrixRed);
+                        break;
+                    case "Matrix, Dynamic":
+                        var main4 = child.GetComponent<ParticleSystem>().main;
+                        main4.startColor = redLightningColor;
+                        child.GetComponent<ParticleSystemRenderer>().trailMaterial = matLightningLongRed;
+                        break;
+                    case "Point light":
+                        child.GetComponent<Light>().color = redLightningColor;
+                        break;
+                    case "Sphere, Expanding":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningSphereRed);
+                        break;
+                    case "Matrix, Billboard": 
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningMatrixRed);
+                        break;
+                    case "Scaled Hitspark 1 (Random Color)":
+                        var main5 = child.GetComponent<ParticleSystem>().main;
+                        main5.startColor = redLightningColor;
+                        break;
+                    case "Flash, Directional":
+                        GameObject.Destroy(child.gameObject);
+                        break;
+                    case "Dash, Bright":
+                        var main6 = child.GetComponent<ParticleSystem>().main;
+                        main6.startColor = redLightningColor;
+                        break;
+                   
+                }
+                
+           /*     if (child.name == "Flash, Blue")
+                {
+                    var main = child.GetComponent<ParticleSystem>().main;
+                    main.startColor = redLightningColor;
+                }
+
+                else if (child.name == "Matrix, Directional")
+                {
+                    child.GetComponent<ParticleSystemRenderer>().material = mainAssetBundle.LoadAsset<Material>("matDirectionalMatrixRed");
+                }
+
+                else if (child.name == "Matrix, Dynamic")
+                {
+                    var main = child.GetComponent<ParticleSystem>().main;
+                    main.startColor = redLightningColor;
+                    child.GetComponent<ParticleSystemRenderer>().trailMaterial = matLightningLongRed;
+                }
+
+                else if (child.name == "Point light")
+                {
+                    child.GetComponent<Light>().color = redLightningColor;
+                }
+
+                else if (child.name == "Sphere, Expanding")
+                {
+                    child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningSphereRed);
+                }
+
+                else if (child.name == "Matrix, Billboard")
+                {
+                    child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningMatrixRed);
+                } */
+            }
+
 
             AmpPlugin.Destroy(pulseMuzzleEffect.GetComponent<EffectComponent>());
             AmpPlugin.Destroy(pulseMuzzleEffectRed.GetComponent<EffectComponent>());
@@ -486,11 +655,47 @@ namespace AmpMod.Modules
         {
             lightningStrikePrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "lightningStrike", true);
             lightningStrikePrefab.AddComponent<NetworkIdentity>();
+            //lightningStrikePrefab.GetComponent<EffectComponent>().soundName = "Play_item_use_lighningArm";
 
+            lightningStrikePrefabRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "lightningStrikeRed", true);
+            lightningStrikePrefabRed.AddComponent<NetworkIdentity>();
+            //lightningStrikePrefabRed.GetComponent<EffectComponent>().soundName = "Play_item_use_lighningArm";
+
+            Transform redLightningTransform = lightningStrikePrefabRed.transform;
+            foreach (Transform child in redLightningTransform)
+            {
+                switch (child.name)
+                {
+                    case "PostProcess":
+                        child.GetComponent<PostProcessVolume>().sharedProfile = mainAssetBundle.LoadAsset<PostProcessProfile>("ppLocalLightningRed");//Addressables.LoadAssetAsync<PostProcessProfile>("RoR2/Base/title/ppLocalTPActivation.asset").WaitForCompletion();
+                        break;
+                    case "Ring":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningLongRed);
+                        break;
+                    case "Sphere":
+                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningSphereRed);
+                        break;
+                    case "Point light":
+                        child.GetComponent<Light>().color = redLightningColor;
+                        break;
+                    case "LightningRibbon":
+                        child.GetComponent<ParticleSystemRenderer>().trailMaterial = matLightningStrikeRed;
+                        break;
+                    case "Flash Lines":
+                        var main = child.GetComponent<ParticleSystem>().main;
+                        main.startColor = redLightningColor;
+                        break;
+                    case "Flash":
+                        var main2 = child.GetComponent<ParticleSystem>().main;
+                        main2.startColor = darkRedLightningColor;
+                        break;
+
+                }
+            }
             // lightningStrikePrefab.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
 
             AddNewEffectDef(lightningStrikePrefab);
-
+            AddNewEffectDef(lightningStrikePrefabRed);
 
         }
 
@@ -660,7 +865,7 @@ namespace AmpMod.Modules
             newEffectDef.prefabEffectComponent = effectPrefab.GetComponent<EffectComponent>();
             newEffectDef.prefabName = effectPrefab.name;
             newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
-            newEffectDef.spawnSoundEventName = soundName;
+            //newEffectDef.spawnSoundEventName = soundName;
 
             effectDefs.Add(newEffectDef);
         }
@@ -703,6 +908,21 @@ namespace AmpMod.Modules
         {
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
+            mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
+            return mat;
+        }
+
+        public static Material CreateIntersectMaterial(string materialName)
+        {
+            Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+
+            mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgintersectioncloudremap");
+            return mat;
+        }
+
+
+        public static Material CreateVFXMaterial(Material mat)
+        {
             mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
             return mat;
         }

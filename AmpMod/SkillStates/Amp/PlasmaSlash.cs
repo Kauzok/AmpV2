@@ -59,6 +59,7 @@ namespace AmpMod.SkillStates
             totalDuration = this.baseTotalDuration / this.attackSpeedStat;
             animator.SetBool("isUsingIndependentSkill", true);
 
+            base.characterBody.SetAimTimer(totalDuration);
             //Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();

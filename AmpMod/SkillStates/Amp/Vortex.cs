@@ -4,6 +4,7 @@ using System.Text;
 using EntityStates;
 using UnityEngine;
 using RoR2;
+using AmpMod.Modules;
 using RoR2.Projectile;
 
 namespace AmpMod.SkillStates
@@ -14,9 +15,10 @@ namespace AmpMod.SkillStates
         public GameObject Vortexprefab = Modules.Projectiles.vortexPrefab;
         public float explodeDamage = Modules.StaticValues.vortexExplosionCoefficient;
         public Vector3 blastPosition;
+        private AmpLightningController lightningController;
         private string ShootString = Modules.StaticValues.vortexShootString;
         private Animator animator;
-        private GameObject muzzleEffectPrefab = Modules.Assets.vortexMuzzleEffect;
+        private GameObject muzzleEffectPrefab;
         private string chargeString = Modules.StaticValues.vortexChargeString;
         private uint stopCharge;
         private ChildLocator childLocator;
@@ -32,8 +34,10 @@ namespace AmpMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            
 
+            lightningController = base.GetComponent<AmpLightningController>();
+
+            muzzleEffectPrefab = lightningController.vortexMuzzle;
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
             animator = base.GetModelAnimator();

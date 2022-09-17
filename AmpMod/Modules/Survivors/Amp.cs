@@ -61,7 +61,7 @@ namespace AmpMod.Modules.Survivors
               
                 }}; 
 
-        internal override Type characterMainState { get; set; } = typeof(EntityStates.GenericCharacterMain);
+        internal override Type characterMainState { get; set; } = typeof(AmpMain);
 
         public override ItemDisplaysBase itemDisplays => new AmpItemDisplays();
 
@@ -394,8 +394,21 @@ namespace AmpMod.Modules.Survivors
 
             CharacterModel characterModel = updatedModel.GetComponent<CharacterModel>();
 
-            ModelSkinController skinController = updatedModel.AddComponent<ModelSkinController>();
+            GameObject displayPrefab = this.displayPrefab;
+            ChildLocator displayChildLocator = displayPrefab.GetComponent<ChildLocator>();
+            Skins.ampCSSPreviewController = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
+            Skins.ampCSSPreviewController.bodyPrefab = bodyPrefab;
+
             ChildLocator childLocator = updatedModel.GetComponent<ChildLocator>();
+
+            GameObject sword = childLocator.FindChild("SwordPlace").gameObject;
+            Skins.allGameObjectActivations.Add(sword);
+            Skins.defaultResponses = Skins.ampCSSPreviewController.skinChangeResponses;
+            SkinDef.GameObjectActivation[] defaultActivations = Skins.getActivations(sword);
+
+
+            ModelSkinController skinController = updatedModel.AddComponent<ModelSkinController>();
+            
 
             SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
@@ -428,6 +441,7 @@ namespace AmpMod.Modules.Survivors
                     renderer = defaultRenderers[instance.mainRendererIndex].renderer
                 } */
             };
+            Modules.Skins.AddCSSSkinChangeResponse(defaultSkin, Skins.ampCSSEffect.DEFAULT);
 
             skins.Add(defaultSkin);
             #endregion
@@ -466,6 +480,16 @@ namespace AmpMod.Modules.Survivors
                 }
             };
 
+          
+
+            
+
+            if (!Config.RedSpriteBlueLightning.Value)
+            {
+                Skins.AddCSSSkinChangeResponse(masterySkin, Skins.ampCSSEffect.REDSPRITE);
+            }
+            
+            
             skins.Add(masterySkin);
             #endregion
 
@@ -503,7 +527,9 @@ namespace AmpMod.Modules.Survivors
                 }
             };
 
-            skins.Add(golemSkin); 
+            Skins.AddCSSSkinChangeResponse(golemSkin, Skins.ampCSSEffect.DEFAULT);
+
+            skins.Add(golemSkin);
             #endregion
 
 

@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: matPulseMuzzleRed
-  m_Shader: {fileID: 4800000, guid: 5a7f3dd7caf7b2547ae6f7445b76aa6c, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_Name: matTracerBright
+  m_Shader: {fileID: 4800000, guid: 24d234fbfb6d93c4a9554890fe895555, type: 3}
+  m_ShaderKeywords: VERTEXCOLOR _ALPHATEST_ON _EMISSION
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -28,17 +28,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: fa26111540d950541af8392c49c26f7d, type: 3}
+        m_Texture: {fileID: 2800000, guid: ffdd31654001bb5438ade975b0f9d972, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
-        m_Texture: {fileID: 2800000, guid: 712b26f330c1b774f8a142121f36cad5, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7ce14d46a69d334fa52e089745549b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaBias: 0
-    - _AlphaBoost: 3.39
-    - _Boost: 1
+    - _AlphaBoost: 5.01
+    - _Boost: 4
     - _BumpScale: 1
     - _CalcTextureAlphaOn: 0
     - _CloudOffsetOn: 0
@@ -60,20 +60,22 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _InternalSimpleBlendMode: 0
-    - _InvFade: 2
+    - _InvFade: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _OcclusionStrength: 1
     - _OffsetAmount: 0
     - _Parallax: 0.02
     - _SkyboxOnly: 0
     - _SmoothnessTextureChannel: 0
+    - _SoftparticlesOn: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UVSwapOn: 0
     - _UseUV1On: 0
     - _VertexAlphaOn: 0
-    - _VertexColorOn: 0
+    - _VertexColorOn: 1
     - _VertexOffsetOn: 0
     - _ZTest: 4
     - _ZWrite: 1

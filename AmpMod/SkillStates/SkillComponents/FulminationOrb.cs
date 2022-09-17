@@ -15,8 +15,7 @@ namespace AmpMod.SkillStates.BaseStates
 		public override void Begin()
 		{
 			base.duration = 0.1f;
-			GameObject chainEffect;
-			chainEffect = Modules.Assets.electricChainEffect;
+			
 
 			EffectData effectData = new EffectData
 			{
@@ -25,8 +24,11 @@ namespace AmpMod.SkillStates.BaseStates
 			};
 			effectData.SetHurtBoxReference(this.target);
 			//EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/MageLightningOrbEffect"), effectData, true);
-			EffectManager.SpawnEffect(chainEffect, effectData, true);
-		
+			if (chainEffect) {
+				EffectManager.SpawnEffect(chainEffect, effectData, true);
+
+			}
+
 		}
 
 		public override void OnArrival()
@@ -71,6 +73,7 @@ namespace AmpMod.SkillStates.BaseStates
 							fulminationOrb.search = this.search;
 							fulminationOrb.origin = this.target.transform.position;
 							fulminationOrb.target = hurtBox;
+							fulminationOrb.chainEffect = chainEffect;
 							fulminationOrb.attacker = this.attacker;
 							fulminationOrb.inflictor = this.inflictor;
 							fulminationOrb.teamIndex = this.teamIndex;
@@ -133,6 +136,8 @@ namespace AmpMod.SkillStates.BaseStates
 		public float speed = 100f;
 
 		public float damageValue;
+
+		public GameObject chainEffect;
 
 		public GameObject attacker;
 

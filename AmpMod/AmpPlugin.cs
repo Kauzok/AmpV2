@@ -268,8 +268,10 @@ namespace AmpMod
             if (info.HasModdedDamageType(DamageTypes.fulminationChain))
             {
                 float damageCoefficient2 = 0.8f;
+
                 float damageValue2 = Util.OnHitProcDamage(info.damage, info.attacker.GetComponent<CharacterBody>().damage, damageCoefficient2);
                 FulminationOrb lightningOrb2 = new FulminationOrb();
+                lightningOrb2.chainEffect = info.attacker.GetComponent<AmpLightningController>().fulminationChainEffect;
                 lightningOrb2.origin = info.position;
                 lightningOrb2.damageValue = damageValue2;
                 lightningOrb2.isCrit = info.crit;

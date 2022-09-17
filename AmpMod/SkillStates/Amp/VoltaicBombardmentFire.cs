@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.Collections.Generic;
 using RoR2.Projectile;
 using R2API;
+using AmpMod.Modules;
 using System.Linq;
 using System.Collections.ObjectModel;
 
@@ -17,6 +18,7 @@ namespace AmpMod.SkillStates.Amp
         public Vector3 boltPosition;
         public Quaternion lightningRotation;
         private float duration = 1f;
+        private AmpLightningController lightningController;
         private Vector3 strikePosition;
         public float charge;
         static public float lightningChargeTimer = .5f;
@@ -33,6 +35,9 @@ namespace AmpMod.SkillStates.Amp
         {
 
             base.OnEnter();
+            lightningController = base.GetComponent<AmpLightningController>();
+
+            lightningStrikeEffect = lightningController.bombardmentEffect;
 
             animator = base.GetModelAnimator();
             hasFired = false;
@@ -202,33 +207,19 @@ namespace AmpMod.SkillStates.Amp
 
                 Ray aimRay = base.GetAimRay();
 
-                // lightningStrikeEffect = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
-
-                //prefabs to use for the actual strike effect; a copy of the royal capacitor's effect
-                lightningStrikeEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
-
-                //prefab to use for the explosion effect of the lightning; a copy of artificer's nano bomb explosion
-                lightningStrikeExplosion = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion");
-
+                //lightningStrikeEffect = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact");
+                lightningStrikeEffect = lightningController.bombardmentEffect;
 
                 //effect data for lightning)
                 EffectData lightning = new EffectData
                 {
                     origin = this.boltPosition,
                     scale = 5f,
-                };
-                
-                //effect data for lightningexplosion
-                EffectData lightningExplosion = new EffectData
-                {
-                    origin = this.boltPosition,
-                    scale = 5f,
-
+                    
                 };
 
                 //spawns lightning/lightningexplosion effects
                 EffectManager.SpawnEffect(lightningStrikeEffect, lightning, true);
-                //EffectManager.SpawnEffect(lightningStrikeExplosion, lightningExplosion, true);
 
 
                 //create blastattack

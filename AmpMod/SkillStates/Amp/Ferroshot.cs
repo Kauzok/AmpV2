@@ -67,7 +67,6 @@ namespace AmpMod.SkillStates
             {
                 this.childLocator = modelTransform.GetComponent<ChildLocator>();
                 this.leftMuzzleTransform = this.childLocator.FindChild("LowerArmL");
-               
             }
 
 

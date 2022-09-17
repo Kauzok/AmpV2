@@ -10,7 +10,7 @@ namespace AmpMod.Modules
 {
     internal class AmpLightningController : MonoBehaviour
     {
-        private bool isRed;
+        public bool isRed;
         private CharacterBody body;
         private CharacterModel model;
 
@@ -19,7 +19,8 @@ namespace AmpMod.Modules
         public GameObject fulminationHitEffect;
         public GameObject lorentzProjectile;
         public GameObject fulminationChainEffect;
-        public GameObject surgeEffect;
+        public GameObject vortexMuzzle;
+        public GameObject vortexProjectile;
         public GameObject chargeExplosion;
         public GameObject surgeVehicle;
         public GameObject swingEffect;
@@ -42,8 +43,7 @@ namespace AmpMod.Modules
         }
         private void Start()
         {
-
-            if ((this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken) == AmpPlugin.developerPrefix + "_AMP_BODY_MASTERY_SKIN_NAME")
+            if ((this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken) == AmpPlugin.developerPrefix + "_AMP_BODY_MASTERY_SKIN_NAME" && !Config.RedSpriteBlueLightning.Value)
             {
                 isRed = true;
             }
@@ -51,6 +51,8 @@ namespace AmpMod.Modules
             {
                 isRed = false;
             }
+
+
             if (!isRed)
             {
                 surgeVehicle = Assets.boltVehicle;
@@ -58,19 +60,27 @@ namespace AmpMod.Modules
                 Light light = surgeVehicle.GetComponentInChildren<Light>();
                 light.color = new Color32(16, 192, 255, 0);
                 surgeEnter = Assets.boltEnterEffect;
+                surgeExitEffect = Assets.boltExitEffect;
 
                 lorentzProjectile = Projectiles.ferroshotPrefab;
                 lorentzProjectile.GetComponent<ProjectileController>().ghostPrefab.GetComponentInChildren<TrailRenderer>().SetMaterial(Assets.matBlueTrail);
 
+                vortexMuzzle = Assets.vortexMuzzleEffect;
+
                 fulminationEffect = Assets.electricStreamEffect;
-                chargeExplosion = Assets.chargeExplosionEffect;
-                pulseLeapEffect = Assets.pulseBlastEffect;
-                pulseMuzzleEffect = Assets.pulseMuzzleEffect;
-                swingEffect = Assets.swordSwingEffect;
-                swingHitEffect = Assets.swordHitImpactEffect;
-                bombardmentMuzzleEffect = Assets.lightningMuzzleChargePrefab;
                 fulminationHitEffect = Assets.electricImpactEffect;
                 fulminationChainEffect = Assets.electricChainEffect;
+
+                chargeExplosion = Assets.chargeExplosionEffect;
+                swingEffect = Assets.swordSwingEffect;
+                swingHitEffect = Assets.swordHitImpactEffect;
+
+                pulseLeapEffect = Assets.pulseBlastEffect;
+                pulseMuzzleEffect = Assets.pulseMuzzleEffect;
+
+                bombardmentMuzzleEffect = Assets.lightningMuzzleChargePrefab;
+                bombardmentEffect = Assets.lightningStrikePrefab;
+
 
             }
             if (isRed)
@@ -81,19 +91,28 @@ namespace AmpMod.Modules
                 light.color = new Color32(191, 2, 0, 255);
   
                 surgeEnter = Assets.boltEnterEffectRed;
+                surgeExitEffect = Assets.boltExitEffectRed;
+
+                //vortexMuzzle = Assets.vortexMuzzleEffectRed;
+                vortexMuzzle = Assets.vortexMuzzleEffect;
 
                 lorentzProjectile = Projectiles.ferroshotPrefab;
                 lorentzProjectile.GetComponent<ProjectileController>().ghostPrefab.GetComponentInChildren<TrailRenderer>().SetMaterial(Assets.matRedTrail);
                 
                 fulminationEffect = Assets.electricStreamEffectRed;
-                chargeExplosion = Assets.chargeExplosionEffectRed;
-                swingEffect = Assets.swordSwingEffectRed;
-                pulseLeapEffect = Assets.pulseBlastEffectRed;
-                pulseMuzzleEffect = Assets.pulseMuzzleEffectRed;
-                swingHitEffect = Assets.swordHitImpactEffectRed;
-                bombardmentMuzzleEffect = Assets.lightningMuzzleChargePrefabRed;
                 fulminationHitEffect = Assets.electricImpactEffectRed;
                 fulminationChainEffect = Assets.electricChainEffectRed;
+
+                chargeExplosion = Assets.chargeExplosionEffectRed;
+                swingEffect = Assets.swordSwingEffectRed;
+                swingHitEffect = Assets.swordHitImpactEffectRed;
+
+                pulseLeapEffect = Assets.pulseBlastEffectRed;
+                pulseMuzzleEffect = Assets.pulseMuzzleEffectRed;
+
+                bombardmentMuzzleEffect = Assets.lightningMuzzleChargePrefabRed;
+                bombardmentEffect = Assets.lightningStrikePrefabRed;
+
 
             }
             
