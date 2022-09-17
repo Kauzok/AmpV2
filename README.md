@@ -30,6 +30,7 @@
   - Make worm unset skill override on death in multiplayer
   - Make unlockable
   - Make Melvin follow Amp
+  - Red Melvin?
 - Charge
   - Reduce damage to 300%?
 
