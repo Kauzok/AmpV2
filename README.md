@@ -45,14 +45,12 @@
 - Add standing still animations for shockblade, lorentz cannon, magnetic vortex & fulmination
 
 ## VFX To Do
-- Consider modifying helmet/chest glow
+- Switch VFX Shaders to cloud remap
 
 ## Misc. To Do
 - Cleanup code base, finish comments
-- Fix loud sounds
 - Switch off of unlockableAPI
-- Fix method of loading in assetbundles/soundbanks (and fix soundbank error)
-- Switch VFX Shaders to cloud remap
+- Fix method of loading in assetbundles/soundbanks (and fix soundbank error
 - Emote and other API Support
 - Add configs
 - Adjust character portrait
