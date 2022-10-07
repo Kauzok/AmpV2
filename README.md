@@ -12,7 +12,7 @@
   - Fix multiplayer projectile becoming invisible
 - Magnetic Vortex
   - Add field representing vortex range/or tendrils
-  - Charged enemies are silenced.
+  - Charged enemies have their damage reduced by 50%.
 - Surge
   - Fix effect shaking when running into objects
   - Fix not being able to exit ability if remaining charges are left
