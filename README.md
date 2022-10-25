@@ -12,9 +12,9 @@
   - Fix multiplayer projectile becoming invisible
 - Magnetic Vortex
   - Add field representing vortex range/or tendrils
+  - Fix glitchy wall effect
   - Non-boss enemies are silenced; bosses have their damage reduced by 25%.
 - Surge
-  - Fix effect shaking when running into objects
   - Fix not being able to exit ability if remaining charges are left
   - Watch out for "received networktransform data for object that doesn't exist error"
   - Make momentum cancel on early exit in multiplayer
