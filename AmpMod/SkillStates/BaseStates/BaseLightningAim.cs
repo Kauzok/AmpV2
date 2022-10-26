@@ -143,7 +143,7 @@ namespace AmpMod.SkillStates.BaseStates
                     
                         {
                              fireMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(chargeEffectPrefab, leftMuzzleTransform).transform;
-                             Debug.Log("Spawning Muzzle Effect");
+                             //Debug.Log("Spawning Muzzle Effect");
 
                         }
 

@@ -110,16 +110,23 @@ namespace AmpMod.SkillStates
 			{
 				return;
 			}
+			//moves vehicle in direction of player's aim direction at previously set speed
+			Vector3 aimDirection = vehicleSeat.currentPassengerInputBank.aimDirection;
+			rigidbody.rotation = Quaternion.LookRotation(aimDirection);
+			rigidbody.velocity = aimDirection * initialSpeed;
 
-			if (vehicleSeat.currentPassengerBody)
+			//move around
+			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
+
+			if (currentPassengerBody)
             {
-				lightningController = vehicleSeat.currentPassengerBody.gameObject.GetComponent<AmpLightningController>();
+				lightningController = currentPassengerBody.gameObject.GetComponent<AmpLightningController>();
 			}
 			
 			//code for enter effect/sound
 			EffectData enterEffectData = new EffectData
 			{
-				origin = vehicleSeat.currentPassengerBody.corePosition,
+				origin = currentPassengerBody.corePosition,
 				scale = 10f
 			};
 			enterEffectPrefab = lightningController.surgeEnter;
@@ -127,13 +134,10 @@ namespace AmpMod.SkillStates
 			Util.PlaySound(enterSoundString, base.gameObject);
 		
 
-			//moves vehicle in direction of player's aim direction at previously set speed
-			Vector3 aimDirection = vehicleSeat.currentPassengerInputBank.aimDirection;
-			rigidbody.rotation = Quaternion.LookRotation(aimDirection);
-			rigidbody.velocity = aimDirection * initialSpeed;
+
 
 			//to be used as reference when need to call player's characterbody
-			CharacterBody currentPassengerBody = vehicleSeat.currentPassengerBody;
+			
 
 			//gives invincibility when in boltstate
 			if (NetworkServer.active) currentPassengerBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);

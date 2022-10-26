@@ -5517,7 +5517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4534665380276661
 Transform:
   m_ObjectHideFlags: 0
@@ -10786,9 +10786,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 946970792742770773, guid: 128eefcba4cd1af4e83ff06168c865d7,
         type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 946970792742770773, guid: 128eefcba4cd1af4e83ff06168c865d7,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 946970792742770773, guid: 128eefcba4cd1af4e83ff06168c865d7,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b4a8269f116cc434898982280ab97d67, type: 2}
+      objectReference: {fileID: 2100000, guid: 4e92de6eebda5fb43a1a5cbdf5f113a4, type: 2}
     - target: {fileID: 946970792742770773, guid: 128eefcba4cd1af4e83ff06168c865d7,
         type: 3}
       propertyPath: m_Materials.Array.data[1]

@@ -97,34 +97,13 @@ namespace AmpMod.SkillStates
 			
 
 			animator.SetBool("isFulminating", true);
-			
 
-			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-			{
-				skillName = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_NAME",
-				skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_NAME",
-				skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_DESCRIPTION",
-				skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelFulmination"),
-				activationStateMachineName = "Slide",
-				baseMaxStock = 0,
-				baseRechargeInterval = 0,
-				beginSkillCooldownOnSkillEnd = false,
-				canceledFromSprinting = false,
-				forceSprintDuringState = false,
-				fullRestockOnAssign = false,
-				interruptPriority = EntityStates.InterruptPriority.Any,
-				resetCooldownTimerOnUse = false,
-				isCombatSkill = false,
-				mustKeyPress = true,
-				cancelSprintingOnActivation = false,
-				rechargeStock = 0,
-				requiredStock = 0,
-				stockToConsume = 0,
-			}); 
+
+			cancelSkillDef = Skills.fulminationCancelSkillDef;
 
 			
 			specialSlot = base.skillLocator.special;
-			if (this.specialSlot && cancelSkillDef != null)
+			if (this.specialSlot && cancelSkillDef)
 			{
 				this.specialSlot.SetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 			} 
@@ -297,11 +276,11 @@ namespace AmpMod.SkillStates
 		}
 
 
-		public override InterruptPriority GetMinimumInterruptPriority()
+	/*	public override InterruptPriority GetMinimumInterruptPriority()
 		{
 
 			return InterruptPriority.Any;
-		}
+		}*/
 
 
 

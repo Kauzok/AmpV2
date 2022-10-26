@@ -18,13 +18,6 @@ namespace AmpMod.Modules.Survivors
         private GameObject swordActiveEffect;
         private AmpLightningController lightningController;
         private ChildLocator childLocator;
-        private Animator animator;
-        private ParticleSystem swordTrailEffect;
-        private bool trailEffectIsPlaying;
-        private bool wasActive;
-        private uint trailEffectPlayID;
-        private float sunSurvivalStopwatch;
-        private bool hasBeenBurned;
 
         public LocalUser localUser;
 

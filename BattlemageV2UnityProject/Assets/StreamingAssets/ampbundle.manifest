@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2024880516
+CRC: 1382421543
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fe772a4b67352c26ce4158150219fd9e
+    Hash: 81e3b28fb84639e8a9e83dc1a81c0ffe
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 03ab6d9394da3a7d2030ab5ff8f59fb3
+    Hash: 275b03c5de61504c1247130d71f4fa59
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -125,6 +125,8 @@ ClassTypes:
   Script: {fileID: 1324642361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -373,6 +375,7 @@ Assets:
 - Assets/HenryAssets/Materials/matDante.mat
 - Assets/HenryAssets/Atlases/SuitAtlas4.png
 - Assets/HenryAssets/VFX/Ferroshot/Charge/Flash, Directional 1.prefab
+- Assets/HenryAssets/Skills/FulminationCancelSkillDef.asset
 - Assets/HenryAssets/Shaders/environment/hgdistantwater.shader
 - Assets/HenryAssets/Icons/texFulmination.png
 - Assets/HenryAssets/VFX/Materials/matLightningSphereRed.mat
@@ -488,6 +491,7 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_LaunchAnim 1.anim
 - Assets/HenryAssets/VFX/Materials/matLorentzTrail.mat
 - Assets/HenryAssets/Atlases/spriteSuitAtlas.png
+- Assets/HenryAssets/Skills/SurgeCancelSkillDef.asset
 - Assets/HenryAssets/mdlHenry.prefab
 - Assets/HenryAssets/VFX/Fulmination/ChainLightningEffectRed.prefab
 - Assets/HenryAssets/VFX/Materials/texRampLightningRed.png

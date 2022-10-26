@@ -455,6 +455,7 @@ namespace AmpMod.Modules
             boltExitEffect.AddComponent<NetworkIdentity>();
 
             boltExitEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MageLightningBombExplosion"), "boltExitEffectRed", true);
+            boltExitEffectRed.AddComponent<NetworkIdentity>();
 
             AddNewEffectDef(boltExitEffect);
             AddNewEffectDef(boltExitEffectRed);
@@ -498,7 +499,9 @@ namespace AmpMod.Modules
             pulseBlastEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffectRed", true);
             //pulseBlastEffectRed = mainAssetBundle.LoadAsset<GameObject>("pulseBlastRed");
             pulseBlastEffectRed.AddComponent<NetworkIdentity>();
+
             
+
             pulseMuzzleEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffect", true);
             pulseMuzzleEffect.AddComponent<NetworkIdentity>();
 
@@ -623,10 +626,10 @@ namespace AmpMod.Modules
             AmpPlugin.Destroy(pulseMuzzleEffectRed.GetComponent<EffectComponent>());
 
 
-              AddNewEffectDef(pulseBlastEffect);
+              AddNewEffectDef(pulseBlastEffect, null, true);
               //AddNewEffectDef(pulseMuzzleEffect); 
 
-              AddNewEffectDef(pulseBlastEffectRed);
+              AddNewEffectDef(pulseBlastEffectRed, null, true);
               //AddNewEffectDef(pulseMuzzleEffectRed);
         }
 
@@ -866,6 +869,22 @@ namespace AmpMod.Modules
             newEffectDef.prefabName = effectPrefab.name;
             newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
             //newEffectDef.spawnSoundEventName = soundName;
+
+            effectDefs.Add(newEffectDef);
+        }
+
+        private static void AddNewEffectDef(GameObject effectPrefab, string soundName, bool removeSound)
+        {
+            EffectDef newEffectDef = new EffectDef();
+            newEffectDef.prefab = effectPrefab;
+            newEffectDef.prefabEffectComponent = effectPrefab.GetComponent<EffectComponent>();
+            newEffectDef.prefabName = effectPrefab.name;
+            newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
+            if (removeSound)
+            {
+                newEffectDef.spawnSoundEventName = soundName;
+            }
+
 
             effectDefs.Add(newEffectDef);
         }

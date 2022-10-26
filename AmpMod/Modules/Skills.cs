@@ -11,9 +11,14 @@ namespace AmpMod.Modules
     {
         internal static List<SkillFamily> skillFamilies = new List<SkillFamily>();
         internal static List<SkillDef> skillDefs = new List<SkillDef>();
+        internal static SkillDef surgeCancelSkillDef;
+        public static SkillDef fulminationCancelSkillDef;
+        public static string prefix = AmpPlugin.developerPrefix;
 
         internal static void CreateSkillFamilies(GameObject targetPrefab)
         {
+
+
             foreach (GenericSkill obj in targetPrefab.GetComponentsInChildren<GenericSkill>())
             {
                 AmpPlugin.DestroyImmediate(obj);
@@ -54,6 +59,52 @@ namespace AmpMod.Modules
             skillFamilies.Add(secondaryFamily);
             skillFamilies.Add(utilityFamily);
             skillFamilies.Add(specialFamily);
+
+            surgeCancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
+                skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
+                skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelSurge"),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 0,
+                baseRechargeInterval = 0,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = EntityStates.InterruptPriority.Any,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = false,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 0,
+                requiredStock = 0,
+                stockToConsume = 0,
+            });
+
+            fulminationCancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_NAME",
+                skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_NAME",
+                skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELCHAIN_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelFulmination"),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 0,
+                baseRechargeInterval = 0,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = EntityStates.InterruptPriority.Any,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = false,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 0,
+                requiredStock = 0,
+                stockToConsume = 0,
+            });
         }
 
        internal static void CreatePassiveSkill(SkillLocator skillLocator)

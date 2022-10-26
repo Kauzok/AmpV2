@@ -35,37 +35,16 @@ namespace AmpMod.SkillStates
 
 		public override void OnEnter()
 		{
-			if (!NetworkServer.active) return;
+			//if (!NetworkServer.active) return; //try running without this
 
 
 			base.OnEnter();
 
 			var lightningController = base.GetComponent<AmpLightningController>();
 
-			
 
-			cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-			{
-				skillName = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
-				skillNameToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
-				skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_DESCRIPTION",
-				skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCancelSurge"),
-				activationStateMachineName = "Slide",
-				baseMaxStock = 0,
-				baseRechargeInterval = 0,
-				beginSkillCooldownOnSkillEnd = false,
-				canceledFromSprinting = false,
-				forceSprintDuringState = false,
-				fullRestockOnAssign = false,
-				interruptPriority = EntityStates.InterruptPriority.Any,
-				resetCooldownTimerOnUse = false,
-				isCombatSkill = false,
-				mustKeyPress = true,
-				cancelSprintingOnActivation = false,
-				rechargeStock = 0,
-				requiredStock = 0,
-				stockToConsume = 0,
-			});
+
+			cancelSkillDef = Skills.surgeCancelSkillDef;
 
 
 			utilitySlot = base.skillLocator.utility;
@@ -176,20 +155,21 @@ namespace AmpMod.SkillStates
 
 		public override void OnExit()
         {
-			if (!NetworkServer.active) return;
+			
 			if (NetworkServer.active && !base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
 			{
 				base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
 				base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
 			}
 
-			if (utilitySlot && cancelSkillDef)
+			if (utilitySlot && cancelSkillDef && base.isAuthority)
 			{
 				utilitySlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 			}
 
 			base.OnExit();
 
+			if (!NetworkServer.active) return;
 			//boltObject.GetComponent<BoltVehicle>().DetonateServer();
 			var bolt = boltObject?.GetComponent<BoltVehicle>();
 
