@@ -16,8 +16,8 @@ namespace AmpMod.Modules
 
         internal static string descriptionText = "Amp is an agile melee-range hybrid that focuses on dealing heavy AOE damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Modified Shockblade can be used in tandem with most of Amp's non-utility abilities, so keep slashing!" + Environment.NewLine + Environment.NewLine
-             + "< ! > Each of Lorentz Cannon's projectiles counts as its own, so use it to rack up status effects fast." + Environment.NewLine + Environment.NewLine
-             + "< ! > You can cancel Surge early to completely halt your momentum, allowing you to precisely maneuver the battlefield." + Environment.NewLine + Environment.NewLine
+             + "< ! > Each of Lorentz Cannon's projectiles has its own status chance, so use it to rack up status effects fast." + Environment.NewLine + Environment.NewLine
+             + "< ! > You can cancel Surge early to completely halt your momentum, allowing you to precisely maneuver through the battlefield." + Environment.NewLine + Environment.NewLine
              + "< ! > Voltaic Bombardment hits much higher than the indicator shows, so use it to instantly take down weak flying enemies." + Environment.NewLine + Environment.NewLine;
 
         internal static string characterLore = "How long has it been? He pondered, and quickly decided it did not matter. Time had become irrelevant; all he knew was his duty. To find. To capture. To fight. To kill.\n\n"

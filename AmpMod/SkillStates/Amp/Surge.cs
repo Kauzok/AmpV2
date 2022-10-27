@@ -35,10 +35,11 @@ namespace AmpMod.SkillStates
 
 		public override void OnEnter()
 		{
-			//if (!NetworkServer.active) return; //try running without this
-
 
 			base.OnEnter();
+
+			UpdateAuthority();
+
 
 			var lightningController = base.GetComponent<AmpLightningController>();
 
@@ -54,6 +55,7 @@ namespace AmpMod.SkillStates
 			}
 
 
+			if (NetworkServer.active && this.hasEffectiveAuthority) { 
 			Ray aimRay = GetAimRay();
 
 			//instantiate bolt prefab to be used in tandem with boltvehicle class
@@ -64,43 +66,44 @@ namespace AmpMod.SkillStates
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			//boltSeat = boltObject.GetComponent<VehicleSeat>();
-            //NetworkServer.Spawn(boltObject);
+			//NetworkServer.Spawn(boltObject);
 
 
 			#region Skill Networking
-            //stuff to make it work with multiplayer
-            CharacterBody characterBody = this.characterBody;
+				//stuff to make it work with multiplayer
+				CharacterBody characterBody = this.characterBody;
 
-			if (characterBody == null)
-			{
-				networkUser = null;
-			}
-			else
-			{
-				CharacterMaster master = characterBody.master;
-				if (master == null)
+				if (characterBody == null)
 				{
 					networkUser = null;
 				}
 				else
 				{
-					PlayerCharacterMasterController playerCharacterMasterController = master.playerCharacterMasterController;
-					networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
+					CharacterMaster master = characterBody.master;
+					if (master == null)
+					{
+						networkUser = null;
+					}
+					else
+					{
+						PlayerCharacterMasterController playerCharacterMasterController = master.playerCharacterMasterController;
+						networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
+					}
 				}
-			}
-			networkUser2 = networkUser;
+				networkUser2 = networkUser;
 
-			if (networkUser2)
-			{
-				NetworkServer.SpawnWithClientAuthority(boltObject, networkUser2.gameObject);
+				if (networkUser2)
+				{
+					NetworkServer.SpawnWithClientAuthority(boltObject, networkUser2.gameObject);
+				}
+				else
+				{
+					NetworkServer.Spawn(boltObject);
+				}
+				#endregion
 			}
-			else
-			{
-				NetworkServer.Spawn(boltObject);
-			}
-			#endregion
 
-			
+
 		}
 
 
@@ -155,7 +158,11 @@ namespace AmpMod.SkillStates
 
 		public override void OnExit()
         {
-			
+
+			base.OnExit();
+
+
+
 			if (NetworkServer.active && !base.characterBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage))
 			{
 				base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
@@ -167,9 +174,9 @@ namespace AmpMod.SkillStates
 				utilitySlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 			}
 
-			base.OnExit();
+			
 
-			if (!NetworkServer.active) return;
+			//if (!NetworkServer.active) return;
 			//boltObject.GetComponent<BoltVehicle>().DetonateServer();
 			var bolt = boltObject?.GetComponent<BoltVehicle>();
 
