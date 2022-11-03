@@ -24,6 +24,7 @@
   - Keep an eye on launchblast method in OnEnter
 - Fulmination
   - Consider adjusting chain effect
+  - Keep an eye on your fix for bad statetype null
 - Voltaic Bombardment
   - Adjust muzzle vfx
 - Bulwark of Storms
