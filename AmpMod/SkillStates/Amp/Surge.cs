@@ -23,7 +23,9 @@ namespace AmpMod.SkillStates
 		private GameObject boltVehicle;
 		private VehicleSeat boltSeat;
 		private GenericSkill utilitySlot;
+		NetworkBehaviour networkBehaviour;
 		private float ageCheck;
+		AmpLightningController lightningController;
 		private bool exitedEarly;
 		public static SkillDef cancelSkillDef;
 		string prefix = AmpPlugin.developerPrefix;
@@ -33,6 +35,7 @@ namespace AmpMod.SkillStates
 			hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
 		}
 
+	
 		public override void OnEnter()
 		{
 
@@ -41,8 +44,8 @@ namespace AmpMod.SkillStates
 			UpdateAuthority();
 
 
-			var lightningController = base.GetComponent<AmpLightningController>();
-
+			lightningController = base.GetComponent<AmpLightningController>();
+			networkBehaviour = base.GetComponent<NetworkBehaviour>();
 
 
 			cancelSkillDef = Skills.surgeCancelSkillDef;
@@ -55,14 +58,70 @@ namespace AmpMod.SkillStates
 			}
 
 
-			if (NetworkServer.active && this.hasEffectiveAuthority) { 
+			if (NetworkServer.active) {  //&& this.hasEffectiveAuthority) { 
+
+				if (hasEffectiveAuthority)
+                {
+					callStandardExecute();
+					return;
+				}
+				CallCmdExecuteIfReady();
+			}
+
+
+		}
+
+        [Command]
+		private void NetworkExecute()
+        {
+			callStandardExecute();
+        }
+
+        [Server]
+		public bool callStandardExecute()
+        {
+			if (!NetworkServer.active)
+			{
+				Debug.LogWarning("[Server] function 'System.Boolean Surge::ExecuteIfReady()' called on client");
+				return false;
+			}
+			FireSurgeDash();
+			return true;
+		}
+
+
+
+		public void CallCmdExecuteIfReady()
+		{
+			/*if (!NetworkClient.active)
+			{
+				Debug.LogError("Command function CmdExecuteIfReady called on server.");
+				return;
+			} */
+			if (base.outer.networker.isServer)
+			{
+				this.NetworkExecute();
+				return;
+			}
+			NetworkWriter networkWriter = new NetworkWriter();
+			networkWriter.Write(0);
+			networkWriter.Write((short)((ushort)5));
+			networkWriter.WritePackedUInt32((uint)EquipmentSlot.kCmdCmdExecuteIfReady);
+			networkWriter.Write(base.GetComponent<NetworkIdentity>().netId);
+			Debug.Log("sending command");
+			base.outer.networker.SendCommandInternal(networkWriter, 0, "NetworkExecute");
+		}
+
+		private void FireSurgeDash()
+        {
 			Ray aimRay = GetAimRay();
 
 			//instantiate bolt prefab to be used in tandem with boltvehicle class
 			boltObject = UnityEngine.Object.Instantiate<GameObject>(lightningController.surgeVehicle, aimRay.origin, Quaternion.LookRotation(aimRay.direction));
 
-			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" from risk of rain 2. this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
+			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
+			Debug.Log("setting passenger");
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			//boltSeat = boltObject.GetComponent<VehicleSeat>();
@@ -70,41 +129,39 @@ namespace AmpMod.SkillStates
 
 
 			#region Skill Networking
-				//stuff to make it work with multiplayer
-				CharacterBody characterBody = this.characterBody;
+			//stuff to make it work with multiplayer
+			CharacterBody characterBody = this.characterBody;
 
-				if (characterBody == null)
+			if (characterBody == null)
+			{
+				networkUser = null;
+			}
+			else
+			{
+				CharacterMaster master = characterBody.master;
+				if (master == null)
 				{
 					networkUser = null;
 				}
 				else
 				{
-					CharacterMaster master = characterBody.master;
-					if (master == null)
-					{
-						networkUser = null;
-					}
-					else
-					{
-						PlayerCharacterMasterController playerCharacterMasterController = master.playerCharacterMasterController;
-						networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
-					}
+					PlayerCharacterMasterController playerCharacterMasterController = master.playerCharacterMasterController;
+					networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
 				}
-				networkUser2 = networkUser;
-
-				if (networkUser2)
-				{
-					NetworkServer.SpawnWithClientAuthority(boltObject, networkUser2.gameObject);
-				}
-				else
-				{
-					NetworkServer.Spawn(boltObject);
-				}
-				#endregion
 			}
+			networkUser2 = networkUser;
 
-
+			if (networkUser2)
+			{
+				NetworkServer.SpawnWithClientAuthority(boltObject, networkUser2.gameObject);
+			}
+			else
+			{
+				NetworkServer.Spawn(boltObject);
+			}
+			#endregion
 		}
+
 
 
 		//basic fixedupdate override, you know the drill
@@ -134,7 +191,7 @@ namespace AmpMod.SkillStates
 			if (fixedAge > duration && base.isAuthority)
 			{
 				this.outer.SetNextStateToMain();
-			
+				//ageCheck = fixedAge; something to try to fix the 'exiting early' thing in multiplayer
 				return;
 
 			}
@@ -169,7 +226,7 @@ namespace AmpMod.SkillStates
 				base.characterMotor.onHitGroundServer += this.CharacterMotor_onHitGround;
 			}
 
-			if (utilitySlot && cancelSkillDef && base.isAuthority)
+			if (utilitySlot && cancelSkillDef)
 			{
 				utilitySlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 			}

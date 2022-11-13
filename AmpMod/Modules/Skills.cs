@@ -92,6 +92,7 @@ namespace AmpMod.Modules
                 activationStateMachineName = "Slide",
                 baseMaxStock = 0,
                 baseRechargeInterval = 0,
+                activationState = new SerializableEntityStateType(typeof(SkillStates.CancelFulmination)),
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -104,7 +105,7 @@ namespace AmpMod.Modules
                 rechargeStock = 0,
                 requiredStock = 0,
                 stockToConsume = 0,
-            });
+            }); ;
         }
 
        internal static void CreatePassiveSkill(SkillLocator skillLocator)

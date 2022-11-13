@@ -539,6 +539,9 @@ namespace AmpMod.Modules
             }
 
             Transform blastEffectTransform = pulseBlastEffectRed.transform;
+            Vector3 scaleChange = new Vector3(0.3f, 03f, 0.3f);    
+            blastEffectTransform.localScale = scaleChange;
+            Debug.Log(blastEffectTransform.localScale);
             foreach (Transform child in blastEffectTransform)
             {
                 switch (child.name)
@@ -858,7 +861,14 @@ namespace AmpMod.Modules
 
         private static void AddNewEffectDef(GameObject effectPrefab)
         {
-            AddNewEffectDef(effectPrefab, "");
+            EffectDef newEffectDef = new EffectDef();
+            newEffectDef.prefab = effectPrefab;
+            newEffectDef.prefabEffectComponent = effectPrefab.GetComponent<EffectComponent>();
+            newEffectDef.prefabName = effectPrefab.name;
+            newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
+            //newEffectDef.spawnSoundEventName = soundName;
+
+            effectDefs.Add(newEffectDef);
         }
 
         private static void AddNewEffectDef(GameObject effectPrefab, string soundName)
@@ -868,7 +878,7 @@ namespace AmpMod.Modules
             newEffectDef.prefabEffectComponent = effectPrefab.GetComponent<EffectComponent>();
             newEffectDef.prefabName = effectPrefab.name;
             newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
-            //newEffectDef.spawnSoundEventName = soundName;
+            newEffectDef.spawnSoundEventName = soundName;
 
             effectDefs.Add(newEffectDef);
         }

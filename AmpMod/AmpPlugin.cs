@@ -388,6 +388,7 @@ namespace AmpMod
                 EffectData effectData = new EffectData
                 {
                     origin = body.corePosition,
+                    //scale = body.bestFitRadius,
                 };
 
                 

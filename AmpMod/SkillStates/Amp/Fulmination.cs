@@ -112,6 +112,8 @@ namespace AmpMod.SkillStates
 
 		public override void OnExit()
 		{
+			base.OnExit();
+
 
 			if (specialSlot && cancelSkillDef)
 			{
@@ -120,8 +122,7 @@ namespace AmpMod.SkillStates
 
 
 
-			base.OnExit();
-
+			
 			//play exit sound
 			Util.PlaySound(endSoundString, base.gameObject);
 
@@ -244,14 +245,15 @@ namespace AmpMod.SkillStates
 			}
 
 			//lets player cancel ability by pressing key again
-			if (fixedAge > delayTime)
+		/*	if (fixedAge > delayTime)
             {
 				if (base.inputBank.skill4.justPressed && base.isAuthority)
                 {
 					this.outer.SetNextStateToMain();
 					return;
+
                 }
-            } 
+            } */
 
 			//ends skill when time runs out
 			if (stopwatch >= fulminationDuration + entryDuration && base.isAuthority)
