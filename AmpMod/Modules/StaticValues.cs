@@ -14,11 +14,11 @@ namespace AmpMod.Modules
         public const string chargeDesc = "<style=cKeywordName>Charged</style>" + "<style=cSub>Applies one stack of <color=#0091ff>charge</color> to an enemy. On three stacks, cause an explosion dealing <style=cIsDamage>400% damage</style> that <color=#4cceff>electrifies</color> enemies.";
         public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
 
-        internal static string descriptionText = "Amp is an agile melee-range hybrid that focuses on dealing heavy AOE damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
+        internal static string descriptionText = "Amp is an agile melee-ranged hybrid that focuses on dealing heavy AOE damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Modified Shockblade can be used in tandem with most of Amp's non-utility abilities, so keep slashing!" + Environment.NewLine + Environment.NewLine
-             + "< ! > Each of Lorentz Cannon's projectiles has its own status chance, so use it to rack up status effects fast." + Environment.NewLine + Environment.NewLine
-             + "< ! > You can cancel Surge early to completely halt your momentum, allowing you to precisely maneuver through the battlefield." + Environment.NewLine + Environment.NewLine
-             + "< ! > Voltaic Bombardment hits much higher than the indicator shows, so use it to instantly take down weak flying enemies." + Environment.NewLine + Environment.NewLine;
+             + "< ! > Each of Lorentz Cannon's projectiles has an individual status chance, so use it to rack up status effects fast." + Environment.NewLine + Environment.NewLine
+             + "< ! > You can exit Surge early to immediately cancel your momentum, allowing you to precisely maneuver around the battlefield." + Environment.NewLine + Environment.NewLine
+             + "< ! > Voltaic Bombardment hits much higher than the indicator implies, so use it to instantly take down weak flying enemies." + Environment.NewLine + Environment.NewLine;
 
         internal static string characterLore = "How long has it been? He pondered, and quickly decided it did not matter. Time had become irrelevant; all he knew was his duty. To find. To capture. To fight. To kill.\n\n"
             + "Electrocute.\n\n"
@@ -28,7 +28,7 @@ namespace AmpMod.Modules
             + "Electrocute.\n\n"
             + "The trail back to headquarters was stained with blood. He didn't have to go back. With his new power, he could've escaped and never returned. But he wanted vengeance.\n\n"
             + "Electrocute.\n\n"
-            + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the bullets freeze mid-air, refusing to hit their target. The last thing they see is a terrifying, magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
+            + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the metallic bullets freeze mid-air, refusing to hit their target. The last thing they see is a terrifying, yet magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
             + "Electrocute.";
 
 

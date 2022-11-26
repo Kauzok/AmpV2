@@ -87,17 +87,21 @@ namespace AmpMod.Modules
             #endregion
 
             #region Achievements
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Amp: Mastery");
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Amp, beat the game or obliterate on Monsoon.");
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Amp: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_AMPMASTERYUNLOCK_NAME", "Amp: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_AMPMASTERYUNLOCK_DESCRIPTION", "As Amp, beat the game or obliterate on Monsoon.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_AMP_BODY_MASTERY", "Amp: Mastery");
 
-            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_NAME", "Amp: Usurper");
-            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_DESC", "As Amp, land the killing blow on an overloading worm.");
-            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_UNLOCKABLE_NAME", "Amp: Usurper");
+            LanguageAPI.Add("ACHIEVEMENT_AMPPLASMAUNLOCK_NAME", "Amp: Electric Burns");
+            LanguageAPI.Add("ACHIEVEMENT_AMPPLASMAUNLOCK_DESCRIPTION", "As Amp, kill 100 burning enemies.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_AMP_BODY_PLASMA", "Amp: Electric Burns");
 
-            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_NAME", "Amp: Usurper");
-            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_ACHIEVEMENT_DESC", "As Amp, land the killing blow on an overloading worm");
-            LanguageAPI.Add(prefix + "WORMUNLOCKABLE_UNLOCKABLE_NAME", "Amp: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_AMPWORMUNLOCK_NAME", "Amp: Usurper");
+            LanguageAPI.Add("ACHIEVEMENT_AMPWORMUNLOCK_DESCRIPTION", "As Amp, beat an Overloading Worm at its own game.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_AMP_BODY_USURPER", "Amp: Usurper");
+
+            LanguageAPI.Add("ACHIEVEMENT_AMPGRANDMASTERYUNLOCK_NAME", "Amp: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_AMPGRANDMASTERYUNLOCK_DESCRIPTION", "As Amp, beat the game or obliterate on Typhoon.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_AMP_BODY_GRANDMASTERY", "Amp: Electric Burns");
             #endregion
             #endregion
 

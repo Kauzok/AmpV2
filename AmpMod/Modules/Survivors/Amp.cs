@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.Skills;
 using System;
+using RoR2.Stats;
 using R2API;
 using System.Collections.Generic;
 using UnityEngine;
@@ -69,8 +70,10 @@ namespace AmpMod.Modules.Survivors
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private static UnlockableDef masterySkinUnlockableDef;
-
-
+        private static UnlockableDef grandMasterySkinUnlockableDef;
+        private static UnlockableDef wormSkillUnlockableDef;
+        private static UnlockableDef plasmaSkillUnlockableDef;
+        public static readonly StatDef ampTotalBurnedEnemiesKilled = StatDef.Register("ampTotalBurnedEnemiesKilled", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
         internal override void InitializeCharacter()
         {
@@ -80,7 +83,45 @@ namespace AmpMod.Modules.Survivors
         internal override void InitializeUnlockables()
         {
             //masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.AmpMasteryAchievement>(true);
-            masterySkinUnlockableDef = UnlockableAPI.AddUnlockable<Achievements.AmpMasteryAchievement>();
+            if (!Config.UnlockMasterySkin.Value)
+            {
+                masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                masterySkinUnlockableDef.cachedName = "Skins.RedSprite";
+                masterySkinUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_AMP_BODY_MASTERY";
+                masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement");
+                ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
+            }
+
+            if (!Config.UnlockGrandMasterySkin.Value)
+            {
+                grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                grandMasterySkinUnlockableDef.cachedName = "Skins.Reformation";
+                grandMasterySkinUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_AMP_BODY_GRANDMASTERY";
+                grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement");
+                ContentAddition.AddUnlockableDef(grandMasterySkinUnlockableDef);
+            }
+
+            if (!Config.UnlockWormSkill.Value)
+            {
+                wormSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                wormSkillUnlockableDef.cachedName = "Skills.SummonWurm";
+                wormSkillUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_AMP_BODY_USURPER";
+                wormSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSummon");
+                ContentAddition.AddUnlockableDef(wormSkillUnlockableDef);
+            }
+
+
+            if (!Config.UnlockPlasmaSkill.Value)
+            {
+                plasmaSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                plasmaSkillUnlockableDef.cachedName = "Skills.PlasmaSlash";
+                plasmaSkillUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_AMP_BODY_PLASMA";
+                plasmaSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texPlasma");
+                ContentAddition.AddUnlockableDef(plasmaSkillUnlockableDef);
+            }
+
+
+
         }
 
         internal override void InitializeDoppelganger()
@@ -200,7 +241,8 @@ namespace AmpMod.Modules.Survivors
             }); 
 
 
-            Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef, vortexSkillDef, burnSkillDef);
+            Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef, vortexSkillDef);
+            Modules.Skills.AddUnlockableSecondarySkill(bodyPrefab, burnSkillDef, plasmaSkillUnlockableDef);
             #endregion
 
 
@@ -349,7 +391,8 @@ namespace AmpMod.Modules.Survivors
             ;
 
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, chainSkillDef, lightningSkillDef, wormSkillDef);
+            Modules.Skills.AddSpecialSkills(bodyPrefab, chainSkillDef, lightningSkillDef);
+            Modules.Skills.AddUnlockableSpecialSkill(bodyPrefab, wormSkillDef, wormSkillUnlockableDef);
             #endregion
         }
 
@@ -511,7 +554,8 @@ namespace AmpMod.Modules.Survivors
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texReformationSkin"),
                 golemRendererInfos,
                 mainRenderer,
-                updatedModel);
+                updatedModel,
+                grandMasterySkinUnlockableDef);
 
             golemSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {

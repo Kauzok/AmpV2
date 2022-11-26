@@ -1,21 +1,53 @@
 ﻿using BepInEx.Configuration;
 using UnityEngine;
+using System.Reflection;
+using System.Collections.Generic;
 
 namespace AmpMod.Modules
 {
     public static class Config
     {
         public static ConfigEntry<bool> RedSpriteBlueLightning;
-
+        public static ConfigEntry<bool> UnlockMasterySkin;
+        public static ConfigEntry<bool> UnlockGrandMasterySkin;
+        public static ConfigEntry<bool> UnlockWormSkill;
+        public static ConfigEntry<bool> UnlockPlasmaSkill;
 
         public static void ReadConfig()
         {
+            Dictionary<ConfigDefinition, string> orphanedEntries = (Dictionary<ConfigDefinition, string>)typeof(ConfigFile).GetProperty("OrphanedEntries",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(AmpPlugin.instance.Config);
+            orphanedEntries.Clear();
 
             RedSpriteBlueLightning =
                 AmpPlugin.instance.Config.Bind<bool>("VFX Settings",
                                                          "Blue Lightning on Mastery Skin",
                                                          false,
                                                          "Makes Amp's Red Sprite skin use blue lightning instead of red");
+
+           UnlockMasterySkin =
+               AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+                                                        "Unlock Mastery Skin",
+                                                        false,
+                                                        "Unlocks Amp's Mastery Skin");
+
+            UnlockGrandMasterySkin =
+               AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+                                                        "Unlock Grand Mastery Skin",
+                                                        false,
+                                                        "Unlocks Amp's Grand Mastery Skin");
+
+            UnlockWormSkill =
+              AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+                                                       "Unlock Usurper",
+                                                       false,
+                                                       "Unlocks Amp's Usurper Achievement & Corresponding Skill");
+            
+            UnlockPlasmaSkill =
+             AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+                                                      "Unlock Electric Burns",
+                                                      false,
+                                                      "Unlocks Amp's Electric Burns Achievement & Corresponding Skill");
         }
 
         // this helper automatically makes config entries for disabling survivors

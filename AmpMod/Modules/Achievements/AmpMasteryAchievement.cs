@@ -1,20 +1,27 @@
-﻿using RoR2;
-using System;
-using UnityEngine;
-using Amp.Modules;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using RoR2;
+using RoR2.Achievements;
 
 namespace AmpMod.Modules.Achievements
 {
-    internal class AmpMasteryAchievement : BaseMasteryUnlockable
+    [RegisterAchievement("AmpMasteryUnlock", "Skins.RedSprite", null, null)]
+    public class AmpMasteryAchievement : BaseEndingAchievement
     {
-        public override string AchievementTokenPrefix => AmpPlugin.developerPrefix + "_AMP_BODY_MASTERY";
-        //the name of the sprite in your bundle
-        public override string AchievementSpriteName => "texMasteryAchievement";
-        //the token of your character's unlock achievement if you have one
-        public override string PrerequisiteUnlockableIdentifier => AmpPlugin.developerPrefix + "_AMP_BODY_UNLOCKABLE_REWARD_ID";
+        public override BodyIndex LookUpRequiredBodyIndex()
+        {
+            return BodyCatalog.FindBodyIndex("AmpBody");
+        }
 
-        public override string RequiredCharacterBody => "AmpBody";
-        //difficulty coeff 3 is monsoon. 3.5 is typhoon for grandmastery skins
-        public override float RequiredDifficultyCoefficient => 3;
+        public override bool ShouldGrant(RunReport runReport)
+        {
+            DifficultyDef runDifficulty = DifficultyCatalog.GetDifficultyDef(runReport.ruleBook.FindDifficulty());
+            if (runReport.gameEnding && runReport.gameEnding.isWin && this.localUser.cachedBody.bodyIndex == this.requiredBodyIndex && runDifficulty.scalingValue >= 3)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

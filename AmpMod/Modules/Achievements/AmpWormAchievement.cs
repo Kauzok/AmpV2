@@ -1,91 +1,71 @@
-﻿using RoR2;
-using System;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using RoR2;
+using R2API;
+using RoR2.Achievements;
 
 namespace AmpMod.Modules.Achievements
 {
-    internal class AmpWormAchievement : ModdedUnlockable
+	[RegisterAchievement("AmpWormUnlock", "Skills.SummonWurm", null, typeof(AmpWormAchievement.AmpWormServerAchievement))]
+	public class AmpWormAchievement : BaseAchievement
     {
 
-        public bool electricWormKilled;
+		public override BodyIndex LookUpRequiredBodyIndex()
+		{
+			return BodyCatalog.FindBodyIndex("AmpBody");
+		}
 
-        public override string AchievementIdentifier { get; } = AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_ACHIEVEMENT_ID";
-        public override string UnlockableIdentifier { get; } = AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_REWARD_ID";
-        public override string AchievementNameToken { get; } = AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_ACHIEVEMENT_NAME";
-        public override string PrerequisiteUnlockableIdentifier { get; } = AmpPlugin.developerPrefix + "_AMP_BODY_UNLOCKABLE_REWARD_ID";
-        public override string UnlockableNameToken { get; } = AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_UNLOCKABLE_NAME";
-        public override string AchievementDescToken { get; } = AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_ACHIEVEMENT_DESC";
-        public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texWormAchievement");
+		// Token: 0x0600577D RID: 22397 RVA: 0x0015D621 File Offset: 0x0015B821
+		public override void OnBodyRequirementMet()
+		{
+			base.OnBodyRequirementMet();
+			base.SetServerTracked(true);
+		}
 
-        public override Func<string> GetHowToUnlock { get; } = (() => Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", new object[]
-                            {
-                                Language.GetString(AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString(AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
-        public override Func<string> GetUnlocked { get; } = (() => Language.GetStringFormatted("UNLOCKED_FORMAT", new object[]
-                            {
-                                Language.GetString(AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString(AmpPlugin.developerPrefix + "_AMP_BODY_WORMUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
+		// Token: 0x0600577E RID: 22398 RVA: 0x0015D630 File Offset: 0x0015B830
+		public override void OnBodyRequirementBroken()
+		{
+			base.SetServerTracked(false);
+			base.OnBodyRequirementBroken();
+		}
+		private class AmpWormServerAchievement : BaseServerAchievement
+		{
+			private BodyIndex overloadingWormBodyIndex;
 
-        public override BodyIndex LookUpRequiredBodyIndex()
-        {
-            return BodyCatalog.FindBodyIndex(Survivors.Amp.instance.bodyName);
-        }
+			// Token: 0x06005780 RID: 22400 RVA: 0x001618C0 File Offset: 0x0015FAC0
+			public override void OnInstall()
+			{
+				base.OnInstall();
+				this.overloadingWormBodyIndex = BodyCatalog.FindBodyIndex("ElectricWormBody");
+				GlobalEventManager.onCharacterDeathGlobal += this.OnCharacterDeathGlobal;
+			}
+
+			// Token: 0x06005781 RID: 22401 RVA: 0x00161935 File Offset: 0x0015FB35
+			public override void OnUninstall()
+			{
+				GlobalEventManager.onCharacterDeathGlobal -= this.OnCharacterDeathGlobal;
+				base.OnUninstall();
+			}
+
+			// Token: 0x06005783 RID: 22403 RVA: 0x001619C0 File Offset: 0x0015FBC0
+			private void OnCharacterDeathGlobal(DamageReport damageReport)
+			{
+				if (damageReport.victimBody && damageReport.victimBody.bodyIndex == this.overloadingWormBodyIndex && base.IsCurrentBody(damageReport.damageInfo.attacker) && DoesDamageQualify(damageReport))
+				{
+					base.Grant();
+				}
+			}
+
+			// Token: 0x06005784 RID: 22404 RVA: 0x00161A2C File Offset: 0x0015FC2C
+			private bool DoesDamageQualify(DamageReport damageReport)
+			{
+				return (damageReport.damageInfo.HasModdedDamageType(DamageTypes.apply2Charge));
+			}
+
+		}
+	}
 
 
-        private void CheckDeath(DamageReport report)
-        {
-            if (report is null) return;
-            if (report.victimBody is null) return;
-            if (report.attackerBody is null) return;
-
-            if (report.victimTeamIndex != TeamIndex.Player)
-            {
-                if (report.victimBodyIndex == BodyCatalog.FindBodyIndex("ElectricWormBody"))
-                {
-                    this.electricWormKilled = true;
-
-                    //Debug.LogWarning("killed worm");
-                    //Debug.LogWarning($"wom: {magmaWormKilled}, vag: {wanderingVagrantKilled}, tit: {stoneTitanKilled}");
-                }
-
-
-                if (electricWormKilled)
-                {
-                    
-                    base.Grant();
-                    
-                }
-            }
-        }
-
-        private void ResetOnRunStart(Run run)
-        {
-            this.ResetKills();
-        }
-
-        private void ResetKills()
-        {
-            electricWormKilled = false;
-        }
-
-        public override void OnInstall()
-        {
-
-            base.OnInstall();
-            this.ResetKills();
-            GlobalEventManager.onCharacterDeathGlobal += this.CheckDeath;
-            Run.onRunStartGlobal += ResetOnRunStart;
-
-        }
-
-        public override void OnUninstall()
-        {
-            base.OnUninstall();
-            GlobalEventManager.onCharacterDeathGlobal -= this.CheckDeath;
-            Run.onRunStartGlobal -= ResetOnRunStart;
-        }
-
-    }
 }
+

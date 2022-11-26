@@ -18,8 +18,6 @@ namespace AmpMod.SkillStates
 		public CharacterMaster master;
 		public bool naturalEnd;
 		private bool hasEffectiveAuthority;
-		public NetworkUser networkUser;
-		public NetworkUser networkUser2;
 		private GameObject boltVehicle;
 		private VehicleSeat boltSeat;
 		private GenericSkill utilitySlot;
@@ -35,11 +33,14 @@ namespace AmpMod.SkillStates
 			hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
 		}
 
-	
+
 		public override void OnEnter()
 		{
+			
 
 			base.OnEnter();
+
+			if (!NetworkServer.active) return;
 
 			UpdateAuthority();
 
@@ -57,63 +58,11 @@ namespace AmpMod.SkillStates
 				this.utilitySlot.SetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 			}
 
-
-			if (NetworkServer.active) {  //&& this.hasEffectiveAuthority) { 
-
-				if (hasEffectiveAuthority)
-                {
-					callStandardExecute();
-					return;
-				}
-				CallCmdExecuteIfReady();
-			}
-
-
-		}
-
-        [Command]
-		private void NetworkExecute()
-        {
-			callStandardExecute();
-        }
-
-        [Server]
-		public bool callStandardExecute()
-        {
-			if (!NetworkServer.active)
-			{
-				Debug.LogWarning("[Server] function 'System.Boolean Surge::ExecuteIfReady()' called on client");
-				return false;
-			}
-			FireSurgeDash();
-			return true;
-		}
+			//FireSurgeDash();
 
 
 
-		public void CallCmdExecuteIfReady()
-		{
-			/*if (!NetworkClient.active)
-			{
-				Debug.LogError("Command function CmdExecuteIfReady called on server.");
-				return;
-			} */
-			if (base.outer.networker.isServer)
-			{
-				this.NetworkExecute();
-				return;
-			}
-			NetworkWriter networkWriter = new NetworkWriter();
-			networkWriter.Write(0);
-			networkWriter.Write((short)((ushort)5));
-			networkWriter.WritePackedUInt32((uint)EquipmentSlot.kCmdCmdExecuteIfReady);
-			networkWriter.Write(base.GetComponent<NetworkIdentity>().netId);
-			Debug.Log("sending command");
-			base.outer.networker.SendCommandInternal(networkWriter, 0, "NetworkExecute");
-		}
 
-		private void FireSurgeDash()
-        {
 			Ray aimRay = GetAimRay();
 
 			//instantiate bolt prefab to be used in tandem with boltvehicle class
@@ -131,6 +80,7 @@ namespace AmpMod.SkillStates
 			#region Skill Networking
 			//stuff to make it work with multiplayer
 			CharacterBody characterBody = this.characterBody;
+			NetworkUser networkUser;
 
 			if (characterBody == null)
 			{
@@ -149,7 +99,7 @@ namespace AmpMod.SkillStates
 					networkUser = ((playerCharacterMasterController != null) ? playerCharacterMasterController.networkUser : null);
 				}
 			}
-			networkUser2 = networkUser;
+			NetworkUser networkUser2 = networkUser;
 
 			if (networkUser2)
 			{
@@ -159,8 +109,14 @@ namespace AmpMod.SkillStates
 			{
 				NetworkServer.Spawn(boltObject);
 			}
-			#endregion
+
+				#endregion
+			
 		}
+
+
+
+		
 
 
 
@@ -243,8 +199,7 @@ namespace AmpMod.SkillStates
 				boltObject.GetComponent<VehicleSeat>().exitVelocityFraction = 0f;
 				bolt.DetonateServer();
 			} 
-
-			if (bolt)
+			else if (bolt)
             {
 				bolt.DetonateServer();
 			}

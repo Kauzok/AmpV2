@@ -50,6 +50,7 @@ namespace AmpMod.Modules
         internal static GameObject chargeExplosionEffectRed;
         internal static GameObject electrifiedOverlay;
         internal static Material electrifiedMaterial;
+        internal static GameObject chargeOrbObject;
 
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
@@ -221,6 +222,9 @@ namespace AmpMod.Modules
             //on voltaic bombardment aim
             CreateLightningCharge();
 
+            //on charge proc
+            CreateChargeOrb();
+
             //on charge explosion when 3 procs are reached
             CreateChargePrefab();
             CreateElectrified();
@@ -311,6 +315,12 @@ namespace AmpMod.Modules
             //matRedTrail.SetTexture("_RemapTex", mainAssetBundle.LoadAsset<Texture>("texRampGolem"));
 
 
+
+        }
+
+        private static void CreateChargeOrb()
+        {
+            chargeOrbObject = mainAssetBundle.LoadAsset<GameObject>("Charge Ball");
 
         }
         private static void CreateBoltVehicle()

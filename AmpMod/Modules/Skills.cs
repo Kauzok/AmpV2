@@ -41,6 +41,7 @@ namespace AmpMod.Modules
             (secondaryFamily as ScriptableObject).name = targetPrefab.name + "SecondaryFamily";
             secondaryFamily.variants = new SkillFamily.Variant[0];
             skillLocator.secondary._skillFamily = secondaryFamily;
+            
 
             skillLocator.utility = targetPrefab.AddComponent<GenericSkill>();
             SkillFamily utilityFamily = ScriptableObject.CreateInstance<SkillFamily>();
@@ -150,6 +151,22 @@ namespace AmpMod.Modules
             };
         }
 
+        internal static void AddUnlockableSecondarySkill(GameObject targetPrefab, SkillDef skillDef, UnlockableDef unlockableDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.secondary.skillFamily;
+
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null),
+                unlockableDef = unlockableDef
+            };
+        }
+
         internal static void AddSecondarySkills(GameObject targetPrefab, params SkillDef[] skillDefs)
         {
             foreach (SkillDef i in skillDefs)
@@ -201,6 +218,20 @@ namespace AmpMod.Modules
                 AddSpecialSkill(targetPrefab, i);
             }
         }
+        internal static void AddUnlockableSpecialSkill(GameObject targetPrefab, SkillDef skillDef, UnlockableDef unlockableDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.special.skillFamily;
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null),
+                unlockableDef = unlockableDef
+            };
+        }
 
         internal static SkillDef CreatePrimarySkillDef(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens)
         {
@@ -210,7 +241,7 @@ namespace AmpMod.Modules
             skillDef.skillNameToken = skillNameToken;
             skillDef.skillDescriptionToken = skillDescriptionToken;
             skillDef.icon = skillIcon;
-
+            
             skillDef.activationState = state;
             skillDef.activationStateMachineName = stateMachine;
             skillDef.baseMaxStock = 1;

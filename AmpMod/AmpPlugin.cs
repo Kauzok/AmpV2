@@ -17,6 +17,8 @@ using IL;
 using System.Collections.ObjectModel;
 using UnityEngine.AddressableAssets;
 using MonoMod.Cil;
+using RoR2.Stats;
+using BepInEx.Configuration;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -71,6 +73,7 @@ namespace AmpMod
             //On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 
             logger = base.Logger;
+        
 
             // load assets and read config
             Modules.Assets.Initialize();
@@ -129,8 +132,32 @@ namespace AmpMod
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
             RecalculateStatsAPI.GetStatCoefficients += overChargeStatGrant;
             RecalculateStatsAPI.GetStatCoefficients += wormItemCheck;
+            On.RoR2.Stats.StatManager.ProcessDeathEvents += StatManager_ProcessDeathEvents;
 
         }
+
+        private void StatManager_ProcessDeathEvents(On.RoR2.Stats.StatManager.orig_ProcessDeathEvents orig)
+        {
+            while (StatManager.deathEvents.Count > 0)
+            {
+                StatManager.DeathEvent deathEvent = StatManager.deathEvents.Dequeue();
+                DamageReport damageReport = deathEvent.damageReport;
+                StatSheet statSheet = PlayerStatsComponent.FindMasterStatSheet(damageReport.victimMaster);
+                StatSheet statSheet2 = PlayerStatsComponent.FindMasterStatSheet(damageReport.attackerMaster);
+                StatSheet statSheet3 = PlayerStatsComponent.FindMasterStatSheet(damageReport.attackerOwnerMaster);
+
+                if (statSheet2 != null)
+                {
+                    if (damageReport.attackerBody.baseNameToken == developerPrefix + "_AMP_BODY_NAME" && deathEvent.victimWasBurning)
+                    {
+                        //Debug.Log("Burned enemy killed");
+                        statSheet2.PushStatValue(Modules.Survivors.Amp.ampTotalBurnedEnemiesKilled, 1UL);
+                    }
+                }
+                orig();
+            }
+        }
+
 
         //Mithrix quotes for when Amp is present
         private void BrotherSpeechDriver_DoInitialSightResponse(On.RoR2.CharacterSpeech.BrotherSpeechDriver.orig_DoInitialSightResponse orig, RoR2.CharacterSpeech.BrotherSpeechDriver self)
