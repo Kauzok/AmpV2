@@ -51,7 +51,6 @@
 
 ## Misc. To Do
 - Cleanup code base, finish comments
-- Switch off of unlockableAPI
 - Fix method of loading in assetbundles/soundbanks (and fix soundbank error
 - Emote and other API Support
 - Add configs
