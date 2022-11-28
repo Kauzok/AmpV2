@@ -14,6 +14,7 @@ namespace AmpMod.Modules
         private CharacterBody body;
         private CharacterModel model;
 
+        public GameObject chargeOrb;
         public GameObject surgeEnter;
         public GameObject fulminationEffect;
         public GameObject fulminationHitEffect;
@@ -71,6 +72,7 @@ namespace AmpMod.Modules
                 fulminationHitEffect = Assets.electricImpactEffect;
                 fulminationChainEffect = Assets.electricChainEffect;
 
+                chargeOrb = Assets.chargeOrbObject;
                 chargeExplosion = Assets.chargeExplosionEffect;
                 swingEffect = Assets.swordSwingEffect;
                 swingHitEffect = Assets.swordHitImpactEffect;
@@ -103,6 +105,7 @@ namespace AmpMod.Modules
                 fulminationHitEffect = Assets.electricImpactEffectRed;
                 fulminationChainEffect = Assets.electricChainEffectRed;
 
+                chargeOrb = Assets.chargeOrbObjectRed;
                 chargeExplosion = Assets.chargeExplosionEffectRed;
                 swingEffect = Assets.swordSwingEffectRed;
                 swingHitEffect = Assets.swordHitImpactEffectRed;

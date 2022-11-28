@@ -15,6 +15,10 @@ namespace AmpMod.Modules
         //initialize all the states to be used for skills
         internal static void RegisterStates()
         {
+
+            //generic states
+            entityStates.Add(typeof(CancelSkill));
+
             //stormblade states
             entityStates.Add(typeof(BaseMeleeAttack));
             entityStates.Add(typeof(SlashCombo));

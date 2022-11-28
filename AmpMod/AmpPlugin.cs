@@ -56,6 +56,10 @@ namespace AmpMod
 
         public static AmpPlugin instance;
 
+        private GameObject orb1;
+        private GameObject orb2;
+        private CharacterBody chargedBody;
+
         //dictionary for swapping out stubbed shaders for in game shaders
         public static Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
         {
@@ -407,10 +411,15 @@ namespace AmpMod
                  } */
 
             }
-            
-            
+
+
+
+            //amount of charge build up stacks a body has
+            int chargeCount = body.GetBuffCount(Modules.Buffs.chargeBuildup);
+
+
             //if body has more than 3 stacks of charge, make new blastattack with effect
-            if (NetworkServer.active && body.GetBuffCount(Modules.Buffs.chargeBuildup) >= 3)
+            if (NetworkServer.active && chargeCount >= 3)
             {
                 EffectData effectData = new EffectData
                 {
@@ -418,14 +427,16 @@ namespace AmpMod
                     //scale = body.bestFitRadius,
                 };
 
-                
+                chargedBody = null;
 
                 var tracker = body.gameObject.GetComponent<Tracker>();
+                tracker.DestroyOrbs();
 
                 GameObject chargeEffect = tracker.owner.gameObject.GetComponent<AmpLightningController>().chargeExplosion;
                 //set and spawn charge explosion effect
                 EffectManager.SpawnEffect(chargeEffect, effectData, true);
 
+        
 
                 //create and fire charge blastattack centered on enemy 
                 BlastAttack chargeBlast;

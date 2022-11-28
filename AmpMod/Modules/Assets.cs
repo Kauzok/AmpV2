@@ -26,6 +26,7 @@ namespace AmpMod.Modules
         internal static Material matRedTrail;
         internal static Material matBlueTrail;
         internal static Material matLightningLongRed;
+        internal static Material matLightningLongBlue;
         internal static Material matLightningMatrixRed;
         internal static Material matLightningSphereRed;
         internal static Material matDirectionalMatrixRed;
@@ -51,6 +52,7 @@ namespace AmpMod.Modules
         internal static GameObject electrifiedOverlay;
         internal static Material electrifiedMaterial;
         internal static GameObject chargeOrbObject;
+        internal static GameObject chargeOrbObjectRed;
 
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
@@ -296,15 +298,17 @@ namespace AmpMod.Modules
 
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
             matRedTrail = CreateVFXMaterial("matLorentzTrailRed");
-
+            CreateVFXMaterial("matLightningSphereBlue");
+            CreateVFXMaterial("matLightningOrbRed");
             matLightningMatrixRed = CreateVFXMaterial("matLightningMatrixRed");
             matLightningLongRed = CreateVFXMaterial("matLightningLongRed");
             matPulseTriRed = CreateVFXMaterial("matPulseMuzzleTriRed");
             matDirectionalMatrixRed = CreateVFXMaterial("matDirectionalMatrixRed");
-           // matTracerBright = CreateVFXMaterial("matTracerBright");
+            matTracerBright = CreateVFXMaterial("matTracerBright");
             matRing = CreateVFXMaterial("matOmniRing2");
             matHitSpark = CreateVFXMaterial("matOmniHitspark3");
             matLightningStrikeRed = CreateVFXMaterial("matLightningStrikeRed");
+            matLightningLongBlue = CreateVFXMaterial("matLightningLongBlue");
 
             matLightningSphereRed = CreateIntersectMaterial("matLightningSphereRed");
 
@@ -320,7 +324,11 @@ namespace AmpMod.Modules
 
         private static void CreateChargeOrb()
         {
-            chargeOrbObject = mainAssetBundle.LoadAsset<GameObject>("Charge Ball");
+            chargeOrbObject = mainAssetBundle.LoadAsset<GameObject>("ChargeBall");
+            chargeOrbObjectRed = mainAssetBundle.LoadAsset<GameObject>("ChargeBallRed");
+
+            PrefabAPI.RegisterNetworkPrefab(chargeOrbObject);
+            PrefabAPI.RegisterNetworkPrefab(chargeOrbObjectRed);
 
         }
         private static void CreateBoltVehicle()
@@ -328,7 +336,7 @@ namespace AmpMod.Modules
             boltVehicle = mainAssetBundle.LoadAsset<GameObject>("BoltVehicle");
             //boltVehicle = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle");
 
-            //adds boltvehicle to the bolt prefab finalizing the gameobject that will act as the primary enactor of the bolt skill
+            //adds boltvehicle to the bolt prefab finalizing the gameobject that will act as the primary enactor of the surge skill
             boltVehicle.AddComponent<SkillStates.BoltVehicle>();
             
             
@@ -548,11 +556,11 @@ namespace AmpMod.Modules
                 }
             }
 
-            Transform blastEffectTransform = pulseBlastEffectRed.transform;
+            Transform blastEffectTransformRed = pulseBlastEffectRed.transform;
             Vector3 scaleChange = new Vector3(0.3f, 03f, 0.3f);    
-            blastEffectTransform.localScale = scaleChange;
-            Debug.Log(blastEffectTransform.localScale);
-            foreach (Transform child in blastEffectTransform)
+            blastEffectTransformRed.localScale = scaleChange;
+            Debug.Log(blastEffectTransformRed.localScale);
+            foreach (Transform child in blastEffectTransformRed)
             {
                 switch (child.name)
                 {
@@ -951,6 +959,13 @@ namespace AmpMod.Modules
             return mat;
         }
 
+        public static Material CreateStandardMaterial(string materialName)
+        {
+            Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+
+            mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/deferred/standard");
+            return mat;
+        }
         public static Material CreateIntersectMaterial(string materialName)
         {
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);

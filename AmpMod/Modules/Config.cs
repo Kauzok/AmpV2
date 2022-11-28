@@ -8,6 +8,7 @@ namespace AmpMod.Modules
     public static class Config
     {
         public static ConfigEntry<bool> RedSpriteBlueLightning;
+        public static ConfigEntry<bool> chargeOrbsEnable;
         public static ConfigEntry<bool> UnlockMasterySkin;
         public static ConfigEntry<bool> UnlockGrandMasterySkin;
         public static ConfigEntry<bool> UnlockWormSkill;
@@ -15,17 +16,23 @@ namespace AmpMod.Modules
 
         public static void ReadConfig()
         {
-            Dictionary<ConfigDefinition, string> orphanedEntries = (Dictionary<ConfigDefinition, string>)typeof(ConfigFile).GetProperty("OrphanedEntries",
+            /*Dictionary<ConfigDefinition, string> orphanedEntries = (Dictionary<ConfigDefinition, string>)typeof(ConfigFile).GetProperty("OrphanedEntries",
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(AmpPlugin.instance.Config);
-            orphanedEntries.Clear();
+            orphanedEntries.Clear(); */
+
+            chargeOrbsEnable =
+                AmpPlugin.instance.Config.Bind<bool>("VFX Settings",
+                                                         "Enable Charge Orbs",
+                                                         true,
+                                                         "Display electric orbs above the heads of charged enemies");
 
             RedSpriteBlueLightning =
                 AmpPlugin.instance.Config.Bind<bool>("VFX Settings",
-                                                         "Blue Lightning on Mastery Skin",
-                                                         false,
-                                                         "Makes Amp's Red Sprite skin use blue lightning instead of red");
+                                             "Blue Lightning on Mastery Skin",
+                                             false,
+                                             "Makes Amp's Red Sprite skin use blue lightning instead of red");
 
-           UnlockMasterySkin =
+            UnlockMasterySkin =
                AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
                                                         "Unlock Mastery Skin",
                                                         false,
