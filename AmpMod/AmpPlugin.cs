@@ -40,6 +40,7 @@ namespace AmpMod
         //"EffectAPI",
         (nameof(UnlockableAPI)),
         "RecalculateStatsAPI",
+        "NetworkingAPI",
     })]
 
     public class AmpPlugin : BaseUnityPlugin
@@ -55,10 +56,6 @@ namespace AmpMod
         public static BepInEx.Logging.ManualLogSource logger;
 
         public static AmpPlugin instance;
-
-        private GameObject orb1;
-        private GameObject orb2;
-        private CharacterBody chargedBody;
 
         //dictionary for swapping out stubbed shaders for in game shaders
         public static Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
@@ -426,8 +423,6 @@ namespace AmpMod
                     origin = body.corePosition,
                     //scale = body.bestFitRadius,
                 };
-
-                chargedBody = null;
 
                 var tracker = body.gameObject.GetComponent<Tracker>();
                 tracker.DestroyOrbs();
