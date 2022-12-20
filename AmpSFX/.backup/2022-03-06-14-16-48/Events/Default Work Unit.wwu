@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" SchemaVersion="89">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="PlayBoltEnter" ID="{046BB635-45D9-4098-B497-2BB69AD8B7C8}">
+					<ChildrenList>
+						<Action Name="" ID="{BBA28343-AE8B-474C-A42F-49EFEC58E9F8}" ShortID="1017534052">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BoltEnter" ID="{66A32038-00D0-4579-81EE-60A8C1CB1C20}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBoltExit" ID="{60DCBBF0-835F-4A0F-925F-2D249A8DF8B8}">
+					<ChildrenList>
+						<Action Name="" ID="{017CDB72-C177-44A2-8DB6-051CDB9DCD77}" ShortID="117279350">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BoltExit" ID="{0D6227D5-C292-4114-B603-E70528A6DA39}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBoltState2sec" ID="{205C9611-BDA1-4A95-A44D-238BD4062CF1}">
+					<ChildrenList>
+						<Action Name="" ID="{EBB0B60D-58E5-4D5B-BE27-4E5F2CB52458}" ShortID="141031474">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BoltState2sec" ID="{1C5C0B86-F2E5-478A-8F37-7A2C60665085}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayChargeExplosion" ID="{9147CC50-9D43-4123-B9FC-85C2B1663136}">
+					<ChildrenList>
+						<Action Name="" ID="{91D34517-6945-4C8B-9B66-4F7BC2E129CD}" ShortID="941031679">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChargeExplosion" ID="{F6B163EA-9393-4E40-A98B-06DD807A12AE}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFerroshotCreate" ID="{FAC584A8-AE58-49D0-B033-54481B672A66}">
+					<ChildrenList>
+						<Action Name="" ID="{73ABCA1F-AFC8-4AA2-9559-1E793F4C5F10}" ShortID="871325182">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FerroshotCreate" ID="{CF83E12F-E0BD-44D6-9313-C466711F623F}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFerroshotLaunch" ID="{6C04C028-EF34-473A-A77A-2B857F43A7B3}">
+					<ChildrenList>
+						<Action Name="" ID="{8368843D-1CFB-439B-85D7-BF0BB69938B0}" ShortID="697448032">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FerroshotLaunch" ID="{DAC31866-4793-4F52-8E47-14F4284DEBE0}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFulminationExit" ID="{7EB5BEE9-A435-4A75-B87C-262D42BE6B99}">
+					<ChildrenList>
+						<Action Name="" ID="{BBC7E888-EA72-41FC-9BC4-F265811F053C}" ShortID="918023470">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FulminationExit" ID="{D5BD29A4-8AE8-405E-8164-5E39D3264887}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFulminationState" ID="{DA615D2B-F5EF-433A-9F01-AB71B4B3185D}">
+					<ChildrenList>
+						<Action Name="" ID="{D68BAD34-DF50-45B1-BE1D-33E16CA27BCA}" ShortID="784482540">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FulminationState" ID="{6B09539C-9A6D-46F3-9337-EE3956E944E9}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayStormbladeSwing1" ID="{2A5BFE75-B3D9-4C39-BD65-FFB1DDDBA4B6}">
+					<ChildrenList>
+						<Action Name="" ID="{B197BD05-0367-4C18-A940-C0B031C511B2}" ShortID="632381929">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Stormblade1" ID="{129FB170-C040-4D25-BA44-10F4DCA08CA9}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayStormbladeSwing2" ID="{606AADD7-0F62-490E-B637-778B1B93CBBD}">
+					<ChildrenList>
+						<Action Name="" ID="{B492770F-0330-4294-8964-D8899AFDDE8C}" ShortID="391898986">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Stormblade2" ID="{A7A80AA6-DABF-4A4C-B7C7-3DD3DF884CB6}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBoltStateFull" ID="{C47CAE11-B0F8-472E-974C-231D193CFDD4}">
+					<ChildrenList>
+						<Action Name="" ID="{F4427A62-B7BA-4B94-B012-8E1AAA493B89}" ShortID="198685622">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BoltState" ID="{B69BB5C3-118E-4E33-B608-596EBA32ECE7}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFerroshotCreateAlter" ID="{96DA14A5-35C4-4B5B-886C-44488276602F}">
+					<ChildrenList>
+						<Action Name="" ID="{85F88C86-DD0B-4314-BE2B-411AC47A1680}" ShortID="161217642">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FerroshotCreateAlter" ID="{735B63B6-4E65-400A-8AC6-8E2F551A710E}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFerroshotLaunchAlter" ID="{CFF46746-AB80-431B-A1C0-E9E981EB6AE6}">
+					<ChildrenList>
+						<Action Name="" ID="{16A6AAF8-F4AC-4070-B09A-9967EA5B0248}" ShortID="83618274">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FerroshotLaunchAlter" ID="{FAB41DB3-AEB6-41FE-8BCB-796D20B6DA91}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFulminationExitAlter" ID="{BC0E9EA2-9B82-4FB5-9706-DDC4853211D7}">
+					<ChildrenList>
+						<Action Name="" ID="{22B6F0A3-98BE-426E-945B-C2B0C5AEB941}" ShortID="199624364">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FulminationExitAlter" ID="{C4A34999-5165-409B-89E4-0B8744E250A7}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFulminationEnter" ID="{D903EDE1-3257-465D-A12C-169D794CDF04}">
+					<ChildrenList>
+						<Action Name="" ID="{4A3F68D9-4DD9-4275-B653-5A72006D2175}" ShortID="542245947">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FulminationEnter" ID="{7150E337-2458-40CC-8584-11A14C1DEB6D}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBoltStateWind" ID="{9A06F924-8101-4459-8AD9-DEE85A225E66}">
+					<ChildrenList>
+						<Action Name="" ID="{9115F54B-F092-48AB-98D7-8F98F76F6D79}" ShortID="410476559">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BoltState2secwithwind" ID="{AAE3C0AE-6C3D-4943-B83A-B2AD04A0B060}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBoltState2SecAlter" ID="{86A2626B-9BC0-4BB5-8328-B9318A68DB40}">
+					<ChildrenList>
+						<Action Name="" ID="{F4AFDFF4-D0DC-49E3-AB69-90326CFC5918}" ShortID="452466562">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BoltState2secAlter" ID="{649E21B9-2F08-475A-A206-5B8E231ADE2F}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayStormbladeHit1" ID="{C24AF5AD-621F-439B-A0A4-1CE1AD5671C3}">
+					<ChildrenList>
+						<Action Name="" ID="{66AAF7B9-FDD6-49AB-9570-D1BBDF4CDE54}" ShortID="597947765">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="StormbladeHit1" ID="{2E07233B-352D-4849-A103-EA26D1AFDD05}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayStormbladeHit2" ID="{C218BB76-85F0-4E09-8FC8-481B11368AD5}">
+					<ChildrenList>
+						<Action Name="" ID="{F4878015-579D-4D2A-AFCA-B623C7E39AB7}" ShortID="849080508">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="StormbladeHit2" ID="{75AED90B-0C14-40D3-B701-758F706F5E8A}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayStormbladeHit3" ID="{B7109C38-D03A-448C-ADF9-8CAEAC3135FD}">
+					<ChildrenList>
+						<Action Name="" ID="{17201AB4-6200-400F-8528-210E2ED45464}" ShortID="710708436">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="StormbladeHit3" ID="{E6B290D5-76D6-4117-B3C7-B325DEDA1661}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayStormbladeHit4" ID="{9238F131-EC83-4BE5-B172-88B60E1BC74F}">
+					<ChildrenList>
+						<Action Name="" ID="{641E0E74-8721-484E-89B9-C90327949586}" ShortID="1010686604">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="StormbladeHitV4" ID="{FCABE6B4-2D8D-4E20-9D06-2FC9E80AEDDF}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

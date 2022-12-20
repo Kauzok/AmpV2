@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}" SchemaVersion="89">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="MasterMixer" ID="{14AA9753-6FC7-4EB2-AEB5-3A02697E32AB}" ShortID="226751664">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{9EBA811D-4A4E-432F-9543-B4F732609EBD}" ShortID="523139502">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Volume_SFX" ID="{4A2CD6C7-D19D-407D-A844-3CF852D14286}" WorkUnitID="{B6A4196F-F1F8-4F8C-8DF0-211DF2EC6C88}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{C43E0057-4E0D-40FC-8F5B-5379DC7A8F34}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-200</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="SFXMixer" ID="{BD8FFC65-78EA-48C6-AF70-A10EC953B25C}" ShortID="124571714">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{ADACD8AF-04EB-4127-A08E-7265A1500E0F}" ShortID="848883676">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Volume_SFX" ID="{4A2CD6C7-D19D-407D-A844-3CF852D14286}" WorkUnitID="{B6A4196F-F1F8-4F8C-8DF0-211DF2EC6C88}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{87841DD3-0875-4C6A-9CA1-B1D25156799B}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0.13861</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Folder Name="BoltExit" ID="{39FEB251-1DD0-469E-9468-3A1C756FEAD6}" ShortID="726858756">
+									<ChildrenList>
+										<Sound Name="BoltExit" ID="{0D6227D5-C292-4114-B603-E70528A6DA39}" ShortID="1070888452">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltExit" ID="{E9A9B2BA-08E2-414A-9FD8-B071AE5890A3}" ShortID="286477067">
+													<Language>SFX</Language>
+													<AudioFile>BoltExit.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltExit" ID="{E9A9B2BA-08E2-414A-9FD8-B071AE5890A3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="BoltEnter" ID="{B9A1AA1E-7272-462F-AF6D-2DB6A5A7C3AA}" ShortID="900190453">
+									<ChildrenList>
+										<Sound Name="BoltEnter" ID="{66A32038-00D0-4579-81EE-60A8C1CB1C20}" ShortID="739073805">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltEnter" ID="{4EDFB168-AAFF-4392-A4A0-9FF31B40B9F3}" ShortID="355476522">
+													<Language>SFX</Language>
+													<AudioFile>BoltEnter.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltEnter" ID="{4EDFB168-AAFF-4392-A4A0-9FF31B40B9F3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="BoltState" ID="{16768789-F9CD-46C7-A215-2677B08AA62B}" ShortID="124773179">
+									<ChildrenList>
+										<Sound Name="BoltState" ID="{B69BB5C3-118E-4E33-B608-596EBA32ECE7}" ShortID="1643228">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>1.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltState" ID="{2C8D1AC4-B6A7-4681-999D-5A0ADA7EFA53}" ShortID="120900190">
+													<Language>SFX</Language>
+													<AudioFile>BoltState.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltState" ID="{2C8D1AC4-B6A7-4681-999D-5A0ADA7EFA53}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BoltState2sec" ID="{1C5C0B86-F2E5-478A-8F37-7A2C60665085}" ShortID="923219289">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltState2sec" ID="{EE78E994-0C30-455A-8500-90C7066D3509}" ShortID="515172351">
+													<Language>SFX</Language>
+													<AudioFile>BoltState2sec.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltState2sec" ID="{EE78E994-0C30-455A-8500-90C7066D3509}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BoltState2secAlter" ID="{649E21B9-2F08-475A-A206-5B8E231ADE2F}" ShortID="719266211">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltState2secAlter" ID="{CB56200E-A535-4ABF-8067-6A7F86CB71A6}" ShortID="196974043">
+													<Language>SFX</Language>
+													<AudioFile>BoltState2secAlter.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltState2secAlter" ID="{CB56200E-A535-4ABF-8067-6A7F86CB71A6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BoltState2secwithwind" ID="{AAE3C0AE-6C3D-4943-B83A-B2AD04A0B060}" ShortID="203335587">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="boltstate2secwithwind" ID="{0AC4274B-2899-41F9-B4EE-6FB9358656F3}" ShortID="226974468">
+													<Language>SFX</Language>
+													<AudioFile>boltstate2secwithwind.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="boltstate2secwithwind" ID="{0AC4274B-2899-41F9-B4EE-6FB9358656F3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="ChargeExplosion" ID="{2B7D98D6-3158-4374-954E-BA9E0CA4AEB5}" ShortID="540146994">
+									<ChildrenList>
+										<Sound Name="ChargeExplosion" ID="{F6B163EA-9393-4E40-A98B-06DD807A12AE}" ShortID="890984051">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>19.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChargeExplosion" ID="{E910441E-700E-421A-81A2-594BA2F41584}" ShortID="391751073">
+													<Language>SFX</Language>
+													<AudioFile>ChargeExplosion.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ChargeExplosion" ID="{E910441E-700E-421A-81A2-594BA2F41584}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="FerroshotCreate" ID="{A34486C5-F121-4C38-AF6F-1405268FAB33}" ShortID="28335913">
+									<ChildrenList>
+										<Sound Name="FerroshotCreate" ID="{CF83E12F-E0BD-44D6-9313-C466711F623F}" ShortID="137268657">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>15</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotCreateRemake" ID="{9E2BCBC5-9193-4AF6-872C-122FBD21804C}" ShortID="845905776">
+													<Language>SFX</Language>
+													<AudioFile>FerroshotCreateRemake.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotCreateRemake" ID="{9E2BCBC5-9193-4AF6-872C-122FBD21804C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="FerroshotCreateAlter" ID="{735B63B6-4E65-400A-8AC6-8E2F551A710E}" ShortID="226089975">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-1.2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotCreateAlter" ID="{8B4AC7E0-8941-4C48-8DCB-E5145403BDD3}" ShortID="571697280">
+													<Language>SFX</Language>
+													<AudioFile>FerroshotCreateAlter.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotCreateAlter" ID="{8B4AC7E0-8941-4C48-8DCB-E5145403BDD3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="FerroshotLaunch" ID="{6B6C2D17-7B0F-47B6-B266-2A9A3294B1EB}" ShortID="604742469">
+									<ChildrenList>
+										<Sound Name="FerroshotLaunch" ID="{DAC31866-4793-4F52-8E47-14F4284DEBE0}" ShortID="105327122">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotCreateFinal" ID="{6B2C23DB-2CE1-4587-AC94-CC67F5A3AC2D}" ShortID="16687540">
+													<Language>SFX</Language>
+													<AudioFile>FerroshotCreateFinal.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotCreateFinal" ID="{6B2C23DB-2CE1-4587-AC94-CC67F5A3AC2D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="FerroshotLaunchAlter" ID="{FAB41DB3-AEB6-41FE-8BCB-796D20B6DA91}" ShortID="443668259">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>11.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotLaunchAlter" ID="{D2298A4C-EECE-43EF-A727-366113F7582A}" ShortID="390082384">
+													<Language>SFX</Language>
+													<AudioFile>FerroshotLaunchAlter.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotLaunchAlter" ID="{D2298A4C-EECE-43EF-A727-366113F7582A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="FulminationState" ID="{1D1711A9-9F43-4D04-886B-D7D6AA2AAEB0}" ShortID="654874439">
+									<ChildrenList>
+										<Sound Name="FulminationState" ID="{6B09539C-9A6D-46F3-9337-EE3956E944E9}" ShortID="312553563">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationState" ID="{7CCAC082-2E94-4B11-95DD-CEE5081E7765}" ShortID="111936196">
+													<Language>SFX</Language>
+													<AudioFile>FulminationState.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationState" ID="{7CCAC082-2E94-4B11-95DD-CEE5081E7765}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="FulminationExit" ID="{FEE45E5F-505A-4C25-A1FA-33F7ED73E3DE}" ShortID="714176895">
+									<ChildrenList>
+										<Sound Name="FulminationExit" ID="{D5BD29A4-8AE8-405E-8164-5E39D3264887}" ShortID="281721834">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>7</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationExit" ID="{71F2F19C-F7D2-451A-880B-BA7B4210CDB3}" ShortID="426766206">
+													<Language>SFX</Language>
+													<AudioFile>FulminationExit.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationExit" ID="{71F2F19C-F7D2-451A-880B-BA7B4210CDB3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="FulminationExitAlter" ID="{C4A34999-5165-409B-89E4-0B8744E250A7}" ShortID="1013132553">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>7</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationExitAlter" ID="{777B5557-121C-4039-A352-B78843EFC541}" ShortID="452903732">
+													<Language>SFX</Language>
+													<AudioFile>FulminationExitAlter.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationExitAlter" ID="{777B5557-121C-4039-A352-B78843EFC541}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="StormbladeSwing" ID="{DEB6B775-82AA-4285-B1F2-5C1A5E4E7ABD}" ShortID="743261193">
+									<ChildrenList>
+										<Sound Name="Stormblade1" ID="{129FB170-C040-4D25-BA44-10F4DCA08CA9}" ShortID="137612137">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>5.5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Stormblade1Remake" ID="{D3A8EE34-DD41-4354-8F19-E2EEEB9AF7AA}" ShortID="760072484">
+													<Language>SFX</Language>
+													<AudioFile>Stormblade1Remake.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Stormblade1Remake" ID="{D3A8EE34-DD41-4354-8F19-E2EEEB9AF7AA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Stormblade2" ID="{A7A80AA6-DABF-4A4C-B7C7-3DD3DF884CB6}" ShortID="970362809">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Stormblade2Trim" ID="{281D2AC1-74BB-49A0-BD59-267C8365BA4F}" ShortID="590040022">
+													<Language>SFX</Language>
+													<AudioFile>Stormblade2Trim.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Stormblade2Trim" ID="{281D2AC1-74BB-49A0-BD59-267C8365BA4F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="FulminationEnter" ID="{6F8C2F60-F255-4E19-989F-06394054BD0F}" ShortID="650762914">
+									<ChildrenList>
+										<Sound Name="FulminationEnter" ID="{7150E337-2458-40CC-8584-11A14C1DEB6D}" ShortID="187487449">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>11</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationEnter" ID="{42127368-A1B2-48F5-B8BA-84D47761DF5B}" ShortID="444271671">
+													<Language>SFX</Language>
+													<AudioFile>FulminationEnter.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationEnter" ID="{42127368-A1B2-48F5-B8BA-84D47761DF5B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="StormbladeImpact" ID="{E3EC8F58-4E55-435E-8202-B13162C0F8CB}" ShortID="500488502">
+									<ChildrenList>
+										<Sound Name="StormbladeHit1" ID="{2E07233B-352D-4849-A103-EA26D1AFDD05}" ShortID="591291280">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHit1" ID="{7AED7CC8-7CC8-405A-BE22-41B0D06F5702}" ShortID="439898417">
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHit1.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHit1" ID="{7AED7CC8-7CC8-405A-BE22-41B0D06F5702}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="StormbladeHit2" ID="{75AED90B-0C14-40D3-B701-758F706F5E8A}" ShortID="204434550">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHit2" ID="{63B944C6-8AC7-43A6-AF28-1258051A412D}" ShortID="439305442">
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHit2.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHit2" ID="{63B944C6-8AC7-43A6-AF28-1258051A412D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="StormbladeHit3" ID="{E6B290D5-76D6-4117-B3C7-B325DEDA1661}" ShortID="1030536997">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHit3" ID="{0B757F99-061E-473E-A14D-9630C1356148}" ShortID="1038060243">
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHit3.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHit3" ID="{0B757F99-061E-473E-A14D-9630C1356148}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="StormbladeHitV4" ID="{FCABE6B4-2D8D-4E20-9D06-2FC9E80AEDDF}" ShortID="388803239">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHitV4" ID="{8086E64B-F917-45F5-B56F-CB577B517612}" ShortID="171555746">
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHitV4.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHitV4" ID="{8086E64B-F917-45F5-B56F-CB577B517612}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

@@ -348,14 +348,14 @@ namespace AmpMod
         //applies custom debuff/tracker component
         public void applyCharge(HealthComponent self, DamageInfo info)
         {
-            if (!self.gameObject.GetComponent<Tracker>())
+            if (!self.gameObject.GetComponent<AmpChargeTracker>())
             {
-                self.gameObject.AddComponent<Tracker>();
+                self.gameObject.AddComponent<AmpChargeTracker>();
                 
                 //assigns tracker values for purposes of creating the charge explosion's damage properties if/when the body gains 3 stacks of charge
-                self.gameObject.GetComponent<Tracker>().owner = info.attacker.gameObject;
-                self.gameObject.GetComponent<Tracker>().ownerBody = info.attacker.GetComponent<CharacterBody>();
-                self.gameObject.GetComponent<Tracker>().victim = self.gameObject;
+                self.gameObject.GetComponent<AmpChargeTracker>().owner = info.attacker.gameObject;
+                self.gameObject.GetComponent<AmpChargeTracker>().ownerBody = info.attacker.GetComponent<CharacterBody>();
+                self.gameObject.GetComponent<AmpChargeTracker>().victim = self.gameObject;
             }
 
             //apply one stack of chargebuildup
@@ -424,7 +424,7 @@ namespace AmpMod
                     //scale = body.bestFitRadius,
                 };
 
-                var tracker = body.gameObject.GetComponent<Tracker>();
+                var tracker = body.gameObject.GetComponent<AmpChargeTracker>();
                 tracker.DestroyOrbs();
 
                 GameObject chargeEffect = tracker.owner.gameObject.GetComponent<AmpLightningController>().chargeExplosion;

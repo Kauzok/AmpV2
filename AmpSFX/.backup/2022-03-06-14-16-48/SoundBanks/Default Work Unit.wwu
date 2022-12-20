@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F57F13A6-F967-43DC-B8E9-0E002545CC89}" SchemaVersion="89">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{F57F13A6-F967-43DC-B8E9-0E002545CC89}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="AmpSoundbank" ID="{D82793AD-5845-4D30-8149-EF08EA5BF2EA}">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="2"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ObjectInclusionList>
+						<ObjectRef Name="PlayBoltEnter" ID="{046BB635-45D9-4098-B497-2BB69AD8B7C8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayChargeExplosion" ID="{9147CC50-9D43-4123-B9FC-85C2B1663136}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFerroshotLaunchAlter" ID="{CFF46746-AB80-431B-A1C0-E9E981EB6AE6}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFulminationState" ID="{DA615D2B-F5EF-433A-9F01-AB71B4B3185D}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayStormbladeHit1" ID="{C24AF5AD-621F-439B-A0A4-1CE1AD5671C3}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayBoltStateWind" ID="{9A06F924-8101-4459-8AD9-DEE85A225E66}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayStormbladeHit3" ID="{B7109C38-D03A-448C-ADF9-8CAEAC3135FD}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFulminationEnter" ID="{D903EDE1-3257-465D-A12C-169D794CDF04}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayBoltStateFull" ID="{C47CAE11-B0F8-472E-974C-231D193CFDD4}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFerroshotLaunch" ID="{6C04C028-EF34-473A-A77A-2B857F43A7B3}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayStormbladeSwing2" ID="{606AADD7-0F62-490E-B637-778B1B93CBBD}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFerroshotCreate" ID="{FAC584A8-AE58-49D0-B033-54481B672A66}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayBoltExit" ID="{60DCBBF0-835F-4A0F-925F-2D249A8DF8B8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFulminationExit" ID="{7EB5BEE9-A435-4A75-B87C-262D42BE6B99}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayBoltState2sec" ID="{205C9611-BDA1-4A95-A44D-238BD4062CF1}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFerroshotCreateAlter" ID="{96DA14A5-35C4-4B5B-886C-44488276602F}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayBoltState2SecAlter" ID="{86A2626B-9BC0-4BB5-8328-B9318A68DB40}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayStormbladeHit4" ID="{9238F131-EC83-4BE5-B172-88B60E1BC74F}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayStormbladeSwing1" ID="{2A5BFE75-B3D9-4C39-BD65-FFB1DDDBA4B6}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayStormbladeHit2" ID="{C218BB76-85F0-4E09-8FC8-481B11368AD5}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="PlayFulminationExitAlter" ID="{BC0E9EA2-9B82-4FB5-9706-DDC4853211D7}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
