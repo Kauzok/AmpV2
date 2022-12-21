@@ -52,7 +52,9 @@ namespace AmpMod.Modules
         internal static GameObject electrifiedOverlay;
         internal static Material electrifiedMaterial;
         internal static GameObject chargeOrbObject;
-        internal static GameObject chargeOrbObjectRed;
+        internal static GameObject chargeOrbFullObject;
+        internal static GameObject chargeOrbRedObject;
+        internal static GameObject chargeOrbFullRedObject;
 
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
@@ -325,12 +327,16 @@ namespace AmpMod.Modules
         private static void CreateChargeOrb()
         {
             chargeOrbObject = mainAssetBundle.LoadAsset<GameObject>("ChargeBall");
-            chargeOrbObjectRed = mainAssetBundle.LoadAsset<GameObject>("ChargeBallRed");
+            chargeOrbFullObject = mainAssetBundle.LoadAsset<GameObject>("ChargeBallFull");
+            chargeOrbRedObject = mainAssetBundle.LoadAsset<GameObject>("ChargeBallRed");
+            chargeOrbFullRedObject = mainAssetBundle.LoadAsset<GameObject>("ChargeBallFullRed");
 
             PrefabAPI.RegisterNetworkPrefab(chargeOrbObject);
-            PrefabAPI.RegisterNetworkPrefab(chargeOrbObjectRed);
-
+            PrefabAPI.RegisterNetworkPrefab(chargeOrbFullObject);
+            PrefabAPI.RegisterNetworkPrefab(chargeOrbRedObject);
+            PrefabAPI.RegisterNetworkPrefab(chargeOrbFullRedObject);
         }
+
         private static void CreateBoltVehicle()
         {
             boltVehicle = mainAssetBundle.LoadAsset<GameObject>("BoltVehicle");

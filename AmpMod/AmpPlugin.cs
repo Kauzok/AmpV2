@@ -19,6 +19,7 @@ using UnityEngine.AddressableAssets;
 using MonoMod.Cil;
 using RoR2.Stats;
 using BepInEx.Configuration;
+using R2API.Networking;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -85,19 +86,22 @@ namespace AmpMod
             Modules.Tokens.AddTokens(); // register name tokens
             Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
-         /*   //material shader autoconversion
-            var materialAssets = Assets.mainAssetBundle.LoadAllAssets<Material>();
-           
-            foreach (Material material in materialAssets)
-            {
-                if (!material.shader.name.StartsWith("Stubbed")) { continue; }
+            // Register SyncOrbs INetMessage for usage in syncing orbs
+            NetworkingAPI.RegisterMessageType<AmpChargeTracker.SyncOrbs>();
 
-                //var replacementShader = Addressables.LoadAssetAsync<Shader>(material.shader.name.ToLower()).WaitForCompletion();
-                var replacementShader = LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]); //LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]);
-                if (replacementShader) { material.shader = replacementShader; Debug.Log("Replacing Shader"); }
-                if (!replacementShader) { Debug.Log("No Shader Found"); }
-                
-            } */
+            /*   //material shader autoconversion
+               var materialAssets = Assets.mainAssetBundle.LoadAllAssets<Material>();
+
+               foreach (Material material in materialAssets)
+               {
+                   if (!material.shader.name.StartsWith("Stubbed")) { continue; }
+
+                   //var replacementShader = Addressables.LoadAssetAsync<Shader>(material.shader.name.ToLower()).WaitForCompletion();
+                   var replacementShader = LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]); //LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]);
+                   if (replacementShader) { material.shader = replacementShader; Debug.Log("Replacing Shader"); }
+                   if (!replacementShader) { Debug.Log("No Shader Found"); }
+
+               } */
 
             // create your survivor here
             new Modules.Survivors.Amp().Initialize();
@@ -350,12 +354,11 @@ namespace AmpMod
         {
             if (!self.gameObject.GetComponent<AmpChargeTracker>())
             {
-                self.gameObject.AddComponent<AmpChargeTracker>();
+                AmpChargeTracker tracker = self.gameObject.AddComponent<AmpChargeTracker>();
                 
                 //assigns tracker values for purposes of creating the charge explosion's damage properties if/when the body gains 3 stacks of charge
-                self.gameObject.GetComponent<AmpChargeTracker>().owner = info.attacker.gameObject;
-                self.gameObject.GetComponent<AmpChargeTracker>().ownerBody = info.attacker.GetComponent<CharacterBody>();
-                self.gameObject.GetComponent<AmpChargeTracker>().victim = self.gameObject;
+                tracker.owner = info.attacker.gameObject;
+                tracker.victim = self.gameObject;
             }
 
             //apply one stack of chargebuildup
@@ -425,7 +428,6 @@ namespace AmpMod
                 };
 
                 var tracker = body.gameObject.GetComponent<AmpChargeTracker>();
-                tracker.DestroyOrbs();
 
                 GameObject chargeEffect = tracker.owner.gameObject.GetComponent<AmpLightningController>().chargeExplosion;
                 //set and spawn charge explosion effect
