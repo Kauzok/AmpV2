@@ -9,7 +9,7 @@ namespace AmpMod.SkillStates
 {
 
 
-	public class Surge : BaseSkillState
+    public class Surge : BaseSkillState
 	{
 		private float duration = 1.5f;
 		private float delay = .2f;

@@ -8,7 +8,7 @@ using System;
 
 namespace AmpMod.SkillStates
 {
-	public class Fulmination : BaseSkillState
+    public class Fulmination : BaseSkillState
 	{
 
 		[Header("Effect/Animation Variables")]

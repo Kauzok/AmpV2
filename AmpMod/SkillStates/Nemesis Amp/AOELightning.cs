@@ -6,6 +6,7 @@ using System.Linq;
 using EntityStates;
 using RoR2.Skills;
 using RoR2.Orbs;
+using UnityEngine;
 using UnityEngine.Networking;
 
 
@@ -15,13 +16,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
     {
         private float lightningRadius = Modules.StaticValues.stormRadius;
         private float baseStrikeDamage = Modules.StaticValues.baseBoltDamageCoefficient;
+        private GameObject lightningEffect;
         private HurtBox[] lightningTargets;
         private float duration;
 
         public override void OnEnter()
         {
             base.OnEnter();
-
+            lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
             //find all enemy hurtboxes within a radius
             if (NetworkServer.active)
             {
@@ -55,6 +57,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     isCrit = Util.CheckRoll(this.characterBody.crit, this.characterBody.master),
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
+                    orbEffect = lightningEffect,
                     target = lightningTargets[i]
                 });;
 

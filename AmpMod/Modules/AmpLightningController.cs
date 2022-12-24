@@ -4,7 +4,6 @@ using System.Text;
 using UnityEngine;
 using RoR2.Projectile;
 using RoR2;
-using AmpMod.Modules;
 
 namespace AmpMod.Modules
 {

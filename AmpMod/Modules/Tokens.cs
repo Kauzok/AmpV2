@@ -101,7 +101,7 @@ namespace AmpMod.Modules
 
             LanguageAPI.Add("ACHIEVEMENT_AMPGRANDMASTERYUNLOCK_NAME", "Amp: Grand Mastery");
             LanguageAPI.Add("ACHIEVEMENT_AMPGRANDMASTERYUNLOCK_DESCRIPTION", "As Amp, beat the game or obliterate on Typhoon.");
-            LanguageAPI.Add(AmpPlugin.developerPrefix + "_AMP_BODY_GRANDMASTERY", "Amp: Electric Burns");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_AMP_BODY_GRANDMASTERY", "Amp: Grand Mastery");
             #endregion
             #endregion
 

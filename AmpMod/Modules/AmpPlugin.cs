@@ -10,7 +10,6 @@ using AmpMod.SkillStates;
 using RoR2.Orbs;
 using System.Collections.Generic;
 using AmpMod.SkillStates.BaseStates;
-using AmpMod.Modules;
 using UnityEngine.Networking;
 using HG.Reflection;
 using IL;
@@ -24,7 +23,7 @@ using R2API.Networking;
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
-namespace AmpMod
+namespace AmpMod.Modules
 {
 
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
@@ -39,14 +38,14 @@ namespace AmpMod
         nameof(ItemAPI),
         //"OrbAPI",
         //"EffectAPI",
-        (nameof(UnlockableAPI)),
+        nameof(UnlockableAPI),
         "RecalculateStatsAPI",
         "NetworkingAPI",
     })]
 
     public class AmpPlugin : BaseUnityPlugin
     {
-  
+
         public const string MODUID = "com.NeonThink.Amp";
         public const string MODNAME = "Amp";
         public const string MODVERSION = "1.2.1";
@@ -67,24 +66,24 @@ namespace AmpMod
         };
 
 
-        
+
         private void Awake()
         {
             instance = this;
 
             //On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 
-            logger = base.Logger;
-        
+            logger = Logger;
+
 
             // load assets and read config
-            Modules.Assets.Initialize();
+            Assets.Initialize();
             Modules.Config.ReadConfig();
-            Modules.States.RegisterStates(); // register states for networking
-            Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
-            Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
-            Modules.Tokens.AddTokens(); // register name tokens
-            Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+            States.RegisterStates(); // register states for networking
+            Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
+            Projectiles.RegisterProjectiles(); // add and register custom projectiles
+            Tokens.AddTokens(); // register name tokens
+            ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
             // Register SyncOrbs INetMessage for usage in syncing orbs
             NetworkingAPI.RegisterMessageType<AmpChargeTracker.SyncOrbs>();
@@ -104,10 +103,10 @@ namespace AmpMod
                } */
 
             // create your survivor here
-            new Modules.Survivors.Amp().Initialize();
+            new Survivors.Amp().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
-            new Modules.ContentPacks().Initialize();
+            new ContentPacks().Initialize();
 
             //RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             //RoR2Application.onLoad += SetItemDisplays;
@@ -156,7 +155,7 @@ namespace AmpMod
                     if (damageReport.attackerBody.baseNameToken == developerPrefix + "_AMP_BODY_NAME" && deathEvent.victimWasBurning)
                     {
                         //Debug.Log("Burned enemy killed");
-                        statSheet2.PushStatValue(Modules.Survivors.Amp.ampTotalBurnedEnemiesKilled, 1UL);
+                        statSheet2.PushStatValue(Survivors.Amp.ampTotalBurnedEnemiesKilled, 1UL);
                     }
                 }
                 orig();
@@ -173,10 +172,10 @@ namespace AmpMod
             for (int i = 0; i < characterBodies.Count; i++)
             {
                 //BodyIndex AmpIndex = characterBodies[i].bodyIndex;
-               // isAmpThere |= (AmpIndex == BodyCatalog.FindBodyIndex(Modules.Survivors.MyCharacter.instance.bodyName));
+                // isAmpThere |= (AmpIndex == BodyCatalog.FindBodyIndex(Modules.Survivors.MyCharacter.instance.bodyName));
 
                 string ampName = characterBodies[i].baseNameToken;
-                isAmpThere |= (ampName == developerPrefix + "_AMP_BODY_NAME");
+                isAmpThere |= ampName == developerPrefix + "_AMP_BODY_NAME";
             }
 
             if (isAmpThere)
@@ -222,7 +221,7 @@ namespace AmpMod
             }
 
             orig(self);
-           
+
         }
 
         //Same as above but for mithrix kill quotes, consider changing to bodyIndex check method used in brothersightresponse
@@ -230,7 +229,7 @@ namespace AmpMod
         {
             if (damageReport.victimBody)
             {
-                if (damageReport.victimBody.baseNameToken == AmpPlugin.developerPrefix + "_AMP_BODY_NAME")
+                if (damageReport.victimBody.baseNameToken == developerPrefix + "_AMP_BODY_NAME")
                 {
                     RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
                     {
@@ -270,8 +269,8 @@ namespace AmpMod
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo info)
         {
-           
-           
+
+
             //unused passive that makes body immune to shock damage
             /* if (self.body.baseNameToken == "HENRY_BODY")
             {
@@ -292,10 +291,10 @@ namespace AmpMod
                 {
                     DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.Burn);
                 }
-                
+
             }
 
-            
+
             //creates fulmination orb; essentially a copy of lightning orb but with the effect changed to our own; responsible for creating chain damage and effect
             if (info.HasModdedDamageType(DamageTypes.fulminationChain))
             {
@@ -318,14 +317,14 @@ namespace AmpMod
                 lightningOrb2.procChainMask.AddProc(ProcType.ChainLightning);
                 lightningOrb2.procCoefficient = 0.2f;
                 lightningOrb2.damageColorIndex = DamageColorIndex.Default;
-                lightningOrb2.range += (float)(2);
+                lightningOrb2.range += 2;
                 HurtBox hurtBox2 = lightningOrb2.PickNextTarget(info.position);
                 if (hurtBox2)
                 {
                     lightningOrb2.target = hurtBox2;
                     OrbManager.instance.AddOrb(lightningOrb2);
                 }
-                
+
             }
 
 
@@ -342,7 +341,7 @@ namespace AmpMod
                 applyCharge(self, info);
             }
 
-   
+
 
             orig(self, info);
 
@@ -355,19 +354,19 @@ namespace AmpMod
             if (!self.gameObject.GetComponent<AmpChargeTracker>())
             {
                 AmpChargeTracker tracker = self.gameObject.AddComponent<AmpChargeTracker>();
-                
+
                 //assigns tracker values for purposes of creating the charge explosion's damage properties if/when the body gains 3 stacks of charge
                 tracker.owner = info.attacker.gameObject;
                 tracker.victim = self.gameObject;
             }
 
             //apply one stack of chargebuildup
-            self.body.AddTimedBuff(Buffs.chargeBuildup, Modules.StaticValues.chargeDuration, Modules.StaticValues.chargeMaxStacks);
+            self.body.AddTimedBuff(Buffs.chargeBuildup, StaticValues.chargeDuration, StaticValues.chargeMaxStacks);
 
         }
 
 
-        private void wormItemCheck(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        private void wormItemCheck(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
         {
             if (body)
             {
@@ -387,16 +386,16 @@ namespace AmpMod
             }
         }
 
-        private void overChargeStatGrant(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        private void overChargeStatGrant(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
         {
-          
-            
+
+
             if (body && body.HasBuff(Buffs.overCharge))
             {
-                
+
                 args.baseMoveSpeedAdd += StaticValues.overchargeMoveSpeed;
-                args.attackSpeedMultAdd +=  StaticValues.overchargeAttackSpeed;
-                
+                args.attackSpeedMultAdd += StaticValues.overchargeAttackSpeed;
+
                 /* if (body.modelLocator.modelTransform)
                  {
                      CharacterModel component = body.modelLocator.modelTransform.GetComponent<CharacterModel>();
@@ -415,7 +414,7 @@ namespace AmpMod
 
 
             //amount of charge build up stacks a body has
-            int chargeCount = body.GetBuffCount(Modules.Buffs.chargeBuildup);
+            int chargeCount = body.GetBuffCount(Buffs.chargeBuildup);
 
 
             //if body has more than 3 stacks of charge, make new blastattack with effect
@@ -433,7 +432,7 @@ namespace AmpMod
                 //set and spawn charge explosion effect
                 EffectManager.SpawnEffect(chargeEffect, effectData, true);
 
-        
+
 
                 //create and fire charge blastattack centered on enemy 
                 BlastAttack chargeBlast;
@@ -450,33 +449,33 @@ namespace AmpMod
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = tracker.owner,
                     position = body.corePosition,
-                    procChainMask = default(ProcChainMask),
+                    procChainMask = default,
                     procCoefficient = 1f,
                     radius = 7f,
                     teamIndex = tracker.ownerBody.teamComponent.teamIndex
                 };
 
-                 chargeBlast.Fire();
+                chargeBlast.Fire();
 
-                    /* var controller = body.gameObject.GetComponent<SkillStates.SkillComponents.ElectrifiedEffectController>();
-                    if (!controller)
-                    {
-                        ModelLocator modelLocator;
-                        modelLocator = tracker.victim.GetComponent<ModelLocator>();
-                        Debug.Log("adding overlay");
+                /* var controller = body.gameObject.GetComponent<SkillStates.SkillComponents.ElectrifiedEffectController>();
+                if (!controller)
+                {
+                    ModelLocator modelLocator;
+                    modelLocator = tracker.victim.GetComponent<ModelLocator>();
+                    Debug.Log("adding overlay");
 
-                        var electrifiedController = body.gameObject.AddComponent<SkillStates.SkillComponents.ElectrifiedEffectController>();
-                        electrifiedController.target = modelLocator.modelTransform.gameObject;
-                        electrifiedController.electrifiedBody = body;
-                    }
-                    */
-                    body.AddTimedBuff(Buffs.electrified, Modules.StaticValues.electrifiedDuration); 
+                    var electrifiedController = body.gameObject.AddComponent<SkillStates.SkillComponents.ElectrifiedEffectController>();
+                    electrifiedController.target = modelLocator.modelTransform.gameObject;
+                    electrifiedController.electrifiedBody = body;
+                }
+                */
+                body.AddTimedBuff(Buffs.electrified, StaticValues.electrifiedDuration);
 
 
-                    //removes stacks of charge
-                    body.ClearTimedBuffs(Modules.Buffs.chargeBuildup);
+                //removes stacks of charge
+                body.ClearTimedBuffs(Buffs.chargeBuildup);
 
-                           
+
 
             }
 

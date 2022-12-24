@@ -9,7 +9,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 {
 	public class NemAmpLightningOrb : GenericDamageOrb, IOrbFixedUpdateBehavior
 	{
-		// Token: 0x060040CA RID: 16586 RVA: 0x0010C4D0 File Offset: 0x0010A6D0
+		public GameObject orbEffect;
+
+
 		public override void Begin()
 		{
 			base.Begin();
@@ -20,16 +22,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			}
 		}
 
-		// Token: 0x060040CB RID: 16587 RVA: 0x0010C506 File Offset: 0x0010A706
-		public override GameObject GetOrbEffect()
+		/*public override GameObject GetOrbEffect()
 		{
 			return LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
-		}
+		} */
 
-		// Token: 0x060040CC RID: 16588 RVA: 0x0010C514 File Offset: 0x0010A714
 		public override void OnArrival()
 		{
-			EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), new EffectData
+			EffectManager.SpawnEffect(orbEffect, new EffectData
 			{
 				origin = this.lastKnownTargetPosition
 			}, true);
@@ -55,7 +55,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			}
 		}
 
-		// Token: 0x060040CD RID: 16589 RVA: 0x0010C5FD File Offset: 0x0010A7FD
+
 		public void FixedUpdate()
 		{
 			if (this.target && base.timeUntilArrival >= LightningStrikeOrb.positionLockDuration)
@@ -64,10 +64,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			}
 		}
 
-		// Token: 0x04003F42 RID: 16194
+
 		private Vector3 lastKnownTargetPosition;
 
-		// Token: 0x04003F43 RID: 16195
 		private static readonly float positionLockDuration = 0.3f;
 	}
 }
