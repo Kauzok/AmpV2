@@ -70,7 +70,7 @@ namespace AmpMod.SkillStates
 
 			//declares object that will be used as a vehicle; in this case, the "fireballvehicle" this uses the fireballvehicle from the game's asset bundle, so the skill will work like a shorter volcanic egg if this line is uncommented	
 			//boltObject = UnityEngine.Object.Instantiate<GameObject>(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle"), aimRay.origin, Quaternion.LookRotation(aimRay.direction));
-			Debug.Log("setting passenger");
+			//Debug.Log("setting passenger");
 
 			boltObject.GetComponent<VehicleSeat>().AssignPassenger(base.gameObject);
 			//boltSeat = boltObject.GetComponent<VehicleSeat>();

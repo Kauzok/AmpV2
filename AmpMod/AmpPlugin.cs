@@ -49,7 +49,7 @@ namespace AmpMod
   
         public const string MODUID = "com.NeonThink.Amp";
         public const string MODNAME = "Amp";
-        public const string MODVERSION = "1.0.9";
+        public const string MODVERSION = "1.2.1";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "NT";

@@ -23,7 +23,7 @@ namespace AmpMod.Modules
         public static DamageAPI.ModdedDamageType fulminationChain = DamageAPI.ReserveDamageType();
 
         public static DamageAPI.ModdedDamageType strongBurnIfCharged = DamageAPI.ReserveDamageType();
-       
+
         
 
     }

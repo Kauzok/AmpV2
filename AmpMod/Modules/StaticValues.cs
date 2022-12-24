@@ -14,11 +14,22 @@ namespace AmpMod.Modules
         public const string chargeDesc = "<style=cKeywordName>Charged</style>" + "<style=cSub>Applies one stack of <color=#0091ff>charge</color> to an enemy. On three stacks, cause an explosion dealing <style=cIsDamage>400% damage</style> that <color=#4cceff>electrifies</color> enemies.";
         public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
 
+        public const string nemCharacterName = "Nemesis Amp";
+        public const string nemCharacterSubtitle = "Avatar of the Storm";
+        public const string nemCharacterOutro = "..and so he left, with undeniable power.";
+        public const string nemCharacterOutroFailure = "..and so he vanished, TBD.";
+
         internal static string descriptionText = "Amp is an agile melee-ranged hybrid that focuses on dealing heavy AOE damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Modified Shockblade can be used in tandem with most of Amp's non-utility abilities, so keep slashing!" + Environment.NewLine + Environment.NewLine
              + "< ! > Each of Lorentz Cannon's projectiles has an individual status chance, so use it to rack up status effects fast." + Environment.NewLine + Environment.NewLine
              + "< ! > You can exit Surge early to immediately cancel your momentum, allowing you to precisely maneuver around the battlefield." + Environment.NewLine + Environment.NewLine
              + "< ! > Voltaic Bombardment hits much higher than the indicator implies, so use it to instantly take down weak flying enemies." + Environment.NewLine + Environment.NewLine;
+
+        internal static string nemDescriptionText = "Nemesis Amp is a ranged AOE character who's able to deal high damage quickly, but lacks mobility and defensive options.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
+             + "< ! > " + Environment.NewLine + Environment.NewLine
+             + "< ! > " + Environment.NewLine + Environment.NewLine
+             + "< ! > " + Environment.NewLine + Environment.NewLine
+             + "< ! > " + Environment.NewLine + Environment.NewLine;
 
         internal static string characterLore = "How long has it been? He pondered, and quickly decided it did not matter. Time had become irrelevant; all he knew was his duty. To find. To capture. To fight. To kill.\n\n"
             + "Electrocute.\n\n"
@@ -76,6 +87,25 @@ namespace AmpMod.Modules
 
         [Header("Bulwark of Storms Values")]
 
+
+
+        [Header("Unstoppable Current Values")]
+        internal const float lightningStreamTickDamageCoefficient = 1.5f;
+
+        [Header("Flux Blades Values")]
+        internal const float bladeDamageCoefficient = 2f;
+
+        [Header("Howitzer Spark Values")]
+        internal const float chargeBeamMinDamageCoefficient = 4f;
+        internal const float chargeBeamMaxDamageCoefficient = 17f;
+
+        [Header("Shocking Teleport Values")]
+        internal const float teleportBlastDamageCoeficient = 3f;
+
+        [Header("Electron Crash Values")]
+        internal const float baseBoltDamageCoefficient = 6f;
+        internal const float additionalBoltDamageCoefficient = 1.2f;
+        internal const float stormRadius = 12f;
 
 
         [Header("Charge Sound Strings")]

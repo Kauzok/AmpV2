@@ -5,6 +5,7 @@ using System;
 using RoR2;
 using EntityStates.Huntress;
 using AmpMod.SkillStates.Amp;
+using AmpMod.SkillStates.Nemesis_Amp;
 
 namespace AmpMod.Modules
 {
@@ -16,8 +17,10 @@ namespace AmpMod.Modules
         internal static void RegisterStates()
         {
 
+            #region AmpStates
             //generic states
             entityStates.Add(typeof(CancelSkill));
+            entityStates.Add(typeof(Survivors.AmpMain));
 
             //stormblade states
             entityStates.Add(typeof(BaseMeleeAttack));
@@ -53,8 +56,27 @@ namespace AmpMod.Modules
             entityStates.Add(typeof(BaseLightningAim));
             entityStates.Add(typeof(VoltaicBombardmentFire));
             entityStates.Add(typeof(VoltaicBombardmentAim));
+            #endregion
 
-            
+            #region NemAmp
+            //generic states
+            entityStates.Add(typeof(Survivors.NemAmpMain));
+
+            //unstoppable current states
+            entityStates.Add(typeof(LightningStream));
+
+            //flux blades states
+            entityStates.Add(typeof(FluxBlades));
+
+            //howitzer spark states
+            entityStates.Add(typeof(BaseChargeLightningBeam));
+            entityStates.Add(typeof(BaseFireLightningBeam));
+
+            //electron crash state
+            entityStates.Add(typeof(AOELightning));
+            #endregion
+
+
         }
     }
 }

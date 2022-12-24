@@ -110,7 +110,6 @@ namespace AmpMod.Modules.Survivors
                 ContentAddition.AddUnlockableDef(wormSkillUnlockableDef);
             }
 
-
             if (!Config.UnlockPlasmaSkill.Value)
             {
                 plasmaSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();

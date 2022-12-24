@@ -105,6 +105,49 @@ namespace AmpMod.Modules
             #endregion
             #endregion
 
+            #region NemAmp
+
+            #region Descriptions
+            LanguageAPI.Add(prefix + "NEM_NAME", Modules.StaticValues.characterName);
+            LanguageAPI.Add(prefix + "NEM_SUBTITLE", Modules.StaticValues.characterSubtitle);
+            LanguageAPI.Add(prefix + "NEM_DESCRIPTION", Modules.StaticValues.descriptionText);
+            LanguageAPI.Add(prefix + "NEM_OUTRO_FLAVOR", Modules.StaticValues.characterOutro);
+            LanguageAPI.Add(prefix + "NEM_LORE", Modules.StaticValues.characterLore);
+            LanguageAPI.Add(prefix + "NEM_OUTRO_FAILURE", Modules.StaticValues.characterOutroFailure);
+            #endregion
+
+            #region Passive
+            LanguageAPI.Add(prefix + "NEMAMP_PASSIVE_NAME", "Conductor");
+            LanguageAPI.Add(prefix + "NEMAMP_PASSIVE_DESCRIPTION", $"");
+            #endregion
+
+            #region Primary
+            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_LIGHTNING_NAME", "Fierce Arc");
+            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_LIGHTNING_DESCRIPTION", $"");
+            #endregion
+
+            #region Primary2
+            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_BLADES_NAME", "Flux Blades");
+            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_BLADES_DESCRIPTION", $"Fire an iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> damage on hit.");
+            #endregion
+
+            #region Secondary
+            LanguageAPI.Add(prefix + "NEMAMP_SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
+            LanguageAPI.Add(prefix + "NEMAMP_SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercingt</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}% damage</style> to <style=cIsDamage>{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style> damage.");
+            #endregion
+
+            #region Utility
+            LanguageAPI.Add(prefix + "NEMAMP_UTILITY_TELEPORT_NAME", "Shocking Rift");
+            LanguageAPI.Add(prefix + "NEMAMP_UTILITY_TELEPORT_DESCRIPTION", $"Immediately teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoeficient}% damage</style> damage upon arrival.");
+            #endregion
+
+            #region Special
+            LanguageAPI.Add(prefix + "NEMAMP_SPECIAL_SUMMONSTORM_NAME", "Electron Crash");
+            LanguageAPI.Add(prefix + "NEMAMP_UTILITY_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds a stack of <color=#0091ff>Controlled Charge </color>. Activate this ability to summon a lightning bolt onto every enemy within a large radius; the damage of the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% damage</style> base damage with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
+            #endregion
+
+            #endregion
+
             #region Mithrix Quotes
             LanguageAPI.Add("MITHRIX_SEE_AMP_1", "You wield stolen power. Relinquish it through death.");
             LanguageAPI.Add("MITHRIX_SEE_AMP_2", "Watch, brother. I will prove the fragility of your constructs.");
@@ -113,6 +156,7 @@ namespace AmpMod.Modules
             LanguageAPI.Add("MITHRIX_KILL_AMP_1", "A pity. You may have been a useful servant.");
             LanguageAPI.Add("MITHRIX_KILL_AMP_2", "Frail sparks.");
             #endregion
+
         }
     }
 }
