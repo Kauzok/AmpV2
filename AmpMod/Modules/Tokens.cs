@@ -129,7 +129,7 @@ namespace AmpMod.Modules
 
             #region Primary
             LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fierce Arc");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on to an enemy with a continuous stream of electricity that deals 150% damage per second.");
             #endregion
 
             #region Primary2
@@ -139,7 +139,7 @@ namespace AmpMod.Modules
 
             #region Secondary
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
-            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}% damage</style> to <style=cIsDamage>{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style> damage.");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Utility
@@ -149,7 +149,7 @@ namespace AmpMod.Modules
 
             #region Special
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Electron Crash");
-            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds a stack of <color=#0091ff>Controlled Charge</color>. Activate this ability to summon a lightning bolt onto every enemy within a large radius; the damage of the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% damage</style> base damage with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this ability to summon a lightning bolt onto every enemy within a large radius; the damage of the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
             #endregion
 
             #endregion

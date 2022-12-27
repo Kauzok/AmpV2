@@ -118,6 +118,7 @@ namespace AmpMod.Modules
 
         #region Nemesis Amp Assets
         internal static GameObject chargeBeamMuzzleEffect;
+        internal static GameObject chargeBeamPrefab;
         internal static GameObject teleportExplosionEffect;
         internal static GameObject teleportAimReticle;
         internal static GameObject blessingEffect;

@@ -112,7 +112,7 @@ namespace AmpMod.Modules
         [Header("Electron Crash Values")]
         internal const float baseBoltDamageCoefficient = 6f;
         internal const float additionalBoltDamageCoefficient = 1.2f;
-        internal const float stormRadius = 22f;
+        internal const float stormRadius = 27f;
         internal const float controlledChargeDuration = 10f;
 
 

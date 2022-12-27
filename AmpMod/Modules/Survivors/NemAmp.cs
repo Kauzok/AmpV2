@@ -49,24 +49,28 @@ namespace AmpMod.Modules.Survivors
         };
 
 
+        internal static Material henryMat = Modules.Assets.CreateMaterial("matHenry");
+
         internal static Material swordMat = Modules.Assets.CreateMaterial("matSword");
         internal static Material suitMat = Modules.Assets.CreateMaterial("matSuit");
-        internal override int mainRendererIndex { get; set; } = 1;
+        internal override int mainRendererIndex { get; set; } = 2;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
 
-                       new CustomRendererInfo
+             new CustomRendererInfo
                 {
                     childName = "SwordModel",
-                    material = Assets.CreateStandardMaterial("matHenry"),
+                    material = henryMat,
                 },
                 new CustomRendererInfo
                 {
                     childName = "GunModel",
+                    material = henryMat,
                 },
                 new CustomRendererInfo
                 {
                     childName = "Model",
+                    material = henryMat
                 }};
 
         internal override Type characterMainState { get; set; } = typeof(NemAmpMain);
@@ -148,7 +152,7 @@ namespace AmpMod.Modules.Survivors
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = false,
-                cancelSprintingOnActivation = false,
+                cancelSprintingOnActivation = true,
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,

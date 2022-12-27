@@ -66,7 +66,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.FixedUpdate();
             if (base.isAuthority)
             {
-
+                this.outer.SetNextStateToMain();
             }
         }
 
