@@ -24,7 +24,8 @@ namespace AmpMod.Modules
 
         public static DamageAPI.ModdedDamageType strongBurnIfCharged = DamageAPI.ReserveDamageType();
 
-        
+        public static DamageAPI.ModdedDamageType controlledChargeProc = DamageAPI.ReserveDamageType();
+
 
     }
 }

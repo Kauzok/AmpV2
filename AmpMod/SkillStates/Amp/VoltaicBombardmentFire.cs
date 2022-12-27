@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using RoR2.Projectile;
 using R2API;
 using AmpMod.Modules;
+using AmpMod.SkillStates.BaseStates;
 using System.Linq;
 using System.Collections.ObjectModel;
+using AmpMod.SkillStates.Amp.BaseStates;
 
 namespace AmpMod.SkillStates.Amp
 {
-    public class VoltaicBombardmentFire : BaseSkillState
+    public class VoltaicBombardmentFire : BaseSkillFire
     {
         public GameObject muzzleflashEffectPrefab;
         public float baseDuration;
@@ -33,6 +35,8 @@ namespace AmpMod.SkillStates.Amp
 
         public override void OnEnter()
         {
+            boltPosition = this.aimPosition;
+            lightningRotation = this.aimRotation;
 
             base.OnEnter();
             lightningController = base.GetComponent<AmpLightningController>();

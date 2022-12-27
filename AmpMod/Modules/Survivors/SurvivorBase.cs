@@ -3,6 +3,7 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using AmpMod.SkillStates.Nemesis_Amp;
 
 namespace AmpMod.Modules.Survivors
 {
@@ -18,6 +19,10 @@ namespace AmpMod.Modules.Survivors
         internal string fullBodyName => bodyName + "Body";
 
         internal abstract ConfigEntry<bool> characterEnabled { get; set; }
+
+        internal abstract bool isAmp { get; set; }
+
+        internal abstract bool isNemAmp { get; set; }
 
         internal abstract UnlockableDef characterUnlockableDef { get; set; }
 
@@ -49,7 +54,15 @@ namespace AmpMod.Modules.Survivors
 
 
                 bodyPrefab = Modules.Prefabs.CreatePrefab(bodyName + "Body", "mdl" + bodyName, bodyInfo);
-                bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(AmpMain));
+                if (isAmp)
+                {
+                    bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(AmpMain));
+                }
+
+                if (isNemAmp)
+                {
+                    bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(NemAmpMain));
+                }
                
                 Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos, mainRendererIndex);
 
@@ -65,10 +78,23 @@ namespace AmpMod.Modules.Survivors
 
                 // var wormSkill = bodyPrefab.AddComponent<SkillStates.SkillComponents.WormSkillComponent>();
 
-                bodyPrefab.AddComponent<AmpLightningController>();
+                if (isAmp)
+                {
+                    bodyPrefab.AddComponent<AmpLightningController>();
 
-                var menuSound = displayPrefab.AddComponent<SkillStates.SkillComponents.PlayMenuSound>();
-                menuSound.soundString = "PlayLobbyEntrance";
+                    var menuSound = displayPrefab.AddComponent<SkillStates.SkillComponents.PlayMenuSound>();
+                    menuSound.soundString = "PlayLobbyEntrance";
+                }
+
+                if (isNemAmp)
+                {
+                    bodyPrefab.AddComponent<StackDamageController>();
+                    bodyPrefab.AddComponent<NemAmpLightningController>();
+                }
+
+                isAmp = false;
+                isNemAmp = false;
+
             }
         }
       

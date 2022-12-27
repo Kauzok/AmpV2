@@ -19,11 +19,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject lightningEffect;
         private HurtBox[] lightningTargets;
         private float duration;
+        private StackDamageController stackDamageController;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
+            stackDamageController = base.GetComponent<StackDamageController>();
+            stackDamageController.newSkillUsed = this;
+
+            //lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
             //find all enemy hurtboxes within a radius
             if (NetworkServer.active)
             {
@@ -48,7 +52,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             for (int i = 0; i < lightningTargets.Length; i++)
             {
                 int controlledChargeCount = lightningTargets[i].healthComponent.body.GetBuffCount(Modules.Buffs.controlledCharge);
-                OrbManager.instance.AddOrb(new NemAmpLightningOrb
+                OrbManager.instance.AddOrb(new NemAmpLightningStrikeOrb
                 {
                     attacker = base.gameObject,
                     damageColorIndex = DamageColorIndex.Default,
@@ -57,11 +61,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     isCrit = Util.CheckRoll(this.characterBody.crit, this.characterBody.master),
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
-                    orbEffect = lightningEffect,
+                    //orbEffect = lightningEffect,
                     target = lightningTargets[i]
                 });;
+                
+                //clear stacks of controlled charge on the enemies who've been hit
+                if (NetworkServer.active)
+                {
+                    lightningTargets[i].healthComponent.body.ClearTimedBuffs(Modules.Buffs.controlledCharge);
+                }
 
-                lightningTargets[i].healthComponent.body.ClearTimedBuffs(Modules.Buffs.controlledCharge);
+                
             }
 
 

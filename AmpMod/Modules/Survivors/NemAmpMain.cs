@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using RoR2;
 using UnityEngine;
+using AmpMod.SkillStates.Nemesis_Amp;
 using EntityStates;
 
 namespace AmpMod.Modules.Survivors
@@ -16,7 +17,7 @@ namespace AmpMod.Modules.Survivors
         private Material swordMat;
         private float swordTransition;
         private GameObject sparkActiveEffect;
-        private AmpLightningController lightningController;
+        private NemAmpLightningController lightningController;
         private ChildLocator childLocator;
 
         public LocalUser localUser;
@@ -25,17 +26,9 @@ namespace AmpMod.Modules.Survivors
         {
             base.OnEnter();
 
-            if (base.healthComponent.combinedHealth >= 0)
-            {
-                this.sparksActive = true;
-
-            }
-            else
-            {
-                this.sparksActive = false;
-                this.swordTransition = 0;
-            }
-            this.lightningController = base.characterBody.GetComponent<AmpLightningController>();
+      
+     
+            this.lightningController = base.characterBody.GetComponent<NemAmpLightningController>();
 
             if (base.characterBody)
             {
@@ -47,35 +40,13 @@ namespace AmpMod.Modules.Survivors
                 }
             }
 
-            if (this.childLocator)
-            {
-
-                this.childLocator.FindChild("SwordSparks")?.gameObject.SetActive(false);
-                bool isRed = lightningController.isRed;
-                if (isRed) this.sparkActiveEffect = this.childLocator.FindChild("SwordSparksRed")?.gameObject;
-                else this.sparkActiveEffect = this.childLocator.FindChild("SwordSparks")?.gameObject;
-
-
-            }
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
-            if (base.healthComponent.combinedHealth >= (0))
-            {
-
-                this.sparksActive = true;
-            }
-
-
-            if (this.sparksActive)
-            {
-
-                if (this.sparkActiveEffect) this.sparkActiveEffect.SetActive(true);
-
-            }
+     
         }
 
     }

@@ -23,6 +23,7 @@ namespace AmpMod.Modules
         [Header("Materials")]
         internal static Material matRedLightning;
         internal static Material matBlueLightning;
+        internal static Material matPurpleLightning;
         internal static Material matRedTrail;
         internal static Material matBlueTrail;
         internal static Material matLightningLongRed;
@@ -40,6 +41,7 @@ namespace AmpMod.Modules
         internal static Color lightRedLightningColor = new Color32(255, 100, 100, 255);
         internal static Color darkRedLightningColor = new Color32(103, 0, 0, 255);
 
+        #region Amp Assets
         [Header("Shockblade Effects")]
         internal static GameObject swordSwingEffect;
         internal static GameObject swordHitImpactEffect;
@@ -111,6 +113,17 @@ namespace AmpMod.Modules
 
         [Header("Lobby Effects")]
         internal static GameObject lobbyEntranceEffect;
+
+        #endregion
+
+        #region Nemesis Amp Assets
+        internal static GameObject chargeBeamMuzzleEffect;
+        internal static GameObject teleportExplosionEffect;
+        internal static GameObject teleportAimReticle;
+        internal static GameObject blessingEffect;
+        internal static GameObject fireBeamEffect;
+        internal static GameObject purpleStormBoltEffect;
+        #endregion
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
@@ -969,7 +982,7 @@ namespace AmpMod.Modules
         {
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
-            mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/deferred/standard");
+            mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/deferred/HGstandard");
             return mat;
         }
         public static Material CreateIntersectMaterial(string materialName)

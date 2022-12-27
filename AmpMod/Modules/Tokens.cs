@@ -107,43 +107,49 @@ namespace AmpMod.Modules
 
             #region NemAmp
 
+            string nemPrefix = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_";
+
+            #region Skins
+            LanguageAPI.Add(nemPrefix + "DEFAULT_SKIN_NAME", "Default");
+            #endregion
+
             #region Descriptions
-            LanguageAPI.Add(prefix + "NEM_NAME", Modules.StaticValues.characterName);
-            LanguageAPI.Add(prefix + "NEM_SUBTITLE", Modules.StaticValues.characterSubtitle);
-            LanguageAPI.Add(prefix + "NEM_DESCRIPTION", Modules.StaticValues.descriptionText);
-            LanguageAPI.Add(prefix + "NEM_OUTRO_FLAVOR", Modules.StaticValues.characterOutro);
-            LanguageAPI.Add(prefix + "NEM_LORE", Modules.StaticValues.characterLore);
-            LanguageAPI.Add(prefix + "NEM_OUTRO_FAILURE", Modules.StaticValues.characterOutroFailure);
+            LanguageAPI.Add(nemPrefix + "NAME", Modules.StaticValues.nemCharacterName);
+            LanguageAPI.Add(nemPrefix + "SUBTITLE", Modules.StaticValues.nemCharacterSubtitle);
+            LanguageAPI.Add(nemPrefix + "DESCRIPTION", Modules.StaticValues.nemDescriptionText);
+            LanguageAPI.Add(nemPrefix + "OUTRO_FLAVOR", Modules.StaticValues.nemCharacterOutro);
+            //LanguageAPI.Add(nemPrefix + "LORE", Modules.StaticValues.nemCharacterLore);
+            LanguageAPI.Add(nemPrefix + "OUTRO_FAILURE", Modules.StaticValues.nemCharacterOutroFailure);
             #endregion
 
             #region Passive
-            LanguageAPI.Add(prefix + "NEMAMP_PASSIVE_NAME", "Conductor");
-            LanguageAPI.Add(prefix + "NEMAMP_PASSIVE_DESCRIPTION", $"");
+            LanguageAPI.Add(nemPrefix + "PASSIVE_NAME", "Blessing of Lightning");
+            LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>immediately</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.maxGrowthDamageCoefficient}%</style>. The bonus is maintained as long as you are dealing damage.");
             #endregion
 
             #region Primary
-            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_LIGHTNING_NAME", "Fierce Arc");
-            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_LIGHTNING_DESCRIPTION", $"");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fierce Arc");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"");
             #endregion
 
             #region Primary2
-            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_BLADES_NAME", "Flux Blades");
-            LanguageAPI.Add(prefix + "NEMAMP_PRIMARY_BLADES_DESCRIPTION", $"Fire an iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> damage on hit.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Flux Blades");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire an iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> damage on hit.");
             #endregion
 
             #region Secondary
-            LanguageAPI.Add(prefix + "NEMAMP_SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
-            LanguageAPI.Add(prefix + "NEMAMP_SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercingt</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}% damage</style> to <style=cIsDamage>{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style> damage.");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}% damage</style> to <style=cIsDamage>{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style> damage.");
             #endregion
 
             #region Utility
-            LanguageAPI.Add(prefix + "NEMAMP_UTILITY_TELEPORT_NAME", "Shocking Rift");
-            LanguageAPI.Add(prefix + "NEMAMP_UTILITY_TELEPORT_DESCRIPTION", $"Immediately teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoeficient}% damage</style> damage upon arrival.");
+            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Shocking Teleport");
+            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_DESCRIPTION", $"Immediately teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoefficient}% damage</style> damage upon arrival.");
             #endregion
 
             #region Special
-            LanguageAPI.Add(prefix + "NEMAMP_SPECIAL_SUMMONSTORM_NAME", "Electron Crash");
-            LanguageAPI.Add(prefix + "NEMAMP_UTILITY_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds a stack of <color=#0091ff>Controlled Charge </color>. Activate this ability to summon a lightning bolt onto every enemy within a large radius; the damage of the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% damage</style> base damage with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Electron Crash");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds a stack of <color=#0091ff>Controlled Charge</color>. Activate this ability to summon a lightning bolt onto every enemy within a large radius; the damage of the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% damage</style> base damage with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
             #endregion
 
             #endregion

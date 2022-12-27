@@ -53,12 +53,12 @@ namespace AmpMod.Modules
             entityStates.Add(typeof(CancelWurm));
 
             //voltaicbombardment states
-            entityStates.Add(typeof(BaseLightningAim));
+            entityStates.Add(typeof(BaseSkillAim));
             entityStates.Add(typeof(VoltaicBombardmentFire));
             entityStates.Add(typeof(VoltaicBombardmentAim));
             #endregion
 
-            #region NemAmp
+            #region NemAmpStates
             //generic states
             entityStates.Add(typeof(Survivors.NemAmpMain));
 
@@ -68,9 +68,13 @@ namespace AmpMod.Modules
             //flux blades states
             entityStates.Add(typeof(FluxBlades));
 
+            //electric rift states
+            entityStates.Add(typeof(AimTeleport));
+            entityStates.Add(typeof(FireTeleport));
+
             //howitzer spark states
-            entityStates.Add(typeof(BaseChargeLightningBeam));
-            entityStates.Add(typeof(BaseFireLightningBeam));
+            entityStates.Add(typeof(ChargeLightningBeam));
+            entityStates.Add(typeof(FireLightningBeam));
 
             //electron crash state
             entityStates.Add(typeof(AOELightning));

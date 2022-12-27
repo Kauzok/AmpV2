@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using AmpMod.SkillStates.Amp;
 using AmpMod.SkillStates.BaseStates;
+using AmpMod.SkillStates.Amp.BaseStates;
 
 namespace AmpMod.SkillStates
 {
 	
-	public class VoltaicBombardmentAim : BaseLightningAim
+	public class VoltaicBombardmentAim : BaseSkillAim
 	{
         private GameObject chargeEffect;
 
@@ -40,7 +41,7 @@ namespace AmpMod.SkillStates
             }*/
         }
 
-        protected override VoltaicBombardmentFire GetNextState()
+        protected override BaseSkillFire GetNextState()
         {
             return new VoltaicBombardmentFire();
         }

@@ -15,9 +15,8 @@ namespace AmpMod.Modules
         public static SkillDef fulminationCancelSkillDef;
         public static string prefix = AmpPlugin.developerPrefix;
 
-        internal static void CreateSkillFamilies(GameObject targetPrefab)
+        internal static void CreateSkillFamilies(GameObject targetPrefab, string BodyName)
         {
-
 
             foreach (GenericSkill obj in targetPrefab.GetComponentsInChildren<GenericSkill>())
             {
@@ -33,7 +32,7 @@ namespace AmpMod.Modules
             skillLocator.primary._skillFamily = primaryFamily;
 
             //for making passive
-            CreatePassiveSkill(skillLocator);
+            CreatePassiveSkill(skillLocator, BodyName);
            
 
             skillLocator.secondary = targetPrefab.AddComponent<GenericSkill>();
@@ -110,14 +109,27 @@ namespace AmpMod.Modules
             }); ;
         }
 
-       internal static void CreatePassiveSkill(SkillLocator skillLocator)
+       internal static void CreatePassiveSkill(SkillLocator skillLocator, string BodyName)
         {
-            string prefix = AmpPlugin.developerPrefix + "_AMP_BODY_";
-            skillLocator.passiveSkill.enabled = true;
-            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCharge");
-            skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
-            skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
-            skillLocator.passiveSkill.keywordToken = prefix + "KEYWORD_CHARGE";
+          if (BodyName == "Amp" )
+            {
+                string prefix = AmpPlugin.developerPrefix + "_AMP_BODY_";
+                skillLocator.passiveSkill.enabled = true;
+                skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCharge");
+                skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
+                skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
+                skillLocator.passiveSkill.keywordToken = prefix + "KEYWORD_CHARGE";
+            }
+            else
+            {
+                string prefix = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_";
+                skillLocator.passiveSkill.enabled = true;
+                skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCharge");
+                skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
+                skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
+            }
+ 
+ 
             
         }
 

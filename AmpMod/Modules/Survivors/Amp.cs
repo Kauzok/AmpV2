@@ -20,6 +20,9 @@ namespace AmpMod.Modules.Survivors
 
         internal override ConfigEntry<bool> characterEnabled { get; set; }
 
+        internal override bool isAmp { get; set; } = true;
+
+        internal override bool isNemAmp { get; set; } = false;
 
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
@@ -145,7 +148,7 @@ namespace AmpMod.Modules.Survivors
 
         internal override void InitializeSkills()
         {
-            Modules.Skills.CreateSkillFamilies(bodyPrefab);
+            Modules.Skills.CreateSkillFamilies(bodyPrefab, "Amp");
 
             string prefix = AmpPlugin.developerPrefix;
 

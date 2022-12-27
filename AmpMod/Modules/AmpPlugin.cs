@@ -105,6 +105,9 @@ namespace AmpMod.Modules
             // create your survivor here
             new Survivors.Amp().Initialize();
 
+            //nemesis Amp
+            new Survivors.NemAmp().Initialize();
+
             // now make a content pack and add it- this part will change with the next update
             new ContentPacks().Initialize();
 
@@ -280,6 +283,12 @@ namespace AmpMod.Modules
                 }
             } */
 
+            if (Util.CheckRoll(info.procCoefficient * 100f, info.attacker.GetComponent<CharacterBody>().master) && info.HasModdedDamageType(DamageTypes.controlledChargeProc))
+            {
+
+                self.body.AddTimedBuff(Buffs.controlledCharge, StaticValues.controlledChargeDuration);
+            }
+
             if (info.HasModdedDamageType(DamageTypes.strongBurnIfCharged))
             {
                 if (self.body.HasBuff(Buffs.chargeBuildup) || self.body.HasBuff(Buffs.electrified))
@@ -364,6 +373,7 @@ namespace AmpMod.Modules
             self.body.AddTimedBuff(Buffs.chargeBuildup, StaticValues.chargeDuration, StaticValues.chargeMaxStacks);
 
         }
+
 
 
         private void wormItemCheck(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
