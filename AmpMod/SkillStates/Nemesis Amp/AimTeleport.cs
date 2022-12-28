@@ -16,7 +16,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnEnter()
         {
             base.OnEnter();
-            this.chargeEffectPrefab = base.GetComponent<AmpMod.Modules.AmpLightningController>().bombardmentMuzzleEffect;
+            //this.chargeEffectPrefab = base.GetComponent<NemAmpLightningController>().bombardmentMuzzleEffect;
             this.chargeSoundString = "Play_mage_m2_charge";
             this.lightningRadius = 15f;
             

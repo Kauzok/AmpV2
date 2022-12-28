@@ -23,31 +23,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				case LightningOrb.LightningType.Tesla:
 					path = "Prefabs/Effects/OrbEffects/TeslaOrbEffect";
 					break;
-				case LightningOrb.LightningType.BFG:
-					path = "Prefabs/Effects/OrbEffects/BeamSphereOrbEffect";
-					base.duration = 0.4f;
-					break;
-				case LightningOrb.LightningType.TreePoisonDart:
-					path = "Prefabs/Effects/OrbEffects/TreePoisonDartOrbEffect";
-					this.speed = 40f;
-					base.duration = base.distanceToTarget / this.speed;
-					break;
-				case LightningOrb.LightningType.HuntressGlaive:
-					path = "Prefabs/Effects/OrbEffects/HuntressGlaiveOrbEffect";
-					base.duration = base.distanceToTarget / this.speed;
-					this.canBounceOnSameTarget = true;
-					break;
 				case LightningOrb.LightningType.Loader:
-					path = "Prefabs/Effects/OrbEffects/LoaderLightningOrbEffect";
-					break;
-				case LightningOrb.LightningType.RazorWire:
-					path = "Prefabs/Effects/OrbEffects/RazorwireOrbEffect";
-					base.duration = 0.2f;
-					break;
-				case LightningOrb.LightningType.CrocoDisease:
-					path = "Prefabs/Effects/OrbEffects/CrocoDiseaseOrbEffect";
-					base.duration = 0.6f;
-					this.targetsToFindPerBounce = 2;
+					path = null;
 					break;
 				case LightningOrb.LightningType.MageLightning:
 					path = "Prefabs/Effects/OrbEffects/MageLightningOrbEffect";
@@ -60,7 +37,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				genericFloat = base.duration
 			};
 			effectData.SetHurtBoxReference(this.target);
-			EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>(path), effectData, true);
+			if (this.lightningType != LightningType.Loader)
+            {
+				EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>(path), effectData, true);
+			}
+			
 		}
 	}
 }

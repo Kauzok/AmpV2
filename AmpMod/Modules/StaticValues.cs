@@ -104,6 +104,7 @@ namespace AmpMod.Modules
         [Header("Howitzer Spark Values")]
         internal const float chargeBeamMinDamageCoefficient = 4f;
         internal const float chargeBeamMaxDamageCoefficient = 17f;
+        internal const float additionalPierceDamageCoefficient = 2f;
 
         [Header("Shocking Teleport Values")]
         internal const float teleportBlastDamageCoefficient = 3f;
@@ -112,7 +113,7 @@ namespace AmpMod.Modules
         [Header("Electron Crash Values")]
         internal const float baseBoltDamageCoefficient = 6f;
         internal const float additionalBoltDamageCoefficient = 1.2f;
-        internal const float stormRadius = 27f;
+        internal const float stormRadius = 30f;
         internal const float controlledChargeDuration = 10f;
 
 

@@ -16,7 +16,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public float baseDuration = .3f;
 
         private float duration;
-        private float radius = 5f;
+        private float radius = 2f;
 
         public float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
         public float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
@@ -62,7 +62,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 float calcedDamage = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                 float num2 = this.charge * this.maxForce;
-                Debug.Log("calced damage is " + calcedDamage);
+                //Debug.Log("calced damage is " + calcedDamage);
                 //Debug.Log("firing");
                 BulletAttack beamAttack = new BulletAttack
                 {
@@ -80,12 +80,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     falloffModel = BulletAttack.FalloffModel.None,
                     stopperMask = LayerIndex.world.mask,
                     procCoefficient = 1f,
-                    maxDistance = 150f,
+                    maxDistance = 100f,
                     smartCollision = true,
                     damageType = DamageType.Generic
                 };
                 beamAttack.AddModdedDamageType(DamageTypes.controlledChargeProc);
-
+                
                 beamAttack.Fire();
 
                 if (base.characterMotor)

@@ -88,6 +88,7 @@ namespace AmpMod.Modules.Survivors
 
                 if (isNemAmp)
                 {
+                    bodyPrefab.AddComponent<NemAmpLightningTracker>();
                     bodyPrefab.AddComponent<StackDamageController>();
                     bodyPrefab.AddComponent<NemAmpLightningController>();
                 }

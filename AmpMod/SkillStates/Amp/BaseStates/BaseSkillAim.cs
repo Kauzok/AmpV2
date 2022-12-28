@@ -139,7 +139,7 @@ namespace AmpMod.SkillStates.BaseStates
                if (!hasMuzzleEffect)
                {
                     hasMuzzleEffect = true;
-                    if (this.childLocator)
+                    if (this.childLocator && this.chargeEffectPrefab)
                     {
                     
                         {

@@ -128,7 +128,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Primary
-            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fierce Arc");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fulmination");
             LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on to an enemy with a continuous stream of electricity that deals 150% damage per second.");
             #endregion
 
@@ -139,7 +139,7 @@ namespace AmpMod.Modules
 
             #region Secondary
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
-            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam does {100f * StaticValues.additionalPierceDamageCoefficient}% extra damage</style> to the next enemy hit.");
             #endregion
 
             #region Utility

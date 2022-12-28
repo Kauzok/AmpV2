@@ -23,15 +23,25 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             stackDamageController = base.GetComponent<StackDamageController>();
             base.OnEnter();
-            base.gameObject.transform.position = this.aimPosition;
+            
 
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
 
+            DoTeleport();
+            FireTeleportBlast();
+
             
         }
 
-        public void FireLaunchBlast()
+        public void DoTeleport()
+        {
+            TeleportHelper.TeleportGameObject(base.gameObject, aimPosition);
+        
+        }
+
+
+        public void FireTeleportBlast()
         {
             if (base.isAuthority)
             {

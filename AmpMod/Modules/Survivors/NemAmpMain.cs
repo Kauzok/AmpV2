@@ -26,8 +26,8 @@ namespace AmpMod.Modules.Survivors
         {
             base.OnEnter();
 
-      
-     
+
+          
             this.lightningController = base.characterBody.GetComponent<NemAmpLightningController>();
 
             if (base.characterBody)
