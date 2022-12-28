@@ -26,6 +26,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
             stackDamageController.newSkillUsed = this;
+            stackDamageController.resetComboTimer();
 
             //lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
             //find all enemy hurtboxes within a radius

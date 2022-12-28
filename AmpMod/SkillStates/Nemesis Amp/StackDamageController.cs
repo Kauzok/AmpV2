@@ -20,6 +20,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private BaseState lastSkillUsed;
         public BaseState newSkillUsed;
         private ChildLocator childLocator;
+        private float repeatTimer;
         private float comboTimer;
         private bool isInCombo;
         private float prevTime;
@@ -27,7 +28,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private int growthBuffCount;
         
 
-        private void Start()
+        private void Awake()
         {
             body = base.GetComponent<CharacterBody>();
             childLocator = base.GetComponent<ChildLocator>();
@@ -42,43 +43,55 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private void FixedUpdate()
         {
 
-            growthBuffCount = body.GetBuffCount(Buffs.damageGrowth);
+            
 
             if (NetworkServer.active)
             {
+                growthBuffCount = body.GetBuffCount(Buffs.damageGrowth);
+
                 //constantly count with timer, it's a float so this won't overflow unless you keep the game open for multiple years
                 comboTimer += Time.fixedDeltaTime;
+                //use another timer that doesn't reset on skill use; this one only resets when we have a combo, in order to prevent players from maintaining damage by spamming their m1
+                repeatTimer += Time.fixedDeltaTime;
 
-
-                //now, we will only apply the buff if the new skill used is different from the last skill used and if prevTime is valid
-                if (newSkillUsed != lastSkillUsed && lastSkillUsed != null && prevTime != -1f && prevTime < comboTime)
+                if (newSkillUsed != null && lastSkillUsed != null)
                 {
-                    //this means we are now in a skill combo
-                    isInCombo = true;
-
-                    //we now nullify prevTime by setting it = -1; through this, we essentially use prevTime as both our checker for whether or not a skill was used, and if the skill was used within a specific amount of time since the last skill
-                    prevTime = -1f;
-
-                    //if we don't have the max amount of growthbuffstacks, then add a stack
-                    if (growthBuffCount <= maxBuffStacks)
+                    //now, we will only apply the buff if the new skill used is different from the last skill used and if prevTime is valid
+                    if ((newSkillUsed.GetType().Name != lastSkillUsed.GetType().Name) && (prevTime != -1f) && (prevTime < comboTime))
                     {
-                        body.AddBuff(Buffs.damageGrowth);
+
+                        repeatTimer = 0f;
+                        //Debug.Log("continuing");
+                        //this means we are now in a skill combo
+                        isInCombo = true;
+
+                        //we now nullify prevTime by setting it = -1; through this, we essentially use prevTime as both our checker for whether or not a skill was used, and if the skill was used within a specific amount of time since the last skill
+                        prevTime = -1f;
+
+                        //if we don't have the max amount of growthbuffstacks, then add a stack
+                        if (growthBuffCount < maxBuffStacks)
+                        {
+                            //Debug.Log("adding buff");
+                            body.AddBuff(Buffs.damageGrowth);
+                        }
+
+
                     }
-
-
                 }
+            
 
                 //if it's been longer than comboTime, tell us we're not in a combo
-                if (comboTimer > comboTime)
+               /* if (repeatTimer > comboTime)
                 {
                     isInCombo = false;
 
-                }
+                }*/
                 
                 //if we aren't in a combo, start removing damage buff stacks
-                if (!isInCombo)
+                if (repeatTimer > comboTime)
                 {
-                    while (growthBuffCount > 0)
+                    //can't use growthbuffCount here because that gets assigned at the start of fixedUpdate and won't change over the course of the while loop
+                    while (body.GetBuffCount(Buffs.damageGrowth) > 0)
                     {
                         comboTimer += Time.fixedDeltaTime;
                         this.buffRemovalTimer -= Time.fixedDeltaTime;
@@ -86,10 +99,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         //removes a stack of the buff every .4 seconds, the value of damageBuffRemovalRate
                         if (this.buffRemovalTimer <= 0f)
                         {
+                            //Debug.Log("removing buff");
                             buffRemovalTimer = damageBuffRemovalRate;
                             body.RemoveBuff(Buffs.damageGrowth);
 
                         }
+
 
                     }
                 }

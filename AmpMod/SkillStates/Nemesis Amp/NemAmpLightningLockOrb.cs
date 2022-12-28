@@ -4,16 +4,19 @@ using System.Text;
 using UnityEngine;
 using RoR2.Orbs;
 using UnityEngine;
+using RoR2.Orbs;
 using RoR2;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
-	class NemAmpLightningLockOrb : LightningOrb
+	class NemAmpLightningLockOrb : GenericDamageOrb
 	{
-		// Token: 0x060040C3 RID: 16579 RVA: 0x0010BF54 File Offset: 0x0010A154
+		public LightningOrb.LightningType lightningType;
 		public override void Begin()
 		{
+			//base.Begin();
 			base.duration = 0.1f;
+			//this.speed = 120f;
 			string path = null;
 			switch (this.lightningType)
 			{
@@ -37,7 +40,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				genericFloat = base.duration
 			};
 			effectData.SetHurtBoxReference(this.target);
-			if (this.lightningType != LightningType.Loader)
+			if (this.lightningType != LightningOrb.LightningType.Loader)
             {
 				EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>(path), effectData, true);
 			}

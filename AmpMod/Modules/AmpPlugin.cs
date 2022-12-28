@@ -283,7 +283,7 @@ namespace AmpMod.Modules
                 }
             } */
 
-            if (Util.CheckRoll(info.procCoefficient * 100f, info.attacker.GetComponent<CharacterBody>().master) && info.HasModdedDamageType(DamageTypes.controlledChargeProc))
+            if (info.HasModdedDamageType(DamageTypes.controlledChargeProc))
             {
 
                 self.body.AddTimedBuff(Buffs.controlledCharge, StaticValues.controlledChargeDuration);

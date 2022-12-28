@@ -95,8 +95,9 @@ namespace AmpMod.Modules
         internal const float growthBuffDisappearanceRate = .4f;
         internal const int growthBuffMaxStacks = 15;
 
-        [Header("Unstoppable Current Values")]
+        [Header("Nemesis Fulmination Values")]
         internal const float lightningStreamTickDamageCoefficient = 1.5f;
+        internal const float lightningStreamProcCoefficient = .3f;
 
         [Header("Flux Blades Values")]
         internal const float bladeDamageCoefficient = 2f;
@@ -111,7 +112,7 @@ namespace AmpMod.Modules
         internal const float teleportBlastRadius = 10f;
 
         [Header("Electron Crash Values")]
-        internal const float baseBoltDamageCoefficient = 6f;
+        internal const float baseBoltDamageCoefficient = 4f;
         internal const float additionalBoltDamageCoefficient = 1.2f;
         internal const float stormRadius = 30f;
         internal const float controlledChargeDuration = 10f;

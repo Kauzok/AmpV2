@@ -214,7 +214,7 @@ namespace AmpMod.Modules
 
             ItemAPI.Add(new CustomItem(wormHealth, new ItemDisplayRule[0]));
 
-
+            #region Amp
             //shockblade hit
             stormbladeHitSoundEvent = CreateNetworkSoundEventDef(StaticValues.stormbladeHit4String);
 
@@ -289,8 +289,11 @@ namespace AmpMod.Modules
             CreateLightningPrefab();
 
             CreateShockbladeEffects();
-        
+            #endregion
 
+            #region Nemesis Amp
+            CreateChargeBeam();
+            #endregion
 
         }
 
@@ -312,6 +315,7 @@ namespace AmpMod.Modules
             matRedLightning = mainAssetBundle.LoadAsset<Material>("LightningEffectRed");
             matBlueLightning = mainAssetBundle.LoadAsset<Material>("LightningEffect");
 
+            CreateVFXMaterial("matChargeBeamTrail");
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
             matRedTrail = CreateVFXMaterial("matLorentzTrailRed");
             CreateVFXMaterial("matLightningSphereBlue");
@@ -337,6 +341,19 @@ namespace AmpMod.Modules
 
 
         }
+
+        #region Nemesis Amp Assets
+        private static void CreateChargeBeam()
+        {
+            chargeBeamPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningBeam");
+            chargeBeamPrefab.AddComponent<NetworkIdentity>();
+            chargeBeamPrefab.AddComponent<EffectComponent>();
+            AddNewEffectDef(chargeBeamPrefab);
+        }
+        #endregion
+
+
+        #region AmpAssets
 
         private static void CreateChargeOrb()
         {
@@ -760,6 +777,8 @@ namespace AmpMod.Modules
 
 
         }
+
+        #endregion
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
         {

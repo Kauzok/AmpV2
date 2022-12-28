@@ -17,6 +17,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float lightningTickDamage = Modules.StaticValues.lightningStreamTickDamageCoefficient;
         private StackDamageController stackDamageController;
         private float charge;
+        private float procCoefficient = Modules.StaticValues.lightningStreamProcCoefficient;
         private NemAmpLightningTracker tracker;
         private HurtBox targetHurtbox;
         private Animator animator;
@@ -30,6 +31,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
+            stackDamageController.newSkillUsed = this;
+            stackDamageController.resetComboTimer();
             tracker = base.GetComponent<NemAmpLightningTracker>();
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
@@ -42,8 +45,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.targetHurtbox = this.tracker.GetTrackingTarget();
             }
 
-            stackDamageController.newSkillUsed = this;
-            stackDamageController.resetComboTimer();
+            //stackDamageController.newSkillUsed = this;
+            //stackDamageController.resetComboTimer();
+
             this.tickTime= this.baseTickTime / this.attackSpeedStat;
             if (base.characterBody)
             {
@@ -61,7 +65,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.tickTimer = this.tickTime;
             NemAmpLightningLockOrb lightningOrb = createOrb();
 
-            lightningOrb.AddModdedDamageType(Modules.DamageTypes.controlledChargeProc);
+            if (Util.CheckRoll(procCoefficient * 100f, base.characterBody.master))
+            {
+                lightningOrb.AddModdedDamageType(Modules.DamageTypes.controlledChargeProc);
+            }
+            
             if (targetHurtbox)
             {
                 //Transform transform = this.childLocator.FindChild(this.muzzleString);
@@ -87,15 +95,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 origin = base.gameObject.transform.position,
                 damageValue = lightningTickDamage * damageStat,
                 isCrit = base.characterBody.RollCrit(),
-                bouncesRemaining = 1,
                 damageType = DamageType.Generic,
                 teamIndex = teamComponent.teamIndex,
                 attacker = gameObject,
-                procCoefficient = 1f,
-                lightningType = LightningOrb.LightningType.Loader,
+                procCoefficient = .2f,
+                lightningType = LightningOrb.LightningType.MageLightning,
                 damageColorIndex = DamageColorIndex.Default,
-                range = 10,
-                speed = -1,
                 target = targetHurtbox,
             };
         }
@@ -103,7 +108,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnExit()
         {
             base.OnExit();
-
+            //Debug.Log("Exiting");
             this.FireLightning();
         }
 
@@ -112,12 +117,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             writer.Write(HurtBoxReference.FromHurtBox(this.targetHurtbox));
         }
 
-        // Token: 0x06000E60 RID: 3680 RVA: 0x0003E0A0 File Offset: 0x0003C2A0
         public override void OnDeserialize(NetworkReader reader)
         {
             this.targetHurtbox = reader.ReadHurtBoxReference().ResolveHurtBox();
         }
-
+        
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;

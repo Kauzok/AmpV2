@@ -23,6 +23,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public float charge;
         private float maxForce = 2000f;
 
+        private GameObject beamPrefab = Assets.chargeBeamPrefab;
+
         [SerializeField]
         public float selfForce;
 
@@ -62,7 +64,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 float calcedDamage = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                 float num2 = this.charge * this.maxForce;
-                //Debug.Log("calced damage is " + calcedDamage);
+                Debug.Log("calced damage is " + calcedDamage);
                 //Debug.Log("firing");
                 BulletAttack beamAttack = new BulletAttack
                 {
@@ -85,8 +87,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     damageType = DamageType.Generic
                 };
                 beamAttack.AddModdedDamageType(DamageTypes.controlledChargeProc);
-                
+
                 beamAttack.Fire();
+                EffectData effectData = new EffectData
+                {
+                    origin = base.characterBody.corePosition,
+                };
+                EffectManager.SpawnEffect(beamPrefab, effectData, false);
 
                 if (base.characterMotor)
                 {
