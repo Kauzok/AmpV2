@@ -64,7 +64,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 float calcedDamage = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
                 float num2 = this.charge * this.maxForce;
-                Debug.Log("calced damage is " + calcedDamage);
+                //Debug.Log("calced damage is " + calcedDamage);
                 //Debug.Log("firing");
                 BulletAttack beamAttack = new BulletAttack
                 {
@@ -91,7 +91,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 beamAttack.Fire();
                 EffectData effectData = new EffectData
                 {
-                    origin = base.characterBody.corePosition,
+                    
+                    start = aimRay.origin,
+                    scale = 1f,
+                    
                 };
                 EffectManager.SpawnEffect(beamPrefab, effectData, false);
 

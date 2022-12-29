@@ -24,6 +24,7 @@ namespace AmpMod.Modules
         internal static Material matRedLightning;
         internal static Material matBlueLightning;
         internal static Material matPurpleLightning;
+        internal static Material matFieldIndicator;
         internal static Material matRedTrail;
         internal static Material matBlueTrail;
         internal static Material matLightningLongRed;
@@ -40,6 +41,7 @@ namespace AmpMod.Modules
         internal static Color redLightningColor = new Color32(191, 2, 0, 255);
         internal static Color lightRedLightningColor = new Color32(255, 100, 100, 255);
         internal static Color darkRedLightningColor = new Color32(103, 0, 0, 255);
+
 
         #region Amp Assets
         [Header("Shockblade Effects")]
@@ -119,6 +121,10 @@ namespace AmpMod.Modules
         #region Nemesis Amp Assets
         internal static GameObject chargeBeamMuzzleEffect;
         internal static GameObject chargeBeamPrefab;
+        internal static GameObject chargeBeamHitEffect;
+        internal static GameObject staticFieldPrefab;
+        internal static GameObject staticFieldIndicatorPrefab;
+        internal static GameObject staticFieldProjectilePrefab;
         internal static GameObject teleportExplosionEffect;
         internal static GameObject teleportAimReticle;
         internal static GameObject blessingEffect;
@@ -293,6 +299,7 @@ namespace AmpMod.Modules
 
             #region Nemesis Amp
             CreateChargeBeam();
+            CreateStaticField();
             #endregion
 
         }
@@ -349,6 +356,16 @@ namespace AmpMod.Modules
             chargeBeamPrefab.AddComponent<NetworkIdentity>();
             chargeBeamPrefab.AddComponent<EffectComponent>();
             AddNewEffectDef(chargeBeamPrefab);
+        }
+
+        private static void CreateStaticField()
+        {
+            matFieldIndicator = CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
+            Debug.Log("fieldindicator shader is " + matFieldIndicator.shader);
+            staticFieldIndicatorPrefab = mainAssetBundle.LoadAsset<GameObject>("FieldAreaIndicator");
+            //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
+
+
         }
         #endregion
 

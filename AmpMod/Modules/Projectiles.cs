@@ -16,6 +16,7 @@ namespace AmpMod.Modules
         internal static GameObject vortexPrefab;
         internal static GameObject lightningPrefab;
         internal static GameObject fireBeamPrefab;
+        internal static GameObject fieldProjectilePrefab;
 
         internal static void RegisterProjectiles()
         {
@@ -24,10 +25,12 @@ namespace AmpMod.Modules
             CreateVortex();
             CreateFireBeam();
             //CreateLightning();
+            CreateStaticField();
 
             AddProjectile(ferroshotPrefab);
             AddProjectile(vortexPrefab);
             AddProjectile(fireBeamPrefab);
+            AddProjectile(fieldProjectilePrefab);
             //AddProjectile(lightningPrefab);
         }
 
@@ -36,6 +39,11 @@ namespace AmpMod.Modules
             Modules.Prefabs.projectilePrefabs.Add(projectileToAdd);
         }
 
+        private static void CreateStaticField()
+        {
+            fieldProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOT");
+            PrefabAPI.RegisterNetworkPrefab(fieldProjectilePrefab);
+        }
         //instantiates ferroshot/Lorentz Cannon projectile
         private static void CreateFerroshot()
         {

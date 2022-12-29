@@ -133,7 +133,7 @@ namespace AmpMod.Modules.Survivors
 
 
             #region Secondary
-            //creates ferroshot/Lorentz Cannon
+            //creates howitzer spark
             SkillDef beamSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_NEMESISAMP_BODY_SECONDARY_CHARGEBEAM_NAME",
@@ -166,7 +166,34 @@ namespace AmpMod.Modules.Survivors
 
 
             #region Utility
-            //creates bolt
+            //creates static field
+            SkillDef fieldSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_NEMESISAMP_BODY_UTILITY_FIELD_NAME",
+                skillNameToken = prefix + "_NEMESISAMP_BODY_UTILITY_FIELD_NAME",
+                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_UTILITY_FIELD_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSurge"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(AimStaticField)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 7f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = true,
+                //fullRestockOnAssign = true,
+                fullRestockOnAssign = false,
+                interruptPriority = EntityStates.InterruptPriority.Any,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = false,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { }
+            });
+
+            //creates shocking teleport
             SkillDef teleportSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_NEMESISAMP_BODY_UTILITY_TELEPORT_NAME",
@@ -194,7 +221,7 @@ namespace AmpMod.Modules.Survivors
             });
 
 
-            Modules.Skills.AddUtilitySkills(bodyPrefab, teleportSkillDef);
+            Modules.Skills.AddUtilitySkills(bodyPrefab, fieldSkillDef, teleportSkillDef);
             #endregion
 
 

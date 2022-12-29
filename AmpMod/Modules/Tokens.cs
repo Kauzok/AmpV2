@@ -143,8 +143,13 @@ namespace AmpMod.Modules
             #endregion
 
             #region Utility
+            LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_NAME", "Static Field");
+            LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_DESCRIPTION", $"<style=cIsUtility>Electrify</style> an area, <style=cIsUtility>weakening and slowing</style> enemies inside, and dealing <style=cIsDamage>200% damage</style>. Being in the field <style=cIsUtility>increase</style> your attack speed.");
+            #endregion
+
+            #region Utility2
             LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Shocking Teleport");
-            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_DESCRIPTION", $"Immediately teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoefficient}% damage</style> damage upon arrival.");
+            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_DESCRIPTION", $"Teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoefficient}% damage</style> damage upon arrival.");
             #endregion
 
             #region Special
