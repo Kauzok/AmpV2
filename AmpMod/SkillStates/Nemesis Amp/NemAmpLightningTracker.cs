@@ -61,6 +61,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 		private void FixedUpdate()
 		{
+			if (characterBody.skillLocator.primary.skillNameToken != "NT_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME") return;
+
 			this.trackerUpdateStopwatch += Time.fixedDeltaTime;
 			if (this.trackerUpdateStopwatch >= 1f / this.trackerUpdateFrequency)
 			{

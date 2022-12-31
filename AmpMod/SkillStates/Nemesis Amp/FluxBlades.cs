@@ -11,13 +11,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 {
     class FluxBlades : BaseSkillState
     {
-        public GameObject bladePrefab = null; // Modules.Projectiles.vortexPrefab;
+        private float damageCoefficient = Modules.StaticValues.bladeDamageCoefficient;
+        public GameObject bladePrefab = Modules.Projectiles.bladeProjectilePrefab;
         private Animator animator;
         private float baseChargeTime = .6f;
-        private float baseDuration = 1f;
+        private float baseDuration = .8f;
         private float chargeTime;
         private float duration;
         private ChildLocator childLocator;
+        private bool hasFired;
         private StackDamageController stackDamageController;
 
         public override void OnEnter()
@@ -45,17 +47,64 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             }
 
-
         }
-
-        private void Fire()
+        protected virtual void ModifyProjectile(ref FireProjectileInfo projectileInfo)
         {
 
         }
+
+
+        private void Fire()
+        {
+            if (base.isAuthority)
+            {
+                Ray aimRay = base.GetAimRay();
+                if (bladePrefab != null)
+                {
+
+
+                    // Debug.Log(base.gameObject);
+                    FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+                    {
+                        projectilePrefab = bladePrefab,
+                        position = aimRay.origin,
+                        rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
+                        owner = base.gameObject,
+                        damage = base.characterBody.damage * this.damageCoefficient,
+                        force = 120f,
+                        crit = base.RollCrit()
+                    };
+                    ModifyProjectile(ref fireProjectileInfo);
+                    ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+                }
+
+                //play shoot sound
+                //Util.PlaySound(ShootString, base.gameObject);
+
+            }
+        }
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
+
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            if (base.isAuthority && !hasFired)
+            {
+                Fire();
+                Debug.Log("firing");
+                hasFired = true;
+            }
+
+            if (fixedAge >= duration && base.isAuthority)
+            {
+                this.outer.SetNextStateToMain();
+            }
         }
 
         public override void OnExit()

@@ -18,6 +18,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Animator animator;
         private ChildLocator childLocator;
         private GameObject fieldIndicatorInstance;
+        private ProjectileDotZone projectileDotZone;
         private bool goodPlacement;
         private float stopwatch;
         private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
@@ -26,18 +27,18 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public static GameObject goodCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.goodCrosshairPrefab;
         public static GameObject projectilePrefab = Modules.Projectiles.fieldProjectilePrefab;
         public static GameObject badCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.badCrosshairPrefab;
-        public static float damageCoefficient;
+        public static float damageCoefficient = Modules.StaticValues.staticFieldTickDamageCoefficient;
         private StackDamageController stackDamageController;
 
         public override void OnEnter()
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
-
             animator = base.GetComponent<Animator>();
             childLocator = base.GetComponent<ChildLocator>();
             duration = baseDuration / attackSpeedStat;
             fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
+
             Debug.Log(fieldIndicatorInstance);
             this.UpdateAreaIndicator();
 
@@ -46,7 +47,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
-            if (this.stopwatch >= this.duration && !base.inputBank.skill3.down && base.isAuthority)
+            if ((this.stopwatch >= this.duration && base.isAuthority) || (!base.inputBank.skill3.down && base.isAuthority))
             {
                 this.outer.SetNextStateToMain();
             }

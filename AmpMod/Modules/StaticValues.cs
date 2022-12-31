@@ -107,6 +107,9 @@ namespace AmpMod.Modules
         internal const float chargeBeamMaxDamageCoefficient = 17f;
         internal const float additionalPierceDamageCoefficient = 2f;
 
+        [Header("Static Field Values")]
+        internal const float staticFieldTickDamageCoefficient = .1f;
+
         [Header("Shocking Teleport Values")]
         internal const float teleportBlastDamageCoefficient = 3f;
         internal const float teleportBlastRadius = 10f;

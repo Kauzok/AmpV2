@@ -129,22 +129,22 @@ namespace AmpMod.Modules
 
             #region Primary
             LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fulmination");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on to an enemy with a continuous stream of electricity that deals 150% damage per second.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on to an enemy with a continuous stream of electricity that deals <style=cIsDamage>{100f * StaticValues.lightningStreamTickDamageCoefficient}% damage</style> per second.");
             #endregion
 
             #region Primary2
             LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Flux Blades");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire an iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> damage on hit.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire an iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit.");
             #endregion
 
             #region Secondary
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
-            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam does {100f * StaticValues.additionalPierceDamageCoefficient}% extra damage</style> to the next enemy hit.");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam does <style=cIsDamage>{100f * StaticValues.additionalPierceDamageCoefficient}% extra damage</style> to the next enemy hit.");
             #endregion
 
             #region Utility
             LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_NAME", "Static Field");
-            LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_DESCRIPTION", $"<style=cIsUtility>Electrify</style> an area, <style=cIsUtility>weakening and slowing</style> enemies inside, and dealing <style=cIsDamage>200% damage</style>. Being in the field <style=cIsUtility>increase</style> your attack speed.");
+            LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_DESCRIPTION", $"<style=cIsUtility>Electrify</style> an area, <style=cIsUtility>weakening and slowing</style> enemies inside, and dealing <style=cIsDamage>200% damage</style>. Being in the field <style=cIsUtility>increases</style> attack speed for you and allies.");
             #endregion
 
             #region Utility2

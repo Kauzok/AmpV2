@@ -24,7 +24,7 @@ namespace AmpMod.SkillStates
         private ChildLocator childLocator;
         private Transform leftMuzzleTransform;
         private float baseChargeTime = .6f;
-        private float baseDuration = 1f;
+        private float baseDuration = 1.2f;
         private float chargeTime;
         private float duration;
         private bool hasMuzzleEffect;

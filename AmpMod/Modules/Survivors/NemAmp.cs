@@ -121,11 +121,20 @@ namespace AmpMod.Modules.Survivors
 
 
             #region Primary
-            //creates Stormblade
+            //creates Fulmination
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
                 "Weapon",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
+                true,
+                new String[] { }));
+
+            //creates Flux Blades
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
+                "Weapon",
+                prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_NAME",
+                prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
                 true,
                 new String[] { }));

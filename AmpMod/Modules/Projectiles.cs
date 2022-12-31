@@ -17,6 +17,7 @@ namespace AmpMod.Modules
         internal static GameObject lightningPrefab;
         internal static GameObject fireBeamPrefab;
         internal static GameObject fieldProjectilePrefab;
+        internal static GameObject bladeProjectilePrefab;
 
         internal static void RegisterProjectiles()
         {
@@ -26,12 +27,13 @@ namespace AmpMod.Modules
             CreateFireBeam();
             //CreateLightning();
             CreateStaticField();
+            CreateFluxBlade();
 
             AddProjectile(ferroshotPrefab);
             AddProjectile(vortexPrefab);
             AddProjectile(fireBeamPrefab);
-            AddProjectile(fieldProjectilePrefab);
-            //AddProjectile(lightningPrefab);
+            //AddProjectile(fieldProjectilePrefab);
+            AddProjectile(bladeProjectilePrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -39,6 +41,19 @@ namespace AmpMod.Modules
             Modules.Prefabs.projectilePrefabs.Add(projectileToAdd);
         }
 
+        private static void CreateFluxBlade()
+        {
+            bladeProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("BladeProjectilePrefab");
+
+            ProjectileController bladeController = bladeProjectilePrefab.GetComponent<ProjectileController>();
+
+            //instantiates the projectile model and associates it with the prefab
+            if (Assets.mainAssetBundle.LoadAsset<GameObject>("BladeGhostPrefab") != null) bladeController.ghostPrefab = CreateGhostPrefab("BladeGhostPrefab");
+            PrefabAPI.RegisterNetworkPrefab(bladeProjectilePrefab);
+            ProjectileSingleTargetImpact bladeContactController = bladeProjectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
+            bladeContactController.impactEffect = Assets.bulletImpactEffect;
+
+        }
         private static void CreateStaticField()
         {
             fieldProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOT");
