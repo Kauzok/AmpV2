@@ -139,12 +139,12 @@ namespace AmpMod.Modules
 
             #region Secondary
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
-            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam does <style=cIsDamage>{100f * StaticValues.additionalPierceDamageCoefficient}% extra damage</style> to the next enemy hit.");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam deals <style=cIsDamage>{100f * StaticValues.additionalPierceDamageCoefficient}% of its damage</style> as bonus damage to the next enemy hit.");
             #endregion
 
             #region Utility
             LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_NAME", "Static Field");
-            LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_DESCRIPTION", $"<style=cIsUtility>Electrify</style> an area, <style=cIsUtility>weakening and slowing</style> enemies inside, and dealing <style=cIsDamage>200% damage</style>. Being in the field <style=cIsUtility>increases</style> attack speed for you and allies.");
+            LanguageAPI.Add(nemPrefix + "UTILITY_FIELD_DESCRIPTION", $"Create an <style=cIsUtility>electric field</style> that <style=cIsUtility>slows and weakens</style> enemies inside, while <style=cIsUtility>boosting attack speed </style>for you and allies. Enemies in the field take <style=cIsDamage>200% damage</style>.");
             #endregion
 
             #region Utility2
@@ -154,7 +154,7 @@ namespace AmpMod.Modules
 
             #region Special
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Electron Crash");
-            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this ability to summon a lightning bolt onto every enemy within a large radius; the damage of the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
             #endregion
 
             #endregion

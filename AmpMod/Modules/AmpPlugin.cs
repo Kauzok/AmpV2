@@ -283,79 +283,93 @@ namespace AmpMod.Modules
                 }
             } */
 
+            if (info.HasModdedDamageType(DamageTypes.nemAmpSlowOnHit))
+            {
+                self.body.AddTimedBuff(RoR2Content.Buffs.Slow60, 5f);
+            }
+
+
             if (info.HasModdedDamageType(DamageTypes.controlledChargeProc))
             {
-
                 self.body.AddTimedBuff(Buffs.controlledCharge, StaticValues.controlledChargeDuration);
             }
 
-            if (info.HasModdedDamageType(DamageTypes.strongBurnIfCharged))
+
+            if (info.HasModdedDamageType(DamageTypes.controlledChargeProcProjectile))
             {
-                if (self.body.HasBuff(Buffs.chargeBuildup) || self.body.HasBuff(Buffs.electrified))
+                if (Util.CheckRoll(100f * info.procCoefficient, info.attacker.GetComponent<CharacterBody>().master))
                 {
-                    DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.StrongerBurn);
+                    self.body.AddTimedBuff(Buffs.controlledCharge, StaticValues.controlledChargeDuration);
                 }
-
-                else
-                {
-                    DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.Burn);
-                }
-
             }
 
+                if (info.HasModdedDamageType(DamageTypes.strongBurnIfCharged))
+                {
+                    if (self.body.HasBuff(Buffs.chargeBuildup) || self.body.HasBuff(Buffs.electrified))
+                    {
+                        DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.StrongerBurn);
+                    }
 
-            //creates fulmination orb; essentially a copy of lightning orb but with the effect changed to our own; responsible for creating chain damage and effect
-            if (info.HasModdedDamageType(DamageTypes.fulminationChain))
-            {
-                float damageCoefficient2 = 0.8f;
+                    else
+                    {
+                        DotController.InflictDot(self.gameObject, info.attacker.gameObject, dotIndex: DotController.DotIndex.Burn);
+                    }
 
-                float damageValue2 = Util.OnHitProcDamage(info.damage, info.attacker.GetComponent<CharacterBody>().damage, damageCoefficient2);
-                FulminationOrb lightningOrb2 = new FulminationOrb();
-                lightningOrb2.chainEffect = info.attacker.GetComponent<AmpLightningController>().fulminationChainEffect;
-                lightningOrb2.origin = info.position;
-                lightningOrb2.damageValue = damageValue2;
-                lightningOrb2.isCrit = info.crit;
-                lightningOrb2.bouncesRemaining = 2;
-                lightningOrb2.teamIndex = info.attacker.GetComponent<CharacterBody>().teamComponent.teamIndex;
-                lightningOrb2.attacker = info.attacker;
-                lightningOrb2.bouncedObjects = new List<HealthComponent>
+                }
+
+
+                //creates fulmination orb; essentially a copy of lightning orb but with the effect changed to our own; responsible for creating chain damage and effect
+                if (info.HasModdedDamageType(DamageTypes.fulminationChain))
+                {
+                    float damageCoefficient2 = 0.8f;
+
+                    float damageValue2 = Util.OnHitProcDamage(info.damage, info.attacker.GetComponent<CharacterBody>().damage, damageCoefficient2);
+                    FulminationOrb lightningOrb2 = new FulminationOrb();
+                    lightningOrb2.chainEffect = info.attacker.GetComponent<AmpLightningController>().fulminationChainEffect;
+                    lightningOrb2.origin = info.position;
+                    lightningOrb2.damageValue = damageValue2;
+                    lightningOrb2.isCrit = info.crit;
+                    lightningOrb2.bouncesRemaining = 2;
+                    lightningOrb2.teamIndex = info.attacker.GetComponent<CharacterBody>().teamComponent.teamIndex;
+                    lightningOrb2.attacker = info.attacker;
+                    lightningOrb2.bouncedObjects = new List<HealthComponent>
                      {
                         self.GetComponent<HealthComponent>()
                       };
-                lightningOrb2.procChainMask = info.procChainMask;
-                lightningOrb2.procChainMask.AddProc(ProcType.ChainLightning);
-                lightningOrb2.procCoefficient = 0.2f;
-                lightningOrb2.damageColorIndex = DamageColorIndex.Default;
-                lightningOrb2.range += 2;
-                HurtBox hurtBox2 = lightningOrb2.PickNextTarget(info.position);
-                if (hurtBox2)
-                {
-                    lightningOrb2.target = hurtBox2;
-                    OrbManager.instance.AddOrb(lightningOrb2);
+                    lightningOrb2.procChainMask = info.procChainMask;
+                    lightningOrb2.procChainMask.AddProc(ProcType.ChainLightning);
+                    lightningOrb2.procCoefficient = 0.2f;
+                    lightningOrb2.damageColorIndex = DamageColorIndex.Default;
+                    lightningOrb2.range += 2;
+                    HurtBox hurtBox2 = lightningOrb2.PickNextTarget(info.position);
+                    if (hurtBox2)
+                    {
+                        lightningOrb2.target = hurtBox2;
+                        OrbManager.instance.AddOrb(lightningOrb2);
+                    }
+
                 }
 
+
+                //apply charge if damageType is applycharge
+                if (info.HasModdedDamageType(DamageTypes.applyCharge))
+                {
+                    applyCharge(self, info);
+                }
+
+                //apply charge twice if damageType is apply2charge
+                if (info.HasModdedDamageType(DamageTypes.apply2Charge))
+                {
+                    applyCharge(self, info);
+                    applyCharge(self, info);
+                }
+
+
+
+                orig(self, info);
+
+
             }
-
-
-            //apply charge if damageType is applycharge
-            if (info.HasModdedDamageType(DamageTypes.applyCharge))
-            {
-                applyCharge(self, info);
-            }
-
-            //apply charge twice if damageType is apply2charge
-            if (info.HasModdedDamageType(DamageTypes.apply2Charge))
-            {
-                applyCharge(self, info);
-                applyCharge(self, info);
-            }
-
-
-
-            orig(self, info);
-
-
-        }
 
         //applies custom debuff/tracker component
         public void applyCharge(HealthComponent self, DamageInfo info)
@@ -399,6 +413,10 @@ namespace AmpMod.Modules
         private void overChargeStatGrant(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
         {
 
+            if (body && body.HasBuff(Buffs.nemAmpAtkSpeed))
+            {
+                args.attackSpeedMultAdd += StaticValues.staticFieldAttackSpeedBoost;
+            }
 
             if (body && body.HasBuff(Buffs.overCharge))
             {

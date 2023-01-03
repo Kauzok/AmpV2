@@ -154,7 +154,7 @@ namespace AmpMod.Modules.Survivors
                 baseMaxStock = 1,
                 baseRechargeInterval = 3f,
                 beginSkillCooldownOnSkillEnd = true,
-                canceledFromSprinting = false,
+                canceledFromSprinting = true,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
                 interruptPriority = EntityStates.InterruptPriority.Skill,
@@ -165,7 +165,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE"}
+                keywordTokens = new string[] { }
             });
 
 
@@ -188,12 +188,12 @@ namespace AmpMod.Modules.Survivors
                 baseRechargeInterval = 7f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
-                forceSprintDuringState = true,
+                forceSprintDuringState = false,
                 //fullRestockOnAssign = true,
                 fullRestockOnAssign = false,
                 interruptPriority = EntityStates.InterruptPriority.Any,
                 resetCooldownTimerOnUse = false,
-                isCombatSkill = false,
+                isCombatSkill = true,
                 mustKeyPress = true,
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,

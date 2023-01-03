@@ -7,14 +7,14 @@ using RoR2;
 using EntityStates;
 using RoR2.Projectile;
 using UnityEngine.Networking;
+using R2API;
 using RoR2.UI;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
     class AimStaticField : BaseState
     {
-        private float duration;
-        private float baseDuration = 1.4f;
+        private float duration = 15f;
         private Animator animator;
         private ChildLocator childLocator;
         private GameObject fieldIndicatorInstance;
@@ -36,7 +36,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
             animator = base.GetComponent<Animator>();
             childLocator = base.GetComponent<ChildLocator>();
-            duration = baseDuration / attackSpeedStat;
             fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
 
             Debug.Log(fieldIndicatorInstance);
@@ -115,6 +114,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         forward.Normalize();
                         Vector3 vector = Vector3.Cross(Vector3.up, forward);
                         bool crit = Util.CheckRoll(this.critStat, base.characterBody.master);
+                        
                         ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(vector), base.gameObject, this.damageStat * damageCoefficient, 0f, crit, DamageColorIndex.Default, null, -1f);
                         ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(-vector), base.gameObject, this.damageStat * damageCoefficient, 0f, crit, DamageColorIndex.Default, null, -1f);
                     }

@@ -49,14 +49,26 @@ namespace AmpMod.Modules
 
             //instantiates the projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("BladeGhostPrefab") != null) bladeController.ghostPrefab = CreateGhostPrefab("BladeGhostPrefab");
-            PrefabAPI.RegisterNetworkPrefab(bladeProjectilePrefab);
+            
             ProjectileSingleTargetImpact bladeContactController = bladeProjectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
             bladeContactController.impactEffect = Assets.bulletImpactEffect;
+
+            PrefabAPI.RegisterNetworkPrefab(bladeProjectilePrefab);
 
         }
         private static void CreateStaticField()
         {
             fieldProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOT");
+            var dmgTypeHolder = fieldProjectilePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+            dmgTypeHolder.Add(DamageTypes.controlledChargeProcProjectile);
+
+            var dotZone = fieldProjectilePrefab.GetComponent<ProjectileDotZone>();
+            dotZone.overlapProcCoefficient = StaticValues.staticFieldTickProcCoefficient;
+
+
+            var buffWard = fieldProjectilePrefab.GetComponent<BuffWard>();
+            buffWard.buffDef = Buffs.nemAmpAtkSpeed;
+
             PrefabAPI.RegisterNetworkPrefab(fieldProjectilePrefab);
         }
         //instantiates ferroshot/Lorentz Cannon projectile
@@ -125,6 +137,7 @@ namespace AmpMod.Modules
             var stopSound = vortexPrefab.AddComponent<SkillStates.BaseStates.StopLoop>();
             stopSound.SoundEventToPlay = StaticValues.vortexFlightLoopStringAlt;
             stopSound.SoundId = 2447326215;
+            
 
             PrefabAPI.RegisterNetworkPrefab(vortexPrefab);
 

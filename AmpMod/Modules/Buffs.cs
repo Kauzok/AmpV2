@@ -14,6 +14,7 @@ namespace AmpMod.Modules
         internal static BuffDef noSurge;
         internal static BuffDef overCharge;
         internal static BuffDef damageGrowth;
+        internal static BuffDef nemAmpAtkSpeed;
 
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
@@ -25,6 +26,8 @@ namespace AmpMod.Modules
             overCharge = AddNewBuff("AmpOverCharge", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
             controlledCharge = AddNewBuff("NemesisAmpContolledCharge", null, new Color32(0, 145, 255, 255), true, true);
             damageGrowth = AddNewBuff("NemesisAmpDamageGrowth", null, new Color32(0, 0, 0, 0), true, false);
+            nemAmpAtkSpeed = AddNewBuff("nemAmpAtkSpeed", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
+
         }
 
         // simple helper method

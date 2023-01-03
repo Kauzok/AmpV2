@@ -27,6 +27,7 @@ namespace AmpMod.Modules
         internal static Material matFieldIndicator;
         internal static Material matRedTrail;
         internal static Material matBlueTrail;
+        internal static Material matPurpleTrail;
         internal static Material matLightningLongRed;
         internal static Material matLightningLongBlue;
         internal static Material matLightningMatrixRed;
@@ -124,7 +125,6 @@ namespace AmpMod.Modules
         internal static GameObject chargeBeamHitEffect;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
-        internal static GameObject staticFieldProjectilePrefab;
         internal static GameObject teleportExplosionEffect;
         internal static GameObject teleportAimReticle;
         internal static GameObject blessingEffect;
@@ -317,12 +317,10 @@ namespace AmpMod.Modules
         private static void CreateMaterials()
         {
 
-            List<Material> matList = new List<Material>();
-
             matRedLightning = mainAssetBundle.LoadAsset<Material>("LightningEffectRed");
             matBlueLightning = mainAssetBundle.LoadAsset<Material>("LightningEffect");
 
-            CreateVFXMaterial("matChargeBeamTrail");
+            matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
             matRedTrail = CreateVFXMaterial("matLorentzTrailRed");
             CreateVFXMaterial("matLightningSphereBlue");
@@ -346,12 +344,13 @@ namespace AmpMod.Modules
             //matRedTrail.SetTexture("_RemapTex", mainAssetBundle.LoadAsset<Texture>("texRampGolem"));
 
 
-
+             
         }
 
         #region Nemesis Amp Assets
         private static void CreateChargeBeam()
         {
+            
             chargeBeamPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningBeam");
             chargeBeamPrefab.AddComponent<NetworkIdentity>();
             chargeBeamPrefab.AddComponent<EffectComponent>();
@@ -370,7 +369,7 @@ namespace AmpMod.Modules
         #endregion
 
 
-        #region AmpAssets
+        #region Amp Assets
 
         private static void CreateChargeOrb()
         {

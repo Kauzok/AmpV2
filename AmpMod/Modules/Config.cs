@@ -13,6 +13,7 @@ namespace AmpMod.Modules
         public static ConfigEntry<bool> UnlockGrandMasterySkin;
         public static ConfigEntry<bool> UnlockWormSkill;
         public static ConfigEntry<bool> UnlockPlasmaSkill;
+        public static ConfigEntry<bool> UnlockNemesisAmp;
 
         public static void ReadConfig()
         {
@@ -55,6 +56,12 @@ namespace AmpMod.Modules
                                                       "Unlock Electric Burns",
                                                       false,
                                                       "Unlocks Amp's Electric Burns Achievement & Corresponding Skill");
+
+            UnlockNemesisAmp =
+                             AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+                                                      "Unlock Nemesis Amp",
+                                                      false,
+                                                      "Unlocks Nemesis Amp by default");
         }
 
         // this helper automatically makes config entries for disabling survivors

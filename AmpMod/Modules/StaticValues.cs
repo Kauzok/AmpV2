@@ -17,7 +17,7 @@ namespace AmpMod.Modules
         public const string nemCharacterName = "Nemesis Amp";
         public const string nemCharacterSubtitle = "Avatar of the Storm";
         public const string nemCharacterOutro = "..and so he left, with undeniable power.";
-        public const string nemCharacterOutroFailure = "..and so he vanished, TBD.";
+        public const string nemCharacterOutroFailure = "..and so he returned, his revenge tragically incomplete.";
 
         internal static string descriptionText = "Amp is an agile melee-ranged hybrid that focuses on dealing heavy AOE damage with his electromagnetic attacks.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Modified Shockblade can be used in tandem with most of Amp's non-utility abilities, so keep slashing!" + Environment.NewLine + Environment.NewLine
@@ -96,7 +96,7 @@ namespace AmpMod.Modules
         internal const int growthBuffMaxStacks = 15;
 
         [Header("Nemesis Fulmination Values")]
-        internal const float lightningStreamTickDamageCoefficient = 1.5f;
+        internal const float lightningStreamTickDamageCoefficient = 1f;
         internal const float lightningStreamProcCoefficient = .3f;
 
         [Header("Flux Blades Values")]
@@ -105,17 +105,19 @@ namespace AmpMod.Modules
         [Header("Howitzer Spark Values")]
         internal const float chargeBeamMinDamageCoefficient = 4f;
         internal const float chargeBeamMaxDamageCoefficient = 17f;
-        internal const float additionalPierceDamageCoefficient = 2f;
+        internal const float additionalPierceDamageCoefficient = .3f;
 
         [Header("Static Field Values")]
         internal const float staticFieldTickDamageCoefficient = .1f;
+        internal const float staticFieldTickProcCoefficient = .2f;
+        internal const float staticFieldAttackSpeedBoost = .6f;
 
         [Header("Shocking Teleport Values")]
         internal const float teleportBlastDamageCoefficient = 3f;
         internal const float teleportBlastRadius = 10f;
 
         [Header("Electron Crash Values")]
-        internal const float baseBoltDamageCoefficient = 4f;
+        internal const float baseBoltDamageCoefficient = 2f;
         internal const float additionalBoltDamageCoefficient = 1.2f;
         internal const float stormRadius = 30f;
         internal const float controlledChargeDuration = 10f;

@@ -26,6 +26,10 @@ namespace AmpMod.Modules
 
         public static DamageAPI.ModdedDamageType controlledChargeProc = DamageAPI.ReserveDamageType();
 
+        public static DamageAPI.ModdedDamageType controlledChargeProcProjectile = DamageAPI.ReserveDamageType();
+
+        public static DamageAPI.ModdedDamageType nemAmpSlowOnHit = DamageAPI.ReserveDamageType();
+
 
     }
 }

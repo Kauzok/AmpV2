@@ -18,10 +18,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float duration;
         private float radius = 2f;
 
-        public float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
-        public float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
+        private float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
+        private float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
+        private float additionalPierceDamageCoefficient = StaticValues.additionalPierceDamageCoefficient;
         public float charge;
         private float maxForce = 2000f;
+        private float baseDamage;
 
         private GameObject beamPrefab = Assets.chargeBeamPrefab;
 
@@ -46,6 +48,20 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
 
         }
+
+        private void ModifyBullet(BulletAttack bulletAttack)
+        {
+            //bulletAttack.sniper = true;
+            bulletAttack.falloffModel = BulletAttack.FalloffModel.None;
+
+            bulletAttack.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)
+            {
+                _bulletAttack.damage += (baseDamage * this.additionalPierceDamageCoefficient); 
+               
+            };
+        }
+
+
 
 
         public override void FixedUpdate()
@@ -78,7 +94,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     //muzzleName = muzzleString,
                     //hitEffectPrefab = impactEffectPrefab,
                     isCrit = base.characterBody.RollCrit(),
-                    radius = this.radius,
+                    radius = this.radius, 
                     falloffModel = BulletAttack.FalloffModel.None,
                     stopperMask = LayerIndex.world.mask,
                     procCoefficient = 1f,
@@ -87,7 +103,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     damageType = DamageType.Generic
                 };
                 beamAttack.AddModdedDamageType(DamageTypes.controlledChargeProc);
-
+                baseDamage = calcedDamage * base.characterBody.damage;
+                ModifyBullet(beamAttack);
                 beamAttack.Fire();
                 EffectData effectData = new EffectData
                 {
