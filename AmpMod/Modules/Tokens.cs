@@ -129,7 +129,7 @@ namespace AmpMod.Modules
 
             #region Primary
             LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fulmination");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on to an enemy with a continuous stream of electricity that deals <style=cIsDamage>{100f * StaticValues.lightningStreamTickDamageCoefficient}% damage</style> per second.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on and shock an enemy for <style=cIsDamage>{Math.Round(100f * StaticValues.lightningStreamPerSecondDamageCoefficient * StaticValues.lightningStreamBaseTickTime)}% damage</style>.");
             #endregion
 
             #region Primary2

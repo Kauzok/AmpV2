@@ -23,7 +23,7 @@ namespace AmpMod.Modules
         [Header("Materials")]
         internal static Material matRedLightning;
         internal static Material matBlueLightning;
-        internal static Material matPurpleLightning;
+        internal static Material matLightningLongPurple;
         internal static Material matFieldIndicator;
         internal static Material matRedTrail;
         internal static Material matBlueTrail;
@@ -320,6 +320,8 @@ namespace AmpMod.Modules
             matRedLightning = mainAssetBundle.LoadAsset<Material>("LightningEffectRed");
             matBlueLightning = mainAssetBundle.LoadAsset<Material>("LightningEffect");
 
+            CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
+            CreateIntersectMaterial("matTeamAreaIndicatorIntersection");
             matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
             matRedTrail = CreateVFXMaterial("matLorentzTrailRed");
@@ -327,6 +329,7 @@ namespace AmpMod.Modules
             CreateVFXMaterial("matLightningOrbRed");
             matLightningMatrixRed = CreateVFXMaterial("matLightningMatrixRed");
             matLightningLongRed = CreateVFXMaterial("matLightningLongRed");
+            matLightningLongPurple = CreateVFXMaterial("matLightningLongPurple");
             matPulseTriRed = CreateVFXMaterial("matPulseMuzzleTriRed");
             matDirectionalMatrixRed = CreateVFXMaterial("matDirectionalMatrixRed");
             matTracerBright = CreateVFXMaterial("matTracerBright");
@@ -355,6 +358,9 @@ namespace AmpMod.Modules
             chargeBeamPrefab.AddComponent<NetworkIdentity>();
             chargeBeamPrefab.AddComponent<EffectComponent>();
             AddNewEffectDef(chargeBeamPrefab);
+
+            chargeBeamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningBeam");
+            PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffect);    
         }
 
         private static void CreateStaticField()

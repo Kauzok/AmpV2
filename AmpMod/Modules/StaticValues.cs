@@ -96,8 +96,9 @@ namespace AmpMod.Modules
         internal const int growthBuffMaxStacks = 15;
 
         [Header("Nemesis Fulmination Values")]
-        internal const float lightningStreamTickDamageCoefficient = 1f;
+        internal const float lightningStreamPerSecondDamageCoefficient = 3f;
         internal const float lightningStreamProcCoefficient = .3f;
+        internal const float lightningStreamBaseTickTime = .333f;
 
         [Header("Flux Blades Values")]
         internal const float bladeDamageCoefficient = 2f;

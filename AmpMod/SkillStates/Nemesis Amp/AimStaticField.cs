@@ -14,7 +14,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 {
     class AimStaticField : BaseState
     {
-        private float duration = 15f;
+        private float duration = 25f;
         private Animator animator;
         private ChildLocator childLocator;
         private GameObject fieldIndicatorInstance;
@@ -38,7 +38,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             childLocator = base.GetComponent<ChildLocator>();
             fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
 
-            Debug.Log(fieldIndicatorInstance);
+            //Debug.Log(fieldIndicatorInstance);
             this.UpdateAreaIndicator();
 
         }

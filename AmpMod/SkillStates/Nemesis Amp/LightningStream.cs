@@ -14,7 +14,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
      class LightningStream : BaseSkillState
     {
 
-        private float lightningTickDamage = Modules.StaticValues.lightningStreamTickDamageCoefficient;
+        private float lightningTickDamage = Modules.StaticValues.lightningStreamPerSecondDamageCoefficient / 3f;
         private StackDamageController stackDamageController;
         private float charge;
         private float procCoefficient = Modules.StaticValues.lightningStreamProcCoefficient;
@@ -22,7 +22,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private HurtBox targetHurtbox;
         private Animator animator;
         private ChildLocator childLocator;
-        private float baseTickTime = .25f;
+        private float baseTickTime = Modules.StaticValues.lightningStreamBaseTickTime;
         private float tickTime;
         private bool isCrit;
         private float tickTimer;

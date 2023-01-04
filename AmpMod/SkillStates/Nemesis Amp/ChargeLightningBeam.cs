@@ -5,6 +5,7 @@ using RoR2;
 using EntityStates;
 using RoR2.Skills;
 using UnityEngine;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -21,7 +22,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Animator animator;
         private ChildLocator childLocator;
         private GameObject chargeEffectInstance;
-        private GameObject chargeEffectPrefab;
+        private GameObject chargeEffectPrefab = Assets.chargeBeamMuzzleEffect;
 
         public override void OnEnter()
         {
@@ -32,7 +33,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (this.childLocator)
             {
-                Transform transform = this.childLocator.FindChild("MuzzleBetween") ?? base.characterBody.coreTransform;
+                Transform transform = base.characterBody.coreTransform;//this.childLocator.FindChild("MuzzleBetween") ?? base.characterBody.coreTransform;
                 if (transform && this.chargeEffectPrefab)
                 {
                     this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
@@ -61,6 +62,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 FireLightningBeam nextState = this.GetNextState();
                 nextState.charge = charge;
                 this.outer.SetNextState(nextState);
+  
+
             }
             
         }
@@ -83,6 +86,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnExit()  
         {
             base.OnExit();
+            if (this.chargeEffectInstance)
+            {
+                Destroy(this.chargeEffectInstance);
+            }
         }
     }
 }
