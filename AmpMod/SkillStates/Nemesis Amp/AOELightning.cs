@@ -19,14 +19,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject lightningEffect;
         private HurtBox[] lightningTargets;
         private float duration;
+        private float surgeBuffCount;
         private StackDamageController stackDamageController;
 
         public override void OnEnter()
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
-            stackDamageController.newSkillUsed = this;
-            stackDamageController.resetComboTimer();
+
 
             //lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
             //find all enemy hurtboxes within a radius
@@ -58,7 +58,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     attacker = base.gameObject,
                     damageColorIndex = DamageColorIndex.Default,
                     //damageValue is based on base damage + additional damage for every stack of controlled charge
-                    damageValue = (this.characterBody.damage * 4f) + (base.characterBody.damage * controlledChargeCount),
+                    damageValue = (this.characterBody.damage * 4f) + (base.characterBody.damage * controlledChargeCount) + base.characterBody.damage * ,
                     isCrit = Util.CheckRoll(this.characterBody.crit, this.characterBody.master),
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
@@ -74,6 +74,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 
             }
+            stackDamageController.newSkillUsed = this;
+            stackDamageController.resetComboTimer();
 
 
         }

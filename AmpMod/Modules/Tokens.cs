@@ -148,12 +148,12 @@ namespace AmpMod.Modules
             #endregion
 
             #region Utility2
-            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Shocking Teleport");
+            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Hyper Surge");
             LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_DESCRIPTION", $"Teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoefficient}% damage</style> damage upon arrival.");
             #endregion
 
             #region Special
-            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Electron Crash");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Voltaic Onslaught");
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
             #endregion
 
