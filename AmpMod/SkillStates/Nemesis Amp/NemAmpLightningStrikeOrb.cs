@@ -4,13 +4,14 @@ using System.Text;
 using RoR2;
 using UnityEngine;
 using RoR2.Orbs;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
 	public class NemAmpLightningStrikeOrb : GenericDamageOrb, IOrbFixedUpdateBehavior
 	{
 		public GameObject orbEffect;
-
+		private NemAmpLightningController lightningController;
 
 		public override void Begin()
 		{
@@ -24,7 +25,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 		public override GameObject GetOrbEffect()
 		{
-			return LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/simplelightningstrikeimpact");
+			return Assets.purpleStormBoltEffect;
+
+			//return LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/simplelightningstrikeimpact");
 		} 
 
 		public override void OnArrival()

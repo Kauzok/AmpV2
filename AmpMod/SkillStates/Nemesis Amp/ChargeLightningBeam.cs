@@ -30,6 +30,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
+            base.characterBody.SetAimTimer(duration);
 
             if (this.childLocator)
             {

@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: matRailgunBeamCylinder
+  m_Shader: {fileID: 4800000, guid: bf4fa5e517bc69845b80be8553f6e834, type: 3}
+  m_ShaderKeywords: CLOUDOFFSET FADE_FROM_VERTEX_COLORS FRESNEL USE_CLOUDS VERTEXALPHA
+    _ALPHATEST_ON _EMISSION
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Cloud1Tex:
+        m_Texture: {fileID: 2800000, guid: 44b2d5d1edc2a2d4db58b678927e5157, type: 3}
+        m_Scale: {x: 0.03, y: 0.3}
+        m_Offset: {x: 1, y: 0}
+    - _Cloud2Tex:
+        m_Texture: {fileID: 2800000, guid: 373cc3fcf52cb1d47a2bc3b747435385, type: 3}
+        m_Scale: {x: 3, y: 0}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3b18b26ed9f3a4243b04db4ae108d792, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0.89}
+    - _RemapTex:
+        m_Texture: {fileID: 2800000, guid: 3d9f2f08ea6cdbc47ae130b772fa1f94, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaBias: 0
+    - _AlphaBoost: 1
+    - _Boost: 1.53
+    - _BumpScale: 1
+    - _CalcTextureAlphaOn: 0
+    - _CloudOffsetOn: 1
+    - _CloudsOn: 1
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DepthOffset: 0
+    - _DetailNormalMapScale: 1
+    - _DisableRemapOn: 0
+    - _DistortionStrength: 0.1
+    - _DstBlend: 10
+    - _DstBlendFloat: 10
+    - _ExternalAlpha: 1
+    - _Fade: 1
+    - _FadeCloseDistance: 0.5
+    - _FadeCloseOn: 0
+    - _FadeFromVertexColorsOn: 1
+    - _FresnelOn: 1
+    - _FresnelPower: 3.5
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _InternalSimpleBlendMode: 1
+    - _IntersectionStrength: 13.95
+    - _InvFade: 0.6
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _OffsetAmount: 0
+    - _Parallax: 0.02
+    - _RimPower: 1
+    - _RimStrength: 0.08
+    - _SkyboxOnly: 0
+    - _SmoothnessTextureChannel: 0
+    - _SoftPower: 8.18
+    - _SoftparticlesOn: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 5
+    - _SrcBlendFloat: 5
+    - _TriplanarOn: 0
+    - _UVSec: 0
+    - _UseUV1On: 0
+    - _VertexAlphaOn: 1
+    - _VertexColorOn: 0
+    - _VertexOffsetOn: 0
+    - _ZTest: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CutoffScroll: {r: 0, g: -0.39, b: 0, a: -0.48}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TintColor: {r: 23.968628, g: 23.968628, b: 23.968628, a: 0.68235296}

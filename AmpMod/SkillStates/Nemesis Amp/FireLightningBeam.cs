@@ -16,7 +16,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public float baseDuration = .3f;
 
         private float duration;
-        private float radius = 2f;
+        private float radius = Modules.StaticValues.chargeBeamRadius;
 
         private float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
         private float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
@@ -25,7 +25,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float maxForce = 2000f;
         private float baseDamage;
 
-        private GameObject beamPrefab = Assets.chargeBeamPrefab;
+        private GameObject beamPrefab = Assets.chargeBeamTracerPrefab;
 
         [SerializeField]
         public float selfForce;
@@ -93,6 +93,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     force = num2,
                     //muzzleName = muzzleString,
                     //hitEffectPrefab = impactEffectPrefab,
+                    tracerEffectPrefab = Assets.chargeBeamTracerPrefab,
                     isCrit = base.characterBody.RollCrit(),
                     radius = this.radius, 
                     falloffModel = BulletAttack.FalloffModel.None,
@@ -106,14 +107,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 baseDamage = calcedDamage * base.characterBody.damage;
                 ModifyBullet(beamAttack);
                 beamAttack.Fire();
-                EffectData effectData = new EffectData
-                {
-                    
-                    start = aimRay.origin,
-                    scale = 1f,
-                    
-                };
-                EffectManager.SpawnEffect(beamPrefab, effectData, false);
 
                 if (base.characterMotor)
                 {

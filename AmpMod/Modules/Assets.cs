@@ -121,7 +121,7 @@ namespace AmpMod.Modules
 
         #region Nemesis Amp Assets
         internal static GameObject chargeBeamMuzzleEffect;
-        internal static GameObject chargeBeamPrefab;
+        internal static GameObject chargeBeamTracerPrefab;
         internal static GameObject chargeBeamHitEffect;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
@@ -300,6 +300,7 @@ namespace AmpMod.Modules
             #region Nemesis Amp
             CreateChargeBeam();
             CreateStaticField();
+            CreateAOELightning();
             #endregion
 
         }
@@ -320,9 +321,24 @@ namespace AmpMod.Modules
             matRedLightning = mainAssetBundle.LoadAsset<Material>("LightningEffectRed");
             matBlueLightning = mainAssetBundle.LoadAsset<Material>("LightningEffect");
 
+            #region Howitzer Spark
+            CreateVFXMaterial("matChargeBeamTrail");
+            CreateVFXMaterial("matChargeBeamFlash");
+            CreateVFXMaterial("matLightningBeam");
+            matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
+            CreateDistortionMaterial("matLightningBeamDistortion");
+            #endregion
+
+            #region Purple Lightning General
+            CreateIntersectMaterial("matLightningSpherePurple");
+            CreateVFXMaterial("matLightningStrikePurple");
+            #endregion
+
+            #region Static Field
             CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
             CreateIntersectMaterial("matTeamAreaIndicatorIntersection");
-            matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
+            #endregion
+
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
             matRedTrail = CreateVFXMaterial("matLorentzTrailRed");
             CreateVFXMaterial("matLightningSphereBlue");
@@ -354,10 +370,11 @@ namespace AmpMod.Modules
         private static void CreateChargeBeam()
         {
             
-            chargeBeamPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningBeam");
-            chargeBeamPrefab.AddComponent<NetworkIdentity>();
-            chargeBeamPrefab.AddComponent<EffectComponent>();
-            AddNewEffectDef(chargeBeamPrefab);
+            chargeBeamTracerPrefab = mainAssetBundle.LoadAsset<GameObject>("TracerChargeBeam");
+            Debug.Log(chargeBeamTracerPrefab);
+            //chargeBeamTracerPrefab.AddComponent<NetworkIdentity>();
+            //chargeBeamTracerPrefab.AddComponent<EffectComponent>();
+            AddNewEffectDef(chargeBeamTracerPrefab);
 
             chargeBeamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningBeam");
             PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffect);    
@@ -368,9 +385,17 @@ namespace AmpMod.Modules
             matFieldIndicator = CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
             Debug.Log("fieldindicator shader is " + matFieldIndicator.shader);
             staticFieldIndicatorPrefab = mainAssetBundle.LoadAsset<GameObject>("FieldAreaIndicator");
+            PrefabAPI.RegisterNetworkPrefab(staticFieldIndicatorPrefab);
             //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
 
 
+        }
+
+        private static void CreateAOELightning()
+        {
+
+            purpleStormBoltEffect = mainAssetBundle.LoadAsset<GameObject>("LightningStrikeOrbPurple");
+            AddNewEffectDef(purpleStormBoltEffect);
         }
         #endregion
 
@@ -1032,6 +1057,14 @@ namespace AmpMod.Modules
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
             mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgintersectioncloudremap");
+            return mat;
+        }
+
+        public static Material CreateDistortionMaterial(string materialName)
+        {
+            Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+
+            mat.shader = LegacyResourcesAPI.Load<Shader>("Shaders/FX/HGDistortion");
             return mat;
         }
 

@@ -7,6 +7,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 {
     class NemAmpLightningController : MonoBehaviour
     {
-        
+
+        private void Start()
+        {
+
+        }
     }
 }

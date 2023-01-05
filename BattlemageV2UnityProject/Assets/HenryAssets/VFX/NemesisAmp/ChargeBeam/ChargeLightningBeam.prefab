@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 2
   _slowRotationSpeed: 5
   _fastRotationSpeed: 20
   _rotateAroundAxis: 0
@@ -2969,7 +2969,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.65065813, g: 0, b: 1, a: 1}
-        key1: {r: 0.65065813, g: 0, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}

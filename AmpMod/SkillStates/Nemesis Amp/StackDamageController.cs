@@ -14,6 +14,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
     class StackDamageController : MonoBehaviour
     {
         private CharacterBody body;
+        private Transform modelTransform;
+        private CharacterModel characterModel;
         private float comboTime = Modules.StaticValues.comboTimeInterval;
         private float damageBuffRemovalRate = Modules.StaticValues.growthBuffDisappearanceRate;
         private int maxBuffStacks = StaticValues.growthBuffMaxStacks;
@@ -32,6 +34,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             body = base.GetComponent<CharacterBody>();
             childLocator = base.GetComponent<ChildLocator>();
+            characterModel = base.GetComponent<CharacterModel>();
 
             //start with no skills used, so lastskillused is null
             lastSkillUsed = null;
