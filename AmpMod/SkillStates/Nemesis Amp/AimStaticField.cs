@@ -9,6 +9,7 @@ using RoR2.Projectile;
 using UnityEngine.Networking;
 using R2API;
 using RoR2.UI;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -103,6 +104,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (this.goodPlacement)
                 {
+                    float baseDamage = (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth) * damageCoefficient) + damageCoefficient;
                     this.PlayAnimation("Gesture, Additive", "FireWall");
                     //Util.PlaySound(PrepWall.fireSoundString, base.gameObject);
                     if (this.fieldIndicatorInstance && base.isAuthority)
@@ -115,8 +117,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         Vector3 vector = Vector3.Cross(Vector3.up, forward);
                         bool crit = Util.CheckRoll(this.critStat, base.characterBody.master);
                         
-                        ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(vector), base.gameObject, this.damageStat * damageCoefficient, 0f, crit, DamageColorIndex.Default, null, -1f);
-                        ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(-vector), base.gameObject, this.damageStat * damageCoefficient, 0f, crit, DamageColorIndex.Default, null, -1f);
+                        ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(vector), base.gameObject, this.damageStat * baseDamage, 0f, crit, DamageColorIndex.Default, null, -1f);
+                        ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(-vector), base.gameObject, this.damageStat * baseDamage, 0f, crit, DamageColorIndex.Default, null, -1f);
                     }
                 }
                 else

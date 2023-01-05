@@ -17,6 +17,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         private float duration;
         private float radius = Modules.StaticValues.chargeBeamRadius;
+        private float surgeBuffCount;
 
         private float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
         private float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
@@ -36,11 +37,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
-            stackDamageController.newSkillUsed = this;
-            stackDamageController.resetComboTimer();
+
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.PlayFireAnimation();
+            surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
             this.Fire();
+
+            stackDamageController.newSkillUsed = this;
+            stackDamageController.resetComboTimer();
         }
 
 
@@ -82,6 +86,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 float num2 = this.charge * this.maxForce;
                 //Debug.Log("calced damage is " + calcedDamage);
                 //Debug.Log("firing");
+                float beamDamage = (StaticValues.growthDamageCoefficient * surgeBuffCount * calcedDamage) + calcedDamage;
                 BulletAttack beamAttack = new BulletAttack
                 {
                     owner = base.gameObject,
@@ -89,7 +94,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     origin = aimRay.origin,
                     aimVector = aimRay.direction,
                     minSpread = 0f,
-                    damage = calcedDamage * base.characterBody.damage,
+                    damage = base.characterBody.damage * beamDamage,
                     force = num2,
                     //muzzleName = muzzleString,
                     //hitEffectPrefab = impactEffectPrefab,
@@ -104,7 +109,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     damageType = DamageType.Generic
                 };
                 beamAttack.AddModdedDamageType(DamageTypes.controlledChargeProc);
-                baseDamage = calcedDamage * base.characterBody.damage;
+                baseDamage = base.characterBody.damage * beamDamage;
                 ModifyBullet(beamAttack);
                 beamAttack.Fire();
 

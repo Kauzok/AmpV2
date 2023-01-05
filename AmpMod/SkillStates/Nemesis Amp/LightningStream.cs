@@ -8,6 +8,7 @@ using UnityEngine;
 using R2API;
 using RoR2.Orbs;
 using UnityEngine.Networking;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -31,8 +32,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
-            stackDamageController.newSkillUsed = this;
-            stackDamageController.resetComboTimer();
+
             tracker = base.GetComponent<NemAmpLightningTracker>();
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
@@ -75,13 +75,19 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 //Transform transform = this.childLocator.FindChild(this.muzzleString);
                 OrbManager.instance.AddOrb(lightningOrb);
             }
+
             
         }
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             this.tickTimer -= Time.fixedDeltaTime;
-            this.FireLightning();
+            if (NetworkServer.active)
+            {
+                this.FireLightning();
+            }
+            stackDamageController.newSkillUsed = this;
+            stackDamageController.resetComboTimer();
             if (base.isAuthority && base.fixedAge > this.tickTime)
             {
                 this.outer.SetNextStateToMain();
@@ -93,7 +99,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             return new NemAmpLightningLockOrb
             {
                 origin = base.gameObject.transform.position,
-                damageValue = lightningTickDamage * damageStat,
+                damageValue = lightningTickDamage * damageStat + (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)),
                 isCrit = base.characterBody.RollCrit(),
                 damageType = DamageType.Generic,
                 teamIndex = teamComponent.teamIndex,

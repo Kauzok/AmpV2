@@ -6,6 +6,7 @@ using EntityStates;
 using RoR2.Skills;
 using UnityEngine;
 using RoR2.Projectile;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -18,6 +19,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float baseDuration = .8f;
         private float chargeTime;
         private float duration;
+        private float surgeBuffCount;
         private ChildLocator childLocator;
         private bool hasFired;
         private StackDamageController stackDamageController;
@@ -25,10 +27,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnEnter()
         {
             base.OnEnter();
-            stackDamageController = base.GetComponent<StackDamageController>();
-            stackDamageController.newSkillUsed = this;
-            stackDamageController.resetComboTimer();
 
+            stackDamageController = base.GetComponent<StackDamageController>();
+
+            surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
 
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
@@ -62,7 +64,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 if (bladePrefab != null)
                 {
 
-
+                    float baseDamage = (StaticValues.growthDamageCoefficient * surgeBuffCount * this.damageCoefficient) + this.damageCoefficient;
                     // Debug.Log(base.gameObject);
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
@@ -70,7 +72,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         position = aimRay.origin,
                         rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
                         owner = base.gameObject,
-                        damage = base.characterBody.damage * this.damageCoefficient,
+                        damage = base.characterBody.damage * baseDamage,
                         force = 120f,
                         crit = base.RollCrit()
                     };
@@ -100,6 +102,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 Debug.Log("firing");
                 hasFired = true;
             }
+
+            stackDamageController.newSkillUsed = this;
+            stackDamageController.resetComboTimer();
+
 
             if (fixedAge >= duration && base.isAuthority)
             {

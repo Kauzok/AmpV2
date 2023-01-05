@@ -7,6 +7,7 @@ using R2API;
 using RoR2.Skills;
 using UnityEngine;
 using AmpMod.SkillStates.Amp.BaseStates;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -30,8 +31,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             DoTeleport();
             FireTeleportBlast();
+            stackDamageController.newSkillUsed = this;
+            stackDamageController.resetComboTimer();
 
-            
+
         }
 
         public void DoTeleport()
@@ -45,11 +48,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             if (base.isAuthority)
             {
-
+                float baseDamage = (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth) * teleportBlastDamage) + teleportBlastDamage;
                 teleportBlast = new BlastAttack
                 {
                     attacker = base.gameObject,
-                    baseDamage = this.teleportBlastDamage * base.characterBody.damage,
+                    baseDamage = base.characterBody.damage * teleportBlastDamage,
                     baseForce = 0f,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
                     crit = base.characterBody.RollCrit(),
