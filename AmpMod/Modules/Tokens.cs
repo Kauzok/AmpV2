@@ -148,7 +148,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Utility2
-            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Hyper Surge");
+            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Shocking Teleport");
             LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_DESCRIPTION", $"Teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoefficient}% damage</style> damage upon arrival.");
             #endregion
 
