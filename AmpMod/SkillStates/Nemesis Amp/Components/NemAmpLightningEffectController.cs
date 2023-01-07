@@ -12,8 +12,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
     public class NemAmpLightningEffectController : NetworkBehaviour
     {
         private GameObject lightningTetherVFX = Assets.lightningStreamEffect;
+        private GameObject attacker;
         private NemAmpLightningTracker lightningTracker;
-        public TetherVfx lightningTetherInstance;
+        public GameObject lightningTetherInstance;
         private HurtBox trackingTarget;
         private LineRenderer lineRenderer;
         private LineRenderer lineRendererPrefab;
@@ -26,19 +27,33 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
             numLineRendererPoints = lineRendererPrefab.positionCount;
         }
 
-        public void CreateLightningTether(HurtBox hurtbox)
+        public void CreateLightningTether(GameObject attacker, HurtBox hurtbox)
         {
             if (this.lightningTracker)
             {
                 if (hurtbox)
                 {
                     trackingTarget = hurtbox;
+                    if (attacker)
+                    {
+                        this.attacker = attacker;
+                    }
+
                     //lightningTetherInstance = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, base.transform).GetComponentInChildren<TetherVfx>();
                     //lightningTetherInstance.tetherTargetTransform = hurtbox.gameObject.transform;
-                    lineRenderer = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, base.transform).GetComponentInChildren<LineRenderer>();
+                    lightningTetherInstance = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, attacker.gameObject.transform);
+                    
+                    lightningTetherInstance.transform.parent = attacker.gameObject.transform;
+                    if (lightningTetherInstance)
+                    {
+                        lineRenderer = lightningTetherInstance.GetComponent<LineRenderer>();
+                    }
+                    
+
+
                     Debug.Log(lineRenderer + " is our linerenderer");
                     
-                    lineRenderer.SetPosition(0, base.transform.position);
+                    lineRenderer.SetPosition(0, attacker.transform.position);
                     Debug.Log(hurtbox.healthComponent.gameObject);
                     lineRenderer.SetPosition(1, hurtbox.healthComponent.gameObject.transform.position);
                     //lineRenderer.SetPosition(numlineRendererPoints-1, hurtbox.gameObject.transform.position);
@@ -48,15 +63,20 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 
         private void Update()
         {
-            if (this.lineRenderer)
+            if (lightningTetherInstance)
             {
-                if (trackingTarget.healthComponent.gameObject.transform)
-
+                if (lineRenderer && trackingTarget)
                 {
-                    Debug.Log(trackingTarget.healthComponent.gameObject);
-                    //set start of line renderer to 
-                    lineRenderer.SetPosition(0, base.gameObject.transform.position);
-                    lineRenderer.SetPosition(1, trackingTarget.gameObject.transform.position);
+                    if (trackingTarget.healthComponent && this.attacker)
+                    //Debug.Log(trackingTarget.healthComponent.gameObject);
+                    //set start of line renderer to gameobject
+                    if (trackingTarget.healthComponent.gameObject.transform)
+                        {
+                            lineRenderer.SetPosition(0, this.attacker.transform.position);
+                            lineRenderer.SetPosition(1, trackingTarget.healthComponent.gameObject.transform.position);
+                        }
+                    
+                    //Debug.Log(trackingTarget.gameObject.transform.position + " is position");
 
                 }
                 

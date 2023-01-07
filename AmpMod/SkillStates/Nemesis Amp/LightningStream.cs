@@ -95,7 +95,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.targetHurtbox = this.tracker.GetTrackingTarget();
                 if (targetHurtbox && !lightningTetherActive)
                 {
-                    lightningEffectController.CreateLightningTether(targetHurtbox);
+                    lightningEffectController.CreateLightningTether(base.gameObject, targetHurtbox);
                     lightningTetherActive = true;
                 }
 
