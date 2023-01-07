@@ -42,10 +42,11 @@ namespace AmpMod.Modules
             + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the metallic bullets freeze mid-air, refusing to hit their target. The last thing they see is a terrifying, yet magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
             + "Electrocute.";
 
+        internal static string nemCharacterLore = "";
 
 
 
-        [Header("Charge Values")]
+       [Header("Charge Values")]
         internal const int chargeMaxStacks = 3;
         internal const float chargeDuration = 7;
         internal const float chargeDamageCoefficient = 4f;
@@ -105,7 +106,7 @@ namespace AmpMod.Modules
 
         [Header("Howitzer Spark Values")]
         internal const float chargeBeamMinDamageCoefficient = 4f;
-        internal const float chargeBeamMaxDamageCoefficient = 17f;
+        internal const float chargeBeamMaxDamageCoefficient = 15f;
         internal const float additionalPierceDamageCoefficient = .3f;
         internal const float chargeBeamRadius = 1f;
 

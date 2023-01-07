@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using AmpMod.SkillStates.Nemesis_Amp;
+using AmpMod.SkillStates.Nemesis_Amp.Orbs;
 
 namespace AmpMod.Modules.Survivors
 {
@@ -91,6 +92,7 @@ namespace AmpMod.Modules.Survivors
                     bodyPrefab.AddComponent<NemAmpLightningTracker>();
                     bodyPrefab.AddComponent<StackDamageController>();
                     bodyPrefab.AddComponent<NemAmpLightningController>();
+                    bodyPrefab.AddComponent<NemAmpLightningEffectController>();
                 }
 
                 isAmp = false;

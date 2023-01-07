@@ -235,7 +235,7 @@ namespace AmpMod.Modules.Survivors
 
 
             #region Specials
-            //creates fulmination
+            //creates voltaic onslaught
             SkillDef stormSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_NEMESISAMP_BODY_SPECIAL_SUMMONSTORM_NAME",

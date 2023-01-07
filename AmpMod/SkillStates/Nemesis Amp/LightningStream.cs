@@ -9,6 +9,7 @@ using R2API;
 using RoR2.Orbs;
 using UnityEngine.Networking;
 using AmpMod.Modules;
+using AmpMod.SkillStates.Nemesis_Amp.Orbs;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -18,6 +19,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float lightningTickDamage = Modules.StaticValues.lightningStreamPerSecondDamageCoefficient / 3f;
         private StackDamageController stackDamageController;
         private float charge;
+        private NemAmpLightningEffectController lightningEffectController;
         private float procCoefficient = Modules.StaticValues.lightningStreamProcCoefficient;
         private NemAmpLightningTracker tracker;
         private HurtBox targetHurtbox;
@@ -26,13 +28,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float baseTickTime = Modules.StaticValues.lightningStreamBaseTickTime;
         private float tickTime;
         private bool isCrit;
+        private bool lightningTetherActive;
+        private float healthCheck;
         private float tickTimer;
 
         public override void OnEnter()
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
-
+            lightningEffectController = base.GetComponent<NemAmpLightningEffectController>();
+            
             tracker = base.GetComponent<NemAmpLightningTracker>();
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
@@ -40,10 +45,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.childLocator = modelTransform.GetComponent<ChildLocator>();
                 this.animator = modelTransform.GetComponent<Animator>();
             }
-            if (this.tracker && base.isAuthority)
-            {
-                this.targetHurtbox = this.tracker.GetTrackingTarget();
-            }
+ 
+
 
             //stackDamageController.newSkillUsed = this;
             //stackDamageController.resetComboTimer();
@@ -63,11 +66,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 return;
             }
             this.tickTimer = this.tickTime;
-            NemAmpLightningLockOrb lightningOrb = createOrb();
+            NemAmpLightningLockOrb lightningOrb = createDmgOrb();
 
             if (Util.CheckRoll(procCoefficient * 100f, base.characterBody.master))
             {
-                lightningOrb.AddModdedDamageType(Modules.DamageTypes.controlledChargeProc);
+                lightningOrb.AddModdedDamageType(DamageTypes.controlledChargeProc);
             }
             
             if (targetHurtbox)
@@ -78,23 +81,39 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             
         }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+
             this.tickTimer -= Time.fixedDeltaTime;
-            if (NetworkServer.active)
+
+
+            if (this.tracker && base.isAuthority)
             {
-                this.FireLightning();
+                this.targetHurtbox = this.tracker.GetTrackingTarget();
+                if (targetHurtbox && !lightningTetherActive)
+                {
+                    lightningEffectController.CreateLightningTether(targetHurtbox);
+                    lightningTetherActive = true;
+                }
+
             }
+
+            this.FireLightning();
+            
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
-            if (base.isAuthority && base.fixedAge > this.tickTime)
+
+            
+            if ((base.isAuthority && !base.inputBank.skill1.down) || (base.isAuthority && this.targetHurtbox && this.targetHurtbox.healthComponent.health <= 0) || (base.isAuthority && !this.targetHurtbox))
             {
                 this.outer.SetNextStateToMain();
             }
         }
 
-        private NemAmpLightningLockOrb createOrb()
+        private NemAmpLightningLockOrb createDmgOrb()
         {
             return new NemAmpLightningLockOrb
             {
@@ -105,7 +124,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 teamIndex = teamComponent.teamIndex,
                 attacker = gameObject,
                 procCoefficient = .2f,
-                lightningType = LightningOrb.LightningType.MageLightning,
+                lightningType = LightningOrb.LightningType.Loader,
                 damageColorIndex = DamageColorIndex.Default,
                 target = targetHurtbox,
             };
@@ -116,6 +135,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.OnExit();
             //Debug.Log("Exiting");
             this.FireLightning();
+            //lightningEffectController.DestroyLightningTether();
         }
 
         public override void OnSerialize(NetworkWriter writer)

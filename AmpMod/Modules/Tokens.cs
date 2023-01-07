@@ -118,7 +118,7 @@ namespace AmpMod.Modules
             LanguageAPI.Add(nemPrefix + "SUBTITLE", Modules.StaticValues.nemCharacterSubtitle);
             LanguageAPI.Add(nemPrefix + "DESCRIPTION", Modules.StaticValues.nemDescriptionText);
             LanguageAPI.Add(nemPrefix + "OUTRO_FLAVOR", Modules.StaticValues.nemCharacterOutro);
-            //LanguageAPI.Add(nemPrefix + "LORE", Modules.StaticValues.nemCharacterLore);
+            LanguageAPI.Add(nemPrefix + "LORE", Modules.StaticValues.nemCharacterLore);
             LanguageAPI.Add(nemPrefix + "OUTRO_FAILURE", Modules.StaticValues.nemCharacterOutroFailure);
             #endregion
 
@@ -128,7 +128,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Primary
-            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fulmination");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Vengeful Fulmination");
             LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on and shock an enemy for <style=cIsDamage>{Math.Round(100f * StaticValues.lightningStreamPerSecondDamageCoefficient * StaticValues.lightningStreamBaseTickTime)}% damage</style>.");
             #endregion
 

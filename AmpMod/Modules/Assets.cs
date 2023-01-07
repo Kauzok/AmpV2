@@ -123,6 +123,7 @@ namespace AmpMod.Modules
         internal static GameObject chargeBeamMuzzleEffect;
         internal static GameObject chargeBeamTracerPrefab;
         internal static GameObject chargeBeamHitEffect;
+        internal static GameObject lightningStreamEffect;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
         internal static GameObject teleportExplosionEffect;
@@ -299,6 +300,7 @@ namespace AmpMod.Modules
 
             #region Nemesis Amp
             CreateChargeBeam();
+            CreateLightningStream();
             CreateStaticField();
             CreateAOELightning();
             #endregion
@@ -397,6 +399,15 @@ namespace AmpMod.Modules
             purpleStormBoltEffect = mainAssetBundle.LoadAsset<GameObject>("LightningStrikeOrbPurple");
             AddNewEffectDef(purpleStormBoltEffect);
         }
+
+        private static void CreateLightningStream()
+        {
+            lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningEffectOrb");
+            //lightningStreamEffect.AddComponent<SkillStates.Nemesis_Amp.NemAmpLightningOrbNoise>();
+            //AddNewEffectDef(lightningStreamEffect);
+        }
+
+
         #endregion
 
 
