@@ -39,7 +39,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
                     Debug.Log(lineRenderer + " is our linerenderer");
                     
                     lineRenderer.SetPosition(0, base.transform.position);
-                    lineRenderer.SetPosition(1, hurtbox.gameObject.transform.position);
+                    Debug.Log(hurtbox.healthComponent.gameObject);
+                    lineRenderer.SetPosition(1, hurtbox.healthComponent.gameObject.transform.position);
                     //lineRenderer.SetPosition(numlineRendererPoints-1, hurtbox.gameObject.transform.position);
                 }
             }
@@ -47,21 +48,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 
         private void Update()
         {
-            if (this.lightningTetherInstance)
+            if (this.lineRenderer)
             {
-                if (trackingTarget.gameObject.transform && lineRenderer)
+                if (trackingTarget.healthComponent.gameObject.transform)
 
                 {
-                    //lightningTetherInstance.tetherTargetTransform  = trackingTarget.gameObject.transform;
-
+                    Debug.Log(trackingTarget.healthComponent.gameObject);
                     //set start of line renderer to 
-                    lineRenderer.SetPosition(0, base.transform.position);
+                    lineRenderer.SetPosition(0, base.gameObject.transform.position);
                     lineRenderer.SetPosition(1, trackingTarget.gameObject.transform.position);
 
-                    /*for (int i = 1; i < numLineRendererPoints; i++)
-                    {
-                        lineRenderer.SetPosition(i, trackingTarget.gameObject.transform.position);
-                    } */
                 }
                 
             }
