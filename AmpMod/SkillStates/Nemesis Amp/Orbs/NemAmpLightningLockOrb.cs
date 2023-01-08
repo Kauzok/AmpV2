@@ -15,19 +15,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		public LightningOrb.LightningType lightningType;
 		public override void Begin()
 		{
-            Debug.Log("lightning attack spawning");
+            //Debug.Log("lightning attack spawning");
             //base.Begin();
             base.duration = 0.1f;
 			//this.speed = 120f;
 			string path = null;
 			switch (this.lightningType)
 			{
-				case LightningOrb.LightningType.Ukulele:
-					path = "Prefabs/Effects/OrbEffects/LightningOrbEffect";
-					break;
-				case LightningOrb.LightningType.Tesla:
-					path = "Prefabs/Effects/OrbEffects/TeslaOrbEffect";
-					break;
 				case LightningOrb.LightningType.Loader:
 					path = null;
 					break;
@@ -38,13 +32,18 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			}
 			EffectData effectData = new EffectData
 			{
-				origin = this.origin,
-				genericFloat = base.duration
+				//origin = this.origin,
+				origin = this.target.healthComponent.gameObject.transform.position,
+				genericFloat = base.duration,
 			};
 			effectData.SetHurtBoxReference(this.target);
 			if (this.lightningType != LightningOrb.LightningType.Loader)
             {
 				EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>(path), effectData, true);
+			}
+            else
+            {
+				EffectManager.SpawnEffect(Modules.Assets.lightningStreamImpactEffect, effectData, true);
 			}
 			
 		}

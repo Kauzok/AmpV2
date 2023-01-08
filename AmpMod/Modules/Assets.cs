@@ -124,6 +124,7 @@ namespace AmpMod.Modules
         internal static GameObject chargeBeamTracerPrefab;
         internal static GameObject chargeBeamHitEffect;
         internal static GameObject lightningStreamEffect;
+        internal static GameObject lightningStreamImpactEffect;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
         internal static GameObject teleportExplosionEffect;
@@ -215,7 +216,7 @@ namespace AmpMod.Modules
 
             wormHealth.deprecatedTier = ItemTier.NoTier;
 
-                
+                 
             
             // wormHealth.pickupToken = "bruh";
 
@@ -353,6 +354,9 @@ namespace AmpMod.Modules
             matTracerBright = CreateVFXMaterial("matTracerBright");
             matRing = CreateVFXMaterial("matOmniRing2");
             matHitSpark = CreateVFXMaterial("matOmniHitspark3");
+            CreateVFXMaterial("matGenericFlash");
+            CreateVFXMaterial("matOmniHitspark1");
+            CreateVFXMaterial("matTracerBrightTransparent"); 
             matLightningStrikeRed = CreateVFXMaterial("matLightningStrikeRed");
             matLightningLongBlue = CreateVFXMaterial("matLightningLongBlue");
 
@@ -403,10 +407,15 @@ namespace AmpMod.Modules
         private static void CreateLightningStream()
         {
             lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningEffectOrb");
-            //lightningStreamEffect.AddComponent<SkillStates.Nemesis_Amp.NemAmpLightningOrbNoise>();
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamEffect);
+            //lightningStreamEffect.AddComponent<SkillStates.Nemesis_Amp.NemAmpLightningRendererNoise>();
             //AddNewEffectDef(lightningStreamEffect);
-        }
+            var lightningStreamOmniImpact = mainAssetBundle.LoadAsset<GameObject>("OmniImpactVFXLightning");
+            AddNewEffectDef(lightningStreamOmniImpact);
+            lightningStreamImpactEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbImpact");
+            AddNewEffectDef(lightningStreamImpactEffect);
 
+        }
 
         #endregion
 
@@ -609,11 +618,13 @@ namespace AmpMod.Modules
             pulseBlastEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffect", true);
             pulseBlastEffect.AddComponent<NetworkIdentity>();
 
+            pulseBlastEffect.GetComponent<EffectComponent>().applyScale = true;
+
             pulseBlastEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffectRed", true);
             //pulseBlastEffectRed = mainAssetBundle.LoadAsset<GameObject>("pulseBlastRed");
             pulseBlastEffectRed.AddComponent<NetworkIdentity>();
 
-            
+            pulseBlastEffectRed.GetComponent<EffectComponent>().applyScale = true;
 
             pulseMuzzleEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffect", true);
             pulseMuzzleEffect.AddComponent<NetworkIdentity>();

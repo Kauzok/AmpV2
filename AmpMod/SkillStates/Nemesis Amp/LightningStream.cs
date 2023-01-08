@@ -37,6 +37,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
             lightningEffectController = base.GetComponent<NemAmpLightningEffectController>();
+            lightningEffectController.isAttacking = true;
             
             tracker = base.GetComponent<NemAmpLightningTracker>();
             Transform modelTransform = base.GetModelTransform();
@@ -95,7 +96,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.targetHurtbox = this.tracker.GetTrackingTarget();
                 if (targetHurtbox && !lightningTetherActive)
                 {
-                    lightningEffectController.CreateLightningTether(base.gameObject, targetHurtbox);
+                    lightningEffectController.CreateLightningTether(base.gameObject);
                     lightningTetherActive = true;
                 }
 
@@ -133,9 +134,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnExit()
         {
             base.OnExit();
+            lightningEffectController.isAttacking = false;
             //Debug.Log("Exiting");
             this.FireLightning();
-            //lightningEffectController.DestroyLightningTether();
+            lightningEffectController.DestroyLightningTether();
+            lightningTetherActive = true;
         }
 
         public override void OnSerialize(NetworkWriter writer)
