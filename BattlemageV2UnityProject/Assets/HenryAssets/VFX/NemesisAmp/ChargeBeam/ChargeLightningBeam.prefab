@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087868630455020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.005, y: 0, z: 0}
   m_LocalScale: {x: 0.48, y: 0.48, z: 0.48}
   m_Children: []
   m_Father: {fileID: 4727555213669404}
@@ -212,7 +212,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2615,7 +2615,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 67bc5f4a234ff684bbb897654c72ae52, type: 2}
+  - {fileID: 2100000, guid: 185261bb97e363e429b546fe7c7f43dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2648,7 +2648,7 @@ GameObject:
   - component: {fileID: 114484585213214936}
   - component: {fileID: 114146919654468121}
   - component: {fileID: 4680724858362207292}
-  - component: {fileID: 581194109814633749}
+  - component: {fileID: 7295394638946040293}
   m_Layer: 0
   m_Name: ChargeLightningBeam
   m_TagString: Untagged
@@ -2664,7 +2664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271274015693649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4432997217030885}
@@ -2833,7 +2833,7 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &581194109814633749
+--- !u!114 &7295394638946040293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2847,8 +2847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _slowRotationSpeed: 5
-  _fastRotationSpeed: 40
-  _rotateAroundAxis: 0
+  _fastRotationSpeed: 200
+  _rotateAroundAxis: 2
   _relativeTo: 1
   _reverse: 0
 --- !u!1 &1642566272497666
@@ -2968,8 +2968,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.65065813, g: 0, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.62624454, g: 0, b: 1, a: 1}
+        key1: {r: 1, g: 0.8066038, b: 0.9916574, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -3027,7 +3027,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 1.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3410,7 +3410,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 1.7453293
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -5292,7 +5292,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17bd8da5a6b7fe14a972bc5b7e33794b, type: 2}
+  - {fileID: 2100000, guid: 4e92de6eebda5fb43a1a5cbdf5f113a4, type: 2}
   - {fileID: 2100000, guid: d862690072f14cf4b831021bc5bb8563, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5383,8 +5383,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.50575256, g: 0, b: 1, a: 1}
-  m_Intensity: 48.9
-  m_Range: 25
+  m_Intensity: 30
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

@@ -38,7 +38,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         private void Awake()
 		{
-			this.indicator = new Indicator(base.gameObject, LegacyResourcesAPI.Load<GameObject>("Prefabs/HuntressTrackingIndicator"));
+			this.indicator = new Indicator(base.gameObject, Assets.lightningCrosshair);
+
 		}
 
 		private void Start()
@@ -75,6 +76,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				Ray aimRay = new Ray(this.inputBank.aimOrigin, this.inputBank.aimDirection);
 				this.SearchForTarget(aimRay);
 				this.indicator.targetTransform = (this.trackingTarget ? this.trackingTarget.transform : null);
+				//Debug.Log(indicator + " is indicator");
 			}
 
 			checkNearbyEnemies();

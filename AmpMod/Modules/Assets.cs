@@ -125,6 +125,7 @@ namespace AmpMod.Modules
         internal static GameObject chargeBeamHitEffect;
         internal static GameObject lightningStreamEffect;
         internal static GameObject lightningStreamImpactEffect;
+        internal static GameObject lightningCrosshair;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
         internal static GameObject teleportExplosionEffect;
@@ -324,12 +325,15 @@ namespace AmpMod.Modules
             matRedLightning = mainAssetBundle.LoadAsset<Material>("LightningEffectRed");
             matBlueLightning = mainAssetBundle.LoadAsset<Material>("LightningEffect");
 
+            CreateBrightenMaterial("matUIOverbrighten2x");
+
             #region Howitzer Spark
-            CreateVFXMaterial("matChargeBeamTrail");
+            //CreateVFXMaterial("matChargeBeamTrail");
             CreateVFXMaterial("matChargeBeamFlash");
             CreateVFXMaterial("matLightningBeam");
             matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
             CreateDistortionMaterial("matLightningBeamDistortion");
+            CreateVFXMaterial("matFieldTeamAreaIndicator");
             #endregion
 
             #region Purple Lightning General
@@ -354,8 +358,11 @@ namespace AmpMod.Modules
             matTracerBright = CreateVFXMaterial("matTracerBright");
             matRing = CreateVFXMaterial("matOmniRing2");
             matHitSpark = CreateVFXMaterial("matOmniHitspark3");
+            CreateVFXMaterial("matJellyFishLightning");
             CreateVFXMaterial("matGenericFlash");
             CreateVFXMaterial("matOmniHitspark1");
+            CreateVFXMaterial("matOmniHitspark1Blank");
+            CreateVFXMaterial("matOmniHitspark3Blank");
             CreateVFXMaterial("matTracerBrightTransparent"); 
             matLightningStrikeRed = CreateVFXMaterial("matLightningStrikeRed");
             matLightningLongBlue = CreateVFXMaterial("matLightningLongBlue");
@@ -414,6 +421,10 @@ namespace AmpMod.Modules
             AddNewEffectDef(lightningStreamOmniImpact);
             lightningStreamImpactEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbImpact");
             AddNewEffectDef(lightningStreamImpactEffect);
+
+            lightningCrosshair = mainAssetBundle.LoadAsset<GameObject>("LightningIndicator");
+            lightningCrosshair.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
+            PrefabAPI.RegisterNetworkPrefab(lightningCrosshair);
 
         }
 
@@ -1079,6 +1090,14 @@ namespace AmpMod.Modules
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
             mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgintersectioncloudremap");
+            return mat;
+        }
+
+        public static Material CreateBrightenMaterial(string materialName)
+        {
+            Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+
+            mat.shader = LegacyResourcesAPI.Load<Shader>("Shaders/UI/HGUIOverbrighten");
             return mat;
         }
 

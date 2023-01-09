@@ -82,4 +82,4 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CutoffScroll: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 1.6627451, g: 1.2705883, b: 3.1686275, a: 1}
+    - _TintColor: {r: 6.2599154, g: 6.2599154, b: 6.2599154, a: 1}
