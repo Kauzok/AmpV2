@@ -26,7 +26,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float comboTimer;
         private bool isInCombo;
         private float prevTime;
-        private float buffRemovalTimer;
+        private float buffRemovalTimer = 0f;
         private int growthBuffCount;
         
 
@@ -46,12 +46,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private void FixedUpdate()
         {
 
-            
 
+           
             if (NetworkServer.active)
             {
                 growthBuffCount = body.GetBuffCount(Buffs.damageGrowth);
-
+                buffRemovalTimer -= Time.fixedDeltaTime;
                 //constantly count with timer, it's a float so this won't overflow unless you keep the game open for multiple years
                 comboTimer += Time.fixedDeltaTime;
                 //use another timer that doesn't reset on skill use; this one only resets when we have a combo, in order to prevent players from maintaining damage by spamming their m1
@@ -81,32 +81,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                     }
                 }
-            
-
-                //if it's been longer than comboTime, tell us we're not in a combo
-               /* if (repeatTimer > comboTime)
-                {
-                    isInCombo = false;
-
-                }*/
+           
                 
                 //if we aren't in a combo, start removing damage buff stacks
                 if (repeatTimer > comboTime)
                 {
                     //can't use growthbuffCount here because that gets assigned at the start of fixedUpdate and won't change over the course of the while loop
-                    while (body.GetBuffCount(Buffs.damageGrowth) > 0)
+                    if (body.GetBuffCount(Buffs.damageGrowth) > 0)
                     {
                         comboTimer += Time.fixedDeltaTime;
-                        this.buffRemovalTimer -= Time.fixedDeltaTime;
-
-                        //removes a stack of the buff every .4 seconds, the value of damageBuffRemovalRate
-                        if (this.buffRemovalTimer <= 0f)
-                        {
-                            //Debug.Log("removing buff");
-                            buffRemovalTimer = damageBuffRemovalRate;
-                            body.RemoveBuff(Buffs.damageGrowth);
-
-                        }
+                        RemoveBuffTimed();
 
 
                     }
@@ -121,6 +105,19 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lastSkillUsed = newSkillUsed;
 
 
+        }
+
+        public void RemoveBuffTimed()
+        {
+            if (!NetworkServer.active || buffRemovalTimer > 0f)
+            {
+                return;
+            }
+            Debug.Log(buffRemovalTimer);
+            buffRemovalTimer = .4f;
+            Debug.Log(buffRemovalTimer + " after reset");
+            body.RemoveBuff(Buffs.damageGrowth);
+            Debug.Log("removing buff");
         }
 
         public void resetComboTimer()
