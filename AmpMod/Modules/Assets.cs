@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 using System.Collections.Generic;
 using RoR2.UI;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
 
 namespace AmpMod.Modules
 {
@@ -120,6 +121,7 @@ namespace AmpMod.Modules
         #endregion
 
         #region Nemesis Amp Assets
+        internal static GameObject passiveMeter;
         internal static GameObject chargeBeamMuzzleEffect;
         internal static GameObject chargeBeamTracerPrefab;
         internal static GameObject chargeBeamHitEffect;
@@ -305,6 +307,7 @@ namespace AmpMod.Modules
             CreateLightningStream();
             CreateStaticField();
             CreateAOELightning();
+            CreatePassiveMeter();
             #endregion
 
         }
@@ -402,6 +405,13 @@ namespace AmpMod.Modules
             //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
 
 
+        }
+
+        private static void CreatePassiveMeter()
+        {
+            passiveMeter = mainAssetBundle.LoadAsset<GameObject>("DamageGrowthMeter");
+            TextMeshProUGUI text = passiveMeter.GetComponentInChildren<TextMeshProUGUI>();
+            text.font = Addressables.LoadAssetAsync<TMP_FontAsset>("RoR2/Base/Common/Fonts/Bombardier/tmpBombDropshadow.asset").WaitForCompletion();
         }
 
         private static void CreateAOELightning()

@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using RoR2;
-using RoR2.Skills;
 using UnityEngine.Networking;
 using EntityStates;
 using AmpMod.Modules;
+using RoR2.HudOverlay;
+using UnityEngine.UI;
+using RoR2.UI;
+using System.Linq;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
     [RequireComponent(typeof(CharacterBody))]
     class StackDamageController : MonoBehaviour
     {
+        [Header("Passive Functionality")]
         private CharacterBody body;
-        private Transform modelTransform;
-        private CharacterModel characterModel;
         private float comboTime = Modules.StaticValues.comboTimeInterval;
         private float damageBuffRemovalRate = Modules.StaticValues.growthBuffDisappearanceRate;
         private int maxBuffStacks = StaticValues.growthBuffMaxStacks;
@@ -28,14 +30,20 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float prevTime;
         private float buffRemovalTimer = 0f;
         private int growthBuffCount;
-        
+
+        [Header("Passive UI")]
+        private Image passiveMeter;
+        private bool allCreated;
+        private TMPro.TextMeshProUGUI meterText;
+        private OverlayController overlayController;
+        private GameObject maxSparks;
+
+        [Header("Passive VFX")]
+        private CharacterModel characterModel;
 
         private void Awake()
         {
             body = base.GetComponent<CharacterBody>();
-            childLocator = base.GetComponent<ChildLocator>();
-            characterModel = base.GetComponent<CharacterModel>();
-
             //start with no skills used, so lastskillused is null
             lastSkillUsed = null;
 
@@ -43,11 +51,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             prevTime = -1f;
         }
 
+
         private void FixedUpdate()
         {
 
-
-           
+            #region passive functionality
             if (NetworkServer.active)
             {
                 growthBuffCount = body.GetBuffCount(Buffs.damageGrowth);
@@ -78,11 +86,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                             body.AddBuff(Buffs.damageGrowth);
                         }
 
-
                     }
                 }
-           
-                
                 //if we aren't in a combo, start removing damage buff stacks
                 if (repeatTimer > comboTime)
                 {
@@ -96,15 +101,97 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     }
                 }
 
-
-
-
             }
 
             //now the last skill used is the skill we just used
             lastSkillUsed = newSkillUsed;
+            #endregion
+
+            #region passive UI
+            if (overlayController == null)
+            {
+                CreateOverlay();
+            }
+            else
+            {
+                UpdateValues();
+            }
+ 
+
+            #endregion
+
+        }
+        private void OverlayController_onInstanceAdded(OverlayController overlayController, GameObject instance)
+        {
+            instance.transform.localPosition = new Vector3(-100f, 70, 0f);
+            float sizeScale = 0.2f;
+            instance.transform.localScale = new Vector3(sizeScale, sizeScale, sizeScale);
 
 
+            //batteryRings = instance.transform.Find("OuterRings").GetComponent<Image>();
+            passiveMeter = instance.transform.Find("MeterFill").GetComponent<Image>();
+            //batteryGlow = instance.transform.Find("Glow").GetComponent<Image>();
+            meterText = instance.transform.Find("Text").GetComponent<TMPro.TextMeshProUGUI>();
+            //batteryPip = instance.transform.Find("Pip").GetComponent<Image>();
+            maxSparks = instance.transform.Find("Max Sparks").gameObject;
+
+
+            if (passiveMeter && meterText) allCreated = true;
+
+        }
+
+        private void OnDisable()
+        {
+            if (overlayController != null)
+            {
+                overlayController.onInstanceAdded -= OverlayController_onInstanceAdded;
+                HudOverlayManager.RemoveOverlay(overlayController);
+            }
+
+        }
+
+
+        private void UpdateValues()
+        {
+            if (overlayController == null) return;
+            if (!passiveMeter || !meterText) return;
+
+            float fill = Mathf.Clamp01(((float)body.GetBuffCount(Buffs.damageGrowth)) / ((float)(maxBuffStacks)));
+            passiveMeter.fillAmount = fill;
+            //Debug.Log("fill amount is " + fill);
+            //batteryRings.fillAmount = fill;
+            //batteryGlow.fillAmount = fill;
+
+            //Debug.Log("setting text to " + Mathf.FloorToInt(fill).ToString() + "%");
+
+            if (fill == 1)
+            {
+                maxSparks.SetActive(true);
+                meterText.SetText("MAX");
+            }
+            else if (fill != 1) 
+            {
+                meterText.SetText((fill * 100) + "%");
+            }
+            else if (fill != 1 && maxSparks.activeInHierarchy)
+            {
+                maxSparks.SetActive(false);
+            }
+        }
+
+
+
+        private void CreateOverlay()
+        {
+            OverlayCreationParams overlayCreationParams = new OverlayCreationParams
+            {
+                prefab = Modules.Assets.passiveMeter,
+                childLocatorEntry = "CrosshairExtras"
+            };
+
+            UpdateValues();
+            overlayController = HudOverlayManager.AddOverlay(base.gameObject, overlayCreationParams);
+            overlayController.onInstanceAdded += OverlayController_onInstanceAdded;
         }
 
         public void RemoveBuffTimed()
@@ -113,11 +200,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 return;
             }
-            Debug.Log(buffRemovalTimer);
+            //Debug.Log(buffRemovalTimer);
             buffRemovalTimer = .4f;
-            Debug.Log(buffRemovalTimer + " after reset");
+            //Debug.Log(buffRemovalTimer + " after reset");
             body.RemoveBuff(Buffs.damageGrowth);
-            Debug.Log("removing buff");
+            //Debug.Log("removing buff");
         }
 
         public void resetComboTimer()

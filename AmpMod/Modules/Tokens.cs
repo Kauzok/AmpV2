@@ -124,7 +124,7 @@ namespace AmpMod.Modules
 
             #region Passive
             LanguageAPI.Add(nemPrefix + "PASSIVE_NAME", "Blessing of Lightning");
-            LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>immediately</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.maxGrowthDamageCoefficient}%</style>. The bonus is maintained as long as you are dealing damage.");
+            LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>immediately</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.growthBuffMaxStacks * StaticValues.growthDamageCoefficient}%</style>. The bonus is maintained as long as you are dealing damage.");
             #endregion
 
             #region Primary

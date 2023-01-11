@@ -31,6 +31,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 - NotWhoYouThink: Lorentz Cannon Code & VFX, Charge Orb Networking
 - Vale-X (Manipulator): Charge debuff icon
 - RandomlyAwesome: Helping me out with networking code
+- Tyler Cook: Nemesis Amp Meter Design Feedback
 - Mr. Bones: Reformation skin
 - Bubbet: Fixing Melvin's health in multiplayer
 - The Risk of Rain 2 Modding Server: Helping me stay sane through all kinds of other bugs I wouldn't have been able to solve on my own.
@@ -41,6 +42,8 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 
 - Unlocks
     - Fixed a bug where obliterating on Monsoon wouldn't unlock Amp's Mastery Skin
+- Surge
+    - Movement speed of this ability now scales with base movement speed
 
 </details>
 

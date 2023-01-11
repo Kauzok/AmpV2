@@ -94,7 +94,7 @@ namespace AmpMod.Modules
         internal const float growthDamageCoefficient = .1f;
         internal const float maxGrowthDamageCoefficient = 1.5f;
         internal const float growthBuffDisappearanceRate = .4f;
-        internal const int growthBuffMaxStacks = 15;
+        internal const int growthBuffMaxStacks = 10;
 
         [Header("Nemesis Fulmination Values")]
         internal const float lightningStreamPerSecondDamageCoefficient = 3f;

@@ -25,7 +25,7 @@ namespace AmpMod.Modules
             electrified = AddNewBuff("AmpElectrified", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texElectrified"), new Color32(76, 206, 255, 255), false, true);
             overCharge = AddNewBuff("AmpOverCharge", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
             controlledCharge = AddNewBuff("NemesisAmpContolledCharge", null, new Color32(0, 145, 255, 255), true, true);
-            damageGrowth = AddNewBuff("NemesisAmpDamageGrowth", null, new Color32(0, 0, 0, 0), true, false);
+            damageGrowth = AddNewBuff("NemesisAmpDamageGrowth", null, new Color32(0, 0, 0, 0), true, false, false);
             nemAmpAtkSpeed = AddNewBuff("nemAmpAtkSpeed", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
 
         }
@@ -40,6 +40,23 @@ namespace AmpMod.Modules
             buffDef.isDebuff = isDebuff;
             buffDef.eliteDef = null;
             buffDef.iconSprite = buffIcon;
+            buffDef.isHidden = false;
+
+            buffDefs.Add(buffDef);
+
+            return buffDef;
+        }
+
+        internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff, bool isHidden)
+        {
+            BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();
+            buffDef.name = buffName;
+            buffDef.buffColor = buffColor;
+            buffDef.canStack = canStack;
+            buffDef.isDebuff = isDebuff;
+            buffDef.eliteDef = null;
+            buffDef.iconSprite = buffIcon;
+            buffDef.isHidden = isHidden;
 
             buffDefs.Add(buffDef);
 
