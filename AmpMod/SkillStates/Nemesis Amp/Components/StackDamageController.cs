@@ -32,11 +32,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private int growthBuffCount;
 
         [Header("Passive UI")]
+        public GameObject meterPrefab = Modules.Assets.passiveMeter;
         private Image passiveMeter;
         private bool allCreated;
+        [SerializeField]
         private TMPro.TextMeshProUGUI meterText;
         private OverlayController overlayController;
         private GameObject maxSparks;
+        private float textFadeInTime = 1f;
+        private float textFadeOutTime = 1f;
+        private float textFlashTimer;
+        private Color meterTextMaxColor = new Color(255, 210, 0);
 
         [Header("Passive VFX")]
         private CharacterModel characterModel;
@@ -122,11 +128,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         }
         private void OverlayController_onInstanceAdded(OverlayController overlayController, GameObject instance)
-        {
-            instance.transform.localPosition = new Vector3(-100f, 70, 0f);
-            float sizeScale = 0.2f;
-            instance.transform.localScale = new Vector3(sizeScale, sizeScale, sizeScale);
-
+        {   
+            instance.transform.localPosition = new Vector3(-600f, -550f, 0f);
+            float sizeScale = 0.14f;
+            instance.transform.localScale = new Vector3(.14f, sizeScale, sizeScale);
+            instance.transform.rotation = Quaternion.Euler(0, 0, 2.8f);
 
             //batteryRings = instance.transform.Find("OuterRings").GetComponent<Image>();
             passiveMeter = instance.transform.Find("MeterFill").GetComponent<Image>();
@@ -134,7 +140,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             meterText = instance.transform.Find("Text").GetComponent<TMPro.TextMeshProUGUI>();
             //batteryPip = instance.transform.Find("Pip").GetComponent<Image>();
             maxSparks = instance.transform.Find("Max Sparks").gameObject;
-
+            meterText.color = new Color(255, 255, 255, 1);
+            
 
             if (passiveMeter && meterText) allCreated = true;
 
@@ -150,6 +157,22 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         }
 
+        private void FlashText()
+        {
+            textFlashTimer += Time.fixedDeltaTime;
+            if (textFlashTimer < textFadeInTime)
+            {
+                meterText.color = new Color(meterTextMaxColor.r, meterTextMaxColor.g, meterTextMaxColor.b, textFlashTimer / textFadeInTime);
+            }
+            else if (textFlashTimer < textFadeInTime + textFadeOutTime)
+            {
+                meterText.color = new Color(meterTextMaxColor.r, meterTextMaxColor.g, meterTextMaxColor.b, 1 - (textFlashTimer - (textFadeInTime))/textFadeOutTime);
+            } 
+            else
+            {
+                textFlashTimer = 0;
+            }
+        }
 
         private void UpdateValues()
         {
@@ -168,18 +191,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 maxSparks.SetActive(true);
                 meterText.SetText("MAX");
+                FlashText();
+
             }
             else if (fill != 1) 
             {
+                maxSparks.SetActive(false);
+                meterText.color = new Color(255, 255, 255, 1);
                 meterText.SetText((fill * 100) + "%");
             }
-            else if (fill != 1 && maxSparks.activeInHierarchy)
-            {
-                maxSparks.SetActive(false);
-            }
         }
-
-
 
         private void CreateOverlay()
         {

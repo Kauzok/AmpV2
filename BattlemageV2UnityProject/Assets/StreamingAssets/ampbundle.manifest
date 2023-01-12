@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3570791914
+CRC: 613290346
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0719777422f53b1545c969ebb2acb5a4
+    Hash: 18d87027698e68e1e47b6eca52f2b273
   TypeTreeHash:
     serializedVersion: 2
     Hash: 50f21a66c11a99bf954e20dce1bd62f5
@@ -425,6 +425,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/texRampGenericFire.png
 - Assets/HenryAssets/AmpAnims/metarig_LobbyIdleAnim.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunTracerHead.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MeterLongOutlined.png
 - Assets/HenryAssets/Animations/WalkL.anim
 - Assets/HenryAssets/VFX/Materials/matLightningSpherePurple.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/BeltAtlas.mat
@@ -709,6 +710,7 @@ Assets:
 - Assets/HenryAssets/Textures/texHenryVergil.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/ColorRamps/texRampNullifierSmooth.png
 - Assets/HenryAssets/Icons/texChargeDebuffAlt.png
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MeterLongOutlined.psd
 - Assets/HenryAssets/Mesh/meshUzi.mesh
 - Assets/HenryAssets/AmpAnims/maskAmpImpact.mask
 - Assets/HenryAssets/VFX/Materials/matSlash.mat

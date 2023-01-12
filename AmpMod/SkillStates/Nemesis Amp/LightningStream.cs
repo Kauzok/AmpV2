@@ -119,7 +119,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             return new NemAmpLightningLockOrb
             {
                 origin = base.gameObject.transform.position,
-                damageValue = lightningTickDamage * damageStat + (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)),
+                damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth))*lightningTickDamage*damageStat),
                 isCrit = base.characterBody.RollCrit(),
                 damageType = DamageType.Generic,
                 teamIndex = teamComponent.teamIndex,
