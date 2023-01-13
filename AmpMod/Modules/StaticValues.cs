@@ -46,7 +46,7 @@ namespace AmpMod.Modules
 
 
 
-       [Header("Charge Values")]
+        [Header("Charge Values")]
         internal const int chargeMaxStacks = 3;
         internal const float chargeDuration = 7;
         internal const float chargeDamageCoefficient = 4f;
@@ -58,7 +58,7 @@ namespace AmpMod.Modules
 
         [Header("Lorentz Cannon Values")]
         internal const float ferroshotDamageCoefficient = 1.4f;
-        
+
         [Header("Plasma Slash Values")]
         internal const float spinSlashDamageCoefficient = 7f;
         internal const float fireTrailTickDamageCoefficient = 1.5f;
@@ -125,7 +125,7 @@ namespace AmpMod.Modules
         internal const float stormRadius = 30f;
         internal const float controlledChargeDuration = 10f;
 
-
+        #region  Amp Sounds
         [Header("Charge Sound Strings")]
         internal const string chargeExplosionString = "PlayChargeExplosion";
 
@@ -175,7 +175,19 @@ namespace AmpMod.Modules
         [Header("Bulwark of Storms Sound Strings")]
         internal const string wormChargeString = "PlayWormCharge";
         internal const string wormSummonString = "PlayWormSummon";
+        #endregion
 
+        #region Nemesis Amp Sounds
+        [Header("Fulmination Sound Strings")]
+        internal const string lightningStreamStartString = "PlayLightningStreamStart";
+        internal const string lightningStreamLoopSoundString = "PlayLightningStreamLoop";
+        internal const string lightningStreamEndString = "PlayLightningStreamEnd";
+
+        [Header("Static Field Sound Strings")]
+        internal const string fieldLoopString = "PlayStaticFieldLoop";
+        internal const string fieldEndString = "PlayStaticFieldEnd";
+
+        #endregion
 
     }
 }

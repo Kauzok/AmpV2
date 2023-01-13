@@ -69,7 +69,6 @@ namespace AmpMod.SkillStates
                 hasMuzzleEffect = true;
                 if (this.childLocator)
                 {
-                    
                     {
                          fireMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, leftMuzzleTransform).transform;
                          //Debug.Log("Spawning Muzzle Effect");

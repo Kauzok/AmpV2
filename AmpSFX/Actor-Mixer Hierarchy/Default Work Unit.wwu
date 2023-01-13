@@ -83,1508 +83,1630 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Folder Name="BoltExit" ID="{39FEB251-1DD0-469E-9468-3A1C756FEAD6}" ShortID="726858756">
+						<Folder Name="Amp" ID="{8774396D-D5B1-4B42-AF3A-3066B2A05607}" ShortID="28496697">
 							<ChildrenList>
-								<Sound Name="BoltExit" ID="{0D6227D5-C292-4114-B603-E70528A6DA39}" ShortID="1070888452">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>6</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
+								<Folder Name="Worm" ID="{F14F71E4-683D-4AF5-8334-80F6C41ED79F}" ShortID="667932748">
 									<ChildrenList>
-										<AudioFileSource Name="BoltExit" ID="{E9A9B2BA-08E2-414A-9FD8-B071AE5890A3}">
+										<Sound Name="WormCharge" ID="{C97C2139-8453-4CD1-8A40-25CD3B08DD7D}" ShortID="671702942">
 											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WormCharge" ID="{FC25112E-1BA9-481F-A097-7625A2F5DF85}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WormCharge.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="885005710"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="WormCharge" ID="{FC25112E-1BA9-481F-A097-7625A2F5DF85}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="WormSummon" ID="{18635C48-836C-489E-A6C6-297CA9F10465}" ShortID="736310599">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="WormSummon" ID="{3BAEFD3E-CE11-4FC6-BC26-7AE277DD652B}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>WormSummon.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="430921292"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="WormSummon" ID="{3BAEFD3E-CE11-4FC6-BC26-7AE277DD652B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="StormbladeSwing" ID="{DEB6B775-82AA-4285-B1F2-5C1A5E4E7ABD}" ShortID="743261193">
+									<ChildrenList>
+										<Sound Name="Stormblade1" ID="{129FB170-C040-4D25-BA44-10F4DCA08CA9}" ShortID="137612137">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-4</Value>
+														<Value>5.5</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{414E6F75-ACAE-49F0-8279-F496C2F1743F}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Stormblade1Remake" ID="{D3A8EE34-DD41-4354-8F19-E2EEEB9AF7AA}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Stormblade1Remake.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="760072484"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Stormblade1Remake" ID="{D3A8EE34-DD41-4354-8F19-E2EEEB9AF7AA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Stormblade2" ID="{A7A80AA6-DABF-4A4C-B7C7-3DD3DF884CB6}" ShortID="970362809">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Stormblade2Trim" ID="{281D2AC1-74BB-49A0-BD59-267C8365BA4F}">
+													<Language>SFX</Language>
+													<AudioFile>Stormblade2Trim.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="590040022"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Stormblade2Trim" ID="{281D2AC1-74BB-49A0-BD59-267C8365BA4F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="StormbladeImpact" ID="{E3EC8F58-4E55-435E-8202-B13162C0F8CB}" ShortID="500488502">
+									<ChildrenList>
+										<Sound Name="StormbladeHit1" ID="{2E07233B-352D-4849-A103-EA26D1AFDD05}" ShortID="591291280">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHit1" ID="{7AED7CC8-7CC8-405A-BE22-41B0D06F5702}">
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHit1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="439898417"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHit1" ID="{7AED7CC8-7CC8-405A-BE22-41B0D06F5702}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="StormbladeHit2" ID="{75AED90B-0C14-40D3-B701-758F706F5E8A}" ShortID="204434550">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHit2" ID="{63B944C6-8AC7-43A6-AF28-1258051A412D}">
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHit2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="439305442"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHit2" ID="{63B944C6-8AC7-43A6-AF28-1258051A412D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="StormbladeHit3" ID="{E6B290D5-76D6-4117-B3C7-B325DEDA1661}" ShortID="1030536997">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHit3" ID="{0B757F99-061E-473E-A14D-9630C1356148}">
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHit3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1038060243"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHit3" ID="{0B757F99-061E-473E-A14D-9630C1356148}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="StormbladeHitV4" ID="{FCABE6B4-2D8D-4E20-9D06-2FC9E80AEDDF}" ShortID="388803239">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StormbladeHitV4" ID="{8086E64B-F917-45F5-B56F-CB577B517612}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>StormbladeHitV4.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="171555746"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StormbladeHitV4" ID="{8086E64B-F917-45F5-B56F-CB577B517612}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="BoltEnter" ID="{B9A1AA1E-7272-462F-AF6D-2DB6A5A7C3AA}" ShortID="900190453">
+									<ChildrenList>
+										<Sound Name="BoltEnter" ID="{66A32038-00D0-4579-81EE-60A8C1CB1C20}" ShortID="739073805">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltEnter" ID="{4EDFB168-AAFF-4392-A4A0-9FF31B40B9F3}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BoltEnter.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="355476522"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltEnter" ID="{4EDFB168-AAFF-4392-A4A0-9FF31B40B9F3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="BoltExit" ID="{39FEB251-1DD0-469E-9468-3A1C756FEAD6}" ShortID="726858756">
+									<ChildrenList>
+										<Sound Name="BoltExit" ID="{0D6227D5-C292-4114-B603-E70528A6DA39}" ShortID="1070888452">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltExit" ID="{E9A9B2BA-08E2-414A-9FD8-B071AE5890A3}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BoltExit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="286477067"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltExit" ID="{E9A9B2BA-08E2-414A-9FD8-B071AE5890A3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="BoltState" ID="{16768789-F9CD-46C7-A215-2677B08AA62B}" ShortID="124773179">
+									<ChildrenList>
+										<Sound Name="BoltState" ID="{B69BB5C3-118E-4E33-B608-596EBA32ECE7}" ShortID="1643228">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>1.5</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>BoltExit.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="286477067"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="BoltExit" ID="{E9A9B2BA-08E2-414A-9FD8-B071AE5890A3}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="BoltEnter" ID="{B9A1AA1E-7272-462F-AF6D-2DB6A5A7C3AA}" ShortID="900190453">
-							<ChildrenList>
-								<Sound Name="BoltEnter" ID="{66A32038-00D0-4579-81EE-60A8C1CB1C20}" ShortID="739073805">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>4</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="BoltEnter" ID="{4EDFB168-AAFF-4392-A4A0-9FF31B40B9F3}">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltState" ID="{2C8D1AC4-B6A7-4681-999D-5A0ADA7EFA53}">
+													<Language>SFX</Language>
+													<AudioFile>BoltState.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="120900190"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltState" ID="{2C8D1AC4-B6A7-4681-999D-5A0ADA7EFA53}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BoltState2sec" ID="{1C5C0B86-F2E5-478A-8F37-7A2C60665085}" ShortID="923219289">
 											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-4</Value>
+														<Value>2</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>BoltEnter.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="355476522"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="BoltEnter" ID="{4EDFB168-AAFF-4392-A4A0-9FF31B40B9F3}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="BoltState" ID="{16768789-F9CD-46C7-A215-2677B08AA62B}" ShortID="124773179">
-							<ChildrenList>
-								<Sound Name="BoltState" ID="{B69BB5C3-118E-4E33-B608-596EBA32ECE7}" ShortID="1643228">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>1.5</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="BoltState" ID="{2C8D1AC4-B6A7-4681-999D-5A0ADA7EFA53}">
-											<Language>SFX</Language>
-											<AudioFile>BoltState.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="120900190"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="BoltState" ID="{2C8D1AC4-B6A7-4681-999D-5A0ADA7EFA53}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="BoltState2sec" ID="{1C5C0B86-F2E5-478A-8F37-7A2C60665085}" ShortID="923219289">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>2</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="BoltState2sec" ID="{EE78E994-0C30-455A-8500-90C7066D3509}">
-											<Language>SFX</Language>
-											<AudioFile>BoltState2sec.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="515172351"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="BoltState2sec" ID="{EE78E994-0C30-455A-8500-90C7066D3509}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="BoltState2secAlter" ID="{649E21B9-2F08-475A-A206-5B8E231ADE2F}" ShortID="719266211">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>2.5</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="BoltState2secAlter" ID="{CB56200E-A535-4ABF-8067-6A7F86CB71A6}">
-											<Language>SFX</Language>
-											<AudioFile>BoltState2secAlter.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="196974043"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="BoltState2secAlter" ID="{CB56200E-A535-4ABF-8067-6A7F86CB71A6}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="BoltState2secwithwind" ID="{AAE3C0AE-6C3D-4943-B83A-B2AD04A0B060}" ShortID="203335587">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>3</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="boltstate2secwithwind" ID="{0AC4274B-2899-41F9-B4EE-6FB9358656F3}">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltState2sec" ID="{EE78E994-0C30-455A-8500-90C7066D3509}">
+													<Language>SFX</Language>
+													<AudioFile>BoltState2sec.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="515172351"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltState2sec" ID="{EE78E994-0C30-455A-8500-90C7066D3509}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BoltState2secAlter" ID="{649E21B9-2F08-475A-A206-5B8E231ADE2F}" ShortID="719266211">
 											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-0.5</Value>
+														<Value>2.5</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>boltstate2secwithwind.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="226974468"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="boltstate2secwithwind" ID="{0AC4274B-2899-41F9-B4EE-6FB9358656F3}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="ChargeExplosion" ID="{2B7D98D6-3158-4374-954E-BA9E0CA4AEB5}" ShortID="540146994">
-							<ChildrenList>
-								<Sound Name="ChargeExplosion" ID="{F6B163EA-9393-4E40-A98B-06DD807A12AE}" ShortID="890984051">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>19.5</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="ChargeExplosion" ID="{E910441E-700E-421A-81A2-594BA2F41584}">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BoltState2secAlter" ID="{CB56200E-A535-4ABF-8067-6A7F86CB71A6}">
+													<Language>SFX</Language>
+													<AudioFile>BoltState2secAlter.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="196974043"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BoltState2secAlter" ID="{CB56200E-A535-4ABF-8067-6A7F86CB71A6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="BoltState2secwithwind" ID="{AAE3C0AE-6C3D-4943-B83A-B2AD04A0B060}" ShortID="203335587">
 											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-9</Value>
+														<Value>3</Value>
 													</ValueList>
 												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>ChargeExplosion.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="391751073"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="boltstate2secwithwind" ID="{0AC4274B-2899-41F9-B4EE-6FB9358656F3}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-0.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>boltstate2secwithwind.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="226974468"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="boltstate2secwithwind" ID="{0AC4274B-2899-41F9-B4EE-6FB9358656F3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="ChargeExplosion" ID="{E910441E-700E-421A-81A2-594BA2F41584}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="FerroshotCreate" ID="{A34486C5-F121-4C38-AF6F-1405268FAB33}" ShortID="28335913">
-							<ChildrenList>
-								<Sound Name="FerroshotCreate" ID="{CF83E12F-E0BD-44D6-9313-C466711F623F}" ShortID="137268657">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>15</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
+								</Folder>
+								<Folder Name="LobbySFX" ID="{106B2069-8B8E-49EF-AEDA-AE2C9E2A6FFC}" ShortID="597397094">
 									<ChildrenList>
-										<AudioFileSource Name="FerroshotCreateRemake" ID="{9E2BCBC5-9193-4AF6-872C-122FBD21804C}">
-											<Language>SFX</Language>
-											<AudioFile>FerroshotCreateRemake.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="845905776"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FerroshotCreateRemake" ID="{9E2BCBC5-9193-4AF6-872C-122FBD21804C}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="FerroshotCreateAlter" ID="{735B63B6-4E65-400A-8AC6-8E2F551A710E}" ShortID="226089975">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>-1.2</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{CF95E751-A0D8-44D2-A0F9-63F2C54EFC30}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="300"/>
-															<Property Name="Min" Type="Real64" Value="-150"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="FerroshotCreateAlter" ID="{8B4AC7E0-8941-4C48-8DCB-E5145403BDD3}">
+										<Sound Name="LobbyEntrance" ID="{76E353CC-4F26-4029-987B-859EA79A1362}" ShortID="589516352">
 											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-1</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>FerroshotCreateAlter.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="571697280"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FerroshotCreateAlter" ID="{8B4AC7E0-8941-4C48-8DCB-E5145403BDD3}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="FerroshotLaunch" ID="{6B6C2D17-7B0F-47B6-B266-2A9A3294B1EB}" ShortID="604742469">
-							<ChildrenList>
-								<Sound Name="FerroshotLaunch" ID="{DAC31866-4793-4F52-8E47-14F4284DEBE0}" ShortID="105327122">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>-1</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="FerroshotCreateFinal" ID="{6B2C23DB-2CE1-4587-AC94-CC67F5A3AC2D}">
-											<Language>SFX</Language>
-											<AudioFile>FerroshotCreateFinal.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="16687540"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FerroshotCreateFinal" ID="{6B2C23DB-2CE1-4587-AC94-CC67F5A3AC2D}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="FerroshotLaunchAlter" ID="{FAB41DB3-AEB6-41FE-8BCB-796D20B6DA91}" ShortID="443668259">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>11.5</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="FerroshotLaunchAlter" ID="{D2298A4C-EECE-43EF-A727-366113F7582A}">
-											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-7.5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>FerroshotLaunchAlter.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="390082384"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FerroshotLaunchAlter" ID="{D2298A4C-EECE-43EF-A727-366113F7582A}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="FulminationState" ID="{1D1711A9-9F43-4D04-886B-D7D6AA2AAEB0}" ShortID="654874439">
-							<ChildrenList>
-								<Sound Name="FulminationState" ID="{6B09539C-9A6D-46F3-9337-EE3956E944E9}" ShortID="312553563">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>-1</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{4B6225B7-D0B6-4760-B18D-123DC3AB34F3}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-125"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="FulminationState" ID="{7CCAC082-2E94-4B11-95DD-CEE5081E7765}">
-											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-8</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>FulminationState.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="111936196"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FulminationState" ID="{7CCAC082-2E94-4B11-95DD-CEE5081E7765}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="FulminationExit" ID="{FEE45E5F-505A-4C25-A1FA-33F7ED73E3DE}" ShortID="714176895">
-							<ChildrenList>
-								<Sound Name="FulminationExit" ID="{D5BD29A4-8AE8-405E-8164-5E39D3264887}" ShortID="281721834">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>7</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="FulminationExit" ID="{71F2F19C-F7D2-451A-880B-BA7B4210CDB3}">
-											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-2</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>FulminationExit.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="426766206"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FulminationExit" ID="{71F2F19C-F7D2-451A-880B-BA7B4210CDB3}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="FulminationExitAlter" ID="{C4A34999-5165-409B-89E4-0B8744E250A7}" ShortID="1013132553">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>7</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="FulminationExitAlter" ID="{777B5557-121C-4039-A352-B78843EFC541}">
-											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-6</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>FulminationExitAlter.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="452903732"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FulminationExitAlter" ID="{777B5557-121C-4039-A352-B78843EFC541}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="StormbladeSwing" ID="{DEB6B775-82AA-4285-B1F2-5C1A5E4E7ABD}" ShortID="743261193">
-							<ChildrenList>
-								<Sound Name="Stormblade1" ID="{129FB170-C040-4D25-BA44-10F4DCA08CA9}" ShortID="137612137">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>5.5</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{414E6F75-ACAE-49F0-8279-F496C2F1743F}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="50"/>
-															<Property Name="Min" Type="Real64" Value="-50"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Stormblade1Remake" ID="{D3A8EE34-DD41-4354-8F19-E2EEEB9AF7AA}">
-											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-6</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Stormblade1Remake.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="760072484"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Stormblade1Remake" ID="{D3A8EE34-DD41-4354-8F19-E2EEEB9AF7AA}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Stormblade2" ID="{A7A80AA6-DABF-4A4C-B7C7-3DD3DF884CB6}" ShortID="970362809">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>2</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Stormblade2Trim" ID="{281D2AC1-74BB-49A0-BD59-267C8365BA4F}">
-											<Language>SFX</Language>
-											<AudioFile>Stormblade2Trim.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="590040022"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Stormblade2Trim" ID="{281D2AC1-74BB-49A0-BD59-267C8365BA4F}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="FulminationEnter" ID="{6F8C2F60-F255-4E19-989F-06394054BD0F}" ShortID="650762914">
-							<ChildrenList>
-								<Sound Name="FulminationEnter" ID="{7150E337-2458-40CC-8584-11A14C1DEB6D}" ShortID="187487449">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>1</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="FulminationEnter" ID="{42127368-A1B2-48F5-B8BA-84D47761DF5B}">
-											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-3.5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>FulminationEnter.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="444271671"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="FulminationEnter" ID="{42127368-A1B2-48F5-B8BA-84D47761DF5B}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="StormbladeImpact" ID="{E3EC8F58-4E55-435E-8202-B13162C0F8CB}" ShortID="500488502">
-							<ChildrenList>
-								<Sound Name="StormbladeHit1" ID="{2E07233B-352D-4849-A103-EA26D1AFDD05}" ShortID="591291280">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="StormbladeHit1" ID="{7AED7CC8-7CC8-405A-BE22-41B0D06F5702}">
-											<Language>SFX</Language>
-											<AudioFile>StormbladeHit1.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="439898417"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="StormbladeHit1" ID="{7AED7CC8-7CC8-405A-BE22-41B0D06F5702}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="StormbladeHit2" ID="{75AED90B-0C14-40D3-B701-758F706F5E8A}" ShortID="204434550">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="StormbladeHit2" ID="{63B944C6-8AC7-43A6-AF28-1258051A412D}">
-											<Language>SFX</Language>
-											<AudioFile>StormbladeHit2.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="439305442"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="StormbladeHit2" ID="{63B944C6-8AC7-43A6-AF28-1258051A412D}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="StormbladeHit3" ID="{E6B290D5-76D6-4117-B3C7-B325DEDA1661}" ShortID="1030536997">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="StormbladeHit3" ID="{0B757F99-061E-473E-A14D-9630C1356148}">
-											<Language>SFX</Language>
-											<AudioFile>StormbladeHit3.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1038060243"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="StormbladeHit3" ID="{0B757F99-061E-473E-A14D-9630C1356148}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="StormbladeHitV4" ID="{FCABE6B4-2D8D-4E20-9D06-2FC9E80AEDDF}" ShortID="388803239">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="StormbladeHitV4" ID="{8086E64B-F917-45F5-B56F-CB577B517612}">
-											<PropertyList>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-3</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>StormbladeHitV4.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="171555746"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="StormbladeHitV4" ID="{8086E64B-F917-45F5-B56F-CB577B517612}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="MagneticVortex" ID="{27EC1007-61C7-4409-9987-D3F8181C41FB}" ShortID="580884128">
-							<ChildrenList>
-								<Sound Name="VortexExplosion" ID="{6649F821-D974-431E-B0F6-34187C2AF27F}" ShortID="984460943">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="VortexExplosion" ID="{BD1FBF34-B43C-4589-843E-DD7CE3177AC8}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexExplosion.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="308519048"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexExplosion" ID="{BD1FBF34-B43C-4589-843E-DD7CE3177AC8}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="VortexLoop" ID="{61E987C3-EBA4-4013-9AA1-466AA5381465}" ShortID="823790495">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>8.5</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{4174008D-6254-4B64-B76A-F0FAD972D58A}">
-														<PropertyList>
-															<Property Name="Max" Type="Real64" Value="100"/>
-															<Property Name="Min" Type="Real64" Value="-100"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="VortexLoop" ID="{B24B3A8A-124B-4DA7-84C3-04A2EDB632BB}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
 														<Value>-10</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexLoop.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="980239621"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LobbyEntrance" ID="{32A90BA2-C5F1-4C15-AED5-CB14122F73DC}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-5.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LobbyEntrance.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="756615058"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LobbyEntrance" ID="{32A90BA2-C5F1-4C15-AED5-CB14122F73DC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexLoop" ID="{B24B3A8A-124B-4DA7-84C3-04A2EDB632BB}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="VortexFlightLoop" ID="{4E4EC60A-9A68-441F-B4A8-D25F3A06A044}" ShortID="967655809">
-									<PropertyList>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
+								</Folder>
+								<Folder Name="FerroshotCreate" ID="{A34486C5-F121-4C38-AF6F-1405268FAB33}" ShortID="28335913">
 									<ChildrenList>
-										<AudioFileSource Name="VortexFlightLoop" ID="{A27CDF9C-2839-4413-8653-CB95A5777D69}">
+										<Sound Name="FerroshotCreate" ID="{CF83E12F-E0BD-44D6-9313-C466711F623F}" ShortID="137268657">
 											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>7</Value>
+														<Value>15</Value>
 													</ValueList>
 												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexFlightLoop.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="774569860"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexFlightLoop" ID="{A27CDF9C-2839-4413-8653-CB95A5777D69}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="VortexShoot" ID="{5CE604BB-722F-4886-86D8-FEBFEDAE9D7A}" ShortID="256599823">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>8.6</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="VortexShoot" ID="{FF3A8C55-1AC0-4141-99C0-5978A72D3CE2}">
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotCreateRemake" ID="{9E2BCBC5-9193-4AF6-872C-122FBD21804C}">
+													<Language>SFX</Language>
+													<AudioFile>FerroshotCreateRemake.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="845905776"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotCreateRemake" ID="{9E2BCBC5-9193-4AF6-872C-122FBD21804C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="FerroshotCreateAlter" ID="{735B63B6-4E65-400A-8AC6-8E2F551A710E}" ShortID="226089975">
 											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-4.5</Value>
+														<Value>-1.2</Value>
 													</ValueList>
 												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexShoot.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="558615039"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexShoot" ID="{FF3A8C55-1AC0-4141-99C0-5978A72D3CE2}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="VortexFlightLoopAlter2" ID="{02798DC5-EAD4-43A7-97EC-16617A1FB365}" ShortID="974812893">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="VortexFlightLoopAlter2" ID="{BFC8E2BD-084D-4191-B7B8-34BB0033F766}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>2.3</Value>
-													</ValueList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CF95E751-A0D8-44D2-A0F9-63F2C54EFC30}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="300"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
 												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexFlightLoopAlter2.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="695068599"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotCreateAlter" ID="{8B4AC7E0-8941-4C48-8DCB-E5145403BDD3}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-1</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>FerroshotCreateAlter.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="571697280"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotCreateAlter" ID="{8B4AC7E0-8941-4C48-8DCB-E5145403BDD3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexFlightLoopAlter2" ID="{BFC8E2BD-084D-4191-B7B8-34BB0033F766}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="VortexCharge" ID="{C9386A71-471E-464E-AC88-E11D6AB67056}" ShortID="745241088">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{16DC3255-F00F-4423-87E5-EF6D53E8A5C6}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="100"/>
-															<Property Name="Min" Type="Real64" Value="-100"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
+								</Folder>
+								<Folder Name="FerroshotLaunch" ID="{6B6C2D17-7B0F-47B6-B266-2A9A3294B1EB}" ShortID="604742469">
 									<ChildrenList>
-										<AudioFileSource Name="VortexCharge" ID="{BF9F3BCC-1BB4-4DE3-A450-A6AB98462868}">
+										<Sound Name="FerroshotLaunch" ID="{DAC31866-4793-4F52-8E47-14F4284DEBE0}" ShortID="105327122">
 											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
 														<Value>-1</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexCharge.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="820673821"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexCharge" ID="{BF9F3BCC-1BB4-4DE3-A450-A6AB98462868}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="VortexSpawn" ID="{D77038CB-0BE3-432F-B1B7-5E729A594F37}" ShortID="100087185">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{04F38C4E-BE47-4D60-8DF1-A7D96C43BA3E}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="150"/>
-															<Property Name="Min" Type="Real64" Value="-150"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="VortexSpawn" ID="{E2E467C2-8E5C-41DB-9AF1-9EE50BA796D2}">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotCreateFinal" ID="{6B2C23DB-2CE1-4587-AC94-CC67F5A3AC2D}">
+													<Language>SFX</Language>
+													<AudioFile>FerroshotCreateFinal.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="16687540"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotCreateFinal" ID="{6B2C23DB-2CE1-4587-AC94-CC67F5A3AC2D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="FerroshotLaunchAlter" ID="{FAB41DB3-AEB6-41FE-8BCB-796D20B6DA91}" ShortID="443668259">
 											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>11.5</Value>
 													</ValueList>
 												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexSpawn.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="662641942"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FerroshotLaunchAlter" ID="{D2298A4C-EECE-43EF-A727-366113F7582A}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-7.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>FerroshotLaunchAlter.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="390082384"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FerroshotLaunchAlter" ID="{D2298A4C-EECE-43EF-A727-366113F7582A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexSpawn" ID="{E2E467C2-8E5C-41DB-9AF1-9EE50BA796D2}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="VortexExplosionAlt" ID="{8CDAE107-822E-486B-A49B-F37706E796C6}" ShortID="639372009">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{4DE21875-9820-442D-9CDE-5E073103F0FD}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="150"/>
-															<Property Name="Min" Type="Real64" Value="-150"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
+								</Folder>
+								<Folder Name="FulminationState" ID="{1D1711A9-9F43-4D04-886B-D7D6AA2AAEB0}" ShortID="654874439">
 									<ChildrenList>
-										<AudioFileSource Name="VortexExplosionAlt" ID="{D6E912C2-295D-4C00-91E9-B3A2AAC3D3C2}">
+										<Sound Name="FulminationState" ID="{6B09539C-9A6D-46F3-9337-EE3956E944E9}" ShortID="312553563">
 											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4B6225B7-D0B6-4760-B18D-123DC3AB34F3}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-125"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationState" ID="{7CCAC082-2E94-4B11-95DD-CEE5081E7765}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>FulminationState.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="111936196"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationState" ID="{7CCAC082-2E94-4B11-95DD-CEE5081E7765}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="FulminationExit" ID="{FEE45E5F-505A-4C25-A1FA-33F7ED73E3DE}" ShortID="714176895">
+									<ChildrenList>
+										<Sound Name="FulminationExit" ID="{D5BD29A4-8AE8-405E-8164-5E39D3264887}" ShortID="281721834">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>7</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationExit" ID="{71F2F19C-F7D2-451A-880B-BA7B4210CDB3}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>FulminationExit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="426766206"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationExit" ID="{71F2F19C-F7D2-451A-880B-BA7B4210CDB3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="FulminationExitAlter" ID="{C4A34999-5165-409B-89E4-0B8744E250A7}" ShortID="1013132553">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>7</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationExitAlter" ID="{777B5557-121C-4039-A352-B78843EFC541}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>FulminationExitAlter.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="452903732"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationExitAlter" ID="{777B5557-121C-4039-A352-B78843EFC541}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="FulminationEnter" ID="{6F8C2F60-F255-4E19-989F-06394054BD0F}" ShortID="650762914">
+									<ChildrenList>
+										<Sound Name="FulminationEnter" ID="{7150E337-2458-40CC-8584-11A14C1DEB6D}" ShortID="187487449">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
 														<Value>1</Value>
 													</ValueList>
 												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>VortexExplosionAlt.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="736458125"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FulminationEnter" ID="{42127368-A1B2-48F5-B8BA-84D47761DF5B}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-3.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>FulminationEnter.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="444271671"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FulminationEnter" ID="{42127368-A1B2-48F5-B8BA-84D47761DF5B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="VortexExplosionAlt" ID="{D6E912C2-295D-4C00-91E9-B3A2AAC3D3C2}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
+								</Folder>
+								<Folder Name="MagneticVortex" ID="{27EC1007-61C7-4409-9987-D3F8181C41FB}" ShortID="580884128">
+									<ChildrenList>
+										<Sound Name="VortexExplosion" ID="{6649F821-D974-431E-B0F6-34187C2AF27F}" ShortID="984460943">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexExplosion" ID="{BD1FBF34-B43C-4589-843E-DD7CE3177AC8}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexExplosion.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="308519048"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexExplosion" ID="{BD1FBF34-B43C-4589-843E-DD7CE3177AC8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VortexLoop" ID="{61E987C3-EBA4-4013-9AA1-466AA5381465}" ShortID="823790495">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>8.5</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4174008D-6254-4B64-B76A-F0FAD972D58A}">
+																<PropertyList>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexLoop" ID="{B24B3A8A-124B-4DA7-84C3-04A2EDB632BB}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-10</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexLoop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="980239621"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexLoop" ID="{B24B3A8A-124B-4DA7-84C3-04A2EDB632BB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VortexFlightLoop" ID="{4E4EC60A-9A68-441F-B4A8-D25F3A06A044}" ShortID="967655809">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexFlightLoop" ID="{A27CDF9C-2839-4413-8653-CB95A5777D69}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexFlightLoop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="774569860"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexFlightLoop" ID="{A27CDF9C-2839-4413-8653-CB95A5777D69}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VortexShoot" ID="{5CE604BB-722F-4886-86D8-FEBFEDAE9D7A}" ShortID="256599823">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>8.6</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexShoot" ID="{FF3A8C55-1AC0-4141-99C0-5978A72D3CE2}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-4.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexShoot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="558615039"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexShoot" ID="{FF3A8C55-1AC0-4141-99C0-5978A72D3CE2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VortexFlightLoopAlter2" ID="{02798DC5-EAD4-43A7-97EC-16617A1FB365}" ShortID="974812893">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexFlightLoopAlter2" ID="{BFC8E2BD-084D-4191-B7B8-34BB0033F766}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>2.3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexFlightLoopAlter2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="695068599"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexFlightLoopAlter2" ID="{BFC8E2BD-084D-4191-B7B8-34BB0033F766}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VortexCharge" ID="{C9386A71-471E-464E-AC88-E11D6AB67056}" ShortID="745241088">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{16DC3255-F00F-4423-87E5-EF6D53E8A5C6}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexCharge" ID="{BF9F3BCC-1BB4-4DE3-A450-A6AB98462868}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-1</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexCharge.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="820673821"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexCharge" ID="{BF9F3BCC-1BB4-4DE3-A450-A6AB98462868}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VortexSpawn" ID="{D77038CB-0BE3-432F-B1B7-5E729A594F37}" ShortID="100087185">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{04F38C4E-BE47-4D60-8DF1-A7D96C43BA3E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexSpawn" ID="{E2E467C2-8E5C-41DB-9AF1-9EE50BA796D2}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexSpawn.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="662641942"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexSpawn" ID="{E2E467C2-8E5C-41DB-9AF1-9EE50BA796D2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VortexExplosionAlt" ID="{8CDAE107-822E-486B-A49B-F37706E796C6}" ShortID="639372009">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4DE21875-9820-442D-9CDE-5E073103F0FD}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VortexExplosionAlt" ID="{D6E912C2-295D-4C00-91E9-B3A2AAC3D3C2}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>1</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>VortexExplosionAlt.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="736458125"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VortexExplosionAlt" ID="{D6E912C2-295D-4C00-91E9-B3A2AAC3D3C2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="ChargeExplosion" ID="{2B7D98D6-3158-4374-954E-BA9E0CA4AEB5}" ShortID="540146994">
+									<ChildrenList>
+										<Sound Name="ChargeExplosion" ID="{F6B163EA-9393-4E40-A98B-06DD807A12AE}" ShortID="890984051">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>19.5</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ChargeExplosion" ID="{E910441E-700E-421A-81A2-594BA2F41584}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-9</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>ChargeExplosion.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="391751073"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ChargeExplosion" ID="{E910441E-700E-421A-81A2-594BA2F41584}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="HeatShock" ID="{D7A05FE9-1416-4F67-947F-D7FEC4A8F03C}" ShortID="1051075253">
+									<ChildrenList>
+										<Sound Name="HeatShockHit" ID="{ACB2DFE4-11A6-455D-93B8-1BA808C9CF81}" ShortID="947423489">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HeatShockHit" ID="{9A7DA22B-CEC7-44B6-B2AD-86047E04E5D7}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>HeatShockHit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="475514569"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HeatShockHit" ID="{9A7DA22B-CEC7-44B6-B2AD-86047E04E5D7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HeatShockSwing" ID="{372CD0C7-7768-4862-93D7-B7CE851AE407}" ShortID="842366357">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>1.5</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{E7940BEE-7278-43D6-9E7E-6CDD64FE9D59}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="70"/>
+																	<Property Name="Min" Type="Real64" Value="-70"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HeatShockSwing" ID="{65902499-9FAF-4DBE-9369-84E74F41D8B2}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-0.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>HeatShockSwing.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="524773087"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HeatShockSwing" ID="{65902499-9FAF-4DBE-9369-84E74F41D8B2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HeatShockCharge" ID="{83FEB783-AB18-4DAF-9AA0-34145CDF624A}" ShortID="1042925601">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HeatShockCharge" ID="{99DA0C82-700D-4D14-A81D-A17FD5CB560E}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>HeatShockCharge.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="231233257"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HeatShockCharge" ID="{99DA0C82-700D-4D14-A81D-A17FD5CB560E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PlasmaProjectileExplosion" ID="{423A4916-E1AA-4A6A-80DB-C56DDA458C25}" ShortID="846255861">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{18A25D9D-89FC-4307-B650-A30205FD0AB3}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HeatProjectileExplosion" ID="{8D1263B2-74D2-48D7-A6A3-0B7A32811C3A}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-0.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>HeatProjectileExplosion.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="513875902"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HeatProjectileExplosion" ID="{8D1263B2-74D2-48D7-A6A3-0B7A32811C3A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
-						<Folder Name="HeatShock" ID="{D7A05FE9-1416-4F67-947F-D7FEC4A8F03C}" ShortID="1051075253">
+						<Folder Name="NemAmp" ID="{20210173-4F14-4D38-8AE0-0F97C3D53EE3}" ShortID="395172882">
 							<ChildrenList>
-								<Sound Name="HeatShockHit" ID="{ACB2DFE4-11A6-455D-93B8-1BA808C9CF81}" ShortID="947423489">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
+								<Folder Name="LightningStream" ID="{09B71F9B-862D-4ECB-9025-5987D10ACB5B}" ShortID="929466729">
 									<ChildrenList>
-										<AudioFileSource Name="HeatShockHit" ID="{9A7DA22B-CEC7-44B6-B2AD-86047E04E5D7}">
+										<Sound Name="LightningStream" ID="{7A3732DD-C377-4790-B4CB-9E34A737FBB9}" ShortID="903127437">
 											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>HeatShockHit.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="475514569"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="HeatShockHit" ID="{9A7DA22B-CEC7-44B6-B2AD-86047E04E5D7}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="HeatShockSwing" ID="{372CD0C7-7768-4862-93D7-B7CE851AE407}" ShortID="842366357">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>1.5</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{E7940BEE-7278-43D6-9E7E-6CDD64FE9D59}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="70"/>
-															<Property Name="Min" Type="Real64" Value="-70"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="HeatShockSwing" ID="{65902499-9FAF-4DBE-9369-84E74F41D8B2}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-0.5</Value>
-													</ValueList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{16E1AA9F-9B61-4F08-8D5A-5BD9D0DCCE4E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
 												</Property>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>HeatShockSwing.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="524773087"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="HeatShockSwing" ID="{65902499-9FAF-4DBE-9369-84E74F41D8B2}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="HeatShockCharge" ID="{83FEB783-AB18-4DAF-9AA0-34145CDF624A}" ShortID="1042925601">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="HeatShockCharge" ID="{99DA0C82-700D-4D14-A81D-A17FD5CB560E}">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LightningStream" ID="{51337336-C0B9-4ACF-ACE9-C964A693C8CF}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LightningStream.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="815760424"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LightningStream" ID="{51337336-C0B9-4ACF-ACE9-C964A693C8CF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LightningStreamEnd" ID="{CD83F571-72F3-45E3-A5E5-2AB3301E2D16}" ShortID="471456346">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LightningStreamEnd" ID="{9BF01FA2-BDC1-41AB-9C3D-B73B18047674}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LightningStreamEnd.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="110367248"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LightningStreamEnd" ID="{9BF01FA2-BDC1-41AB-9C3D-B73B18047674}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LightningStreamStart" ID="{AED24092-5F43-44C8-B36E-6F36EC4322C9}" ShortID="6772903">
 											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>8</Value>
-													</ValueList>
-												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>HeatShockCharge.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="231233257"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LightningStreamStart" ID="{9EB5C653-51AF-460A-BB56-6E960A30B5DE}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LightningStreamStart.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="480520510"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LightningStreamStart" ID="{9EB5C653-51AF-460A-BB56-6E960A30B5DE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="HeatShockCharge" ID="{99DA0C82-700D-4D14-A81D-A17FD5CB560E}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="PlasmaProjectileExplosion" ID="{423A4916-E1AA-4A6A-80DB-C56DDA458C25}" ShortID="846255861">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{18A25D9D-89FC-4307-B650-A30205FD0AB3}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="100"/>
-															<Property Name="Min" Type="Real64" Value="-100"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="HeatProjectileExplosion" ID="{8D1263B2-74D2-48D7-A6A3-0B7A32811C3A}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-0.5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>HeatProjectileExplosion.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="513875902"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="HeatProjectileExplosion" ID="{8D1263B2-74D2-48D7-A6A3-0B7A32811C3A}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="Worm" ID="{F14F71E4-683D-4AF5-8334-80F6C41ED79F}" ShortID="667932748">
-							<ChildrenList>
-								<Sound Name="WormCharge" ID="{C97C2139-8453-4CD1-8A40-25CD3B08DD7D}" ShortID="671702942">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="ChargeAttentuation" ID="{19217E99-529F-41FA-AB59-3F2C3D49A72C}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="WormCharge" ID="{FC25112E-1BA9-481F-A097-7625A2F5DF85}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-6</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>WormCharge.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="885005710"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="WormCharge" ID="{FC25112E-1BA9-481F-A097-7625A2F5DF85}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="WormSummon" ID="{18635C48-836C-489E-A6C6-297CA9F10465}" ShortID="736310599">
-									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Attenuation">
-											<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-										</Reference>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="WormSummon" ID="{3BAEFD3E-CE11-4FC6-BC26-7AE277DD652B}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-3</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>WormSummon.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="430921292"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="WormSummon" ID="{3BAEFD3E-CE11-4FC6-BC26-7AE277DD652B}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="LobbySFX" ID="{106B2069-8B8E-49EF-AEDA-AE2C9E2A6FFC}" ShortID="597397094">
-							<ChildrenList>
-								<Sound Name="LobbyEntrance" ID="{76E353CC-4F26-4029-987B-859EA79A1362}" ShortID="589516352">
-									<PropertyList>
-										<Property Name="MakeUpGain" Type="Real64">
-											<ValueList>
-												<Value>-10</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LobbyEntrance" ID="{32A90BA2-C5F1-4C15-AED5-CB14122F73DC}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-												<Property Name="VolumeOffset" Type="Real64">
-													<ValueList>
-														<Value>-5.5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>LobbyEntrance.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="756615058"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LobbyEntrance" ID="{32A90BA2-C5F1-4C15-AED5-CB14122F73DC}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
+								</Folder>
+								<Folder Name="FluxBlades" ID="{45FF28C1-55ED-4A7A-A8D8-3BE005A880B5}" ShortID="668167026"/>
+								<Folder Name="Static Field" ID="{C6919B1F-E184-491E-8744-64F342888FF8}" ShortID="419434091"/>
+								<Folder Name="Howitzer Spark" ID="{558CA04D-CC34-4B62-94CC-84D317AFDFF1}" ShortID="893125072"/>
+								<Folder Name="Teleport" ID="{AFB0DB66-95A0-4DC3-954A-0730E62B6231}" ShortID="1063756162"/>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

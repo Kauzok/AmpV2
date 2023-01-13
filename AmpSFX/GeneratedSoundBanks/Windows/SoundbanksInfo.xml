@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>D:\Modding\RoR2\Battlemage V2\AmpSFX\</ProjectRoot>
-		<SourceFilesRoot>D:\Modding\RoR2\Battlemage V2\AmpSFX\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\Modding\RoR2\Battlemage V2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\</ProjectRoot>
+		<SourceFilesRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\Modding\RoR2\Battlemage V2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="1090967005">
+		<SoundBank Id="865939728" Language="SFX" Hash="3923993007">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -157,6 +157,30 @@
 						<File Id="524773087" Language="SFX">
 							<ShortName>HeatShockSwing.wav</ShortName>
 							<Path>SFX\HeatShockSwing_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4290250854" Name="PlayLightningStreamEnd" ObjectPath="\Events\Default Work Unit\PlayLightningStreamEnd">
+					<IncludedMemoryFiles>
+						<File Id="110367248" Language="SFX">
+							<ShortName>LightningStreamEnd.wav</ShortName>
+							<Path>SFX\LightningStreamEnd_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="562064113" Name="PlayLightningStreamLoop" ObjectPath="\Events\Default Work Unit\PlayLightningStreamLoop">
+					<IncludedMemoryFiles>
+						<File Id="815760424" Language="SFX">
+							<ShortName>LightningStream.wav</ShortName>
+							<Path>SFX\LightningStream_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2690484557" Name="PlayLightningStreamStart" ObjectPath="\Events\Default Work Unit\PlayLightningStreamStart">
+					<IncludedMemoryFiles>
+						<File Id="480520510" Language="SFX">
+							<ShortName>LightningStreamStart.wav</ShortName>
+							<Path>SFX\LightningStreamStart_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

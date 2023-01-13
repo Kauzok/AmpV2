@@ -311,6 +311,79 @@ namespace AmpMod.Modules
 
             return skillDef;
         }
+        public static T CreateSkillDef<T>(SkillDefInfo skillDefInfo) where T : SkillDef
+        {
+
+            T skillDef = ScriptableObject.CreateInstance<T>();
+
+            popuplateSkillDef(skillDefInfo, skillDef);
+
+            skillDefs.Add(skillDef);
+
+            return skillDef;
+        }
+
+        public static T CreatePrimarySkillDef<T>(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens) where T : SkillDef
+        {
+             T skillDef = ScriptableObject.CreateInstance<T>();
+
+            skillDef.skillName = skillNameToken;
+            skillDef.skillNameToken = skillNameToken;
+            skillDef.skillDescriptionToken = skillDescriptionToken;
+            skillDef.icon = skillIcon;
+
+            skillDef.activationState = state;
+            skillDef.activationStateMachineName = stateMachine;
+            skillDef.baseMaxStock = 1;
+            skillDef.baseRechargeInterval = 0;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+            skillDef.canceledFromSprinting = false;
+            skillDef.forceSprintDuringState = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.interruptPriority = InterruptPriority.Any;
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+            skillDef.cancelSprintingOnActivation = !agile;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 0;
+            skillDef.stockToConsume = 0;
+            skillDef.keywordTokens = keywordTokens;
+
+            skillDefs.Add(skillDef);
+
+            return skillDef;
+        }
+
+        private static void popuplateSkillDef(SkillDefInfo skillDefInfo, SkillDef skillDef)
+        {
+            skillDef.skillName = skillDefInfo.skillName;
+            (skillDef as ScriptableObject).name = skillDefInfo.skillName;
+            skillDef.skillNameToken = skillDefInfo.skillNameToken;
+            skillDef.skillDescriptionToken = skillDefInfo.skillDescriptionToken;
+            skillDef.icon = skillDefInfo.skillIcon;
+
+            skillDef.activationState = skillDefInfo.activationState;
+            skillDef.activationStateMachineName = skillDefInfo.activationStateMachineName;
+            skillDef.baseMaxStock = skillDefInfo.baseMaxStock;
+            skillDef.baseRechargeInterval = skillDefInfo.baseRechargeInterval;
+            skillDef.beginSkillCooldownOnSkillEnd = skillDefInfo.beginSkillCooldownOnSkillEnd;
+            skillDef.canceledFromSprinting = skillDefInfo.canceledFromSprinting;
+            skillDef.forceSprintDuringState = skillDefInfo.forceSprintDuringState;
+            skillDef.fullRestockOnAssign = skillDefInfo.fullRestockOnAssign;
+            skillDef.interruptPriority = skillDefInfo.interruptPriority;
+            skillDef.resetCooldownTimerOnUse = skillDefInfo.resetCooldownTimerOnUse;
+            skillDef.isCombatSkill = skillDefInfo.isCombatSkill;
+            skillDef.mustKeyPress = skillDefInfo.mustKeyPress;
+            skillDef.cancelSprintingOnActivation = skillDefInfo.cancelSprintingOnActivation;
+            skillDef.rechargeStock = skillDefInfo.rechargeStock;
+            skillDef.requiredStock = skillDefInfo.requiredStock;
+            skillDef.stockToConsume = skillDefInfo.stockToConsume;
+
+            skillDef.keywordTokens = skillDefInfo.keywordTokens;
+        }
+
+
     }
 }
 

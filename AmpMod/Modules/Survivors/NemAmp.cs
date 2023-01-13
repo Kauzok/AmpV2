@@ -34,7 +34,7 @@ namespace AmpMod.Modules.Survivors
             bodyNameToken = AmpPlugin.developerPrefix + "_AMP_BODY_NAME",
             //bodyNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_NAME",
             //Color of skill names and stuff in menu
-            bodyColor = new Color32(0, 145, 255, 255),
+            bodyColor = new Color32(139, 0, 255, 255),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Amp"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,
@@ -122,13 +122,24 @@ namespace AmpMod.Modules.Survivors
 
             #region Primary
             //creates Fulmination
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
-                "Weapon",
+            NemAmpOrbTrackingSkillDef primaryLightningStreamDef =
+                Skills.CreatePrimarySkillDef<NemAmpOrbTrackingSkillDef>(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
+                 "Weapon",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
                 true,
-                new String[] { }));
+                new String[] { });
+
+            /*  Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
+                  "Weapon",
+                  prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
+                  prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
+                  Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
+                  true,
+                  new String[] { }));*/
+
+            Modules.Skills.AddPrimarySkill(bodyPrefab, primaryLightningStreamDef);
 
             //creates Flux Blades
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),

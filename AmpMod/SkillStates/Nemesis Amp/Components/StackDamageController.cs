@@ -129,7 +129,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         }
         private void OverlayController_onInstanceAdded(OverlayController overlayController, GameObject instance)
         {   
-            instance.transform.localPosition = new Vector3(-600f, -550f, 0f);
+            instance.transform.localPosition = new Vector3(-685f, -600f, 0f);
             float sizeScale = 0.14f;
             instance.transform.localScale = new Vector3(.14f, sizeScale, sizeScale);
             instance.transform.rotation = Quaternion.Euler(0, 0, 2.8f);

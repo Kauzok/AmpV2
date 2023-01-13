@@ -16,21 +16,31 @@ namespace AmpMod.SkillStates.Nemesis_Amp
      class LightningStream : BaseSkillState
     {
 
+        [Header("Attack Variables")]
         private float lightningTickDamage = Modules.StaticValues.lightningStreamPerSecondDamageCoefficient / 3f;
         private StackDamageController stackDamageController;
-        private float charge;
         private NemAmpLightningEffectController lightningEffectController;
         private float procCoefficient = Modules.StaticValues.lightningStreamProcCoefficient;
-        private NemAmpLightningTracker tracker;
-        private HurtBox targetHurtbox;
-        private Animator animator;
-        private ChildLocator childLocator;
         private float baseTickTime = Modules.StaticValues.lightningStreamBaseTickTime;
         private float tickTime;
-        private bool isCrit;
-        private bool lightningTetherActive;
-        private float healthCheck;
         private float tickTimer;
+
+        [Header("Tracking/Effect Variables")]
+        private NemAmpLightningTracker tracker;
+        private HurtBox targetHurtbox;
+        private bool lightningTetherActive;
+
+        [Header("Animation Variables")]
+        private Animator animator;
+        private ChildLocator childLocator;
+
+        [Header("Sounds")]
+        private string startSoundString = StaticValues.lightningStreamStartString;
+        private string loopSoundString = StaticValues.lightningStreamLoopSoundString;
+        private string endSoundString = StaticValues.lightningStreamEndString;
+        private uint endLoopSoundID = 0;
+        private float soundTimer;
+        private bool hasBegunSound;
 
         public override void OnEnter()
         {
@@ -39,18 +49,19 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningEffectController = base.GetComponent<NemAmpLightningEffectController>();
             lightningEffectController.isAttacking = true;
             
+
             tracker = base.GetComponent<NemAmpLightningTracker>();
+
+            if (tracker.GetTrackingTarget())
+            {
+                //Util.PlaySound(startSoundString, base.gameObject);
+            }
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
             {
                 this.childLocator = modelTransform.GetComponent<ChildLocator>();
                 this.animator = modelTransform.GetComponent<Animator>();
             }
- 
-
-
-            //stackDamageController.newSkillUsed = this;
-            //stackDamageController.resetComboTimer();
 
             this.tickTime= this.baseTickTime / this.attackSpeedStat;
             if (base.characterBody)
@@ -87,9 +98,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.FixedUpdate();
 
+            soundTimer += Time.fixedDeltaTime;
 
             this.tickTimer -= Time.fixedDeltaTime;
 
+       
 
             if (this.tracker && base.isAuthority)
             {
@@ -100,7 +113,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     lightningTetherActive = true;
                 }
 
+                if (soundTimer >= .1f && !hasBegunSound && targetHurtbox)
+                {
+                    endLoopSoundID = Util.PlaySound(loopSoundString, base.gameObject);
+                    hasBegunSound = true;
+                }
+
             }
+
 
             this.FireLightning();
             
@@ -134,6 +154,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnExit()
         {
             base.OnExit();
+            AkSoundEngine.StopPlayingID(endLoopSoundID, 0);
+            //Util.PlaySound(endSoundString, base.gameObject);
+
             lightningEffectController.isAttacking = false;
             //Debug.Log("Exiting");
             this.FireLightning();

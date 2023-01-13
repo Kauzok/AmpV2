@@ -493,6 +493,48 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayLightningStreamLoop" ID="{D6B3D2F1-0D62-4FDE-90B8-48301E9009E5}">
+					<ChildrenList>
+						<Action Name="" ID="{FD631BF0-005C-4046-947B-AF9F8E871B9B}" ShortID="334844170">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LightningStream" ID="{7A3732DD-C377-4790-B4CB-9E34A737FBB9}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayLightningStreamEnd" ID="{81516001-89FE-439C-BD7A-5A22AA049A92}">
+					<ChildrenList>
+						<Action Name="" ID="{8151DE9F-94E8-40F9-B379-56FE64A95F4C}" ShortID="310978378">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LightningStreamEnd" ID="{CD83F571-72F3-45E3-A5E5-2AB3301E2D16}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayLightningStreamStart" ID="{2B579DC3-8E45-42F8-9D9A-72521E8CD71A}">
+					<ChildrenList>
+						<Action Name="" ID="{E351B8C3-E0BB-4403-8DAA-5561D710E564}" ShortID="75984027">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LightningStreamStart" ID="{AED24092-5F43-44C8-B36E-6F36EC4322C9}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
