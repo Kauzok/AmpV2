@@ -6,7 +6,7 @@ using UnityEngine;
 using RoR2.Orbs;
 using AmpMod.Modules;
 
-namespace AmpMod.SkillStates.Nemesis_Amp
+namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 {
 	public class NemAmpLightningStrikeOrb : GenericDamageOrb, IOrbFixedUpdateBehavior
 	{

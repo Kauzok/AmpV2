@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 using AmpMod.Modules;
 
-namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
+namespace AmpMod.SkillStates.Nemesis_Amp
 {
     public class NemAmpLightningEffectController : NetworkBehaviour
     {

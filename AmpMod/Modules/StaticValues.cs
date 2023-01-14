@@ -100,6 +100,7 @@ namespace AmpMod.Modules
         internal const float lightningStreamPerSecondDamageCoefficient = 3f;
         internal const float lightningStreamProcCoefficient = .3f;
         internal const float lightningStreamBaseTickTime = .333f;
+        internal const float lightningChainRange = 30f;
 
         [Header("Flux Blades Values")]
         internal const float bladeDamageCoefficient = 2f;

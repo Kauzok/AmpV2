@@ -63,7 +63,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                     //add in the growth damage buff to calculation
                     float baseDamage = calcedLightningStrikeDamage + calcedLightningStrikeDamage * (base.characterBody.GetBuffCount(Buffs.damageGrowth) * StaticValues.growthDamageCoefficient);
-                    OrbManager.instance.AddOrb(new NemAmpLightningStrikeOrb
+                    OrbManager.instance.AddOrb(new Orbs.NemAmpLightningStrikeOrb
                     {
                         attacker = base.gameObject,
                         damageColorIndex = DamageColorIndex.Default,

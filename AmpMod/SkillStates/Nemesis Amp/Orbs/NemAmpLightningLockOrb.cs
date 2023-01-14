@@ -6,7 +6,7 @@ using RoR2;
 using R2API;
 using System.Linq;
 
-namespace AmpMod.SkillStates.Nemesis_Amp
+namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 {
 	public class NemAmpLightningLockOrb : Orb
 	{
@@ -80,7 +80,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				*/
 				chainObject = UnityEngine.Object.Instantiate(Modules.Assets.lightningStreamChainEffectPrefab).GetComponent<Components.NemAmpLightningChainNoise>();
 				chainObject.startPosition = this.origin;
-				chainObject.endGameObject = this.target.healthComponent.gameObject;
+				chainObject.healthComponent = this.target.healthComponent;
 
 			}
 
@@ -146,7 +146,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 							lightningOrb.procCoefficient = this.procCoefficient;
 							lightningOrb.damageColorIndex = this.damageColorIndex;
 							lightningOrb.damageCoefficientPerBounce = this.damageCoefficientPerBounce;
-							lightningOrb.range = this.range;
+							lightningOrb.range = Modules.StaticValues.lightningChainRange;
 							lightningOrb.damageType = this.damageType;
 							lightningOrb.failedToKill = this.failedToKill;
 							lightningOrb.isChaining = true;
