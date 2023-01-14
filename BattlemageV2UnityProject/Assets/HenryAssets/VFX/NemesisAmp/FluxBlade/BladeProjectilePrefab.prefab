@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 136473445913943510}
   - component: {fileID: -7221275643235391356}
   - component: {fileID: -5136562803006306928}
+  - component: {fileID: 2756984904298002728}
   m_Layer: 14
   m_Name: BladeProjectilePrefab
   m_TagString: Untagged
@@ -33,14 +34,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712367373351762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2044377676022375392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &114615431405146395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0.8
+  lifetime: 1
   lifetimeExpiredEffect: {fileID: 0}
-  desiredForwardSpeed: 100
+  desiredForwardSpeed: 110
   updateAfterFiring: 1
   enableVelocityOverLifetime: 0
   velocityOverLifetime:
@@ -204,7 +205,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: 0.7
   m_Height: 6
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
@@ -251,6 +252,58 @@ MonoBehaviour:
   impactEffect: {fileID: 0}
   hitSoundString: 
   enemyHitSoundString: 
+--- !u!114 &2756984904298002728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712367373351762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  falloffModel: 1
+  blastRadius: 0
+  blastDamageCoefficient: 0
+  blastProcCoefficient: 0
+  blastAttackerFiltering: 0
+  bonusBlastForce: {x: 0, y: 0, z: 0}
+  canRejectForce: 1
+  projectileHealthComponent: {fileID: 0}
+  explosionEffect: {fileID: 0}
+  explosionSoundString: 
+  fireChildren: 0
+  childrenProjectilePrefab: {fileID: 0}
+  childrenCount: 0
+  childrenDamageCoefficient: 0
+  minAngleOffset: {x: 0, y: 0, z: 0}
+  maxAngleOffset: {x: 0, y: 0, z: 0}
+  minRollDegrees: 0
+  rangeRollDegrees: 0
+  minPitchDegrees: 0
+  rangePitchDegrees: 0
+  useLocalSpaceForChildren: 0
+  applyDot: 0
+  dotIndex: -1
+  dotDuration: 0
+  dotDamageMultiplier: 0
+  applyMaxStacksFromAttacker: 0
+  maxStacksFromAttacker: 4294967295
+  calculateTotalDamage: 0
+  totalDamageMultiplier: 0
+  impactEffect: {fileID: 0}
+  lifetimeExpiredSoundString: 
+  lifetimeExpiredSound: {fileID: 0}
+  offsetForLifetimeExpiredSound: 0
+  destroyOnEnemy: 1
+  destroyOnWorld: 0
+  timerAfterImpact: 0
+  lifetime: 1
+  lifetimeAfterImpact: 0
+  lifetimeRandomOffset: 0
+  transformSpace: 0
 --- !u!1001 &4770680405369330488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,6 +311,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4509624372611522}
     m_Modifications:
+    - target: {fileID: 2905218503825929023, guid: 5c2ec73df4866b64ab98cf28b890584b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6803753932485687512, guid: 5c2ec73df4866b64ab98cf28b890584b,
         type: 3}
       propertyPath: m_RootOrder

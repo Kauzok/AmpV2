@@ -22,6 +22,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float surgeBuffCount;
         private ChildLocator childLocator;
         private bool hasFired;
+        private ProjectileImpactExplosion projectileImpactExplosion;
         private String soundString = StaticValues.fluxBladesFireString;
         private StackDamageController stackDamageController;
 
@@ -32,6 +33,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
 
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
+
+            projectileImpactExplosion = bladePrefab.GetComponent<ProjectileImpactExplosion>();
+
+            if (base.GetBuffCount(Buffs.damageGrowth) == StaticValues.growthBuffMaxStacks)
+            {
+                projectileImpactExplosion.bonusBlastForce = new Vector3(-4000f, -4000f, -4000f);
+                projectileImpactExplosion.blastDamageCoefficient = .333f;
+                projectileImpactExplosion.SetExplosionRadius(12f);
+                projectileImpactExplosion.totalDamageMultiplier = 1f;
+                //projectileImpactExplosion.explosionEffect = Assets.BladeImplosionEffect;
+            }
 
             //this.fireTime = 0.2f * this.duration;
             base.characterBody.SetAimTimer(2f);
@@ -103,12 +115,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (base.isAuthority && !hasFired)
             {
                 Fire();
+
+                stackDamageController.newSkillUsed = this;
+                stackDamageController.resetComboTimer();
                 //Debug.Log("firing");
                 hasFired = true;
             }
-
-            stackDamageController.newSkillUsed = this;
-            stackDamageController.resetComboTimer();
 
 
             if (fixedAge >= duration && base.isAuthority)

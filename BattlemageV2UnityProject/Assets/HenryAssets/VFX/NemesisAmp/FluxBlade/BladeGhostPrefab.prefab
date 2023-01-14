@@ -137,17 +137,17 @@ PrefabInstance:
     - target: {fileID: 3840823726000184351, guid: 40a7faa4e7ebdc44a809381dfc11a9f0,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3840823726000184351, guid: 40a7faa4e7ebdc44a809381dfc11a9f0,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3840823726000184351, guid: 40a7faa4e7ebdc44a809381dfc11a9f0,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3840823726000184351, guid: 40a7faa4e7ebdc44a809381dfc11a9f0,
         type: 3}
@@ -208,6 +208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BladeSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852436468461654518, guid: 40a7faa4e7ebdc44a809381dfc11a9f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40a7faa4e7ebdc44a809381dfc11a9f0, type: 3}
