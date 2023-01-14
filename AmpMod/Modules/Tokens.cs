@@ -134,7 +134,7 @@ namespace AmpMod.Modules
 
             #region Primary2
             LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Flux Blades");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire a <c=IsUtility>tracking</style> iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, the blades <style=cIsUtility>create a magnetic implosion</style> for <style=cIsDamage>80% damage</style>.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire a <style=cIsUtility>tracking</style> iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, the blades <style=cIsUtility>create a magnetic implosion</style> for <style=cIsDamage>80% damage</style>.");
             #endregion
 
             #region Secondary
