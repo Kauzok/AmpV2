@@ -53,6 +53,12 @@ namespace AmpMod.Modules
             ProjectileSingleTargetImpact bladeContactController = bladeProjectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
             bladeContactController.impactEffect = Assets.bulletImpactEffect;
 
+            var dmgTypeHolder = bladeProjectilePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+            dmgTypeHolder.Add(DamageTypes.controlledChargeProcProjectile);
+
+            var bladeProjectileController = bladeProjectilePrefab.GetComponent<ProjectileController>();
+            bladeProjectileController.procCoefficient = StaticValues.bladeProcCoefficient;
+
             PrefabAPI.RegisterNetworkPrefab(bladeProjectilePrefab);
 
         }

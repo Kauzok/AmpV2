@@ -78,17 +78,30 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 return;
             }
             this.tickTimer = this.tickTime;
-            NemAmpLightningLockOrb lightningOrb = createDmgOrb();
 
-            if (Util.CheckRoll(procCoefficient * 100f, base.characterBody.master))
-            {
-                lightningOrb.AddModdedDamageType(DamageTypes.controlledChargeProc);
-            }
-            
             if (targetHurtbox)
             {
-                //Transform transform = this.childLocator.FindChild(this.muzzleString);
+                NemAmpLightningLockOrb lightningOrb = createDmgOrb();
+                lightningOrb.procControlledCharge = false;
+
+                if (Util.CheckRoll(procCoefficient * 100f, base.characterBody.master))
+                {
+                    lightningOrb.procControlledCharge = true;
+                }
+
+
+                if (base.GetBuffCount(Buffs.damageGrowth) == StaticValues.growthBuffMaxStacks)
+                {
+                    //lightningOrb.isChaining = true;
+                    lightningOrb.bouncesRemaining = 2;
+                }
+                else
+                {
+                    lightningOrb.isChaining = false;
+                    lightningOrb.bouncesRemaining = 0;
+                }
                 OrbManager.instance.AddOrb(lightningOrb);
+
             }
 
             
@@ -119,6 +132,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     hasBegunSound = true;
                 }
 
+        
+
             }
 
 
@@ -139,7 +154,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             return new NemAmpLightningLockOrb
             {
                 origin = base.gameObject.transform.position,
-                damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth))*lightningTickDamage*damageStat),
+                damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat),
                 isCrit = base.characterBody.RollCrit(),
                 damageType = DamageType.Generic,
                 teamIndex = teamComponent.teamIndex,
@@ -148,8 +163,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 lightningType = LightningOrb.LightningType.Loader,
                 damageColorIndex = DamageColorIndex.Default,
                 target = targetHurtbox,
-            };
+                bouncedObjects = new List<HealthComponent>(),
+                range = tracker.maxTrackingDistance,
+                damageCoefficientPerBounce = .8f,
+
+        };
         }
+
 
         public override void OnExit()
         {

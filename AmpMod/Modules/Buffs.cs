@@ -26,7 +26,7 @@ namespace AmpMod.Modules
             overCharge = AddNewBuff("AmpOverCharge", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
             controlledCharge = AddNewBuff("NemesisAmpContolledCharge", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texControlledChargeAlt"), new Color32(180, 71, 255, 255), true, true);
             damageGrowth = AddNewBuff("NemesisAmpDamageGrowth", null, new Color32(61, 0, 0, 0), true, false, true);
-            nemAmpAtkSpeed = AddNewBuff("nemAmpAtkSpeed", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
+            nemAmpAtkSpeed = AddNewBuff("nemAmpAtkSpeed", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFieldAtkSpeedCombined"), new Color32(180, 71, 255, 255), false, false);
 
         }
 

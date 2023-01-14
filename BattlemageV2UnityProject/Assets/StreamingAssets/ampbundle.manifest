@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1319806258
+CRC: 418341996
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7932e8774f4a532d034047c7339fb744
+    Hash: 03f00a4346ec716b4853b5145f81801a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 50f21a66c11a99bf954e20dce1bd62f5
@@ -418,6 +418,7 @@ Assets:
 - Assets/HenryAssets/Animations/SprintR.anim
 - Assets/HenryAssets/AnimAmpMenu.controller
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurple.mat
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/BladeSpawn.prefab
 - Assets/HenryAssets/Icons/texVergilAchievement.png
 - Assets/HenryAssets/AmpAnims/metarig_SlashAnim2.anim
 - Assets/HenryAssets/VFX/Materials/matSlash 1.mat
@@ -650,6 +651,7 @@ Assets:
 - Assets/HenryAssets/Mesh/meshRebellion.mesh
 - Assets/HenryAssets/Materials/matSpike.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/BaseAtlas.mat
+- Assets/HenryAssets/Icons/texControlledChargeAlt.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RailgunCryo/matRailgunSoftGlow.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningBeam.mat
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexProjectile.prefab
@@ -658,6 +660,7 @@ Assets:
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexEffect.prefab
 - Assets/HenryAssets/AmpAnims/metarig_FulminateSlash1Anim.anim
 - Assets/HenryAssets/VFX/Materials/texRampRedToWhite.png
+- Assets/HenryAssets/Icons/texFieldAtkSpeedAlt.png
 - Assets/HenryAssets/VFX/Amp/PulseLeap/matGenericFlash.mat
 - Assets/HenryAssets/AmpAnims/maskAmpGesture.mask
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/texRampAreaIndicator.png
@@ -786,6 +789,7 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Materials/TextureBake.mat
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterOutlineOld.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudOrganicNormal.png
+- Assets/HenryAssets/Icons/texFieldAtkSpeed.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texGenericStarburstMaskSkewed.png
 - Assets/HenryAssets/Animations/Descend.anim
 - Assets/HenryAssets/Textures/texHenryDante.png
@@ -816,10 +820,12 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/OmniImpactVFXLightning.prefab
 - Assets/HenryAssets/Icons/debuffIcon.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudWaterRipples.png
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningOrbChainEffect.prefab
 - Assets/HenryAssets/VFX/Materials/texMageBoltMask.png
 - Assets/HenryAssets/texBehemothTileMask.png
 - Assets/HenryAssets/AmpAnims/metarig_DescendFastAnim.anim
 - Assets/HenryAssets/AmpAnims/metarig_PulseAnim.anim
+- Assets/HenryAssets/Icons/texFieldAtkSpeedCombined.png
 - Assets/HenryAssets/Mesh/GrandparentSpawnNetMesh.asset
 - Assets/HenryAssets/Shaders/deferred/hgsnowtopped.shader
 - Assets/HenryAssets/Icons/texVortex.png

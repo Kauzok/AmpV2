@@ -1703,7 +1703,120 @@
 										</Sound>
 									</ChildrenList>
 								</Folder>
-								<Folder Name="FluxBlades" ID="{45FF28C1-55ED-4A7A-A8D8-3BE005A880B5}" ShortID="668167026"/>
+								<Folder Name="FluxBlades" ID="{45FF28C1-55ED-4A7A-A8D8-3BE005A880B5}" ShortID="668167026">
+									<ChildrenList>
+										<RandomSequenceContainer Name="FluxBlades" ID="{613919C8-A4BC-4176-B206-FFF7D33FB4DC}" ShortID="428333033">
+											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="FluxBladeFire" ID="{8CAE938B-C18B-4E00-8AB6-6DD55373CD06}" ShortID="1017540245">
+													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EE2F9C9A-32AA-47F4-A916-02BE78790A01}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="100"/>
+																			<Property Name="Min" Type="Real64" Value="-100"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="FluxBladeFire" ID="{850FE367-2848-4AB0-96F9-723B3637E0EB}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>FluxBladeFire.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="919812550"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="FluxBladeFire" ID="{850FE367-2848-4AB0-96F9-723B3637E0EB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="FluxBlades2" ID="{4E702578-2D51-4636-B9EE-37C19937EDED}" ShortID="158902421">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{D0EDC9C0-EF80-4243-A70F-1E563A4B4BB1}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="100"/>
+																			<Property Name="Min" Type="Real64" Value="-100"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="FluxBlades2" ID="{6450AD0B-4C7F-41F3-894D-2B6C13279F76}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>FluxBlades2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="549584858"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="FluxBlades2" ID="{6450AD0B-4C7F-41F3-894D-2B6C13279F76}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
 								<Folder Name="Static Field" ID="{C6919B1F-E184-491E-8744-64F342888FF8}" ShortID="419434091"/>
 								<Folder Name="Howitzer Spark" ID="{558CA04D-CC34-4B62-94CC-84D317AFDFF1}" ShortID="893125072"/>
 								<Folder Name="Teleport" ID="{AFB0DB66-95A0-4DC3-954A-0730E62B6231}" ShortID="1063756162"/>

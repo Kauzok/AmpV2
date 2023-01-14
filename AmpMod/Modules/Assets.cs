@@ -127,6 +127,7 @@ namespace AmpMod.Modules
         internal static GameObject chargeBeamHitEffect;
         internal static GameObject lightningStreamEffect;
         internal static GameObject lightningStreamImpactEffect;
+        internal static GameObject lightningStreamChainEffectPrefab;
         internal static GameObject lightningCrosshair;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
@@ -435,6 +436,10 @@ namespace AmpMod.Modules
             lightningCrosshair = mainAssetBundle.LoadAsset<GameObject>("LightningIndicator");
             lightningCrosshair.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
             PrefabAPI.RegisterNetworkPrefab(lightningCrosshair);
+
+            lightningStreamChainEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningOrbChainEffect");
+            lightningStreamChainEffectPrefab.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefab);
 
         }
 

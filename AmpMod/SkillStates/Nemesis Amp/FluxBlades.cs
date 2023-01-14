@@ -22,6 +22,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float surgeBuffCount;
         private ChildLocator childLocator;
         private bool hasFired;
+        private String soundString = StaticValues.fluxBladesFireString;
         private StackDamageController stackDamageController;
 
         public override void OnEnter()
@@ -39,7 +40,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             chargeTime = baseChargeTime / this.attackSpeedStat;
             base.PlayAnimation("Gesture, Override", "LaunchVortex", "BaseSkill.playbackRate", duration);
             animator.SetBool("isUsingIndependentSkill", true);
-            
+
+            Util.PlayAttackSpeedSound(soundString, base.gameObject, this.attackSpeedStat);
+
             Transform modelTransform = base.GetModelTransform();
 
             if (modelTransform)
@@ -76,6 +79,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         force = 120f,
                         crit = base.RollCrit()
                     };
+                    
                     ModifyProjectile(ref fireProjectileInfo);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
@@ -99,7 +103,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (base.isAuthority && !hasFired)
             {
                 Fire();
-                Debug.Log("firing");
+                //Debug.Log("firing");
                 hasFired = true;
             }
 

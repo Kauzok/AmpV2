@@ -535,6 +535,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayFluxBladesFire" ID="{63E0C98E-EEC8-466E-8F07-749B67FFAFB2}">
+					<ChildrenList>
+						<Action Name="" ID="{F8AC375C-BFB8-41C7-B5D6-B12AFC4819A5}" ShortID="121200307">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FluxBlades" ID="{613919C8-A4BC-4176-B206-FFF7D33FB4DC}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

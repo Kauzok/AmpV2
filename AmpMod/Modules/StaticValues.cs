@@ -103,6 +103,7 @@ namespace AmpMod.Modules
 
         [Header("Flux Blades Values")]
         internal const float bladeDamageCoefficient = 2f;
+        internal const float bladeProcCoefficient = .2f;
 
         [Header("Howitzer Spark Values")]
         internal const float chargeBeamMinDamageCoefficient = 4f;
@@ -182,6 +183,10 @@ namespace AmpMod.Modules
         internal const string lightningStreamStartString = "PlayLightningStreamStart";
         internal const string lightningStreamLoopSoundString = "PlayLightningStreamLoop";
         internal const string lightningStreamEndString = "PlayLightningStreamEnd";
+        
+        
+        [Header("Flux Blades Sound Strings")]
+        internal const string fluxBladesFireString = "PlayFluxBladesFire";
 
         [Header("Static Field Sound Strings")]
         internal const string fieldLoopString = "PlayStaticFieldLoop";

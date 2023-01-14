@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="3923993007">
+		<SoundBank Id="865939728" Language="SFX" Hash="231010230">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -101,6 +101,18 @@
 						<File Id="390082384" Language="SFX">
 							<ShortName>FerroshotLaunchAlter.wav</ShortName>
 							<Path>SFX\FerroshotLaunchAlter_56D34C19.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2957140483" Name="PlayFluxBladesFire" ObjectPath="\Events\Default Work Unit\PlayFluxBladesFire">
+					<IncludedMemoryFiles>
+						<File Id="549584858" Language="SFX">
+							<ShortName>FluxBlades2.wav</ShortName>
+							<Path>SFX\FluxBlades2_10C4C929.wem</Path>
+						</File>
+						<File Id="919812550" Language="SFX">
+							<ShortName>FluxBladeFire.wav</ShortName>
+							<Path>SFX\FluxBladeFire_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

@@ -123,18 +123,18 @@ namespace AmpMod.Modules
             #endregion
 
             #region Passive
-            LanguageAPI.Add(nemPrefix + "PASSIVE_NAME", "Blessing of Lightning");
+            LanguageAPI.Add(nemPrefix + "PASSIVE_NAME", "Gathering Storm");
             LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>within 2 seconds</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.growthBuffMaxStacks * StaticValues.growthDamageCoefficient}%</style>. The bonus is maintained as long as you are dealing damage.");
             #endregion
 
             #region Primary
             LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_NAME", "Fulmination");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on and shock an enemy for <style=cIsDamage>{Math.Round(100f * StaticValues.lightningStreamPerSecondDamageCoefficient * StaticValues.lightningStreamBaseTickTime)}% damage</style>.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_LIGHTNING_DESCRIPTION", $"Lock on and shock an enemy for <style=cIsDamage>{Math.Round(100f * StaticValues.lightningStreamPerSecondDamageCoefficient * StaticValues.lightningStreamBaseTickTime)}% damage</style>. At <style=cIsDamage>maximum Gathering Storm charge</style>, this attack <style=cIsUtility>chains</style>.");
             #endregion
 
             #region Primary2
             LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Flux Blades");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire an iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire an iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, the blades <style=cIsUtility>create a magnetic implosion</style> for <style=cIsDamage>80% damage</style>.");
             #endregion
 
             #region Secondary
@@ -155,6 +155,9 @@ namespace AmpMod.Modules
             #region Special
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Voltaic Onslaught");
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
+            #endregion
+
+            #region Special2
             #endregion
 
             #endregion
