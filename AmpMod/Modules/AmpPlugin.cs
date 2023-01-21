@@ -106,7 +106,7 @@ namespace AmpMod.Modules
             new Survivors.Amp().Initialize();
 
             //nemesis Amp
-            new Survivors.NemAmp().Initialize();
+            //new Survivors.NemAmp().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new ContentPacks().Initialize();

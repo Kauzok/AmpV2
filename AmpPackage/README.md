@@ -39,12 +39,8 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 # Change Log
 <details>
  <summary>1.2.1</summary>
-
-- Unlocks
-    - Fixed a bug where obliterating on Monsoon wouldn't unlock Amp's Mastery Skin
-- Surge
-    - Movement speed of this ability now scales with base movement speed
-
+- Magnetic Vortex
+    -  Fixed a bug where the muzzle effect wouldn't disappear on firing
 </details>
 
 <details>

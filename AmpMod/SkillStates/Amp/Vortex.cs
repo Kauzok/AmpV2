@@ -147,6 +147,10 @@ namespace AmpMod.SkillStates
         public override void OnExit()
         {
 
+            if (fireMuzzleTransform)
+            {
+                EntityState.Destroy(fireMuzzleTransform.gameObject);
+            }
 
             //base.PlayAnimation("Gesture, Override", "BufferEmpty");
             animator.SetBool("isUsingIndependentSkill", false);
