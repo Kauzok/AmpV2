@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using RoR2;
+﻿using RoR2;
 using EntityStates;
-using RoR2.Skills;
 using UnityEngine;
 using AmpMod.Modules;
 

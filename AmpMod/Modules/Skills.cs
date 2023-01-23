@@ -13,6 +13,7 @@ namespace AmpMod.Modules
         internal static List<SkillDef> skillDefs = new List<SkillDef>();
         internal static SkillDef surgeCancelSkillDef;
         public static SkillDef fulminationCancelSkillDef;
+        public static SkillDef fireLightningBallSkillDef;
         public static string prefix = AmpPlugin.developerPrefix;
 
         internal static void CreateSkillFamilies(GameObject targetPrefab, string BodyName)
@@ -60,6 +61,14 @@ namespace AmpMod.Modules
             skillFamilies.Add(utilityFamily);
             skillFamilies.Add(specialFamily);
 
+            fireLightningBallSkillDef = CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.Nemesis_Amp.FireLightningBall)),
+                "Weapon",
+                prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
+                prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
+                true,
+                new String[] { });
+
             surgeCancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_AMP_BODY_SPECIAL_CANCELDASH_NAME",
@@ -83,6 +92,7 @@ namespace AmpMod.Modules
                 requiredStock = 0,
                 stockToConsume = 0,
             });
+
 
             fulminationCancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {

@@ -136,6 +136,9 @@ namespace AmpMod.Modules
         internal static GameObject blessingEffect;
         internal static GameObject fireBeamEffect;
         internal static GameObject purpleStormBoltEffect;
+        internal static GameObject lightningSwordPrefab;
+        internal static GameObject dashVFXPrefab;
+        internal static GameObject dashEnterEffect;
         #endregion
 
         // networked hit sounds
@@ -309,6 +312,7 @@ namespace AmpMod.Modules
             CreateStaticField();
             CreateAOELightning();
             CreatePassiveMeter();
+            CreateLightningDash();
             #endregion
 
         }
@@ -348,6 +352,10 @@ namespace AmpMod.Modules
             #region Static Field
             CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
             CreateIntersectMaterial("matTeamAreaIndicatorIntersection");
+            #endregion
+
+            #region Quicksurge
+            CreateVFXMaterial("matDashTrail");
             #endregion
 
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
@@ -441,6 +449,12 @@ namespace AmpMod.Modules
             lightningStreamChainEffectPrefab.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
             PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefab);
 
+        }
+
+        private static void CreateLightningDash()
+        {
+            dashVFXPrefab = mainAssetBundle.LoadAsset<GameObject>("QuickDashPrefab");
+            PrefabAPI.RegisterNetworkPrefab(dashVFXPrefab);
         }
 
         #endregion

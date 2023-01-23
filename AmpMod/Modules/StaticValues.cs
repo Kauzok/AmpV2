@@ -98,7 +98,7 @@ namespace AmpMod.Modules
 
         [Header("Nemesis Fulmination Values")]
         internal const float lightningStreamPerSecondDamageCoefficient = 3f;
-        internal const float lightningStreamProcCoefficient = .3f;
+        internal const float lightningStreamProcCoefficient = .15f;
         internal const float lightningStreamBaseTickTime = .333f;
         internal const float lightningChainRange = 30f;
 
@@ -114,18 +114,30 @@ namespace AmpMod.Modules
 
         [Header("Static Field Values")]
         internal const float staticFieldTickDamageCoefficient = .1f;
-        internal const float staticFieldTickProcCoefficient = .2f;
+        internal const float staticFieldTickProcCoefficient = .1f;
         internal const float staticFieldAttackSpeedBoost = .6f;
 
         [Header("Shocking Teleport Values")]
         internal const float teleportBlastDamageCoefficient = 3f;
         internal const float teleportBlastRadius = 10f;
 
-        [Header("Electron Crash Values")]
+        [Header("QuickSurge Values")]
+        internal const float lightningBallDamageCoefficient = 5f;
+
+
+        [Header("Voltaic Onslaught Values")]
         internal const float baseBoltDamageCoefficient = 2f;
-        internal const float additionalBoltDamageCoefficient = 1.2f;
+        internal const float additionalBoltDamageCoefficient = 1f;
         internal const float stormRadius = 30f;
         internal const float controlledChargeDuration = 10f;
+
+        [Header("Void Slash Values")]
+        internal const float minSlashDamageCoefficient = 5f;
+        internal const float maxSlashDamageCoefficient = 10f;
+        internal const float minSlashLength = 5f;
+        internal const float maxSlashLength = 20f;
+        internal const float additionalSlashDamageCoefficient = 1f;
+        
 
         #region  Amp Sounds
         [Header("Charge Sound Strings")]

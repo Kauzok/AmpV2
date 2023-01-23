@@ -148,16 +148,26 @@ namespace AmpMod.Modules
             #endregion
 
             #region Utility2
+            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_NAME", "Quicksurge");
+            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_DESCRIPTION", $"Transform into lightning, becoming <style=cIsUtility>intangible</style> and dashing a short distance. Your next primary cast shoots a <style=cIsUtility>shocking</style> ball of void lightning for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
+
+            LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_NAME", "Launch Lightning Ball");
+            LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_DESCRIPTION", $"Fire a <style=cIsUtility>shocking</style> ball of void lightning for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
+            #endregion
+
+            #region Utility2Old
             LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Shocking Teleport");
             LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_DESCRIPTION", $"Teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoefficient}% damage</style> damage upon arrival.");
             #endregion
 
             #region Special
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Voltaic Onslaught");
-            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>. ");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
             #endregion
 
             #region Special2
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SLASH_NAME", "Galvanic Cleave");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SLASH_DESCRIPTION", $"<style=cIsUtility>Charge</style> a blade of void lightning and slash, <style=cIsDamage>{100f * StaticValues.minSlashDamageCoefficient}%-{100f * StaticValues.maxSlashDamageCoefficient}% damage</style>. The slash deals an extra <style=cIsDamage>{100f * StaticValues.additionalSlashDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
             #endregion
 
             #endregion

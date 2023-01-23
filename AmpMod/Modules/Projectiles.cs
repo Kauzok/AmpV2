@@ -18,6 +18,7 @@ namespace AmpMod.Modules
         internal static GameObject fireBeamPrefab;
         internal static GameObject fieldProjectilePrefab;
         internal static GameObject bladeProjectilePrefab;
+        internal static GameObject lightningBallPrefab;
 
         internal static void RegisterProjectiles()
         {
@@ -28,12 +29,14 @@ namespace AmpMod.Modules
             //CreateLightning();
             CreateStaticField();
             CreateFluxBlade();
+            CreateLightningBall();
 
             AddProjectile(ferroshotPrefab);
             AddProjectile(vortexPrefab);
             AddProjectile(fireBeamPrefab);
             //AddProjectile(fieldProjectilePrefab);
             AddProjectile(bladeProjectilePrefab);
+            AddProjectile(lightningBallPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -62,6 +65,25 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(bladeProjectilePrefab);
 
         }
+
+        private static void CreateLightningBall()
+        {
+            lightningBallPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefab");
+
+
+            ProjectileController lightningBallController = lightningBallPrefab.GetComponent<ProjectileController>();
+
+            if (Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallGhost") != null) lightningBallController.ghostPrefab = CreateGhostPrefab("LightningBallGhost");
+
+            lightningBallController.allowPrediction = true;
+
+            var damageHolder = lightningBallPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+
+            damageHolder.Add(DamageTypes.controlledChargeProc);
+
+            PrefabAPI.RegisterNetworkPrefab(lightningBallPrefab);
+        }
+
         private static void CreateStaticField()
         {
             fieldProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOT");

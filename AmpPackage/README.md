@@ -39,6 +39,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 # Change Log
 <details>
  <summary>1.2.1</summary>
+ 
 - Magnetic Vortex
     -  Fixed a bug where the muzzle effect wouldn't disappear on firing
 </details>

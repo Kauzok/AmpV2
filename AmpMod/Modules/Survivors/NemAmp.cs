@@ -142,13 +142,13 @@ namespace AmpMod.Modules.Survivors
                   new String[] { }));
 
             //creates Flux Blades
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
+           /* Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
                 "Weapon",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_NAME",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
                 true,
-                new String[] { }));
+                new String[] { })); */
             #endregion
 
 
@@ -178,6 +178,7 @@ namespace AmpMod.Modules.Survivors
                 stockToConsume = 1,
                 keywordTokens = new string[] { }
             });
+
 
 
 
@@ -213,23 +214,23 @@ namespace AmpMod.Modules.Survivors
                 keywordTokens = new string[] { }
             });
 
-            //creates shocking teleport
-            SkillDef teleportSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            //creates quicksurge
+            SkillDef quickDashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_NEMESISAMP_BODY_UTILITY_TELEPORT_NAME",
-                skillNameToken = prefix + "_NEMESISAMP_BODY_UTILITY_TELEPORT_NAME",
-                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_UTILITY_TELEPORT_DESCRIPTION",
+                skillName = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_NAME",
+                skillNameToken = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_NAME",
+                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSurge"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(AimTeleport)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(QuickDash)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 5f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
                 //fullRestockOnAssign = true,
                 fullRestockOnAssign = false,
-                interruptPriority = EntityStates.InterruptPriority.Any,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
                 mustKeyPress = true,
@@ -241,7 +242,7 @@ namespace AmpMod.Modules.Survivors
             });
 
 
-            Modules.Skills.AddUtilitySkills(bodyPrefab, fieldSkillDef, teleportSkillDef);
+            Modules.Skills.AddUtilitySkills(bodyPrefab, fieldSkillDef, quickDashSkillDef);
             #endregion
 
 
@@ -272,6 +273,33 @@ namespace AmpMod.Modules.Survivors
                 stockToConsume = 1,
                 keywordTokens = new string[] { }
             });
+
+            //creates void slash; remember to make a config that allows users to put this as a special skill or a secondary
+            SkillDef slashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
+                skillNameToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
+                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFulmination"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 6f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = true,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                // fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { }
+            }); ;
 
             ;
 
