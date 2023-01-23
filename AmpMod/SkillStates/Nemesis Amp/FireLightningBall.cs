@@ -36,7 +36,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (this.hasFired && this.fixedAge >= duration)
             {
-                Debug.Log("exiting");
+                //Debug.Log("exiting");
                 this.outer.SetNextStateToMain();
             }
         }
@@ -46,12 +46,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();
-                Debug.Log(projectilePrefab);
+                //Debug.Log(projectilePrefab);
                 if (projectilePrefab)
                 {
                     float calcedDamage = damageCoefficient + (damageCoefficient * growthBuffCount * Modules.StaticValues.growthDamageCoefficient);
                     
-                    Debug.Log(calcedDamage);
+                    //Debug.Log(calcedDamage);
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
                         projectilePrefab = this.projectilePrefab,
