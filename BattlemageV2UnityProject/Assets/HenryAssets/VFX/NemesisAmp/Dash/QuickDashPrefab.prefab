@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 114018214081856668}
   - component: {fileID: 114974887112482706}
   - component: {fileID: 114537415978598861}
+  - component: {fileID: 408482776930034033}
   m_Layer: 0
   m_Name: QuickDashPrefab
   m_TagString: Untagged
@@ -284,6 +285,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.3
   resetAgeOnDisable: 0
+--- !u!114 &408482776930034033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537720491427063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1080798252, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 198884422275826132}
 --- !u!1 &1718983954775138
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4796058980700765
 Transform:
   m_ObjectHideFlags: 0
@@ -460,8 +474,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
-      minScalar: 0.2
+      scalar: 1
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve: []
@@ -2478,7 +2492,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4e92de6eebda5fb43a1a5cbdf5f113a4, type: 2}
-  - {fileID: 2100000, guid: 8bea47ee66c778344933fa3a395e0547, type: 2}
+  - {fileID: 2100000, guid: e4f66ab1649a6874ab865e2805624eed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

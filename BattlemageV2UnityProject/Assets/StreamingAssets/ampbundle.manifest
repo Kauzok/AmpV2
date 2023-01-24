@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2039638792
+CRC: 2846813067
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a2cacf1ac2594e1145bf2f16515b16ac
+    Hash: 7e3ec990bac56a6a8aa89cb1019b3a28
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 75b6292013f415b86d8f365f126d66cf
+    Hash: 370401234a70fa9200c9995eceadba3b
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -225,6 +225,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 128
   Script: {instanceID: 0}
+- Class: 134
+  Script: {instanceID: 0}
 - Class: 135
   Script: {instanceID: 0}
 - Class: 136
@@ -398,6 +400,7 @@ Assets:
 - Assets/HenryAssets/VFX/Amp/Bolt/MatBoltEnter.mat
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/matAreaIndicatorIntersectionOnly.mat
 - Assets/HenryAssets/AmpAnims/metarig_FulminateRunHoldAnim.anim
+- Assets/HenryAssets/VFX/Materials/matOmniRingGeneric.mat
 - Assets/HenryAssets/VFX/Materials/matOmniRing2.mat
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurpleUI.mat
 - Assets/HenryAssets/Animations/LightImpact.anim
@@ -681,6 +684,7 @@ Assets:
 - Assets/HenryAssets/AmpAnims/metarig_FulminateSlash2Anim.anim
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexEffect.prefab
 - Assets/HenryAssets/AmpAnims/metarig_FulminateSlash1Anim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/LightningBallExplosion.prefab
 - Assets/HenryAssets/VFX/Materials/texRampRedToWhite.png
 - Assets/HenryAssets/Icons/texFieldAtkSpeedAlt.png
 - Assets/HenryAssets/VFX/Amp/PulseLeap/matGenericFlash.mat
@@ -804,6 +808,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matLorentzTrailRed.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/MageLightningBombExplosion 1.prefab
 - Assets/HenryAssets/Textures/Atlases/Materials/HelmetAtlas.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/physmatEngiGrenade.physicMaterial
 - Assets/HenryAssets/Mesh/Sphere, Unwrapped.asset
 - Assets/HenryAssets/AmpAnims/maskAmpAimPitch.mask
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/ChargeExplosionRed.prefab

@@ -68,6 +68,7 @@ namespace AmpMod.Modules
 
         private static void CreateLightningBall()
         {
+            Assets.CreateVFXMaterial("matLightningStrikePurple");
             lightningBallPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefab");
 
 

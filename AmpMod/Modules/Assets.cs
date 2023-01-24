@@ -138,7 +138,9 @@ namespace AmpMod.Modules
         internal static GameObject purpleStormBoltEffect;
         internal static GameObject lightningSwordPrefab;
         internal static GameObject dashVFXPrefab;
+        internal static GameObject dashExitEffect;
         internal static GameObject dashEnterEffect;
+        internal static GameObject lightningBallExplosionEffect;
         #endregion
 
         // networked hit sounds
@@ -356,6 +358,7 @@ namespace AmpMod.Modules
 
             #region Quicksurge
             CreateVFXMaterial("matDashTrail");
+            CreateVFXMaterial("matOmniRingGeneric");
             #endregion
 
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
@@ -396,7 +399,7 @@ namespace AmpMod.Modules
         {
             
             chargeBeamTracerPrefab = mainAssetBundle.LoadAsset<GameObject>("TracerChargeBeam");
-            Debug.Log(chargeBeamTracerPrefab);
+            //Debug.Log(chargeBeamTracerPrefab);
             //chargeBeamTracerPrefab.AddComponent<NetworkIdentity>();
             //chargeBeamTracerPrefab.AddComponent<EffectComponent>();
             AddNewEffectDef(chargeBeamTracerPrefab);
@@ -408,7 +411,7 @@ namespace AmpMod.Modules
         private static void CreateStaticField()
         {
             matFieldIndicator = CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
-            Debug.Log("fieldindicator shader is " + matFieldIndicator.shader);
+            //Debug.Log("fieldindicator shader is " + matFieldIndicator.shader);
             staticFieldIndicatorPrefab = mainAssetBundle.LoadAsset<GameObject>("FieldAreaIndicator");
             PrefabAPI.RegisterNetworkPrefab(staticFieldIndicatorPrefab);
             //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
@@ -455,6 +458,12 @@ namespace AmpMod.Modules
         {
             dashVFXPrefab = mainAssetBundle.LoadAsset<GameObject>("QuickDashPrefab");
             PrefabAPI.RegisterNetworkPrefab(dashVFXPrefab);
+
+            lightningBallExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("LightningBallExplosion");
+            AddNewEffectDef(lightningBallExplosionEffect);
+                
+            
+            
         }
 
         #endregion

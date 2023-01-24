@@ -50,7 +50,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 if (projectilePrefab)
                 {
                     float calcedDamage = damageCoefficient + (damageCoefficient * growthBuffCount * Modules.StaticValues.growthDamageCoefficient);
-                    
+                    //projectilePrefab.GetComponent<ProjectileController>().teamFilter = base.GetComponent<TeamFilter>();
                     //Debug.Log(calcedDamage);
                     FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                     {
@@ -59,7 +59,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
                         owner = base.gameObject,
                         damage = base.characterBody.damage * calcedDamage,
-                        crit = base.RollCrit()
+                        crit = base.RollCrit(),
                     };
                     ModifyProjectile(ref fireProjectileInfo);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
