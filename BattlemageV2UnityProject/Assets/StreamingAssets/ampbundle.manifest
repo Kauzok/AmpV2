@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2846813067
+CRC: 4236042414
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7e3ec990bac56a6a8aa89cb1019b3a28
+    Hash: 922b750addc8a9ad6514533e415319e6
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 370401234a70fa9200c9995eceadba3b
+    Hash: 86ebf6ba3561fdfa8a424a40c83d1145
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -158,6 +158,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -848926067, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -270136354, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -279,6 +281,7 @@ Assets:
 - Assets/HenryAssets/Textures/Atlases/Materials/ChestAtlas.mat
 - Assets/HenryAssets/VFX/Textures/texHenrySwing2.png
 - Assets/HenryAssets/Icons/texBazookaIcon.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matVoidSurvivorCrabCannonCoreCharSelect.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/ForearmLAtlas.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/Stylized(Omni)/texOmniShockwave1Mask.png
 - Assets/HenryAssets/VFX/Amp/Vortex/Sparks.prefab
@@ -588,6 +591,7 @@ Assets:
 - Assets/HenryAssets/VFX/Amp/PulseLeap/PulseMuzzleObject.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningEffectOrb.prefab
 - Assets/HenryAssets/VFX/Amp/Bolt/texLightning1Mask.asset
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/mdlVFXIcosphere.asset
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurpleSword.mat
 - Assets/HenryAssets/AmpAnims/metarig_DescendMediumAnim.anim
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Cube.mesh
@@ -629,6 +633,7 @@ Assets:
 - Assets/HenryAssets/Shaders/fx/hgforwardplanet.shader
 - Assets/HenryAssets/Mesh/Suit.mesh
 - Assets/HenryAssets/Mesh/meshDanteCoat.mesh
+- Assets/HenryAssets/VFX/Materials/matTransparentLightningPurple.mat
 - Assets/HenryAssets/VFX/Materials/texRampJellyLightning.png
 - Assets/HenryAssets/Animations/RestIdle.anim
 - Assets/HenryAssets/AmpAnims/metarig_DescendTransitionAnimAlt.anim
@@ -849,11 +854,12 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matChargeBeamTrail.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/Matrix, Dynamic 1.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/OmniImpactVFXLightning.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matVoidSurvivorBlasterSphere.mat
 - Assets/HenryAssets/Icons/debuffIcon.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudWaterRipples.png
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningOrbChainEffect.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/LightningBallProjectilePrefab.prefab
-- Assets/HenryAssets/VFX/NemesisAmp/LightningSlash/ChargeLightningSlash.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Slash/ChargeLightningSlash.prefab
 - Assets/HenryAssets/VFX/Materials/texMageBoltMask.png
 - Assets/HenryAssets/texBehemothTileMask.png
 - Assets/HenryAssets/AmpAnims/metarig_DescendFastAnim.anim

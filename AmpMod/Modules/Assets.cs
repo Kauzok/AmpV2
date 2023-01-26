@@ -349,6 +349,7 @@ namespace AmpMod.Modules
             #region Purple Lightning General
             CreateIntersectMaterial("matLightningSpherePurple");
             CreateVFXMaterial("matLightningStrikePurple");
+            CreateIntersectMaterial("matTransparentLightningPurple");
             #endregion
 
             #region Static Field
@@ -488,6 +489,8 @@ namespace AmpMod.Modules
         {
             boltVehicle = mainAssetBundle.LoadAsset<GameObject>("BoltVehicle");
             //boltVehicle = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/FireballVehicle");
+
+            boltVehicle.layer = LayerIndex.fakeActor.intVal;
 
             //adds boltvehicle to the bolt prefab finalizing the gameobject that will act as the primary enactor of the surge skill
             boltVehicle.AddComponent<SkillStates.BoltVehicle>();

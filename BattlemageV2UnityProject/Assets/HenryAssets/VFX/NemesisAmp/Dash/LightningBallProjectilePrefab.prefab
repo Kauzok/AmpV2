@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catalogIndex: -1
-  ghostPrefab: {fileID: 0}
+  ghostPrefab: {fileID: 1321074615563478, guid: 2345c92c8814350478a24754f36bcf71,
+    type: 3}
   ghostTransformAnchor: {fileID: 0}
   startSound: 
   cannotBeDeleted: 0
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  falloffModel: 2
+  falloffModel: 1
   blastRadius: 9
   blastDamageCoefficient: 1
   blastProcCoefficient: 1

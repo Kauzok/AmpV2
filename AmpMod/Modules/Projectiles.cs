@@ -47,7 +47,7 @@ namespace AmpMod.Modules
         private static void CreateFluxBlade()
         {
             bladeProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("BladeProjectilePrefab");
-
+            bladeProjectilePrefab.layer = LayerIndex.projectile.intVal;
             ProjectileController bladeController = bladeProjectilePrefab.GetComponent<ProjectileController>();
 
             //instantiates the projectile model and associates it with the prefab
@@ -68,13 +68,14 @@ namespace AmpMod.Modules
 
         private static void CreateLightningBall()
         {
-            Assets.CreateVFXMaterial("matLightningStrikePurple");
-            lightningBallPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefab");
 
+            Assets.CreateIntersectMaterial("matTransparentLightningPurple");
+            lightningBallPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefab");
+            lightningBallPrefab.layer = LayerIndex.projectile.intVal;
 
             ProjectileController lightningBallController = lightningBallPrefab.GetComponent<ProjectileController>();
 
-            if (Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallGhost") != null) lightningBallController.ghostPrefab = CreateGhostPrefab("LightningBallGhost");
+            //if (Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallGhost") != null) lightningBallController.ghostPrefab = CreateGhostPrefab("LightningBallGhost");
 
             lightningBallController.allowPrediction = true;
 
@@ -106,7 +107,7 @@ namespace AmpMod.Modules
             //ferroshotPrefab = CloneProjectilePrefab("LunarShardProjectile", "Ferroshot");
 
             ferroshotPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeProjectile");
-
+            //ferroshotPrefab.layer = LayerIndex.projectile.intVal;
             //change damagetype of ferroshot to generic
             //  ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
             //.damageType = DamageType.Generic;
@@ -152,7 +153,6 @@ namespace AmpMod.Modules
         {
             vortexPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("VortexProjectile");
 
-            
             ProjectileController vortexController = vortexPrefab.GetComponent<ProjectileController>();
             //instantiates the  projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("VortexEffect") != null) vortexController.ghostPrefab = CreateGhostPrefab("VortexEffect");
@@ -191,6 +191,7 @@ namespace AmpMod.Modules
         private static void CreateFireBeam()
         {
             fireBeamPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("HeatProjectile");
+            //fireBeamPrefab.layer = LayerIndex.projectile.intVal;
 
             var damageTypeComponent = fireBeamPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
             damageTypeComponent.Add(DamageTypes.strongBurnIfCharged);
