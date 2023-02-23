@@ -38,7 +38,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             animator = base.GetComponent<Animator>();
             childLocator = base.GetComponent<ChildLocator>();
             fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
-
+            base.PlayAnimation("Gesture, Override", "AimField", "BaseSkill.playbackRate", 0.4f);
             //Debug.Log(fieldIndicatorInstance);
             this.UpdateAreaIndicator();
 
@@ -105,7 +105,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 if (this.goodPlacement)
                 {
                     float baseDamage = (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth) * damageCoefficient) + damageCoefficient;
-                    this.PlayAnimation("Gesture, Additive", "FireWall");
+                    base.PlayAnimation("Gesture, Override", "ReleaseField", "BaseSkill.playbackRate", 0.4f);
                     //Util.PlaySound(PrepWall.fireSoundString, base.gameObject);
                     if (this.fieldIndicatorInstance && base.isAuthority)
                     {
@@ -124,7 +124,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 else
                 {
                     base.skillLocator.utility.AddOneStock();
-                    base.PlayCrossfade("Gesture, Additive", "BufferEmpty", 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "BufferEmpty", 0.2f);
                 }
             }
             EntityState.Destroy(this.fieldIndicatorInstance.gameObject);

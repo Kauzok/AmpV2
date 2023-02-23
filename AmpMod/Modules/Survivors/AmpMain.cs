@@ -63,12 +63,14 @@ namespace AmpMod.Modules.Survivors
         {
             base.FixedUpdate();
 
-            if (base.healthComponent.combinedHealth >= (0))
+            if (base.healthComponent)
             {
-
-                this.swordActive = true;
+                if (base.healthComponent.combinedHealth >= (0))
+                {
+                    this.swordActive = true;
+                }
             }
-
+           
 
             if (this.swordActive)
             {

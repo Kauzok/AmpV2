@@ -213,8 +213,6 @@ namespace AmpMod.SkillStates
 					
 					if (transform)
 					{
-						
-
 						fulminationTransform = UnityEngine.Object.Instantiate<GameObject>(lightningEffectPrefab, transform).transform;
 					}
 

@@ -42,7 +42,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.PlayFireAnimation();
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
             this.Fire();
-
+            base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", 0.4f);
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
         }

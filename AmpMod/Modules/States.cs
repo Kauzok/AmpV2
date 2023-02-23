@@ -68,9 +68,16 @@ namespace AmpMod.Modules
             //flux blades states
             entityStates.Add(typeof(FluxBlades));
 
-            //electric rift states
+            //galvanic cleave states
+
+            //static field states
+            entityStates.Add(typeof(AimStaticField));
+
+
+            //teleport states
             entityStates.Add(typeof(AimTeleport));
             entityStates.Add(typeof(FireTeleport));
+
 
             //howitzer spark states
             entityStates.Add(typeof(ChargeLightningBeam));

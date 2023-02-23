@@ -24,6 +24,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float lightningTickFrequency = .1f;
         private float maxZ = 8f;
         public bool isAttacking;
+        private Transform origin;
 
         private void Start()    
         {
@@ -32,7 +33,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             numLineRendererPoints = lineRendererPrefab.positionCount;
         }
 
-        public void CreateLightningTether(GameObject attacker)
+        public void CreateLightningTether(GameObject attacker, Transform origin)
         {
             if (this.lightningTracker)
             {
@@ -41,6 +42,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     if (attacker)
                     {
                         this.attacker = attacker;
+                        this.origin = origin;
                     }
 
                     if (lightningTetherInstance)
@@ -60,7 +62,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                     if (victimBody)
                     {
-                        lineRenderer.SetPosition(0, attacker.transform.position);
+                        lineRenderer.SetPosition(0, origin.position);
                         for (int i = 1; i < numLineRendererPoints - 1; i++)
                         {
                             lineRenderer.SetPosition(i, victimBody.corePosition);
@@ -114,7 +116,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     //if we're no longer tracking the same enemy (i.e. the attack switched targets), redo the tether
                     if (oldLightningTarget.transform.position != this.lightningTracker.GetTrackingTarget().healthComponent.transform.position && attacker && this.isAttacking)
                     {
-                        CreateLightningTether(attacker);
+                        CreateLightningTether(attacker, origin);
                     }
                 }
               

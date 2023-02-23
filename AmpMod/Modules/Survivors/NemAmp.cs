@@ -12,9 +12,9 @@ namespace AmpMod.Modules.Survivors
 {
     internal class NemAmp : SurvivorBase
     {
-        internal override string bodyName { get; set; } = "Henry";
+        //internal override string bodyName { get; set; } = "Henry";
         //Uncomment this line once you've gotten the model setup in unity
-        //internal override string bodyName { get; set; } = "Nemesis Amp";
+        internal override string bodyName { get; set; } = "NemAmp";
 
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }
@@ -29,9 +29,9 @@ namespace AmpMod.Modules.Survivors
         {
             armor = 20f,
             armorGrowth = 0f,
-            bodyName = "HenryBody",
+            bodyName = "NemAmpBody",
             //bodyName = "NemesisAmpBody",
-            bodyNameToken = AmpPlugin.developerPrefix + "_AMP_BODY_NAME",
+            bodyNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_NAME",
             //bodyNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_NAME",
             //Color of skill names and stuff in menu
             bodyColor = new Color32(139, 0, 255, 255),
@@ -49,29 +49,26 @@ namespace AmpMod.Modules.Survivors
         };
 
 
-        internal static Material henryMat = Modules.Assets.CreateMaterial("matHenry");
 
-        internal static Material swordMat = Modules.Assets.CreateMaterial("matSword");
-        internal static Material suitMat = Modules.Assets.CreateMaterial("matSuit");
-        internal override int mainRendererIndex { get; set; } = 2;
+        internal static Material capeMat = Modules.Assets.CreateMaterial("matNemCape");
+        internal static Material suitMat = Modules.Assets.CreateMaterial("matNemSuit");
+        internal override int mainRendererIndex { get; set; } = 1;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
 
-             new CustomRendererInfo
-                {
-                    childName = "SwordModel",
-                    material = henryMat,
-                },
+            new CustomRendererInfo
+            {
+                childName = "Suit",
+                material = suitMat,
+
+            },
                 new CustomRendererInfo
-                {
-                    childName = "GunModel",
-                    material = henryMat,
-                },
-                new CustomRendererInfo
-                {
-                    childName = "Model",
-                    material = henryMat
-                }};
+            {
+                childName = "Cape",
+                material = capeMat,
+
+            }
+            };
 
         internal override Type characterMainState { get; set; } = typeof(NemAmpMain);
 
@@ -366,19 +363,14 @@ namespace AmpMod.Modules.Survivors
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshHenrySword"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNemAmp"),
                     renderer = defaultRenderers[0].renderer
                 },
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshHenryGun"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNemCape"),
                     renderer = defaultRenderers[1].renderer
                 },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshHenry"),
-                    renderer = defaultRenderers[instance.mainRendererIndex].renderer
-                }
             };
 
             skins.Add(defaultSkin);

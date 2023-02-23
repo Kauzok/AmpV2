@@ -27,7 +27,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             base.characterBody.SetAimTimer(duration);
-
+            base.PlayAnimation("Gesture, Override", "ChargeBeam", "BaseSkill.playbackRate", 0.4f);
             if (this.childLocator)
             {
                 Transform transform = base.characterBody.coreTransform;//this.childLocator.FindChild("MuzzleBetween") ?? base.characterBody.coreTransform;

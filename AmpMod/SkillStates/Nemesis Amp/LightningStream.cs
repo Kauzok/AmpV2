@@ -29,6 +29,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private NemAmpLightningTracker tracker;
         private HurtBox targetHurtbox;
         private bool lightningTetherActive;
+        private Transform rightMuzzleTransform;
 
         [Header("Animation Variables")]
         private Animator animator;
@@ -48,14 +49,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
             lightningEffectController = base.GetComponent<NemAmpLightningEffectController>();
             lightningEffectController.isAttacking = true;
-            
 
+            
             tracker = base.GetComponent<NemAmpLightningTracker>();
 
-            if (tracker.GetTrackingTarget())
-            {
-                //Util.PlaySound(startSoundString, base.gameObject);
-            }
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
             {
@@ -68,6 +65,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 base.characterBody.SetAimTimer(this.baseTickTime + 1f);
             }
+
+
+            if (tracker.GetTrackingTarget())
+            {
+                animator.SetBool("NemIsFulminating", true);
+                base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
+                rightMuzzleTransform = childLocator.FindChild("HandR").transform;
+            }
+            //animations
+
 
         }
 
@@ -122,7 +129,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.targetHurtbox = this.tracker.GetTrackingTarget();
                 if (targetHurtbox && !lightningTetherActive)
                 {
-                    lightningEffectController.CreateLightningTether(base.gameObject);
+                    lightningEffectController.CreateLightningTether(base.gameObject, rightMuzzleTransform);
                     lightningTetherActive = true;
                 }
 
@@ -153,7 +160,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             return new NemAmpLightningLockOrb
             {
-                origin = base.gameObject.transform.position,
+                origin = rightMuzzleTransform.position,
                 damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat),
                 isCrit = base.characterBody.RollCrit(),
                 damageType = DamageType.Generic,
@@ -181,7 +188,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //Debug.Log("Exiting");
             this.FireLightning();
             lightningEffectController.DestroyLightningTether();
-            lightningTetherActive = true;
+            lightningTetherActive = false;
+            animator.SetBool("NemIsFulminating", false);
         }
 
         public override void OnSerialize(NetworkWriter writer)
