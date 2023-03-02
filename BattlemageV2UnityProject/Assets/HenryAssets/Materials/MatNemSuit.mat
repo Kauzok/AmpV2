@@ -84,7 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ee3b0fb32c67c8641b9b163e4fbbc368, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7dfab53b60ac2d84e8aa9da2e2426bd6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -134,7 +134,7 @@ Material:
     - _EliteBrightnessMax: 1
     - _EliteBrightnessMin: 0
     - _EliteIndex: 0
-    - _EmPower: 2
+    - _EmPower: 1.39
     - _EnableCutout: 0
     - _FEON: 0
     - _Fade: 1
@@ -185,7 +185,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmColor: {r: 0.4808876, g: 0.09803921, b: 1, a: 1}
+    - _EmColor: {r: 0.49991098, g: 0.35933605, b: 0.8018868, a: 1}
     - _EmissionColor: {r: 0.0625, g: 0.0625, b: 0.0625, a: 1}
     - _FlashColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

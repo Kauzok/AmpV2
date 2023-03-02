@@ -31,7 +31,7 @@ namespace AmpMod.Modules.Survivors
             armorGrowth = 0f,
             bodyName = "NemAmpBody",
             //bodyName = "NemesisAmpBody",
-            bodyNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_NAME",
+            bodyNameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_NAME",
             //bodyNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_NAME",
             //Color of skill names and stuff in menu
             bodyColor = new Color32(139, 0, 255, 255),

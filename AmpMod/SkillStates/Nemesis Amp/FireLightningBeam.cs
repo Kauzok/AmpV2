@@ -18,6 +18,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float duration;
         private float radius = Modules.StaticValues.chargeBeamRadius;
         private float surgeBuffCount;
+        private Transform muzzleHandTransform;
 
         private float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
         private float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
@@ -25,6 +26,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public float charge;
         private float maxForce = 2000f;
         private float baseDamage;
+        private ChildLocator childLocator;
 
         private GameObject beamPrefab = Assets.chargeBeamTracerPrefab;
 
@@ -38,7 +40,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
 
+            childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
+
+            muzzleHandTransform = childLocator.FindChild("HandL");
             this.duration = this.baseDuration / this.attackSpeedStat;
+            base.characterBody.SetAimTimer(this.duration + .3f);
             this.PlayFireAnimation();
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
             this.Fire();
@@ -60,7 +66,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             bulletAttack.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)
             {
-                _bulletAttack.damage += (baseDamage * this.additionalPierceDamageCoefficient); 
+                _bulletAttack.damage += (baseDamage * this.additionalPierceDamageCoefficient);
+                _bulletAttack.sniper = true;
                
             };
         }
@@ -91,7 +98,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
-                    origin = aimRay.origin,
+                    origin = muzzleHandTransform.position,
                     aimVector = aimRay.direction,
                     minSpread = 0f,
                     damage = base.characterBody.damage * beamDamage,
@@ -106,7 +113,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     procCoefficient = 1f,
                     maxDistance = 140f,
                     smartCollision = true,
-                    damageType = DamageType.Generic
+                    damageType = DamageType.Generic,
+                   
                 };
                 beamAttack.AddModdedDamageType(DamageTypes.controlledChargeProc);
                 baseDamage = base.characterBody.damage * beamDamage;

@@ -25,11 +25,11 @@ namespace AmpMod.Modules
              + "< ! > You can exit Surge early to immediately cancel your momentum, allowing you to precisely maneuver around the battlefield." + Environment.NewLine + Environment.NewLine
              + "< ! > Voltaic Bombardment hits much higher than the indicator implies, so use it to instantly take down weak flying enemies." + Environment.NewLine + Environment.NewLine;
 
-        internal static string nemDescriptionText = "Nemesis Amp harnesses the destructive power of electromagnetism to burst enemies and bosses down at the speed of lightning.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
+        internal static string nemDescriptionText = "Nemesis Amp harnesses the destructive power of electromagnetism to burst down enemies and bosses at the speed of lightning.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Growing Surge rewards staying in the fight and precisely timing your abilities - so cooldown reduction items are highly recommended! " + Environment.NewLine + Environment.NewLine
              + "< ! > Howitzer Spark's high damage and piercing ability make it a great choice for melting bosses or for getting rid of many weak enemies." + Environment.NewLine + Environment.NewLine
              + "< ! > Use Static Field's slowing ability to set up a line of enemies to pierce with Howitzer Spark." + Environment.NewLine + Environment.NewLine
-             + "< ! > Use Electron Crash at the end of your combos to maximize the damage dealt by Controlled Charge and Growing Surge stacks." + Environment.NewLine + Environment.NewLine;
+             + "< ! > Use Voltaic Onslaught at the end of your combos to maximize the damage dealt by Controlled Charge and Growing Surge stacks." + Environment.NewLine + Environment.NewLine;
 
         internal static string characterLore = "How long has it been? He pondered, and quickly decided it did not matter. Time had become irrelevant; all he knew was his duty. To find. To capture. To fight. To kill.\n\n"
             + "Electrocute.\n\n"

@@ -61,10 +61,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
             this.tickTime= this.baseTickTime / this.attackSpeedStat;
-            if (base.characterBody)
-            {
-                base.characterBody.SetAimTimer(this.baseTickTime + 1f);
-            }
 
 
             if (tracker.GetTrackingTarget())
@@ -122,7 +118,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             this.tickTimer -= Time.fixedDeltaTime;
 
-       
+            if (base.characterBody)
+            {
+                base.characterBody.SetAimTimer(this.baseTickTime + 1f);
+            }
 
             if (this.tracker && base.isAuthority)
             {

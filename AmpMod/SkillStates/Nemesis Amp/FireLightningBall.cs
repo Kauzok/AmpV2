@@ -21,6 +21,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnEnter()
         {
             base.OnEnter();
+            base.characterBody.SetAimTimer(1f);
             stackDamageController = base.GetComponent<StackDamageController>();
             growthBuffCount = base.characterBody.GetBuffCount(Modules.Buffs.damageGrowth);
         }

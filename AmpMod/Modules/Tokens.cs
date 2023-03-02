@@ -108,15 +108,16 @@ namespace AmpMod.Modules
             #region NemAmp
 
             string nemPrefix = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_";
+            string nemBodyPrefix = AmpPlugin.developerPrefix + "_NEMAMP_BODY_";
 
             #region Skins
             LanguageAPI.Add(nemPrefix + "DEFAULT_SKIN_NAME", "Default");
             #endregion
 
             #region Descriptions
-            LanguageAPI.Add(nemPrefix + "NAME", Modules.StaticValues.nemCharacterName);
-            LanguageAPI.Add(nemPrefix + "SUBTITLE", Modules.StaticValues.nemCharacterSubtitle);
-            LanguageAPI.Add(nemPrefix + "DESCRIPTION", Modules.StaticValues.nemDescriptionText);
+            LanguageAPI.Add(nemBodyPrefix + "NAME", Modules.StaticValues.nemCharacterName);
+            LanguageAPI.Add(nemBodyPrefix + "SUBTITLE", Modules.StaticValues.nemCharacterSubtitle);
+            LanguageAPI.Add(nemBodyPrefix + "DESCRIPTION", Modules.StaticValues.nemDescriptionText);
             LanguageAPI.Add(nemPrefix + "OUTRO_FLAVOR", Modules.StaticValues.nemCharacterOutro);
             LanguageAPI.Add(nemPrefix + "LORE", Modules.StaticValues.nemCharacterLore);
             LanguageAPI.Add(nemPrefix + "OUTRO_FAILURE", Modules.StaticValues.nemCharacterOutroFailure);
