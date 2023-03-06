@@ -24,6 +24,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.characterBody.SetAimTimer(1f);
             stackDamageController = base.GetComponent<StackDamageController>();
             growthBuffCount = base.characterBody.GetBuffCount(Modules.Buffs.damageGrowth);
+            base.PlayAnimation("Gesture, Override", "FirePlasmaBall", "BaseSkill.playbackRate", this.duration);
         }
 
         public override void FixedUpdate()

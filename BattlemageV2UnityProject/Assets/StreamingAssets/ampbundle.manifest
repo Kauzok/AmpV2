@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3247522324
+CRC: 2333975302
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1c0b29975446b4e045fc487de785841e
+    Hash: a6227d7c5905f9bada7dae694364dd31
   TypeTreeHash:
     serializedVersion: 2
     Hash: 86ebf6ba3561fdfa8a424a40c83d1145
@@ -358,6 +358,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/texCloudLightning1.png
 - Assets/HenryAssets/VFX/Textures/texRipple.png
 - Assets/HenryAssets/VFX/Amp/Charge/matLightningOrb.mat
+- Assets/HenryAssets/Animations/NemAmpAnims/metarig_FirePlasmaBall.anim
 - Assets/HenryAssets/VFX/Materials/matLightningStrikePurple 1.mat
 - Assets/HenryAssets/VFX/Materials/matTracerBrightTransparent.mat
 - Assets/HenryAssets/VFX/ImpactHenrySlash.prefab

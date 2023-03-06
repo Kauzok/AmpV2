@@ -29,6 +29,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             base.characterBody.SetAimTimer(duration);
+            base.PlayAnimation("Gesture, Override", "ChargeSlash", "ChargeBeam.playbackRate", this.duration);
 
             if (this.childLocator)
             {

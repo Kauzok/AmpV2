@@ -176,10 +176,35 @@ namespace AmpMod.Modules.Survivors
                 keywordTokens = new string[] { }
             });
 
+            //creates void slash; remember to make a config that allows users to put this as a special skill or a secondary
+            SkillDef slashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
+                skillNameToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
+                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFulmination"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 6f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = true,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                // fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { }
+            }); ;
 
 
-
-            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef);
+            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef, slashSkillDef);
             #endregion
 
 
@@ -271,32 +296,7 @@ namespace AmpMod.Modules.Survivors
                 keywordTokens = new string[] { }
             });
 
-            //creates void slash; remember to make a config that allows users to put this as a special skill or a secondary
-            SkillDef slashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
-                skillNameToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
-                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFulmination"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
-                activationStateMachineName = "Slide",
-                baseMaxStock = 1,
-                baseRechargeInterval = 6f,
-                beginSkillCooldownOnSkillEnd = true,
-                canceledFromSprinting = true,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = false,
-                // fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = true,
-                mustKeyPress = true,
-                cancelSprintingOnActivation = false,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1,
-                keywordTokens = new string[] { }
-            }); ;
+         
 
             ;
 
