@@ -20,7 +20,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Animator animator;
         private ChildLocator childLocator;
         private GameObject chargeEffectInstance;
-        private GameObject chargeEffectPrefab = Modules.Assets.chargeBeamMuzzleEffect;
+        private GameObject chargeEffectPrefab = Modules.Assets.lightningSwordChargePrefab;
 
         public override void OnEnter()
         {
@@ -33,7 +33,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (this.childLocator)
             {
-                Transform transform = base.characterBody.coreTransform;//this.childLocator.FindChild("MuzzleBetween") ?? base.characterBody.coreTransform;
+                Transform transform = this.childLocator.FindChild("LowerArmL") ?? base.characterBody.coreTransform;
                 if (transform && this.chargeEffectPrefab)
                 {
                     this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
@@ -56,12 +56,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            base.FixedUpdate();
             float charge = this.CalcCharge();
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= this.minChargeDuration) || base.fixedAge >= this.duration))
             {
                 FireChargeSlash nextState = this.GetNextState();
                 nextState.charge = charge;
+                nextState.muzzleEffect = this.chargeEffectInstance;
                 this.outer.SetNextState(nextState);
 
 
@@ -87,7 +87,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.OnExit();
             if (this.chargeEffectInstance)
             {
-                Destroy(this.chargeEffectInstance);
+                //Destroy(this.chargeEffectInstance);
             }
         }
 

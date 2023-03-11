@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2333975302
+CRC: 151762054
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a6227d7c5905f9bada7dae694364dd31
+    Hash: 24492006ea5120f6e83cf59782893bf0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 86ebf6ba3561fdfa8a424a40c83d1145
@@ -313,6 +313,7 @@ Assets:
 - Assets/HenryAssets/Shaders/postprocess/hgoutlinehighlight.shader
 - Assets/HenryAssets/Animations/HenryAnimations/Jump.anim
 - Assets/HenryAssets/Atlases/EmissionSprite2.png
+- Assets/HenryAssets/Mesh/NemAmpSwordMuzzle.fbx
 - Assets/HenryAssets/Animations/AmpAnims/metarig_SlashAnim4.anim
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_WalkBackward.anim
 - Assets/HenryAssets/Mesh/meshHenryNeo.mesh
@@ -447,6 +448,7 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient2Mask.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/Mesh, Particle/mdlVFXDonut1.asset
 - Assets/HenryAssets/Textures/texHenryJedi.png
+- Assets/HenryAssets/Mesh/GlowSword.mat
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_ChargeSwordAnim.anim
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexSphere.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/SprintR.anim
@@ -632,6 +634,7 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matOmniHitspark1Blank.mat
 - Assets/HenryAssets/VFX/Amp/HeatShock/HeatProjectile.prefab
 - Assets/HenryAssets/DeathEffect.prefab
+- Assets/HenryAssets/Mesh/SwordMesh.mesh
 - Assets/HenryAssets/VFX/NemesisAmp/debuffIcon.psd
 - Assets/HenryAssets/VFX/Mesh/meshPunchShockwave.mesh
 - Assets/HenryAssets/Materials/matRoy.mat

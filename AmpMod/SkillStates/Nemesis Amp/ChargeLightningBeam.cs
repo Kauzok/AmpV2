@@ -31,7 +31,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", 1.5f);
             if (this.childLocator)
             {
-                Transform transform = base.characterBody.coreTransform;//this.childLocator.FindChild("MuzzleBetween") ?? base.characterBody.coreTransform;
+                Transform transform = this.childLocator.FindChild("LowerArmL") ?? base.characterBody.coreTransform;
                 if (transform && this.chargeEffectPrefab)
                 {
                     this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);

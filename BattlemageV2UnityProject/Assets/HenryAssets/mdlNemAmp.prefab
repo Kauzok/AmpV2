@@ -161,6 +161,7 @@ Transform:
   - {fileID: 9123199348669659620}
   - {fileID: 7977117200195194459}
   - {fileID: 9121110639936990960}
+  - {fileID: 1886963013051152965}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,6 +236,8 @@ MonoBehaviour:
   - name: Base
     transform: {fileID: 5005368177664256541}
   - name: SpineBase
+    transform: {fileID: 7266143320729172898}
+  - name: SwingCenter
     transform: {fileID: 7266143320729172898}
 --- !u!114 &9052249991326240707
 MonoBehaviour:
@@ -451,6 +454,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0008893758, y: 0.075431466, z: 0.098879874}
     m_Extent: {x: 0.45257914, y: 0.97892344, z: 0.5368456}
   m_DirtyAABB: 0
+--- !u!1 &416272661810000375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1886963013051152965}
+  m_Layer: 0
+  m_Name: SwingCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1886963013051152965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416272661810000375}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.4, z: 1.801}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 588147430231770611}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421724683837954033
 GameObject:
   m_ObjectHideFlags: 0

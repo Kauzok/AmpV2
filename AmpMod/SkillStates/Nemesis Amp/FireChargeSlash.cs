@@ -12,7 +12,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
     public class FireChargeSlash : BaseSkillState
     {
         [SerializeField]
-        public float baseDuration = .3f;
+        public float baseDuration = 1f;
         private float duration;
         public float charge;
         private float surgeBuffCount;
@@ -23,7 +23,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float minDamageCoefficient = Modules.StaticValues.minSlashDamageCoefficient;
         private float maxDamageCoefficient = Modules.StaticValues.maxSlashDamageCoefficient;
         private ChildLocator childLocator;
+        private String hitboxName = "Cleave";
         private HitBoxGroup hitBoxGroup;
+        public GameObject muzzleEffect;
 
         public override void OnEnter()
         {
@@ -37,7 +39,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             childLocator = modelTransform.GetComponent<ChildLocator>();
             if (modelTransform)
             {
-                //hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
+                hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
                 this.childLocator = modelTransform.GetComponent<ChildLocator>();
                 //this.swordMuzzle = this.childLocator.FindChild("SwordPlace");
             }
@@ -53,13 +55,23 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (base.isAuthority && !hasFired) {
                 Fire();
+                hasFired = true;
             }
             if (base.isAuthority && base.fixedAge >= this.duration && hasFired)
             {
+
                 this.outer.SetNextStateToMain();
             }
         }
 
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (this.muzzleEffect)
+            {
+                Destroy(this.muzzleEffect);
+            }
+        }
         private void PlayFireAnimation()
         {
 
@@ -77,6 +89,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 //Debug.Log("firing");
                 float slashDamage = (StaticValues.growthDamageCoefficient * surgeBuffCount * calcedDamage) + calcedDamage;
 
+                hitBoxGroup.transform.localScale *= calcedRange;
                 this.attack = new OverlapAttack();
                 this.attack.damageType = DamageType.Stun1s;
                 this.attack.attacker = base.gameObject;
@@ -91,7 +104,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.attack.isCrit = base.RollCrit();
                 //this.attack.impactSound = this.impactSound;
                 attack.AddModdedDamageType(Modules.DamageTypes.controlledChargeProc);
-
+                attack.Fire();
 
 
 

@@ -97,16 +97,23 @@ namespace AmpMod.Modules.Survivors
 
         internal override void InitializeHitboxes()
         {
-           /* ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+            /* ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+             GameObject model = childLocator.gameObject;
+
+             Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
+             Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
+
+             Transform spinSlashTransform = childLocator.FindChild("SpinSlashHitbox");
+             Modules.Prefabs.SetupHitbox(model, spinSlashTransform, "SpinSlash");
+
+             */
+
+            ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
             GameObject model = childLocator.gameObject;
 
-            Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
-            Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
+            Transform bigSlashTransform = childLocator.FindChild("CleaveHitbox");
+            Modules.Prefabs.SetupHitbox(model, bigSlashTransform, "Cleave");
 
-            Transform spinSlashTransform = childLocator.FindChild("SpinSlashHitbox");
-            Modules.Prefabs.SetupHitbox(model, spinSlashTransform, "SpinSlash");
-
-            */
 
         }
 

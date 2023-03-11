@@ -136,7 +136,7 @@ namespace AmpMod.Modules
         internal static GameObject blessingEffect;
         internal static GameObject fireBeamEffect;
         internal static GameObject purpleStormBoltEffect;
-        internal static GameObject lightningSwordPrefab;
+        internal static GameObject lightningSwordChargePrefab;
         internal static GameObject dashVFXPrefab;
         internal static GameObject dashExitEffect;
         internal static GameObject dashEnterEffect;
@@ -315,6 +315,7 @@ namespace AmpMod.Modules
             CreateAOELightning();
             CreatePassiveMeter();
             CreateLightningDash();
+            CreateLightningSlash();
             #endregion
 
         }
@@ -407,6 +408,12 @@ namespace AmpMod.Modules
 
             chargeBeamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningBeam");
             PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffect);    
+        }
+
+        private static void CreateLightningSlash()
+        {
+            lightningSwordChargePrefab = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningSlash");
+            PrefabAPI.RegisterNetworkPrefab(lightningSwordChargePrefab);
         }
 
         private static void CreateStaticField()
