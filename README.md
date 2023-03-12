@@ -8,11 +8,9 @@
   - Make prep gameobject spawn properly in multiplayer
   - fix laggy ghost in multiplayer
 - Plasma Slash
-  - Make unlockable
   - Fix multiplayer projectile becoming invisible
 - Magnetic Vortex
   - Add field representing vortex range/or tendrils
-  - Fix glitchy wall effect
   - Non-boss enemies are silenced; bosses have their damage reduced by 25%.
 - Surge
   - Fix not being able to exit ability if remaining charges are left
@@ -20,21 +18,15 @@
   - Make momentum cancel on early exit in multiplayer
   - Doesn't work correctly on clients? Look into it.
 - Pulse Leap
-  - Adjust exit animation
   - Keep an eye on launchblast method in OnEnter
 - Fulmination
   - Consider adjusting chain effect
   - Keep an eye on your fix for bad statetype null
-- Voltaic Bombardment
-  - Adjust muzzle vfx
 - Bulwark of Storms
   - Add VFX & SFX to channelling
   - Make worm unset skill override on death in multiplayer
-  - Make unlockable
   - Make Melvin follow Amp
   - Red Melvin?
-- Charge
-  - Reduce damage to 300%?
 
 ## Item Displays To Do
 - Fix frost relic item display/revise current displays
@@ -46,8 +38,11 @@
 - Fix weird roll -> run transition
 - Add standing still animations for shockblade, lorentz cannon, magnetic vortex & fulmination
 
-## VFX To Do
-- Switch VFX Shaders to cloud remap
+## Bugs to Fix
+- Amp sometimes switches skins mid run
+- Obliterating on Monsoon will not unlock Red Sprite
+- Beating level 1 of eclipse will not unlock the next level
+- Some mod combinations will result in Amp messing up unlockables for other chars?
 
 ## Misc. To Do
 - Cleanup code base, finish comments
