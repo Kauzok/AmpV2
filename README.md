@@ -1,6 +1,6 @@
   ## Amp
 - WIP Amp, a melee/range hybrid who fights with electromagnetic attacks.
-## Skills To Do/Bug Fixing
+## Skills To Do
 - Shockblade
   - Add smear?
 - Lorentz Cannon
