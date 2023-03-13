@@ -40,6 +40,13 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 <details>
  <summary>1.2.1</summary>
  
+- Animation Overhaul!
+    -  Most of Amp's animations have been changed with the help of . Feedback on the feel of the new anims would be greatly appreciated!
+</details>
+
+<details>
+ <summary>1.2.1</summary>
+ 
 - Magnetic Vortex
     -  Fixed a bug where the muzzle effect wouldn't disappear on firing
 </details>

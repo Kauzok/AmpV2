@@ -133,7 +133,7 @@ namespace AmpMod.Modules
 
         [Header("Void Slash Values")]
         internal const float minSlashDamageCoefficient = 5f;
-        internal const float maxSlashDamageCoefficient = 10f;
+        internal const float maxSlashDamageCoefficient = 13f;
         internal const float minSlashLength = 5f;
         internal const float maxSlashLength = 20f;
         internal const float additionalSlashDamageCoefficient = 1f;
