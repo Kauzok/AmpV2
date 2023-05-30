@@ -127,6 +127,7 @@ namespace AmpMod.Modules
         internal static GameObject chargeBeamHitEffect;
         internal static GameObject lightningStreamEffect;
         internal static GameObject lightningStreamImpactEffect;
+        internal static GameObject lightningStreamMuzzleEffect;
         internal static GameObject lightningStreamChainEffectPrefab;
         internal static GameObject lightningCrosshair;
         internal static GameObject staticFieldPrefab;
@@ -141,6 +142,8 @@ namespace AmpMod.Modules
         internal static GameObject dashExitEffect;
         internal static GameObject dashEnterEffect;
         internal static GameObject lightningBallExplosionEffect;
+        internal static GameObject aimFieldMuzzleEffect;
+        internal static GameObject releaseFieldMuzzleEffect;
         #endregion
 
         // networked hit sounds
@@ -351,6 +354,8 @@ namespace AmpMod.Modules
             CreateIntersectMaterial("matLightningSpherePurple");
             CreateVFXMaterial("matLightningStrikePurple");
             CreateIntersectMaterial("matTransparentLightningPurple");
+            CreateVFXMaterial("matPulseMuzzleTriPurple");
+            CreateVFXMaterial("matLightningMatrixPurple");
             #endregion
 
             #region Static Field
@@ -422,7 +427,13 @@ namespace AmpMod.Modules
             //Debug.Log("fieldindicator shader is " + matFieldIndicator.shader);
             staticFieldIndicatorPrefab = mainAssetBundle.LoadAsset<GameObject>("FieldAreaIndicator");
             PrefabAPI.RegisterNetworkPrefab(staticFieldIndicatorPrefab);
+
+            aimFieldMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("AimFieldMuzzleEffect");
+            PrefabAPI.RegisterNetworkPrefab(aimFieldMuzzleEffect);
             //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
+
+            releaseFieldMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlash");
+            AddNewEffectDef(releaseFieldMuzzleEffect);
 
 
         }
@@ -443,7 +454,7 @@ namespace AmpMod.Modules
 
         private static void CreateLightningStream()
         {
-            lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningEffectOrb");
+            lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningEffectOrbNew");
             PrefabAPI.RegisterNetworkPrefab(lightningStreamEffect);
             //lightningStreamEffect.AddComponent<SkillStates.Nemesis_Amp.NemAmpLightningRendererNoise>();
             //AddNewEffectDef(lightningStreamEffect);
@@ -459,6 +470,9 @@ namespace AmpMod.Modules
             lightningStreamChainEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningOrbChainEffect");
             lightningStreamChainEffectPrefab.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
             PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefab);
+
+            lightningStreamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzle");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleEffect);
 
         }
 

@@ -31,6 +31,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningTracker = base.GetComponent<NemAmpLightningTracker>();
             lineRendererPrefab = lightningTetherVFX.GetComponentInChildren<LineRenderer>();
             numLineRendererPoints = lineRendererPrefab.positionCount;
+
+   
         }
 
         public void CreateLightningTether(GameObject attacker, Transform origin)
@@ -39,37 +41,61 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (lightningTracker.GetTrackingTarget())
                 {
+                    //store attacker gameobject and origin transform in class
                     if (attacker)
                     {
                         this.attacker = attacker;
                         this.origin = origin;
                     }
 
+                    //if we already have a tether instance destroy it so we don't make duplicates
                     if (lightningTetherInstance)
                     {
                         DestroyLightningTether();
                     }
 
+                    //save the current gameobject being tracked & its characterbody
                     oldLightningTarget = lightningTracker.GetTrackingTarget().healthComponent.gameObject;
                     victimBody = oldLightningTarget.GetComponent<CharacterBody>();
-                    lightningTetherInstance = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, attacker.gameObject.transform);
                     
-                    lightningTetherInstance.transform.parent = attacker.gameObject.transform;
+                    //spawn lightning tether and parent its transform to our origin transform
+                    lightningTetherInstance = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, origin.position, origin.rotation);                
+                    lightningTetherInstance.transform.parent = origin;
+
                     if (lightningTetherInstance)
                     {
                         lineRenderer = lightningTetherInstance.GetComponent<LineRenderer>();
                     }
 
-                    if (victimBody)
+                    Vector3 startPos = origin.position;
+                    Vector3 endPos = victimBody.corePosition;
+                    int interVal = (int)Mathf.Abs(Vector3.Distance(endPos, startPos));
+
+                    if (interVal <= 0)
                     {
-                        lineRenderer.SetPosition(0, origin.position);
-                        for (int i = 1; i < numLineRendererPoints - 1; i++)
+                        interVal = 2;
+                    }
+
+                    Vector3[] numberofpositions = new Vector3[interVal];
+
+                    for (int i = 0; i < numberofpositions.Length; i++)
+                    {
+                        numberofpositions[i] = Vector3.Lerp(startPos, endPos, (float)i / interVal);
+                        numberofpositions[i].z = Mathf.Lerp(startPos.z, endPos.z, (float)i / interVal);
+                    }
+
+                   /* if (victimBody)
+                    {
+                        lineRenderer.SetPosition(0, lightningTetherInstance.transform.parent.position);
+                        /*for (int i = 1; i < numLineRendererPoints - 1; i++)
                         {
                             lineRenderer.SetPosition(i, victimBody.corePosition);
                         }
                         lineRenderer.SetPosition(numLineRendererPoints - 1, victimBody.corePosition);
-                    }
+                    } */
 
+                    lineRenderer.positionCount = interVal;
+                    lineRenderer.SetPositions(numberofpositions);
                     //lineRenderer.SetPosition(numlineRendererPoints-1, hurtbox.gameObject.transform.position);
                 }
             }
@@ -79,16 +105,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             if (lightningTetherInstance)
             {
-                if (lineRenderer && victimBody && this.attacker)
+                if (lineRenderer && victimBody && this.attacker && this.origin)
                 {
 
-                    lineRenderer.SetPosition(0, this.attacker.transform.position);
-
-                    for (int i = 1; i < numLineRendererPoints - 1; i++)
+                    lineRenderer.SetPosition(0, this.lightningTetherInstance.transform.parent.position);
+                    //Debug.Log("updating at " + this.origin.position);
+                    for (int i = 1; i < lineRenderer.positionCount - 1; i++)
                     {
                         //lineRenderer.SetPosition(i, victimBody.corePosition);
                         //float z = ((float)i) * (maxZ) / (float)(numLineRendererPoints - 1);
-                        var pos = Vector3.Lerp(victimBody.corePosition, attacker.transform.position, i / 11f);
+                        var pos = Vector3.Lerp(victimBody.corePosition, attacker.transform.position, i / numLineRendererPoints);
                         pos.x += Random.Range(-posRange, posRange);
                         pos.y += Random.Range(-posRange, posRange);
                         /* var chooser = Random.Range(1, 4);
@@ -99,7 +125,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                         lineRenderer.SetPosition(i, pos);
                     }
-                    lineRenderer.SetPosition(numLineRendererPoints - 1, victimBody.corePosition);
+                    lineRenderer.SetPosition(lineRenderer.positionCount - 1, victimBody.corePosition);
 
                     //Debug.Log(trackingTarget.gameObject.transform.position + " is position");
 
@@ -122,7 +148,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
               
                 
             }
-            CreateLightningNoise();  
+            //CreateLightningNoise();  
         }
 
         public void DestroyLightningTether()

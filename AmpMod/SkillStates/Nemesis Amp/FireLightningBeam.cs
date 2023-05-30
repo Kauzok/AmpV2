@@ -35,6 +35,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         private StackDamageController stackDamageController;
 
+
+        [Header("Sounds")]
+        private string fireSoundString = StaticValues.fireBeamSoundString;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -42,7 +46,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
 
-            muzzleHandTransform = childLocator.FindChild("HandL");
+            muzzleHandTransform = childLocator.FindChild("BeamMuzzle");
             this.duration = this.baseDuration / this.attackSpeedStat;
             base.characterBody.SetAimTimer(this.duration + .3f);
             this.PlayFireAnimation();
@@ -67,7 +71,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             bulletAttack.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)
             {
                 _bulletAttack.damage += (baseDamage * this.additionalPierceDamageCoefficient);
-                _bulletAttack.sniper = true;
+                //_bulletAttack.sniper = true;
                
             };
         }
@@ -87,6 +91,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             if (base.isAuthority)
             {
+                Util.PlaySound(fireSoundString, base.gameObject);
                 Ray aimRay = base.GetAimRay();
 
                 float calcedDamage = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
@@ -103,7 +108,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     minSpread = 0f,
                     damage = base.characterBody.damage * beamDamage,
                     force = num2,
-                    muzzleName = "HandL",
+                    muzzleName = "BeamMuzzle",
                     //hitEffectPrefab = impactEffectPrefab,
                     tracerEffectPrefab = Assets.chargeBeamTracerPrefab,
                     isCrit = base.characterBody.RollCrit(),

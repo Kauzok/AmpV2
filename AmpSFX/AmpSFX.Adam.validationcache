@@ -6,7 +6,7 @@
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Switches\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\States\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
-	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\SoundBanks\Default Work Unit.wwu" DateLow="1673578235" DateHigh="0"/>
+	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\SoundBanks\Default Work Unit.wwu" DateLow="1681027319" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Queries\Factory Queries.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Queries\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Presets\Factory Spatial Audio.wwu" DateLow="1646594063" DateHigh="0"/>
@@ -17,7 +17,7 @@
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Game Parameters\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
-	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Events\Default Work Unit.wwu" DateLow="1673578235" DateHigh="0"/>
+	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Events\Default Work Unit.wwu" DateLow="1681027319" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Effects\Factory Reflect.wwu" DateLow="1646594076" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Effects\Factory McDSP Effects.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="1646594209" DateHigh="0"/>
@@ -38,10 +38,10 @@
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Audio Devices\Control Surface Sessions\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Attenuations\Default Work Unit.wwu" DateLow="1661237172" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\AmpSFX.wproj" DateLow="1659167781" DateHigh="0"/>
-	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\AmpSFX.Adam.wsettings" DateLow="1673578235" DateHigh="0"/>
+	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\AmpSFX.Adam.wsettings" DateLow="1681027320" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="1646594209" DateHigh="0"/>
-	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1673578235" DateHigh="0"/>
+	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1681027319" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\AmpSFX\Virtual Acoustics\Factory Reflect Acoustic Textures.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\AmpSFX\Virtual Acoustics\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>
 	<ValidationCacheItem File="D:\Modding\RoR2\Battlemage V2\AmpSFX\Triggers\Default Work Unit.wwu" DateLow="1646594209" DateHigh="0"/>

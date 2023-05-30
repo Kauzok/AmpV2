@@ -30,6 +30,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private HurtBox targetHurtbox;
         private bool lightningTetherActive;
         private Transform rightMuzzleTransform;
+        private Transform nexusMuzzleTransform;
+        private GameObject muzzleEffect = Assets.lightningStreamMuzzleEffect;
 
         [Header("Animation Variables")]
         private Animator animator;
@@ -67,7 +69,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 animator.SetBool("NemIsFulminating", true);
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
-                rightMuzzleTransform = childLocator.FindChild("HandR").transform;
+                rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
+                
+                this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
+                //Debug.Log(nexusMuzzleTransform);
+
+                //nexusMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
+                //Debug.Log("starting at " + rightMuzzleTransform.position);
             }
             //animations
 
@@ -186,9 +194,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningEffectController.isAttacking = false;
             //Debug.Log("Exiting");
             this.FireLightning();
+            if (nexusMuzzleTransform)
+            {
+                EntityState.Destroy(nexusMuzzleTransform.gameObject);
+            }
+
             lightningEffectController.DestroyLightningTether();
             lightningTetherActive = false;
             animator.SetBool("NemIsFulminating", false);
+
+
         }
 
         public override void OnSerialize(NetworkWriter writer)

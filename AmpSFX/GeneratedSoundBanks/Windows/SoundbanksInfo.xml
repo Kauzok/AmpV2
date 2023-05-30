@@ -11,11 +11,27 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="231010230">
+		<SoundBank Id="865939728" Language="SFX" Hash="3731742976">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1520060982" Name="PlayBeamCharge" ObjectPath="\Events\Default Work Unit\PlayBeamCharge">
+					<IncludedMemoryFiles>
+						<File Id="706616777" Language="SFX">
+							<ShortName>ChargeBeam1.wav</ShortName>
+							<Path>SFX\ChargeBeam1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2949202722" Name="PlayBeamFire" ObjectPath="\Events\Default Work Unit\PlayBeamFire">
+					<IncludedMemoryFiles>
+						<File Id="529593956" Language="SFX">
+							<ShortName>FireBeam2.wav</ShortName>
+							<Path>SFX\FireBeam2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="2968179176" Name="PlayBoltEnter" ObjectPath="\Events\Default Work Unit\PlayBoltEnter">
 					<IncludedMemoryFiles>
 						<File Id="355476522" Language="SFX">
@@ -101,6 +117,34 @@
 						<File Id="390082384" Language="SFX">
 							<ShortName>FerroshotLaunchAlter.wav</ShortName>
 							<Path>SFX\FerroshotLaunchAlter_56D34C19.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2950764612" Name="PlayFieldAim" ObjectPath="\Events\Default Work Unit\PlayFieldAim">
+					<IncludedMemoryFiles>
+						<File Id="142824659" Language="SFX">
+							<ShortName>AimField.wav</ShortName>
+							<Path>SFX\AimField_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2520482775" Name="PlayFieldLoop" ObjectPath="\Events\Default Work Unit\PlayFieldLoop">
+					<IncludedMemoryFiles>
+						<File Id="835628925" Language="SFX">
+							<ShortName>FieldLoop.wav</ShortName>
+							<Path>SFX\FieldLoop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1355851356" Name="PlayFieldRelease" ObjectPath="\Events\Default Work Unit\PlayFieldRelease">
+					<IncludedMemoryFiles>
+						<File Id="145431782" Language="SFX">
+							<ShortName>ReleaseField.wav</ShortName>
+							<Path>SFX\ReleaseField_10C4C929.wem</Path>
+						</File>
+						<File Id="506281423" Language="SFX">
+							<ShortName>ReleaseField2.wav</ShortName>
+							<Path>SFX\ReleaseField2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

@@ -22,6 +22,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private ProjectileDotZone projectileDotZone;
         private bool goodPlacement;
         private float stopwatch;
+        private GameObject muzzleflashEffect = Assets.releaseFieldMuzzleEffect;
         private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
         public static float maxSlopeAngle = 70f;
         public static float maxDistance = 400f;
@@ -30,34 +31,56 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public static GameObject badCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.badCrosshairPrefab;
         public static float damageCoefficient = Modules.StaticValues.staticFieldTickDamageCoefficient;
         private StackDamageController stackDamageController;
+        private GameObject fieldMuzzleEffect = Assets.aimFieldMuzzleEffect;
+        private Transform rightMuzzleTransform;
+        private Transform leftMuzzleTransform;
+        private bool hasMuzzles;
+        private string aimFieldString = StaticValues.fieldAimString;
+        private string releaseFieldString = StaticValues.fieldReleaseString;
+
+        private uint stopAimLoop;
+        
 
         public override void OnEnter()
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
             animator = base.GetModelAnimator();
-            childLocator = base.GetComponent<ChildLocator>();
+            childLocator = base.GetModelChildLocator();
+            rightMuzzleTransform = childLocator.FindChild("HandR");
+            leftMuzzleTransform = childLocator.FindChild("HandL");
+
             fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
-            base.PlayAnimation("Gesture, Override", "AimField", "BaseSkill.playbackRate", 0.4f);
+            base.PlayAnimation("FullBody, Override", "AimField", "BaseSkill.playbackRate", 1f);
             //Debug.Log(fieldIndicatorInstance);
             this.UpdateAreaIndicator();
+            animator.SetBool("isAiming", true);
+
+            stopAimLoop = Util.PlaySound(aimFieldString, base.gameObject);
 
         }
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (!hasMuzzles)
+            {
+               rightMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldMuzzleEffect, rightMuzzleTransform).transform;
+               leftMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldMuzzleEffect, leftMuzzleTransform).transform;
+               hasMuzzles = true;
+            }
             this.stopwatch += Time.fixedDeltaTime;
             if ((this.stopwatch >= this.duration && base.isAuthority) || (!base.inputBank.skill3.down && base.isAuthority))
             {
                 this.outer.SetNextStateToMain();
             }
+            UpdateAreaIndicator();
 
         }
 
         public override void Update()
         {
             base.Update();
-            this.UpdateAreaIndicator();
+            //this.UpdateAreaIndicator();
         }
 
 
@@ -100,18 +123,21 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         public override void OnExit()
         {
+            animator.SetBool("isAiming", false);
             if (!this.outer.destroying)
             {
                 if (this.goodPlacement)
                 {
+                    base.PlayAnimation("FullBody, Override", "Release Field", "BaseSkill.playbackRate", 1f);
                     animator.SetBool("hasFired", true);
                     float baseDamage = (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth) * damageCoefficient) + damageCoefficient;
-                    base.PlayAnimation("Gesture, Override", "ReleaseField", "ShootGun.playbackRate", .5f);
+                    Util.PlaySound(releaseFieldString, base.gameObject);
                     //Util.PlaySound(PrepWall.fireSoundString, base.gameObject);
                     if (this.fieldIndicatorInstance && base.isAuthority)
                     {
-                        //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "MuzzleLeft", true);
-                        //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "MuzzleRight", true);
+                        //Debug.Log(muzzleflashEffect);
+                        EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandL", true);
+                        EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandR", true);
                         Vector3 forward = this.fieldIndicatorInstance.transform.forward;
                         forward.y = 0f;
                         forward.Normalize();
@@ -124,9 +150,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 }
                 else
                 {
-                    animator.SetBool("failedToFire", true);
+                    //animator.SetBool("failedToFire", true);
                     base.skillLocator.utility.AddOneStock();
-                    base.PlayCrossfade("Gesture, Override", "BufferEmpty", 0.2f);
+                    base.PlayCrossfade("FullBody, Override", "BufferEmpty", 0.2f);
                 }
             }
             EntityState.Destroy(this.fieldIndicatorInstance.gameObject);
@@ -136,8 +162,20 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 overrideRequest.Dispose();
             }
 
+            if (rightMuzzleTransform)
+            {
+                EntityState.Destroy(rightMuzzleTransform.gameObject);
+            }
+            if (leftMuzzleTransform)
+            {
+                EntityState.Destroy(leftMuzzleTransform.gameObject);
+            }
+            hasMuzzles = false;
+
+
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
+            AkSoundEngine.StopPlayingID(stopAimLoop, 0);
             base.OnExit();
 
 

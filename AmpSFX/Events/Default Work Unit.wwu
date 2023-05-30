@@ -549,6 +549,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayBeamCharge" ID="{9AA80B2F-CE96-4C74-BE39-DA4BAC2687AF}">
+					<ChildrenList>
+						<Action Name="" ID="{0468E717-D55D-4DAB-9BE2-C89740279574}" ShortID="828685225">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChargeBeam" ID="{5B1A47A1-F7F6-45E8-A7B6-DC5AF5CB1410}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBeamFire" ID="{0C60B786-4D7C-40EF-B3A4-ABA644F76706}">
+					<ChildrenList>
+						<Action Name="" ID="{9B8332DE-0A16-401E-878A-49E7EE42A06B}" ShortID="880914837">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FireBeam" ID="{236C709B-C67B-43B5-89C0-D9609696FB75}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

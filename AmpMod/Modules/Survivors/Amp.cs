@@ -46,6 +46,7 @@ namespace AmpMod.Modules.Survivors
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
+        
        
         internal static Material swordMat = Modules.Assets.CreateMaterial("matSword");
         internal static Material suitMat = Modules.Assets.CreateMaterial("matSuit");

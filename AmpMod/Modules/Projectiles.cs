@@ -99,6 +99,10 @@ namespace AmpMod.Modules
             var buffWard = fieldProjectilePrefab.GetComponent<BuffWard>();
             buffWard.buffDef = Buffs.nemAmpAtkSpeed;
 
+            var stopLoop = fieldProjectilePrefab.AddComponent<SkillStates.BaseStates.StopLoop>();
+            stopLoop.SoundEventToPlay = StaticValues.fieldLoopString;
+            stopLoop.SoundId = 2520482775;
+
             PrefabAPI.RegisterNetworkPrefab(fieldProjectilePrefab);
         }
         //instantiates ferroshot/Lorentz Cannon projectile

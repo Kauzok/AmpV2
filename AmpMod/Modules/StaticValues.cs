@@ -196,14 +196,19 @@ namespace AmpMod.Modules
         internal const string lightningStreamStartString = "PlayLightningStreamStart";
         internal const string lightningStreamLoopSoundString = "PlayLightningStreamLoop";
         internal const string lightningStreamEndString = "PlayLightningStreamEnd";
-        
-        
+
+        [Header("Howitzer Spark Sound Strings")]
+        internal const string chargeBeamSoundString = "PlayBeamCharge";
+        internal const string fireBeamSoundString = "PlayBeamFire";
+
         [Header("Flux Blades Sound Strings")]
         internal const string fluxBladesFireString = "PlayFluxBladesFire";
 
         [Header("Static Field Sound Strings")]
-        internal const string fieldLoopString = "PlayStaticFieldLoop";
-        internal const string fieldEndString = "PlayStaticFieldEnd";
+        internal const string fieldAimString = "PlayFieldAim";
+        internal const string fieldReleaseString = "PlayFieldRelease";
+        internal const string fieldLoopString = "PlayFieldLoop";
+        internal const string fieldEndString = "PlayFieldEnd";
 
         #endregion
 

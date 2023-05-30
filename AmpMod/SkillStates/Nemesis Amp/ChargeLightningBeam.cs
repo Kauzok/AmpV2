@@ -20,6 +20,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject chargeEffectInstance;
         private GameObject chargeEffectPrefab = Assets.chargeBeamMuzzleEffect;
 
+
+        [Header("Sounds")]
+        private string startSoundString = StaticValues.chargeBeamSoundString;
+        private uint endLoopSoundID = 0;
+        private float soundTimer;
+        private bool hasBegunSound;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -28,6 +35,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.childLocator = base.GetModelChildLocator();
             base.characterBody.SetAimTimer(duration);
             base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration);
+            endLoopSoundID = Util.PlaySound(startSoundString, base.gameObject);
+
             //base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", 1.5f);
             if (this.childLocator)
             {
@@ -84,6 +93,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnExit()  
         {
             base.OnExit();
+            AkSoundEngine.StopPlayingID(endLoopSoundID);
             if (this.chargeEffectInstance)
             {
                 Destroy(this.chargeEffectInstance);
