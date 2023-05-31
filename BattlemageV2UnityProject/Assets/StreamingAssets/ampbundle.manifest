@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4119432174
+CRC: 1325994730
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8ec8301a7a4a69d178ebeaede9966f9f
+    Hash: 713955aca5171d16417caa8992843899
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 86ebf6ba3561fdfa8a424a40c83d1145
+    Hash: 836d99db143be5cede4a82f6656a2e76
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -43,6 +43,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+- Class: 114
+  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -115,8 +117,6 @@ ClassTypes:
   Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1080798252, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 344246068, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -410,7 +410,6 @@ Assets:
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SummonHoldAnim.anim
 - Assets/HenryAssets/VFX/HenryBazookaMuzzleFlash.prefab
 - Assets/HenryAssets/VFX/HenryFistSwingEffect.prefab
-- Assets/HenryAssets/Animations/NemAmpAnims/NemAimPitch.anim
 - Assets/HenryAssets/VFX/ChargeSpark.prefab
 - Assets/HenryAssets/VFX/Materials/texMageMatrixMaskDirectional.png
 - Assets/HenryAssets/VFX/hgcloudremap.shader
@@ -771,8 +770,10 @@ Assets:
 - Assets/HenryAssets/Shaders/environment/hggrass.shader
 - Assets/HenryAssets/Materials/MatSuit.mat
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterOutlinePSDNew.png
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/mdl_disc_platform.asset
 - Assets/HenryAssets/VFX/Materials/texAlphaGradient3Mask.png
 - Assets/HenryAssets/Atlases/NemAmpBodyAtlas 1.png
+- Assets/HenryAssets/Animations/NemAmpAnims/NemAimPitch.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunRings.mat
 - Assets/HenryAssets/VFX/Amp/Bolt/RebarMesh.asset
 - Assets/HenryAssets/VFX/Materials/matGenericFlash.mat
@@ -926,6 +927,7 @@ Assets:
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/matInvisible.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningBeamDistortion.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/Distortion/texNormalSphereFaded.png
+- Assets/HenryAssets/Animations/NemAmpAnims/Disc.mesh
 - Assets/HenryAssets/Shaders/ui/hguianimatealpha.shader
 - Assets/HenryAssets/VFX/Amp/Bolt/Lightning.prefab
 - Assets/HenryAssets/VFX/Amp/Bombardment/HandSparkRed.prefab

@@ -425,6 +425,8 @@ namespace AmpMod.Modules
         {
             matFieldIndicator = CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
             //Debug.Log("fieldindicator shader is " + matFieldIndicator.shader);
+
+            //this is the actual field area indicator present after the field is placed to showcase its range
             staticFieldIndicatorPrefab = mainAssetBundle.LoadAsset<GameObject>("FieldAreaIndicator");
             PrefabAPI.RegisterNetworkPrefab(staticFieldIndicatorPrefab);
 

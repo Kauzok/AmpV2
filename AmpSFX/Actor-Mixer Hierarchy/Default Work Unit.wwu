@@ -1827,7 +1827,217 @@
 										</RandomSequenceContainer>
 									</ChildrenList>
 								</Folder>
-								<Folder Name="Static Field" ID="{C6919B1F-E184-491E-8744-64F342888FF8}" ShortID="419434091"/>
+								<Folder Name="Static Field" ID="{C6919B1F-E184-491E-8744-64F342888FF8}" ShortID="419434091">
+									<ChildrenList>
+										<Sound Name="AimField" ID="{ADA5966D-5CDC-4D9D-B4DC-A93036531C4E}" ShortID="1053437307">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{35C183B9-7469-45F5-9CB4-72961DDB345E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ProximityAttenuation" ID="{912BB46D-5D16-4BE5-8B1A-F54CE68D1C99}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AimField" ID="{84706805-F1E6-4485-AD0C-D688C98139C3}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>AimField.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="142824659"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="AimField" ID="{84706805-F1E6-4485-AD0C-D688C98139C3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="ReleaseField" ID="{86ACE9BB-FF06-4EFE-B63A-7541E1957C3B}" ShortID="883332640">
+											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="ReleaseField1" ID="{B69CD0CC-FA0F-4EAF-9EF2-8BC9025A73DF}" ShortID="638974754">
+													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{63066295-6BAC-4260-9810-5B171B2D0D89}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="100"/>
+																			<Property Name="Min" Type="Real64" Value="-100"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ReleaseField" ID="{F73A92E8-8CA7-4337-B197-D29CFD14468E}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ReleaseField.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="145431782"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="ReleaseField" ID="{F73A92E8-8CA7-4337-B197-D29CFD14468E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="ReleaseField2" ID="{E757BB10-0D25-4E31-B4D1-B3121D7C39B7}" ShortID="769554071">
+													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ReleaseField2" ID="{35F7A8C2-0653-433D-A2E3-B7F17AE84A00}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ReleaseField2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="506281423"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="ReleaseField2" ID="{35F7A8C2-0653-433D-A2E3-B7F17AE84A00}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<Sound Name="FieldLoop" ID="{CAD380B0-D9BF-468E-9AB1-DFB1724037D3}" ShortID="106022768">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{72D14F06-7AAB-4922-BD45-95A901218C75}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ProximityAttenuation" ID="{912BB46D-5D16-4BE5-8B1A-F54CE68D1C99}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="FieldLoop" ID="{3E224FB8-EB80-4BA0-8E75-FAC7EC8DFBED}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>FieldLoop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="835628925"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="FieldLoop" ID="{3E224FB8-EB80-4BA0-8E75-FAC7EC8DFBED}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
 								<Folder Name="Howitzer Spark" ID="{558CA04D-CC34-4B62-94CC-84D317AFDFF1}" ShortID="893125072">
 									<ChildrenList>
 										<Sound Name="FireBeam" ID="{236C709B-C67B-43B5-89C0-D9609696FB75}" ShortID="1023306791">

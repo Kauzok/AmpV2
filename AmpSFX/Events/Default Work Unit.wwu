@@ -577,6 +577,48 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayFieldAim" ID="{08B879F2-C4F7-413E-BAF2-2CF4DB712EF6}">
+					<ChildrenList>
+						<Action Name="" ID="{83A2D4BC-BFE2-4425-9327-FFD64F272F5F}" ShortID="919845199">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AimField" ID="{ADA5966D-5CDC-4D9D-B4DC-A93036531C4E}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFieldRelease" ID="{489A16A8-A5C8-40D6-9FB5-70DE0860DA64}">
+					<ChildrenList>
+						<Action Name="" ID="{9CE5C9DB-F5C6-473F-9889-405820E41611}" ShortID="853314065">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ReleaseField" ID="{86ACE9BB-FF06-4EFE-B63A-7541E1957C3B}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFieldLoop" ID="{2FA76F2B-01E5-42F2-9C95-5AB04BB678F6}">
+					<ChildrenList>
+						<Action Name="" ID="{07055C0A-E7F9-404A-BB09-97557F277E39}" ShortID="234671544">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FieldLoop" ID="{CAD380B0-D9BF-468E-9AB1-DFB1724037D3}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -62,12 +62,24 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     lightningTetherInstance = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, origin.position, origin.rotation);                
                     lightningTetherInstance.transform.parent = origin;
 
+                    //grab linerenderer component
                     if (lightningTetherInstance)
                     {
                         lineRenderer = lightningTetherInstance.GetComponent<LineRenderer>();
                     }
 
-                    Vector3 startPos = origin.position;
+                    #region manual set pos
+                    //set positions
+                    if (victimBody)
+                     {
+                         lineRenderer.SetPosition(0, lightningTetherInstance.transform.parent.position);
+
+                         lineRenderer.SetPosition(numLineRendererPoints - 1, victimBody.corePosition);
+                     }
+                    #endregion
+
+                    #region automated set pos (ethanol's linerenderer)
+                    /*Vector3 startPos = origin.position;
                     Vector3 endPos = victimBody.corePosition;
                     int interVal = (int)Mathf.Abs(Vector3.Distance(endPos, startPos));
 
@@ -83,20 +95,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         numberofpositions[i] = Vector3.Lerp(startPos, endPos, (float)i / interVal);
                         numberofpositions[i].z = Mathf.Lerp(startPos.z, endPos.z, (float)i / interVal);
                     }
-
-                   /* if (victimBody)
-                    {
-                        lineRenderer.SetPosition(0, lightningTetherInstance.transform.parent.position);
-                        /*for (int i = 1; i < numLineRendererPoints - 1; i++)
-                        {
-                            lineRenderer.SetPosition(i, victimBody.corePosition);
-                        }
-                        lineRenderer.SetPosition(numLineRendererPoints - 1, victimBody.corePosition);
-                    } */
-
+                    
                     lineRenderer.positionCount = interVal;
                     lineRenderer.SetPositions(numberofpositions);
+                    numLineRendererPoints = numberofpositions.Length;
+                    Debug.Log(numLineRendererPoints);*/
+                    #endregion
+
+
                     //lineRenderer.SetPosition(numlineRendererPoints-1, hurtbox.gameObject.transform.position);
+
+
                 }
             }
         }
@@ -107,16 +116,18 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (lineRenderer && victimBody && this.attacker && this.origin)
                 {
-
-                    lineRenderer.SetPosition(0, this.lightningTetherInstance.transform.parent.position);
+                    //Debug.Log(numLineRendererPoints + " in update");
+                    //lineRenderer.SetPosition(0, this.lightningTetherInstance.transform.parent.position);
                     //Debug.Log("updating at " + this.origin.position);
-                    for (int i = 1; i < lineRenderer.positionCount - 1; i++)
+                    Debug.Log(numLineRendererPoints);
+                    for (int i = 0; i <= numLineRendererPoints - 1; i++)
                     {
                         //lineRenderer.SetPosition(i, victimBody.corePosition);
                         //float z = ((float)i) * (maxZ) / (float)(numLineRendererPoints - 1);
-                        var pos = Vector3.Lerp(victimBody.corePosition, attacker.transform.position, i / numLineRendererPoints);
+                        var pos = Vector3.Lerp(victimBody.corePosition, lightningTetherInstance.transform.parent.position, i / (float)(numLineRendererPoints-1));
                         pos.x += Random.Range(-posRange, posRange);
                         pos.y += Random.Range(-posRange, posRange);
+                        pos.z += Random.Range(-posRange, posRange);
                         /* var chooser = Random.Range(1, 4);
                         if (chooser == 1) pos.x += Random.Range(-posRange, posRange) + .2f;
                         else if (chooser == 2) pos.y += Random.Range(-posRange, posRange) + .2f;
@@ -125,7 +136,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                         lineRenderer.SetPosition(i, pos);
                     }
-                    lineRenderer.SetPosition(lineRenderer.positionCount - 1, victimBody.corePosition);
+                    //lineRenderer.SetPosition(lineRenderer.positionCount - 1, victimBody.corePosition);
 
                     //Debug.Log(trackingTarget.gameObject.transform.position + " is position");
 
@@ -148,7 +159,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
               
                 
             }
-            //CreateLightningNoise();  
+            CreateLightningNoise();  
         }
 
         public void DestroyLightningTether()
