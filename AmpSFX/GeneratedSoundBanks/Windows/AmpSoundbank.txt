@@ -3,6 +3,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	14754508	PlayChargeExplosion			\Default Work Unit\PlayChargeExplosion	
 	108685852	PlayHeatShockHit			\Default Work Unit\PlayHeatShockHit	
 	226939687	PlayBoltStateWind			\Default Work Unit\PlayBoltStateWind	
+	232580406	PlayQuicksurge			\Default Work Unit\PlayQuicksurge	
 	302608516	PlayVortexExplosion			\Default Work Unit\PlayVortexExplosion	
 	360230241	PlayHeatShockCharge			\Default Work Unit\PlayHeatShockCharge	
 	448412811	PlayLobbyEntrance			\Default Work Unit\PlayLobbyEntrance	
@@ -10,10 +11,12 @@ Event	ID	Name			Wwise Object Path	Notes
 	562064113	PlayLightningStreamLoop			\Default Work Unit\PlayLightningStreamLoop	
 	580140660	PlayVortexFlightLoopAlt			\Default Work Unit\PlayVortexFlightLoopAlt	
 	667454058	PlayBoltStateFull			\Default Work Unit\PlayBoltStateFull	
+	680631324	PlayQuicksurgeEnter			\Default Work Unit\PlayQuicksurgeEnter	
 	714076673	PlayFerroshotCreateAlter			\Default Work Unit\PlayFerroshotCreateAlter	
 	865102867	PlayFulminationEnter			\Default Work Unit\PlayFulminationEnter	
 	1130506740	PlayVortexSpawn			\Default Work Unit\PlayVortexSpawn	
 	1355851356	PlayFieldRelease			\Default Work Unit\PlayFieldRelease	
+	1441430142	PlayQuicksurgeExit			\Default Work Unit\PlayQuicksurgeExit	
 	1520060982	PlayBeamCharge			\Default Work Unit\PlayBeamCharge	
 	1595742268	PlayStormbladeSwing2			\Default Work Unit\PlayStormbladeSwing2	
 	1595742271	PlayStormbladeSwing1			\Default Work Unit\PlayStormbladeSwing1	
@@ -24,6 +27,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2184895701	PlayFulminationExitAlter			\Default Work Unit\PlayFulminationExitAlter	
 	2447326215	PlayVortexFlightLoop			\Default Work Unit\PlayVortexFlightLoop	
 	2520482775	PlayFieldLoop			\Default Work Unit\PlayFieldLoop	
+	2523590105	PlaySummonStorm			\Default Work Unit\PlaySummonStorm	
 	2690484557	PlayLightningStreamStart			\Default Work Unit\PlayLightningStreamStart	
 	2778887358	PlayWormCharge			\Default Work Unit\PlayWormCharge	
 	2949202722	PlayBeamFire			\Default Work Unit\PlayBeamFire	
@@ -56,9 +60,12 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	145431782	ReleaseField1	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ReleaseField_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\ReleaseField\ReleaseField1		377672
 	171555746	StormbladeHitV4	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\StormbladeHitV4_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHitV4		132232
 	196974043	BoltState2secAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltState2secAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2secAlter		361844
+	212267084	Surge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Surge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge		89652
 	226974468	BoltState2secwithwind	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\boltstate2secwithwind_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2secwithwind		361844
 	231233257	HeatShockCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\HeatShockCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockCharge		88258
+	267548966	SurgeExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SurgeExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeExit		123552
 	286477067	BoltExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltExit\BoltExit		116032
+	333763192	SurgeEnter2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SurgeEnter2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeEnter2		157308
 	355476522	BoltEnter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltEnter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltEnter\BoltEnter		108312
 	390082384	FerroshotLaunchAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotLaunchAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunchAlter		33348
 	391751073	ChargeExplosion	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ChargeExplosion_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\ChargeExplosion\ChargeExplosion		190656
@@ -79,6 +86,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	558615039	VortexShoot	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexShoot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexShoot		127190
 	571697280	FerroshotCreateAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreateAlter		175520
 	590040022	Stormblade2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Stormblade2Trim_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade2		90028
+	594529929	Surge2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Surge2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge2		90872
 	662641942	VortexSpawn	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexSpawn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexSpawn		210566
 	695068599	VortexFlightLoopAlter2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoopAlter2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoopAlter2		76736
 	706616777	ChargeBeam	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ChargeBeam1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\ChargeBeam		289964
@@ -94,4 +102,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	919812550	FluxBladeFire	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FluxBladeFire_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBlades\FluxBladeFire		142768
 	980239621	VortexLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexLoop_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexLoop		540816
 	1038060243	StormbladeHit3	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\StormbladeHit3_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit3		141820
+	1062522064	SummonStorm	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SummonStorm_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Summon Storm\SummonStorm		392368
 

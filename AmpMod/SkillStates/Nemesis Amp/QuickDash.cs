@@ -2,6 +2,7 @@
 using RoR2;
 using EntityStates;
 using UnityEngine;
+using AmpMod.Modules;
 using RoR2.Skills;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
@@ -17,7 +18,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		public float overlayDuration = .3f;
 		[SerializeField]
 		public Material overlayMaterial;
-		private GameObject blinkEffectPrefab;
+		private GameObject blinkEffectPrefab = Assets.dashEnterEffect;
 		private float duration = .4f;
 		private float upSpeed = 0f;
 		private CharacterModel characterModel;
@@ -25,13 +26,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		private Transform modelTransform;
 		private uint soundID;
 		public static QuickDash src = new QuickDash();
-		private string beginSoundString;
+		private string beginSoundString = StaticValues.surgeEnterString;
 		private HurtBoxGroup hurtboxGroup;
 		public float speedCoefficient = 5f;
 		public AnimationCurve forwardSpeed;
 		private StackDamageController stackDamageController;
-		private string endSoundString;
+		private string endSoundString = StaticValues.surgeExitString;
 		public static SkillDef primaryOverrideSkillDef = Modules.Skills.fireLightningBallSkillDef;
+		private string loopSound = StaticValues.surgeFlightString;
+		private uint cancelID;
 
 		public override void OnEnter()
 		{
@@ -70,8 +73,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			stackDamageController = base.GetComponent<StackDamageController>();
 			stackDamageController.newSkillUsed = this;
 			stackDamageController.resetComboTimer();
+			Util.PlaySound(beginSoundString, base.gameObject);
+			//cancelID = Util.PlaySound(this.loopSound, base.gameObject);
 
-			Util.PlaySound(this.beginSoundString, base.gameObject);
 			this.modelTransform = base.GetModelTransform();
 			if (this.modelTransform)
 			{
@@ -100,10 +104,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 					base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 				}
 				
-			} 
+			}
+
+	
 
 
-			//this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+			this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
 		}
 
         protected Vector3 GetBlinkVector()
@@ -136,11 +142,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 		public override void OnExit()
 		{
-			AkSoundEngine.StopPlayingID(this.soundID);
+			AkSoundEngine.StopPlayingID(this.cancelID);
 			if (!this.outer.destroying)
 			{
 				Util.PlaySound(this.endSoundString, base.gameObject);
-				//this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+				this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
 			}
 			if (this.blinkVfxInstance)
 			{

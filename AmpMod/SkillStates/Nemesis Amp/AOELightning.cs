@@ -20,8 +20,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject lightningEffect;
         private HurtBox[] lightningTargets;
         private float duration;
+        private ChildLocator childLocator;
         private float surgeBuffCount;
         private StackDamageController stackDamageController;
+        private string summonString = StaticValues.summonString;
+        private Transform muzzleTransform;
+        private GameObject muzzleFlashEffect = Assets.stormMuzzleFlashEffect;
 
         public override void OnEnter()
         {
@@ -29,9 +33,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
             surgeBuffCount = base.GetBuffCount(Modules.Buffs.damageGrowth);
             //base.PlayAnimation("RightArm, Override", "SummonStorm", "ChargeBeam.playbackRate", this.duration);
-            base.PlayAnimation("Gesture, Override", "SummonStorm", "BaseSkill.playbackRate", 1f);
+            base.PlayAnimation("Gesture, Override", "SummonStorm", "BaseSkill.playbackRate", .6f);
             //lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
             //find all enemy hurtboxes within a radius
+            childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
+
+            Util.PlaySound(summonString, base.gameObject);
+           // muzzleTransform = childLocator.FindChild("HandR");
+
+
+
             if (NetworkServer.active)
             {
                 BullseyeSearch lightningSearch = new BullseyeSearch();
@@ -51,7 +62,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.lightningTargets = results.ToArray<HurtBox>();
             }
             
-
+            EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "HandR", true);
+            //Debug.Log("spawning " + muzzleFlashEffect);
             //for every hurtbox, summon a lightning bolt on them
             for (int i = 0; i < lightningTargets.Length; i++)
             {

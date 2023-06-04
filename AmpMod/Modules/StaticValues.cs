@@ -210,6 +210,15 @@ namespace AmpMod.Modules
         internal const string fieldLoopString = "PlayFieldLoop";
         internal const string fieldEndString = "PlayFieldEnd";
 
+        [Header("Quicksurge Sound Strings")]
+        internal const string surgeEnterString = "PlayQuicksurgeEnter";
+        internal const string surgeFlightString = "PlayQuicksurge";
+        internal const string surgeExitString = "PlayQuicksurgeExit";
+
+        [Header("Voltaic Onslaught Sound Strings")]
+        internal const string summonString = "PlaySummonStorm";
+
+
         #endregion
 
     }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1325994730
+CRC: 3144702619
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 713955aca5171d16417caa8992843899
+    Hash: 3b325b5477328bb6269e43832f0d9605
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 836d99db143be5cede4a82f6656a2e76
+    Hash: 57a1c466ae3a2bbf7d21a75ee8590ed2
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -44,11 +44,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
 - Class: 114
+  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
 - Class: 114
@@ -67,6 +67,8 @@ ClassTypes:
   Script: {fileID: 1245112779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1213012214, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
@@ -113,8 +115,6 @@ ClassTypes:
   Script: {fileID: 316558884, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1080798252, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -194,6 +194,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
+  Script: {fileID: -1252323107, guid: 90eda32cd325c26600dacf144354b407, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
@@ -256,6 +258,7 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/HenryAssets/Animations/AmpAnims/AmpHoldFulminate.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/SporeGrenadeProjectileDotZone.prefab
 - Assets/HenryAssets/VFX/Materials/matLightningLongPurple.mat
 - Assets/HenryAssets/FireballVehicle.prefab
 - Assets/HenryAssets/VFX/Materials/texCloudDifferenceBW1.png
@@ -430,10 +433,13 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matOmniRing2.mat
 - Assets/HenryAssets/Atlases/NemAmpBodyAtlas.png
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurpleUI.mat
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/matDOTDecal.mat
 - Assets/HenryAssets/Animations/HenryAnimations/LightImpact.anim
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/Flash, Blue Variant.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/texLensFlareMask2.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_VortexLaunchAnim.anim
 - Assets/HenryAssets/Model.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/TreebotMortarRainMuzzleflash.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/FieldProjectilePrefab.prefab
 - Assets/HenryAssets/Icons/texHenryAchievement.png
 - Assets/HenryAssets/Animations/HenryAnimations/WalkB.anim
@@ -697,6 +703,7 @@ Assets:
 - Assets/HenryAssets/Animations/AmpAnims/AmpJump.anim
 - Assets/HenryAssets/VFX/Materials/texRampJellyLightning.png
 - Assets/HenryAssets/Animations/HenryAnimations/RestIdle.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/texCloudLightning1.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_DescendTransitionAnimAlt.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/Railgunner/ppLocalRailgunnerSuper.asset
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexExplosion.prefab
@@ -720,6 +727,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matDirectionalMatrixRed.mat
 - Assets/HenryAssets/VFX/Amp/Fulmination/ElectricitySphereRed.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blade Color.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/texMagmaWormGroundDecal.png
 - Assets/HenryAssets/VFX/Materials/matPunchEffect.mat
 - Assets/HenryAssets/VFX/Materials/texRampLightning2.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_LightImpactAnim.anim
@@ -727,8 +735,10 @@ Assets:
 - Assets/HenryAssets/VFX/Textures/texPunchImpact.png
 - Assets/HenryAssets/Shaders/ui/hguiignorez.shader
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_LaunchAnim 1.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/matLunarNeedleImpactEffect.mat
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matLightingLongVoid.mat
 - Assets/HenryAssets/VFX/Materials/matLightningSphereBlue.mat
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/MuzzleflashBeam.prefab
 - Assets/HenryAssets/Mesh/Suit.mesh
 - Assets/HenryAssets/Animations/NemAmpAnims/AimFieldNem.anim
 - Assets/HenryAssets/VFX/Materials/matLorentzTrail.mat
@@ -858,6 +868,7 @@ Assets:
 - Assets/HenryAssets/Animations/AmpAnims/AmpSlash2.anim
 - Assets/HenryAssets/Textures/Atlases/BaseAtlas.png
 - Assets/HenryAssets/Icons/texLorentz.png
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/MuzzleflashMageLightning.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/DefaultPose.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampRailgunnerCryo.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/mdlRailgunnerBeam.asset
@@ -914,6 +925,7 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Materials/TextureBake.mat
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterOutlineOld.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudOrganicNormal.png
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/StormMuzzleFlash.prefab
 - Assets/HenryAssets/Icons/texFieldAtkSpeed.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texGenericStarburstMaskSkewed.png
 - Assets/HenryAssets/Animations/HenryAnimations/Descend.anim
@@ -944,6 +956,7 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matChargeBeamTrail.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/Matrix, Dynamic 1.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/OmniImpactVFXLightning.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/DecalCube.asset
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/matVoidSurvivorBlasterSphere.mat
 - Assets/HenryAssets/Icons/debuffIcon.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudWaterRipples.png

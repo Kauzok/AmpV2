@@ -121,29 +121,49 @@ namespace AmpMod.Modules
         #endregion
 
         #region Nemesis Amp Assets
+        [Header("Passive Effects")]
         internal static GameObject passiveMeter;
-        internal static GameObject chargeBeamMuzzleEffect;
-        internal static GameObject chargeBeamTracerPrefab;
-        internal static GameObject chargeBeamHitEffect;
+        internal static GameObject blessingEffect;
+
+        [Header("Fulmination Effects")]
         internal static GameObject lightningStreamEffect;
         internal static GameObject lightningStreamImpactEffect;
         internal static GameObject lightningStreamMuzzleEffect;
         internal static GameObject lightningStreamChainEffectPrefab;
         internal static GameObject lightningCrosshair;
+
+        [Header("Howitzer Spark Effects")]
+        internal static GameObject chargeBeamMuzzleEffect;
+        internal static GameObject chargeBeamTracerPrefab;
+        internal static GameObject chargeBeamHitEffect;
+        internal static GameObject beamMuzzleFlashEffect;
+        internal static GameObject fireBeamEffect;
+
+        [Header("Static Field Effects")]
+        internal static GameObject aimFieldMuzzleEffect;
+        internal static GameObject releaseFieldMuzzleEffect;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
-        internal static GameObject teleportExplosionEffect;
-        internal static GameObject teleportAimReticle;
-        internal static GameObject blessingEffect;
-        internal static GameObject fireBeamEffect;
-        internal static GameObject purpleStormBoltEffect;
-        internal static GameObject lightningSwordChargePrefab;
+
+        [Header("Quicksurge Effects")]
         internal static GameObject dashVFXPrefab;
         internal static GameObject dashExitEffect;
         internal static GameObject dashEnterEffect;
         internal static GameObject lightningBallExplosionEffect;
-        internal static GameObject aimFieldMuzzleEffect;
-        internal static GameObject releaseFieldMuzzleEffect;
+
+        [Header("Voltaic Onslaught Effects")]
+        internal static GameObject purpleStormBoltEffect;
+        internal static GameObject stormMuzzleFlashEffect;
+
+        internal static GameObject teleportExplosionEffect;
+        internal static GameObject teleportAimReticle;
+
+
+
+        internal static GameObject lightningSwordChargePrefab;
+
+
+
         #endregion
 
         // networked hit sounds
@@ -361,11 +381,19 @@ namespace AmpMod.Modules
             #region Static Field
             CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
             CreateIntersectMaterial("matTeamAreaIndicatorIntersection");
+            CreateDecalMaterial("matDOTDecal");
             #endregion
 
             #region Quicksurge
             CreateVFXMaterial("matDashTrail");
             CreateVFXMaterial("matOmniRingGeneric");
+            CreateVFXMaterial("matSurgeBillboard");
+            CreateDistortionMaterial("matInverseDistortion");
+            #endregion
+
+            #region Voltaic Onslaught
+            CreateVFXMaterial("matRailgunRings");
+            CreateVFXMaterial("matLunarNeedleImpactEffect");
             #endregion
 
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
@@ -390,7 +418,8 @@ namespace AmpMod.Modules
             matLightningLongBlue = CreateVFXMaterial("matLightningLongBlue");
 
             matLightningSphereRed = CreateIntersectMaterial("matLightningSphereRed");
-
+            
+            
             texRampRedLightning = mainAssetBundle.LoadAsset<Texture>("texRampLightningRed");
 
 
@@ -412,7 +441,11 @@ namespace AmpMod.Modules
             AddNewEffectDef(chargeBeamTracerPrefab);
 
             chargeBeamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningBeam");
-            PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffect);    
+            PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffect);
+
+            beamMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("MuzzleflashBeam");
+            AddNewEffectDef(beamMuzzleFlashEffect);
+
         }
 
         private static void CreateLightningSlash()
@@ -452,6 +485,9 @@ namespace AmpMod.Modules
 
             purpleStormBoltEffect = mainAssetBundle.LoadAsset<GameObject>("LightningStrikeOrbPurple");
             AddNewEffectDef(purpleStormBoltEffect);
+
+            stormMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("StormMuzzleFlash");
+            AddNewEffectDef(stormMuzzleFlashEffect);
         }
 
         private static void CreateLightningStream()
@@ -485,8 +521,9 @@ namespace AmpMod.Modules
 
             lightningBallExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("LightningBallExplosion");
             AddNewEffectDef(lightningBallExplosionEffect);
-                
-            
+
+            dashEnterEffect = mainAssetBundle.LoadAsset<GameObject>("SurgeMuzzleFlash");
+            AddNewEffectDef(dashEnterEffect);
             
         }
 
@@ -1154,6 +1191,14 @@ namespace AmpMod.Modules
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
             mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgintersectioncloudremap");
+            return mat;
+        }
+
+        public static Material CreateDecalMaterial(string materialName)
+        {
+            Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+
+            mat.shader = Addressables.LoadAssetAsync<Shader>("Decalicious/DecaliciousDeferredDecal.shader").WaitForCompletion();
             return mat;
         }
 

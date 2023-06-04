@@ -619,6 +619,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlaySummonStorm" ID="{EB415948-E57B-4D36-BCD6-80FBA384A2F0}">
+					<ChildrenList>
+						<Action Name="" ID="{4748DF6A-4386-4E6A-B67A-2C62C1DD2AC1}" ShortID="722222900">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SummonStorm" ID="{BA6E7B5D-859E-42C5-95F4-59B3008BF7DF}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

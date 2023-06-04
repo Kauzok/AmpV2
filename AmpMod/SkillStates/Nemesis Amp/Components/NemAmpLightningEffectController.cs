@@ -119,7 +119,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     //Debug.Log(numLineRendererPoints + " in update");
                     //lineRenderer.SetPosition(0, this.lightningTetherInstance.transform.parent.position);
                     //Debug.Log("updating at " + this.origin.position);
-                    Debug.Log(numLineRendererPoints);
+                    //Debug.Log(numLineRendererPoints);
                     for (int i = 0; i <= numLineRendererPoints - 1; i++)
                     {
                         //lineRenderer.SetPosition(i, victimBody.corePosition);

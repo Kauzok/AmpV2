@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="3731742976">
+		<SoundBank Id="865939728" Language="SFX" Hash="831368256">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -256,6 +256,34 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="232580406" Name="PlayQuicksurge" ObjectPath="\Events\Default Work Unit\PlayQuicksurge">
+					<IncludedMemoryFiles>
+						<File Id="212267084" Language="SFX">
+							<ShortName>Surge.wav</ShortName>
+							<Path>SFX\Surge_10C4C929.wem</Path>
+						</File>
+						<File Id="594529929" Language="SFX">
+							<ShortName>Surge2.wav</ShortName>
+							<Path>SFX\Surge2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="680631324" Name="PlayQuicksurgeEnter" ObjectPath="\Events\Default Work Unit\PlayQuicksurgeEnter">
+					<IncludedMemoryFiles>
+						<File Id="333763192" Language="SFX">
+							<ShortName>SurgeEnter2.wav</ShortName>
+							<Path>SFX\SurgeEnter2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1441430142" Name="PlayQuicksurgeExit" ObjectPath="\Events\Default Work Unit\PlayQuicksurgeExit">
+					<IncludedMemoryFiles>
+						<File Id="267548966" Language="SFX">
+							<ShortName>SurgeExit.wav</ShortName>
+							<Path>SFX\SurgeExit_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3762598156" Name="PlayStormbladeHit1" ObjectPath="\Events\Default Work Unit\PlayStormbladeHit1">
 					<IncludedMemoryFiles>
 						<File Id="439898417" Language="SFX">
@@ -301,6 +329,14 @@
 						<File Id="590040022" Language="SFX">
 							<ShortName>Stormblade2Trim.wav</ShortName>
 							<Path>SFX\Stormblade2Trim_56D34C19.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2523590105" Name="PlaySummonStorm" ObjectPath="\Events\Default Work Unit\PlaySummonStorm">
+					<IncludedMemoryFiles>
+						<File Id="1062522064" Language="SFX">
+							<ShortName>SummonStorm.wav</ShortName>
+							<Path>SFX\SummonStorm_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

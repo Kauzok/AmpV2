@@ -19,6 +19,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float radius = Modules.StaticValues.chargeBeamRadius;
         private float surgeBuffCount;
         private Transform muzzleHandTransform;
+        private GameObject muzzleFlashEffect = Assets.beamMuzzleFlashEffect;
 
         private float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
         private float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
@@ -55,6 +56,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", 0.4f);
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
+
+
         }
 
 
@@ -125,6 +128,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 baseDamage = base.characterBody.damage * beamDamage;
                 ModifyBullet(beamAttack);
                 beamAttack.Fire();
+
+                EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "HandL", true);
 
                 if (base.characterMotor)
                 {
