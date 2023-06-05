@@ -21,6 +21,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Material overlayMat = Assets.overlayMat;
         private ChildLocator childLocator;
         private Transform sparkEffect;
+        private string maxStartString = StaticValues.enterMaxSoundString;
+        private string maxEndString = StaticValues.exitMaxSoundString;
+        private string loopString = StaticValues.loopMaxSoundString;
+        private uint endLoopID;
 
 
         private void Start()
@@ -51,10 +55,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 buffOverlay.destroyComponentOnEnd = true;
                 buffOverlay.duration = float.PositiveInfinity;
                 buffOverlay.originalMaterial = overlayMat;
-                //buffOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matIsShocked");
                 buffOverlay.AddToCharacerModel(characterModel);
 
                 sparkEffect.gameObject.SetActive(true);
+
+                Util.PlaySound(maxStartString, base.gameObject);
+                endLoopID = Util.PlaySound(loopString, base.gameObject);
             }
 
             if (characterBody.GetBuffCount(Buffs.damageGrowth) < StaticValues.growthBuffMaxStacks && isMaxed)
@@ -67,6 +73,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 };
                 //EffectManager.SpawnEffect(buffOffEffect.gameObject, flashEffect, true);
 
+                AkSoundEngine.StopPlayingID(endLoopID);
+                Util.PlaySound(maxEndString, base.gameObject);
                 if (this.buffOverlay)
                 {
                     Destroy(buffOverlay);

@@ -192,6 +192,12 @@ namespace AmpMod.Modules
         #endregion
 
         #region Nemesis Amp Sounds
+
+        [Header("Gathering Storm Sound Strings")]
+        internal const string enterMaxSoundString = "PlayBuffStart";
+        internal const string loopMaxSoundString = "PlayBuffLoop";
+        internal const string exitMaxSoundString = "PlayBuffEnd";
+
         [Header("Fulmination Sound Strings")]
         internal const string lightningStreamStartString = "PlayLightningStreamStart";
         internal const string lightningStreamLoopSoundString = "PlayLightningStreamLoop";

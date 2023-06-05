@@ -10,6 +10,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	538734731	PlayWormSummon			\Default Work Unit\PlayWormSummon	
 	562064113	PlayLightningStreamLoop			\Default Work Unit\PlayLightningStreamLoop	
 	580140660	PlayVortexFlightLoopAlt			\Default Work Unit\PlayVortexFlightLoopAlt	
+	646149459	PlayBuffEnd			\Default Work Unit\PlayBuffEnd	
 	667454058	PlayBoltStateFull			\Default Work Unit\PlayBoltStateFull	
 	680631324	PlayQuicksurgeEnter			\Default Work Unit\PlayQuicksurgeEnter	
 	714076673	PlayFerroshotCreateAlter			\Default Work Unit\PlayFerroshotCreateAlter	
@@ -37,6 +38,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3063511871	PlayFerroshotCreate			\Default Work Unit\PlayFerroshotCreate	
 	3196255699	PlayFulminationExit			\Default Work Unit\PlayFulminationExit	
 	3314548191	PlayVortexCharge			\Default Work Unit\PlayVortexCharge	
+	3542417390	PlayBuffLoop			\Default Work Unit\PlayBuffLoop	
 	3666067204	PlayBoltState2SecAlter			\Default Work Unit\PlayBoltState2SecAlter	
 	3680135630	PlayFulminationState			\Default Work Unit\PlayFulminationState	
 	3762598153	PlayStormbladeHit4			\Default Work Unit\PlayStormbladeHit4	
@@ -46,6 +48,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3779069530	PlayFerroshotLaunchAlter			\Default Work Unit\PlayFerroshotLaunchAlter	
 	3831372565	PlayVortexLoop			\Default Work Unit\PlayVortexLoop	
 	4018580586	PlayPlasmaExplosion			\Default Work Unit\PlayPlasmaExplosion	
+	4137515496	PlayBuffStart			\Default Work Unit\PlayBuffStart	
 	4290250854	PlayLightningStreamEnd			\Default Work Unit\PlayLightningStreamEnd	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
@@ -53,7 +56,7 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	16687540	FerroshotLaunch	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateFinal_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunch		48086
-	110367248	LightningStreamEnd	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\LightningStreamEnd_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\LightningStream\LightningStreamEnd		382960
+	110367248	LightningStreamEnd	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\LightningStreamEnd_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\LightningStreamEnd		382960
 	111936196	FulminationState	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FulminationState_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationState\FulminationState		787268
 	120900190	BoltState	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltState_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState		464848
 	142824659	AimField	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\AimField_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\AimField		702724
@@ -65,6 +68,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	231233257	HeatShockCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\HeatShockCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockCharge		88258
 	267548966	SurgeExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SurgeExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeExit		123552
 	286477067	BoltExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltExit\BoltExit		116032
+	294908951	PassiveExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BuffExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveExit		416068
 	333763192	SurgeEnter2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SurgeEnter2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeEnter2		157308
 	355476522	BoltEnter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltEnter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltEnter\BoltEnter		108312
 	390082384	FerroshotLaunchAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotLaunchAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunchAlter		33348
@@ -87,6 +91,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	571697280	FerroshotCreateAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreateAlter		175520
 	590040022	Stormblade2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Stormblade2Trim_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade2		90028
 	594529929	Surge2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Surge2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge2		90872
+	632359708	PassiveLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\PassiveLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveLoop		199372
 	662641942	VortexSpawn	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexSpawn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexSpawn		210566
 	695068599	VortexFlightLoopAlter2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoopAlter2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoopAlter2		76736
 	706616777	ChargeBeam	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ChargeBeam1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\ChargeBeam		289964

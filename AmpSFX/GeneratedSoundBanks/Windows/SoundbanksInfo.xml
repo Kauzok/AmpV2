@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="681651853">
+		<SoundBank Id="865939728" Language="SFX" Hash="855203127">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -80,6 +80,23 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="646149459" Name="PlayBuffEnd" ObjectPath="\Events\Default Work Unit\PlayBuffEnd">
+					<IncludedMemoryFiles>
+						<File Id="294908951" Language="SFX">
+							<ShortName>BuffExit.wav</ShortName>
+							<Path>SFX\BuffExit_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3542417390" Name="PlayBuffLoop" ObjectPath="\Events\Default Work Unit\PlayBuffLoop">
+					<IncludedMemoryFiles>
+						<File Id="632359708" Language="SFX">
+							<ShortName>PassiveLoop.wav</ShortName>
+							<Path>SFX\PassiveLoop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4137515496" Name="PlayBuffStart" ObjectPath="\Events\Default Work Unit\PlayBuffStart"/>
 				<Event Id="14754508" Name="PlayChargeExplosion" ObjectPath="\Events\Default Work Unit\PlayChargeExplosion">
 					<IncludedMemoryFiles>
 						<File Id="391751073" Language="SFX">

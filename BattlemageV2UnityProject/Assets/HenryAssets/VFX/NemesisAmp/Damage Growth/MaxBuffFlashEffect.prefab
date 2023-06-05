@@ -6829,7 +6829,7 @@ MonoBehaviour:
   positionAtReferencedTransform: 0
   parentToReferencedTransform: 0
   applyScale: 0
-  soundName: 
+  soundName: Play_item_use_lighningArm
   disregardZScale: 0
 --- !u!114 &114554971627894898
 MonoBehaviour:
