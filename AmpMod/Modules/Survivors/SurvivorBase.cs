@@ -91,8 +91,8 @@ namespace AmpMod.Modules.Survivors
                 {
                     bodyPrefab.AddComponent<NemAmpLightningTracker>();
                     bodyPrefab.AddComponent<StackDamageController>();
-                    bodyPrefab.AddComponent<NemAmpLightningController>();
-                    bodyPrefab.AddComponent<NemAmpLightningEffectController>();
+                    bodyPrefab.AddComponent<NemAmpBuffVFXController>();
+                    bodyPrefab.AddComponent<NemAmpLightningTetherController>();
                 }
 
                 isAmp = false;

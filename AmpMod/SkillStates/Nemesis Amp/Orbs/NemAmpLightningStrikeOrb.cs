@@ -11,7 +11,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 	public class NemAmpLightningStrikeOrb : GenericDamageOrb, IOrbFixedUpdateBehavior
 	{
 		public GameObject orbEffect;
-		private NemAmpLightningController lightningController;
+		private NemAmpBuffVFXController lightningController;
 
 		public override void Begin()
 		{

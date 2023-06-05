@@ -123,7 +123,8 @@ namespace AmpMod.Modules
         #region Nemesis Amp Assets
         [Header("Passive Effects")]
         internal static GameObject passiveMeter;
-        internal static GameObject blessingEffect;
+        internal static GameObject maxBuffFlashEffect;
+        internal static Material overlayMat;
 
         [Header("Fulmination Effects")]
         internal static GameObject lightningStreamEffect;
@@ -361,6 +362,10 @@ namespace AmpMod.Modules
 
             CreateBrightenMaterial("matUIOverbrighten2x");
 
+            #region Passive
+            overlayMat = CreateVFXMaterial("matLightningOverlay");
+            #endregion
+
             #region Howitzer Spark
             //CreateVFXMaterial("matChargeBeamTrail");
             CreateVFXMaterial("matChargeBeamFlash");
@@ -478,6 +483,9 @@ namespace AmpMod.Modules
             passiveMeter = mainAssetBundle.LoadAsset<GameObject>("DamageGrowthMeter");
             TextMeshProUGUI text = passiveMeter.GetComponentInChildren<TextMeshProUGUI>();
             text.font = Addressables.LoadAssetAsync<TMP_FontAsset>("RoR2/Base/Common/Fonts/Bombardier/tmpBombDropshadow.asset").WaitForCompletion();
+
+            maxBuffFlashEffect = mainAssetBundle.LoadAsset<GameObject>("MaxBuffFlashEffect");
+            AddNewEffectDef(maxBuffFlashEffect);
         }
 
         private static void CreateAOELightning()

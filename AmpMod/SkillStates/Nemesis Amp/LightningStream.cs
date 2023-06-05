@@ -19,7 +19,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         [Header("Attack Variables")]
         private float lightningTickDamage = Modules.StaticValues.lightningStreamPerSecondDamageCoefficient / 3f;
         private StackDamageController stackDamageController;
-        private NemAmpLightningEffectController lightningEffectController;
+        private NemAmpLightningTetherController lightningEffectController;
         private float procCoefficient = Modules.StaticValues.lightningStreamProcCoefficient;
         private float baseTickTime = Modules.StaticValues.lightningStreamBaseTickTime;
         private float tickTime;
@@ -49,7 +49,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
-            lightningEffectController = base.GetComponent<NemAmpLightningEffectController>();
+            lightningEffectController = base.GetComponent<NemAmpLightningTetherController>();
             lightningEffectController.isAttacking = true;
 
             

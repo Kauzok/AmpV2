@@ -18,7 +18,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         public GameObject endGameObject;
         public Vector3 startPosition;
         private float posRange = 0.5f;
-        private SkillStates.Nemesis_Amp.NemAmpLightningEffectController nemAmpLightningEffectController;
+        private SkillStates.Nemesis_Amp.NemAmpLightningTetherController nemAmpLightningEffectController;
         private EffectComponent effectComponent;
         private int numLineRendererPoints;
         public HealthComponent healthComponent;

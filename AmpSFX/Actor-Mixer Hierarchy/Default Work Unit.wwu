@@ -1645,6 +1645,11 @@
 										</Sound>
 										<Sound Name="LightningStreamEnd" ID="{CD83F571-72F3-45E3-A5E5-2AB3301E2D16}" ShortID="471456346">
 											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -1679,6 +1684,11 @@
 										</Sound>
 										<Sound Name="LightningStreamStart" ID="{AED24092-5F43-44C8-B36E-6F36EC4322C9}" ShortID="6772903">
 											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -1704,6 +1714,19 @@
 													<AudioFile>LightningStreamStart.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="480520510"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="SurgeExit" ID="{DC20F181-70A7-4224-8050-0B654694B453}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SurgeExit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="267548966"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -1885,6 +1908,7 @@
 										<RandomSequenceContainer Name="ReleaseField" ID="{86ACE9BB-FF06-4EFE-B63A-7541E1957C3B}" ShortID="883332640">
 											<PropertyList>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Attenuation">
@@ -1953,8 +1977,24 @@
 																<Value>-2</Value>
 															</ValueList>
 														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{FEF5D115-C06F-454B-8032-E3A872630790}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="ProximityAttenuation" ID="{912BB46D-5D16-4BE5-8B1A-F54CE68D1C99}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+														</Reference>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
 														</Reference>
@@ -2234,6 +2274,281 @@
 												<ActiveSource Name="SummonStorm" ID="{1BA76602-3D63-4D9B-BC68-16949CC38D15}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Quicksurge" ID="{8BB9E5B6-446C-4C08-B0AD-71552A14D228}" ShortID="634754939">
+									<ChildrenList>
+										<Sound Name="QuicksurgeEnter" ID="{FE1C8018-0654-4435-948C-348ED61659E7}" ShortID="907427329">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="QuicksurgeEnter" ID="{171F0917-5BB0-46AD-A81C-6A005D160D0C}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>QuicksurgeEnter.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1001454250"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="QuicksurgeEnter" ID="{171F0917-5BB0-46AD-A81C-6A005D160D0C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SurgeEnter2" ID="{6B7991ED-08D7-4F8B-A2C0-ACE9116548C7}" ShortID="83343879">
+											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{A71ED489-22B2-407A-9D58-A00B59208239}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SurgeEnter2" ID="{1084C2FF-E2AF-4AF0-8361-51DC8286CA20}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SurgeEnter2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="333763192"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SurgeEnter2" ID="{1084C2FF-E2AF-4AF0-8361-51DC8286CA20}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SurgeExit" ID="{0F60CA4A-D468-4055-9457-DED62412D6EF}" ShortID="261280987">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CBA1ECA6-98BE-4C4B-8436-026E7EA2504E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ExplosionAttentuation" ID="{448DC7CF-53BB-4802-A753-E8369BA8B513}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SurgeExit" ID="{E22F0407-9A92-467D-8FDA-B4F4456AC493}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SurgeExit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="267548966"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SurgeExit" ID="{E22F0407-9A92-467D-8FDA-B4F4456AC493}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="SurgeMove" ID="{4B01B69C-629B-42FA-BF93-057DE7637423}" ShortID="667091477">
+											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{A8AECA00-E4E4-4B5B-B1C9-9A596BB193D2}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ProximityAttenuation" ID="{912BB46D-5D16-4BE5-8B1A-F54CE68D1C99}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Surge" ID="{8FB83174-C5D8-4CA1-8ABC-988FB43C6BC7}" ShortID="803478244">
+													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>5</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{04C6AD14-5CD4-4438-9DE8-35227DF55FAB}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Weight" Type="Real64">
+															<ValueList>
+																<Value>0.001</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Surge" ID="{8C665CF8-04FE-49D4-9FB7-4A64A234261A}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Surge.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="212267084"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Surge" ID="{8C665CF8-04FE-49D4-9FB7-4A64A234261A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Surge2" ID="{569926A8-67A9-4AF6-8E29-85EBEBF41665}" ShortID="497126855">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{8CF7AE75-1672-4640-8420-AAEDD0635395}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="200"/>
+																			<Property Name="Min" Type="Real64" Value="-200"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Weight" Type="Real64">
+															<ValueList>
+																<Value>100</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Surge2" ID="{DDB816D7-082E-4AA4-990D-99FC46CAD912}">
+															<PropertyList>
+																<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+																<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Surge2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="594529929"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Surge2" ID="{DDB816D7-082E-4AA4-990D-99FC46CAD912}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

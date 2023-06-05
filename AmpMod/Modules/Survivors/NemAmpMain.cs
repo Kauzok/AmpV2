@@ -17,7 +17,7 @@ namespace AmpMod.Modules.Survivors
         private Material swordMat;
         private float swordTransition;
         private GameObject sparkActiveEffect;
-        private NemAmpLightningController lightningController;
+        private NemAmpBuffVFXController lightningController;
         private ChildLocator childLocator;
 
         public LocalUser localUser;
@@ -28,7 +28,7 @@ namespace AmpMod.Modules.Survivors
 
 
           
-            this.lightningController = base.characterBody.GetComponent<NemAmpLightningController>();
+            this.lightningController = base.characterBody.GetComponent<NemAmpBuffVFXController>();
 
             if (base.characterBody)
             {

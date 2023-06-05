@@ -633,6 +633,48 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayQuicksurgeEnter" ID="{F5E10B1A-F35C-4CE9-A8BE-E65387505D35}">
+					<ChildrenList>
+						<Action Name="" ID="{EADE5622-7A0E-4D28-B7A8-E8B3F8600172}" ShortID="743103935">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SurgeEnter2" ID="{6B7991ED-08D7-4F8B-A2C0-ACE9116548C7}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayQuicksurgeExit" ID="{8EDB702A-BE39-4645-9C35-44DFB1C90331}">
+					<ChildrenList>
+						<Action Name="" ID="{72F539E1-3300-44EB-9F9A-C1FD72F402D7}" ShortID="604203720">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SurgeExit" ID="{0F60CA4A-D468-4055-9457-DED62412D6EF}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayQuicksurge" ID="{458C62A0-D293-47DA-8EFE-FD15822CF350}">
+					<ChildrenList>
+						<Action Name="" ID="{A61F7D1C-808B-4BF9-9C40-9BD3CDC2DF26}" ShortID="225674074">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SurgeMove" ID="{4B01B69C-629B-42FA-BF93-057DE7637423}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
