@@ -66,7 +66,7 @@ namespace AmpMod.Modules
                 prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
                 prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
-                true,
+                false,
                 new String[] { });
 
             surgeCancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo

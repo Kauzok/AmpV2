@@ -132,6 +132,7 @@ namespace AmpMod.Modules
         internal static GameObject lightningStreamMuzzleEffect;
         internal static GameObject lightningStreamChainEffectPrefab;
         internal static GameObject lightningCrosshair;
+        internal static GameObject lightningStreamMuzzleFlash;
 
         [Header("Howitzer Spark Effects")]
         internal static GameObject chargeBeamMuzzleEffect;
@@ -366,13 +367,17 @@ namespace AmpMod.Modules
             overlayMat = CreateVFXMaterial("matLightningOverlay");
             #endregion
 
+            #region Fulmination
+            CreateVFXMaterial("matLightningDagger");
+            #endregion
+
             #region Howitzer Spark
             //CreateVFXMaterial("matChargeBeamTrail");
             CreateVFXMaterial("matChargeBeamFlash");
             CreateVFXMaterial("matLightningBeam");
             matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
             CreateDistortionMaterial("matLightningBeamDistortion");
-            CreateVFXMaterial("matFieldTeamAreaIndicator");
+            CreateVFXMaterial("matLightningRing");
             #endregion
 
             #region Purple Lightning General
@@ -393,6 +398,7 @@ namespace AmpMod.Modules
             CreateVFXMaterial("matDashTrail");
             CreateVFXMaterial("matOmniRingGeneric");
             CreateVFXMaterial("matSurgeBillboard");
+            CreateVFXMaterial("matFieldTeamAreaIndicator");
             CreateDistortionMaterial("matInverseDistortion");
             #endregion
 
@@ -519,6 +525,11 @@ namespace AmpMod.Modules
 
             lightningStreamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzle");
             PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleEffect);
+
+            lightningStreamMuzzleFlash = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzleFlash");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleFlash);
+            
+            //AddNewEffectDef(lightningStreamMuzzleFlash);
 
         }
 

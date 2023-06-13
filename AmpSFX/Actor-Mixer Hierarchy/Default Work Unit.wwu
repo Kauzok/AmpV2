@@ -1643,45 +1643,6 @@
 												<ActiveSource Name="LightningStream" ID="{51337336-C0B9-4ACF-ACE9-C964A693C8CF}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="LightningStreamEnd" ID="{CD83F571-72F3-45E3-A5E5-2AB3301E2D16}" ShortID="471456346">
-											<PropertyList>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>2</Value>
-													</ValueList>
-												</Property>
-												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Attenuation">
-													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
-												</Reference>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="LightningStreamEnd" ID="{9BF01FA2-BDC1-41AB-9C3D-B73B18047674}">
-													<PropertyList>
-														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
-														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
-														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
-														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>LightningStreamEnd.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="110367248"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="LightningStreamEnd" ID="{9BF01FA2-BDC1-41AB-9C3D-B73B18047674}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<Sound Name="LightningStreamStart" ID="{AED24092-5F43-44C8-B36E-6F36EC4322C9}" ShortID="6772903">
 											<PropertyList>
 												<Property Name="MakeUpGain" Type="Real64">
@@ -2549,6 +2510,120 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Gathering Storm" ID="{E83FED15-C513-46E7-B4C2-4BCC27DE7BD1}" ShortID="183295676">
+									<ChildrenList>
+										<Sound Name="PassiveLoop" ID="{A622A985-C904-43EA-B1A2-DA5DE4942340}" ShortID="748019026">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="10DistanceAttenuation" ID="{2FE0BD2C-F813-4327-82C3-F2CC9AF71546}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PassiveLoop" ID="{216ECE33-C959-4ABB-8FC5-B18BC36419C7}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>PassiveLoop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="632359708"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PassiveLoop" ID="{216ECE33-C959-4ABB-8FC5-B18BC36419C7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LightningStreamEnd" ID="{CD83F571-72F3-45E3-A5E5-2AB3301E2D16}" ShortID="471456346">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LightningStreamEnd" ID="{9BF01FA2-BDC1-41AB-9C3D-B73B18047674}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LightningStreamEnd.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="110367248"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LightningStreamEnd" ID="{9BF01FA2-BDC1-41AB-9C3D-B73B18047674}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PassiveExit" ID="{69DD4B79-D77D-4BF1-8A09-1E67ECDF830C}" ShortID="270884503">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BuffExit" ID="{164CF0A2-F0DB-4B69-9EAE-42DB1987EAA8}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BuffExit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="294908951"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="BuffExit" ID="{164CF0A2-F0DB-4B69-9EAE-42DB1987EAA8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

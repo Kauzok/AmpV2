@@ -32,6 +32,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Transform rightMuzzleTransform;
         private Transform nexusMuzzleTransform;
         private GameObject muzzleEffect = Assets.lightningStreamMuzzleEffect;
+        private GameObject muzzleFlashEffect = Assets.lightningStreamMuzzleFlash;
+        private GameObject muzzleFlashObject;
+        private bool muzzleHasFlashed;
 
         [Header("Animation Variables")]
         private Animator animator;
@@ -52,6 +55,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningEffectController = base.GetComponent<NemAmpLightningTetherController>();
             lightningEffectController.isAttacking = true;
 
+            //Util.PlaySound(startSoundString, base.gameObject);
             
             tracker = base.GetComponent<NemAmpLightningTracker>();
 
@@ -67,10 +71,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (tracker.GetTrackingTarget())
             {
+                
                 animator.SetBool("NemIsFulminating", true);
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
-                rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
-                
+                rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;                
+
+
                 this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
                 //Debug.Log(nexusMuzzleTransform);
 
@@ -133,7 +139,19 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (this.tracker && base.isAuthority)
             {
+                if (!muzzleHasFlashed && this.targetHurtbox)
+                {
+                    muzzleFlashObject = UnityEngine.Object.Instantiate<GameObject>(muzzleFlashEffect, rightMuzzleTransform);
+                    muzzleHasFlashed = true;
+                }
                 this.targetHurtbox = this.tracker.GetTrackingTarget();
+
+                if (!muzzleHasFlashed && this.targetHurtbox)
+                {
+                    muzzleFlashObject = UnityEngine.Object.Instantiate<GameObject>(muzzleFlashEffect, rightMuzzleTransform);
+                    muzzleHasFlashed = true;
+                }
+
                 if (targetHurtbox && !lightningTetherActive)
                 {
                     lightningEffectController.CreateLightningTether(base.gameObject, rightMuzzleTransform);
@@ -203,6 +221,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningTetherActive = false;
             animator.SetBool("NemIsFulminating", false);
 
+            if (muzzleFlashObject)
+            {
+                //Destroy(muzzleFlashObject);
+            }
 
         }
 

@@ -16,12 +16,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private int growthBuffCount;
         private float damageCoefficient = Modules.StaticValues.lightningBallDamageCoefficient;
         private StackDamageController stackDamageController;
-        private float duration = .5f;
+        private float duration = 1f;
+        private float waitDuration = .3f;
+        private Ray aimRay;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            base.characterBody.SetAimTimer(1f);
+            //base.characterBody.SetAimTimer(2f);
+            this.aimRay = base.GetAimRay();
+            base.StartAimMode(this.aimRay, 3f, true);
             stackDamageController = base.GetComponent<StackDamageController>();
             growthBuffCount = base.characterBody.GetBuffCount(Modules.Buffs.damageGrowth);
             base.PlayAnimation("Gesture, Override", "FirePlasmaBall", "BaseSkill.playbackRate", this.duration);

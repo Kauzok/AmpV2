@@ -28,7 +28,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float maxForce = 2000f;
         private float baseDamage;
         private ChildLocator childLocator;
-
+        private bool hasFired;
+        private float waitDuration;
         private GameObject beamPrefab = Assets.chargeBeamTracerPrefab;
 
         [SerializeField]
@@ -49,11 +50,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             muzzleHandTransform = childLocator.FindChild("BeamMuzzle");
             this.duration = this.baseDuration / this.attackSpeedStat;
+            this.waitDuration = this.duration / 2f;
             base.characterBody.SetAimTimer(this.duration + .3f);
             this.PlayFireAnimation();
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
-            this.Fire();
-            base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", 0.4f);
+            base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", this.duration);
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
 
@@ -84,6 +85,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         public override void FixedUpdate()
         {
+            base.FixedUpdate();
+            if (base.isAuthority && !hasFired && base.fixedAge > this.waitDuration)
+            {
+                this.Fire();
+                hasFired = true;
+            }
+
             if (base.isAuthority && base.fixedAge >= this.duration)
             {
                 this.outer.SetNextStateToMain();
@@ -129,7 +137,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 ModifyBullet(beamAttack);
                 beamAttack.Fire();
 
-                EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "HandL", true);
+                EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "BeamMuzzle", true);
 
                 if (base.characterMotor)
                 {

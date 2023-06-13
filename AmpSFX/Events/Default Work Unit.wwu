@@ -675,6 +675,43 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayBuffLoop" ID="{F4D80D0F-FD8F-4069-9FD7-3DE0FD819F79}">
+					<ChildrenList>
+						<Action Name="" ID="{6F24C682-6FFA-4CD2-AD2D-57A62F3F3DAE}" ShortID="295955707">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PassiveLoop" ID="{A622A985-C904-43EA-B1A2-DA5DE4942340}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBuffEnd" ID="{B33CFD22-3EA7-4285-945D-723DB5C0D0A3}">
+					<ChildrenList>
+						<Action Name="" ID="{C3D99DB9-1762-4A1C-A99B-63E334F0C5FA}" ShortID="570539442">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PassiveExit" ID="{69DD4B79-D77D-4BF1-8A09-1E67ECDF830C}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayBuffStart" ID="{BB9FE4E9-4304-4911-8246-E99AFC16EE4A}">
+					<ChildrenList>
+						<Action Name="" ID="{6B1518F4-DCC0-455C-B2E3-EF9EA5BCD20E}" ShortID="428158386">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -99,10 +99,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			//set lightning ball as primary skill
 			if (base.skillLocator.primary && primaryOverrideSkillDef)
             {
-				if (base.skillLocator.primary.skillNameToken != "NT_UTILITY_LIGHTNINGBALL_NAME")
+				base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+
+				/*if (base.skillLocator.primary.skillNameToken != "NT_UTILITY_LIGHTNINGBALL_NAME")
                 {
 					base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-				}
+				}*/
 				
 			}
 

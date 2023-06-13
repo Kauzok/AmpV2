@@ -10,6 +10,7 @@
 					</PropertyList>
 					<ObjectInclusionList>
 						<ObjectRef Name="PlayVortexShoot" ID="{8A0EB689-49CF-4012-96A6-8420887919D9}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayBuffLoop" ID="{F4D80D0F-FD8F-4069-9FD7-3DE0FD819F79}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayBoltEnter" ID="{046BB635-45D9-4098-B497-2BB69AD8B7C8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFieldRelease" ID="{489A16A8-A5C8-40D6-9FB5-70DE0860DA64}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayBeamFire" ID="{0C60B786-4D7C-40EF-B3A4-ABA644F76706}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
@@ -17,6 +18,7 @@
 						<ObjectRef Name="PlayFieldAim" ID="{08B879F2-C4F7-413E-BAF2-2CF4DB712EF6}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayVortexCharge" ID="{EF89A590-3659-41E5-87C3-8ABEE50C68FD}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayHeatShockHit" ID="{100A706B-E2C8-4241-B44E-1B73E9A84EA7}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayBuffEnd" ID="{B33CFD22-3EA7-4285-945D-723DB5C0D0A3}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayVortexFlightLoop" ID="{7C9E3BA7-8DC1-42D9-958F-E4A99044C28D}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayVortexSpawn" ID="{AA6C91B0-98AC-42E6-86B9-EEA509EEDC9F}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFieldLoop" ID="{2FA76F2B-01E5-42F2-9C95-5AB04BB678F6}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
@@ -38,6 +40,7 @@
 						<ObjectRef Name="PlayFerroshotLaunch" ID="{6C04C028-EF34-473A-A77A-2B857F43A7B3}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayQuicksurge" ID="{458C62A0-D293-47DA-8EFE-FD15822CF350}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeSwing2" ID="{606AADD7-0F62-490E-B637-778B1B93CBBD}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayBuffStart" ID="{BB9FE4E9-4304-4911-8246-E99AFC16EE4A}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFerroshotCreate" ID="{FAC584A8-AE58-49D0-B033-54481B672A66}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayBoltExit" ID="{60DCBBF0-835F-4A0F-925F-2D249A8DF8B8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayPlasmaExplosion" ID="{7DB59F3B-CA3F-4A2C-9FBC-B4373A6121B8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>

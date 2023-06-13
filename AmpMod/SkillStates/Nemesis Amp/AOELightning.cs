@@ -33,7 +33,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
             surgeBuffCount = base.GetBuffCount(Modules.Buffs.damageGrowth);
             //base.PlayAnimation("RightArm, Override", "SummonStorm", "ChargeBeam.playbackRate", this.duration);
-            base.PlayAnimation("Gesture, Override", "SummonStorm", "BaseSkill.playbackRate", .6f);
+            base.PlayAnimation("FullBody, Override", "SummonStorm", "BaseSkill.playbackRate", .6f);
             //lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
             //find all enemy hurtboxes within a radius
             childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
