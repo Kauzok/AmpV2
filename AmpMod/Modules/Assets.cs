@@ -153,6 +153,7 @@ namespace AmpMod.Modules
         internal static GameObject dashExitEffect;
         internal static GameObject dashEnterEffect;
         internal static GameObject lightningBallExplosionEffect;
+        internal static GameObject lightningBallMuzzleFlashEffect;
 
         [Header("Voltaic Onslaught Effects")]
         internal static GameObject purpleStormBoltEffect;
@@ -545,6 +546,9 @@ namespace AmpMod.Modules
 
             dashEnterEffect = mainAssetBundle.LoadAsset<GameObject>("SurgeMuzzleFlash");
             AddNewEffectDef(dashEnterEffect);
+
+            lightningBallMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("BallMuzzleFlash");
+            AddNewEffectDef(lightningBallMuzzleFlashEffect);
             
         }
 

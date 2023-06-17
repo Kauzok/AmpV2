@@ -47,13 +47,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
 
             childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
-            base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", this.duration);
+          
             muzzleHandTransform = childLocator.FindChild("BeamMuzzle");
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.waitDuration = this.duration / 2f;
             base.characterBody.SetAimTimer(this.duration + .3f);
             this.PlayFireAnimation();
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
+            base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", this.duration);
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
 
@@ -118,7 +119,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     minSpread = 0f,
                     damage = base.characterBody.damage * beamDamage,
                     force = num2,
-                    muzzleName = "BeamMuzzle",
+                    muzzleName = "HandL",
                     //hitEffectPrefab = impactEffectPrefab,
                     tracerEffectPrefab = Assets.chargeBeamTracerPrefab,
                     isCrit = base.characterBody.RollCrit(),

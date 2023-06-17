@@ -12,7 +12,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private string shootString;
         private bool hasFired;
         public QuickDash src;
-        private GameObject muzzleFlashPrefab;
+        private GameObject muzzleFlashPrefab = Modules.Assets.lightningBallMuzzleFlashEffect;
         private int growthBuffCount;
         private float damageCoefficient = Modules.StaticValues.lightningBallDamageCoefficient;
         private StackDamageController stackDamageController;
@@ -75,6 +75,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 Util.PlaySound(shootString, base.gameObject);
 
             }
+
+            EffectManager.SimpleMuzzleFlash(muzzleFlashPrefab, base.gameObject, "HandR", true);
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
         }
