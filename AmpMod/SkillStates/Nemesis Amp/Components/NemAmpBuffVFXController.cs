@@ -15,7 +15,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private bool hasFlashed;
         private bool isMaxed;
         private GameObject buffOnEffect = Assets.maxBuffFlashEffect;
-        private GameObject buffOffEffect;
+        private GameObject buffOffEffect = Assets.maxBuffOffEffect;
         private TemporaryOverlay buffOverlay;
         private Transform modelTransform;
         private Material overlayMat = Assets.overlayMat;
@@ -71,7 +71,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     origin = characterBody.corePosition,
                     scale = 1f
                 };
-                //EffectManager.SpawnEffect(buffOffEffect.gameObject, flashEffect, true);
+                EffectManager.SpawnEffect(buffOffEffect.gameObject, flashEffect, true);
 
                 AkSoundEngine.StopPlayingID(endLoopID);
                 Util.PlaySound(maxEndString, base.gameObject);

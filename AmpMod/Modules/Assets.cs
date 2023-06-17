@@ -125,6 +125,7 @@ namespace AmpMod.Modules
         internal static GameObject passiveMeter;
         internal static GameObject maxBuffFlashEffect;
         internal static Material overlayMat;
+        internal static GameObject maxBuffOffEffect;
 
         [Header("Fulmination Effects")]
         internal static GameObject lightningStreamEffect;
@@ -490,6 +491,9 @@ namespace AmpMod.Modules
 
             maxBuffFlashEffect = mainAssetBundle.LoadAsset<GameObject>("MaxBuffFlashEffect");
             AddNewEffectDef(maxBuffFlashEffect);
+
+            maxBuffOffEffect = mainAssetBundle.LoadAsset<GameObject>("MaxBuffOffEffect");
+            AddNewEffectDef(maxBuffOffEffect);
         }
 
         private static void CreateAOELightning()

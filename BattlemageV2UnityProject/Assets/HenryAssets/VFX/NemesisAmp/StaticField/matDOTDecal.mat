@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
-        m_Texture: {fileID: 2800000, guid: 66e922a998f31074a9ee873112ade4c3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 039a8e5266f78ba44b3a501cf70145e5, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
-        m_Texture: {fileID: 2800000, guid: 1e1f69967921cb14b8988355a063639e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0848d44b977709746b169d2cf66fd530, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -70,7 +70,7 @@ Material:
     - _RampInfo: 1
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
-    - _SpecularExponent: 0.5
+    - _SpecularExponent: 0.94
     - _SpecularHighlights: 1
     - _SpecularStrength: 5
     - _SrcBlend: 1

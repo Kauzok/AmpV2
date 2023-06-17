@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4755827707054677
 Transform:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d862690072f14cf4b831021bc5bb8563, type: 2}
+  - {fileID: 2100000, guid: 2789387e21fd7d64db531745d6124767, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,7 +254,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 10.07}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.6
+    widthMultiplier: 0.8
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -359,7 +359,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  timeMax: 1
+  timeMax: 0.7
   decal: {fileID: 0}
   pauseTime: 0
   destroyOnEnd: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.7
   resetAgeOnDisable: 0
 --- !u!114 &3618579379745405723
 MonoBehaviour:
