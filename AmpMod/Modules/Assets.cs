@@ -164,8 +164,6 @@ namespace AmpMod.Modules
 
         internal static GameObject lightningSwordChargePrefab;
 
-
-
         #endregion
 
         // networked hit sounds
@@ -378,6 +376,7 @@ namespace AmpMod.Modules
             matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
             CreateDistortionMaterial("matLightningBeamDistortion");
             CreateVFXMaterial("matLightningRing");
+            //CreateStandardMaterial("matLightningOrb");
             #endregion
 
             #region Purple Lightning General
@@ -389,7 +388,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Static Field
-            CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
+            matFieldIndicator = CreateIntersectMaterial("matAimAreaIndicator");
             CreateIntersectMaterial("matTeamAreaIndicatorIntersection");
             CreateDecalMaterial("matDOTDecal");
             #endregion
@@ -467,10 +466,9 @@ namespace AmpMod.Modules
 
         private static void CreateStaticField()
         {
-            matFieldIndicator = CreateIntersectMaterial("matAreaIndicatorIntersectionOnly");
+           
             //Debug.Log("fieldindicator shader is " + matFieldIndicator.shader);
 
-            //this is the actual field area indicator present after the field is placed to showcase its range
             staticFieldIndicatorPrefab = mainAssetBundle.LoadAsset<GameObject>("FieldAreaIndicator");
             PrefabAPI.RegisterNetworkPrefab(staticFieldIndicatorPrefab);
 

@@ -32,13 +32,13 @@ Material:
         m_Scale: {x: 0, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
-        m_Texture: {fileID: 2800000, guid: 487ad30d2013dcc489f42bd667ab9ac0, type: 3}
+        m_Texture: {fileID: 2800000, guid: f1af7e3cc5315554eac460de549c66d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaBias: 0.117
+    - _AlphaBias: 0.247
     - _AlphaBoost: 1
-    - _Boost: 6.14
+    - _Boost: 4.67
     - _BumpScale: 1
     - _CalcTextureAlphaOn: 0
     - _CloudOffsetOn: 1
