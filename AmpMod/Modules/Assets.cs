@@ -466,6 +466,8 @@ namespace AmpMod.Modules
             matDeathOverlay = CreateVFXMaterial("matDeathOverlay");
 
             AddNewEffectDef(deathExplosionEffect);
+
+            CreateIntersectMaterial("matLightningSpherePurpleReal");  
         }
         private static void CreateChargeBeam()
         {
