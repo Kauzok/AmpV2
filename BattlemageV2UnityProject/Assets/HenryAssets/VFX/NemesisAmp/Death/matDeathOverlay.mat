@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
-        m_Texture: {fileID: 2800000, guid: f1af7e3cc5315554eac460de549c66d3, type: 3}
+        m_Texture: {fileID: 2800000, guid: a19eb00376e68604292a1e8c817a8ca2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -89,4 +89,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 0.68275857, b: 0, a: 0}
     - _TimeScale: {r: 25, g: 10, b: 1, a: 1}
-    - _TintColor: {r: 0.7451339, g: 0.20698163, b: 1.9766746, a: 1}
+    - _TintColor: {r: 0.14791533, g: 0.0443746, b: 0.54728675, a: 1}
