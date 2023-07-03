@@ -19,6 +19,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private ChildLocator childLocator;
         private GameObject chargeEffectInstance;
         private GameObject chargeEffectPrefab = Assets.chargeBeamMuzzleEffect;
+        private bool charged;
 
 
         [Header("Sounds")]
@@ -34,11 +35,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             base.characterBody.SetAimTimer(duration);
-            base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
+            //base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
             //base.PlayAnimation("Gesture, Additive", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
+            base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
             endLoopSoundID = Util.PlaySound(startSoundString, base.gameObject);
 
-            //base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", 1.5f);
             if (this.childLocator)
             {
                 Transform transform = this.childLocator.FindChild("HandL") ?? base.characterBody.coreTransform;
@@ -70,7 +71,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 FireLightningBeam nextState = this.GetNextState();
                 nextState.charge = charge;
                 this.outer.SetNextState(nextState);
-  
+                charged = true;
 
             }
             
@@ -98,6 +99,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (this.chargeEffectInstance)
             {
                 Destroy(this.chargeEffectInstance);
+            }
+
+            if (!charged)
+            {
+                base.PlayAnimation("Gesture, Override", "BufferEmpty", "ChargeBeam.playbackRate", 1f);
             }
         }
     }

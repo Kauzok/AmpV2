@@ -18,7 +18,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject buffOffEffect = Assets.maxBuffOffEffect;
         private TemporaryOverlay buffOverlay;
         private Transform modelTransform;
-        private Material overlayMat = Assets.overlayMat;
+        private Material overlayMat;
         private ChildLocator childLocator;
         private Transform sparkEffect;
         private string maxStartString = StaticValues.enterMaxSoundString;
@@ -34,6 +34,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             characterModel = modelTransform.GetComponent<CharacterModel>();
             childLocator = modelTransform.GetComponent<ChildLocator>();
             sparkEffect = this.childLocator.FindChild("BuffLightning");
+            //overlayMat = Assets.buffOverlayMat;
+            overlayMat = LegacyResourcesAPI.Load<Material>("matVoidWardCrabOverlay");
         }
 
         private void FixedUpdate()

@@ -211,7 +211,8 @@ namespace AmpMod.Modules.Survivors
             }); ;
 
 
-            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef, slashSkillDef);
+            //Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef, slashSkillDef);
+            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef);
             #endregion
 
 

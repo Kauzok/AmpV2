@@ -121,10 +121,14 @@ namespace AmpMod.Modules
         #endregion
 
         #region Nemesis Amp Assets
+        [Header("Death Effects")]
+        internal static GameObject deathExplosionEffect;
+        internal static Material matDeathOverlay;
+
         [Header("Passive Effects")]
         internal static GameObject passiveMeter;
         internal static GameObject maxBuffFlashEffect;
-        internal static Material overlayMat;
+        internal static Material buffOverlayMat;
         internal static GameObject maxBuffOffEffect;
 
         [Header("Fulmination Effects")]
@@ -334,6 +338,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Nemesis Amp
+            CreateDeath();
             CreateChargeBeam();
             CreateLightningStream();
             CreateStaticField();
@@ -363,8 +368,13 @@ namespace AmpMod.Modules
 
             CreateBrightenMaterial("matUIOverbrighten2x");
 
+            #region NemAmp Mats
+
+            #region Death
+            #endregion
+
             #region Passive
-            overlayMat = CreateVFXMaterial("matLightningOverlay");
+            buffOverlayMat = CreateVFXMaterial("matLightningOverlay");
             #endregion
 
             #region Fulmination
@@ -379,6 +389,10 @@ namespace AmpMod.Modules
             CreateDistortionMaterial("matLightningBeamDistortion");
             CreateVFXMaterial("matLightningRing");
             //CreateStandardMaterial("matLightningOrb");
+            #endregion
+
+            #region Galvanic Cleave
+            CreateVFXMaterial("GlowSword");
             #endregion
 
             #region Purple Lightning General
@@ -406,6 +420,8 @@ namespace AmpMod.Modules
             #region Voltaic Onslaught
             CreateVFXMaterial("matRailgunRings");
             CreateVFXMaterial("matLunarNeedleImpactEffect");
+            #endregion
+
             #endregion
 
             matBlueTrail = CreateVFXMaterial("matLorentzTrail");
@@ -443,6 +459,14 @@ namespace AmpMod.Modules
         }
 
         #region Nemesis Amp Assets
+
+        private static void CreateDeath()
+        {
+            deathExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("DeathExplosion");
+            matDeathOverlay = CreateVFXMaterial("matDeathOverlay");
+
+            AddNewEffectDef(deathExplosionEffect);
+        }
         private static void CreateChargeBeam()
         {
             
@@ -456,6 +480,8 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffect);
 
             beamMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("MuzzleflashBeam");
+            //PrefabAPI.RegisterNetworkPrefab(beamMuzzleFlashEffect);
+
             AddNewEffectDef(beamMuzzleFlashEffect);
 
         }

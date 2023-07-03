@@ -36,7 +36,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 Transform transform = this.childLocator.FindChild("LowerArmL") ?? base.characterBody.coreTransform;
                 if (transform && this.chargeEffectPrefab)
                 {
-                    this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform.position, transform.rotation);
+                    this.chargeEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.chargeEffectPrefab, transform);
                     this.chargeEffectInstance.transform.parent = transform;
                     ScaleParticleSystemDuration component = this.chargeEffectInstance.GetComponent<ScaleParticleSystemDuration>();
                     ObjectScaleCurve component2 = this.chargeEffectInstance.GetComponent<ObjectScaleCurve>();
@@ -61,7 +61,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 FireChargeSlash nextState = this.GetNextState();
                 nextState.charge = charge;
-                nextState.muzzleEffect = this.chargeEffectInstance;
+                //nextState.muzzleEffect = this.chargeEffectInstance;
                 this.outer.SetNextState(nextState);
 
 
@@ -87,7 +87,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.OnExit();
             if (this.chargeEffectInstance)
             {
-                //Destroy(this.chargeEffectInstance);
+                Destroy(this.chargeEffectInstance);
             }
         }
 

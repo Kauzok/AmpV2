@@ -4,6 +4,9 @@ ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
+      74: -9076431368295880638
+    second: metarig|AAAA
+  - first:
       74: 6903052085834295795
     second: metarig|AimField
   - first:
@@ -15,6 +18,9 @@ ModelImporter:
   - first:
       74: 8290805368695308513
     second: metarig|Ascend
+  - first:
+      74: 1856359056945258297
+    second: metarig|Base_MeshAction
   - first:
       74: 168626186619699967
     second: metarig|ChargeSwordAnim
@@ -30,6 +36,9 @@ ModelImporter:
   - first:
       74: 6955239046782341846
     second: metarig|FirePlasmaBall
+  - first:
+      74: 7007819709866357584
+    second: metarig|FirePlasmaBallAlt
   - first:
       74: -9200210526784915972
     second: metarig|FireSwordAnim
@@ -70,6 +79,12 @@ ModelImporter:
       74: 6522997681174406571
     second: metarig|StormSummonAnim
   - first:
+      74: 2430773034655181966
+    second: metarig|ThrowPlasmaBall
+  - first:
+      74: -1159560801913473036
+    second: metarig|ThrowPlasmaBallAlt2
+  - first:
       74: -7838602737668615155
     second: metarig|WalkBackward
   - first:
@@ -109,6 +124,35 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations:
+    - serializedVersion: 16
+      name: metarig|AAAA
+      takeName: metarig|AAAA
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: metarig|AimField
       takeName: metarig|AimField
@@ -209,6 +253,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|Base_MeshAction
+      takeName: metarig|Base_MeshAction
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -346,7 +419,36 @@ ModelImporter:
       takeName: metarig|FirePlasmaBall
       internalID: 0
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|FirePlasmaBallAlt
+      takeName: metarig|FirePlasmaBallAlt
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -433,7 +535,7 @@ ModelImporter:
       takeName: metarig|ChargeBeamAnim
       internalID: 0
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -469,7 +571,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -549,7 +651,7 @@ ModelImporter:
       takeName: metarig|LightningStreamAnim
       internalID: 0
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -724,6 +826,64 @@ ModelImporter:
       internalID: 0
       firstFrame: 0
       lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|ThrowPlasmaBall
+      takeName: metarig|ThrowPlasmaBall
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|ThrowPlasmaBallAlt2
+      takeName: metarig|ThrowPlasmaBallAlt2
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

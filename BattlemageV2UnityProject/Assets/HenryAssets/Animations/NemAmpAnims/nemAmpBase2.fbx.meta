@@ -25,6 +25,9 @@ ModelImporter:
       74: 168626186619699967
     second: metarig|ChargeSwordAnim
   - first:
+      74: -2062074773753952957
+    second: metarig|Death
+  - first:
       74: -8430614638617632110
     second: metarig|FallFast
   - first:
@@ -33,6 +36,9 @@ ModelImporter:
   - first:
       74: -4147935991722643143
     second: metarig|FireBeamAnim
+  - first:
+      74: -7297376129209527282
+    second: metarig|FireBeamAnim.001
   - first:
       74: 6955239046782341846
     second: metarig|FirePlasmaBall
@@ -64,6 +70,9 @@ ModelImporter:
       74: -4585627999187650379
     second: metarig|LobbyAnim
   - first:
+      74: -8961157487246376153
+    second: metarig|LobbyIdleAnim
+  - first:
       74: -2408303921974111261
     second: metarig|ReleaseField
   - first:
@@ -81,9 +90,6 @@ ModelImporter:
   - first:
       74: 2430773034655181966
     second: metarig|ThrowPlasmaBall
-  - first:
-      74: -1159560801913473036
-    second: metarig|ThrowPlasmaBallAlt2
   - first:
       74: -7838602737668615155
     second: metarig|WalkBackward

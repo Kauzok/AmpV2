@@ -125,7 +125,7 @@ namespace AmpMod.Modules
 
             #region Passive
             LanguageAPI.Add(nemPrefix + "PASSIVE_NAME", "Gathering Storm");
-            LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>within 2 seconds</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.growthBuffMaxStacks * StaticValues.growthDamageCoefficient}%</style>. The bonus is maintained as long as you are dealing damage.");
+            LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>within 2 seconds</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.growthBuffMaxStacks * StaticValues.growthDamageCoefficient}%</style>.");
             #endregion
 
             #region Primary
@@ -139,7 +139,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Secondary
-            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Howitzer Spark");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Spark Cannon");
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam deals <style=cIsDamage>{100f * StaticValues.additionalPierceDamageCoefficient}% of its damage</style> as bonus damage to the next enemy hit.");
             #endregion
 
@@ -163,7 +163,7 @@ namespace AmpMod.Modules
 
             #region Special
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Voltaic Onslaught");
-            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#0091ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#8b00ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
             #endregion
 
             #region Special2
@@ -176,10 +176,17 @@ namespace AmpMod.Modules
             #region Mithrix Quotes
             LanguageAPI.Add("MITHRIX_SEE_AMP_1", "You wield stolen power. Relinquish it through death.");
             LanguageAPI.Add("MITHRIX_SEE_AMP_2", "Watch, brother. I will prove the fragility of your constructs.");
-            LanguageAPI.Add("MITHRIX_SEE_AMP_3", "The power of a wurm? Does brother wish to mock me?");
+            LanguageAPI.Add("MITHRIX_SEE_AMP_3", "The power of a wurm... but faint.");
 
             LanguageAPI.Add("MITHRIX_KILL_AMP_1", "A pity. You may have been a useful servant.");
             LanguageAPI.Add("MITHRIX_KILL_AMP_2", "Frail sparks.");
+
+            LanguageAPI.Add("MITHRIX_SEE_NEMAMP_1", "The power of a wurm... but wrong.");
+            LanguageAPI.Add("MITHRIX_SEE_NEMAMP_2", "Your rage will end here, wurm.");
+            LanguageAPI.Add("MITHRIX_SEE_NEMAMP_3", "Warped and stolen power. Your blasphemy ends here.");
+
+            LanguageAPI.Add("MITHRIX_KILL_NEMAMP_1", "Die with your corruption.");
+            LanguageAPI.Add("MITHRIX_KILL_NEMAMP_2", "Slow lightning.");
             #endregion
 
         }

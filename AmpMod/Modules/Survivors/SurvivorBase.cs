@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using AmpMod.SkillStates.Nemesis_Amp;
 using AmpMod.SkillStates.Nemesis_Amp.Orbs;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
+using EntityStates;
 
 namespace AmpMod.Modules.Survivors
 {
@@ -93,6 +95,13 @@ namespace AmpMod.Modules.Survivors
                     bodyPrefab.AddComponent<StackDamageController>();
                     bodyPrefab.AddComponent<NemAmpBuffVFXController>();
                     bodyPrefab.AddComponent<NemAmpLightningTetherController>();
+                    
+                    var deathComp = bodyPrefab.GetComponent<CharacterDeathBehavior>();
+                    deathComp.deathState = new SerializableEntityStateType(typeof(NemDeathState));
+                    deathComp.deathStateMachine = bodyPrefab.GetComponent<EntityStateMachine>();
+
+                    var menuSound = displayPrefab.AddComponent<SkillStates.SkillComponents.PlayMenuSound>();
+                    menuSound.soundString = "Play_item_use_lighningArm";
                 }
 
                 isAmp = false;

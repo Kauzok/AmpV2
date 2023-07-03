@@ -47,14 +47,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
 
             childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
-          
-            muzzleHandTransform = childLocator.FindChild("BeamMuzzle");
+
+
+            muzzleHandTransform = childLocator.FindChild("HandL");
+            Debug.Log("muzzle rotation = " + muzzleHandTransform.rotation.eulerAngles.x + " " + muzzleHandTransform.rotation.eulerAngles.y + " "+ muzzleHandTransform.rotation.eulerAngles.z);
             this.duration = this.baseDuration / this.attackSpeedStat;
-            this.waitDuration = this.duration / 2f;
+            this.waitDuration = this.duration / 1.6f;
             base.characterBody.SetAimTimer(this.duration + .3f);
             this.PlayFireAnimation();
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
-            base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", this.duration);
+            //base.PlayAnimation("Gesture, Override", "FireBeam", "BaseSkill.playbackRate", this.duration);
+            base.PlayAnimation("FullBody, Override", "FireBeam", "BaseSkill.playbackRate", this.duration + .8f);
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
 
@@ -137,7 +140,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 ModifyBullet(beamAttack);
                 beamAttack.Fire();
 
-                EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "BeamMuzzle", true);
+                //UnityEngine.Object.Instantiate<GameObject>(muzzleFlashEffect, muzzleHandTransform);
+
+                EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "HandL", true);
                 //base.PlayAnimation("Gesture, Additive", "FireBeam", "BaseSkill.playbackRate", this.duration);
 
                 if (base.characterMotor)

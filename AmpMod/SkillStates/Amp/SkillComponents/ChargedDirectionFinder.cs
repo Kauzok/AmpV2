@@ -71,7 +71,6 @@ namespace AmpMod.SkillStates.SkillComponents
 			this.searchTimer = 0f;
 		}
 
-		// Token: 0x0600434E RID: 17230 RVA: 0x00117234 File Offset: 0x00115434
 		private void FixedUpdate()
 		{
 			this.searchTimer -= Time.fixedDeltaTime;
