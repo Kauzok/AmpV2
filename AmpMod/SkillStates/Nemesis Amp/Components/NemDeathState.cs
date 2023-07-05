@@ -52,7 +52,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 EffectData effectData = new EffectData
                 {
                     scale = 1,
-                    origin = base.gameObject.transform.position,
+                    origin = base.gameObject.transform.position, 
                 };
                 EffectManager.SpawnEffect(deathEffect, effectData, true);
 
@@ -68,7 +68,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.fixedAge >= waitDuration-.2f && !hasSpawnedExplosion)
+            if (base.fixedAge >= waitDuration-.22f && !hasSpawnedExplosion)
             {
                 spawnDeathExplosion();
                 hasSpawnedExplosion = true;
