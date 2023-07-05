@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\</ProjectRoot>
-		<SourceFilesRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="855203127">
+		<SoundBank Id="865939728" Language="SFX" Hash="3894375756">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -102,6 +102,14 @@
 						<File Id="391751073" Language="SFX">
 							<ShortName>ChargeExplosion.wav</ShortName>
 							<Path>SFX\ChargeExplosion_56D34C19.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2431378448" Name="PlayDeathExplosion" ObjectPath="\Events\Default Work Unit\PlayDeathExplosion">
+					<IncludedMemoryFiles>
+						<File Id="707824451" Language="SFX">
+							<ShortName>NemDeath.wav</ShortName>
+							<Path>SFX\NemDeath_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

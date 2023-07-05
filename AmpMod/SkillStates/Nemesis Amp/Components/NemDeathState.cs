@@ -20,12 +20,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         private CharacterModel characterModel;
         private Transform modelTransform;
         private bool hasSpawnedExplosion;
+        private string explosionSoundString = StaticValues.deathExplosionSoundString;
+        private string chargeSoundString = StaticValues.deathChargeSoundString;
+        private uint stopCharge;
 
         public override void OnEnter()
         {
             base.OnEnter();
             characterMotor.velocity = Vector3.zero;
             animator = base.GetModelAnimator();
+
+            stopCharge = Util.PlaySound(chargeSoundString, base.gameObject);
             
             modelTransform = base.GetComponent<ModelLocator>().modelTransform;
             characterModel = modelTransform.GetComponent<CharacterModel>();
@@ -47,6 +52,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
         private void spawnDeathExplosion()
         {
+
+            AkSoundEngine.StopPlayingID(stopCharge, 0);
+
+            Util.PlaySound(explosionSoundString, base.gameObject);
             if (NetworkServer.active)
             {
                 EffectData effectData = new EffectData

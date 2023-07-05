@@ -709,6 +709,21 @@
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="1"/>
 							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayDeathExplosion" ID="{40020B38-D58A-4DB9-BC0E-E768FD0C253D}">
+					<ChildrenList>
+						<Action Name="" ID="{90E3A24A-AA06-4B0B-B894-8A32CDB4EDC0}" ShortID="281447513">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NemDeath" ID="{D8FBF157-8AC4-411F-BF59-871A14DFA841}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>

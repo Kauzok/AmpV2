@@ -193,6 +193,10 @@ namespace AmpMod.Modules
 
         #region Nemesis Amp Sounds
 
+        [Header("Death Sound Strings")]
+        internal const string deathExplosionSoundString = "PlayDeathExplosion";
+        internal const string deathChargeSoundString = "PlayDeathCharge";
+
         [Header("Gathering Storm Sound Strings")]
         internal const string enterMaxSoundString = "PlayBuffStart";
         internal const string loopMaxSoundString = "PlayBuffLoop";
