@@ -1,4 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
+	439419	PlayDeathCharge			\Default Work Unit\PlayDeathCharge	
 	8097650	PlayBoltExit			\Default Work Unit\PlayBoltExit	
 	14754508	PlayChargeExplosion			\Default Work Unit\PlayChargeExplosion	
 	108685852	PlayHeatShockHit			\Default Work Unit\PlayHeatShockHit	
@@ -71,6 +72,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	286477067	BoltExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltExit\BoltExit		116032
 	294908951	PassiveExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BuffExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveExit		416068
 	333763192	SurgeEnter2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\SurgeEnter2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeEnter2		157308
+	337308023	NemDeathCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemDeathCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeathCharge		125694
 	355476522	BoltEnter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltEnter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltEnter\BoltEnter		108312
 	390082384	FerroshotLaunchAlter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FerroshotLaunchAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunchAlter		33348
 	391751073	ChargeExplosion	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\ChargeExplosion_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\ChargeExplosion\ChargeExplosion		190656

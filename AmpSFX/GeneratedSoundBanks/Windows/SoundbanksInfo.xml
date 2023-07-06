@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="3894375756">
+		<SoundBank Id="865939728" Language="SFX" Hash="2532676789">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -102,6 +102,14 @@
 						<File Id="391751073" Language="SFX">
 							<ShortName>ChargeExplosion.wav</ShortName>
 							<Path>SFX\ChargeExplosion_56D34C19.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="439419" Name="PlayDeathCharge" ObjectPath="\Events\Default Work Unit\PlayDeathCharge">
+					<IncludedMemoryFiles>
+						<File Id="337308023" Language="SFX">
+							<ShortName>NemDeathCharge.wav</ShortName>
+							<Path>SFX\NemDeathCharge_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

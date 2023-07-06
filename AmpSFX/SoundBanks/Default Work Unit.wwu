@@ -58,6 +58,7 @@
 						<ObjectRef Name="PlaySummonStorm" ID="{EB415948-E57B-4D36-BCD6-80FBA384A2F0}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayDeathExplosion" ID="{40020B38-D58A-4DB9-BC0E-E768FD0C253D}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeHit2" ID="{C218BB76-85F0-4E09-8FC8-481B11368AD5}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayDeathCharge" ID="{CA64834A-D98F-4E10-8081-2D48ADAECABB}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayWormCharge" ID="{A453A9E3-CFBA-4EA4-8432-4D1FC5C5367C}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFulminationExitAlter" ID="{BC0E9EA2-9B82-4FB5-9706-DDC4853211D7}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayLightningStreamLoop" ID="{D6B3D2F1-0D62-4FDE-90B8-48301E9009E5}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>

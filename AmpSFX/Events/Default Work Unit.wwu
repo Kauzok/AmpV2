@@ -727,6 +727,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayDeathCharge" ID="{CA64834A-D98F-4E10-8081-2D48ADAECABB}">
+					<ChildrenList>
+						<Action Name="" ID="{E63D2674-A518-4E05-A817-FE47899AA186}" ShortID="794571692">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NemDeathCharge" ID="{18A963D8-100C-4632-B767-7A287770EDCD}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
