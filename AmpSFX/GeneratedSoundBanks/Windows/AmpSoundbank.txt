@@ -98,7 +98,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	662641942	VortexSpawn	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexSpawn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexSpawn		210566
 	695068599	VortexFlightLoopAlter2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoopAlter2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoopAlter2		76736
 	706616777	ChargeBeam	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\ChargeBeam1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\ChargeBeam		289964
-	707824451	NemDeath	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemDeath_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeath		379024
+	707824451	NemDeath	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemDeath_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeath		457576
 	736458125	VortexExplosionAlt	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexExplosionAlt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexExplosionAlt		310566
 	756615058	LobbyEntrance	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\LobbyEntrance_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\LobbySFX\LobbyEntrance		458620
 	760072484	Stormblade1	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\Stormblade1Remake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade1		83752

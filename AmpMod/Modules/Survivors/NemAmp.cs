@@ -7,6 +7,7 @@ using R2API;
 using System.Collections.Generic;
 using UnityEngine;
 using AmpMod.SkillStates.Nemesis_Amp;
+using AmpMod.Modules;
 
 namespace AmpMod.Modules.Survivors
 {
@@ -72,7 +73,7 @@ namespace AmpMod.Modules.Survivors
 
         internal override Type characterMainState { get; set; } = typeof(NemAmpMain);
 
-        public override ItemDisplaysBase itemDisplays => new AmpItemDisplays();
+        public override ItemDisplaysBase itemDisplays => new NemAmpItemDisplays();
 
         internal override UnlockableDef characterUnlockableDef { get; set; }
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

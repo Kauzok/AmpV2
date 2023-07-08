@@ -34,8 +34,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             characterModel = modelTransform.GetComponent<CharacterModel>();
             childLocator = modelTransform.GetComponent<ChildLocator>();
             sparkEffect = this.childLocator.FindChild("BuffLightning");
-            //overlayMat = Assets.buffOverlayMat;
-            overlayMat = LegacyResourcesAPI.Load<Material>("matVoidWardCrabOverlay");
+            overlayMat = Assets.buffOverlayMat;
+            //overlayMat = LegacyResourcesAPI.Load<Material>("RoR2/DLC1/VoidWardCrab/matVoidWardCrabOverlay");
         }
 
         private void FixedUpdate()

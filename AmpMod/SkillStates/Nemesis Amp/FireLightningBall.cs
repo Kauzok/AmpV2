@@ -30,7 +30,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             growthBuffCount = base.characterBody.GetBuffCount(Modules.Buffs.damageGrowth);
             base.PlayAnimation("Gesture, Override", "FirePlasmaBall", "BaseSkill.playbackRate", this.duration);
         }
-
+         
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -39,7 +39,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 hasFired = true;
                 Fire();
             }
-
+            
             if (this.hasFired && this.fixedAge >= duration)
             {
                 //Debug.Log("exiting");

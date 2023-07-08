@@ -248,6 +248,16 @@ MonoBehaviour:
     transform: {fileID: 5417869340618439540}
   - name: BuffLightning
     transform: {fileID: 4230171628914900432}
+  - name: ThighL
+    transform: {fileID: 4411742012907878244}
+  - name: ThighR
+    transform: {fileID: 1367535046903400816}
+  - name: FootL
+    transform: {fileID: 7539086351717749399}
+  - name: FootR
+    transform: {fileID: 3980694095190342130}
+  - name: Pelvis
+    transform: {fileID: 4280036488425468283}
 --- !u!114 &9052249991326240707
 MonoBehaviour:
   m_ObjectHideFlags: 0
