@@ -142,7 +142,7 @@ namespace AmpMod.Modules.Survivors
                   "Weapon",
                   prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
                   prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
-                  Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
+                  Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemFulmination"),
                   true,
                   new String[] { }));
 

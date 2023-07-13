@@ -20,7 +20,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private int numLineRendererPoints;
         private GameObject oldLightningTarget;
         private CharacterBody victimBody;
-        private float posRange = 0.5f;
+        private float posRange = .3f;// 0.5f;
         private float lightningTickFrequency = .1f;
         private float maxZ = 8f;
         public bool isAttacking;
@@ -78,33 +78,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                      }
                     #endregion
 
-                    #region automated set pos (ethanol's linerenderer)
-                    /*Vector3 startPos = origin.position;
-                    Vector3 endPos = victimBody.corePosition;
-                    int interVal = (int)Mathf.Abs(Vector3.Distance(endPos, startPos));
-
-                    if (interVal <= 0)
-                    {
-                        interVal = 2;
-                    }
-
-                    Vector3[] numberofpositions = new Vector3[interVal];
-
-                    for (int i = 0; i < numberofpositions.Length; i++)
-                    {
-                        numberofpositions[i] = Vector3.Lerp(startPos, endPos, (float)i / interVal);
-                        numberofpositions[i].z = Mathf.Lerp(startPos.z, endPos.z, (float)i / interVal);
-                    }
-                    
-                    lineRenderer.positionCount = interVal;
-                    lineRenderer.SetPositions(numberofpositions);
-                    numLineRendererPoints = numberofpositions.Length;
-                    Debug.Log(numLineRendererPoints);*/
-                    #endregion
-
-
-                    //lineRenderer.SetPosition(numlineRendererPoints-1, hurtbox.gameObject.transform.position);
-
+                  
 
                 }
             }

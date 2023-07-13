@@ -134,7 +134,7 @@ namespace AmpMod.Modules
             {
                 string prefix = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_";
                 skillLocator.passiveSkill.enabled = true;
-                skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCharge");
+                skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPassive");
                 skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
                 skillLocator.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
             }
