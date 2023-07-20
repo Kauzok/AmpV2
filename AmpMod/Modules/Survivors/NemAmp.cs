@@ -190,7 +190,7 @@ namespace AmpMod.Modules.Survivors
                 skillName = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
                 skillNameToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
                 skillDescriptionToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFulmination"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemSlash"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -251,7 +251,7 @@ namespace AmpMod.Modules.Survivors
                 skillName = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_NAME",
                 skillNameToken = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_NAME",
                 skillDescriptionToken = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSurge"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemDash"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(QuickDash)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -352,6 +352,8 @@ namespace AmpMod.Modules.Survivors
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
 
+            GameObject updatedModel = UpdateGameObjectShader(model);
+
             ModelSkinController skinController = model.AddComponent<ModelSkinController>();
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
@@ -363,7 +365,7 @@ namespace AmpMod.Modules.Survivors
 
             #region DefaultSkin
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
+                Assets.mainAssetBundle.LoadAsset<Sprite>("texNemDefault"),
                 defaultRenderers,
                 mainRenderer,
                 model);

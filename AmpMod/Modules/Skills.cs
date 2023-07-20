@@ -65,7 +65,7 @@ namespace AmpMod.Modules
                 "Weapon",
                 prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
                 prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPlasmaBall"),
                 false,
                 new String[] { });
 

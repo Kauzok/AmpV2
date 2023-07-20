@@ -139,7 +139,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Secondary
-            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Spark Cannon");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Furious Spark");
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam deals <style=cIsDamage>{100f * StaticValues.additionalPierceDamageCoefficient}% of its damage</style> as bonus damage to the next enemy hit.");
             #endregion
 

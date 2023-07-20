@@ -95,6 +95,11 @@ namespace AmpMod.Modules
             var dotZone = fieldProjectilePrefab.GetComponent<ProjectileDotZone>();
             dotZone.overlapProcCoefficient = StaticValues.staticFieldTickProcCoefficient;
 
+            GameObject FX = fieldProjectilePrefab.transform.GetChild(0).gameObject;
+            GameObject ScaledOnImpact = FX.transform.GetChild(0).gameObject;
+            GameObject Decal = new GameObject();
+            Decal.transform.parent = ScaledOnImpact.transform;
+            
 
             var buffWard = fieldProjectilePrefab.GetComponent<BuffWard>();
             buffWard.buffDef = Buffs.nemAmpAtkSpeed;

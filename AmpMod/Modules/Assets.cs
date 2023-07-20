@@ -379,6 +379,7 @@ namespace AmpMod.Modules
 
             #region Fulmination
             CreateVFXMaterial("matLightningDagger");
+            CreateVFXMaterial("matLightningTwist");
             #endregion
 
             #region Howitzer Spark
@@ -388,6 +389,8 @@ namespace AmpMod.Modules
             matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
             CreateDistortionMaterial("matLightningBeamDistortion");
             CreateVFXMaterial("matLightningRing");
+            CreateVFXMaterial("matCircleBillboard");
+            CreateVFXMaterial("matSparkBillboard");
             //CreateStandardMaterial("matLightningOrb");
             #endregion
 
@@ -404,6 +407,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Static Field
+            CreateVFXMaterial("matVoidSurvivorCrabCannonCoreCharSelect");
             matFieldIndicator = CreateIntersectMaterial("matAimAreaIndicator");
             CreateIntersectMaterial("matTeamAreaIndicatorIntersection");
             CreateDecalMaterial("matDOTDecal");
