@@ -33,7 +33,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private StackDamageController stackDamageController;
         private GameObject fieldMuzzleEffect = Assets.aimFieldMuzzleEffect;
         private Transform rightMuzzleTransform;
+        private Transform rightMuzzleTransformSpawn;
         private Transform leftMuzzleTransform;
+        private Transform leftMuzzleTransformSpawn;
         private bool hasMuzzles;
         private string aimFieldString = StaticValues.fieldAimString;
         private string releaseFieldString = StaticValues.fieldReleaseString;
@@ -49,6 +51,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             childLocator = base.GetModelChildLocator();
             rightMuzzleTransform = childLocator.FindChild("HandR");
             leftMuzzleTransform = childLocator.FindChild("HandL");
+            rightMuzzleTransformSpawn = childLocator.FindChild("HandR");
+            leftMuzzleTransformSpawn = childLocator.FindChild("HandL");
 
             fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
             base.PlayAnimation("FullBody, Override", "AimField", "BaseSkill.playbackRate", 1f);
@@ -136,8 +140,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     if (this.fieldIndicatorInstance && base.isAuthority)
                     {
                         //Debug.Log(muzzleflashEffect);
-                        EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandL", true);
-                        EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandR", true);
+                        //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandL", true);
+                        //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandR", true);
+                        UnityEngine.Object.Instantiate(muzzleflashEffect, rightMuzzleTransformSpawn);
+                        UnityEngine.Object.Instantiate(muzzleflashEffect, leftMuzzleTransformSpawn);
+
                         Vector3 forward = this.fieldIndicatorInstance.transform.forward;
                         forward.y = 0f;
                         forward.Normalize();

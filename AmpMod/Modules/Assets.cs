@@ -391,6 +391,7 @@ namespace AmpMod.Modules
             CreateVFXMaterial("matLightningRing");
             CreateVFXMaterial("matCircleBillboard");
             CreateVFXMaterial("matSparkBillboard");
+            CreateVFXMaterial("matDarkPurple");
             //CreateStandardMaterial("matLightningOrb");
             #endregion
 
@@ -511,7 +512,9 @@ namespace AmpMod.Modules
             //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
 
             releaseFieldMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlash");
-            AddNewEffectDef(releaseFieldMuzzleEffect);
+
+            PrefabAPI.RegisterNetworkPrefab(releaseFieldMuzzleEffect);
+            //AddNewEffectDef(releaseFieldMuzzleEffect);
 
 
         }

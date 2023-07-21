@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 114509815369958481}
   - component: {fileID: 114365732561381799}
   - component: {fileID: 114093326596869943}
+  - component: {fileID: 6720123932621441776}
   m_Layer: 0
   m_Name: StaticMuzzleFlash
   m_TagString: Untagged
@@ -76,13 +77,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382954228117854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vfxPriority: 2
-  vfxIntensity: 0
+  vfxIntensity: 1
   optionalLights:
   - {fileID: 108923442954397098}
   secondaryParticleSystem: []
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382954228117854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
@@ -116,6 +117,20 @@ MonoBehaviour:
   m_Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6720123932621441776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382954228117854}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1.2
+  resetAgeOnDisable: 0
 --- !u!1 &1465644097793004
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4791367704480782
 Transform:
   m_ObjectHideFlags: 0
@@ -2467,7 +2482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4788820451244363
 Transform:
   m_ObjectHideFlags: 0
@@ -2800,7 +2815,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.34
+      value: 0.01
       mode: 0
       spread: 0
       speed:
@@ -4768,8 +4783,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 0.7254902}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0.5764706}
+        key0: {r: 0.4190716, g: 0, b: 0.735849, a: 1}
+        key1: {r: 0.4190716, g: 0, b: 0.735849, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5256,8 +5271,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.43448272, b: 0, a: 1}
-        key1: {r: 1, g: 0.31034482, b: 0, a: 0}
+        key0: {r: 0.740501, g: 0.48584905, b: 0.9716981, a: 1}
+        key1: {r: 0.6919059, g: 0.39035246, b: 0.9622642, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5272,7 +5287,7 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 23708
+        atime0: 0
         atime1: 65535
         atime2: 65535
         atime3: 0
@@ -6869,7 +6884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4436430941688017
 Transform:
   m_ObjectHideFlags: 0
