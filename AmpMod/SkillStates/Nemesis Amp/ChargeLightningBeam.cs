@@ -37,11 +37,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.characterBody.SetAimTimer(duration);
             //base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
             //base.PlayAnimation("Gesture, Additive", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
-            base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
+            //base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
+            base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration+.2f);
             endLoopSoundID = Util.PlaySound(startSoundString, base.gameObject);
 
             if (this.childLocator)
-            {
+            {   
                 Transform transform = this.childLocator.FindChild("HandL") ?? base.characterBody.coreTransform;
                 if (transform && this.chargeEffectPrefab)
                 {
