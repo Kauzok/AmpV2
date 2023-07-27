@@ -36,7 +36,7 @@ namespace AmpMod.Modules.Survivors
             //bodyNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_NAME",
             //Color of skill names and stuff in menu
             bodyColor = new Color32(139, 0, 255, 255),
-            characterPortrait = Modules.Assets.LoadCharacterIcon("Amp"),
+            characterPortrait = Modules.Assets.LoadCharacterIcon("Nem"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,
             moveSpeed = 7.5f,
@@ -46,7 +46,7 @@ namespace AmpMod.Modules.Survivors
             //jumpPower = 18f,
             maxHealth = 110f,
             subtitleNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_SUBTITLE",
-            podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+            //podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
 

@@ -86,6 +86,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			{
 				this.characterModel.invisibilityCount++;
 			}
+
 			if (this.hurtboxGroup)
 			{
 				HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;

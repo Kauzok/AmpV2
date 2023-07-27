@@ -149,7 +149,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Utility2
-            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_NAME", "Quicksurge");
+            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_NAME", "Voidsurge");
             LanguageAPI.Add(nemPrefix + "UTILITY_DASH_DESCRIPTION", $"Transform into lightning, becoming <style=cIsUtility>intangible</style> and dashing a short distance. Your next primary cast shoots a <style=cIsUtility>shocking</style> ball of void lightning for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
 
             LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_NAME", "Launch Lightning Ball");

@@ -62,6 +62,7 @@ namespace AmpMod.Modules
             //generic states
             entityStates.Add(typeof(Survivors.NemAmpMain));
             entityStates.Add(typeof(SkillStates.Nemesis_Amp.Components.NemDeathState));
+            entityStates.Add(typeof(SkillStates.Nemesis_Amp.Components.NemSpawnState));
 
             //unstoppable current states
             entityStates.Add(typeof(LightningStream));

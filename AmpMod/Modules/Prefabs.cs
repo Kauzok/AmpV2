@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using AmpMod.SkillStates.Nemesis_Amp.Components;
+using R2API;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
@@ -151,6 +152,11 @@ namespace AmpMod.Modules
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
 
+            if (modelName == "mdlNemAmp")
+            {
+                NemAmpSpawnVFXController vfxController = model.AddComponent<NemAmpSpawnVFXController>();
+                vfxController.characterBody = bodyComponent;
+            }
             bodyPrefabs.Add(newPrefab);
 
             return newPrefab;

@@ -97,9 +97,12 @@ namespace AmpMod.Modules.Survivors
                     bodyPrefab.AddComponent<NemAmpLightningTetherController>();
                     
                     var deathComp = bodyPrefab.GetComponent<CharacterDeathBehavior>();
+                    var stateMachine = bodyPrefab.GetComponent<EntityStateMachine>();
                     deathComp.deathState = new SerializableEntityStateType(typeof(NemDeathState));
-                    deathComp.deathStateMachine = bodyPrefab.GetComponent<EntityStateMachine>();
+                    deathComp.deathStateMachine = stateMachine;
 
+                    stateMachine.initialStateType = new SerializableEntityStateType(typeof(NemSpawnState));;
+                    
                     var menuSound = displayPrefab.AddComponent<SkillStates.SkillComponents.PlayMenuSound>();
                     menuSound.soundString = "Play_item_use_lighningArm";
                 }

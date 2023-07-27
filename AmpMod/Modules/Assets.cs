@@ -121,9 +121,10 @@ namespace AmpMod.Modules
         #endregion
 
         #region Nemesis Amp Assets
-        [Header("Death Effects")]
+        [Header("Death/Spawn Effects")]
         internal static GameObject deathExplosionEffect;
         internal static Material matDeathOverlay;
+        internal static GameObject spawnSecondaryExplosionEffect;
 
         [Header("Passive Effects")]
         internal static GameObject passiveMeter;
@@ -420,6 +421,7 @@ namespace AmpMod.Modules
             CreateVFXMaterial("matSurgeBillboard");
             CreateVFXMaterial("matFieldTeamAreaIndicator");
             CreateDistortionMaterial("matInverseDistortion");
+            CreateVFXMaterial("matGalaxy");
             #endregion
 
             #region Voltaic Onslaught
@@ -473,6 +475,9 @@ namespace AmpMod.Modules
             AddNewEffectDef(deathExplosionEffect);
 
             CreateIntersectMaterial("matLightningSpherePurpleReal");  
+
+            spawnSecondaryExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("SpawnRingEffect");
+            AddNewEffectDef(spawnSecondaryExplosionEffect);
         }
         private static void CreateChargeBeam()
         {
