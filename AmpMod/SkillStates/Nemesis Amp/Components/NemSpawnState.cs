@@ -12,12 +12,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 {
     internal class NemSpawnState : BaseState
     {
-        public static float duration = 4.5f;
+        public static float duration = 5f;
         private Transform modelTransform;
         private Animator animator;
         private float waitDuration = 1.5f;
         private ChildLocator childLocator;
-        private float strikeRadius = 5f;
+        private float strikeRadius = 10f;
         private CharacterModel characterModel;
         private bool hasFired;
 

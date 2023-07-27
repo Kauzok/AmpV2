@@ -125,6 +125,7 @@ namespace AmpMod.Modules
         internal static GameObject deathExplosionEffect;
         internal static Material matDeathOverlay;
         internal static GameObject spawnSecondaryExplosionEffect;
+        internal static GameObject spawnDustEffect;
 
         [Header("Passive Effects")]
         internal static GameObject passiveMeter;
@@ -339,6 +340,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Nemesis Amp
+            CreateSpawn();
             CreateDeath();
             CreateChargeBeam();
             CreateLightningStream();
@@ -371,7 +373,8 @@ namespace AmpMod.Modules
 
             #region NemAmp Mats
 
-            #region Death
+            #region Death/Spawn
+            CreateVFXMaterial("matDustDirectionalDark");
             #endregion
 
             #region Passive
@@ -467,6 +470,16 @@ namespace AmpMod.Modules
 
         #region Nemesis Amp Assets
 
+        private static void CreateSpawn()
+        {
+            spawnSecondaryExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("SpawnRingEffect");
+            AddNewEffectDef(spawnSecondaryExplosionEffect);
+
+            spawnDustEffect = mainAssetBundle.LoadAsset<GameObject>("DigEffect");
+            AddNewEffectDef(spawnDustEffect);
+
+
+        }
         private static void CreateDeath()
         {
             deathExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("DeathExplosion");
@@ -475,9 +488,6 @@ namespace AmpMod.Modules
             AddNewEffectDef(deathExplosionEffect);
 
             CreateIntersectMaterial("matLightningSpherePurpleReal");  
-
-            spawnSecondaryExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("SpawnRingEffect");
-            AddNewEffectDef(spawnSecondaryExplosionEffect);
         }
         private static void CreateChargeBeam()
         {

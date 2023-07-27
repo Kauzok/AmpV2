@@ -156,6 +156,8 @@ namespace AmpMod.Modules
             {
                 NemAmpSpawnVFXController vfxController = model.AddComponent<NemAmpSpawnVFXController>();
                 vfxController.characterBody = bodyComponent;
+                
+                
             }
             bodyPrefabs.Add(newPrefab);
 

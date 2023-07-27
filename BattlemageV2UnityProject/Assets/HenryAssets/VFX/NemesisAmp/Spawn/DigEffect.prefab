@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 857756080847641705}
   - component: {fileID: 1369814509649108222}
   - component: {fileID: 2352130556854072522}
+  - component: {fileID: 6453749951868598285}
+  - component: {fileID: 6233778564302903469}
+  - component: {fileID: 1818251099665317318}
   m_Layer: 0
   m_Name: DigEffect
   m_TagString: Untagged
@@ -25,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5624443596091371321}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1369814509649108222
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -41,7 +44,7 @@ ParticleSystem:
   m_GameObject: {fileID: 5624443596091371321}
   serializedVersion: 6
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -4820,3 +4823,49 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6453749951868598285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624443596091371321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectIndex: -1
+  positionAtReferencedTransform: 0
+  parentToReferencedTransform: 0
+  applyScale: 0
+  soundName: 
+  disregardZScale: 0
+--- !u!114 &6233778564302903469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624443596091371321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxPriority: 2
+  vfxIntensity: 0
+  optionalLights: []
+  secondaryParticleSystem: []
+--- !u!114 &1818251099665317318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624443596091371321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

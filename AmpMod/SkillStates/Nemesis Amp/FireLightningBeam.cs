@@ -130,7 +130,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     falloffModel = BulletAttack.FalloffModel.None,
                     stopperMask = LayerIndex.world.mask,
                     procCoefficient = 1f,
-                    maxDistance = 140f,
+                    maxDistance = 160f,
                     smartCollision = true,
                     damageType = DamageType.Generic,
                    
