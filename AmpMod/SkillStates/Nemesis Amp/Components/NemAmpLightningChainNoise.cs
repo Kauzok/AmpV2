@@ -17,7 +17,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         private float age;
         public GameObject endGameObject;
         public Vector3 startPosition;
-        private float posRange = 0.5f;
+        private float posRange = 0.2f;
         private SkillStates.Nemesis_Amp.NemAmpLightningTetherController nemAmpLightningEffectController;
         private EffectComponent effectComponent;
         private int numLineRendererPoints;
@@ -58,16 +58,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             {
                 if (lineRenderer && endBody)
                 {
-                    Vector3 normalizedVector;
+
                     lineRenderer.SetPosition(0, this.startPosition);
 
-                    for (int i = 1; i < numLineRendererPoints - 1; i++)
+                    for (int i = 1; i <= numLineRendererPoints - 1; i++)
                     {
                         //lineRenderer.SetPosition(i, victimBody.corePosition);
                         //float z = ((float)i) * (maxZ) / (float)(numLineRendererPoints - 1);
                         var pos = Vector3.Lerp(endBody.corePosition, startPosition, i / 11f);
                         pos.x += Random.Range(-posRange, posRange);
                         pos.y += Random.Range(-posRange, posRange);
+                        pos.z += Random.Range(-posRange, posRange);
                         /* var chooser = Random.Range(1, 4);
                         if (chooser == 1) pos.x += Random.Range(-posRange, posRange) + .2f;
                         else if (chooser == 2) pos.y += Random.Range(-posRange, posRange) + .2f;
@@ -76,9 +77,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
                         lineRenderer.SetPosition(i, pos);
                     }
-                    normalizedVector = Vector3.Normalize((endBody.corePosition - startPosition));
-                    
-                    lineRenderer.SetPosition(numLineRendererPoints - 1, (endBody.corePosition + 2f*(normalizedVector)));
+
+                    lineRenderer.SetPosition(numLineRendererPoints - 1, endBody.corePosition);
 
                     //Debug.Log(trackingTarget.gameObject.transform.position + " is position");
 

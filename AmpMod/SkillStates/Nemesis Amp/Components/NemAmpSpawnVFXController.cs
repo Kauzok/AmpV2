@@ -12,10 +12,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
     {
         public GameObject ringVFX = Assets.spawnSecondaryExplosionEffect;
         public GameObject dustVFX = Assets.spawnDustEffect;
+        private String dustSFX = Modules.StaticValues.spawnDustSoundString;
+        private string burstSFX = Modules.StaticValues.spawnBurstSoundString;
         public ChildLocator childLocator;
         public CharacterBody characterBody;
 
-        private void Awake()
+        private void Start()
         {
             childLocator = base.gameObject.GetComponent<ChildLocator>();
         }
@@ -28,6 +30,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 origin = characterBody.corePosition,
             };
             EffectManager.SpawnEffect(ringVFX, ringEffect, true);
+            Util.PlaySound(burstSFX, base.gameObject);
         }
 
         public void SpawnDust()
@@ -36,9 +39,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             EffectData dustEffect = new EffectData
             {
                 scale = 1,
-                origin = leftHandTransform.position,
+                origin = leftHandTransform.position,    
             };
             EffectManager.SpawnEffect(dustVFX, dustEffect, true);
+            Util.PlaySound(dustSFX, base.gameObject);
+            
+            
         }
     }
     

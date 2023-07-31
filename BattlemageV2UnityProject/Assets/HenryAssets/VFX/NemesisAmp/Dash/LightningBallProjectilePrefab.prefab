@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catalogIndex: -1
-  ghostPrefab: {fileID: 1321074615563478, guid: 2345c92c8814350478a24754f36bcf71,
+  ghostPrefab: {fileID: 1321074615563478, guid: 2117ff7548fc95349b2f82d3eb59733c,
     type: 3}
   ghostTransformAnchor: {fileID: 0}
   startSound: 
@@ -201,6 +201,7 @@ MonoBehaviour:
   offsetForLifetimeExpiredSound: 0
   destroyOnEnemy: 1
   destroyOnWorld: 1
+  impactOnWorld: 1
   timerAfterImpact: 0
   lifetime: 5
   lifetimeAfterImpact: 0

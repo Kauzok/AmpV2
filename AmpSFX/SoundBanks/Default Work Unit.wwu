@@ -50,6 +50,7 @@
 						<ObjectRef Name="PlayBoltState2SecAlter" ID="{86A2626B-9BC0-4BB5-8328-B9318A68DB40}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayVortexLoop" ID="{A0CD83BE-6D32-4BD3-9CFE-0D6AE4514F7B}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeHit4" ID="{9238F131-EC83-4BE5-B172-88B60E1BC74F}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayNemSpawnBurst" ID="{EE99C133-EE25-4BFD-A05A-8CB03DF4BA94}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayVortexFlightLoopAlt" ID="{14938586-0639-4C35-BFE3-3D52214B296C}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeSwing1" ID="{2A5BFE75-B3D9-4C39-BD65-FFB1DDDBA4B6}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayBeamCharge" ID="{9AA80B2F-CE96-4C74-BE39-DA4BAC2687AF}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
@@ -60,6 +61,7 @@
 						<ObjectRef Name="PlayStormbladeHit2" ID="{C218BB76-85F0-4E09-8FC8-481B11368AD5}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayDeathCharge" ID="{CA64834A-D98F-4E10-8081-2D48ADAECABB}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayWormCharge" ID="{A453A9E3-CFBA-4EA4-8432-4D1FC5C5367C}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayNemSpawnDust" ID="{75B45593-FB57-4EB9-9E7D-4FBAD1A3B306}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFulminationExitAlter" ID="{BC0E9EA2-9B82-4FB5-9706-DDC4853211D7}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayLightningStreamLoop" ID="{D6B3D2F1-0D62-4FDE-90B8-48301E9009E5}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

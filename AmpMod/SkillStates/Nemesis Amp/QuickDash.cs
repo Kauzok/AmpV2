@@ -97,22 +97,22 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			this.blinkVfxInstance.transform.SetParent(base.transform, false);
 			this.blinkVector = this.GetBlinkVector();
 
-			//set lightning ball as primary skill
-			if (base.skillLocator.primary && primaryOverrideSkillDef)
+            //set lightning ball as primary skill
+            if (base.skillLocator.primary && primaryOverrideSkillDef)
             {
 				base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 
 				/*if (base.skillLocator.primary.skillNameToken != "NT_UTILITY_LIGHTNINGBALL_NAME")
                 {
 					base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-				}*/
+				} */
 				
-			}
-
-	
+			} 
 
 
-			this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+
+
+            this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
 		}
 
         protected Vector3 GetBlinkVector()

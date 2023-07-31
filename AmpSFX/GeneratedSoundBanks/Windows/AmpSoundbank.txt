@@ -7,6 +7,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	232580406	PlayQuicksurge			\Default Work Unit\PlayQuicksurge	
 	302608516	PlayVortexExplosion			\Default Work Unit\PlayVortexExplosion	
 	360230241	PlayHeatShockCharge			\Default Work Unit\PlayHeatShockCharge	
+	417407266	PlayNemSpawnDust			\Default Work Unit\PlayNemSpawnDust	
 	448412811	PlayLobbyEntrance			\Default Work Unit\PlayLobbyEntrance	
 	538734731	PlayWormSummon			\Default Work Unit\PlayWormSummon	
 	562064113	PlayLightningStreamLoop			\Default Work Unit\PlayLightningStreamLoop	
@@ -49,6 +50,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3762598159	PlayStormbladeHit2			\Default Work Unit\PlayStormbladeHit2	
 	3779069530	PlayFerroshotLaunchAlter			\Default Work Unit\PlayFerroshotLaunchAlter	
 	3831372565	PlayVortexLoop			\Default Work Unit\PlayVortexLoop	
+	3871466292	PlayNemSpawnBurst			\Default Work Unit\PlayNemSpawnBurst	
 	4018580586	PlayPlasmaExplosion			\Default Work Unit\PlayPlasmaExplosion	
 	4137515496	PlayBuffStart			\Default Work Unit\PlayBuffStart	
 	4290250854	PlayLightningStreamEnd			\Default Work Unit\PlayLightningStreamEnd	
@@ -69,6 +71,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	226974468	BoltState2secwithwind	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\boltstate2secwithwind_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2secwithwind		361844
 	231233257	HeatShockCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\HeatShockCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockCharge		88258
 	267548966	SurgeExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\SurgeExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeExit		123552
+	270257718	NemSpawnBurst	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemSpawnBurst_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Spawn\NemSpawnBurst		142330
 	286477067	BoltExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltExit\BoltExit		116032
 	294908951	PassiveExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BuffExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveExit		416068
 	333763192	SurgeEnter2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\SurgeEnter2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeEnter2		157308
@@ -95,6 +98,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	590040022	Stormblade2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\Stormblade2Trim_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade2		90028
 	594529929	Surge2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\Surge2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge2		90872
 	632359708	PassiveLoop	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\PassiveLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveLoop		199372
+	657366885	NemSpawnDirt	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemSpawnDirt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Spawn\NemSpawnDirt		64744
 	662641942	VortexSpawn	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexSpawn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexSpawn		210566
 	695068599	VortexFlightLoopAlter2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoopAlter2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoopAlter2		76736
 	706616777	ChargeBeam	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\ChargeBeam1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\ChargeBeam		289964

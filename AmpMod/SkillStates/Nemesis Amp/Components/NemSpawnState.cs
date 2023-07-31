@@ -28,7 +28,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             this.modelTransform = base.GetModelTransform();
             this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
             childLocator = base.GetModelChildLocator();
-            Debug.Log("spawning effect");
+            //Debug.Log("spawning effect");
             if (NetworkServer.active) base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, NemSpawnState.duration * 1.5f);
             if (this.characterModel)
             {

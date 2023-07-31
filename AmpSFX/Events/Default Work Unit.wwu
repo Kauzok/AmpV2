@@ -741,6 +741,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayNemSpawnDust" ID="{75B45593-FB57-4EB9-9E7D-4FBAD1A3B306}">
+					<ChildrenList>
+						<Action Name="" ID="{E4552988-4521-48EB-8544-4C55026C9DCE}" ShortID="278748931">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NemSpawnDirt" ID="{0FAA26F2-449A-4C6F-ACF8-711FB6D1E9C7}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayNemSpawnBurst" ID="{EE99C133-EE25-4BFD-A05A-8CB03DF4BA94}">
+					<ChildrenList>
+						<Action Name="" ID="{A7B20298-5913-4930-A77C-1097FDF11BA1}" ShortID="588472937">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NemSpawnBurst" ID="{DE70533E-21F7-44F2-ADD5-8403ECF73651}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

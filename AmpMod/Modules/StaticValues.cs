@@ -102,6 +102,9 @@ namespace AmpMod.Modules
         internal const float lightningStreamBaseTickTime = .333f;
         internal const float lightningChainRange = 30f;
 
+        [Header("Plasma Orb Primary Values")]
+        internal const float plasmaOrbDamageCoefficient = 3f;
+
         [Header("Flux Blades Values")]
         internal const float bladeDamageCoefficient = 2f;
         internal const float bladeProcCoefficient = .2f;
@@ -192,6 +195,10 @@ namespace AmpMod.Modules
         #endregion
 
         #region Nemesis Amp Sounds
+
+        [Header("Spawn Sound Strings")]
+        internal const string spawnBurstSoundString = "PlayNemSpawnBurst";
+        internal const string spawnDustSoundString = "PlayNemSpawnDust";
 
         [Header("Death Sound Strings")]
         internal const string deathExplosionSoundString = "PlayDeathExplosion";

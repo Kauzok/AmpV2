@@ -375,6 +375,7 @@ namespace AmpMod.Modules
 
             #region Death/Spawn
             CreateVFXMaterial("matDustDirectionalDark");
+            CreateVFXMaterial("matTracerDirt");
             #endregion
 
             #region Passive
@@ -425,6 +426,10 @@ namespace AmpMod.Modules
             CreateVFXMaterial("matFieldTeamAreaIndicator");
             CreateDistortionMaterial("matInverseDistortion");
             CreateVFXMaterial("matGalaxy");
+            CreateVFXMaterial("matPlasmaOuter");
+            CreateVFXMaterial("matPlasmaBall");
+            CreateStandardMaterial("matPlasmaCenter");
+            CreateStandardMaterial("matWilloWispVoidEye");
             #endregion
 
             #region Voltaic Onslaught

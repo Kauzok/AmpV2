@@ -2310,6 +2310,18 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
+    m_Name: Gesture, Override
+    m_StateMachine: {fileID: 1107117215636118238}
+    m_Mask: {fileID: 31900000, guid: 09fd29657047b8e49bc814efbd16107f, type: 2}
+    m_Motions: []
+    m_Behaviours: []
+    m_BlendingMode: 0
+    m_SyncedLayerIndex: -1
+    m_DefaultWeight: 1
+    m_IKPass: 0
+    m_SyncedLayerAffectsTiming: 0
+    m_Controller: {fileID: 9100000}
+  - serializedVersion: 5
     m_Name: Impact
     m_StateMachine: {fileID: 1107451939762505348}
     m_Mask: {fileID: 31900000, guid: 041cb45ceb9bb744583097cd5f2d7775, type: 2}
@@ -2325,18 +2337,6 @@ AnimatorController:
     m_Name: Fulminate, Override
     m_StateMachine: {fileID: -4970260322264343184}
     m_Mask: {fileID: 31900000, guid: 38c66702a03800f4ca977024bdc6a18c, type: 2}
-    m_Motions: []
-    m_Behaviours: []
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
-    m_DefaultWeight: 1
-    m_IKPass: 0
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
-  - serializedVersion: 5
-    m_Name: Gesture, Override
-    m_StateMachine: {fileID: 1107117215636118238}
-    m_Mask: {fileID: 31900000, guid: 09fd29657047b8e49bc814efbd16107f, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -2559,7 +2559,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: f57eb1f0072e2a641b14fbbfe0cefd10, type: 2}
     m_Threshold: 0.25
-    m_Position: {x: 1, y: 0}
+    m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeed
@@ -2567,7 +2567,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 41451b1d18bf9464b97e69d6e8dcad2a, type: 2}
     m_Threshold: 0.5
-    m_Position: {x: -1, y: 0}
+    m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeed
@@ -2575,7 +2575,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 0e8253825f6c3754dad3f9451539e4b5, type: 2}
     m_Threshold: 0.75
-    m_Position: {x: 0, y: 1}
+    m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeed
@@ -2583,13 +2583,13 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: f0c9bbe39d927134a9945dd5588e264a, type: 2}
     m_Threshold: 1
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: -1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
-  m_BlendParameter: forwardSpeed
-  m_BlendParameterY: rightSpeed
+  m_BlendParameter: rightSpeed
+  m_BlendParameterY: forwardSpeed
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
