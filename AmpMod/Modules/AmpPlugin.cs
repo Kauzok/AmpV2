@@ -103,7 +103,7 @@ namespace AmpMod.Modules
                } */
 
             //creates Amp
-            new Survivors.Amp().Initialize();
+            //new Survivors.Amp().Initialize();
 
             //creates Nemesis Amp
             new Survivors.NemAmp().Initialize();

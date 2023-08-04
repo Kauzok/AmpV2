@@ -3,32 +3,38 @@ using EntityStates;
 using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
     public class FireLightningBall : BaseSkillState
     {
         private GameObject projectilePrefab = Modules.Projectiles.lightningBallPrefab;
-        private string shootString;
+        private string shootString = StaticValues.plasmaFireString;
         private bool hasFired;
         public QuickDash src;
+        private ChildLocator childLocator;
         private GameObject muzzleFlashPrefab = Modules.Assets.lightningBallMuzzleFlashEffect;
         private int growthBuffCount;
         private float damageCoefficient = Modules.StaticValues.lightningBallDamageCoefficient;
         private StackDamageController stackDamageController;
         private float duration = .2f;
         private float waitDuration = .3f;
+        private Transform muzzleTransform;
         private Ray aimRay;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            childLocator = base.GetModelChildLocator();
             //base.characterBody.SetAimTimer(2f);
             this.aimRay = base.GetAimRay();
             base.StartAimMode(this.aimRay, 3f, true);
             stackDamageController = base.GetComponent<StackDamageController>();
             growthBuffCount = base.characterBody.GetBuffCount(Modules.Buffs.damageGrowth);
             base.PlayAnimation("Gesture, Override", "FirePlasmaBall", "BaseSkill.playbackRate", 4*this.duration);
+            muzzleTransform = childLocator.FindChild("HandR");
+            Util.PlaySound(shootString, base.gameObject);   
         }
          
         public override void FixedUpdate()
@@ -76,7 +82,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             }
 
-            EffectManager.SimpleMuzzleFlash(muzzleFlashPrefab, base.gameObject, "HandR", true);
+            //EffectManager.SimpleMuzzleFlash(muzzleFlashPrefab, base.gameObject, "HandR", true);
+            UnityEngine.Object.Instantiate(muzzleFlashPrefab, muzzleTransform);
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
         }

@@ -28,6 +28,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1703723986	PlayFerroshotLaunch			\Default Work Unit\PlayFerroshotLaunch	
 	1780917177	PlayHeatShockSwing			\Default Work Unit\PlayHeatShockSwing	
 	2184895701	PlayFulminationExitAlter			\Default Work Unit\PlayFulminationExitAlter	
+	2222450664	PlayPlasmaLaunch			\Default Work Unit\PlayPlasmaLaunch	
 	2431378448	PlayDeathExplosion			\Default Work Unit\PlayDeathExplosion	
 	2447326215	PlayVortexFlightLoop			\Default Work Unit\PlayVortexFlightLoop	
 	2520482775	PlayFieldLoop			\Default Work Unit\PlayFieldLoop	
@@ -111,6 +112,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	820673821	VortexCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexCharge		215904
 	835628925	FieldLoop	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FieldLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\FieldLoop		1353568
 	845905776	FerroshotCreate	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateRemake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreate		234820
+	858229247	PlasmaBall	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\PlasmaBall_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\PlasmaBall		131388
 	885005710	WormCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\WormCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\Worm\WormCharge		529088
 	919812550	FluxBladeFire	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FluxBladeFire_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBlades\FluxBladeFire		142768
 	980239621	VortexLoop	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexLoop_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexLoop		540816

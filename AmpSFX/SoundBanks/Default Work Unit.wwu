@@ -62,6 +62,7 @@
 						<ObjectRef Name="PlayDeathCharge" ID="{CA64834A-D98F-4E10-8081-2D48ADAECABB}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayWormCharge" ID="{A453A9E3-CFBA-4EA4-8432-4D1FC5C5367C}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayNemSpawnDust" ID="{75B45593-FB57-4EB9-9E7D-4FBAD1A3B306}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayPlasmaLaunch" ID="{05BC4130-8490-4F6F-925D-97F231D9F2FA}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFulminationExitAlter" ID="{BC0E9EA2-9B82-4FB5-9706-DDC4853211D7}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayLightningStreamLoop" ID="{D6B3D2F1-0D62-4FDE-90B8-48301E9009E5}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

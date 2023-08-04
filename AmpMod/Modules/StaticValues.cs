@@ -231,6 +231,7 @@ namespace AmpMod.Modules
         internal const string surgeEnterString = "PlayQuicksurgeEnter";
         internal const string surgeFlightString = "PlayQuicksurge";
         internal const string surgeExitString = "PlayQuicksurgeExit";
+        internal const string plasmaFireString = "PlayPlasmaLaunch";
 
         [Header("Voltaic Onslaught Sound Strings")]
         internal const string summonString = "PlaySummonStorm";

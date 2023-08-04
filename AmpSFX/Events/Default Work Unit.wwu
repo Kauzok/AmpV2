@@ -769,6 +769,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayPlasmaLaunch" ID="{05BC4130-8490-4F6F-925D-97F231D9F2FA}">
+					<ChildrenList>
+						<Action Name="" ID="{EA5B304B-7FAB-41B1-A054-64DDC323DC47}" ShortID="435248074">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlasmaBall" ID="{91F911B2-2B30-4541-BD93-3B08AD8598BD}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

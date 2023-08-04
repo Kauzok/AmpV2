@@ -135,12 +135,12 @@ namespace AmpMod.Modules
 
             #region Primary2
             LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Lorentz Blades");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire a <style=cIsUtility>tracking</style> iron sand dagger, dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, the blades <style=cIsUtility>create a magnetic implosion</style> for <style=cIsDamage>80% damage</style>.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire 3 <style=cIsUtility>tracking</style> iron sand daggers, each dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, fire <style=cIsDamage>5</style> blades instead.");
             #endregion
 
             #region Primary3
             LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Trishock");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire 3 <style=cIsUtility>tracking</style> orbs of plasma that explode for <style=cIsDamage>{100f * StaticValues.plasmaOrbDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, the orbs <style=cIsUtility>explode</style");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire 3 <style=cIsUtility>tracking</style> orbs of plasma that explode for <style=cIsDamage>{100f * StaticValues.plasmaOrbDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, fire <style=cIsDamage>5</style> orbs instead.");
             #endregion
 
             #region Secondary
@@ -155,7 +155,7 @@ namespace AmpMod.Modules
 
             #region Utility2
             LanguageAPI.Add(nemPrefix + "UTILITY_DASH_NAME", "Voidsurge");
-            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_DESCRIPTION", $"Transform into lightning, becoming <style=cIsUtility>intangible</style> and dashing a short distance.");
+            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_DESCRIPTION", $"Transform into lightning, becoming <style=cIsUtility>intangible</style> and dashing a short distance. Your next primary cast fires a a <style=cIsUtility>shocking</style> ball of void lightning for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
 
 
             LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_NAME", "Launch Lightning Ball");

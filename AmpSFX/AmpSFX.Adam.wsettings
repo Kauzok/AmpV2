@@ -5,6 +5,7 @@
 			<PropertyList>
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Originals\SFX\"/>
 				<Property Name="Event Action List\{046BB635-45D9-4098-B497-2BB69AD8B7C8}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{05BC4130-8490-4F6F-925D-97F231D9F2FA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{08B879F2-C4F7-413E-BAF2-2CF4DB712EF6}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{0C60B786-4D7C-40EF-B3A4-ABA644F76706}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{100A706B-E2C8-4241-B44E-1B73E9A84EA7}\x64_Expand States" Type="string" Value=""/>

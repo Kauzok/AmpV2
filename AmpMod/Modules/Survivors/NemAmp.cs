@@ -146,14 +146,14 @@ namespace AmpMod.Modules.Survivors
                   true,
                   new String[] { }));
 
-            //creates Flux Blades
-           /* Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
+            //creates Lorentz Blades
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
                 "Weapon",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_NAME",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
                 true,
-                new String[] { })); */
+                new String[] { })); 
             #endregion
 
 

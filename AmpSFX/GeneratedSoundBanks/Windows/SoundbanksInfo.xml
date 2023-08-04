@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="3084097745">
+		<SoundBank Id="865939728" Language="SFX" Hash="3546245432">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -302,6 +302,14 @@
 						<File Id="513875902" Language="SFX">
 							<ShortName>HeatProjectileExplosion.wav</ShortName>
 							<Path>SFX\HeatProjectileExplosion_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2222450664" Name="PlayPlasmaLaunch" ObjectPath="\Events\Default Work Unit\PlayPlasmaLaunch">
+					<IncludedMemoryFiles>
+						<File Id="858229247" Language="SFX">
+							<ShortName>PlasmaBall.wav</ShortName>
+							<Path>SFX\PlasmaBall_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

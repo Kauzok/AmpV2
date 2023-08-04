@@ -141,6 +141,9 @@ namespace AmpMod.Modules
         internal static GameObject lightningCrosshair;
         internal static GameObject lightningStreamMuzzleFlash;
 
+        [Header("Lorentz Blades Effects")]
+        internal static GameObject bladePrepObject;
+
         [Header("Howitzer Spark Effects")]
         internal static GameObject chargeBeamMuzzleEffect;
         internal static GameObject chargeBeamTracerPrefab;
@@ -349,6 +352,7 @@ namespace AmpMod.Modules
             CreatePassiveMeter();
             CreateLightningDash();
             CreateLightningSlash();
+            CreateFluxBlades();
             #endregion
 
         }
@@ -494,6 +498,40 @@ namespace AmpMod.Modules
 
             CreateIntersectMaterial("matLightningSpherePurpleReal");  
         }
+        private static void CreateLightningStream()
+        {
+            lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningEffectOrbNew");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamEffect);
+            //lightningStreamEffect.AddComponent<SkillStates.Nemesis_Amp.NemAmpLightningRendererNoise>();
+            //AddNewEffectDef(lightningStreamEffect);
+            var lightningStreamOmniImpact = mainAssetBundle.LoadAsset<GameObject>("OmniImpactVFXLightning");
+            AddNewEffectDef(lightningStreamOmniImpact);
+            lightningStreamImpactEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbImpact");
+            AddNewEffectDef(lightningStreamImpactEffect);
+
+            lightningCrosshair = mainAssetBundle.LoadAsset<GameObject>("LightningIndicator");
+            lightningCrosshair.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
+            PrefabAPI.RegisterNetworkPrefab(lightningCrosshair);
+
+            lightningStreamChainEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningOrbChainEffect");
+            lightningStreamChainEffectPrefab.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefab);
+
+            lightningStreamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzle");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleEffect);
+
+            lightningStreamMuzzleFlash = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzleFlash");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleFlash);
+
+            //AddNewEffectDef(lightningStreamMuzzleFlash);
+
+        }
+
+        private static void CreateFluxBlades()
+        {
+            bladePrepObject = mainAssetBundle.LoadAsset<GameObject>("BladeSpawn");
+            PrefabAPI.RegisterNetworkPrefab(bladePrepObject);
+        }
         private static void CreateChargeBeam()
         {
             
@@ -560,35 +598,6 @@ namespace AmpMod.Modules
 
             stormMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("StormMuzzleFlash");
             AddNewEffectDef(stormMuzzleFlashEffect);
-        }
-
-        private static void CreateLightningStream()
-        {
-            lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningEffectOrbNew");
-            PrefabAPI.RegisterNetworkPrefab(lightningStreamEffect);
-            //lightningStreamEffect.AddComponent<SkillStates.Nemesis_Amp.NemAmpLightningRendererNoise>();
-            //AddNewEffectDef(lightningStreamEffect);
-            var lightningStreamOmniImpact = mainAssetBundle.LoadAsset<GameObject>("OmniImpactVFXLightning");
-            AddNewEffectDef(lightningStreamOmniImpact);
-            lightningStreamImpactEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbImpact");
-            AddNewEffectDef(lightningStreamImpactEffect);
-
-            lightningCrosshair = mainAssetBundle.LoadAsset<GameObject>("LightningIndicator");
-            lightningCrosshair.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
-            PrefabAPI.RegisterNetworkPrefab(lightningCrosshair);
-
-            lightningStreamChainEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningOrbChainEffect");
-            lightningStreamChainEffectPrefab.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
-            PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefab);
-
-            lightningStreamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzle");
-            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleEffect);
-
-            lightningStreamMuzzleFlash = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzleFlash");
-            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleFlash);
-            
-            //AddNewEffectDef(lightningStreamMuzzleFlash);
-
         }
 
         private static void CreateLightningDash()

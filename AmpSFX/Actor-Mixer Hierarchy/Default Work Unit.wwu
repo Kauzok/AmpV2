@@ -2510,6 +2510,53 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<Sound Name="PlasmaBall" ID="{91F911B2-2B30-4541-BD93-3B08AD8598BD}" ShortID="242870530">
+											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{29FD547E-6940-40D0-9047-A40DB13C8498}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="ProximityAttenuation" ID="{912BB46D-5D16-4BE5-8B1A-F54CE68D1C99}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PlasmaBall" ID="{89B5CFA0-B0A5-454C-9784-0805C68A18C8}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>PlasmaBall.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="858229247"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PlasmaBall" ID="{89B5CFA0-B0A5-454C-9784-0805C68A18C8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Gathering Storm" ID="{E83FED15-C513-46E7-B4C2-4BCC27DE7BD1}" ShortID="183295676">
@@ -2715,8 +2762,12 @@
 														<Value>6</Value>
 													</ValueList>
 												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
 												</Reference>
@@ -2744,7 +2795,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="NemSpawnBurst" ID="{DE70533E-21F7-44F2-ADD5-8403ECF73651}" ShortID="831504953">
+											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="150LinearAttentuation" ID="{A07D3243-80D1-4CA9-8E5E-B2A92067C064}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
 												</Reference>
