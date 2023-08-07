@@ -151,7 +151,7 @@ namespace AmpMod.Modules.Survivors
                 "Weapon",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_NAME",
                 prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"),
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemBlades"),
                 true,
                 new String[] { })); 
             #endregion

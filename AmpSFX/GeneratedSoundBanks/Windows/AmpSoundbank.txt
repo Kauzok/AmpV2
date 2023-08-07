@@ -53,69 +53,71 @@ Event	ID	Name			Wwise Object Path	Notes
 	3831372565	PlayVortexLoop			\Default Work Unit\PlayVortexLoop	
 	3871466292	PlayNemSpawnBurst			\Default Work Unit\PlayNemSpawnBurst	
 	4018580586	PlayPlasmaExplosion			\Default Work Unit\PlayPlasmaExplosion	
-	4137515496	PlayBuffStart			\Default Work Unit\PlayBuffStart	
+	4242022952	PlayFluxBladesSpawn			\Default Work Unit\PlayFluxBladesSpawn	
 	4290250854	PlayLightningStreamEnd			\Default Work Unit\PlayLightningStreamEnd	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	16687540	FerroshotLaunch	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateFinal_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunch		48086
-	110367248	LightningStreamEnd	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\LightningStreamEnd_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\LightningStreamEnd		382960
-	111936196	FulminationState	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FulminationState_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationState\FulminationState		787268
-	120900190	BoltState	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltState_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState		464848
-	142824659	AimField	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\AimField_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\AimField		702724
-	145431782	ReleaseField1	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\ReleaseField_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\ReleaseField\ReleaseField1		377672
-	171555746	StormbladeHitV4	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\StormbladeHitV4_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHitV4		132232
-	196974043	BoltState2secAlter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltState2secAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2secAlter		361844
-	212267084	Surge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\Surge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge		89652
-	226974468	BoltState2secwithwind	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\boltstate2secwithwind_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2secwithwind		361844
-	231233257	HeatShockCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\HeatShockCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockCharge		88258
-	267548966	SurgeExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\SurgeExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeExit		123552
-	270257718	NemSpawnBurst	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemSpawnBurst_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Spawn\NemSpawnBurst		142330
-	286477067	BoltExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltExit\BoltExit		116032
-	294908951	PassiveExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BuffExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveExit		416068
-	333763192	SurgeEnter2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\SurgeEnter2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeEnter2		157308
-	337308023	NemDeathCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemDeathCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeathCharge		125694
-	355476522	BoltEnter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltEnter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltEnter\BoltEnter		108312
-	390082384	FerroshotLaunchAlter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FerroshotLaunchAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunchAlter		33348
-	391751073	ChargeExplosion	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\ChargeExplosion_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\ChargeExplosion\ChargeExplosion		190656
-	426766206	FulminationExit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FulminationExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationExit\FulminationExit		115908
-	430921292	WormSummon	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\WormSummon_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\Worm\WormSummon		396484
-	439305442	StormbladeHit2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\StormbladeHit2_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit2		132232
-	439898417	StormbladeHit1	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\StormbladeHit1_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit1		132232
-	444271671	FulminationEnter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FulminationEnter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationEnter\FulminationEnter		45648
-	452903732	FulminationExitAlter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FulminationExitAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationExit\FulminationExitAlter		33606
-	475514569	HeatShockHit	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\HeatShockHit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockHit		59914
-	480520510	LightningStreamStart	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\LightningStreamStart_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\LightningStream\LightningStreamStart		131912
-	506281423	ReleaseField2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\ReleaseField2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\ReleaseField\ReleaseField2		317152
-	513875902	PlasmaProjectileExplosion	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\HeatProjectileExplosion_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\PlasmaProjectileExplosion		82744
-	515172351	BoltState2sec	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\BoltState2sec_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2sec		361316
-	524773087	HeatShockSwing	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\HeatShockSwing_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockSwing		131450
-	529593956	FireBeam	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FireBeam2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\FireBeam		320244
-	549584858	FluxBlades2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FluxBlades2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBlades\FluxBlades2		142768
-	558615039	VortexShoot	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexShoot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexShoot		127190
-	571697280	FerroshotCreateAlter	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreateAlter		175520
-	590040022	Stormblade2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\Stormblade2Trim_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade2		90028
-	594529929	Surge2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\Surge2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge2		90872
-	632359708	PassiveLoop	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\PassiveLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveLoop		199372
-	657366885	NemSpawnDirt	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemSpawnDirt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Spawn\NemSpawnDirt		64744
-	662641942	VortexSpawn	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexSpawn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexSpawn		210566
-	695068599	VortexFlightLoopAlter2	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoopAlter2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoopAlter2		76736
-	706616777	ChargeBeam	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\ChargeBeam1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\ChargeBeam		289964
-	707824451	NemDeath	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\NemDeath_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeath		457576
-	736458125	VortexExplosionAlt	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexExplosionAlt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexExplosionAlt		310566
-	756615058	LobbyEntrance	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\LobbyEntrance_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\LobbySFX\LobbyEntrance		458620
-	760072484	Stormblade1	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\Stormblade1Remake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade1		83752
-	774569860	VortexFlightLoop	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoop		346840
-	815760424	LightningStream	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\LightningStream_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\LightningStream\LightningStream		561760
-	820673821	VortexCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexCharge		215904
-	835628925	FieldLoop	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FieldLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\FieldLoop		1353568
-	845905776	FerroshotCreate	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateRemake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreate		234820
-	858229247	PlasmaBall	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\PlasmaBall_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\PlasmaBall		131388
-	885005710	WormCharge	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\WormCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\Worm\WormCharge		529088
-	919812550	FluxBladeFire	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\FluxBladeFire_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBlades\FluxBladeFire		142768
-	980239621	VortexLoop	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\VortexLoop_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexLoop		540816
-	1038060243	StormbladeHit3	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\StormbladeHit3_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit3		141820
-	1062522064	SummonStorm	C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\SFX\SummonStorm_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Summon Storm\SummonStorm		392368
+	16687540	FerroshotLaunch	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateFinal_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunch		48086
+	110367248	LightningStreamEnd	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\LightningStreamEnd_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\LightningStreamEnd		382960
+	111936196	FulminationState	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FulminationState_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationState\FulminationState		787268
+	120900190	BoltState	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltState_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState		464848
+	142824659	AimField	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\AimField_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\AimField		702724
+	145431782	ReleaseField1	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ReleaseField_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\ReleaseField\ReleaseField1		377672
+	171555746	StormbladeHitV4	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\StormbladeHitV4_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHitV4		132232
+	196974043	BoltState2secAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltState2secAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2secAlter		361844
+	212267084	Surge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Surge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge		89652
+	226974468	BoltState2secwithwind	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\boltstate2secwithwind_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2secwithwind		361844
+	231233257	HeatShockCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\HeatShockCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockCharge		88258
+	267548966	SurgeExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SurgeExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeExit		123552
+	270257718	NemSpawnBurst	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\NemSpawnBurst_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Spawn\NemSpawnBurst		142330
+	286477067	BoltExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltExit\BoltExit		116032
+	294908951	PassiveExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BuffExit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveExit		416068
+	332363732	BladesSpawn1	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BladesSpawn1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBladesSpawn\BladesSpawn1		142768
+	333763192	SurgeEnter2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SurgeEnter2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeEnter2		157308
+	337308023	NemDeathCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\NemDeathCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeathCharge		125694
+	355476522	BoltEnter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltEnter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltEnter\BoltEnter		108312
+	390082384	FerroshotLaunchAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotLaunchAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotLaunch\FerroshotLaunchAlter		33348
+	391751073	ChargeExplosion	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ChargeExplosion_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\ChargeExplosion\ChargeExplosion		190656
+	426766206	FulminationExit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FulminationExit_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationExit\FulminationExit		115908
+	430921292	WormSummon	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\WormSummon_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\Worm\WormSummon		396484
+	439305442	StormbladeHit2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\StormbladeHit2_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit2		132232
+	439898417	StormbladeHit1	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\StormbladeHit1_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit1		132232
+	444271671	FulminationEnter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FulminationEnter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationEnter\FulminationEnter		45648
+	452903732	FulminationExitAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FulminationExitAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FulminationExit\FulminationExitAlter		33606
+	475514569	HeatShockHit	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\HeatShockHit_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockHit		59914
+	480520510	LightningStreamStart	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\LightningStreamStart_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\LightningStream\LightningStreamStart		131912
+	506281423	ReleaseField2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ReleaseField2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\ReleaseField\ReleaseField2		317152
+	513875902	PlasmaProjectileExplosion	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\HeatProjectileExplosion_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\PlasmaProjectileExplosion		82744
+	515172351	BoltState2sec	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BoltState2sec_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\BoltState\BoltState2sec		361316
+	515949684	BladesSpawn2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\BladesSpawn2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBladesSpawn\BladesSpawn2		142768
+	524773087	HeatShockSwing	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\HeatShockSwing_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\HeatShock\HeatShockSwing		131450
+	529593956	FireBeam	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FireBeam2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\FireBeam		320244
+	549584858	FluxBlades2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FluxBlades2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBlades\FluxBlades2		144292
+	558615039	VortexShoot	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexShoot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexShoot		127190
+	571697280	FerroshotCreateAlter	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateAlter_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreateAlter		175520
+	590040022	Stormblade2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Stormblade2Trim_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade2		90028
+	594529929	Surge2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Surge2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\SurgeMove\Surge2		90872
+	632359708	PassiveLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\PassiveLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Gathering Storm\PassiveLoop		199372
+	657366885	NemSpawnDirt	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\NemSpawnDirt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Spawn\NemSpawnDirt		64744
+	662641942	VortexSpawn	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexSpawn_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexSpawn		210566
+	695068599	VortexFlightLoopAlter2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoopAlter2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoopAlter2		76736
+	706616777	ChargeBeam	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ChargeBeam1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\ChargeBeam		289964
+	707824451	NemDeath	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\NemDeath_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeath		457576
+	736458125	VortexExplosionAlt	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexExplosionAlt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexExplosionAlt		310566
+	756615058	LobbyEntrance	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\LobbyEntrance_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\LobbySFX\LobbyEntrance		458620
+	760072484	Stormblade1	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Stormblade1Remake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade1		83752
+	774569860	VortexFlightLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoop		346840
+	815760424	LightningStream	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\LightningStream_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\LightningStream\LightningStream		561760
+	820673821	VortexCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexCharge		215904
+	835628925	FieldLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FieldLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\FieldLoop		1353568
+	845905776	FerroshotCreate	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateRemake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreate		234820
+	858229247	PlasmaBall	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\PlasmaBall_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\PlasmaBall		131388
+	885005710	WormCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\WormCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\Worm\WormCharge		529088
+	919812550	FluxBladeFire	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FluxBladeFire_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBlades\FluxBladeFire		156204
+	980239621	VortexLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexLoop_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexLoop		540816
+	1038060243	StormbladeHit3	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\StormbladeHit3_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit3		141820
+	1062522064	SummonStorm	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SummonStorm_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Summon Storm\SummonStorm		392368
 

@@ -14128,7 +14128,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.4
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -14387,7 +14387,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 12
+        scalar: 7
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -18519,7 +18519,7 @@ ParticleSystem:
   lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
@@ -20687,7 +20687,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd31cf8aadc0e0b438d6fd19da497513, type: 2}
+  - {fileID: 2100000, guid: d862690072f14cf4b831021bc5bb8563, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20757,7 +20757,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906706931543376}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
@@ -20772,7 +20772,7 @@ Transform:
   - {fileID: 5362809495014200263}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &114727162251708432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20786,7 +20786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxPriority: 2
-  vfxIntensity: 0
+  vfxIntensity: 1
   optionalLights: []
   secondaryParticleSystem: []
 --- !u!114 &114075501261788830
@@ -20802,8 +20802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectIndex: -1
-  positionAtReferencedTransform: 0
-  parentToReferencedTransform: 0
+  positionAtReferencedTransform: 1
+  parentToReferencedTransform: 1
   applyScale: 0
   soundName: 
   disregardZScale: 0

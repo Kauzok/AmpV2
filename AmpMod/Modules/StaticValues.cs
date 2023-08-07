@@ -220,6 +220,7 @@ namespace AmpMod.Modules
 
         [Header("Flux Blades Sound Strings")]
         internal const string fluxBladesFireString = "PlayFluxBladesFire";
+        internal const string fluxBladesSpawnString = "PlayFluxBladesSpawn";
 
         [Header("Static Field Sound Strings")]
         internal const string fieldAimString = "PlayFieldAim";

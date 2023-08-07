@@ -17,6 +17,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public GameObject bladePrefab = Modules.Projectiles.bladeProjectilePrefab;
         public static GameObject bladeMuzzleObject = Modules.Assets.bladePrepObject;
         public GameObject fireEffect = Assets.bladeFireEffect;
+        public string spawnSoundString = StaticValues.fluxBladesSpawnString;
         private Animator animator;
         public static float baseDuration = 1.2f;
         private float baseChargeTime = .6f;
@@ -25,10 +26,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float surgeBuffCount;
         private float launchForce = 90f;
         private ChildLocator childLocator;
-        private static int numOfBullets = 3;
-        private GameObject[] bullets = new GameObject[numOfBullets];
+        private int numOfBullets;
+        private GameObject[] bullets;
         private bool hasFired;
         private float distanceFromHead = 0.8f;
+        private int numBulletSpawn;
         private ProjectileImpactExplosion projectileImpactExplosion;
         private String soundString = StaticValues.fluxBladesFireString;
         private float totalDuration;
@@ -46,6 +48,19 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
 
             projectileImpactExplosion = bladePrefab.GetComponent<ProjectileImpactExplosion>();
+
+            if (surgeBuffCount == 10)
+            {
+                numOfBullets = 5;
+            }
+            else
+            {
+                numOfBullets = 3;
+            }
+
+            numBulletSpawn = numOfBullets - 1;
+            
+            bullets = new GameObject[numOfBullets];
 
            /* if (base.GetBuffCount(Buffs.damageGrowth) == StaticValues.growthBuffMaxStacks)
             {
@@ -65,6 +80,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             // base.PlayAnimation("Gesture, Override", "LaunchVortex", "BaseSkill.playbackRate", duration);
             animator.SetBool("isUsingIndependentSkill", true);
 
+            Util.PlaySound(spawnSoundString, base.gameObject);
             
 
             Transform modelTransform = base.GetModelTransform();
@@ -145,7 +161,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     bullets[i].transform.parent = base.characterBody.transform;
 
                     //time between projectile spawns and the first launch
-                   if (i != 2)
+                   if (i != numBulletSpawn)
                     {
                         yield return new WaitForSeconds(0f);
                     }
@@ -204,7 +220,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     {
                         scale = 1f,
                         origin = bullets[k].gameObject.transform.position,
-                    }, true);
+                        rotation = bullets[k].gameObject.transform.rotation,
+                    }, true) ;
                     Util.PlayAttackSpeedSound(soundString, base.gameObject, this.attackSpeedStat);
                     yield return new WaitForSeconds(fireDuration / numOfBullets);
                 }

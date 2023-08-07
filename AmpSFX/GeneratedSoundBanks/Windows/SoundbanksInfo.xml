@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\</ProjectRoot>
+		<SourceFilesRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="3546245432">
+		<SoundBank Id="865939728" Language="SFX" Hash="2188041068">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -96,7 +96,6 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4137515496" Name="PlayBuffStart" ObjectPath="\Events\Default Work Unit\PlayBuffStart"/>
 				<Event Id="14754508" Name="PlayChargeExplosion" ObjectPath="\Events\Default Work Unit\PlayChargeExplosion">
 					<IncludedMemoryFiles>
 						<File Id="391751073" Language="SFX">
@@ -190,6 +189,18 @@
 						<File Id="919812550" Language="SFX">
 							<ShortName>FluxBladeFire.wav</ShortName>
 							<Path>SFX\FluxBladeFire_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4242022952" Name="PlayFluxBladesSpawn" ObjectPath="\Events\Default Work Unit\PlayFluxBladesSpawn">
+					<IncludedMemoryFiles>
+						<File Id="332363732" Language="SFX">
+							<ShortName>BladesSpawn1.wav</ShortName>
+							<Path>SFX\BladesSpawn1_10C4C929.wem</Path>
+						</File>
+						<File Id="515949684" Language="SFX">
+							<ShortName>BladesSpawn2.wav</ShortName>
+							<Path>SFX\BladesSpawn2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
