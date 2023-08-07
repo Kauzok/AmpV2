@@ -703,16 +703,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="PlayBuffStart" ID="{BB9FE4E9-4304-4911-8246-E99AFC16EE4A}">
-					<ChildrenList>
-						<Action Name="" ID="{6B1518F4-DCC0-455C-B2E3-EF9EA5BCD20E}" ShortID="428158386">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList/>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="PlayDeathExplosion" ID="{40020B38-D58A-4DB9-BC0E-E768FD0C253D}">
 					<ChildrenList>
 						<Action Name="" ID="{90E3A24A-AA06-4B0B-B894-8A32CDB4EDC0}" ShortID="281447513">
@@ -778,6 +768,20 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="PlasmaBall" ID="{91F911B2-2B30-4541-BD93-3B08AD8598BD}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayFluxBladesSpawn" ID="{B1E6FEF9-9EEE-4625-829E-418C48C86007}">
+					<ChildrenList>
+						<Action Name="" ID="{123D5FD4-B968-45DE-8119-80F14C081B36}" ShortID="909382059">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FluxBladesSpawn" ID="{286C8957-0EDB-4C41-8773-6DD648B33C1A}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

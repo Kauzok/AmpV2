@@ -32,6 +32,7 @@
 						<ObjectRef Name="PlayWormSummon" ID="{2F613593-344E-444F-AB40-EA6F199A1B97}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayBoltStateWind" ID="{9A06F924-8101-4459-8AD9-DEE85A225E66}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeHit3" ID="{B7109C38-D03A-448C-ADF9-8CAEAC3135FD}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PlayFluxBladesSpawn" ID="{B1E6FEF9-9EEE-4625-829E-418C48C86007}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayQuicksurgeExit" ID="{8EDB702A-BE39-4645-9C35-44DFB1C90331}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFulminationEnter" ID="{D903EDE1-3257-465D-A12C-169D794CDF04}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFluxBladesFire" ID="{63E0C98E-EEC8-466E-8F07-749B67FFAFB2}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
@@ -40,7 +41,6 @@
 						<ObjectRef Name="PlayFerroshotLaunch" ID="{6C04C028-EF34-473A-A77A-2B857F43A7B3}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayQuicksurge" ID="{458C62A0-D293-47DA-8EFE-FD15822CF350}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeSwing2" ID="{606AADD7-0F62-490E-B637-778B1B93CBBD}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="PlayBuffStart" ID="{BB9FE4E9-4304-4911-8246-E99AFC16EE4A}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFerroshotCreate" ID="{FAC584A8-AE58-49D0-B033-54481B672A66}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayBoltExit" ID="{60DCBBF0-835F-4A0F-925F-2D249A8DF8B8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayPlasmaExplosion" ID="{7DB59F3B-CA3F-4A2C-9FBC-B4373A6121B8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>

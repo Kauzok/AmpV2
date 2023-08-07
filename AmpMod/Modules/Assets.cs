@@ -144,6 +144,7 @@ namespace AmpMod.Modules
         [Header("Lorentz Blades Effects")]
         internal static GameObject bladePrepObject;
         internal static GameObject bladeFireEffect;
+        internal static GameObject bladeExpireEffect;
         internal static GameObject bladeMuzzleEffect;
 
         [Header("Howitzer Spark Effects")]
@@ -381,6 +382,7 @@ namespace AmpMod.Modules
 
             #region Death/Spawn
             CreateVFXMaterial("matDustDirectionalDark");
+            CreateVFXMaterial("matDustDirectionalBlack");
             CreateVFXMaterial("matTracerDirt");
             #endregion
 
@@ -536,6 +538,9 @@ namespace AmpMod.Modules
 
             bladeFireEffect = mainAssetBundle.LoadAsset<GameObject>("BladeFireEffect");
             AddNewEffectDef(bladeFireEffect);
+
+            bladeExpireEffect = mainAssetBundle.LoadAsset<GameObject>("BladeExpire");
+            AddNewEffectDef(bladeExpireEffect);
         }
         private static void CreateChargeBeam()
         {

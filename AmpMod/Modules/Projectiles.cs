@@ -55,7 +55,7 @@ namespace AmpMod.Modules
             
             ProjectileSingleTargetImpact bladeContactController = bladeProjectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
             bladeContactController.impactEffect = Assets.bulletImpactEffect;
-            bladeProjectilePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = LegacyResourcesAPI.Load<GameObject>("RailgunPistolExpire");
+            //bladeProjectilePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/Railgunner/RailgunPistolExpire");
 
             var dmgTypeHolder = bladeProjectilePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
             dmgTypeHolder.Add(DamageTypes.controlledChargeProcProjectile);

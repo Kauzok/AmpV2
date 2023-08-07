@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 1
-  lifetimeExpiredEffect: {fileID: 0}
+  lifetimeExpiredEffect: {fileID: 1588240436476174, guid: 6a3c53a8c6e39d147819a24e1c4d7f84,
+    type: 3}
   desiredForwardSpeed: 110
   updateAfterFiring: 1
   enableVelocityOverLifetime: 0

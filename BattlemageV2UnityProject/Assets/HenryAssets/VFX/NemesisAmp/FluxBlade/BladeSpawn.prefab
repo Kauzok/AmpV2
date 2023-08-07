@@ -2680,6 +2680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8702615578963344048}
   - component: {fileID: 2657712508853577282}
+  - component: {fileID: 2703262835388951005}
   m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
@@ -2720,6 +2721,21 @@ MonoBehaviour:
   _rotateAroundAxis: 2
   _relativeTo: 1
   _reverse: 0
+--- !u!114 &2703262835388951005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609714341048740303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -455717551, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setRandomXRotation: 0
+  setRandomYRotation: 0
+  setRandomZRotation: 1
 --- !u!1 &1908772021702683424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,7 +3108,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3673,7 +3689,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100.08
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
