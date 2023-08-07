@@ -143,6 +143,8 @@ namespace AmpMod.Modules
 
         [Header("Lorentz Blades Effects")]
         internal static GameObject bladePrepObject;
+        internal static GameObject bladeFireEffect;
+        internal static GameObject bladeMuzzleEffect;
 
         [Header("Howitzer Spark Effects")]
         internal static GameObject chargeBeamMuzzleEffect;
@@ -531,6 +533,9 @@ namespace AmpMod.Modules
         {
             bladePrepObject = mainAssetBundle.LoadAsset<GameObject>("BladeSpawn");
             PrefabAPI.RegisterNetworkPrefab(bladePrepObject);
+
+            bladeFireEffect = mainAssetBundle.LoadAsset<GameObject>("BladeFireEffect");
+            AddNewEffectDef(bladeFireEffect);
         }
         private static void CreateChargeBeam()
         {

@@ -16,6 +16,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float damageCoefficient = Modules.StaticValues.bladeDamageCoefficient;
         public GameObject bladePrefab = Modules.Projectiles.bladeProjectilePrefab;
         public static GameObject bladeMuzzleObject = Modules.Assets.bladePrepObject;
+        public GameObject fireEffect = Assets.bladeFireEffect;
         private Animator animator;
         public static float baseDuration = 1.2f;
         private float baseChargeTime = .6f;
@@ -64,7 +65,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             // base.PlayAnimation("Gesture, Override", "LaunchVortex", "BaseSkill.playbackRate", duration);
             animator.SetBool("isUsingIndependentSkill", true);
 
-            Util.PlayAttackSpeedSound(soundString, base.gameObject, this.attackSpeedStat);
+            
 
             Transform modelTransform = base.GetModelTransform();
 
@@ -180,6 +181,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 
 
+
                     // Spawn the projectile at the gameobjects current location
                     ProjectileManager.instance.FireProjectile(bladePrefab,
                     bullets[k].transform.position,
@@ -197,6 +199,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     Destroy(bullets[k]);
                     //yield return new WaitForSeconds(fireDuration / numOfBullets);
                     //time between projectile launches
+                    //EffectManager.SimpleMuzzleFlash(fireEffect, bullets[k].gameObject, null, true);
+                    EffectManager.SpawnEffect(fireEffect, new EffectData
+                    {
+                        scale = 1f,
+                        origin = bullets[k].gameObject.transform.position,
+                    }, true);
+                    Util.PlayAttackSpeedSound(soundString, base.gameObject, this.attackSpeedStat);
                     yield return new WaitForSeconds(fireDuration / numOfBullets);
                 }
                 //cancel prep sfx

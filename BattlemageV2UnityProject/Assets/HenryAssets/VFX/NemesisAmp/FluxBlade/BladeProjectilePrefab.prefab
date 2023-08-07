@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxisOnly: 0
-  rotationSpeed: 1080
+  rotationSpeed: 1300
 --- !u!114 &4693298943911376195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,8 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: -343225066, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRange: 40
-  lookCone: 60
+  lookRange: 70
+  lookCone: 78.6
   targetSearchInterval: 0.1
   onlySearchIfNoTarget: 0
   allowTargetLoss: 0
