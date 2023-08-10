@@ -134,7 +134,8 @@ namespace AmpMod.Modules.Survivors
                  prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
                  Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemFulmination"),
                  true,
-                 new String[] { }); 
+                 new String[] { },
+                 false); 
                 Modules.Skills.AddPrimarySkill(bodyPrefab, primaryLightningStreamDef);  
              
 
@@ -154,7 +155,8 @@ namespace AmpMod.Modules.Survivors
                 prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemBlades"),
                 true,
-                new String[] { })); 
+                new String[] { },
+                false)); 
             #endregion
 
 

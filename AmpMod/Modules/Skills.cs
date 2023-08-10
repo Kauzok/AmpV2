@@ -67,7 +67,8 @@ namespace AmpMod.Modules
                 prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPlasmaBall"),
                 false,
-                new String[] { });
+                new String[] { },
+                true);
 
             surgeCancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -256,7 +257,7 @@ namespace AmpMod.Modules
             };
         }
 
-        internal static SkillDef CreatePrimarySkillDef(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens)
+        internal static SkillDef CreatePrimarySkillDef(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens, bool canBeOverriden)
         {
             SkillDef skillDef = ScriptableObject.CreateInstance<SkillDef>();
 
@@ -283,6 +284,10 @@ namespace AmpMod.Modules
             skillDef.stockToConsume = 0;
             skillDef.keywordTokens = keywordTokens;
             
+            if (!canBeOverriden)
+            {
+                skillDef.interruptPriority = InterruptPriority.Skill;
+            }
 
             skillDefs.Add(skillDef);
 
@@ -333,7 +338,7 @@ namespace AmpMod.Modules
             return skillDef;
         }
 
-        public static T CreatePrimarySkillDef<T>(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens) where T : SkillDef
+        public static T CreatePrimarySkillDef<T>(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens, bool canBeOverriden) where T : SkillDef
         {
              T skillDef = ScriptableObject.CreateInstance<T>();
 
@@ -361,6 +366,11 @@ namespace AmpMod.Modules
             skillDef.keywordTokens = keywordTokens;
 
             skillDefs.Add(skillDef);
+
+            if (!canBeOverriden)
+            {
+                skillDef.interruptPriority = InterruptPriority.Skill;
+            }
 
             return skillDef;
         }

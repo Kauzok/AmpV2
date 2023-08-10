@@ -162,7 +162,8 @@ namespace AmpMod.Modules.Survivors
                 prefix + "_AMP_BODY_PRIMARY_SLASH_DESCRIPTION", 
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"), 
                 true, 
-                new String[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" } ));
+                new String[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" },
+                true));
             #endregion
 
 

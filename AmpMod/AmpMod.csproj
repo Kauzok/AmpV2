@@ -202,7 +202,7 @@
 
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(SolutionName).pdb&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpPackage&quot;&#xD;&#xA;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;C:\Users\Adam\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Amp\BepInEx\plugins\AmpMod&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(SolutionName).pdb&quot; &quot;C:\Users\Adam\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Amp\BepInEx\plugins\AmpMod&quot;" />
+		<Exec Command="xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(SolutionName).pdb&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpPackage&quot;&#xD;&#xA;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(TargetFileName)&quot; &quot;C:\Users\Adam\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Amp\BepInEx\plugins\AourmpMod&quot;&#xD;&#xA;xcopy /Y &quot;$(OutDir)$(SolutionName).pdb&quot; &quot;C:\Users\Adam\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Amp\BepInEx\plugins\AmpMod&quot;" />
 	</Target>
 
 
