@@ -284,10 +284,10 @@ namespace AmpMod.Modules
             skillDef.stockToConsume = 0;
             skillDef.keywordTokens = keywordTokens;
             
-            if (!canBeOverriden)
+           /* if (!canBeOverriden)
             {
                 skillDef.interruptPriority = InterruptPriority.Skill;
-            }
+            } */
 
             skillDefs.Add(skillDef);
 

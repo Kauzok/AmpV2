@@ -134,7 +134,20 @@ namespace AmpMod.Modules.Survivors
 
         internal virtual void InitializeDoppelganger()
         {
-            Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");
+            if (isAmp)
+            {
+                Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");
+            }
+
+            else if (isNemAmp)
+            {
+                Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Mage");
+            }
+            else
+            {
+                Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");
+            }
+            
         }
 
 

@@ -80,8 +80,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
-        }
+            return InterruptPriority.Skill;
+        } 
 
         private FireLightningBeam GetNextState()
         {

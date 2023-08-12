@@ -235,9 +235,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
         }
+        /*     public override InterruptPriority GetMinimumInterruptPriority()
+             {
+                 return InterruptPriority.PrioritySkill;
+             }*/
+
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+
+            if (base.fixedAge >= this.chargeDuration) return InterruptPriority.Any;
+
+            return InterruptPriority.Skill;
         }
 
 
