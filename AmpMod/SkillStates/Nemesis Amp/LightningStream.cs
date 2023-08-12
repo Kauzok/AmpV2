@@ -152,7 +152,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 this.targetHurtbox = this.tracker.GetTrackingTarget();
                 
-                Debug.Log(targetHurtbox.gameObject);
+                //Debug.Log(targetHurtbox.gameObject);
 
                 if (!muzzleHasFlashed && this.targetHurtbox)
                 {
@@ -185,7 +185,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController.resetComboTimer();
 
             
-            if ((base.isAuthority && !base.inputBank.skill1.down) || (base.isAuthority && this.targetHurtbox && this.targetHurtbox.healthComponent.health <= 0) || (base.isAuthority && !this.targetHurtbox))
+            if ((base.isAuthority && !base.inputBank.skill1.down) || (base.isAuthority && this.targetHurtbox && this.targetHurtbox.healthComponent.health <= 0) || (base.isAuthority && !this.targetHurtbox) || !this.skillLocator.isActiveAndEnabled)
             {
                 //Debug.Log("exiting");
                 this.outer.SetNextStateToMain();

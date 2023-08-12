@@ -135,7 +135,7 @@ namespace AmpMod.Modules
 
             #region Primary2
             LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Lorentz Blades");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire 3 <style=cIsUtility>tracking</style> iron sand daggers, each dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm charge</style>, fire <style=cIsDamage>5</style> blades.");
+            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire 3 <style=cIsUtility>tracking</style> iron sand daggers, each dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm charge</style>, fire <style=cIsDamage>6</style> blades.");
             #endregion
 
             #region Primary3

@@ -51,7 +51,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (surgeBuffCount == 10)
             {
-                numOfBullets = 5;
+                numOfBullets = 6;
             }
             else
             {
