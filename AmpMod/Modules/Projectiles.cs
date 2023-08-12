@@ -100,7 +100,6 @@ namespace AmpMod.Modules
             GameObject ScaledOnImpact = FX.transform.GetChild(0).gameObject;
             GameObject Decal = new GameObject();
             Decal.transform.parent = ScaledOnImpact.transform;
-            
 
             var buffWard = fieldProjectilePrefab.GetComponent<BuffWard>();
             buffWard.buffDef = Buffs.nemAmpAtkSpeed;
@@ -111,6 +110,7 @@ namespace AmpMod.Modules
 
             PrefabAPI.RegisterNetworkPrefab(fieldProjectilePrefab);
         }
+
         //instantiates ferroshot/Lorentz Cannon projectile
         private static void CreateFerroshot()
         {
@@ -119,7 +119,7 @@ namespace AmpMod.Modules
             ferroshotPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeProjectile");
             //ferroshotPrefab.layer = LayerIndex.projectile.intVal;
             //change damagetype of ferroshot to generic
-            //  ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
+            //ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
             //.damageType = DamageType.Generic;
 
             //remove/nullify components from lunarshard that are unnecessary, such as the tracker and on impact explosion

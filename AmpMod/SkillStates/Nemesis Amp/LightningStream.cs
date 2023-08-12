@@ -71,6 +71,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (tracker.GetTrackingTarget())
             {
+                this.targetHurtbox = tracker.GetTrackingTarget();
                 
                 animator.SetBool("NemIsFulminating", true);
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
@@ -92,11 +93,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             if (!NetworkServer.active || tickTimer > 0f)
             {
-                Debug.Log("returning");
+                //Debug.Log("returning");
                 return;
             }
 
-            Debug.Log("not returning");
+            //Debug.Log("not returning");
 
             this.tickTimer = this.tickTime;
             
@@ -150,6 +151,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 }
 
                 this.targetHurtbox = this.tracker.GetTrackingTarget();
+                
+                Debug.Log(targetHurtbox.gameObject);
 
                 if (!muzzleHasFlashed && this.targetHurtbox)
                 {
@@ -176,7 +179,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             this.FireLightning();
 
-            Debug.Log("lightning fire method completed");
+           //Debug.Log("lightning fire method completed");
 
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
@@ -184,7 +187,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             
             if ((base.isAuthority && !base.inputBank.skill1.down) || (base.isAuthority && this.targetHurtbox && this.targetHurtbox.healthComponent.health <= 0) || (base.isAuthority && !this.targetHurtbox))
             {
-                Debug.Log("exiting");
+                //Debug.Log("exiting");
                 this.outer.SetNextStateToMain();
             }
         }

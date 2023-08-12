@@ -369,7 +369,7 @@ namespace AmpMod.Modules
 
             if (!canBeOverriden)
             {
-                skillDef.interruptPriority = InterruptPriority.Skill;
+                skillDef.interruptPriority = InterruptPriority.Any;
             }
 
             return skillDef;

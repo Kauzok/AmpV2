@@ -103,7 +103,7 @@ namespace AmpMod.Modules
                } */
 
             //creates Amp
-            //new Survivors.Amp().Initialize();
+            new Survivors.Amp().Initialize();
 
             //creates Nemesis Amp
             new Survivors.NemAmp().Initialize();
@@ -170,6 +170,7 @@ namespace AmpMod.Modules
         private void BrotherSpeechDriver_DoInitialSightResponse(On.RoR2.CharacterSpeech.BrotherSpeechDriver.orig_DoInitialSightResponse orig, RoR2.CharacterSpeech.BrotherSpeechDriver self)
         {
             bool isAmpThere = false;
+            bool isNemAmpThere = false;
 
             ReadOnlyCollection<CharacterBody> characterBodies = CharacterBody.readOnlyInstancesList;
             for (int i = 0; i < characterBodies.Count; i++)
@@ -179,6 +180,15 @@ namespace AmpMod.Modules
 
                 string ampName = characterBodies[i].baseNameToken;
                 isAmpThere |= ampName == developerPrefix + "_AMP_BODY_NAME";
+            }
+
+            for (int i = 0; i < characterBodies.Count; i++)
+            {
+                //BodyIndex AmpIndex = characterBodies[i].bodyIndex;
+                // isAmpThere |= (AmpIndex == BodyCatalog.FindBodyIndex(Modules.Survivors.MyCharacter.instance.bodyName));
+
+                string nemAmpName = characterBodies[i].baseNameToken;
+                isNemAmpThere |= nemAmpName == developerPrefix + "_NEMAMP_BODY_NAME";
             }
 
             if (isAmpThere)
@@ -223,6 +233,48 @@ namespace AmpMod.Modules
                 self.SendReponseFromPool(responsePool);
             }
 
+            if (isNemAmpThere)
+            {
+                RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
+                {
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_SEE_NEMAMP_1"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_SEE_NEMAMP_2"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_SEE_NEMAMP_3"
+                    },
+                      new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = ""
+                    }
+
+                };
+
+                self.SendReponseFromPool(responsePool);
+            }
+
             orig(self);
 
         }
@@ -251,6 +303,40 @@ namespace AmpMod.Modules
                         mustPlay = true,
                         priority = 0f,
                         token = "MITHRIX_KILL_AMP_2"
+                    },
+                         new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = ""
+                    }
+
+                    };
+
+                    self.SendReponseFromPool(responsePool);
+                }
+
+                if (damageReport.victimBody.baseNameToken == developerPrefix + "_NEMAMP_BODY_NAME")
+                {
+                    RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
+                    {
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_KILL_NEMAMP_1"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "MITHRIX_KILL_NEMAMP_2"
                     },
                          new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
                     {
@@ -405,7 +491,6 @@ namespace AmpMod.Modules
                             body.baseMaxHealth = ownerBody.maxHealth * 3f;
                         }
                     }
-
                 }
             }
         }
