@@ -85,7 +85,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 charged = true;
 
             }
-
+            if (isGrounded)
+            {
+                doHover = false;
+            }
             //unGroundedAge += Time.fixedDeltaTime;
 
             if (!isGrounded && base.isAuthority && doHover)
@@ -95,7 +98,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 //base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
                 base.characterMotor.velocity.y = 0f;
                 base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
-
             }
             
         }
@@ -126,7 +128,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (!charged)
             {
-                base.PlayAnimation("Gesture, Override", "BufferEmpty", "ChargeBeam.playbackRate", 1f);
+                base.PlayAnimation("FullBody, Override", "BufferEmpty", "ChargeBeam.playbackRate", 1f);
             }
         }
     }

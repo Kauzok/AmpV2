@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRange: 20
-  lookCone: 90
+  lookCone: 15
   targetSearchInterval: 0.1
   onlySearchIfNoTarget: 0
   allowTargetLoss: 0
