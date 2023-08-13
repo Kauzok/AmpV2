@@ -134,6 +134,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				this.outer.SetNextStateToMain();
 			}
 		}
+		public override InterruptPriority GetMinimumInterruptPriority()
+		{
+			return InterruptPriority.PrioritySkill;
+		}
 
 		private void CreateBlinkEffect(Vector3 origin)
 		{

@@ -273,7 +273,7 @@ namespace AmpMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
                 keywordTokens = new string[] { }
-            });
+            });;
 
 
             Modules.Skills.AddUtilitySkills(bodyPrefab, fieldSkillDef, quickDashSkillDef);

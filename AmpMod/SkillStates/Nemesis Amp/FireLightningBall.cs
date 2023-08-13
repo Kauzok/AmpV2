@@ -21,6 +21,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float duration = .2f;
         private float waitDuration = .3f;
         private Transform muzzleTransform;
+        private Transform muzzleObjectTransform;
         private Ray aimRay;
 
         public override void OnEnter()
@@ -83,7 +84,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
             //EffectManager.SimpleMuzzleFlash(muzzleFlashPrefab, base.gameObject, "HandR", true);
-            UnityEngine.Object.Instantiate(muzzleFlashPrefab, muzzleTransform);
+            muzzleObjectTransform = UnityEngine.Object.Instantiate(muzzleFlashPrefab, muzzleTransform).transform;
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
         }
@@ -91,6 +92,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             return InterruptPriority.PrioritySkill;
         }
+
         protected virtual void ModifyProjectile(ref FireProjectileInfo projectileInfo)
         {
         }
@@ -102,6 +104,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (base.skillLocator.primary)
             {
                 base.skillLocator.primary.UnsetSkillOverride(QuickDash.src, QuickDash.primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            }
+
+            if (muzzleObjectTransform)
+            {
+                Destroy(muzzleObjectTransform.gameObject);
             }
         }
     }
