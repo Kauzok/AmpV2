@@ -20,7 +20,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject chargeEffectInstance;
         private GameObject chargeEffectPrefab = Assets.chargeBeamMuzzleEffect;
         private bool charged;
-
+        private float hoverAcceleration = 60f;
+        private float hoverVelocity = -1f;
+        private float unGroundedAge = 0f;
+        private bool waitToHover;
 
         [Header("Sounds")]
         private string startSoundString = StaticValues.chargeBeamSoundString;
@@ -32,6 +35,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
+            charged = false;
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             base.characterBody.SetAimTimer(duration);
@@ -40,6 +44,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
             base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration+.2f);
             endLoopSoundID = Util.PlaySound(startSoundString, base.gameObject);
+
+            if (isGrounded)
+            {
+               waitToHover = true;
+            }
 
             if (this.childLocator)
             {   
@@ -73,6 +82,23 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 nextState.charge = charge;
                 this.outer.SetNextState(nextState);
                 charged = true;
+
+            }
+
+            if (isGrounded)
+            {
+                unGroundedAge = 0f;
+            }
+
+            unGroundedAge += Time.fixedDeltaTime;
+
+            if (!isGrounded && base.isAuthority)
+            {
+                float num = base.characterMotor.velocity.y;
+                num = Mathf.MoveTowards(num, hoverVelocity, hoverAcceleration * Time.fixedDeltaTime);
+                //base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
+                base.characterMotor.velocity.y = 0f;
+                base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
 
             }
             

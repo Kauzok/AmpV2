@@ -89,6 +89,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            if (!isGrounded && base.isAuthority)
+            {
+                base.characterMotor.velocity.y = 0f;
+
+            }
+
             if (base.isAuthority && !hasFired && base.fixedAge > this.waitDuration)
             {
                 this.Fire();
@@ -152,7 +159,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
         }
 
-
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
         public override void OnExit()
         {
             base.OnExit();
