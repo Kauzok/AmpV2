@@ -7,6 +7,7 @@ using RoR2.Skills;
 using UnityEngine;
 using AmpMod.Modules;
 using R2API;
+using UnityEngine.Networking;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -30,6 +31,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private ChildLocator childLocator;
         private bool hasFired;
         private float waitDuration;
+        public bool doHover;
         private GameObject beamPrefab = Assets.chargeBeamTracerPrefab;
 
         [SerializeField]
@@ -41,12 +43,25 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         [Header("Sounds")]
         private string fireSoundString = StaticValues.fireBeamSoundString;
 
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(this.doHover);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            this.doHover = reader.ReadBoolean();
+        }
+
         public override void OnEnter()
         {
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
 
             childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
+
 
 
             muzzleHandTransform = childLocator.FindChild("HandL");
@@ -90,7 +105,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.FixedUpdate();
 
-            if (!isGrounded && base.isAuthority)
+            if (!isGrounded && base.isAuthority && doHover)
             {
                 base.characterMotor.velocity.y = 0f;
 

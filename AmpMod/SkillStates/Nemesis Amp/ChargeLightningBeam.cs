@@ -20,10 +20,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject chargeEffectInstance;
         private GameObject chargeEffectPrefab = Assets.chargeBeamMuzzleEffect;
         private bool charged;
-        private float hoverAcceleration = 60f;
+        private float hoverAcceleration = 80f;
         private float hoverVelocity = -1f;
         private float unGroundedAge = 0f;
-        private bool waitToHover;
+        private bool doHover;
 
         [Header("Sounds")]
         private string startSoundString = StaticValues.chargeBeamSoundString;
@@ -45,9 +45,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration+.2f);
             endLoopSoundID = Util.PlaySound(startSoundString, base.gameObject);
 
-            if (isGrounded)
+            if (!isGrounded)
             {
-               waitToHover = true;
+                doHover = true;
             }
 
             if (this.childLocator)
@@ -79,20 +79,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= this.minChargeDuration) || base.fixedAge >= this.duration))
             {
                 FireLightningBeam nextState = this.GetNextState();
+                nextState.doHover = this.doHover;
                 nextState.charge = charge;
                 this.outer.SetNextState(nextState);
                 charged = true;
 
             }
 
-            if (isGrounded)
-            {
-                unGroundedAge = 0f;
-            }
+            //unGroundedAge += Time.fixedDeltaTime;
 
-            unGroundedAge += Time.fixedDeltaTime;
-
-            if (!isGrounded && base.isAuthority)
+            if (!isGrounded && base.isAuthority && doHover)
             {
                 float num = base.characterMotor.velocity.y;
                 num = Mathf.MoveTowards(num, hoverVelocity, hoverAcceleration * Time.fixedDeltaTime);
