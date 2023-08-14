@@ -189,7 +189,7 @@ namespace AmpMod.Modules.Survivors
                 interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 cancelSprintingOnActivation = true,
                 rechargeStock = 1,
                 requiredStock = 1,
