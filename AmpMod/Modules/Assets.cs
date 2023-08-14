@@ -395,6 +395,10 @@ namespace AmpMod.Modules
             CreateVFXMaterial("matLightningTwist");
             #endregion
 
+            #region Lorentz Blades
+            CreateStandardMaterial("matBladeOutline");
+            #endregion
+
             #region Howitzer Spark
             //CreateVFXMaterial("matChargeBeamTrail");
             CreateVFXMaterial("matChargeBeamFlash");
