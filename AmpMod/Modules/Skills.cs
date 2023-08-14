@@ -63,8 +63,8 @@ namespace AmpMod.Modules
 
             fireLightningBallSkillDef = CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.Nemesis_Amp.FireLightningBall)),
                 "Weapon",
-                prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
-                prefix + "_NEMESISAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
+                prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
+                prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPlasmaBall"),
                 false,
                 new String[] { },
@@ -133,7 +133,7 @@ namespace AmpMod.Modules
             }
             else
             {
-                string prefix = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_";
+                string prefix = AmpPlugin.developerPrefix + "_NEMAMP_BODY_";
                 skillLocator.passiveSkill.enabled = true;
                 skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPassive");
                 skillLocator.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";

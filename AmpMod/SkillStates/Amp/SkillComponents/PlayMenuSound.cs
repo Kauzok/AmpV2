@@ -12,6 +12,7 @@ namespace AmpMod.SkillStates.SkillComponents
         private void OnEnable()
         {
             Util.PlaySound(soundString, base.gameObject);
+            
         }
     }
 }

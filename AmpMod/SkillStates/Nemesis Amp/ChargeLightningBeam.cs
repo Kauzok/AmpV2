@@ -93,10 +93,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (!isGrounded && base.isAuthority && doHover)
             {
+                base.characterMotor.velocity.y = 0f;
                 float num = base.characterMotor.velocity.y;
                 num = Mathf.MoveTowards(num, hoverVelocity, hoverAcceleration * Time.fixedDeltaTime);
                 //base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
-                base.characterMotor.velocity.y = 0f;
                 base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
             }
             

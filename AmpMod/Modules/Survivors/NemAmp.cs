@@ -33,7 +33,7 @@ namespace AmpMod.Modules.Survivors
             bodyName = "NemAmpBody",
             //bodyName = "NemesisAmpBody",
             bodyNameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_NAME",
-            //bodyNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_NAME",
+            //bodyNameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_NAME",
             //Color of skill names and stuff in menu
             bodyColor = new Color32(139, 0, 255, 255),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Nem"),
@@ -45,7 +45,7 @@ namespace AmpMod.Modules.Survivors
             jumpCount = 1,
             //jumpPower = 18f,
             maxHealth = 110f,
-            subtitleNameToken = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_SUBTITLE",
+            subtitleNameToken = AmpPlugin.developerPrefix + "_NEMAMPBODY_SUBTITLE",
             //podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
@@ -139,8 +139,8 @@ namespace AmpMod.Modules.Survivors
              NemAmpOrbTrackingSkillDef primaryLightningStreamDef =
                  Skills.CreatePrimarySkillDef<NemAmpOrbTrackingSkillDef>(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
                   "Weapon",
-                 prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
-                 prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
+                 prefix + "_NEMAMP_BODY_PRIMARY_LIGHTNING_NAME",
+                 prefix + "_NEMAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
                  Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemFulmination"),
                  true,
                  new String[] { },
@@ -150,8 +150,8 @@ namespace AmpMod.Modules.Survivors
 
            /* Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
                   "Weapon",
-                  prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
-                  prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
+                  prefix + "_NEMAMP_BODY_PRIMARY_LIGHTNING_NAME",
+                  prefix + "_NEMAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
                   Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemFulmination"),
                   true,
                   new String[] { },
@@ -161,8 +161,8 @@ namespace AmpMod.Modules.Survivors
             //creates Lorentz Blades
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
                 "Weapon",
-                prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_NAME",
-                prefix + "_NEMESISAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
+                prefix + "_NEMAMP_BODY_PRIMARY_BLADES_NAME",
+                prefix + "_NEMAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemBlades"),
                 true,
                 new String[] { },
@@ -174,9 +174,9 @@ namespace AmpMod.Modules.Survivors
             //creates howitzer spark
             SkillDef beamSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_NEMESISAMP_BODY_SECONDARY_CHARGEBEAM_NAME",
-                skillNameToken = prefix + "_NEMESISAMP_BODY_SECONDARY_CHARGEBEAM_NAME",
-                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_SECONDARY_CHARGEBEAM_DESCRIPTION",
+                skillName = prefix + "_NEMAMP_BODY_SECONDARY_CHARGEBEAM_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_SECONDARY_CHARGEBEAM_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_SECONDARY_CHARGEBEAM_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemBeam"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeLightningBeam)),
                 activationStateMachineName = "Weapon",
@@ -200,9 +200,9 @@ namespace AmpMod.Modules.Survivors
             //creates void slash; remember to make a config that allows users to put this as a special skill or a secondary
             SkillDef slashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
-                skillNameToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_NAME",
-                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
+                skillName = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemSlash"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
                 activationStateMachineName = "Slide",
@@ -234,9 +234,9 @@ namespace AmpMod.Modules.Survivors
             //creates static field
             SkillDef fieldSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_NEMESISAMP_BODY_UTILITY_FIELD_NAME",
-                skillNameToken = prefix + "_NEMESISAMP_BODY_UTILITY_FIELD_NAME",
-                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_UTILITY_FIELD_DESCRIPTION",
+                skillName = prefix + "_NEMAMP_BODY_UTILITY_FIELD_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_UTILITY_FIELD_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_UTILITY_FIELD_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemField"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(AimStaticField)),
                 activationStateMachineName = "Weapon",
@@ -261,9 +261,9 @@ namespace AmpMod.Modules.Survivors
             //creates quicksurge
             SkillDef quickDashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_NAME",
-                skillNameToken = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_NAME",
-                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_UTILITY_DASH_DESCRIPTION",
+                skillName = prefix + "_NEMAMP_BODY_UTILITY_DASH_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_UTILITY_DASH_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_UTILITY_DASH_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemDash"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(QuickDash)),
                 activationStateMachineName = "Weapon",
@@ -294,9 +294,9 @@ namespace AmpMod.Modules.Survivors
             //creates voltaic onslaught
             SkillDef stormSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_NEMESISAMP_BODY_SPECIAL_SUMMONSTORM_NAME",
-                skillNameToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SUMMONSTORM_NAME",
-                skillDescriptionToken = prefix + "_NEMESISAMP_BODY_SPECIAL_SUMMONSTORM_DESCRIPTION",
+                skillName = prefix + "_NEMAMP_BODY_SPECIAL_SUMMONSTORM_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_SPECIAL_SUMMONSTORM_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_SPECIAL_SUMMONSTORM_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemStorm"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(AOELightning)),
                 activationStateMachineName = "Slide",
@@ -363,9 +363,9 @@ namespace AmpMod.Modules.Survivors
         internal override void InitializeSkins()
         {
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
-            CharacterModel characterModel = model.GetComponent<CharacterModel>();
-
             GameObject updatedModel = UpdateGameObjectShader(model);
+
+            CharacterModel characterModel = updatedModel.GetComponent<CharacterModel>();
 
             ModelSkinController skinController = model.AddComponent<ModelSkinController>();
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
@@ -377,11 +377,11 @@ namespace AmpMod.Modules.Survivors
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_NEMAMP_BODY_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texNemDefault"),
                 defaultRenderers,
                 mainRenderer,
-                model);
+                updatedModel);
 
             defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
@@ -413,7 +413,7 @@ namespace AmpMod.Modules.Survivors
 
             });
 
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texNemMasteryAchievement"),
                 masteryRendererInfos,
                 mainRenderer,
@@ -444,10 +444,10 @@ namespace AmpMod.Modules.Survivors
             }
 
 
-            skins.Add(masterySkin); 
+            skins.Add(masterySkin);
             #endregion
 
-
+            skinController.skins = skins.ToArray();
         }
 
 

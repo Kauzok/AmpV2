@@ -48,7 +48,7 @@ namespace AmpMod.SkillStates
         {
 
             base.OnEnter();
-
+            //Debug.Log(BodyCatalog.FindBodyIndex("AmpBody") + "isnemindex");
             lightningController = base.GetComponent<AmpLightningController>();
 
             blinkPrefab = lightningController.pulseLeapEffect;

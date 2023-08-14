@@ -68,7 +68,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             this.tickTime= this.baseTickTime / this.attackSpeedStat;
 
-
+            //Debug.Log(base.characterBody.bodyIndex);
             if (tracker.GetTrackingTarget())
             {
                 this.targetHurtbox = tracker.GetTrackingTarget();
@@ -80,7 +80,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
                 //Debug.Log(nexusMuzzleTransform);
-
+                 //Debug.Log(BodyCatalog.FindBodyIndex("NemAmpBody") + "isnemindex");
                 //nexusMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                 //Debug.Log("starting at " + rightMuzzleTransform.position);
             }

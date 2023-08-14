@@ -195,7 +195,6 @@ namespace AmpMod.Modules
         #endregion
 
         #region Nemesis Amp Sounds
-
         [Header("Spawn Sound Strings")]
         internal const string spawnBurstSoundString = "PlayNemSpawnBurst";
         internal const string spawnDustSoundString = "PlayNemSpawnDust";
@@ -236,8 +235,6 @@ namespace AmpMod.Modules
 
         [Header("Voltaic Onslaught Sound Strings")]
         internal const string summonString = "PlaySummonStorm";
-
-
         #endregion
 
     }

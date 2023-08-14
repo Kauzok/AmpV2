@@ -36,7 +36,7 @@ namespace AmpMod.Modules
             survivorDef.mainEndingEscapeFailureFlavorToken = fullFailureString;
             survivorDef.desiredSortPosition = sortPosition;
             survivorDef.unlockableDef = unlockableDef;
-            survivorDef.cachedName = "Survivors.Amp";
+            //survivorDef.cachedName = "Survivors.Amp";
 
             survivorDefinitions.Add(survivorDef);
         }

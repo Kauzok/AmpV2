@@ -107,7 +107,7 @@ namespace AmpMod.Modules
 
             #region NemAmp
 
-            string nemPrefix = AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_";
+            string nemPrefix = AmpPlugin.developerPrefix + "_NEMAMP_BODY_";
             string nemBodyPrefix = AmpPlugin.developerPrefix + "_NEMAMP_BODY_";
 
             #region Skins
@@ -178,7 +178,15 @@ namespace AmpMod.Modules
             LanguageAPI.Add(nemPrefix + "SPECIAL_SLASH_DESCRIPTION", $"<style=cIsUtility>Charge</style> a blade of void lightning and slash, <style=cIsDamage>{100f * StaticValues.minSlashDamageCoefficient}%-{100f * StaticValues.maxSlashDamageCoefficient}% damage</style>. The slash deals an extra <style=cIsDamage>{100f * StaticValues.additionalSlashDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
             #endregion
 
+            #region Achievements
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPMASTERYUNLOCK_NAME", "Nemesis Amp: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPMASTERYUNLOCK_DESCRIPTION", "As Nemesis Amp, beat the game or obliterate on Monsoon.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY", "Nemesis Amp: Mastery");
+
             #endregion
+
+            #endregion
+
 
             #region Mithrix Quotes
             LanguageAPI.Add("MITHRIX_SEE_AMP_1", "You wield stolen power. Relinquish it through death.");
