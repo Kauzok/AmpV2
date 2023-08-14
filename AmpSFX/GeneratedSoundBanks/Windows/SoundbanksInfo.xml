@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="2188041068">
+		<SoundBank Id="865939728" Language="SFX" Hash="886999140">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
