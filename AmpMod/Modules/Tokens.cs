@@ -112,6 +112,7 @@ namespace AmpMod.Modules
 
             #region Skins
             LanguageAPI.Add(nemPrefix + "DEFAULT_SKIN_NAME", "Default");
+            LanguageAPI.Add(nemPrefix + "MASTERY_SKIN_NAME", "Origin");
             #endregion
 
             #region Descriptions

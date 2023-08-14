@@ -78,6 +78,8 @@ namespace AmpMod.Modules.Survivors
         internal override UnlockableDef characterUnlockableDef { get; set; }
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        private static UnlockableDef masterySkinUnlockableDef;
+
 
         internal override void InitializeCharacter()
         {
@@ -86,8 +88,15 @@ namespace AmpMod.Modules.Survivors
 
         internal override void InitializeUnlockables()
         {
-          
 
+            if (!Config.UnlockMasterySkin.Value)
+            {
+                masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                masterySkinUnlockableDef.cachedName = "Skins.Origin";
+                masterySkinUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY";
+                masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemMasteryAchievement");
+                ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
+            }
 
         }
 
@@ -127,7 +136,7 @@ namespace AmpMod.Modules.Survivors
 
             #region Primary
             //creates Fulmination
-          /*   NemAmpOrbTrackingSkillDef primaryLightningStreamDef =
+             NemAmpOrbTrackingSkillDef primaryLightningStreamDef =
                  Skills.CreatePrimarySkillDef<NemAmpOrbTrackingSkillDef>(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
                   "Weapon",
                  prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
@@ -136,17 +145,17 @@ namespace AmpMod.Modules.Survivors
                  true,
                  new String[] { },
                  false); 
-                Modules.Skills.AddPrimarySkill(bodyPrefab, primaryLightningStreamDef);  */
+                Modules.Skills.AddPrimarySkill(bodyPrefab, primaryLightningStreamDef);  
              
 
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
+           /* Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
                   "Weapon",
                   prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
                   prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
                   Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemFulmination"),
                   true,
                   new String[] { },
-                  false));
+                  false)); */
             
 
             //creates Lorentz Blades
@@ -393,19 +402,19 @@ namespace AmpMod.Modules.Survivors
 
 
             #region MasterySkin
-            /* Material masterySuitMat = Modules.Assets.CreateMaterial("matSpriteSuit");
-            Material masterySwordMat = Modules.Assets.CreateMaterial("matSpriteSword");
+            Material masterySuitMat = Modules.Assets.CreateMaterial("matNemSuitMastery");
+            Material masteryCapeMat = Modules.Assets.CreateMaterial("matNemCapeMastery");
 
 
             CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
             {
                 masterySuitMat,
-                masterySwordMat
+                masteryCapeMat
 
             });
 
-          /*  SkinDef masterySkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_AMP_BODY_MASTERY_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_NEMESISAMP_BODY_MASTERY_SKIN_NAME",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("texNemMasteryAchievement"),
                 masteryRendererInfos,
                 mainRenderer,
                 model,
@@ -415,12 +424,12 @@ namespace AmpMod.Modules.Survivors
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("SpriteSuitMesh"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNemAmp"),
                     renderer = defaultRenderers[0].renderer
                 },
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("Sword"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNemCape"),
                     renderer = defaultRenderers[1].renderer
                 }
             }; 
@@ -431,11 +440,11 @@ namespace AmpMod.Modules.Survivors
 
             if (!Config.RedSpriteBlueLightning.Value)
             {
-                Skins.AddCSSSkinChangeResponse(masterySkin, Skins.ampCSSEffect.REDSPRITE);
+                //Skins.AddCSSSkinChangeResponse(masterySkin, Skins.ampCSSEffect.REDSPRITE);
             }
 
 
-            skins.Add(masterySkin); */
+            skins.Add(masterySkin); 
             #endregion
 
 
