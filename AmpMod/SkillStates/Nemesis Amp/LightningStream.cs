@@ -74,9 +74,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.targetHurtbox = tracker.GetTrackingTarget();
                 
                 animator.SetBool("NemIsFulminating", true);
+                //base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
+                rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
-                rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;                
-
 
                 this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
                 //Debug.Log(nexusMuzzleTransform);
@@ -84,6 +84,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 //nexusMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                 //Debug.Log("starting at " + rightMuzzleTransform.position);
             }
+
+            //base.PlayAnimation("Spawn, Override", "Spawn", "Spawn.playbackRate", 4f);
             //animations
 
 

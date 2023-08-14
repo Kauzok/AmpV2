@@ -127,7 +127,7 @@ namespace AmpMod.Modules.Survivors
 
             #region Primary
             //creates Fulmination
-             NemAmpOrbTrackingSkillDef primaryLightningStreamDef =
+          /*   NemAmpOrbTrackingSkillDef primaryLightningStreamDef =
                  Skills.CreatePrimarySkillDef<NemAmpOrbTrackingSkillDef>(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
                   "Weapon",
                  prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
@@ -136,17 +136,18 @@ namespace AmpMod.Modules.Survivors
                  true,
                  new String[] { },
                  false); 
-                Modules.Skills.AddPrimarySkill(bodyPrefab, primaryLightningStreamDef);  
+                Modules.Skills.AddPrimarySkill(bodyPrefab, primaryLightningStreamDef);  */
              
 
-           /* Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
                   "Weapon",
                   prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_NAME",
                   prefix + "_NEMESISAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
                   Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemFulmination"),
                   true,
-                  new String[] { }));
-            */
+                  new String[] { },
+                  false));
+            
 
             //creates Lorentz Blades
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
