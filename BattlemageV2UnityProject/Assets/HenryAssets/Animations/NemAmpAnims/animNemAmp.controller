@@ -1325,7 +1325,8 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 71bc63a194fbfff42bdf186b8e9375a8, type: 2}
+    m_Motion: {fileID: -2483591982332496685, guid: 7c066e3f90b46bc49829e543d677de08,
+      type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1333,7 +1334,8 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 71bc63a194fbfff42bdf186b8e9375a8, type: 2}
+    m_Motion: {fileID: -2483591982332496685, guid: 7c066e3f90b46bc49829e543d677de08,
+      type: 3}
     m_Threshold: 0.33333334
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -1472,8 +1474,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -8430614638617632110, guid: 7c066e3f90b46bc49829e543d677de08,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 76d28464eecb66b4493d0d28e0575118, type: 2}
     m_Threshold: -48
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1481,8 +1482,7 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -4643150200206844044, guid: 7c066e3f90b46bc49829e543d677de08,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: b648b3c00271d304a8b21087dd347153, type: 2}
     m_Threshold: -12
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1490,8 +1490,7 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -4643150200206844044, guid: 7c066e3f90b46bc49829e543d677de08,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: b648b3c00271d304a8b21087dd347153, type: 2}
     m_Threshold: 4
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1824,7 +1823,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 90eb6bd3770827442b5469c323e8d2d3, type: 2}
+  m_Motion: {fileID: -4147935991722643143, guid: 7c066e3f90b46bc49829e543d677de08,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: BaseSkill.playbackRate
   m_MirrorParameter: 
@@ -5466,7 +5466,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.76
+  m_ExitTime: 0.9943404
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

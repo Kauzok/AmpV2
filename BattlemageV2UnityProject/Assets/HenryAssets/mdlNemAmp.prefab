@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5889439025614972543}
   - component: {fileID: 9052249991326240707}
   m_Layer: 0
-  m_Name: mdlNemAmp
+  m_Name: mdlNemAmpOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -90,7 +90,7 @@ namespace AmpMod.Modules
 
 
         [Header("Passive Values")]
-        internal const float comboTimeInterval = 2f;
+        internal const float comboTimeInterval = 3f;
         internal const float growthDamageCoefficient = .1f;
         internal const float maxGrowthDamageCoefficient = 1.5f;
         internal const float growthBuffDisappearanceRate = .4f;

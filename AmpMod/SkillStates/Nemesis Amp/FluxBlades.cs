@@ -25,6 +25,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float duration;
         private float surgeBuffCount;
         private float launchForce = 90f;
+        private float baseGrowDuration = .5f;
+        private float growDuration;
         private ChildLocator childLocator;
         private int numOfBullets;
         private GameObject[] bullets;
@@ -48,7 +50,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
 
             projectileImpactExplosion = bladePrefab.GetComponent<ProjectileImpactExplosion>();
-
+            
             if (surgeBuffCount == 10)
             {
                 numOfBullets = 6;
@@ -77,6 +79,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.totalDuration = baseDuration / this.attackSpeedStat;
             fireDuration = FIRE_TIME_PERCENTAGE * totalDuration;
             chargeDuration = totalDuration - fireDuration;
+            growDuration = .5f * chargeDuration;
             // base.PlayAnimation("Gesture, Override", "LaunchVortex", "BaseSkill.playbackRate", duration);
             animator.SetBool("isUsingIndependentSkill", true);
 
@@ -160,8 +163,19 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     // Set the bullet as a child of the character body
                     bullets[i].transform.parent = base.characterBody.transform;
 
+                    ScaleParticleSystemDuration component = bullets[i].GetComponent<ScaleParticleSystemDuration>();
+                    ObjectScaleCurve component2 = bullets[i].GetComponent<ObjectScaleCurve>();
+                    if (component)
+                    {
+                        component.newDuration = this.growDuration;
+                    }
+                    if (component2)
+                    {
+                        component2.timeMax = this.growDuration;
+                    }
+
                     //time between projectile spawns and the first launch
-                   if (i != numBulletSpawn)
+                    if (i != numBulletSpawn)
                     {
                         yield return new WaitForSeconds(0f);
                     }

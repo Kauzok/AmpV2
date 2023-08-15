@@ -164,7 +164,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 //UnityEngine.Object.Instantiate<GameObject>(muzzleFlashEffect, muzzleHandTransform);
 
-                EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "HandL", true);
+                //EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "HandL", true);
+                Transform handTransform = childLocator.FindChild("HandL").transform;
+                EffectManager.SpawnEffect(muzzleFlashEffect, new EffectData
+                {
+                    origin = handTransform.position,
+                    rotation = handTransform.rotation,
+                },
+                true);
                 //base.PlayAnimation("Gesture, Additive", "FireBeam", "BaseSkill.playbackRate", this.duration);
 
                 if (base.characterMotor)
