@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using RoR2;
+﻿using RoR2;
 using EntityStates;
-using RoR2.Skills;
 using UnityEngine;
 using AmpMod.Modules;
 using R2API;
 using UnityEngine.Networking;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -20,7 +17,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float radius = Modules.StaticValues.chargeBeamRadius;
         private float surgeBuffCount;
         private Transform muzzleHandTransform;
-        private GameObject muzzleFlashEffect = Assets.beamMuzzleFlashEffect;
+        private GameObject muzzleFlashEffect;
+        private NemLightningColorController lightningController;
 
         private float minDamageCoefficient = Modules.StaticValues.chargeBeamMinDamageCoefficient;
         private float maxDamageCoefficient = Modules.StaticValues.chargeBeamMaxDamageCoefficient;
@@ -32,7 +30,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private bool hasFired;
         private float waitDuration;
         public bool doHover;
-        private GameObject beamPrefab = Assets.chargeBeamTracerPrefab;
 
         [SerializeField]
         public float selfForce;
@@ -61,8 +58,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
 
             childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
-
-
+            lightningController = base.GetComponent<NemLightningColorController>();
+            muzzleFlashEffect = lightningController.beamMuzzleVFX;
 
             muzzleHandTransform = childLocator.FindChild("HandL");
             //Debug.Log("muzzle rotation = " + muzzleHandTransform.rotation.eulerAngles.x + " " + muzzleHandTransform.rotation.eulerAngles.y + " "+ muzzleHandTransform.rotation.eulerAngles.z);
@@ -146,7 +143,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     force = num2,
                     muzzleName = "HandL",
                     //hitEffectPrefab = impactEffectPrefab,
-                    tracerEffectPrefab = Assets.chargeBeamTracerPrefab,
+                    tracerEffectPrefab = lightningController.beamObject,
                     isCrit = base.characterBody.RollCrit(),
                     radius = this.radius, 
                     falloffModel = BulletAttack.FalloffModel.None,

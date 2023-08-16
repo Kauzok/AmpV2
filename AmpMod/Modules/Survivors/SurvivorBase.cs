@@ -95,6 +95,7 @@ namespace AmpMod.Modules.Survivors
                     bodyPrefab.AddComponent<StackDamageController>();
                     bodyPrefab.AddComponent<NemAmpBuffVFXController>();
                     bodyPrefab.AddComponent<NemAmpLightningTetherController>();
+                    bodyPrefab.AddComponent<NemLightningColorController>();
                     
                     var deathComp = bodyPrefab.GetComponent<CharacterDeathBehavior>();
                     var stateMachine = bodyPrefab.GetComponent<EntityStateMachine>();

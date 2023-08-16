@@ -4,17 +4,19 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 using AmpMod.Modules;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
     public class FireLightningBall : BaseSkillState
     {
-        private GameObject projectilePrefab = Modules.Projectiles.lightningBallPrefab;
+        private GameObject projectilePrefab;
         private string shootString = StaticValues.plasmaFireString;
         private bool hasFired;
+        private NemLightningColorController lightningController;
         public QuickDash src;
         private ChildLocator childLocator;
-        private GameObject muzzleFlashPrefab = Modules.Assets.lightningBallMuzzleFlashEffect;
+        private GameObject muzzleFlashPrefab;
         private int growthBuffCount;
         private float damageCoefficient = Modules.StaticValues.lightningBallDamageCoefficient;
         private StackDamageController stackDamageController;
@@ -35,7 +37,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             growthBuffCount = base.characterBody.GetBuffCount(Modules.Buffs.damageGrowth);
             base.PlayAnimation("Gesture, Override", "FirePlasmaBall", "BaseSkill.playbackRate", 4*this.duration);
             muzzleTransform = childLocator.FindChild("HandR");
-            Util.PlaySound(shootString, base.gameObject);   
+            Util.PlaySound(shootString, base.gameObject);
+            lightningController = base.GetComponent<NemLightningColorController>();
+            muzzleFlashPrefab = lightningController.lightningBallMuzzleVFX;
+            projectilePrefab = lightningController.lightningBallPrefab;
+            
         }
          
         public override void FixedUpdate()

@@ -1,47 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AmpMod.SkillStates.Amp.BaseStates;
-using UnityEngine;
+﻿using UnityEngine;
 using RoR2;
 using EntityStates;
 using RoR2.Projectile;
-using UnityEngine.Networking;
-using R2API;
 using RoR2.UI;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
     class AimStaticField : BaseState
     {
-        private float duration = 25f;
+        [Header("Timing Variables")]
+        private float stopwatch;
+
+        [Header("VFX/Animation Variables")]
         private Animator animator;
         private ChildLocator childLocator;
         private GameObject fieldIndicatorInstance;
-        private ProjectileDotZone projectileDotZone;
-        private bool goodPlacement;
-        private float stopwatch;
-        private GameObject muzzleflashEffect = Assets.releaseFieldMuzzleEffect;
-        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
-        public static float maxSlopeAngle = 70f;
-        public static float maxDistance = 400f;
         public static GameObject goodCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.goodCrosshairPrefab;
-        public static GameObject projectilePrefab = Modules.Projectiles.fieldProjectilePrefab;
+        public static GameObject projectilePrefab;
         public static GameObject badCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.badCrosshairPrefab;
-        public static float damageCoefficient = Modules.StaticValues.staticFieldTickDamageCoefficient;
-        private StackDamageController stackDamageController;
-        private GameObject fieldMuzzleEffect = Assets.aimFieldMuzzleEffect;
         private Transform rightMuzzleTransform;
         private Transform rightMuzzleTransformSpawn;
         private Transform leftMuzzleTransform;
         private Transform leftMuzzleTransformSpawn;
-        private bool hasMuzzles;
+        private GameObject muzzleflashEffect;
+        private GameObject fieldAimMuzzleEffect;
+        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
+        private NemLightningColorController lightningController;
+
+        [Header("SFX Variables")]
         private string aimFieldString = StaticValues.fieldAimString;
         private string releaseFieldString = StaticValues.fieldReleaseString;
-
         private uint stopAimLoop;
-        
+
+        [Header("Functionality Variables")]
+        private bool goodPlacement;
+        private float duration = 25f;
+        public static float maxSlopeAngle = 70f;
+        public static float maxDistance = 400f;
+        public static float damageCoefficient = Modules.StaticValues.staticFieldTickDamageCoefficient;
+        private StackDamageController stackDamageController;
+        private bool hasMuzzles;
+
 
         public override void OnEnter()
         {
@@ -53,6 +54,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             leftMuzzleTransform = childLocator.FindChild("HandL");
             rightMuzzleTransformSpawn = childLocator.FindChild("HandR");
             leftMuzzleTransformSpawn = childLocator.FindChild("HandL");
+
+            lightningController = base.GetComponent<NemLightningColorController>();
+
+            fieldAimMuzzleEffect = lightningController.fieldAimVFX;
+            projectilePrefab = lightningController.fieldPrefab;
+            muzzleflashEffect = lightningController.fieldMuzzleVFX;
 
             fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
             base.PlayAnimation("FullBody, Override", "AimField", "BaseSkill.playbackRate", 1f);
@@ -68,8 +75,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.FixedUpdate();
             if (!hasMuzzles)
             {
-               rightMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldMuzzleEffect, rightMuzzleTransform).transform;
-               leftMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldMuzzleEffect, leftMuzzleTransform).transform;
+               rightMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldAimMuzzleEffect, rightMuzzleTransform).transform;
+               leftMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldAimMuzzleEffect, leftMuzzleTransform).transform;
                hasMuzzles = true;
             }
             this.stopwatch += Time.fixedDeltaTime;

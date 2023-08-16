@@ -19,6 +19,10 @@ namespace AmpMod.Modules
         internal static GameObject fieldProjectilePrefab;
         internal static GameObject bladeProjectilePrefab;
         internal static GameObject lightningBallPrefab;
+        internal static GameObject fieldProjectilePrefabBlue;
+        internal static GameObject bladeProjectilePrefabBlue;
+        internal static GameObject lightningBallGhostBlue;
+        internal static GameObject lightningBallGhost;
 
         internal static void RegisterProjectiles()
         {
@@ -53,6 +57,9 @@ namespace AmpMod.Modules
             //instantiates the projectile model and associates it with the prefab
             if (Assets.mainAssetBundle.LoadAsset<GameObject>("BladeGhostPrefab") != null) bladeController.ghostPrefab = CreateGhostPrefab("BladeGhostPrefab");
             
+
+            bladeProjectilePrefabBlue = CreateGhostPrefab("BladeGhostPrefabBlue");
+
             ProjectileSingleTargetImpact bladeContactController = bladeProjectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
             bladeContactController.impactEffect = Assets.bulletImpactEffect;
             //bladeProjectilePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/Railgunner/RailgunPistolExpire");
@@ -77,6 +84,9 @@ namespace AmpMod.Modules
             ProjectileController lightningBallController = lightningBallPrefab.GetComponent<ProjectileController>();
 
             //if (Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallGhost") != null) lightningBallController.ghostPrefab = CreateGhostPrefab("LightningBallGhost");
+
+            lightningBallGhostBlue = CreateGhostPrefab("PlasmaShotGhostBlue");
+            lightningBallGhost = CreateGhostPrefab("PlasmaShotGhost");
 
             lightningBallController.allowPrediction = true;
 
@@ -109,6 +119,29 @@ namespace AmpMod.Modules
             stopLoop.SoundId = 2520482775;
 
             PrefabAPI.RegisterNetworkPrefab(fieldProjectilePrefab);
+
+            #region Blue
+            fieldProjectilePrefabBlue = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOTBlue");
+            var dmgTypeHolderBlue = fieldProjectilePrefabBlue.AddComponent<ModdedDamageTypeHolderComponent>();
+            dmgTypeHolderBlue.Add(DamageTypes.controlledChargeProcProjectile);
+
+            var dotZoneBlue = fieldProjectilePrefab.GetComponent<ProjectileDotZone>();
+            dotZoneBlue.overlapProcCoefficient = StaticValues.staticFieldTickProcCoefficient;
+
+            GameObject FXBlue = fieldProjectilePrefabBlue.transform.GetChild(0).gameObject;
+            GameObject ScaledOnImpactBlue = FXBlue.transform.GetChild(0).gameObject;
+            GameObject DecalBlue = new GameObject();
+            DecalBlue.transform.parent = ScaledOnImpactBlue.transform;
+
+            var buffWardBlue = fieldProjectilePrefabBlue.GetComponent<BuffWard>();
+            buffWardBlue.buffDef = Buffs.nemAmpAtkSpeed;
+
+            var stopLoopBlue = fieldProjectilePrefabBlue.AddComponent<SkillStates.BaseStates.StopLoop>();
+            stopLoopBlue.SoundEventToPlay = StaticValues.fieldLoopString;
+            stopLoopBlue.SoundId = 2520482775;
+
+            PrefabAPI.RegisterNetworkPrefab(fieldProjectilePrefabBlue);
+            #endregion
         }
 
         //instantiates ferroshot/Lorentz Cannon projectile

@@ -1511,7 +1511,7 @@ localScale = new Vector3(0.2866F, 0.2866F, 0.2866F),
                 }
             });
 
-          /*  itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Items.NovaOnLowHealth,
                 displayRuleGroup = new DisplayRuleGroup
@@ -1530,7 +1530,7 @@ localScale = new Vector3(0.1035F, 0.1035F, 0.1035F),
                         }
                     }
                 }
-            });*/
+            });
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {

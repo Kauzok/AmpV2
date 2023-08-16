@@ -11,7 +11,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 	public class NemAmpLightningStrikeOrb : GenericDamageOrb, IOrbFixedUpdateBehavior
 	{
 		public GameObject orbEffect;
-		private NemAmpBuffVFXController lightningController;
+		public GameObject lightningEffect;
 
 		public override void Begin()
 		{
@@ -25,14 +25,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 
 		public override GameObject GetOrbEffect()
 		{
-			return Assets.purpleStormBoltEffect;
+			return lightningEffect;
 
 			//return LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/simplelightningstrikeimpact");
 		} 
 
 		public override void OnArrival()
 		{
-			EffectManager.SpawnEffect(GetOrbEffect(), new EffectData
+			EffectManager.SpawnEffect(lightningEffect, new EffectData
 			{
 				origin = this.lastKnownTargetPosition
 			}, true);

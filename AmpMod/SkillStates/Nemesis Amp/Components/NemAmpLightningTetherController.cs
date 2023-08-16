@@ -2,16 +2,17 @@
 using System.Text;
 using UnityEngine;
 using RoR2;
-using UnityEngine.Events;
-using UnityEngine.Networking;
 using AmpMod.Modules;
+using UnityEngine.Networking;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
     public class NemAmpLightningTetherController : NetworkBehaviour
     {
-        private GameObject lightningTetherVFX = Assets.lightningStreamEffect;
+        public GameObject lightningTetherVFX;
         private GameObject attacker;
+        public bool isBlue;
         private NemAmpLightningTracker lightningTracker;
         public GameObject lightningTetherInstance;
         private HurtBox trackingTarget;
@@ -19,20 +20,33 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private LineRenderer lineRendererPrefab;
         private int numLineRendererPoints;
         private GameObject oldLightningTarget;
+        private NemLightningColorController lightningController;
         private CharacterBody victimBody;
         private float posRange = .3f;// 0.5f;
         private float lightningTickFrequency = .1f;
         private float maxZ = 8f;
         public bool isAttacking;
         private Transform origin;
+        private CharacterBody baseBody;
+        private CharacterModel model;
 
         private void Start()    
         {
             lightningTracker = base.GetComponent<NemAmpLightningTracker>();
             lineRendererPrefab = lightningTetherVFX.GetComponentInChildren<LineRenderer>();
             numLineRendererPoints = lineRendererPrefab.positionCount;
+            this.model = base.GetComponentInChildren<CharacterModel>();
+            baseBody = base.GetComponent<CharacterBody>();
 
-   
+            if (this.model.GetComponent<ModelSkinController>().skins[this.baseBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME")
+            {
+                lightningTetherVFX = Assets.lightningStreamEffectBlue;
+            }
+            else
+            {
+                lightningTetherVFX = Assets.lightningStreamEffect;
+            }
+
         }
 
         public void CreateLightningTether(GameObject attacker, Transform origin)

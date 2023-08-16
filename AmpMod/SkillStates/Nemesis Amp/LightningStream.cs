@@ -10,6 +10,7 @@ using RoR2.Orbs;
 using UnityEngine.Networking;
 using AmpMod.Modules;
 using AmpMod.SkillStates.Nemesis_Amp.Orbs;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -35,6 +36,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject muzzleFlashEffect = Assets.lightningStreamMuzzleFlash;
         private GameObject muzzleFlashObject;
         private bool muzzleHasFlashed;
+        private NemLightningColorController lightningController;
 
         [Header("Animation Variables")]
         private Animator animator;
@@ -55,8 +57,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningEffectController = base.GetComponent<NemAmpLightningTetherController>();
             lightningEffectController.isAttacking = true;
 
+            lightningController = base.GetComponent<NemLightningColorController>();
+            muzzleEffect = lightningController.streamMuzzleVFX;
+            muzzleFlashEffect = lightningController.streamMuzzleFlashVFX;
+            lightningEffectController.lightningTetherVFX = lightningController.streamVFX;
+
+
             //Util.PlaySound(startSoundString, base.gameObject);
-            
+
             tracker = base.GetComponent<NemAmpLightningTracker>();
 
             Transform modelTransform = base.GetModelTransform();

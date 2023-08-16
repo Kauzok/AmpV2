@@ -1,4 +1,4 @@
-﻿using UnityEngine.Networking;
+﻿using AmpMod.SkillStates.Nemesis_Amp.Components;
 using RoR2;
 using EntityStates;
 using UnityEngine;
@@ -13,16 +13,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		private Vector3 blinkVector = Vector3.zero;
 		private float stopwatch;
 		[SerializeField]
-		public GameObject blinkVfxPrefab = Modules.Assets.dashVFXPrefab;
+		public GameObject blinkVfxPrefab;
 		[SerializeField]
 		public float overlayDuration = .3f;
 		[SerializeField]
 		public Material overlayMaterial;
-		private GameObject blinkEffectPrefab = Assets.dashEnterEffect;
+		private GameObject blinkEffectPrefab;
 		private float duration = .4f;
 		private float upSpeed = 0f;
 		private CharacterModel characterModel;
 		private GameObject blinkVfxInstance;
+		private NemLightningColorController lightningController;
 		private Transform modelTransform;
 		private uint soundID;
 		public static QuickDash src = new QuickDash();
@@ -39,42 +40,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		public override void OnEnter()
 		{
 			base.OnEnter();
-			#region old
-			/*EntityStates.VoidSurvivor.VoidBlinkBase.VoidBlinkDown blinkDown = new EntityStates.VoidSurvivor.VoidBlinkBase.VoidBlinkDown();
-			forwardSpeed = blinkDown.forwardSpeed;
-			//Debug.Log(forwardSpeed);
 
-			this.soundID = Util.PlaySound(this.beginSoundString, base.gameObject);
-			this.forwardVector = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
-			this.modelTransform = base.GetModelTransform();
-			if (this.modelTransform)
-			{
-				this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
-				this.hurtboxGroup = this.modelTransform.GetComponent<HurtBoxGroup>();
-			}
-			if (this.characterModel)
-			{
-				this.characterModel.invisibilityCount++;
-			}
-			if (this.hurtboxGroup)
-			{
-				HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
-				int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter + 1;
-				hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
-			}
-			if (NetworkServer.active)
-			{
-				Util.CleanseBody(base.characterBody, true, false, false, true, true, false);
-			}
-			this.blinkVfxInstance = UnityEngine.Object.Instantiate<GameObject>(this.blinkVfxPrefab);
-			this.blinkVfxInstance.transform.SetParent(base.transform, false);
-			this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject)); */
-			#endregion
 			stackDamageController = base.GetComponent<StackDamageController>();
 			stackDamageController.newSkillUsed = this;
 			stackDamageController.resetComboTimer();
 			Util.PlaySound(beginSoundString, base.gameObject);
-			//cancelID = Util.PlaySound(this.loopSound, base.gameObject);
+			lightningController = base.GetComponent<NemLightningColorController>();
+
+
+			blinkVfxPrefab = lightningController.dashPrefab;
+			blinkEffectPrefab = lightningController.dashEnterExitVFX;
 
 			this.modelTransform = base.GetModelTransform();
 			if (this.modelTransform)

@@ -2,6 +2,7 @@
 using EntityStates;
 using UnityEngine;
 using AmpMod.Modules;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -14,11 +15,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         [SerializeField]
         public float baseDuration = 1.5f;
 
+        private NemLightningColorController lightningController;
         private float duration;
         private Animator animator;
         private ChildLocator childLocator;
         private GameObject chargeEffectInstance;
-        private GameObject chargeEffectPrefab = Assets.chargeBeamMuzzleEffect;
+        private GameObject chargeEffectPrefab;
         private bool charged;
         private float hoverAcceleration = 80f;
         private float hoverVelocity = -1f;
@@ -39,6 +41,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             base.characterBody.SetAimTimer(duration);
+            lightningController = base.GetComponent<NemLightningColorController>();
+            chargeEffectPrefab = lightningController.beamChargeVFX;
             //base.PlayAnimation("Gesture, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
             //base.PlayAnimation("Gesture, Additive", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);
             //base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration + 1f);

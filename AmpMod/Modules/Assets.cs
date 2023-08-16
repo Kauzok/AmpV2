@@ -125,6 +125,9 @@ namespace AmpMod.Modules
         internal static GameObject deathExplosionEffect;
         internal static Material matDeathOverlay;
         internal static GameObject spawnSecondaryExplosionEffect;
+        internal static GameObject deathExplosionEffectBlue;
+        internal static Material matDeathOverlayBlue;
+        internal static GameObject spawnSecondaryExplosionEffectBlue;
         internal static GameObject spawnDustEffect;
 
         [Header("Passive Effects")]
@@ -132,6 +135,9 @@ namespace AmpMod.Modules
         internal static GameObject maxBuffFlashEffect;
         internal static Material buffOverlayMat;
         internal static GameObject maxBuffOffEffect;
+        internal static GameObject maxBuffFlashEffectBlue;
+        internal static Material buffOverlayMatBlue;
+        internal static GameObject maxBuffOffEffectBlue;
 
         [Header("Fulmination Effects")]
         internal static GameObject lightningStreamEffect;
@@ -140,23 +146,37 @@ namespace AmpMod.Modules
         internal static GameObject lightningStreamChainEffectPrefab;
         internal static GameObject lightningCrosshair;
         internal static GameObject lightningStreamMuzzleFlash;
+        internal static GameObject lightningStreamEffectBlue;
+        internal static GameObject lightningStreamImpactEffectBlue;
+        internal static GameObject lightningStreamMuzzleEffectBlue;
+        internal static GameObject lightningStreamChainEffectPrefabBlue;
+        internal static GameObject lightningCrosshairBlue;
+        internal static GameObject lightningStreamMuzzleFlashBlue;
 
         [Header("Lorentz Blades Effects")]
         internal static GameObject bladePrepObject;
         internal static GameObject bladeFireEffect;
         internal static GameObject bladeExpireEffect;
+        internal static GameObject bladePrepObjectBlue;
+        internal static GameObject bladeFireEffectBlue;
+        internal static GameObject bladeExpireEffectBlue;
         internal static GameObject bladeMuzzleEffect;
 
         [Header("Howitzer Spark Effects")]
         internal static GameObject chargeBeamMuzzleEffect;
         internal static GameObject chargeBeamTracerPrefab;
-        internal static GameObject chargeBeamHitEffect;
+        //internal static GameObject chargeBeamHitEffect;
         internal static GameObject beamMuzzleFlashEffect;
-        internal static GameObject fireBeamEffect;
+        internal static GameObject chargeBeamMuzzleEffectBlue;
+        internal static GameObject chargeBeamTracerPrefabBlue;
+        internal static GameObject beamMuzzleFlashEffectBlue;
+        // internal static GameObject fireBeamEffect;
 
         [Header("Static Field Effects")]
         internal static GameObject aimFieldMuzzleEffect;
         internal static GameObject releaseFieldMuzzleEffect;
+        internal static GameObject aimFieldMuzzleEffectBlue;
+        internal static GameObject releaseFieldMuzzleEffectBlue;
         internal static GameObject staticFieldPrefab;
         internal static GameObject staticFieldIndicatorPrefab;
 
@@ -166,10 +186,15 @@ namespace AmpMod.Modules
         internal static GameObject dashEnterEffect;
         internal static GameObject lightningBallExplosionEffect;
         internal static GameObject lightningBallMuzzleFlashEffect;
+        internal static GameObject dashVFXPrefabBlue;
+        internal static GameObject dashEnterEffectBlue;
+        internal static GameObject lightningBallExplosionEffectBlue;
+        internal static GameObject lightningBallMuzzleFlashEffectBlue;
 
         [Header("Voltaic Onslaught Effects")]
         internal static GameObject purpleStormBoltEffect;
         internal static GameObject stormMuzzleFlashEffect;
+        internal static GameObject stormMuzzleFlashEffectBlue;
 
         internal static GameObject teleportExplosionEffect;
         internal static GameObject teleportAimReticle;
@@ -213,8 +238,42 @@ namespace AmpMod.Modules
             LoadAssetBundle();
             LoadSoundbank();
             PopulateAssets();
+            AdjustMats();
         }
 
+        internal static void AdjustMats()
+        {
+            var materialAssets = mainAssetBundle.LoadAllAssets<Material>();
+            foreach (Material material in materialAssets)
+            {
+                if (material.shader.name == "Hopoo Games/FX/Cloud Remap")
+                {
+                    material.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
+                }
+
+                else if (material.shader.name == "Stubbed Hopoo Games/FX/Cloud Intersection Remap")
+                {
+                    material.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgintersectioncloudremap");
+                }
+
+                else if (material.shader.name == "Stubbed Hopoo Games/UI/Default Overbrighten")
+                {
+                    material.shader = LegacyResourcesAPI.Load<Shader>("Shaders/UI/HGUIOverbrighten");
+                }
+
+                else if (material.shader.name == "Stubbed Hopoo Games/FX/Distortion")
+                {
+                    material.shader = LegacyResourcesAPI.Load<Shader>("Shaders/FX/Distortion");
+                }
+
+                else if (material.shader.name == "StubbedShader/deferred/standard")
+                {
+                    material.shader = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
+                }
+
+            }
+
+        }
         internal static void LoadAssetBundle()
         {
             if (mainAssetBundle == null)
@@ -492,6 +551,9 @@ namespace AmpMod.Modules
             spawnSecondaryExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("SpawnRingEffect");
             AddNewEffectDef(spawnSecondaryExplosionEffect);
 
+            spawnSecondaryExplosionEffectBlue = mainAssetBundle.LoadAsset<GameObject>("SpawnRingEffectBlue");
+            AddNewEffectDef(spawnSecondaryExplosionEffectBlue);
+
             spawnDustEffect = mainAssetBundle.LoadAsset<GameObject>("DigEffect");
             AddNewEffectDef(spawnDustEffect);
 
@@ -508,12 +570,14 @@ namespace AmpMod.Modules
         }
         private static void CreateLightningStream()
         {
-            lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningEffectOrbNew");
+            lightningStreamEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbEffect");
             PrefabAPI.RegisterNetworkPrefab(lightningStreamEffect);
+
             //lightningStreamEffect.AddComponent<SkillStates.Nemesis_Amp.NemAmpLightningRendererNoise>();
             //AddNewEffectDef(lightningStreamEffect);
             var lightningStreamOmniImpact = mainAssetBundle.LoadAsset<GameObject>("OmniImpactVFXLightning");
             AddNewEffectDef(lightningStreamOmniImpact);
+
             lightningStreamImpactEffect = mainAssetBundle.LoadAsset<GameObject>("LightningOrbImpact");
             AddNewEffectDef(lightningStreamImpactEffect);
 
@@ -531,6 +595,32 @@ namespace AmpMod.Modules
             lightningStreamMuzzleFlash = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzleFlash");
             PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleFlash);
 
+            #region Blue
+            var lightningStreamOmniImpactBlue = mainAssetBundle.LoadAsset<GameObject>("OmniImpactVFXLightningBlue");
+            AddNewEffectDef(lightningStreamOmniImpactBlue);
+
+            lightningStreamEffectBlue = mainAssetBundle.LoadAsset<GameObject>("LightningOrbEffectBlue");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamEffectBlue);
+
+            lightningStreamImpactEffectBlue = mainAssetBundle.LoadAsset<GameObject>("LightningOrbImpactBlue");
+            AddNewEffectDef(lightningStreamImpactEffectBlue);
+
+            lightningCrosshairBlue = mainAssetBundle.LoadAsset<GameObject>("LightningIndicatorBlue");
+            lightningCrosshairBlue.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
+            PrefabAPI.RegisterNetworkPrefab(lightningCrosshairBlue);
+
+            lightningStreamChainEffectPrefabBlue = mainAssetBundle.LoadAsset<GameObject>("LightningOrbChainEffectBlue");
+            lightningStreamChainEffectPrefabBlue.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefabBlue);
+
+            lightningStreamMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzleBlue");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleEffectBlue);
+
+            lightningStreamMuzzleFlashBlue = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzleFlashBlue");
+            PrefabAPI.RegisterNetworkPrefab(lightningStreamMuzzleFlashBlue);
+
+            #endregion
+
             //AddNewEffectDef(lightningStreamMuzzleFlash);
 
         }
@@ -545,6 +635,17 @@ namespace AmpMod.Modules
 
             bladeExpireEffect = mainAssetBundle.LoadAsset<GameObject>("BladeExpire");
             AddNewEffectDef(bladeExpireEffect);
+
+            #region Blue
+            bladePrepObjectBlue = mainAssetBundle.LoadAsset<GameObject>("BladeSpawnBlue");
+            PrefabAPI.RegisterNetworkPrefab(bladePrepObjectBlue);
+
+            bladeFireEffectBlue = mainAssetBundle.LoadAsset<GameObject>("BladeFireEffectBlue");
+            AddNewEffectDef(bladeFireEffectBlue);
+
+            bladeExpireEffectBlue = mainAssetBundle.LoadAsset<GameObject>("BladeExpireBlue");
+            AddNewEffectDef(bladeExpireEffectBlue);
+            #endregion
         }
         private static void CreateChargeBeam()
         {
@@ -562,6 +663,19 @@ namespace AmpMod.Modules
             //PrefabAPI.RegisterNetworkPrefab(beamMuzzleFlashEffect);
 
             AddNewEffectDef(beamMuzzleFlashEffect);
+
+            #region Blue
+            chargeBeamTracerPrefabBlue = mainAssetBundle.LoadAsset<GameObject>("TracerChargeBeamBlue");
+            //Debug.Log(chargeBeamTracerPrefab);
+            //chargeBeamTracerPrefab.AddComponent<NetworkIdentity>();
+            //chargeBeamTracerPrefab.AddComponent<EffectComponent>();
+            AddNewEffectDef(chargeBeamTracerPrefabBlue);
+
+            chargeBeamMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningBeamBlue");
+            PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffectBlue);
+
+            beamMuzzleFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("MuzzleflashBeamBlue");
+            #endregion
 
         }
 
@@ -588,6 +702,16 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(releaseFieldMuzzleEffect);
             //AddNewEffectDef(releaseFieldMuzzleEffect);
 
+            #region Blue
+            aimFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("AimFieldMuzzleEffectBlue");
+            PrefabAPI.RegisterNetworkPrefab(aimFieldMuzzleEffectBlue);
+            //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
+
+            releaseFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlashBlue");
+
+            PrefabAPI.RegisterNetworkPrefab(releaseFieldMuzzleEffectBlue);
+            #endregion
+
 
         }
 
@@ -602,6 +726,14 @@ namespace AmpMod.Modules
 
             maxBuffOffEffect = mainAssetBundle.LoadAsset<GameObject>("MaxBuffOffEffect");
             AddNewEffectDef(maxBuffOffEffect);
+
+            #region Blue
+            maxBuffFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("MaxBuffFlashEffectBlue");
+            AddNewEffectDef(maxBuffFlashEffectBlue);
+
+            maxBuffOffEffectBlue = mainAssetBundle.LoadAsset<GameObject>("MaxBuffOffEffectBlue");
+            AddNewEffectDef(maxBuffOffEffectBlue);
+            #endregion
         }
 
         private static void CreateAOELightning()
@@ -612,6 +744,9 @@ namespace AmpMod.Modules
 
             stormMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("StormMuzzleFlash");
             AddNewEffectDef(stormMuzzleFlashEffect);
+
+            stormMuzzleFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StormMuzzleFlashBlue");
+            AddNewEffectDef(stormMuzzleFlashEffectBlue);
         }
 
         private static void CreateLightningDash()
@@ -627,7 +762,21 @@ namespace AmpMod.Modules
 
             lightningBallMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("BallMuzzleFlash");
             AddNewEffectDef(lightningBallMuzzleFlashEffect);
-            
+
+            #region Blue
+            dashVFXPrefabBlue = mainAssetBundle.LoadAsset<GameObject>("QuickDashPrefabBlue");
+            PrefabAPI.RegisterNetworkPrefab(dashVFXPrefabBlue);
+
+            lightningBallExplosionEffectBlue = mainAssetBundle.LoadAsset<GameObject>("LightningBallExplosionBlue");
+            AddNewEffectDef(lightningBallExplosionEffectBlue);
+
+            dashEnterEffectBlue = mainAssetBundle.LoadAsset<GameObject>("SurgeMuzzleFlashBlue");
+            AddNewEffectDef(dashEnterEffectBlue);
+
+            lightningBallMuzzleFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("BallMuzzleFlashBlue");
+            AddNewEffectDef(lightningBallMuzzleFlashEffectBlue);
+            #endregion
+
         }
 
         #endregion
@@ -1277,7 +1426,7 @@ namespace AmpMod.Modules
         public static Material CreateVFXMaterial(string materialName)
         {
             Material mat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
-
+            //Debug.Log(mat.shader.name);
             mat.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
             return mat;
         }

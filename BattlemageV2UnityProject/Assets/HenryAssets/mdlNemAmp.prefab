@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5889439025614972543}
   - component: {fileID: 9052249991326240707}
   m_Layer: 0
-  m_Name: mdlNemAmpOld
+  m_Name: mdlNemAmp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,6 +264,10 @@ MonoBehaviour:
     transform: {fileID: 3215225825766536070}
   - name: SpawnCharge
     transform: {fileID: 8242953047475389167}
+  - name: SwordPlace
+    transform: {fileID: 4394264699284230119}
+  - name: Sword
+    transform: {fileID: 4394264699284230119}
 --- !u!114 &9052249991326240707
 MonoBehaviour:
   m_ObjectHideFlags: 0

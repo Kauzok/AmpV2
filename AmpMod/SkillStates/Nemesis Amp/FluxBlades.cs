@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using RoR2;
 using EntityStates;
-using RoR2.Skills;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 using UnityEngine;
 using RoR2.Projectile;
 using AmpMod.Modules;
@@ -14,14 +12,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
     class FluxBlades : BaseSkillState
     {
         private float damageCoefficient = Modules.StaticValues.bladeDamageCoefficient;
-        public GameObject bladePrefab = Modules.Projectiles.bladeProjectilePrefab;
-        public static GameObject bladeMuzzleObject = Modules.Assets.bladePrepObject;
-        public GameObject fireEffect = Assets.bladeFireEffect;
+        public GameObject bladePrefab;
+        public static GameObject bladeMuzzleObject;
+        public GameObject fireEffect;
         public string spawnSoundString = StaticValues.fluxBladesSpawnString;
         private Animator animator;
         public static float baseDuration = 1.2f;
         private float baseChargeTime = .6f;
         private float chargeTime;
+        private NemLightningColorController lightningController;
         private float duration;
         private float surgeBuffCount;
         private float launchForce = 90f;
@@ -49,8 +48,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);
 
+            lightningController = base.GetComponent<NemLightningColorController>();
+
+            bladePrefab = lightningController.bladePrefab;
+            bladeMuzzleObject = lightningController.bladePrepVFX;
+            fireEffect = lightningController.bladeFireVFX;
+
             projectileImpactExplosion = bladePrefab.GetComponent<ProjectileImpactExplosion>();
-            
+
             if (surgeBuffCount == 10)
             {
                 numOfBullets = 6;
