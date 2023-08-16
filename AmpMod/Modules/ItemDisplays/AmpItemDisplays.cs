@@ -2642,7 +2642,7 @@ localScale = new Vector3(1F, 1F, 1F),
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplays.LoadDisplay("DisplaySawmerang"),
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplaySawmerangFollower"),
 childName = "Base",
 localPos = new Vector3(-0.61797F, 1.1794F, -0.30405F),
 localAngles = new Vector3(90F, 0F, 0F),

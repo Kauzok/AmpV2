@@ -1511,7 +1511,7 @@ localScale = new Vector3(0.2866F, 0.2866F, 0.2866F),
                 }
             });
 
-            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+          /*  itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Items.NovaOnLowHealth,
                 displayRuleGroup = new DisplayRuleGroup
@@ -1530,7 +1530,7 @@ localScale = new Vector3(0.1035F, 0.1035F, 0.1035F),
                         }
                     }
                 }
-            });
+            });*/
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
@@ -2642,7 +2642,7 @@ localScale = new Vector3(1F, 1F, 1F),
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplays.LoadDisplay("DisplaySawmerang"),
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplaySawmerangFollower"),
 childName = "Base",
 localPos = new Vector3(-0.61797F, 1.1794F, -0.30405F),
 localAngles = new Vector3(90F, 0F, 0F),

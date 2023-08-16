@@ -125,7 +125,7 @@ namespace AmpMod.Modules
         internal const float teleportBlastRadius = 10f;
 
         [Header("QuickSurge Values")]
-        internal const float lightningBallDamageCoefficient = 5f;
+        internal const float lightningBallDamageCoefficient = 6.5f;
 
 
         [Header("Voltaic Onslaught Values")]
