@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using RoR2;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 using AmpMod.Modules;
 
 
@@ -14,9 +15,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private CharacterBody characterBody;
         private bool hasFlashed;
         private bool isMaxed;
-        private GameObject buffOnEffect = Assets.maxBuffFlashEffect;
-        private GameObject buffOffEffect = Assets.maxBuffOffEffect;
+        private GameObject buffOnEffect;
+        private GameObject buffOffEffect;
         private TemporaryOverlay buffOverlay;
+        private NemLightningColorController lightningController;
         private Transform modelTransform;
         private Material overlayMat;
         private ChildLocator childLocator;
@@ -34,8 +36,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             characterModel = modelTransform.GetComponent<CharacterModel>();
             childLocator = modelTransform.GetComponent<ChildLocator>();
             sparkEffect = this.childLocator.FindChild("BuffLightning");
-            overlayMat = Assets.buffOverlayMat;
             //overlayMat = LegacyResourcesAPI.Load<Material>("RoR2/DLC1/VoidWardCrab/matVoidWardCrabOverlay");
+            lightningController = base.GetComponent<NemLightningColorController>();
+            buffOnEffect = lightningController.buffOnVFX;
+            overlayMat = lightningController.buffOverlay;
+            buffOffEffect = lightningController.buffOffVFX;
         }
 
         private void FixedUpdate()

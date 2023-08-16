@@ -703,11 +703,11 @@ namespace AmpMod.Modules
             //AddNewEffectDef(releaseFieldMuzzleEffect);
 
             #region Blue
-            //aimFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("AimFieldMuzzleEffectBlue");
-           // PrefabAPI.RegisterNetworkPrefab(aimFieldMuzzleEffectBlue);
-            //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
+            aimFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("AimFieldMuzzleEffectBlue");
+            PrefabAPI.RegisterNetworkPrefab(aimFieldMuzzleEffectBlue);
+            
 
-            releaseFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlashBlue");
+           releaseFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlashBlue");
             PrefabAPI.RegisterNetworkPrefab(releaseFieldMuzzleEffectBlue);
             #endregion
 

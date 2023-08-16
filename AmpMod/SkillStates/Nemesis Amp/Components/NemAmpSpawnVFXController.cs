@@ -10,7 +10,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 {
     public class NemAmpSpawnVFXController : MonoBehaviour
     {
-        public GameObject burstVFX = Assets.spawnSecondaryExplosionEffect;
+        public GameObject burstVFX;
         public GameObject dustVFX = Assets.spawnDustEffect;
         private String dustSFX = Modules.StaticValues.spawnDustSoundString;
         private string burstSFX = Modules.StaticValues.spawnBurstSoundString;
@@ -21,12 +21,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         private void Start()
         {
             
-            characterBody = base.GetComponent<CharacterBody>();
             childLocator = base.gameObject.GetComponent<ChildLocator>();
+            this.characterModel = base.GetComponentInChildren<CharacterModel>();
+
+            //Debug.Log("passed declarations")
+
             if (this.characterModel.GetComponent<ModelSkinController>().skins[this.characterBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME")
             {
                 isBlue = true;
-            }
+           }
 
             if (isBlue)
             {
@@ -35,7 +38,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             else
             {
                 burstVFX = Assets.spawnSecondaryExplosionEffect;
-            }
+            } 
         }
         public void SpawnReleaseRing()
         {

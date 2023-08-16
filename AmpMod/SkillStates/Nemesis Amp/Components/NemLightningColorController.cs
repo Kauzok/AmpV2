@@ -77,6 +77,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 #region Gathering Storm
                 buffOffVFX = Assets.maxBuffOffEffectBlue;
                 buffOnVFX = Assets.maxBuffFlashEffectBlue;
+                deathOverlay = Assets.matDeathOverlayBlue;
                 #endregion
 
                 #region Fulmination
@@ -103,7 +104,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
                 #region Static Field
                 fieldAimVFX = Assets.aimFieldMuzzleEffectBlue;
-                fieldMuzzleVFX = Assets.aimFieldMuzzleEffectBlue;
+                fieldMuzzleVFX = Assets.releaseFieldMuzzleEffectBlue;
                 fieldPrefab = Projectiles.fieldProjectilePrefabBlue;
                 #endregion
 
@@ -113,7 +114,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 lightningBallPrefab = Projectiles.lightningBallPrefab;
                 lightningBallPrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.lightningBallGhostBlue;
                 lightningBallMuzzleVFX = Assets.lightningBallMuzzleFlashEffectBlue;
-                lightningBallPrefab.GetComponent<ProjectileImpactExplosion>().explosionEffect = Assets.lightningBallExplosionEffectBlue;
+                lightningBallPrefab.GetComponent<ProjectileImpactExplosion>().impactEffect = Assets.lightningBallExplosionEffectBlue;
                 #endregion
 
                 #region Voltaic Onslaught
@@ -126,6 +127,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 #region Gathering Storm
                 buffOffVFX = Assets.maxBuffOffEffect;
                 buffOnVFX = Assets.maxBuffFlashEffect;
+                deathOverlay = Assets.matDeathOverlay;
                 #endregion
 
                 #region Fulmination
@@ -152,7 +154,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
                 #region Static Field
                 fieldAimVFX = Assets.aimFieldMuzzleEffect;
-                fieldMuzzleVFX = Assets.aimFieldMuzzleEffect;
+                fieldMuzzleVFX = Assets.releaseFieldMuzzleEffect;
                 fieldPrefab = Projectiles.fieldProjectilePrefab;
                 #endregion
 
