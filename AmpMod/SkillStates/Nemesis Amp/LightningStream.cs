@@ -60,7 +60,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningController = base.GetComponent<NemLightningColorController>();
             muzzleEffect = lightningController.streamMuzzleVFX;
             muzzleFlashEffect = lightningController.streamMuzzleFlashVFX;
-            lightningEffectController.lightningTetherVFX = lightningController.streamVFX;
+            //lightningEffectController.lightningTetherVFX = lightningController.streamVFX;
 
 
             //Util.PlaySound(startSoundString, base.gameObject);

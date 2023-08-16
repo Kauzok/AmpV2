@@ -675,6 +675,7 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(chargeBeamMuzzleEffectBlue);
 
             beamMuzzleFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("MuzzleflashBeamBlue");
+            AddNewEffectDef(beamMuzzleFlashEffectBlue);
             #endregion
 
         }
@@ -698,17 +699,15 @@ namespace AmpMod.Modules
             //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
 
             releaseFieldMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlash");
-
             PrefabAPI.RegisterNetworkPrefab(releaseFieldMuzzleEffect);
             //AddNewEffectDef(releaseFieldMuzzleEffect);
 
             #region Blue
-            aimFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("AimFieldMuzzleEffectBlue");
-            PrefabAPI.RegisterNetworkPrefab(aimFieldMuzzleEffectBlue);
+            //aimFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("AimFieldMuzzleEffectBlue");
+           // PrefabAPI.RegisterNetworkPrefab(aimFieldMuzzleEffectBlue);
             //staticFieldPrefab = mainAssetBundle.LoadAsset<GameObject>("StaticFieldPrefab");
 
             releaseFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlashBlue");
-
             PrefabAPI.RegisterNetworkPrefab(releaseFieldMuzzleEffectBlue);
             #endregion
 

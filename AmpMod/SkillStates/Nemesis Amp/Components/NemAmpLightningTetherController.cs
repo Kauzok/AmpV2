@@ -33,8 +33,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private void Start()    
         {
             lightningTracker = base.GetComponent<NemAmpLightningTracker>();
-            lineRendererPrefab = lightningTetherVFX.GetComponentInChildren<LineRenderer>();
-            numLineRendererPoints = lineRendererPrefab.positionCount;
+            
+            
             this.model = base.GetComponentInChildren<CharacterModel>();
             baseBody = base.GetComponent<CharacterBody>();
 
@@ -46,7 +46,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 lightningTetherVFX = Assets.lightningStreamEffect;
             }
-
+            lineRendererPrefab = lightningTetherVFX.GetComponentInChildren<LineRenderer>();
+            numLineRendererPoints = lineRendererPrefab.positionCount;
         }
 
         public void CreateLightningTether(GameObject attacker, Transform origin)

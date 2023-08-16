@@ -142,7 +142,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 bladeFireVFX = Assets.bladeFireEffect;
                 bladePrefab = Projectiles.bladeProjectilePrefab;
                 bladePrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.bladeProjectilePrefab;
-                bladePrepVFX.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = Assets.bladeExpireEffect;
+                bladePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = Assets.bladeExpireEffect;
 
                 #region Furious Spark
                 beamMuzzleVFX = Assets.beamMuzzleFlashEffect;

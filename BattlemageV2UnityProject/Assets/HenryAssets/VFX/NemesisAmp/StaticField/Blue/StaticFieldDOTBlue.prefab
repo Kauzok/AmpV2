@@ -367,9 +367,9 @@ MonoBehaviour:
   teamFilter: {fileID: 114441193285198080}
   teamMaterialPairs:
   - teamIndex: 2
-    sharedMaterial: {fileID: 2100000, guid: f43d68ce80ddf844da26afe49eee4c82, type: 2}
+    sharedMaterial: {fileID: 2100000, guid: 9327f915971a0d94eaf4575d69fb76a9, type: 2}
   - teamIndex: 1
-    sharedMaterial: {fileID: 2100000, guid: f43d68ce80ddf844da26afe49eee4c82, type: 2}
+    sharedMaterial: {fileID: 2100000, guid: 9327f915971a0d94eaf4575d69fb76a9, type: 2}
   areaIndicatorRenderers:
   - {fileID: 23193299769130282}
 --- !u!114 &114824703498210928

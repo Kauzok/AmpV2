@@ -6,6 +6,7 @@ using EntityStates;
 using UnityEngine;
 using UnityEngine.Networking;
 using R2API;
+using AmpMod.Modules;
 using static RoR2.UI.CrosshairController;
 
 namespace AmpMod.SkillStates.Nemesis_Amp.Components
@@ -18,8 +19,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         private float waitDuration = 1.5f;
         private ChildLocator childLocator;
         private float strikeRadius = 10f;
+        private CharacterBody characterBody;
         private CharacterModel characterModel;
         private bool hasFired;
+        private bool isBlue;
 
         public override void OnEnter()
         {
@@ -28,13 +31,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             this.modelTransform = base.GetModelTransform();
             this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
             childLocator = base.GetModelChildLocator();
+            characterBody = base.GetComponent<CharacterBody>();
             //Debug.Log("spawning effect");
             if (NetworkServer.active) base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, NemSpawnState.duration * 1.5f);
             if (this.characterModel)
             {
                 this.characterModel.invisibilityCount++;
             }
-
+            if (this.characterModel.GetComponent<ModelSkinController>().skins[this.characterBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME")
+            {
+                isBlue = true;
+            }
        
             
 
@@ -73,7 +80,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 {
                     this.characterModel.invisibilityCount--;
                 }
-                if (childLocator.FindChild("SpawnEffect")) childLocator.FindChild("SpawnEffect").gameObject.SetActive(true);
+                if (isBlue)
+                {
+                    if (childLocator.FindChild("SpawnEffectBlue")) childLocator.FindChild("SpawnEffectBlue").gameObject.SetActive(true);
+                }
+                else
+                {
+                    if (childLocator.FindChild("SpawnEffect")) childLocator.FindChild("SpawnEffect").gameObject.SetActive(true);
+                }
+                
                 FireBlast();
 
                 base.PlayAnimation("Spawn, Override", "Spawn", "Spawn.playbackRate", 4f);
