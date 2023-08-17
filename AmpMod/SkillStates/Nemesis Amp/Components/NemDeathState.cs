@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using RoR2;
 using EntityStates;
-using AmpMod.SkillStates.BaseStates;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 using UnityEngine.Networking;
 using AmpMod.Modules;
 using UnityEngine;
@@ -12,12 +12,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 {
     internal class NemDeathState : GenericCharacterDeath
     {
-        private GameObject deathEffect = Assets.deathExplosionEffect;
+        private GameObject deathEffect;
         private float waitDuration = 1.4f;
         private float deathDuration = 2.5f;
         private Animator animator;
-        private Material overlayMat = Assets.matDeathOverlay;
+        private Material overlayMat;
         private CharacterModel characterModel;
+        private NemLightningColorController lightningColorController;
         private Transform modelTransform;
         private bool hasSpawnedExplosion;
         private string explosionSoundString = StaticValues.deathExplosionSoundString;
@@ -29,8 +30,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             base.OnEnter();
             characterMotor.velocity = Vector3.zero;
             animator = base.GetModelAnimator();
-
+            lightningColorController = base.GetComponent<NemLightningColorController>();
             stopCharge = Util.PlaySound(chargeSoundString, base.gameObject);
+
+            overlayMat = lightningColorController.deathOverlay;
+            deathEffect = lightningColorController.deathExplosionVFX;
             
             modelTransform = base.GetComponent<ModelLocator>().modelTransform;
             characterModel = modelTransform.GetComponent<CharacterModel>();

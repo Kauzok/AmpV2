@@ -27,6 +27,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private string maxEndString = StaticValues.exitMaxSoundString;
         private string loopString = StaticValues.loopMaxSoundString;
         private uint endLoopID;
+        private bool vfxBeenAssigned;
 
 
         private void Start()
@@ -35,16 +36,36 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             modelTransform = base.GetComponent<ModelLocator>().modelTransform;
             characterModel = modelTransform.GetComponent<CharacterModel>();
             childLocator = modelTransform.GetComponent<ChildLocator>();
-            sparkEffect = this.childLocator.FindChild("BuffLightning");
-            //overlayMat = LegacyResourcesAPI.Load<Material>("RoR2/DLC1/VoidWardCrab/matVoidWardCrabOverlay");
+
             lightningController = base.GetComponent<NemLightningColorController>();
-            buffOnEffect = lightningController.buffOnVFX;
-            overlayMat = lightningController.buffOverlay;
-            buffOffEffect = lightningController.buffOffVFX;
+            //Debug.Log(lightningController + "is lightningcontroller");
+  
+            /*buffOnEffect = Assets.maxBuffFlashEffectBlue;
+            overlayMat = Assets.buffOverlayMatBlue;
+            buffOffEffect = Assets.maxBuffOffEffectBlue;*/
         }
 
         private void FixedUpdate()
         {
+            if (!vfxBeenAssigned)
+            {
+                buffOnEffect = lightningController.buffOnVFX;
+                overlayMat = lightningController.buffOverlayMat;
+                buffOffEffect = lightningController.buffOffVFX;
+                
+
+                if (lightningController.isBlue)
+                {
+                    sparkEffect = this.childLocator.FindChild("BuffLightningBlue");
+                }
+                else
+                {
+                    sparkEffect = this.childLocator.FindChild("BuffLightning");
+                }
+
+                vfxBeenAssigned = true;
+            }
+
             if (characterBody.GetBuffCount(Buffs.damageGrowth) == StaticValues.growthBuffMaxStacks & !isMaxed)
             {
                 EffectData flashEffect = new EffectData
@@ -52,10 +73,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     origin = characterBody.corePosition,
                     scale = 1f
                 };
-                EffectManager.SpawnEffect(buffOnEffect.gameObject, flashEffect, true);
+                EffectManager.SpawnEffect(buffOnEffect, flashEffect, true);
                 isMaxed = true;
 
-                Debug.Log(characterModel);
+                //Debug.Log(characterModel);
                 buffOverlay = base.gameObject.AddComponent<TemporaryOverlay>();
                 buffOverlay.animateShaderAlpha = true;
                 buffOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);

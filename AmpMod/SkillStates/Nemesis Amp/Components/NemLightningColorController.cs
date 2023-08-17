@@ -24,7 +24,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         [Header("Passive Effects")]
         public GameObject buffOnVFX;
         public GameObject buffOffVFX;
-        public Material buffOverlay;
+        public Material buffOverlayMat;
 
         [Header("Fulmination Effects")]
         public GameObject streamVFX;
@@ -74,10 +74,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             //Debug.Log(isBlue);
             if (isBlue)
             {
+                #region Death
+                deathExplosionVFX = Assets.deathExplosionEffectBlue;
+                deathOverlay = Assets.matDeathOverlayBlue;
+                #endregion
+
                 #region Gathering Storm
                 buffOffVFX = Assets.maxBuffOffEffectBlue;
                 buffOnVFX = Assets.maxBuffFlashEffectBlue;
-                deathOverlay = Assets.matDeathOverlayBlue;
+                buffOverlayMat = Assets.buffOverlayMatBlue;
                 #endregion
 
                 #region Fulmination
@@ -124,10 +129,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             }
             else
             {
+                #region Death
+                deathExplosionVFX = Assets.deathExplosionEffect;
+                deathOverlay = Assets.matDeathOverlay;
+                #endregion
+
                 #region Gathering Storm
                 buffOffVFX = Assets.maxBuffOffEffect;
                 buffOnVFX = Assets.maxBuffFlashEffect;
-                deathOverlay = Assets.matDeathOverlay;
+                buffOverlayMat = Assets.buffOverlayMat;
                 #endregion
 
                 #region Fulmination

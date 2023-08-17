@@ -236,9 +236,10 @@ namespace AmpMod.Modules
             }
 
             LoadAssetBundle();
+            AdjustMats();
             LoadSoundbank();
             PopulateAssets();
-            AdjustMats();
+            
         }
 
         internal static void AdjustMats()
@@ -447,6 +448,7 @@ namespace AmpMod.Modules
 
             #region Passive
             buffOverlayMat = CreateVFXMaterial("matLightningOverlay");
+            buffOverlayMatBlue = CreateVFXMaterial("matLightningOverlayBlue");
             #endregion
 
             #region Fulmination
@@ -565,6 +567,11 @@ namespace AmpMod.Modules
             matDeathOverlay = CreateVFXMaterial("matDeathOverlay");
 
             AddNewEffectDef(deathExplosionEffect);
+
+            deathExplosionEffectBlue = mainAssetBundle.LoadAsset<GameObject>("DeathExplosionBlue");
+            matDeathOverlayBlue = CreateVFXMaterial("matDeathOverlayBlue");
+
+            AddNewEffectDef(deathExplosionEffectBlue);
 
             CreateIntersectMaterial("matLightningSpherePurpleReal");  
         }

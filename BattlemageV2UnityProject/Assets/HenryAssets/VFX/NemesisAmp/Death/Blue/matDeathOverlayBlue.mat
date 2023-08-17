@@ -89,4 +89,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 0.68275857, b: 0, a: 0}
     - _TimeScale: {r: 25, g: 10, b: 1, a: 1}
-    - _TintColor: {r: 3.1477854, g: 0.76945865, b: 6.6803, a: 1}
+    - _TintColor: {r: 0.7694586, g: 1.969798, b: 6.6803, a: 1}
