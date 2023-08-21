@@ -9,7 +9,7 @@ using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp.Components
 {
-    internal class NemLightningColorController : MonoBehaviour
+    public class NemLightningColorController : MonoBehaviour
     {
         public bool isBlue;
         private CharacterBody body;
@@ -31,6 +31,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         public GameObject streamMuzzleFlashVFX;
         public GameObject streamMuzzleVFX;
         public GameObject streamChainVFX;
+        public GameObject streamImpactVFX;
         public GameObject streamReticlePrefab;
 
         [Header("Lorentz Blades Effects")]
@@ -91,6 +92,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 streamMuzzleVFX = Assets.lightningStreamMuzzleEffectBlue;
                 streamChainVFX = Assets.lightningStreamChainEffectPrefabBlue;
                 streamReticlePrefab = Assets.lightningCrosshairBlue;
+                streamImpactVFX = Assets.lightningStreamImpactEffectBlue;
                 #endregion
 
                 #region Lorentz Blades
@@ -146,6 +148,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 streamMuzzleVFX = Assets.lightningStreamMuzzleEffect;
                 streamChainVFX = Assets.lightningStreamChainEffectPrefab;
                 streamReticlePrefab = Assets.lightningCrosshair;
+                streamImpactVFX = Assets.lightningStreamImpactEffect;
                 #endregion
 
                 #region Lorentz Blades

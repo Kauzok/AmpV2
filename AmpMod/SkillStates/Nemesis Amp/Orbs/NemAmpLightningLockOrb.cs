@@ -4,6 +4,7 @@ using UnityEngine;
 using RoR2.Orbs;
 using RoR2;
 using R2API;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 using System.Linq;
 
 namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
@@ -17,6 +18,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		public float damageValue;
 		public GameObject attacker;
 		public GameObject inflictor;
+		public NemLightningColorController nemLightningColorController;
 		public int bouncesRemaining;
 		public TeamIndex teamIndex;
 		public bool isCrit;
@@ -41,16 +43,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
             base.duration = 0.1f;
 			//this.speed = 120f;
 			string path = null;
-			switch (this.lightningType)
-			{
-				case LightningOrb.LightningType.Loader:
-					path = null;
-					break;
-				case LightningOrb.LightningType.MageLightning:
-					path = "Prefabs/Effects/OrbEffects/MageLightningOrbEffect";
-					base.duration = 0.1f;
-					break;
-			}
 			EffectData effectData = new EffectData
 			{
 				//origin = this.origin,
@@ -59,14 +51,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 			};
 
 			effectData.SetHurtBoxReference(this.target);
-			if (this.lightningType != LightningOrb.LightningType.Loader)
-            {
-				EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>(path), effectData, true);
-			}
-            else
-            {	//this prefab is empty of everything except for the impact effect; the actual lightning stream is controlled by the lightningeffectcontroller
-				EffectManager.SpawnEffect(Modules.Assets.lightningStreamImpactEffect, effectData, true);
-			}
+			//this prefab is empty of everything except for the impact effect; the actual lightning stream is controlled by the lightningeffectcontroller
+			EffectManager.SpawnEffect(nemLightningColorController.streamImpactVFX, effectData, true);
+
 			if (this.isChaining)
 			{
 				/*EffectData chainEffectData = new EffectData
@@ -78,7 +65,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 				//chainEffectData.SetHurtBoxReference(this.target);
 				EffectManager.SpawnEffect(Modules.Assets.lightningStreamChainEffect, chainEffectData, true);
 				*/
-				chainObject = UnityEngine.Object.Instantiate(Modules.Assets.lightningStreamChainEffectPrefab).GetComponent<Components.NemAmpLightningChainNoise>();
+				chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<Components.NemAmpLightningChainNoise>();
 				chainObject.startPosition = this.origin;
 				chainObject.healthComponent = this.target.healthComponent;
 
@@ -150,6 +137,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 							lightningOrb.damageType = this.damageType;
 							lightningOrb.failedToKill = this.failedToKill;
 							lightningOrb.isChaining = true;
+							lightningOrb.nemLightningColorController = this.nemLightningColorController;
 							OrbManager.instance.AddOrb(lightningOrb);
 						}
 					}

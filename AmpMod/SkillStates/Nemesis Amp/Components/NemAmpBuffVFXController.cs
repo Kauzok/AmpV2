@@ -52,7 +52,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 buffOnEffect = lightningController.buffOnVFX;
                 overlayMat = lightningController.buffOverlayMat;
                 buffOffEffect = lightningController.buffOffVFX;
-                
 
                 if (lightningController.isBlue)
                 {

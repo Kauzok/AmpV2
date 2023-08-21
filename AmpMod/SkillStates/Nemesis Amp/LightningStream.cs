@@ -219,6 +219,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 bouncedObjects = new List<HealthComponent>(),
                 range = tracker.maxTrackingDistance,
                 damageCoefficientPerBounce = .8f,
+                nemLightningColorController = this.lightningController,
 
         };
         }
