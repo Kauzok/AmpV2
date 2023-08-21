@@ -61,11 +61,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
                     lineRenderer.SetPosition(0, this.startPosition);
 
-                    for (int i = 1; i <= numLineRendererPoints - 1; i++)
+                    for (int i = 0; i <= numLineRendererPoints - 1; i++)
                     {
                         //lineRenderer.SetPosition(i, victimBody.corePosition);
                         //float z = ((float)i) * (maxZ) / (float)(numLineRendererPoints - 1);
-                        var pos = Vector3.Lerp(endBody.corePosition, startPosition, i / 11f);
+                        var pos = Vector3.Lerp(endBody.corePosition, startPosition, i / (float)(numLineRendererPoints - 1));
                         pos.x += Random.Range(-posRange, posRange);
                         pos.y += Random.Range(-posRange, posRange);
                         pos.z += Random.Range(-posRange, posRange);

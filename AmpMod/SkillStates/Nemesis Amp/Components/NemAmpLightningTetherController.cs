@@ -47,7 +47,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 lightningTetherVFX = Assets.lightningStreamEffect;
             }
 
-                lineRendererPrefab = lightningTetherVFX.GetComponentInChildren<LineRenderer>();
+            lineRendererPrefab = lightningTetherVFX.GetComponentInChildren<LineRenderer>();
             numLineRendererPoints = lineRendererPrefab.positionCount;
         }
 
