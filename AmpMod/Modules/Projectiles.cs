@@ -38,7 +38,8 @@ namespace AmpMod.Modules
             AddProjectile(ferroshotPrefab);
             AddProjectile(vortexPrefab);
             AddProjectile(fireBeamPrefab);
-            //AddProjectile(fieldProjectilePrefab);
+            AddProjectile(fieldProjectilePrefab);
+            AddProjectile(fieldProjectilePrefabBlue);
             AddProjectile(bladeProjectilePrefab);
             AddProjectile(lightningBallPrefab);
         }

@@ -162,7 +162,7 @@ MonoBehaviour:
     i14: 126
     i15: 208
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114441193285198080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11151,7 +11151,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 0.9
       minScalar: 0.7
       maxCurve:
         serializedVersion: 2
