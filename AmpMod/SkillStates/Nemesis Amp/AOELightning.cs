@@ -72,33 +72,33 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             EffectManager.SimpleMuzzleFlash(muzzleFlashEffect, base.gameObject, "HandR", true);
             //Debug.Log("spawning " + muzzleFlashEffect);
             //for every hurtbox, summon a lightning bolt on them
-            for (int i = 0; i < lightningTargets.Length; i++)
+            if (NetworkServer.active)
             {
-
-                if (NetworkServer.active)
+                for (int i = 0; i < lightningTargets.Length; i++)
                 {
-                    int controlledChargeCount = lightningTargets[i].healthComponent.body.GetBuffCount(Modules.Buffs.controlledCharge);
-                    //base lightning strike damage w/o the growth damage buff
-                    float calcedLightningStrikeDamage = (controlledChargeCount * perBuffStrikeDamage) + baseStrikeDamage;
 
-                    //add in the growth damage buff to calculation
-                    float baseDamage = calcedLightningStrikeDamage + calcedLightningStrikeDamage * (base.characterBody.GetBuffCount(Buffs.damageGrowth) * StaticValues.growthDamageCoefficient);
-                    OrbManager.instance.AddOrb(new Orbs.NemAmpLightningStrikeOrb
-                    {
-                        attacker = base.gameObject,
-                        damageColorIndex = DamageColorIndex.Default,
-                        //damageValue is based on base damage + additional damage for every stack of controlled charge
-                        damageValue = base.characterBody.damage * baseDamage,
-                        isCrit = Util.CheckRoll(this.characterBody.crit, this.characterBody.master),
-                        procChainMask = default(ProcChainMask),
-                        procCoefficient = 1f,
-                        lightningEffect = lightningController.specialBoltVFX,
-                        //orbEffect = lightningEffect,
-                        target = lightningTargets[i]
-                    }); ;
+                int controlledChargeCount = lightningTargets[i].healthComponent.body.GetBuffCount(Modules.Buffs.controlledCharge);
+                //base lightning strike damage w/o the growth damage buff
+                float calcedLightningStrikeDamage = (controlledChargeCount * perBuffStrikeDamage) + baseStrikeDamage;
 
-                    //clear stacks of controlled charge on the enemies who've been hit
-                    lightningTargets[i].healthComponent.body.ClearTimedBuffs(Buffs.controlledCharge);
+                //add in the growth damage buff to calculation
+                float baseDamage = calcedLightningStrikeDamage + calcedLightningStrikeDamage * (base.characterBody.GetBuffCount(Buffs.damageGrowth) * StaticValues.growthDamageCoefficient);
+                OrbManager.instance.AddOrb(new Orbs.NemAmpLightningStrikeOrb
+                {
+                    attacker = base.gameObject,
+                    damageColorIndex = DamageColorIndex.Default,
+                    //damageValue is based on base damage + additional damage for every stack of controlled charge
+                    damageValue = base.characterBody.damage * baseDamage,
+                    isCrit = Util.CheckRoll(this.characterBody.crit, this.characterBody.master),
+                    procChainMask = default(ProcChainMask),
+                    procCoefficient = 1f,
+                    lightningEffect = lightningController.specialBoltVFX,
+                    //orbEffect = lightningEffect,
+                    target = lightningTargets[i]
+                }); ;
+
+                //clear stacks of controlled charge on the enemies who've been hit
+                lightningTargets[i].healthComponent.body.ClearTimedBuffs(Buffs.controlledCharge);
 
                 }
                

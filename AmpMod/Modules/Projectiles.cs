@@ -11,7 +11,7 @@ namespace AmpMod.Modules
 {
     internal static class Projectiles
     {
-        internal static GameObject bombPrefab;
+
         internal static GameObject ferroshotPrefab;
         internal static GameObject vortexPrefab;
         internal static GameObject lightningPrefab;
