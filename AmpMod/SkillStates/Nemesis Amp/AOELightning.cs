@@ -105,6 +105,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 
             }
+
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
 

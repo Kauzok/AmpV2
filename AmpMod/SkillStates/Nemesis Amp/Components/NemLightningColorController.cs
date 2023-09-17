@@ -100,7 +100,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 bladePrepVFX = Assets.bladePrepObjectBlue;
                 bladeFireVFX = Assets.bladeFireEffectBlue;
                 bladePrefab = Projectiles.bladeProjectilePrefab;
-                bladePrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.bladeProjectilePrefabBlue;
+                bladePrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.bladeProjectileGhostBlue;
                 bladePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = Assets.bladeExpireEffectBlue;
 
                 #region Furious Spark
@@ -156,7 +156,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 bladePrepVFX = Assets.bladePrepObject;
                 bladeFireVFX = Assets.bladeFireEffect;
                 bladePrefab = Projectiles.bladeProjectilePrefab;
-                bladePrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.bladeProjectilePrefab;
+                bladePrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.bladeProjectileGhost;
                 bladePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = Assets.bladeExpireEffect;
 
                 #region Furious Spark

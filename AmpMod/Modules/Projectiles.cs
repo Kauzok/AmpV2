@@ -20,7 +20,8 @@ namespace AmpMod.Modules
         internal static GameObject bladeProjectilePrefab;
         internal static GameObject lightningBallPrefab;
         internal static GameObject fieldProjectilePrefabBlue;
-        internal static GameObject bladeProjectilePrefabBlue;
+        internal static GameObject bladeProjectileGhostBlue;
+        internal static GameObject bladeProjectileGhost;
         internal static GameObject lightningBallGhostBlue;
         internal static GameObject lightningBallGhost;
 
@@ -56,10 +57,11 @@ namespace AmpMod.Modules
             ProjectileController bladeController = bladeProjectilePrefab.GetComponent<ProjectileController>();
 
             //instantiates the projectile model and associates it with the prefab
-            if (Assets.mainAssetBundle.LoadAsset<GameObject>("BladeGhostPrefab") != null) bladeController.ghostPrefab = CreateGhostPrefab("BladeGhostPrefab");
+            //if (Assets.mainAssetBundle.LoadAsset<GameObject>("BladeGhostPrefab") != null) bladeController.ghostPrefab = CreateGhostPrefab("BladeGhostPrefab");
             
+            bladeProjectileGhost = CreateGhostPrefab("BladeGhostPrefab");
 
-            bladeProjectilePrefabBlue = CreateGhostPrefab("BladeGhostPrefabBlue");
+            bladeProjectileGhostBlue = CreateGhostPrefab("BladeGhostPrefabBlue");
 
             ProjectileSingleTargetImpact bladeContactController = bladeProjectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
             bladeContactController.impactEffect = Assets.bulletImpactEffect;

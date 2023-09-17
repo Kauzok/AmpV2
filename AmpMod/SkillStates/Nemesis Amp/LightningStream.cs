@@ -11,6 +11,7 @@ using UnityEngine.Networking;
 using AmpMod.Modules;
 using AmpMod.SkillStates.Nemesis_Amp.Orbs;
 using AmpMod.SkillStates.Nemesis_Amp.Components;
+using R2API.Networking.Interfaces;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -50,6 +51,67 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float soundTimer;
         private bool hasBegunSound;
 
+        public class SyncTarget : INetMessage
+        {
+            NetworkInstanceId playerNetId;
+            NetworkInstanceId targetdNetId;
+            HurtBox targetHurtbox;
+            HurtBoxReference targetHurtboxReference;
+
+            public SyncTarget()
+            {
+
+            }
+
+            public SyncTarget(NetworkInstanceId playerId, NetworkInstanceId trackedId, HurtBox targetHurtbox)
+            {
+                this.playerNetId = playerId;
+                this.targetdNetId = trackedId;
+                this.targetHurtbox = targetHurtbox;
+            }
+
+            //we then read the targethurtbox as a hurtboxreference
+            public void Deserialize(NetworkReader reader)
+            {
+                playerNetId = reader.ReadNetworkId();
+                targetdNetId = reader.ReadNetworkId();
+                targetHurtboxReference = reader.ReadHurtBoxReference();
+                
+                
+            }
+
+
+            //give the syncmessage the hurtbox you want to sync TO (will use hurtbox == playerObject.gettrackingtarget)
+            public void OnReceived()
+            {
+                if (NetworkServer.active)
+                {
+                    Debug.Log("SyncTarget: Host ran this. Skip.");
+                    return;
+                }
+
+                GameObject playerObject = Util.FindNetworkObject(playerNetId);
+                GameObject targetObject = Util.FindNetworkObject(targetdNetId);
+                CharacterBody targetBody = targetObject.GetComponent<CharacterBody>();
+
+                //sets target reference to what the player is tracking at the given time from clients
+                //have to somehow modify the current instance of targetHurtbox in use
+                HurtBox hurtbox = targetHurtboxReference.ResolveHurtBox();
+                hurtbox =  playerObject.GetComponent<NemAmpLightningTracker>().GetTrackingTarget();
+
+            }
+
+            //start by writing the current targethurtbox to network as a hurtboxreference
+            public void Serialize(NetworkWriter writer)
+            {
+                writer.Write(playerNetId);
+                writer.Write(targetdNetId);
+                writer.Write(HurtBoxReference.FromHurtBox(targetHurtbox));
+
+            }
+        }
+      
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -61,7 +123,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             muzzleEffect = lightningController.streamMuzzleVFX;
             muzzleFlashEffect = lightningController.streamMuzzleFlashVFX;
             //lightningEffectController.lightningTetherVFX = lightningController.streamVFX;
-
 
             //Util.PlaySound(startSoundString, base.gameObject);
 
@@ -77,10 +138,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.tickTime= this.baseTickTime / this.attackSpeedStat;
 
             //Debug.Log(base.characterBody.bodyIndex);
+         
             if (tracker.GetTrackingTarget())
             {
+                if (NetworkServer.active)
+                {
+                    this.targetHurtbox = tracker.GetTrackingTarget();
+                }
+
                 this.targetHurtbox = tracker.GetTrackingTarget();
-                
                 animator.SetBool("NemIsFulminating", true);
                 //base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
                 rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
@@ -101,18 +167,29 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         private void FireLightning()
         {
+            if (!NetworkServer.active && tickTimer <= 0f)
+            {
+                this.targetHurtbox = tracker.GetTrackingTarget();
+            }
+
             if (!NetworkServer.active || tickTimer > 0f)
             {
                 //Debug.Log("returning");
                 return;
+                
             }
 
-            //Debug.Log("not returning");
+
+            Debug.Log("not returning");
 
             this.tickTimer = this.tickTime;
-            
+
+            this.targetHurtbox = tracker.GetTrackingTarget();
+           
+
             if (targetHurtbox)
             {
+                Debug.Log(targetHurtbox.gameObject + "is target");
                 NemAmpLightningLockOrb lightningOrb = createDmgOrb();
                 lightningOrb.procControlledCharge = false;
 
@@ -133,7 +210,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     lightningOrb.bouncesRemaining = 0;
                 }
                 OrbManager.instance.AddOrb(lightningOrb);
-
+                Debug.Log("firing");
             }
 
             
@@ -153,16 +230,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
             if (this.tracker && base.isAuthority)
+            //if (this.tracker)
             {
                 if (!muzzleHasFlashed && this.targetHurtbox)
                 {
                     muzzleFlashObject = UnityEngine.Object.Instantiate<GameObject>(muzzleFlashEffect, rightMuzzleTransform);
                     muzzleHasFlashed = true;
                 }
-
-                this.targetHurtbox = this.tracker.GetTrackingTarget();
-                
-                //Debug.Log(targetHurtbox.gameObject);
 
                 if (!muzzleHasFlashed && this.targetHurtbox)
                 {
@@ -189,7 +263,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             this.FireLightning();
 
-           //Debug.Log("lightning fire method completed");
+            //Debug.Log("lightning fire method completed");
 
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
@@ -197,13 +271,24 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             
             if ((base.isAuthority && !base.inputBank.skill1.down) || (base.isAuthority && this.targetHurtbox && this.targetHurtbox.healthComponent.health <= 0) || (base.isAuthority && !this.targetHurtbox) || !this.skillLocator.isActiveAndEnabled)
             {
-                //Debug.Log("exiting");
+                Debug.Log("Setting skill to exit");
                 this.outer.SetNextStateToMain();
             }
         }
 
         private NemAmpLightningLockOrb createDmgOrb()
         {
+            if (targetHurtbox)
+            {
+                Debug.Log("creating orb on hurtbox");
+            }
+
+            if (!targetHurtbox)
+            {
+                Debug.Log("hurtbox for orb not found");
+            }
+
+            
             return new NemAmpLightningLockOrb
             {
                 origin = rightMuzzleTransform.position,
@@ -211,17 +296,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 isCrit = base.characterBody.RollCrit(),
                 damageType = DamageType.Generic,
                 teamIndex = teamComponent.teamIndex,
-                attacker = gameObject,
+                attacker = base.gameObject,
                 procCoefficient = .2f,
-                lightningType = LightningOrb.LightningType.Loader,
                 damageColorIndex = DamageColorIndex.Default,
                 target = targetHurtbox,
                 bouncedObjects = new List<HealthComponent>(),
                 range = tracker.maxTrackingDistance,
                 damageCoefficientPerBounce = .8f,
                 nemLightningColorController = this.lightningController,
-
-        };
+            };
         }
 
 
@@ -232,7 +315,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //Util.PlaySound(endSoundString, base.gameObject);
 
             lightningEffectController.isAttacking = false;
-            //Debug.Log("Exiting");
+            Debug.Log("Exiting");
             this.FireLightning();
             //Debug.Log("lightning fire method completed");
             if (nexusMuzzleTransform)
@@ -250,7 +333,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
         }
-
+        /*
         public override void OnSerialize(NetworkWriter writer)
         {
             writer.Write(HurtBoxReference.FromHurtBox(this.targetHurtbox));
@@ -260,6 +343,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             this.targetHurtbox = reader.ReadHurtBoxReference().ResolveHurtBox();
         }
+        */
         
         public override InterruptPriority GetMinimumInterruptPriority()
         {

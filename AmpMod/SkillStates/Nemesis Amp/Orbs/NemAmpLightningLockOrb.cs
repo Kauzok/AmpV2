@@ -12,7 +12,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 	public class NemAmpLightningLockOrb : Orb
 	{
 		private BullseyeSearch search;
-		public LightningOrb.LightningType lightningType;
 		public float range = 30f;
 		public List<HealthComponent> bouncedObjects;
 		public float damageValue;
@@ -128,7 +127,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 							lightningOrb.bouncesRemaining = this.bouncesRemaining - 1;
 							lightningOrb.isCrit = this.isCrit;
 							lightningOrb.bouncedObjects = this.bouncedObjects;
-							lightningOrb.lightningType = this.lightningType;
+							//lightningOrb.lightningType = this.lightningType;
 							lightningOrb.procChainMask = this.procChainMask;
 							lightningOrb.procCoefficient = this.procCoefficient;
 							lightningOrb.damageColorIndex = this.damageColorIndex;
