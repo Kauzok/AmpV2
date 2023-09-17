@@ -8,6 +8,7 @@ namespace AmpMod.Modules
     public static class Config
     {
         public static ConfigEntry<bool> RedSpriteBlueLightning;
+        public static ConfigEntry<bool> NemOriginPurpleLightning;
         public static ConfigEntry<bool> chargeOrbsEnable;
         public static ConfigEntry<bool> UnlockMasterySkin;
         public static ConfigEntry<bool> UnlockGrandMasterySkin;
@@ -32,6 +33,12 @@ namespace AmpMod.Modules
                                              "Blue Lightning on Mastery Skin",
                                              false,
                                              "Makes Amp's Red Sprite skin use blue lightning instead of red");
+
+            NemOriginPurpleLightning =
+                AmpPlugin.instance.Config.Bind<bool>("VFX Settings",
+                                             "Purple Lightning on Nemesis Mastery Skin",
+                                             false,
+                                             "Makes Nemesis Amp's Origin skin use purple lightning instead of blue");
 
             UnlockMasterySkin =
                AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",

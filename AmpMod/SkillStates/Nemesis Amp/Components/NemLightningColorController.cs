@@ -71,8 +71,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
         private void Start()
         {
-            isBlue = this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME"; // && !Config.RedSpriteBlueLightning.Value;
-            //Debug.Log(isBlue);
+            isBlue = this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME" && !Config.NemOriginPurpleLightning.Value;
+
+
             if (isBlue)
             {
                 #region Death

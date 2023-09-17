@@ -38,7 +38,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.model = base.GetComponentInChildren<CharacterModel>();
             baseBody = base.GetComponent<CharacterBody>();
 
-            if (this.model.GetComponent<ModelSkinController>().skins[this.baseBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME")
+            if (this.model.GetComponent<ModelSkinController>().skins[this.baseBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME" && !Config.NemOriginPurpleLightning.Value)
             {
                 lightningTetherVFX = Assets.lightningStreamEffectBlue;
             }
