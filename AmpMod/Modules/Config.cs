@@ -15,6 +15,8 @@ namespace AmpMod.Modules
         public static ConfigEntry<bool> UnlockWormSkill;
         public static ConfigEntry<bool> UnlockPlasmaSkill;
         public static ConfigEntry<bool> UnlockNemesisAmp;
+        public static ConfigEntry<bool> NemUnlockDashSkill;
+        public static ConfigEntry<bool> NemUnlockBladesSkill;
 
         public static void ReadConfig()
         {
@@ -69,6 +71,16 @@ namespace AmpMod.Modules
                                                       "Unlock Nemesis Amp",
                                                       false,
                                                       "Unlocks Nemesis Amp by default");
+
+            NemUnlockBladesSkill = AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+                                                      "Unlock Sharpshocker",
+                                                      false,
+                                                      "Unlocks Nemesis Amp's Sharpshocker Achievement & Corresponding Skill");
+
+            NemUnlockDashSkill = AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+                                                   "Unlock 1/√(ε₀μ₀)",
+                                                   false,
+                                                   "Unlocks Nemesis Amp's 1/√(ε₀μ₀) Achievement & Corresponding Skill");
         }
 
         // this helper automatically makes config entries for disabling survivors

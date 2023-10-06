@@ -78,7 +78,8 @@ namespace AmpMod.Modules.Survivors
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private static UnlockableDef masterySkinUnlockableDef;
-
+        private static UnlockableDef dashSkillUnlockableDef;
+        private static UnlockableDef bladesSkillUnlockableDef;
 
         internal override void InitializeCharacter()
         {
@@ -95,6 +96,24 @@ namespace AmpMod.Modules.Survivors
                 masterySkinUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY";
                 masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemMasteryAchievement");
                 ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
+            }
+
+            if (!Config.NemUnlockDashSkill.Value)
+            {
+                dashSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                dashSkillUnlockableDef.cachedName = "Skills.VoidDash";
+                dashSkillUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_DASH";
+                dashSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemDash");
+                ContentAddition.AddUnlockableDef(dashSkillUnlockableDef);
+            }
+
+            if (!Config.NemUnlockBladesSkill.Value)
+            {
+                bladesSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                bladesSkillUnlockableDef.cachedName = "Skills.TrackingBlades";
+                bladesSkillUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_BLADES";
+                bladesSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemBlades");
+                ContentAddition.AddUnlockableDef(bladesSkillUnlockableDef);
             }
 
         }
@@ -158,14 +177,16 @@ namespace AmpMod.Modules.Survivors
             
 
             //creates Lorentz Blades
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
+            Modules.Skills.AddUnlockablePrimarySkill(bodyPrefab, 
+                Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(FluxBlades)),
                 "Weapon",
                 prefix + "_NEMAMP_BODY_PRIMARY_BLADES_NAME",
                 prefix + "_NEMAMP_BODY_PRIMARY_BLADES_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemBlades"),
                 true,
                 new String[] { },
-                false)); 
+                false),
+                bladesSkillUnlockableDef); 
             #endregion
 
 
@@ -285,7 +306,8 @@ namespace AmpMod.Modules.Survivors
             });;
 
 
-            Modules.Skills.AddUtilitySkills(bodyPrefab, fieldSkillDef, quickDashSkillDef);
+            Modules.Skills.AddUtilitySkills(bodyPrefab, fieldSkillDef);
+            Modules.Skills.AddUnlockableUtilitySkill(bodyPrefab, quickDashSkillDef, dashSkillUnlockableDef);
             #endregion
 
 

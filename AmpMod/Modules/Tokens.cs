@@ -183,6 +183,14 @@ namespace AmpMod.Modules
             LanguageAPI.Add("ACHIEVEMENT_NEMAMPMASTERYUNLOCK_DESCRIPTION", "As Nemesis Amp, beat the game or obliterate on Monsoon.");
             LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY", "Nemesis Amp: Mastery");
 
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPDASHUNLOCK_NAME", "Nemesis Amp: 1/√(ε₀μ₀)");
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPDASHUNLOCK_DESCRIPTION", "As Nemesis Amp, complete a stage in under 3 minutes.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_DASH", "Nemesis Amp: 1/√(ε₀μ₀)");
+
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPBLADESUNLOCK_NAME", "Nemesis Amp: Sharpshocker");
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPBLADESUNLOCK_DESCRIPTION", "As Nemesis Amp, pierce 5 enemies in a row with Furious Spark.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_BLADES", "Nemesis Amp: Sharpshocker");
+
             #endregion
 
             #endregion
@@ -196,7 +204,7 @@ namespace AmpMod.Modules
             LanguageAPI.Add("MITHRIX_KILL_AMP_1", "A pity. You may have been a useful servant.");
             LanguageAPI.Add("MITHRIX_KILL_AMP_2", "Frail sparks.");
 
-            LanguageAPI.Add("MITHRIX_SEE_NEMAMP_1", "The power of a wurm... but wrong.");
+            LanguageAPI.Add("MITHRIX_SEE_NEMAMP_1", "The power of a wurm... defiled.");
             LanguageAPI.Add("MITHRIX_SEE_NEMAMP_2", "Your rage will end here, wurm.");
             LanguageAPI.Add("MITHRIX_SEE_NEMAMP_3", "Warped and stolen power. Your blasphemy ends here.");
 

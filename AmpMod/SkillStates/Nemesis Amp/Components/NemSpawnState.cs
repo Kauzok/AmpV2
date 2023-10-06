@@ -44,7 +44,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 {
                     this.characterModel.invisibilityCount++;
                 }
-                if (this.characterModel.GetComponent<ModelSkinController>().skins[this.characterBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME")
+                if (this.characterModel.GetComponent<ModelSkinController>().skins[this.characterBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME" && !Config.NemOriginPurpleLightning.Value)
                 {
                     isBlue = true;
                 }

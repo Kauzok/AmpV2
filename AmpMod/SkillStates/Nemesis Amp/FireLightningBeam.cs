@@ -5,10 +5,11 @@ using AmpMod.Modules;
 using R2API;
 using UnityEngine.Networking;
 using AmpMod.SkillStates.Nemesis_Amp.Components;
+using System;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
-    class FireLightningBeam : BaseState
+   public class FireLightningBeam : BaseState
     {
         [SerializeField]
         public float baseDuration = .3f;
@@ -31,6 +32,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float waitDuration;
         public bool doHover;
 
+        public static event Action<FireLightningBeam> onFireBeam;
+        public static event Action<FireLightningBeam> onPierce;
+
         [SerializeField]
         public float selfForce;
 
@@ -39,6 +43,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         [Header("Sounds")]
         private string fireSoundString = StaticValues.fireBeamSoundString;
+
+        public float piercedCount { get; private set; }
 
         public override void OnSerialize(NetworkWriter writer)
         {
@@ -54,6 +60,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         public override void OnEnter()
         {
+            Action<FireLightningBeam> action = FireLightningBeam.onFireBeam;
+            if (action!= null)
+            {
+                action(this);
+            }
+            piercedCount = 1;
             base.OnEnter();
             stackDamageController = base.GetComponent<StackDamageController>();
 
@@ -89,9 +101,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             bulletAttack.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)
             {
+                Action<FireLightningBeam> action = FireLightningBeam.onPierce;
+                if (action != null)
+                {
+                    action(this);
+                }
                 _bulletAttack.damage += (baseDamage * this.additionalPierceDamageCoefficient);
                 //_bulletAttack.sniper = true;
-               
+               piercedCount++;
             };
         }
 

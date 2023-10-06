@@ -53,7 +53,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 overlayMat = lightningController.buffOverlayMat;
                 buffOffEffect = lightningController.buffOffVFX;
 
-                if (lightningController.isBlue)
+                if (lightningController.isBlue && !Config.NemOriginPurpleLightning.Value)
                 {
                     sparkEffect = this.childLocator.FindChild("BuffLightningBlue");
                 }

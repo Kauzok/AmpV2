@@ -160,6 +160,22 @@ namespace AmpMod.Modules
             };
         }
 
+        internal static void AddUnlockablePrimarySkill(GameObject targetPrefab, SkillDef skillDef, UnlockableDef unlockableDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.primary.skillFamily;
+
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null),
+                unlockableDef = unlockableDef
+            };
+        }
+
         internal static void AddSecondarySkill(GameObject targetPrefab, SkillDef skillDef)
         {
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
@@ -210,6 +226,21 @@ namespace AmpMod.Modules
             {
                 skillDef = skillDef,
                 viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
+        }
+
+        internal static void AddUnlockableUtilitySkill(GameObject targetPrefab, SkillDef skillDef, UnlockableDef unlockableDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.utility.skillFamily;
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null),
+                unlockableDef = unlockableDef
             };
         }
 
