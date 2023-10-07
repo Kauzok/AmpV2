@@ -183,9 +183,9 @@ namespace AmpMod.Modules
             LanguageAPI.Add("ACHIEVEMENT_NEMAMPMASTERYUNLOCK_DESCRIPTION", "As Nemesis Amp, beat the game or obliterate on Monsoon.");
             LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY", "Nemesis Amp: Mastery");
 
-            LanguageAPI.Add("ACHIEVEMENT_NEMAMPDASHUNLOCK_NAME", "Nemesis Amp: 1/√(ε₀μ₀)");
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPDASHUNLOCK_NAME", "Nemesis Amp: 299,792,458 m/s");
             LanguageAPI.Add("ACHIEVEMENT_NEMAMPDASHUNLOCK_DESCRIPTION", "As Nemesis Amp, complete a stage in under 3 minutes.");
-            LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_DASH", "Nemesis Amp: 1/√(ε₀μ₀)");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_DASH", "Nemesis Amp: 299,792,458 m/s");
 
             LanguageAPI.Add("ACHIEVEMENT_NEMAMPBLADESUNLOCK_NAME", "Nemesis Amp: Sharpshocker");
             LanguageAPI.Add("ACHIEVEMENT_NEMAMPBLADESUNLOCK_DESCRIPTION", "As Nemesis Amp, pierce 5 enemies in a row with Furious Spark.");

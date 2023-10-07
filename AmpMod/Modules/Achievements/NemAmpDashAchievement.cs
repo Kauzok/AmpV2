@@ -34,72 +34,64 @@ namespace AmpMod.Modules.Achievements
         private class NemAmpDashServerAchievement : BaseServerAchievement
         {
             private Run.FixedTimeStamp expirationTimeStamp;
-            private ToggleAction listenForStageCompleted;
-            private ToggleAction listenForStageStart;
 
             //begins the timer and starts watching for when the stage is began/completed
             private void BeginStageTimer()
             {
                 this.expirationTimeStamp = Run.FixedTimeStamp.now + NemAmpDashAchievement.window;
-                //this.listenForStageStart.SetActive(false);
                 Debug.Log("starting stage timer");
-                //this.listenForStageCompleted.SetActive(true);
+                Debug.Log("current time is  " + Run.FixedTimeStamp.tNow);
+                Debug.Log("current expiration time is " + this.expirationTimeStamp.t);
             }
 
           
             public override void OnInstall()
             {
                 base.OnInstall();
-
-                //adds in our onstagestart & onscenebegin methods
-                //these toggleactions essentially act as "watch for something until the thing happens, then stop watching for the thing"
-                // e.g. setting listenForStageStart as active adds our OnStageStart code to the global method, and unsetting it as active removes our code
-                #region actiontoggles (commented out)
-                /*   this.listenForStageStart = new ToggleAction(delegate ()
-                   {
-                       Stage.onStageStartGlobal += this.OnStageStart;
-                   }, delegate ()
-                   {
-                       Stage.onStageStartGlobal -= this.OnStageStart;
-                   });
-                   this.listenForStageCompleted = new ToggleAction(delegate()
-                   {
-                       SceneExitController.onBeginExit += this.OnSceneBeginExit;
-                   }, delegate ()
-                   {
-                       SceneExitController.onBeginExit -= this.OnSceneBeginExit;
-                   }); 
-                */
-                #endregion
-
-               
                 Stage.onStageStartGlobal += this.OnStageStart;
-                Run.onRunStartGlobal += this.OnRunStart;
+                //Run.onRunStartGlobal += this.OnRunStart;
+                //since onRunStart doesn't give us any results (is it not working?) and onStageStart only begins on the second stage, we use a manual check to start the timer on the first stage
+                if (Run.instance)
+                {
+                    OnRunDiscovered(Run.instance);
+                } 
                 SceneExitController.onBeginExit += this.OnSceneBeginExit;
-                this.Reset();
-                //reset placement seems to be irrelevant; or at least it doesnt fix the issue im having
 
+
+            }
+
+            private void OnRunDiscovered(Run run)
+            {
+                Debug.Log("Run discovered");
+                if (run.stageClearCount == 0)
+                {
+                    Debug.Log("running timer on first stage");
+                    BeginStageTimer();
+                }
             }
 
             public override void OnUninstall()
             {
                 Stage.onStageStartGlobal -= this.OnStageStart;
                 SceneExitController.onBeginExit -= this.OnSceneBeginExit;
-                //this.listenForStageCompleted.SetActive(false);
-                //this.listenForStageStart.SetActive(false);
                 base.OnUninstall();
             }
 
 
-            //if player exits stage in under 180f seconds
+            //if player exits stage in under 180 seconds grant achievement
             private void OnSceneBeginExit(SceneExitController exitController)
             {
                 Debug.Log("doing scene exit");
+                Debug.Log("exit time is  " + Run.FixedTimeStamp.tNow);
+                Debug.Log("max exit time is " + this.expirationTimeStamp.t);
+
                 if (!this.expirationTimeStamp.hasPassed)
                 {
                     base.Grant();
                     Debug.Log("granting achievement");
                 }
+
+                Reset();
             }
 
             //don't begin the timer if we're in an 'illegitimate' stage
@@ -117,16 +109,14 @@ namespace AmpMod.Modules.Achievements
 
             private void OnRunStart(Run run)
             {
-                this.Reset();
+                Debug.Log("Running onRunStart");
                 this.BeginStageTimer();
             }
 
-            //reset timer method called on every stage start & run start
+            //reset timer method 
             private void Reset()
             {
                 this.expirationTimeStamp = Run.FixedTimeStamp.negativeInfinity;
-                //this.listenForStageCompleted.SetActive(false);
-                //this.listenForStageStart.SetActive(false);
             }
 
         }

@@ -25509,7 +25509,7 @@ MonoBehaviour:
   m_Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.4
   resetAgeOnDisable: 0
 --- !u!1 &4654403739876850184
 GameObject:
@@ -27750,7 +27750,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4e92de6eebda5fb43a1a5cbdf5f113a4, type: 2}
-  - {fileID: 2100000, guid: 3e9d092cefdc04f429f54b3392fa0de3, type: 2}
+  - {fileID: 2100000, guid: ed9adae2f45a862498d3e614cd88abe9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -252,6 +252,11 @@ namespace AmpMod.Modules
                     material.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
                 }
 
+                if (material.shader.name == "Stubbed Hopoo Games/FX/Cloud Remap")
+                {
+                    material.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
+                } 
+
                 else if (material.shader.name == "Stubbed Hopoo Games/FX/Cloud Intersection Remap")
                 {
                     material.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgintersectioncloudremap");
@@ -264,7 +269,7 @@ namespace AmpMod.Modules
 
                 else if (material.shader.name == "Stubbed Hopoo Games/FX/Distortion")
                 {
-                    material.shader = LegacyResourcesAPI.Load<Shader>("Shaders/FX/Distortion");
+                    material.shader = LegacyResourcesAPI.Load<Shader>("Shaders/FX/HGDistortion");
                 }
 
                 else if (material.shader.name == "StubbedShader/deferred/standard")
@@ -440,98 +445,37 @@ namespace AmpMod.Modules
 
             #region NemAmp Mats
 
-            #region Death/Spawn
-            CreateVFXMaterial("matDustDirectionalDark");
-            CreateVFXMaterial("matDustDirectionalBlack");
-            CreateVFXMaterial("matTracerDirt");
-            #endregion
 
             #region Passive
-            buffOverlayMat = CreateVFXMaterial("matLightningOverlay");
-            buffOverlayMatBlue = CreateVFXMaterial("matLightningOverlayBlue");
+            buffOverlayMat = mainAssetBundle.LoadAsset<Material>("matLightningOverlay");
+            buffOverlayMatBlue = mainAssetBundle.LoadAsset<Material>("matLightningOverlayBlue");
             #endregion
 
-            #region Fulmination
-            CreateVFXMaterial("matLightningDagger");
-            CreateVFXMaterial("matLightningTwist");
-            #endregion
-
-            #region Lorentz Blades
-            CreateStandardMaterial("matBladeOutline");
-            #endregion
 
             #region Howitzer Spark
-            //CreateVFXMaterial("matChargeBeamTrail");
-            CreateVFXMaterial("matChargeBeamFlash");
-            CreateVFXMaterial("matLightningBeam");
-            matPurpleTrail = CreateVFXMaterial("matChargeBeamTrail");
-            CreateDistortionMaterial("matLightningBeamDistortion");
-            CreateVFXMaterial("matLightningRing");
-            CreateVFXMaterial("matCircleBillboard");
-            CreateVFXMaterial("matSparkBillboard");
-            CreateVFXMaterial("matDarkPurple");
-            //CreateStandardMaterial("matLightningOrb");
+            matPurpleTrail = mainAssetBundle.LoadAsset<Material>("matChargeBeamTrail");
             #endregion
 
-            #region Galvanic Cleave
-            CreateVFXMaterial("GlowSword");
-            #endregion
-
-            #region Purple Lightning General
-            CreateIntersectMaterial("matLightningSpherePurple");
-            CreateVFXMaterial("matLightningStrikePurple");
-            CreateIntersectMaterial("matTransparentLightningPurple");
-            CreateVFXMaterial("matPulseMuzzleTriPurple");
-            CreateVFXMaterial("matLightningMatrixPurple");
-            #endregion
 
             #region Static Field
-            CreateVFXMaterial("matVoidSurvivorCrabCannonCoreCharSelect");
             matFieldIndicator = CreateIntersectMaterial("matAimAreaIndicator");
-            CreateIntersectMaterial("matTeamAreaIndicatorIntersection");
             CreateDecalMaterial("matDOTDecal");
             #endregion
 
-            #region Quicksurge
-            CreateVFXMaterial("matDashTrail");
-            CreateVFXMaterial("matOmniRingGeneric");
-            CreateVFXMaterial("matSurgeBillboard");
-            CreateVFXMaterial("matFieldTeamAreaIndicator");
-            CreateDistortionMaterial("matInverseDistortion");
-            CreateVFXMaterial("matGalaxy");
-            CreateVFXMaterial("matPlasmaOuter");
-            CreateVFXMaterial("matPlasmaBall");
-            CreateStandardMaterial("matPlasmaCenter");
-            CreateStandardMaterial("matWilloWispVoidEye");
             #endregion
 
-            #region Voltaic Onslaught
-            CreateVFXMaterial("matRailgunRings");
-            CreateVFXMaterial("matLunarNeedleImpactEffect");
-            #endregion
-
-            #endregion
-
-            matBlueTrail = CreateVFXMaterial("matLorentzTrail");
-            matRedTrail = CreateVFXMaterial("matLorentzTrailRed");
-            CreateVFXMaterial("matLightningSphereBlue");
-            CreateVFXMaterial("matLightningOrbRed");
-            matLightningMatrixRed = CreateVFXMaterial("matLightningMatrixRed");
-            matLightningLongRed = CreateVFXMaterial("matLightningLongRed");
-            matLightningLongPurple = CreateVFXMaterial("matLightningLongPurple");
-            matPulseTriRed = CreateVFXMaterial("matPulseMuzzleTriRed");
-            matDirectionalMatrixRed = CreateVFXMaterial("matDirectionalMatrixRed");
-            matTracerBright = CreateVFXMaterial("matTracerBright");
-            matRing = CreateVFXMaterial("matOmniRing2");
-            matHitSpark = CreateVFXMaterial("matOmniHitspark3");
-            CreateVFXMaterial("matJellyFishLightning");
-            CreateVFXMaterial("matGenericFlash");
-            CreateVFXMaterial("matOmniHitspark1");
-            CreateVFXMaterial("matOmniHitspark1Blank");
-            CreateVFXMaterial("matOmniHitspark3Blank");
-            CreateVFXMaterial("matTracerBrightTransparent"); 
-            matLightningStrikeRed = CreateVFXMaterial("matLightningStrikeRed");
-            matLightningLongBlue = CreateVFXMaterial("matLightningLongBlue");
+            matBlueTrail = mainAssetBundle.LoadAsset<Material>("matLorentzTrail");
+            matRedTrail = mainAssetBundle.LoadAsset<Material>("matLorentzTrailRed");
+            matLightningMatrixRed = mainAssetBundle.LoadAsset<Material>("matLightningMatrixRed");
+            matLightningLongRed = mainAssetBundle.LoadAsset<Material>("matLightningLongRed");
+            matLightningLongPurple = mainAssetBundle.LoadAsset<Material>("matLightningLongPurple");
+            matPulseTriRed = mainAssetBundle.LoadAsset<Material>("matPulseMuzzleTriRed");
+            matDirectionalMatrixRed = mainAssetBundle.LoadAsset<Material>("matDirectionalMatrixRed");
+            matTracerBright = mainAssetBundle.LoadAsset<Material>("matTracerBright");
+            matRing = mainAssetBundle.LoadAsset<Material>("matOmniRing2");
+            matHitSpark = mainAssetBundle.LoadAsset<Material>("matOmniHitspark3");
+            matLightningStrikeRed = mainAssetBundle.LoadAsset<Material>("matLightningStrikeRed");
+            matLightningLongBlue = mainAssetBundle.LoadAsset<Material>("matLightningLongBlue");
 
             matLightningSphereRed = CreateIntersectMaterial("matLightningSphereRed");
             
@@ -564,12 +508,12 @@ namespace AmpMod.Modules
         private static void CreateDeath()
         {
             deathExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("DeathExplosion");
-            matDeathOverlay = CreateVFXMaterial("matDeathOverlay");
+            matDeathOverlay = mainAssetBundle.LoadAsset<Material>("matDeathOverlay");
 
             AddNewEffectDef(deathExplosionEffect);
 
             deathExplosionEffectBlue = mainAssetBundle.LoadAsset<GameObject>("DeathExplosionBlue");
-            matDeathOverlayBlue = CreateVFXMaterial("matDeathOverlayBlue");
+            matDeathOverlayBlue = mainAssetBundle.LoadAsset<Material>("matDeathOverlayBlue");
 
             AddNewEffectDef(deathExplosionEffectBlue);
 
@@ -820,7 +764,7 @@ namespace AmpMod.Modules
 
         private static void CreateElectrified()
         {
-            electrifiedMaterial = CreateVFXMaterial("matIsElectrified");
+            electrifiedMaterial = mainAssetBundle.LoadAsset<Material>("matIsElectrified");
 
         }
         private static void CreateMelvin()
@@ -929,7 +873,7 @@ namespace AmpMod.Modules
 
             electricMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("FulminationMuzzleObject");
 
-            //CreateVFXMaterial("lightningEffect");
+            //mainAssetBundle.LoadAsset<Material>("lightningEffect");
 
             //on fulmination skill contact
             electricImpactEffect = LoadEffect("ElectricitySphere 1", null);
