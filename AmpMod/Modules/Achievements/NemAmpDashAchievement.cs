@@ -39,9 +39,9 @@ namespace AmpMod.Modules.Achievements
             private void BeginStageTimer()
             {
                 this.expirationTimeStamp = Run.FixedTimeStamp.now + NemAmpDashAchievement.window;
-                Debug.Log("starting stage timer");
-                Debug.Log("current time is  " + Run.FixedTimeStamp.tNow);
-                Debug.Log("current expiration time is " + this.expirationTimeStamp.t);
+                //Debug.Log("starting stage timer");
+               // Debug.Log("current time is  " + Run.FixedTimeStamp.tNow);
+                //Debug.Log("current expiration time is " + this.expirationTimeStamp.t);
             }
 
           
@@ -62,10 +62,10 @@ namespace AmpMod.Modules.Achievements
 
             private void OnRunDiscovered(Run run)
             {
-                Debug.Log("Run discovered");
+                //Debug.Log("Run discovered");
                 if (run.stageClearCount == 0)
                 {
-                    Debug.Log("running timer on first stage");
+                    //Debug.Log("running timer on first stage");
                     BeginStageTimer();
                 }
             }
@@ -81,14 +81,14 @@ namespace AmpMod.Modules.Achievements
             //if player exits stage in under 180 seconds grant achievement
             private void OnSceneBeginExit(SceneExitController exitController)
             {
-                Debug.Log("doing scene exit");
+               /* Debug.Log("doing scene exit");
                 Debug.Log("exit time is  " + Run.FixedTimeStamp.tNow);
-                Debug.Log("max exit time is " + this.expirationTimeStamp.t);
+                Debug.Log("max exit time is " + this.expirationTimeStamp.t); */
 
                 if (!this.expirationTimeStamp.hasPassed)
                 {
                     base.Grant();
-                    Debug.Log("granting achievement");
+                    //Debug.Log("granting achievement");
                 }
 
                 Reset();
@@ -97,7 +97,7 @@ namespace AmpMod.Modules.Achievements
             //don't begin the timer if we're in an 'illegitimate' stage
             private void OnStageStart(Stage stage)
             {
-                Debug.Log("Running onStageStart");
+                //Debug.Log("Running onStageStart");
                 List<String> forbiddenStages = new List<string>{ "bazaar", "artifactworld", "limbo", "mysteryspace", "goldshores"};
 
                 if (!forbiddenStages.Contains(stage.name))
@@ -109,7 +109,7 @@ namespace AmpMod.Modules.Achievements
 
             private void OnRunStart(Run run)
             {
-                Debug.Log("Running onRunStart");
+                //Debug.Log("Running onRunStart");
                 this.BeginStageTimer();
             }
 

@@ -537,7 +537,7 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(lightningCrosshair);
 
             lightningStreamChainEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("LightningOrbChainEffect");
-            lightningStreamChainEffectPrefab.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
+            lightningStreamChainEffectPrefab.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpChainLightningNoise>();
             PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefab);
 
             lightningStreamMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzle");
@@ -561,7 +561,7 @@ namespace AmpMod.Modules
             PrefabAPI.RegisterNetworkPrefab(lightningCrosshairBlue);
 
             lightningStreamChainEffectPrefabBlue = mainAssetBundle.LoadAsset<GameObject>("LightningOrbChainEffectBlue");
-            lightningStreamChainEffectPrefabBlue.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpLightningChainNoise>();
+            lightningStreamChainEffectPrefabBlue.AddComponent<SkillStates.Nemesis_Amp.Components.NemAmpChainLightningNoise>();
             PrefabAPI.RegisterNetworkPrefab(lightningStreamChainEffectPrefabBlue);
 
             lightningStreamMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("LockOnMuzzleBlue");

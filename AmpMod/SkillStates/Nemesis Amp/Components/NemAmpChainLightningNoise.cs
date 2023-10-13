@@ -9,7 +9,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 {
 
 
-    public class NemAmpLightningChainNoise : MonoBehaviour
+    public class NemAmpChainLightningNoise : MonoBehaviour
     {
         private LineRenderer lineRenderer;
         private CharacterBody endBody;

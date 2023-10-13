@@ -52,7 +52,7 @@ namespace AmpMod.Modules.Survivors
 
         internal static Material capeMat = Modules.Assets.CreateMaterial("matNemCape");
         internal static Material suitMat = Modules.Assets.CreateMaterial("matNemSuit");
-        internal override int mainRendererIndex { get; set; } = 1;
+        internal override int mainRendererIndex { get; set; } = 0;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
 
@@ -125,23 +125,13 @@ namespace AmpMod.Modules.Survivors
 
         internal override void InitializeHitboxes()
         {
-            /* ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
-             GameObject model = childLocator.gameObject;
-
-             Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
-             Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
-
-             Transform spinSlashTransform = childLocator.FindChild("SpinSlashHitbox");
-             Modules.Prefabs.SetupHitbox(model, spinSlashTransform, "SpinSlash");
-
-             */
-
+          /*
             ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
             GameObject model = childLocator.gameObject;
 
             Transform bigSlashTransform = childLocator.FindChild("CleaveHitbox");
             Modules.Prefabs.SetupHitbox(model, bigSlashTransform, "Cleave");
-
+             */
 
         }
 
@@ -420,7 +410,7 @@ namespace AmpMod.Modules.Survivors
 
             skins.Add(defaultSkin);
             #endregion
-
+               
 
             #region MasterySkin
             Material masterySuitMat = Modules.Assets.CreateMaterial("matNemSuitMastery");
@@ -454,15 +444,6 @@ namespace AmpMod.Modules.Survivors
                     renderer = defaultRenderers[1].renderer
                 }
             }; 
-
-
-
-
-
-            if (!Config.RedSpriteBlueLightning.Value)
-            {
-                //Skins.AddCSSSkinChangeResponse(masterySkin, Skins.ampCSSEffect.REDSPRITE);
-            }
 
 
             skins.Add(masterySkin);

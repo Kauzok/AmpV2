@@ -33,7 +33,7 @@ namespace AmpMod.Modules.Achievements
 
 		private void OnPierce(FireLightningBeam state)
 		{
-			Debug.Log("checking pierceCount");
+			//Debug.Log("checking pierceCount");
 			if (state.piercedCount >= requirement)
 			{
 				base.Grant();

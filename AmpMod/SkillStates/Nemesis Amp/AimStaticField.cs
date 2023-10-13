@@ -139,6 +139,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (this.goodPlacement)
                 {
+                    
                     base.PlayAnimation("FullBody, Override", "Release Field", "BaseSkill.playbackRate", 1f);
                     animator.SetBool("hasFired", true);
                     float baseDamage = (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth) * damageCoefficient) + damageCoefficient;

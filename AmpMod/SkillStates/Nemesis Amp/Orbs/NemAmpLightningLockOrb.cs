@@ -33,7 +33,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		public static event Action<NemAmpLightningLockOrb> onLightningOrbKilledOnAllBounces;
 		public bool procControlledCharge;
 		public bool isChaining;
-		private Components.NemAmpLightningChainNoise chainObject;
+		private Components.NemAmpChainLightningNoise chainObject;
 
 		public override void Begin()
 		{
@@ -64,7 +64,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 				//chainEffectData.SetHurtBoxReference(this.target);
 				EffectManager.SpawnEffect(Modules.Assets.lightningStreamChainEffect, chainEffectData, true);
 				*/
-				chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<Components.NemAmpLightningChainNoise>();
+				chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<Components.NemAmpChainLightningNoise>();
 				chainObject.startPosition = this.origin;
 				chainObject.healthComponent = this.target.healthComponent;
 

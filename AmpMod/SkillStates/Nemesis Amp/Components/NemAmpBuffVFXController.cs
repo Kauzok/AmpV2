@@ -39,7 +39,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             lightningController = base.GetComponent<NemLightningColorController>();
             //Debug.Log(lightningController + "is lightningcontroller");
-  
+
             /*buffOnEffect = Assets.maxBuffFlashEffectBlue;
             overlayMat = Assets.buffOverlayMatBlue;
             buffOffEffect = Assets.maxBuffOffEffectBlue;*/
