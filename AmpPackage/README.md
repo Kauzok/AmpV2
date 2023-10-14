@@ -1,29 +1,37 @@
-# Amp Overview
-- Adds in Amp, an agile melee/ranged custom survivor who fights with the electrifying power of electromagnetism.
-- Featuring 9 custom skills, a unique passive, lore, a mastery skin, item displays, unique Mithrix dialogue, and more!
-- **DISCLAIMER**: Amp is still a WIP survivor, so many things are subject to change, and you may encounter some bugs (in the case of multiplayer, "may" turns into "will").
+# Overview
+- Adds in two new characters: Amp, an agile melee/ranged survivor, and Nemsis Amp, a burst damage ranged survivor, both of whom fight with the electrifying power of electromagnetism.
+- Featuring a combined total of 15 custom skills, two unique passives, lore, mastery skins, item displays, unique Mithrix dialogue, and more!
+- **DISCLAIMER**: Amp (and to some extent Nemesis Amp) is still a WIP survivor, so many things are subject to change, and you may encounter some bugs (in the case of multiplayer, "may" turns into "will").
 
 For feedback & bug reporting, message Neon#2032 on discord or just @ me in the modding server  (https://discord.gg/VuRshdPgvU). I really appreciate any and all feedback; I want Amp to be as fun to play as possible!
 
 NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT APPEAR IN THE LOBBY, UPDATE BEPINEXPACK.
 
 [![](https://cdn.discordapp.com/attachments/226439908657463296/1007789478032707614/AmpDisplay.png)]()
+[![](https://cdn.discordapp.com/attachments/226439908657463296/1162550376227143680/NemScreen.PNG)]()
 
 # Skills (picture is slightly outdated)
 [![](https://cdn.discordapp.com/attachments/226439908657463296/1007782321094656132/AmpSkills.png)]()
 
+<p float="left">
+  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1007782708614803537/AmpDash.png" width="530" />
+  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1007782759227457576/AmpLightning.png" width="530" /> 
+  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1007782614360395907/AmpItems.png" with = 530>
+</p>
 
-[![](https://cdn.discordapp.com/attachments/226439908657463296/1007782708614803537/AmpDash.png)]()
-[![](https://cdn.discordapp.com/attachments/226439908657463296/1007782759227457576/AmpLightning.png)]()
-[![](https://cdn.discordapp.com/attachments/226439908657463296/1007782614360395907/AmpItems.png)]()
+
+<p float="left">
+  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1162543155908984922/NemStorm.png" width="530" />
+  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1162543156638789684/NemBlades.png" width="530" /> 
+  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1162549291081023638/NemLightning.PNG" /> 
+</p>
+
 
 
 # To Do
 - Fix multiplayer functionality
-- Adjust some animations
-- Add in configs for players to tweak some of Amp's values
+- Adjust some animations 
 - For a more detailed WIP list as well as a list of known bugs, visit the github!
-- Also if anybody is interested in making some new skill icons for Amp, just hit me up on discord! pls
 
 # Credits
 - Neon: Animations, Code, VFX, SFX
@@ -38,15 +46,20 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 
 # Change Log
 <details>
- <summary>1.2.1</summary>
+ <summary>2.0.0</summary>
  
-- Animation Overhaul!
+ - That's right, this mod is STILL being updated, and this is the biggest one yet! Featuring new animations, and a whole new character for you to play around with!
+- Animation Overhaul
     -  Most of Amp's animations have been changed with the help of . Feedback on the feel of the new anims would be greatly appreciated!
+-  New Character  
+    - Nemesis Amp has been added to the mod! An entirely new version of Amp, tainted by the void, with his own unique skills and passive. Feedback on him would be appreciated as well.
+- More bug fixes, and hopefully new features, to come!
+
 </details>
 
 <details>
  <summary>1.2.1</summary>
- 
+
 - Magnetic Vortex
     -  Fixed a bug where the muzzle effect wouldn't disappear on firing
 </details>
