@@ -135,7 +135,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.animator = modelTransform.GetComponent<Animator>();
             }
 
-            this.tickTime= this.baseTickTime / this.attackSpeedStat;
+            this.tickTime = this.baseTickTime / this.attackSpeedStat;
 
             //Debug.Log(base.characterBody.bodyIndex);
          
@@ -178,7 +178,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
 
-            Debug.Log("not returning");
+            //Debug.Log("not returning");
 
             this.tickTimer = this.tickTime;
 
@@ -208,7 +208,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     lightningOrb.bouncesRemaining = 0;
                 }
                 OrbManager.instance.AddOrb(lightningOrb);
-                Debug.Log("firing");
+                //Debug.Log("firing orb on client");
+                //if (NetworkServer.active) Debug.Log("firing orb on server");
+
             }
 
             
@@ -269,7 +271,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             
             if ((base.isAuthority && !base.inputBank.skill1.down) || (base.isAuthority && this.targetHurtbox && this.targetHurtbox.healthComponent.health <= 0) || (base.isAuthority && !this.targetHurtbox) || !this.skillLocator.isActiveAndEnabled)
             {
-                Debug.Log("Setting skill to exit");
+                //Debug.Log("Setting skill to exit");
                 this.outer.SetNextStateToMain();
             }
         }
@@ -278,16 +280,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             if (targetHurtbox)
             {
-                Debug.Log("creating orb on hurtbox");
+               // Debug.Log("creating orb on hurtbox");
                 //Debug.Log(targetHurtbox.gameObject.GetComponent<CharacterBody>().name + "is target");
             }
 
             if (!targetHurtbox)
             {
-                Debug.Log("hurtbox for orb not found");
+               // Debug.Log("hurtbox for orb not found");
             }
 
-            
+            targetHurtbox = tracker.GetTrackingTarget();
+            //Debug.Log("making orb");
             NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
 
             rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
@@ -317,7 +320,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //Util.PlaySound(endSoundString, base.gameObject);
 
             lightningEffectController.isAttacking = false;
-            Debug.Log("Exiting");
+            //Debug.Log("Exiting");
             this.FireLightning();
             //Debug.Log("lightning fire method completed");
             if (nexusMuzzleTransform)
