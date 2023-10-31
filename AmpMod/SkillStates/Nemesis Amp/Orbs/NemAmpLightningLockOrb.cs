@@ -27,7 +27,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		private bool failedToKill;
 		public DamageColorIndex damageColorIndex;
 		public DamageType damageType;
-		private Vector3 startPosition;
 		private bool canBounceOnSameTarget = false;
 		public int targetsToFindPerBounce = 1;
 		public static event Action<NemAmpLightningLockOrb> onLightningOrbKilledOnAllBounces;
@@ -41,7 +40,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
             //base.Begin();
             base.duration = 0.1f;
 			//this.speed = 120f;
-			string path = null;
 			EffectData effectData = new EffectData
 			{
 				//origin = this.origin,

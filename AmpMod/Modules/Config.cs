@@ -17,6 +17,7 @@ namespace AmpMod.Modules
         public static ConfigEntry<bool> UnlockNemesisAmp;
         public static ConfigEntry<bool> NemUnlockDashSkill;
         public static ConfigEntry<bool> NemUnlockBladesSkill;
+        public static ConfigEntry<bool> NemStormRangeIndicator;
 
         public static void ReadConfig()
         {
@@ -41,6 +42,11 @@ namespace AmpMod.Modules
                                              "Purple Lightning on Nemesis Mastery Skin",
                                              false,
                                              "Makes Nemesis Amp's Origin skin use purple lightning instead of blue");
+            NemStormRangeIndicator =
+                AmpPlugin.instance.Config.Bind<bool>("VFX Settings",
+                                             "Range Indicator for Voltaic Onslaught",
+                                             true,
+                                             "Spawns a circular indicator that represents the range of Nemesis Amp's Voltaic Onslaught skill");
 
             UnlockMasterySkin =
                AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",

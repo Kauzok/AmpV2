@@ -195,6 +195,8 @@ namespace AmpMod.Modules
         internal static GameObject purpleStormBoltEffect;
         internal static GameObject stormMuzzleFlashEffect;
         internal static GameObject stormMuzzleFlashEffectBlue;
+        internal static GameObject stormRangeIndicator;
+        internal static GameObject stormRangeIndicatorBlue;
 
         internal static GameObject teleportExplosionEffect;
         internal static GameObject teleportAimReticle;
@@ -697,6 +699,11 @@ namespace AmpMod.Modules
 
             stormMuzzleFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StormMuzzleFlashBlue");
             AddNewEffectDef(stormMuzzleFlashEffectBlue);
+
+            stormRangeIndicator = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicator");
+            PrefabAPI.RegisterNetworkPrefab(stormRangeIndicator);
+            stormRangeIndicatorBlue = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicatorBlue");
+            PrefabAPI.RegisterNetworkPrefab(stormRangeIndicatorBlue);
         }
 
         private static void CreateLightningDash()

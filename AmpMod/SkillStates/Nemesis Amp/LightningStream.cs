@@ -143,6 +143,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (NetworkServer.active)
                 {
+                    //rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                     this.targetHurtbox = tracker.GetTrackingTarget();
                 }
 
@@ -153,10 +154,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
 
                 this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
-                //Debug.Log(nexusMuzzleTransform);
-                 //Debug.Log(BodyCatalog.FindBodyIndex("NemAmpBody") + "isnemindex");
-                //nexusMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
-                //Debug.Log("starting at " + rightMuzzleTransform.position);
+
             }
 
             //base.PlayAnimation("Spawn, Override", "Spawn", "Spawn.playbackRate", 4f);
@@ -189,7 +187,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (targetHurtbox)
             {
-                Debug.Log(targetHurtbox.gameObject + "is target");
+                
                 NemAmpLightningLockOrb lightningOrb = createDmgOrb();
                 lightningOrb.procControlledCharge = false;
 
@@ -281,6 +279,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (targetHurtbox)
             {
                 Debug.Log("creating orb on hurtbox");
+                //Debug.Log(targetHurtbox.gameObject.GetComponent<CharacterBody>().name + "is target");
             }
 
             if (!targetHurtbox)
@@ -289,22 +288,25 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
             
-            return new NemAmpLightningLockOrb
-            {
-                origin = rightMuzzleTransform.position,
-                damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat),
-                isCrit = base.characterBody.RollCrit(),
-                damageType = DamageType.Generic,
-                teamIndex = teamComponent.teamIndex,
-                attacker = base.gameObject,
-                procCoefficient = .2f,
-                damageColorIndex = DamageColorIndex.Default,
-                target = targetHurtbox,
-                bouncedObjects = new List<HealthComponent>(),
-                range = tracker.maxTrackingDistance,
-                damageCoefficientPerBounce = .8f,
-                nemLightningColorController = this.lightningController,
-            };
+            NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
+
+            rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
+
+            lockOrb.damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat);
+            lockOrb.origin = rightMuzzleTransform.position;
+            lockOrb.isCrit = base.characterBody.RollCrit();
+            lockOrb.damageType = DamageType.Generic;
+            lockOrb.teamIndex = teamComponent.teamIndex;
+            lockOrb.attacker = base.gameObject;
+            lockOrb.procCoefficient = .2f;
+            lockOrb.damageColorIndex = DamageColorIndex.Default;
+            lockOrb.target = targetHurtbox;
+            lockOrb.bouncedObjects = new List<HealthComponent>();
+            lockOrb.range = tracker.maxTrackingDistance;
+            lockOrb.damageCoefficientPerBounce = .8f;
+            lockOrb.nemLightningColorController = this.lightningController;
+
+            return lockOrb;
         }
 
 
