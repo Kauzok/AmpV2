@@ -77,7 +77,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             if (isBlue)
             {
                 #region Death
-                deathExplosionVFX = Assets.deathExplosionEffectBlue;
+                deathExplosionVFX = Assets.deathExplosionEffectBlue;    
                 deathOverlay = Assets.matDeathOverlayBlue;
                 #endregion
 

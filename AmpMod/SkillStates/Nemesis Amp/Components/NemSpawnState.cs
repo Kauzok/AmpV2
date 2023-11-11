@@ -70,13 +70,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         private void spawnTPEffect()
         {
             this.hasTeleported = true;
-            this.characterModel.invisibilityCount--;
+            
             this.spawnNormalDuration = SpawnTeleporterState.initialDelay;
             TeleportOutController.AddTPOutEffect(this.characterModel, 1f, 0f, this.spawnNormalDuration);
             GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(base.gameObject);
             if (teleportEffectPrefab)
             {
-                EffectManager.SimpleEffect(teleportEffectPrefab, base.transform.position, Quaternion.identity, false);
+                EffectManager.SimpleEffect(teleportEffectPrefab, base.transform.position, Quaternion.identity, true);
             }
             Util.PlaySound(SpawnTeleporterState.soundString, base.gameObject);
         }
@@ -112,33 +112,39 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
             if (spawnWithLightning)
             {
-                if (base.fixedAge >= this.waitDuration && base.isAuthority && !hasFired)
+                if (base.fixedAge >= this.waitDuration && !hasFired)
                 {
                     if (this.characterModel)
                     {
                         this.characterModel.invisibilityCount--;
                     }
-                    if (isBlue)
-                    {
-                        if (childLocator.FindChild("SpawnEffectBlue")) childLocator.FindChild("SpawnEffectBlue").gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        if (childLocator.FindChild("SpawnEffect")) childLocator.FindChild("SpawnEffect").gameObject.SetActive(true);
-                    }
 
-                    FireBlast();
+                    if (base.isAuthority)
+                    {
+                        if (isBlue)
+                        {
+                            if (childLocator.FindChild("SpawnEffectBlue")) childLocator.FindChild("SpawnEffectBlue").gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            if (childLocator.FindChild("SpawnEffect")) childLocator.FindChild("SpawnEffect").gameObject.SetActive(true);
+                        }
+                        FireBlast();
 
-                    base.PlayAnimation("Spawn, Override", "Spawn", "Spawn.playbackRate", 4f);
+                        base.PlayAnimation("Spawn, Override", "Spawn", "Spawn.playbackRate", 4f);
+                    }
                     hasFired = true;
+
                 }
+
             }
 
             else if (!spawnWithLightning)
             {
-                if (base.fixedAge >= waitDuration && base.isAuthority && !hasTeleported)
+                if (base.fixedAge >= waitDuration && !hasTeleported)
                 {
                     spawnTPEffect();
+                    this.characterModel.invisibilityCount--;
                 }
             }
 

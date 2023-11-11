@@ -1325,7 +1325,8 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 71bc63a194fbfff42bdf186b8e9375a8, type: 2}
+    m_Motion: {fileID: 2808714396835539526, guid: bfc5f77dd7b80334b9a77608ff4c19d0,
+      type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1333,7 +1334,8 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 71bc63a194fbfff42bdf186b8e9375a8, type: 2}
+    m_Motion: {fileID: 2808714396835539526, guid: bfc5f77dd7b80334b9a77608ff4c19d0,
+      type: 3}
     m_Threshold: 0.33333334
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -4530,7 +4532,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sprint
-  m_Speed: 0.15
+  m_Speed: 0.13
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101563946055309242}

@@ -662,6 +662,7 @@ namespace AmpMod.Modules
 
            releaseFieldMuzzleEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StaticMuzzleFlashBlue");
             PrefabAPI.RegisterNetworkPrefab(releaseFieldMuzzleEffectBlue);
+            //AddNewEffectDef(releaseFieldMuzzleEffectBlue);
             #endregion
 
 

@@ -20,9 +20,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public static GameObject goodCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.goodCrosshairPrefab;
         public static GameObject projectilePrefab;
         public static GameObject badCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.badCrosshairPrefab;
-        private Transform rightMuzzleTransform;
+        private Transform rightAimMuzzleTransform;
         private Transform rightMuzzleTransformSpawn;
-        private Transform leftMuzzleTransform;
+        private Transform leftAimMuzzleTransform;
         private Transform leftMuzzleTransformSpawn;
         private GameObject muzzleflashEffect;
         private GameObject fieldAimMuzzleEffect;
@@ -50,8 +50,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController = base.GetComponent<StackDamageController>();
             animator = base.GetModelAnimator();
             childLocator = base.GetModelChildLocator();
-            rightMuzzleTransform = childLocator.FindChild("HandR");
-            leftMuzzleTransform = childLocator.FindChild("HandL");
+            rightAimMuzzleTransform = childLocator.FindChild("HandR");
+            leftAimMuzzleTransform = childLocator.FindChild("HandL");
             rightMuzzleTransformSpawn = childLocator.FindChild("HandR");
             leftMuzzleTransformSpawn = childLocator.FindChild("HandL");
 
@@ -75,8 +75,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.FixedUpdate();
             if (!hasMuzzles)
             {
-               rightMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldAimMuzzleEffect, rightMuzzleTransform).transform;
-               leftMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldAimMuzzleEffect, leftMuzzleTransform).transform;
+               rightAimMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldAimMuzzleEffect, rightAimMuzzleTransform).transform;
+               leftAimMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(fieldAimMuzzleEffect, leftAimMuzzleTransform).transform;
                hasMuzzles = true;
             }
             this.stopwatch += Time.fixedDeltaTime;
@@ -151,6 +151,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandL", true);
                         //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandR", true);
                         UnityEngine.Object.Instantiate(muzzleflashEffect, rightMuzzleTransformSpawn);
+                       /* EffectManager.SpawnEffect(muzzleflashEffect, new EffectData
+                        {
+                            origin = rightMuzzleTransformSpawn.position,
+                            scale = 1,
+                        }, true);
+                        EffectManager.SpawnEffect(muzzleflashEffect, new EffectData
+                        {
+                            //origin = leftMuzzleTransformSpawn.position,
+                            scale = 1,
+                        }, true); */
                         UnityEngine.Object.Instantiate(muzzleflashEffect, leftMuzzleTransformSpawn);
 
                         Vector3 forward = this.fieldIndicatorInstance.transform.forward;
@@ -177,13 +187,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 overrideRequest.Dispose();
             }
 
-            if (rightMuzzleTransform)
+            if (rightAimMuzzleTransform)
             {
-                EntityState.Destroy(rightMuzzleTransform.gameObject);
+                EntityState.Destroy(rightAimMuzzleTransform.gameObject);
             }
-            if (leftMuzzleTransform)
+            if (leftAimMuzzleTransform)
             {
-                EntityState.Destroy(leftMuzzleTransform.gameObject);
+                EntityState.Destroy(leftAimMuzzleTransform.gameObject);
             }
             hasMuzzles = false;
 

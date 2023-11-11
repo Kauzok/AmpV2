@@ -8,7 +8,10 @@
 *.sln.docstates
 
 #ignore .csproj
-AmpMod/AmpMod.csproj
+AmpMod\AmpMod.csproj
+
+#ignore shaders
+BattlemageV2UnityProject\Assets\HenryAssets\Shaders
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

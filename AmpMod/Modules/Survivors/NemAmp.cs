@@ -13,8 +13,6 @@ namespace AmpMod.Modules.Survivors
 {
     internal class NemAmp : SurvivorBase
     {
-        //internal override string bodyName { get; set; } = "Henry";
-        //Uncomment this line once you've gotten the model setup in unity
         internal override string bodyName { get; set; } = "NemAmp";
 
         internal override GameObject bodyPrefab { get; set; }

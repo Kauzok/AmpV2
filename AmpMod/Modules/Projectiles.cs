@@ -88,6 +88,7 @@ namespace AmpMod.Modules
 
             //if (Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallGhost") != null) lightningBallController.ghostPrefab = CreateGhostPrefab("LightningBallGhost");
 
+
             lightningBallGhostBlue = CreateGhostPrefab("PlasmaShotGhostBlue");
             lightningBallGhost = CreateGhostPrefab("PlasmaShotGhost");
 

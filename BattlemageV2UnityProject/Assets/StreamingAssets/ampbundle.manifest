@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3144702619
+CRC: 4111916359
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3b325b5477328bb6269e43832f0d9605
+    Hash: 63ab00b51185a62bd327cf31ac88b66b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 57a1c466ae3a2bbf7d21a75ee8590ed2
+    Hash: fdb67ad2e1d8f33ce5f7b5218cc4cc8e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -41,14 +41,14 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
+- Class: 111
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 708136152, guid: e161fae64b898bc22624d03ed611378f, type: 3}
 - Class: 114
   Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
 - Class: 114
   Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1395413934, guid: da77c7bbf69f66ab2145560542327715, type: 3}
 - Class: 114
@@ -58,17 +58,15 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1985007777, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 708136152, guid: e161fae64b898bc22624d03ed611378f, type: 3}
-- Class: 114
   Script: {fileID: 733712478, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1245112779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1213012214, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 296141222, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  Script: {fileID: 2137989374, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
@@ -100,8 +98,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -2051541306, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: -1184802484, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: 2005159759, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -354346302, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -116,7 +112,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: 1080798252, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1653386690, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 344246068, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -126,10 +128,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 1018056875, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: -966267668, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: 296141222, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: 2011550347, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -492659515, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -137,8 +135,6 @@ ClassTypes:
   Script: {fileID: 167308886, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 707171152, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
-  Script: {fileID: -103623725, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -1711895128, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -164,8 +160,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -270136354, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
-  Script: {fileID: -1515867781, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-- Class: 114
   Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1952984350, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -175,6 +169,10 @@ ClassTypes:
   Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1324642361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1044368294, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -455717551, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
@@ -200,29 +198,27 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 114
-  Script: {fileID: -806885394, guid: 67dfb1fdfb2b407222eda8e23ac8b724, type: 3}
+  Script: {fileID: -1835779776, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -875252823, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
+  Script: {fileID: 1080798252, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
   Script: {fileID: 816898038, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: 2011550347, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: 296141222, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 678291247, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
-  Script: {fileID: 1080798252, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: -432102721, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+  Script: {fileID: 2011550347, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: 511512695, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: 296141222, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
+- Class: 114
+  Script: {fileID: -432102721, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -565067572, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 114
   Script: {fileID: -335047464, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-- Class: 114
-  Script: {fileID: -1835779776, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 120
@@ -265,56 +261,79 @@ Assets:
 - Assets/HenryAssets/Animations/HenryAnimations/maskAimBazooka.mask
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/DamageGrowthMeter.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningOrbImpact.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/texTerrainMiscHeight2.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_JogBackwardsAnim.anim
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matUIOverbrighten2x.mat
 - Assets/HenryAssets/Shaders/fx/hgdamagenumber.shader
 - Assets/HenryAssets/VFX/Amp/Ferroshot/LunarShardProjectile.prefab
 - Assets/HenryAssets/VFX/Amp/Bulwark/WormExplosionEffect.prefab
-- Assets/HenryAssets/Icons/texControlledChargeAlt.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/TiledTextures/Clouds/texCloudOrganic2.png
+- Assets/HenryAssets/Icons/NemAmp/texControlledChargeAlt.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient3Mask.png
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterFill.png
 - Assets/HenryAssets/Icons/texShotgunIcon.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texExplosionEmptyMask.png
 - Assets/HenryAssets/VFX/Materials/matAnimeShapes.mat
 - Assets/HenryAssets/Materials/MatSword.mat
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampHuntressSoft2.png
 - Assets/HenryAssets/VFX/Materials/VortexCircle.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Death/matDarkPurple.mat
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/StaticMuzzleFlash.prefab
+- Assets/HenryAssets/VFX/Materials/texLightning.asset
 - Assets/HenryAssets/VFX/Textures/texPunchImpactShadow.png
 - Assets/HenryAssets/VFX/Materials/texRampPurpleLightning.png
 - Assets/HenryAssets/Materials/matBazookaRocket.mat
 - Assets/HenryAssets/Icons/texPrimaryIcon.png
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_FireSwordAnim.anim
 - Assets/HenryAssets/VFX/Amp/HeatShock/PlasmaMuzzleEffect.prefab
+- Assets/HenryAssets/Atlases/Materials/NemAmpBodyAtlas 1.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/ChestAtlas.mat
 - Assets/HenryAssets/VFX/Textures/texHenrySwing2.png
 - Assets/HenryAssets/Icons/texBazookaIcon.png
-- Assets/HenryAssets/VFX/NemesisAmp/Dash/matVoidSurvivorCrabCannonCoreCharSelect.mat
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matVoidSurvivorCrabCannonCoreCharSelect.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/MaxBuffOffEffectBlue.prefab
+- Assets/HenryAssets/Animations/NemAmpAnims/nemAmpBlades 1.fbx
+- Assets/HenryAssets/VFX/Materials/matSlash 2.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Death/matDeathOverlay 2.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/ForearmLAtlas.mat
+- Assets/HenryAssets/Animations/NemAmpAnims/NemFallNormal.anim
+- Assets/HenryAssets/VFX/Materials/ppLocalLightningBlue.asset
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/Stylized(Omni)/texOmniShockwave1Mask.png
 - Assets/HenryAssets/VFX/Amp/Vortex/Sparks.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/FieldAreaIndicator.prefab
+- Assets/HenryAssets/Icons/NemAmp/texNemBlades2.png
 - Assets/HenryAssets/Mesh/meshHenry.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/matLightningOverlay1.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/ShoulderLAtlas.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpJog.anim
 - Assets/HenryAssets/Mesh/SpriteSuitMesh.mesh
+- Assets/HenryAssets/Icons/NemAmp/texNemPassive.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SlashAnim3.anim
 - Assets/HenryAssets/HenryDisplay.prefab
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_LightImpactAnimation.anim
 - Assets/HenryAssets/VFX/Amp/Fulmination/ElectricityStreamRed.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texCrosshairNibBar.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/VFX/ParticleMasks/texParticleDust4Mask.png
 - Assets/HenryAssets/VFX/Mesh/meshBoxingGlove.mesh
-- Assets/HenryAssets/VFX/NemesisAmp/StaticField/AimFieldMuzzleEffect.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/AimFieldMuzzleEffectBlue.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texRampArmorReduction.png
 - Assets/HenryAssets/Textures/Atlases/Materials/SwordAtlas.mat
 - Assets/HenryAssets/Materials/matHenry.mat
 - Assets/HenryAssets/Atlases/SwordAtlas.png
+- Assets/HenryAssets/VFX/NemesisAmp/Death/Blue/DeathExplosionBlue.prefab
 - Assets/HenryAssets/VFX/FistBarrageEffect.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SidewalkRAnim.001.anim
+- Assets/HenryAssets/Animations/NemAmpAnims/FireBlades1Combo.anim
 - Assets/HenryAssets/Textures/texHenryAlt.png
 - Assets/HenryAssets/VFX/Materials/texRampTeleporterSoft.png
+- Assets/HenryAssets/Icons/NemAmp/texNemDefault 1.png
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blue/BladeExpireBlue.prefab
 - Assets/HenryAssets/VFX/Amp/Charge/IcosphereHighres.asset
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpAimYaw 1.mask
 - Assets/HenryAssets/Icons/texPassiveIcon.png
 - Assets/HenryAssets/VFX/Textures/texFire.tga
+- Assets/HenryAssets/Animations/NemAmpAnims/metarig_ChargeBeamAnim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/BlueFieldLightAnim.anim
 - Assets/HenryAssets/VFX/Materials/HitSparkEffect 1.mat
 - Assets/HenryAssets/Mesh/MasteryBody.mesh
 - Assets/HenryAssets/Textures/Atlases/Materials/ShackleRAtlas.mat
@@ -322,25 +341,35 @@ Assets:
 - Assets/HenryAssets/Animations/HenryAnimations/Jump.anim
 - Assets/HenryAssets/Animations/AmpAnims/AmpStartFulminate.anim
 - Assets/HenryAssets/Atlases/EmissionSprite2.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/StaticFieldDOT.prefab
 - Assets/HenryAssets/Mesh/NemAmpSwordMuzzle.fbx
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/Blue/PlasmaShotGhostBlue.prefab
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_FallNormal.anim
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SlashAnim4.anim
+- Assets/HenryAssets/Atlases/NemBodyMasteryAtlas.png
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_WalkBackward.anim
 - Assets/HenryAssets/Mesh/meshHenryNeo.mesh
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_Run.anim
-- Assets/HenryAssets/Icons/texMainSkin.png
+- Assets/HenryAssets/Icons/Amp/texMainSkin.png
+- Assets/HenryAssets/VFX/Amp/Bolt/texLightningPattern.asset
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matCircleBillboard.mat
+- Assets/HenryAssets/VFX/Materials/texRampPurpleLightningTransparent.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matSurgeBillboardBlue.mat
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurpleAlt.mat
-- Assets/HenryAssets/Icons/texPulse.png
+- Assets/HenryAssets/Icons/Amp/texPulse.png
 - Assets/HenryAssets/Animations/HenryAnimations/WalkR.anim
 - Assets/HenryAssets/VFX/HenryDustEffect.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/SprintL.anim
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/QuickDashPrefab.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/AimFieldMuzzleEffect.prefab
 - Assets/HenryAssets/Materials/matRebellion.mat
 - Assets/HenryAssets/Materials/MatNemSuit.mat
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexSpawnExplosion.prefab
 - Assets/HenryAssets/VFX/Materials/texCloudIce.png
+- Assets/HenryAssets/Materials/MatNemSuitMastery.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudWhitenoise.png
 - Assets/HenryAssets/VFX/Materials/matSmoke.mat
+- Assets/HenryAssets/VFX/Materials/matPulseMuzzleTriGray.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_WormReleaseAnim.anim
 - Assets/HenryAssets/Animations/AmpAnims/AmpSprint.anim
 - Assets/HenryAssets/VFX/Amp/Charge/ChargeBallFull.prefab
@@ -348,38 +377,54 @@ Assets:
 - Assets/HenryAssets/VFX/Amp/Bolt/BoltEnter.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/ColorRamps/texRampTritone.png
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blade Roughness.png
-- Assets/HenryAssets/Icons/texControlledCharge.png
+- Assets/HenryAssets/Icons/NemAmp/texControlledCharge.png
+- Assets/HenryAssets/Animations/NemAmpAnims/FireBlades2.anim
+- Assets/HenryAssets/VFX/Materials/texGenericStarburstMaskSkewed 1.png
 - Assets/HenryAssets/VFX/matLightningStrike.mat
-- Assets/HenryAssets/VFX/Amp/Bolt/texLightning3Mask.asset
+- Assets/HenryAssets/VFX/Materials/texLightning3Mask.asset
 - Assets/HenryAssets/VFX/Textures/texSwingEffect.png
 - Assets/HenryAssets/VFX/Materials/texOmniShockwave2Mask.png
 - Assets/HenryAssets/VFX/Materials/texRampTritone.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SidewalkRAnim.anim
+- Assets/HenryAssets/VFX/Materials/texRampLightningCircle.png
 - Assets/HenryAssets/Textures/texBoxingGlove.png
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpFulminate.mask
 - Assets/HenryAssets/Animations/HenryAnimations/maskAimYaw.mask
 - Assets/HenryAssets/Animations/AmpAnims/AmpSlashFulminate1.anim
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningBeamOrig.mat
 - Assets/HenryAssets/Icons/texDanteAchievement.png
 - Assets/HenryAssets/Shaders/deferred/hgwavycloth.shader
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/MageLightningBombGhost.prefab
+- Assets/HenryAssets/physmatRagdoll.physicMaterial
 - Assets/HenryAssets/Icons/texSecondaryIcon.png
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/matDustDirectionalDark.mat
 - Assets/HenryAssets/Animations/HenryAnimations/animHenry.controller
 - Assets/HenryAssets/VFX/Amp/Bolt/texMageMatrixMaskDirectional.asset
 - Assets/HenryAssets/Shaders/ui/hguicustomblend.shader
 - Assets/HenryAssets/Animations/AmpAnims/AmpPulseExit.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/matFieldSphereBlue.mat
 - Assets/HenryAssets/VFX/Amp/Bolt/texMageMatrixMask.asset
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/PurpleLightFade.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/StormRangeIndicator.prefab
+- Assets/HenryAssets/Atlases/Materials/spriteSuitAtlas.mat
 - Assets/HenryAssets/VFX/Amp/Fulmination/ElectricityChain.prefab
 - Assets/HenryAssets/VFX/Materials/matHenrySwing2.mat
 - Assets/HenryAssets/Textures/texBazooka.png
 - Assets/HenryAssets/VFX/Materials/texCloudLightning1.png
 - Assets/HenryAssets/VFX/Textures/texRipple.png
 - Assets/HenryAssets/Animations/AmpAnims/AmpRunRIGHT.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Death/matLightningSpherePurpleReal.mat
 - Assets/HenryAssets/VFX/Amp/Charge/matLightningOrb.mat
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_FirePlasmaBall.anim
-- Assets/HenryAssets/VFX/Materials/matLightningStrikePurple 1.mat
+- Assets/HenryAssets/VFX/Materials/matLightningStrikeBlue.mat
 - Assets/HenryAssets/VFX/Materials/matTracerBrightTransparent.mat
 - Assets/HenryAssets/VFX/ImpactHenrySlash.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/matBladeOutlineBlue.mat
 - Assets/HenryAssets/VFX/Amp/Stormblade/StormbladeHit.prefab
 - Assets/HenryAssets/VFX/Amp/Charge/MageLightningBombGhost.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matGalaxy.mat
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/Blue/matCircleBillboardBlue.mat
+- Assets/HenryAssets/Icons/NemAmp/texNemFulmination.png
 - Assets/HenryAssets/Animations/AmpAnims/AmpFerroshot.anim
 - Assets/HenryAssets/VFX/Amp/Bolt/PlasmaExplosionEffect 1.prefab
 - Assets/HenryAssets/VFX/Amp/PulseLeap/MuzzleflashMageLightningLargeWithTrail.prefab
@@ -390,23 +435,30 @@ Assets:
 - Assets/HenryAssets/Shaders/postprocess/hgscopeshader.shader
 - Assets/HenryAssets/Animations/AmpAnims/AmpLobbyMild.anim
 - Assets/HenryAssets/VFX/Materials/matLightningStrikePurple.mat
+- Assets/HenryAssets/Atlases/NemCapeMasteryAtlas.png
 - Assets/HenryAssets/VFX/Amp/HeatShock/matHeatSwing.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_AscendAnim.anim
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpLeftArm.mask
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/texRampNullifier.png
 - Assets/HenryAssets/VFX/Materials/texCloudOrganic2.png
 - Assets/HenryAssets/VFX/Materials/VortexSphere.mat
 - Assets/HenryAssets/VFX/Materials/matIsElectrified.mat
 - Assets/HenryAssets/VFX/Materials/LightningEffect 1.mat
-- Assets/HenryAssets/Icons/texSurge.png
+- Assets/HenryAssets/SimpleLightningStrikeOrbEffect.prefab
+- Assets/HenryAssets/Icons/Amp/texSurge.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SidewalkLAnim.001.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texRampTeslaCoil.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matSurgeBillboard.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunChunks.mat
 - Assets/HenryAssets/VFX/Amp/HeatShock/HeatExplosionEffect.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blue/BladeSpawnBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_IdleIn.anim
-- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/BladeModel.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/texNormalInvertConeFade.png
 - Assets/HenryAssets/VFX/Mesh/meshSwing.asset
 - Assets/HenryAssets/VFX/Amp/Ferroshot/SpikeProjectile.prefab
 - Assets/HenryAssets/VFX/Amp/Bolt/IceRingGemstoneMesh.asset
 - Assets/HenryAssets/Animations/AmpAnims/AmpEndFulminate.anim
+- Assets/HenryAssets/VFX/Materials/Bloom_49.asset
 - Assets/HenryAssets/Animations/AmpAnims/AmpIdle.anim
 - Assets/HenryAssets/Animations/AmpAnims/AmpLobbyEnter.anim
 - Assets/HenryAssets/VFX/Materials/matOmniHitspark3.mat
@@ -417,37 +469,50 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/texMageMatrixMaskDirectional.png
 - Assets/HenryAssets/VFX/hgcloudremap.shader
 - Assets/HenryAssets/VFX/Materials/matHitSpark 1.mat
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/texMagmaCloud.png
 - Assets/HenryAssets/VFX/Amp/Bolt/Flash, Blue.prefab
 - Assets/HenryAssets/Mesh/meshVergil.mesh
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_AimYaw.anim
+- Assets/HenryAssets/Icons/NemAmp/texNemStorm.png
+- Assets/HenryAssets/Icons/NemAmp/texNemBlades.png
+- Assets/HenryAssets/Animations/NemAmpAnims/FireBlades1.anim
+- Assets/HenryAssets/VFX/Materials/matLightningMatrixBlue.mat
+- Assets/HenryAssets/Icons/NemAmp/texNemMasteryAchievement.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SlashAnim1Stationary.anim
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/ChargeGolem.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/mdlMinorConstructOnePiece 1.asset
 - Assets/HenryAssets/VFX/Textures/texFistSwing.png
 - Assets/HenryAssets/VFX/Amp/Stormblade/StormbladeSwing.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_Slash1Combo.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/matLightningOverlayBlue.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudDifferenceBW1.png
 - Assets/HenryAssets/Animations/AmpAnims/AnimAmpNewFull.controller
 - Assets/HenryAssets/VFX/Amp/Bolt/MatBoltEnter.mat
-- Assets/HenryAssets/VFX/NemesisAmp/StaticField/matAreaIndicatorIntersectionOnly.mat
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/matAimAreaIndicator.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_FulminateRunHoldAnim.anim
 - Assets/HenryAssets/VFX/Materials/matOmniRingGeneric.mat
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/ColorRamps/texRampNullifierOffset.png
 - Assets/HenryAssets/VFX/Materials/matOmniRing2.mat
 - Assets/HenryAssets/Atlases/NemAmpBodyAtlas.png
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurpleUI.mat
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/matDOTDecal.mat
 - Assets/HenryAssets/Animations/HenryAnimations/LightImpact.anim
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/Flash, Blue Variant.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Death/GreaterWispDeath.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StormSkill/texLensFlareMask2.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_VortexLaunchAnim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Death/matDeathOverlayTry.mat
 - Assets/HenryAssets/Model.prefab
-- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/TreebotMortarRainMuzzleflash.prefab
+- Assets/HenryAssets/Animations/NemAmpAnims/metarig_FireBeamAnim.anim
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/FieldProjectilePrefab.prefab
 - Assets/HenryAssets/Icons/texHenryAchievement.png
 - Assets/HenryAssets/Animations/HenryAnimations/WalkB.anim
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/LightningOrbEffectBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/AmpRunLef.anim
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_RestIdleIn.anim
-- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/BossHunterIndicator.prefab
 - Assets/HenryAssets/VFX/Materials/texRampDroneFire.png
 - Assets/HenryAssets/Mesh/SwordOld.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/texRampWilloWispVoidEye.png
 - Assets/HenryAssets/VFX/Materials/texRampInfusion.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/ChargeLightningBeam.prefab
 - Assets/HenryAssets/VFX/Amp/Bolt/whiteflash.png
@@ -457,74 +522,105 @@ Assets:
 - Assets/HenryAssets/Shaders/deferred/hgtriplanarterrainblend.shader
 - Assets/HenryAssets/VFX/Materials/Bloom_14.asset
 - Assets/HenryAssets/BoltVehicle.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/matFieldSpherePurple.mat
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/ChargeLunarSecondary.prefab
 - Assets/HenryAssets/VFX/Amp/Bombardment/HandSparkEffect.prefab
 - Assets/HenryAssets/VFX/Materials/texCloudCrackedIceInverted.png
 - Assets/HenryAssets/Materials/matSpriteSuit.mat
-- Assets/HenryAssets/Icons/texMasteryAchievement.png
+- Assets/HenryAssets/Icons/Amp/texMasteryAchievement.png
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texRampLightningOverlay 5.png
 - Assets/HenryAssets/Animations/AmpAnims/AmpRunFulminate.anim
 - Assets/HenryAssets/Animations/HenryAnimations/maskGesture.mask
 - Assets/HenryAssets/VFX/Materials/matPunchImpact.mat
+- Assets/HenryAssets/Icons/NemAmp/texNemIcon.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_RollAnim.anim
 - Assets/HenryAssets/VFX/Materials/texMageMatrixTri.png
 - Assets/HenryAssets/Mesh/meshHenryAlt.mesh
+- Assets/HenryAssets/Animations/NemAmpAnims/NemFallFast.anim
 - Assets/HenryAssets/VFX/Amp/Fulmination/FulminationMuzzle.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient2Mask.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/Mesh, Particle/mdlVFXDonut1.asset
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/matStormRange.mat
 - Assets/HenryAssets/Textures/texHenryJedi.png
 - Assets/HenryAssets/Mesh/GlowSword.mat
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_ChargeSwordAnim.anim
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexSphere.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/SprintR.anim
-- Assets/HenryAssets/AnimAmpMenu.controller
+- Assets/HenryAssets/Animations/AmpAnims/AnimAmpMenu.controller
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texAlphaGradientLong.png
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurple.mat
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/BladeSpawn.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/LockOnMuzzleBlue.prefab
 - Assets/HenryAssets/Icons/texVergilAchievement.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SlashAnim2.anim
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Material 1.mat
 - Assets/HenryAssets/VFX/Materials/matSlash 1.mat
 - Assets/HenryAssets/Materials/matNemCape.mat
+- Assets/HenryAssets/Atlases/Materials/NemBodyMasteryAtlas.mat
 - Assets/HenryAssets/Textures/texShotgun.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_IdleAdditiveAnim.anim
 - Assets/HenryAssets/VFX/Amp/Bolt/MageLightningBombExplosion.prefab
 - Assets/HenryAssets/VFX/Amp/Stormblade/StormbladeHitRed.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/VFX/ParticleMasks/texShard01Mask.png
 - Assets/HenryAssets/VFX/Materials/texRampGenericFire.png
+- Assets/HenryAssets/Icons/NemAmp/texNemIcon3.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/StaticFieldDOTBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_LobbyIdleAnim.anim
-- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunTracerHead.mat
+- Assets/HenryAssets/matRailgunTracerHead.mat
 - Assets/HenryAssets/VFX/Materials/PurpleLightningLong.mat
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MeterLongOutlined.png
 - Assets/HenryAssets/Animations/HenryAnimations/WalkL.anim
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texParticleDust2Mask.png
 - Assets/HenryAssets/VFX/Materials/matLightningSpherePurple.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/BeltAtlas.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpTransitionDescend.anim
 - Assets/HenryAssets/Animations/HenryAnimations/maskImpact.mask
 - Assets/HenryAssets/VFX/Materials/texMageMatrixMask.png
 - Assets/HenryAssets/Atlases/SuitAtlas7.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/matTeamAreaIndicatorIntersectionBlue.mat
 - Assets/HenryAssets/Animations/NemAmpAnims/NemAimYaw.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MuzzleflashSupplyDrop, Healing.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/ColorRamps/texRampTritoneSmoothed.png
+- Assets/HenryAssets/VFX/Materials/matPulseMuzzleTriBlue.mat
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/VoidSurvivorChargeMegaBlaster.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterOutlinePSD.psd
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/Blue/QuickDashPrefabBlue.prefab
 - Assets/HenryAssets/Textures/Atlases/SwordAtlas.png
+- Assets/HenryAssets/Animations/NemAmpAnims/nemAmpBase3.fbx
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_DescendTransitionAnim.anim
 - Assets/HenryAssets/Animations/HenryAnimations/Idle.anim
 - Assets/HenryAssets/VFX/Materials/texParticleDust1Mask.png
-- Assets/HenryAssets/Icons/texChargeDebuff.png
+- Assets/HenryAssets/Icons/Amp/texChargeDebuff.png
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_WalkSideL.anim
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texCrosshair2.png
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpGesture 1.mask
-- Assets/HenryAssets/Spike.prefab
-- Assets/HenryAssets/VFX/BombExplosionEffect.prefab
+- Assets/HenryAssets/VFX/Amp/Ferroshot/Spike.prefab
+- Assets/HenryAssets/VFX/Mesh/BombExplosionEffect.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/mage effects_1.asset
+- Assets/HenryAssets/VFX/NemesisAmp/Death/Blue/matDeathOverlayBlue.mat
 - Assets/HenryAssets/VFX/Materials/matSwingEffect 1.mat
 - Assets/HenryAssets/Shaders/environment/hgwaterfall.shader
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/PlasmaShotGhost.prefab
 - Assets/HenryAssets/Animations/NemAmpAnims/MaskNemRightArm.mask
 - Assets/HenryAssets/Animations/HenryAnimations/Slash2.anim
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/LightningOrbChainEffectBlue.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texRampLightningOverlay 4.png
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningRing.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_RestIdleAnim 1.anim
 - Assets/HenryAssets/VFX/Materials/matTracerBright.mat
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texRailgunTracerMask.png
 - Assets/HenryAssets/VFX/Materials/matLightningStrikeRed.mat
 - Assets/HenryAssets/VFX/Amp/Charge/texRampCloth.png
 - Assets/HenryAssets/VFX/Amp/PulseLeap/matLightningSphere.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/DigEffect 1.prefab
 - Assets/HenryAssets/Mesh/meshYamato.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matInverseDistortion.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/Blue/LightningBallExplosionBlue.prefab
 - Assets/HenryAssets/Shaders/fx/hgintersectioncloudremap.shader
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texRampRJMushroom.png
 - Assets/HenryAssets/VFX/Textures/texDust.png
+- Assets/HenryAssets/Animations/NemAmpAnims/metarig_Spawn.anim
 - Assets/HenryAssets/Animations/NemAmpAnims/NemFulmination.anim
-- Assets/HenryAssets/VFX/NemesisAmp/Dash/HeatProjectile 1.prefab
 - Assets/HenryAssets/VFX/Amp/HeatShock/PlasmaSpark.prefab
 - Assets/HenryAssets/VFX/Textures/texHitSpark.png
 - Assets/HenryAssets/VFX/Materials/matLightningMatrixRed.mat
@@ -532,23 +628,29 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunBeamCylinder.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/7UCQFmH.png
 - Assets/HenryAssets/Materials/matBoxingGlove.mat
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningEffectOrbNew 1.prefab
 - Assets/HenryAssets/Materials/matHenryAlt.mat
-- Assets/HenryAssets/Mesh/meshNemAmp.mesh
+- Assets/HenryAssets/Mesh/meshNemAmpOld.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matPlasmaOuterOld.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpLobbyMildIdle.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/Distortion/matDistortionFaded.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_ThrowAnimGrounded.anim
 - Assets/HenryAssets/VFX/Amp/HeatShock/texFire.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/texRampDefaultNoTransparency.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_IdleLandingAnim.anim
 - Assets/HenryAssets/Atlases/NemAmpCapeAtlas 1.png
-- Assets/HenryAssets/Icons/texSummon.png
+- Assets/HenryAssets/Icons/Amp/texSummon.png
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/matLightningCrackOverlay.mat
 - Assets/HenryAssets/Atlases/NemAmpCapeAtlas.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/mdlVFXDonut5.asset
+- Assets/HenryAssets/Atlases/Materials/emissionTex2.mat
 - Assets/HenryAssets/Animations/NemAmpAnims/MaskNemGesture.mask
 - Assets/HenryAssets/Atlases/emissionTex2.png
 - Assets/HenryAssets/Animations/HenryAnimations/WalkF.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/texGlowSoftCenterMask.png
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexMuzzleObjectRed.prefab
 - Assets/HenryAssets/VFX/Materials/matPunchImpactShadow.mat
-- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Cube(Clone).prefab
-- Assets/HenryAssets/Icons/texReturn.png
+- Assets/HenryAssets/Icons/Amp/texReturn.png
 - Assets/HenryAssets/VFX/Materials/texBehemothTileMask.png
 - Assets/HenryAssets/VFX/Amp/Ferroshot/FerroshotMuzzleObject.prefab
 - Assets/HenryAssets/Materials/matDante.mat
@@ -561,17 +663,20 @@ Assets:
 - Assets/HenryAssets/Skills/FulminationCancelSkillDef.asset
 - Assets/HenryAssets/Mesh/Cylinder.asset
 - Assets/HenryAssets/Shaders/environment/hgdistantwater.shader
-- Assets/HenryAssets/Icons/texFulmination.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/VFX/Mesh, Particle/mdlVFXIcosphere.asset
+- Assets/HenryAssets/Icons/Amp/texFulmination.png
 - Assets/HenryAssets/VFX/Materials/matLightningSphereRed.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/BaseMeshAtlas.mat
 - Assets/HenryAssets/VFX/Materials/matOmniHitspark3Blank.mat
 - Assets/HenryAssets/mdlNemAmp.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/OmniImpactVFXLightningBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/AmpAimYaw.anim
 - Assets/HenryAssets/VFX/Materials/matOnHelfire.mat
 - Assets/HenryAssets/VFX/Amp/Bulwark/matWormExplosion.mat
 - Assets/HenryAssets/NemAmpDisplay.prefab
 - Assets/HenryAssets/VFX/Materials/texParticleDust2Mask.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_JumpAnim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/MagmaOrbExplosion.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRailgunnerBeamMask.png
 - Assets/HenryAssets/VFX/Materials/texCloudOrganic3.png
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texCrosshairUnavailable.png
@@ -580,11 +685,18 @@ Assets:
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Spike Spawn.prefab
 - Assets/HenryAssets/VFX/Amp/Bolt/AssassinDaggerMesh.asset
 - Assets/HenryAssets/Animations/HenryAnimations/maskLeftArm.mask
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/matFieldAreaIndicator.mat
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matPlasmaOuter.mat
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texRampDroneFire.png
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/matBladeOutline.mat
 - Assets/HenryAssets/Mesh/MeshHenryGun.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/Death/matDeathOverlay.mat
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_IdleAdditive.anim
 - Assets/HenryAssets/Atlases/SpriteSwordAtlas.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/PlasmaShotlProjectilePrefab.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/texRampLightningOverlay 2.png
 - Assets/HenryAssets/texMageLaserMask.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/VoidSurvivor/texRampVoidSurvivorBase1.png
 - Assets/HenryAssets/Animations/NemAmpAnims/animNemAmp.controller
 - Assets/HenryAssets/VFX/Amp/Fulmination/ChainLightningEffect.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/BladeProjectilePrefab.prefab
@@ -592,6 +704,7 @@ Assets:
 - Assets/HenryAssets/Animations/HenryAnimations/DescendFast.anim
 - Assets/HenryAssets/Textures/Atlases/Materials/ShoulderRAtlas.mat
 - Assets/HenryAssets/HenryBazookaRocketGhost.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/ElectricOrbGhost.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Grainy_Dagger.fbx
 - Assets/HenryAssets/Icons/texScepterSpecialIcon.png
 - Assets/HenryAssets/VFX/Amp/HeatShock/HeatSwing.prefab
@@ -599,8 +712,9 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matFistSwing.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/ChargeExplosion.prefab
 - Assets/HenryAssets/Mesh/meshDante.mesh
-- Assets/HenryAssets/Icons/texReformationSkin.png
+- Assets/HenryAssets/Icons/Amp/texReformationSkin.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRailgunnerChunkMask copy.png
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/texRampLightningOverlay.png
 - Assets/HenryAssets/VFX/Materials/matTrail.mat
 - Assets/HenryAssets/VFX/Materials/LightningEffectRed.mat
 - Assets/HenryAssets/VFX/NemesisAmp/meterOutline.psd
@@ -610,37 +724,46 @@ Assets:
 - Assets/HenryAssets/Animations/NemAmpAnims/MaskNemPitch.mask
 - Assets/HenryAssets/VFX/Materials/matHitSpark.mat
 - Assets/HenryAssets/VFX/Materials/texRampLightning3.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/DLC1/Common/Void/SharedVFX/matOmniHitspark2Void.mat
 - Assets/HenryAssets/VFX/Amp/Bolt/BoltEnterEffect.prefab
 - Assets/HenryAssets/VFX/Amp/Charge/ChargeBall.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StormSkill/LightningStrikeOrbPurple.prefab
 - Assets/HenryAssets/Mesh/meshNeoCoat.mesh
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpAimYaw.mask
 - Assets/HenryAssets/Shaders/ui/hguioverbrighten.shader
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texRampDefault.png
 - Assets/HenryAssets/DeathSpark.prefab
 - Assets/HenryAssets/VFX/Amp/Bolt/BoltEnterRed.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/ShootGun.anim
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Materials/texture.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/BallMuzzleFlash.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/SprintF.anim
 - Assets/HenryAssets/Mesh/meshHenrySwordAlt.mesh
 - Assets/HenryAssets/Shaders/fx/hgcloudremap.shader
 - Assets/HenryAssets/Suit.controller
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunBeamDistortionHeavy.mat
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/texRampHook.png
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texRampLunarInfection.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/texGalaxy1Mask.png
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texCrosshairNibCurved.png
-- Assets/HenryAssets/Icons/texVoltaic.png
+- Assets/HenryAssets/Icons/Amp/texVoltaic.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/VoidSurvivor/Skills/Primary/Base/matVoidSurvivorLightning.mat
 - Assets/HenryAssets/Shaders/postprocess/hgscreendamage.shader
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SummonStartAnim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/matStormRangeBlue.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texAlphaGradient3.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SidewalkLAnim.anim
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/lOfYSnE.png
-- Assets/HenryAssets/Icons/texCancelFulmination.png
+- Assets/HenryAssets/Icons/Amp/texCancelFulmination.png
 - Assets/HenryAssets/VFX/Materials/texRampGolem.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampRailgun.png
-- Assets/HenryAssets/VFX/NemesisAmp/Dash/matMageLightningCore.mat
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningOrb.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpRestIn.anim
 - Assets/HenryAssets/AmpDisplay.prefab
 - Assets/HenryAssets/VFX/Materials/texRampLightningPurpleAlt.png
-- Assets/HenryAssets/mdlAmpReformation.fbx
 - Assets/HenryAssets/Textures/texHenry.png
 - Assets/HenryAssets/Icons/texBazookaOutIcon.png
+- Assets/HenryAssets/Atlases/Materials/NemAmpBodyAtlas.mat
 - Assets/HenryAssets/VFX/Materials/texCloudDifferenceBW2.png
 - Assets/HenryAssets/VFX/Amp/Bombardment/HandSpark.prefab
 - Assets/HenryAssets/Textures/Atlases/Materials/ShackleLAtlas.mat
@@ -648,21 +771,24 @@ Assets:
 - Assets/HenryAssets/Icons/texUziIcon.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_HeatShockAnim.anim
 - Assets/HenryAssets/VFX/Amp/PulseLeap/PulseMuzzleObject.prefab
-- Assets/HenryAssets/Mesh/meshNemCape.mesh
-- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningEffectOrb.prefab
-- Assets/HenryAssets/VFX/Amp/Bolt/texLightning1Mask.asset
+- Assets/HenryAssets/Mesh/meshNemCapeOld.mesh
+- Assets/HenryAssets/VFX/Materials/texLightning1Mask.asset
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/mdlVFXIcosphere.asset
 - Assets/HenryAssets/VFX/Materials/LightningEffectPurpleSword.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_DescendMediumAnim.anim
-- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Cube.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blade.mesh
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/Mat.png
-- Assets/HenryAssets/Icons/texPlasma.png
+- Assets/HenryAssets/Icons/Amp/texPlasma.png
 - Assets/HenryAssets/AmpMastery_E.png
 - Assets/HenryAssets/Materials/matHenryNeo.mat
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/StormMuzzleFlashBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/AmpPlasmaSlash.anim
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_FulminateHoldAnim.anim
 - Assets/HenryAssets/VFX/Amp/Fulmination/FulminationMuzzleObject.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/BladeExpire.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SlashAnim1.anim
+- Assets/HenryAssets/Animations/NemAmpAnims/NemLobbyIdle.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/LightningStrikeOrbBlue.prefab
 - Assets/HenryAssets/VFX/Materials/matChargeBeamTrail.mat
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matOmniHitspark1Blank.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpSlash1.anim
@@ -672,46 +798,61 @@ Assets:
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_PulseExitAnim 1.anim
 - Assets/HenryAssets/VFX/NemesisAmp/debuffIcon.psd
 - Assets/HenryAssets/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/StaticFieldDOT Old.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texAlphaGradient2.png
 - Assets/HenryAssets/Materials/matRoy.mat
 - Assets/HenryAssets/Materials/matSpike 1.mat
 - Assets/HenryAssets/Icons/texBazookaIconScepter.png
 - Assets/HenryAssets/Shaders/fx/hgopaquecloudremap.shader
 - Assets/HenryAssets/VFX/Amp/Charge/texCloudOrganic2.png
 - Assets/HenryAssets/VFX/Amp/PulseLeap/pulseBlastRed.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texRampDiamondLaser.png
 - Assets/HenryAssets/VFX/Materials/matJellyfishLightning.mat
+- Assets/HenryAssets/VFX/Materials/ppLocalLightningPurple.asset
 - Assets/HenryAssets/Textures/texHenryNeo.png
 - Assets/HenryAssets/VFX/Materials/matLightningMatrixPurple.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/matDustDirectionalBlack.mat
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/TiledTextures/Clouds/texCloudCrackedIceInverted.png
+- Assets/HenryAssets/Mesh/meshNemCape.mesh
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_RestIdleAnim.anim
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_IdleAnim.anim
 - Assets/HenryAssets/Icons/texBoxingGlovesIcon.png
 - Assets/HenryAssets/Materials/matVergil.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_BackwalkAnim 1.anim
-- Assets/HenryAssets/Icons/texStormblade.png
-- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/HuntressTrackingIndicator.prefab
+- Assets/HenryAssets/Icons/Amp/texStormblade.png
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/KovaaK-Crosshair-transformed.png
 - Assets/HenryAssets/Materials/matHitboxPreview.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/mage effects.asset
-- Assets/HenryAssets/Icons/texCharge.png
+- Assets/HenryAssets/Icons/Amp/texCharge.png
 - Assets/HenryAssets/Animations/HenryAnimations/IdleIn.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/texRampHuntressSoft2.png
 - Assets/HenryAssets/VFX/Materials/matSwingShadow.mat
+- Assets/HenryAssets/Animations/NemAmpAnims/AnimNemAmpMenu.controller
 - Assets/HenryAssets/Textures/texHenryJediEmission.png
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texLightningLock.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/matNullifierDistortionLight.mat
 - Assets/HenryAssets/Shaders/fx/hgforwardplanet.shader
 - Assets/HenryAssets/Mesh/SuitOld.mesh
 - Assets/HenryAssets/Mesh/meshDanteCoat.mesh
 - Assets/HenryAssets/VFX/Materials/matTransparentLightningPurple.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpJump.anim
 - Assets/HenryAssets/VFX/Materials/texRampJellyLightning.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/matFieldSphereBlueStrong.mat
 - Assets/HenryAssets/Animations/HenryAnimations/RestIdle.anim
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/texCloudLightning1.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_DescendTransitionAnimAlt.anim
-- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/Railgunner/ppLocalRailgunnerSuper.asset
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexExplosion.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Lightning 1.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/StaticMuzzleFlashBlue.prefab
 - Assets/HenryAssets/VFX/Materials/matPulseMuzzleTriRed.mat
+- Assets/HenryAssets/VFX/Materials/matLightningTwist.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/matOpaqueDust.mat
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texNormalIcePainted.png
 - Assets/HenryAssets/Animations/HenryAnimations/ThrowBomb.anim
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matPlasmaCenter.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampRailgunDebris.png
 - Assets/HenryAssets/Icons/texHenryIcon.png
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/SpawnRingEffectBlue.prefab
 - Assets/HenryAssets/VFX/Amp/HeatShock/HeatSwing 1.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/donut8Mesh.asset
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matOmniHitspark1.mat
@@ -725,26 +866,32 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunPenRing.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/ForearmRAtlas.mat
 - Assets/HenryAssets/VFX/Materials/matDirectionalMatrixRed.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Death/matDeathOverlayBackup 1.mat
 - Assets/HenryAssets/VFX/Amp/Fulmination/ElectricitySphereRed.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blade Color.png
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/texMagmaWormGroundDecal.png
 - Assets/HenryAssets/VFX/Materials/matPunchEffect.mat
 - Assets/HenryAssets/VFX/Materials/texRampLightning2.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_LightImpactAnim.anim
-- Assets/HenryAssets/SpikeGhost.prefab
+- Assets/HenryAssets/VFX/Amp/Ferroshot/SpikeGhost.prefab
 - Assets/HenryAssets/VFX/Textures/texPunchImpact.png
 - Assets/HenryAssets/Shaders/ui/hguiignorez.shader
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_LaunchAnim 1.anim
+- Assets/HenryAssets/Animations/NemAmpAnims/NemLobbyEnter.anim
 - Assets/HenryAssets/VFX/NemesisAmp/StormSkill/matLunarNeedleImpactEffect.mat
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matLightingLongVoid.mat
 - Assets/HenryAssets/VFX/Materials/matLightningSphereBlue.mat
-- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/MuzzleflashBeam.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/Blue/MuzzleflashBeamBlue.prefab
 - Assets/HenryAssets/Mesh/Suit.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/DigEffect.prefab
 - Assets/HenryAssets/Animations/NemAmpAnims/AimFieldNem.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/MaxBuffFlashEffectBlue.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Death/DeathExplosion.prefab
 - Assets/HenryAssets/VFX/Materials/matLorentzTrail.mat
-- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningEffectOrbNew.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningOrbEffect.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texCrosshairDotCropped.png
 - Assets/HenryAssets/Atlases/spriteSuitAtlas.png
+- Assets/HenryAssets/Animations/NemAmpAnims/metarig_AAAA 1.anim
 - Assets/HenryAssets/Skills/SurgeCancelSkillDef.asset
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texCrosshairNibBar 1.png
 - Assets/HenryAssets/VFX/Materials/texLightningOrb.png
@@ -752,61 +899,92 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningIndicator.prefab
 - Assets/HenryAssets/VFX/Amp/Fulmination/ChainLightningEffectRed.prefab
 - Assets/HenryAssets/VFX/Materials/texRampLightningRed.png
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/texRampPortalVoid.png
 - Assets/HenryAssets/Mesh/meshRebellion.mesh
 - Assets/HenryAssets/Materials/matSpike.mat
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/LockOnMuzzleFlashBlue.prefab
 - Assets/HenryAssets/Textures/Atlases/Materials/BaseAtlas.mat
-- Assets/HenryAssets/Icons/texControlledChargeAlt.psd
+- Assets/HenryAssets/Icons/NemAmp/texControlledChargeAlt.psd
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/matDashTrail.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RailgunCryo/matRailgunSoftGlow.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texRampVoidRing.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningBeam.mat
+- Assets/HenryAssets/Atlases/NemAmpBodyAtlasMasteryEmission.png
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_IdleIn.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/texCloudBone1.png
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexProjectile.prefab
+- Assets/HenryAssets/Animations/NemAmpAnims/nemAmpBase2.fbx
 - Assets/HenryAssets/VFX/Materials/matHitSparkPunch.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/texRampTwotone.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_FulminateSlash2Anim.anim
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexEffect.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_FulminateSlash1Anim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/mdlPearl.asset
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/VFX/Stylized(Omni)/texOmniHitspark2Mask.png
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/LightningBallExplosion.prefab
+- Assets/HenryAssets/Materials/matNemCapeMastery.mat
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LockOnMuzzle.prefab
 - Assets/HenryAssets/VFX/Materials/texRampRedToWhite.png
-- Assets/HenryAssets/Icons/texFieldAtkSpeedAlt.png
+- Assets/HenryAssets/Icons/NemAmp/texFieldAtkSpeedAlt.png
 - Assets/HenryAssets/VFX/Amp/PulseLeap/matGenericFlash.mat
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpGesture.mask
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/texRampAreaIndicator.png
 - Assets/HenryAssets/Shaders/fx/hgdistortion.shader
+- Assets/HenryAssets/VFX/Materials/ColorGrading_31.asset
 - Assets/HenryAssets/VFX/Materials/matSwingEffect.mat
+- Assets/HenryAssets/VFX/Materials/matTransparentLightningBlue.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MaxBuffFlashEffect.prefab
 - Assets/HenryAssets/Shaders/ui/hguiblur.shader
 - Assets/HenryAssets/VFX/Amp/Fulmination/ElectricityStream.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/VoidSurvivor/Skills/Primary/Base/matVoidSurvivorMuzzleflash1.mat
 - Assets/HenryAssets/VFX/Amp/Fulmination/Electricity.prefab
 - Assets/HenryAssets/Shaders/environment/hggrass.shader
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/MuzzleflashBeam.prefab
 - Assets/HenryAssets/Materials/MatSuit.mat
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterOutlinePSDNew.png
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/TracerChargeBeam 1.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/mdl_disc_platform.asset
 - Assets/HenryAssets/VFX/Materials/texAlphaGradient3Mask.png
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blue/BladeFIreEffectBlue.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texCloudOrganic1.png
 - Assets/HenryAssets/Atlases/NemAmpBodyAtlas 1.png
 - Assets/HenryAssets/Animations/NemAmpAnims/NemAimPitch.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matRailgunRings.mat
 - Assets/HenryAssets/VFX/Amp/Bolt/RebarMesh.asset
 - Assets/HenryAssets/VFX/Materials/matGenericFlash.mat
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampBearVoidFluff.png
+- Assets/HenryAssets/VFX/Materials/LightningEffectPurple 1.mat
 - Assets/HenryAssets/Atlases/texEmission.png
 - Assets/HenryAssets/SwordSpark.prefab
 - Assets/HenryAssets/VFX/Materials/matLightningLongRed.mat
 - Assets/HenryAssets/VFX/Amp/Bolt/VultureWingFeatherMesh.asset
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/matLightningOverlay.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/FerroshotMuzzleEffect.prefab
 - Assets/HenryAssets/VFX/Amp/Charge/ChargeBallFullRed.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/ColorRamps/texRampWhiteAlphaOnly.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/texRampTritoneSmoothed.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/texRampLunarWispFire 1.png
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexMuzzleObject.prefab
 - Assets/HenryAssets/LobbyVFX/LobbyExplosion.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_RestIdleInAnim.anim
 - Assets/HenryAssets/Mesh/meshHenrySword.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/LightningStrikeImpact.prefab
 - Assets/HenryAssets/VFX/Materials/matEmbers.mat
 - Assets/HenryAssets/MasteryAmp.mat
 - Assets/HenryAssets/Animations/HenryAnimations/AimYaw.anim
 - Assets/HenryAssets/VFX/Materials/texLightning2Mask.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_BackwalkAnim.anim
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blade Normals.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matPlasmaCenter 1.mat
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LockOnMuzzleFlash.prefab
+- Assets/HenryAssets/VFX/Materials/texRampLightningWhitePurple.png
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/texSmokePuffSmallDisplacement.png
 - Assets/HenryAssets/Animations/AmpAnims/AmpLobbyRest.anim
 - Assets/HenryAssets/VFX/Materials/matFieldTeamAreaIndicator.mat
-- Assets/HenryAssets/Icons/texAmpIcon.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/texRootJungleSpore.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/Clouds/texCloudCaustic2.png
+- Assets/HenryAssets/Icons/Amp/texAmpIcon.png
+- Assets/HenryAssets/VFX/Materials/matTracerDirt.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_DescendAnim.anim
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texRampNullifierOffset.png
 - Assets/HenryAssets/VFX/Amp/Fulmination/ElectricitySphere 1.prefab
@@ -816,32 +994,42 @@ Assets:
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_WalkForward.anim
 - Assets/HenryAssets/Atlas_96606.png
 - Assets/HenryAssets/Atlases/NemAmpBodyAtlasEmission.png
-- Assets/HenryAssets/VFX/NemesisAmp/Dash/MageLightningBombProjectile.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/matTeamAreaIndicatorIntersectionBaseBlue.mat
 - Assets/HenryAssets/Shaders/Hopoo_GamesFXCloud_Remap.shader
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/Blue/SurgeMuzzleFlashBlue.prefab
 - Assets/HenryAssets/VFX/Amp/Bombardment/LightningStrikeImpact.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterOutlinePSDNew.psd
+- Assets/HenryAssets/Icons/NemAmp/texNemDefault.png
 - Assets/HenryAssets/Mesh/meshPistol.mesh
 - Assets/HenryAssets/Atlases/EmissionSprite.png
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texCloudCrackedIce.png
 - Assets/HenryAssets/Icons/texStingerIcon.png
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matGenericFlash.mat
+- Assets/HenryAssets/Animations/NemAmpAnims/NemSpawn.anim
 - Assets/HenryAssets/VFX/Materials/texGlowPaintMask.png
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_WalkSideR.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/texMagmaCloud.png
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texCloudCrackedIce.png
 - Assets/HenryAssets/VFX/Amp/Bolt/MatBoltEffect.mat
 - Assets/HenryAssets/VFX/Materials/matLightningLongBlue.mat
-- Assets/HenryAssets/VFX/NemesisAmp/Dash/LightningBallGhost.prefab
 - Assets/HenryAssets/VFX/Materials/ColorGrading_19.asset
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexHitbox.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SummonReleaseAnim.anim
 - Assets/HenryAssets/Textures/texHenryVergil.png
 - Assets/HenryAssets/Animations/AmpAnims/AmpDescend.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/ColorRamps/texRampNullifierSmooth.png
-- Assets/HenryAssets/Icons/texChargeDebuffAlt.png
+- Assets/HenryAssets/Icons/Amp/texChargeDebuffAlt.png
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/Blue/ChargeLightningBeamBlue.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MeterLongOutlined.psd
 - Assets/HenryAssets/Mesh/meshUzi.mesh
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpImpact.mask
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/mdlVFXDonut2.asset
 - Assets/HenryAssets/VFX/Materials/matSlash.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/ChargeExplosion 1.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/TracerChargeBeam.prefab
+- Assets/HenryAssets/VFX/Materials/matLightningBloomPurple.mat
 - Assets/HenryAssets/Icons/texPistolIcon.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/Base/Common/VFX/ParticleMasks/texLightning1Mask.png
 - Assets/HenryAssets/VFX/Materials/matDust.mat
 - Assets/HenryAssets/VFX/Amp/HeatShock/HeatHit.prefab
 - Assets/HenryAssets/VFX/Textures/texSmoke.png
@@ -849,16 +1037,24 @@ Assets:
 - Assets/HenryAssets/Mesh/meshVergilCoat.mesh
 - Assets/HenryAssets/VFX/Textures/texLightning.tif
 - Assets/HenryAssets/Shaders/ui/hguibarremap.shader
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/texRampHuntress.png
 - Assets/HenryAssets/VFX/Materials/matSlashRed.mat
 - Assets/HenryAssets/VFX/Amp/Bolt/MegaTeleporterProngMesh.asset
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_FulminateEndAnim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matGlow1Soft.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/matDashTrailBlue.mat
 - Assets/HenryAssets/Mesh/Sword.mesh
 - Assets/HenryAssets/NemAmpTPose.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/matLunarNeedleImpactEffectBlue.mat
 - Assets/HenryAssets/VFX/Materials/texRampLightning.png
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MaxBuffOffEffect.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/RestIdleIn.anim
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_WalkAnim.001.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StaticField/texCloudCaustic1.png
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/LightningIndicatorBlue.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matChargeBeamFlash.mat
 - Assets/HenryAssets/VFX/Amp/Charge/ChargeBallRed.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/texRampLightningOverlay 1.png
 - Assets/HenryAssets/VFX/Materials/matRipple.mat
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/texCloudCrackedIceInverted.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_PulseExitAnim.anim
@@ -867,43 +1063,62 @@ Assets:
 - Assets/HenryAssets/VFX/texLightning1Mask.asset
 - Assets/HenryAssets/Animations/AmpAnims/AmpSlash2.anim
 - Assets/HenryAssets/Textures/Atlases/BaseAtlas.png
-- Assets/HenryAssets/Icons/texLorentz.png
+- Assets/HenryAssets/Icons/Amp/texLorentz.png
 - Assets/HenryAssets/VFX/NemesisAmp/StormSkill/MuzzleflashMageLightning.prefab
 - Assets/HenryAssets/Animations/HenryAnimations/DefaultPose.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampRailgunnerCryo.png
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/GenericFootstepDust.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/mdlRailgunnerBeam.asset
 - Assets/HenryAssets/VFX/Amp/Charge/texRampMagmaWorm.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_RunAnimAlt.anim
 - Assets/HenryAssets/Animations/AmpAnims/AmpSlash1Combo.anim
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningBeamBlue.mat
+- Assets/HenryAssets/Atlases/Materials/SuitAtlas7.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpRunBackwards.anim
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/VoidSurvivor/Skills/Primary/Base/matVoidSurvivorBlasterCore.mat
 - Assets/HenryAssets/Materials/matShotgun.mat
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/texRampHuntressSoft2.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/Blue/BallMuzzleFlashBlue.prefab
 - Assets/HenryAssets/VFX/Amp/Bolt/Test.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/texRampVoidSurvivorCorrupted3.png
 - Assets/HenryAssets/VFX/Materials/ppLocalLightningRed.asset
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_AimPitch.anim
 - Assets/HenryAssets/Animations/AmpAnims/AmpPulse.anim
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampLunarWardDecal.png
+- Assets/HenryAssets/Icons/NemAmp/texNemSlash.png
+- Assets/HenryAssets/Icons/NemAmp/texNemPlasmaBall.png
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/BladeGhostPrefab.prefab
 - Assets/HenryAssets/Shaders/fx/hgsolidparallax.shader
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_Idle.anim
 - Assets/HenryAssets/VFX/Amp/Bolt/texLightningStrikeOnHit.asset
 - Assets/HenryAssets/Mesh/donut1Mesh.asset
 - Assets/HenryAssets/Animations/HenryAnimations/IdleAdditive.anim
-- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Lightning.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_RunAnimAltBackup.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/Blue/texRampLightningOverlay 3.png
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/LightningOrbImpactBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/mdlAmpOriginal.fbx
+- Assets/HenryAssets/VFX/NemesisAmp/Spawn/SpawnRingEffect.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_WormChargeStartAnim.anim
+- Assets/HenryAssets/VFX/NemesisAmp/StormSkill/StormRangeIndicatorBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_LobbyAnim2.anim
+- Assets/HenryAssets/VFX/Materials/ColorGrading_Purple.asset
+- Assets/HenryAssets/Animations/NemAmpAnims/nemAmpUpdatedRun.fbx
 - Assets/HenryAssets/HitSpark (1).prefab
 - Assets/HenryAssets/Animations/AmpAnims/AmpRestIdle.anim
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/MajorConstructMuzzleflashSpawnMinorConstruct.prefab
 - Assets/HenryAssets/VFX/Materials/texRampJellyLightningPurple.png
 - Assets/HenryAssets/Trail21.mat
+- Assets/HenryAssets/VFX/Materials/matLightningBloomBlue.mat
 - Assets/HenryAssets/Mesh/MasterySword.mesh
+- Assets/HenryAssets/Animations/NemAmpAnims/NemFireNew.anim
 - Assets/HenryAssets/Icons/texBazookaFireIcon.png
-- Assets/HenryAssets/VFX/NemesisAmp/Dash/VoidBlinkMuzzleflashCorrupted.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/SurgeMuzzleFlash.prefab
 - Assets/HenryAssets/VFX/Materials/matFire.mat
 - Assets/HenryAssets/Animations/NemAmpAnims/MaskNemYaw.mask
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matPlasmaBall.mat
 - Assets/HenryAssets/Icons/texGrandMasteryAchievement.png
 - Assets/HenryAssets/Animations/NemAmpAnims/NemFireBeam.anim
+- Assets/HenryAssets/VFX/NemesisAmp/Death/matDeathOverlay 1.mat
 - Assets/HenryAssets/Animations/HenryAnimations/maskBandana.mask
 - Assets/HenryAssets/mdlAmpAvatar.asset
 - Assets/HenryAssets/Animations/HenryAnimations/MenuIdle.anim
@@ -913,12 +1128,14 @@ Assets:
 - Assets/HenryAssets/Textures/Atlases/Materials/HelmetAtlas.mat
 - Assets/HenryAssets/Animations/AmpAnims/AmpAimPitch.anim
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/physmatEngiGrenade.physicMaterial
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/RoR2/DLC1/Items/ExplodeOnDeathVoid/WilloWispVoidModel/matWilloWispVoidEye.mat
 - Assets/HenryAssets/Mesh/Sphere, Unwrapped.asset
 - Assets/HenryAssets/Animations/AmpAnims/maskAmpAimPitch.mask
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/ChargeExplosionRed.prefab
 - Assets/HenryAssets/VFX/Materials/matPulseMuzzleTriPurple.mat
 - Assets/HenryAssets/Materials/matBazooka.mat
 - Assets/HenryAssets/VFX/texRampLightning2.png
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matWilloWispVoidEye.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texGlowPaintMask.png
 - Assets/HenryAssets/VFX/Materials/matLightningOrbRed.mat
 - Assets/HenryAssets/VFX/HenrySwordSwingEffect.prefab
@@ -926,41 +1143,52 @@ Assets:
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/meterOutlineOld.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudOrganicNormal.png
 - Assets/HenryAssets/VFX/NemesisAmp/StormSkill/StormMuzzleFlash.prefab
-- Assets/HenryAssets/Icons/texFieldAtkSpeed.png
+- Assets/HenryAssets/Icons/NemAmp/texFieldAtkSpeed.png
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texGenericStarburstMaskSkewed.png
 - Assets/HenryAssets/Animations/HenryAnimations/Descend.anim
 - Assets/HenryAssets/Textures/texHenryDante.png
 - Assets/HenryAssets/hgstandard.shader
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matSparkBillboard.mat
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_FulminateStartAnim 1.anim
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/AlphaSelfIllum.shader
+- Assets/HenryAssets/Mesh/meshNemAmp.mesh
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_FulminateStartAnim.anim
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient6Mask.png
 - Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Material.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/matInvisible.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matLightningBeamDistortion.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/VFX/Distortion/texNormalSphereFaded.png
-- Assets/HenryAssets/Animations/NemAmpAnims/Disc.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matPlasmaCenterBlue.mat
+- Assets/HenryAssets/Mesh/Disc.mesh
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/texRampVoidSurvivorBase1.png
 - Assets/HenryAssets/Shaders/ui/hguianimatealpha.shader
+- Assets/HenryAssets/VFX/NemesisAmp/Death/texRampNearbyDamageBonus.png
+- Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/MuzzleflashBFG.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/BladeFIreEffect.prefab
 - Assets/HenryAssets/VFX/Amp/Bolt/Lightning.prefab
 - Assets/HenryAssets/VFX/Amp/Bombardment/HandSparkRed.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/matTeamAreaIndicatorIntersection.mat
 - Assets/HenryAssets/Shaders/postprocess/hgsobelbuffer.shader
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/lightninglockcircle-transformed.png
+- Assets/HenryAssets/Icons/NemAmp/texNemField.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_SlashAnim2Stationary.anim
 - Assets/HenryAssets/Animations/HenryAnimations/AimPitch.anim
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_WormChargeAnim.anim
-- Assets/HenryAssets/Icons/texCancelSurge.png
-- Assets/HenryAssets/VFX/NemesisAmp/StaticField/StaticFieldDOT.prefab
+- Assets/HenryAssets/Icons/Amp/texCancelSurge.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_ThrowAnimAerialDown.anim
 - Assets/HenryAssets/VFX/Amp/Vortex/VortexMuzzleEffect.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/matChargeBeamTrail.mat
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/Matrix, Dynamic 1.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/OmniImpactVFXLightning.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/DecalCube.asset
-- Assets/HenryAssets/VFX/NemesisAmp/Dash/matVoidSurvivorBlasterSphere.mat
-- Assets/HenryAssets/Icons/debuffIcon.psd
+- Assets/HenryAssets/RagdollNemAmp.prefab
+- Assets/HenryAssets/VFX/NemesisAmp/PlasmaShots/matVoidSurvivorBlasterSphere.mat
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blue/BladeGhostPrefabBlue.prefab
+- Assets/HenryAssets/Icons/NemAmp/debuffIcon.psd
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/RoR2/Base/Common/TiledTextures/Clouds/texCloudWaterRipples.png
+- Assets/HenryAssets/Icons/NemAmp/texNemDash.png
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/LightningOrbChainEffect.prefab
+- Assets/HenryAssets/Icons/NemAmp/texNemBeam.png
 - Assets/HenryAssets/VFX/NemesisAmp/Dash/LightningBallProjectilePrefab.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/Slash/ChargeLightningSlash.prefab
 - Assets/HenryAssets/VFX/Materials/texMageBoltMask.png
@@ -968,10 +1196,11 @@ Assets:
 - Assets/HenryAssets/texBehemothTileMask.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_DescendFastAnim.anim
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_PulseAnim.anim
-- Assets/HenryAssets/Icons/texFieldAtkSpeedCombined.png
+- Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/matLightningDagger.mat
+- Assets/HenryAssets/Icons/NemAmp/texFieldAtkSpeedCombined.png
 - Assets/HenryAssets/Mesh/GrandparentSpawnNetMesh.asset
 - Assets/HenryAssets/Shaders/deferred/hgsnowtopped.shader
-- Assets/HenryAssets/Icons/texVortex.png
+- Assets/HenryAssets/Icons/Amp/texVortex.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/AnimAmpOld.controller
 - Assets/HenryAssets/VFX/Materials/texOmniHitspark3Mask.png
 - Assets/HenryAssets/VFX/Amp/Ferroshot/Charge/ChargeExplosionObject.prefab
@@ -985,14 +1214,17 @@ Assets:
 - Assets/HenryAssets/VFX/ImpactHenryPunch.prefab
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_StormSummonAnim.anim
 - Assets/HenryAssets/Animations/AmpAnims/AmpSlashFulminate2.anim
+- Assets/HenryAssets/Icons/NemAmp/texNemIcon2.png
 - Assets/HenryAssets/Animations/AmpAnims/OldAnims/metarig_WalkAnim.anim
-- Assets/HenryAssets/Icons/texElectrified.png
-- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/TracerChargeBeam.prefab
+- Assets/HenryAssets/Icons/Amp/texElectrified.png
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/texRampLunarWispFire.png
+- Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/Blue/TracerChargeBeamBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/mdlAmpUpdatedAnims.fbx
 - Assets/HenryAssets/VFX/Amp/Vortex/OmniImpactVFXLightningMage.prefab
 - Assets/HenryAssets/Materials/matSpriteSword.mat
 - Assets/HenryAssets/Animations/HenryAnimations/Slash1.anim
 - Assets/HenryAssets/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/HenryAssets/Icons/NemAmp/texNemIcon4.png
 - Assets/HenryAssets/AmpMastery_N.png
 - Assets/HenryAssets/Animations/HenryAnimations/Roll.anim
 - Assets/HenryAssets/mdlAmp.prefab

@@ -42,13 +42,14 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 - Tyler Cook: Nemesis Amp Meter Design Feedback
 - Mr. Bones: Reformation skin
 - Bubbet: Fixing Melvin's health in multiplayer
+- Goodguy: Nemesis Amp Skill Icons
 - The Risk of Rain 2 Modding Server: Helping me stay sane through all kinds of other bugs I wouldn't have been able to solve on my own.
 
 # Change Log
 <details>
  <summary>2.0.0</summary>
  
- - That's right, this mod is STILL being updated, and this is the biggest one yet! Featuring new animations, and a whole new character for you to play around with!
+ - The biggest update since launch! Featuring new animations, and a whole new character for you to play around with!
 - Animation Overhaul
     -  Most of Amp's animations have been changed with the help of . Feedback on the feel of the new anims would be greatly appreciated!
 -  New Character  
