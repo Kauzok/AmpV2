@@ -1,0 +1,44 @@
+Suggestions:
+Fix bug where fulmination doesn't exit correctly and thus doesn't destroy the lightning tether or muzzle vfx (done?)
+
+
+To do prerelease:
+- Multiplayer
+	- Can't see other nemamps spawn animation
+	- Voidsurge 
+		- Plasma projectile has inconsistent collision, & shock debuff only lasts for 1 second instead of 5)
+		- Dash and ball don't count towards passive as clients (removed the override, check again)
+	- Voltaic Onslaught
+		- Range indicator should only be visible for the person playing nemamp
+	- Static field 
+		- Might count too early towards passive, on aim instead of on fire; check
+	- Death switches to spectator view too early (check, if it breaks put an entitystate.destroy back in the spawnexplosion method)
+	- Invisible vfx:
+			- Static field muzzle flash (unimportant)
+			- Lightning ball muzle flash (unimportant) 
+			- lightning stream muzzle prefab (kind of important) (glitches out and can't see properly)
+			- voidsurge dash prefab (very important) 
+			- Lorentz blades aiming prefabs (important) 
+			- Lightning stream vfx? check if this shows up, since its j a linerenderer (very important)
+	- can't hear other nemamp's furious spark fire sfx (super high attenuation?)
+	- Host can't see client nemamps, but clients can see host nemamp (Adjusted invisibility code, check again)
+- Sprint Animation review?
+- Make lightning ball must key press
+- Increase attenuation for nemamp's sounds
+- Consider adjusting lorentz cannon interrupt priorities
+
+Amp To Do:
+- Implement anims
+- Fix sawmerang bug
+
+To do post release:
+- Add ancient scepter support for nemamp
+	-voltaic onslaught now causes enemies to give enemies a tesla coil-like status effect that shocks them & enemies next to them, with a duration dependent
+	on how many stacks of controlled charge they had; a base of 2 seconds with +1 second per stack. this cannot be reset until the status has run out)
+	- OR voltaic onslaught now adds extra lightning bombs to enemies (amount determined by CC stacks) that explode after a duration and chain to other enemies in the vicinity
+	- OR voltaic onslaught is now a global ability that strikes every enemy in the stage (this might be too laggy)
+- Add risk of options support
+- Add skills++ support
+- Add support for that one extra animation mod (badass emotes?)
+DONE!
+- 
