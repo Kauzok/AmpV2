@@ -72,7 +72,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         private void Start()
         {
             isBlue = this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME" && !Config.NemOriginPurpleLightning.Value;
-
+            
+            
 
             if (isBlue)
             {
@@ -96,13 +97,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 streamImpactVFX = Assets.lightningStreamImpactEffectBlue;
                 #endregion
 
-                #region Lorentz Blades
-                #endregion
+                #region Lorentz Blades              
                 bladePrepVFX = Assets.bladePrepObjectBlue;
                 bladeFireVFX = Assets.bladeFireEffectBlue;
-                bladePrefab = Projectiles.bladeProjectilePrefab;
-                bladePrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.bladeProjectileGhostBlue;
-                bladePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = Assets.bladeExpireEffectBlue;
+                bladePrefab = Projectiles.bladeProjectilePrefabBlue;
+                #endregion
 
                 #region Furious Spark
                 beamMuzzleVFX = Assets.beamMuzzleFlashEffectBlue;
@@ -119,10 +118,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 #region Voidsurge
                 dashEnterExitVFX = Assets.dashEnterEffectBlue;
                 dashPrefab = Assets.dashVFXPrefabBlue;
-                lightningBallPrefab = Projectiles.lightningBallPrefab;
-                lightningBallPrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.lightningBallGhostBlue;
+                lightningBallPrefab = Projectiles.lightningBallPrefabBlue;
                 lightningBallMuzzleVFX = Assets.lightningBallMuzzleFlashEffectBlue;
-                lightningBallPrefab.GetComponent<ProjectileImpactExplosion>().impactEffect = Assets.lightningBallExplosionEffectBlue;
                 #endregion
 
                 #region Voltaic Onslaught
@@ -153,12 +150,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 #endregion
 
                 #region Lorentz Blades
-                #endregion
                 bladePrepVFX = Assets.bladePrepObject;
                 bladeFireVFX = Assets.bladeFireEffect;
                 bladePrefab = Projectiles.bladeProjectilePrefab;
-                bladePrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.bladeProjectileGhost;
-                bladePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = Assets.bladeExpireEffect;
+                #endregion
 
                 #region Furious Spark
                 beamMuzzleVFX = Assets.beamMuzzleFlashEffect;
@@ -176,9 +171,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 dashEnterExitVFX = Assets.dashEnterEffect;
                 dashPrefab = Assets.dashVFXPrefab;
                 lightningBallPrefab = Projectiles.lightningBallPrefab;
-                lightningBallPrefab.GetComponent<ProjectileController>().ghostPrefab = Projectiles.lightningBallGhost;
                 lightningBallMuzzleVFX = Assets.lightningBallMuzzleFlashEffect;
-                lightningBallPrefab.GetComponent<ProjectileImpactExplosion>().explosionEffect = Assets.lightningBallExplosionEffect;
                 #endregion
 
                 #region Voltaic Onslaught

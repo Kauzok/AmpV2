@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4111916359
+CRC: 4213327669
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 63ab00b51185a62bd327cf31ac88b66b
+    Hash: 09f688f29d6c37d93d43d29c6484fd59
   TypeTreeHash:
     serializedVersion: 2
     Hash: fdb67ad2e1d8f33ce5f7b5218cc4cc8e
@@ -277,6 +277,7 @@ Assets:
 - Assets/HenryAssets/Materials/MatSword.mat
 - Assets/HenryAssets/VFX/NemesisAmp/ChargeBeam/texRampHuntressSoft2.png
 - Assets/HenryAssets/VFX/Materials/VortexCircle.mat
+- Assets/HenryAssets/VFX/NemesisAmp/FluxBlade/Blue/BladeProjectilePrefabBlue.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/Death/matDarkPurple.mat
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/StaticMuzzleFlash.prefab
 - Assets/HenryAssets/VFX/Materials/texLightning.asset
@@ -404,7 +405,6 @@ Assets:
 - Assets/HenryAssets/Animations/AmpAnims/AmpPulseExit.anim
 - Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/matFieldSphereBlue.mat
 - Assets/HenryAssets/VFX/Amp/Bolt/texMageMatrixMask.asset
-- Assets/HenryAssets/VFX/NemesisAmp/StaticField/PurpleLightFade.anim
 - Assets/HenryAssets/VFX/NemesisAmp/StormSkill/StormRangeIndicator.prefab
 - Assets/HenryAssets/Atlases/Materials/spriteSuitAtlas.mat
 - Assets/HenryAssets/VFX/Amp/Fulmination/ElectricityChain.prefab
@@ -668,6 +668,7 @@ Assets:
 - Assets/HenryAssets/VFX/Materials/matLightningSphereRed.mat
 - Assets/HenryAssets/Textures/Atlases/Materials/BaseMeshAtlas.mat
 - Assets/HenryAssets/VFX/Materials/matOmniHitspark3Blank.mat
+- Assets/HenryAssets/VFX/NemesisAmp/Dash/Blue/LightningBallProjectilePrefabBlue.prefab
 - Assets/HenryAssets/mdlNemAmp.prefab
 - Assets/HenryAssets/VFX/NemesisAmp/LockOnLightning/Blue/OmniImpactVFXLightningBlue.prefab
 - Assets/HenryAssets/Animations/AmpAnims/AmpAimYaw.anim
@@ -1008,7 +1009,6 @@ Assets:
 - Assets/HenryAssets/Animations/NemAmpAnims/NemSpawn.anim
 - Assets/HenryAssets/VFX/Materials/texGlowPaintMask.png
 - Assets/HenryAssets/Animations/NemAmpAnims/metarig_WalkSideR.anim
-- Assets/HenryAssets/VFX/NemesisAmp/StaticField/Blue/texMagmaCloud.png
 - Assets/HenryAssets/VFX/NemesisAmp/Damage Growth/texCloudCrackedIce.png
 - Assets/HenryAssets/VFX/Amp/Bolt/MatBoltEffect.mat
 - Assets/HenryAssets/VFX/Materials/matLightningLongBlue.mat

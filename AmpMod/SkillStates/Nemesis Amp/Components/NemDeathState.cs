@@ -51,6 +51,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
             this.PlayAnimation("Death, Override", "Death", "Death.playbackRate", waitDuration + .7f);
 
+            if (base.characterMotor)
+            {
+                base.characterMotor.enabled = false;
+            }
 
         }
 
@@ -69,10 +73,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 };
                 EffectManager.SpawnEffect(deathEffect, effectData, true);
 
-
-                Debug.Log("spawning death effect");
-                this.DestroyModel();
-                Debug.Log("destroying model");
+                //EntityState.Destroy(base.gameObject);
             }
             //EntityState.Destroy(base.gameObject);
             //this.OnPreDestroyBodyServer();
@@ -90,8 +91,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
             if (base.fixedAge >= deathDuration)
             {
-                this.outer.SetNextStateToMain();
+                base.DestroyModel();
+                EntityState.Destroy(base.gameObject); 
             }
+        }
+
+        public override void OnExit()
+        {
+            this.DestroyModel();
+            base.OnExit();
         }
     }
 }

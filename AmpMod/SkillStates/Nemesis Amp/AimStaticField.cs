@@ -5,6 +5,7 @@ using RoR2.Projectile;
 using RoR2.UI;
 using AmpMod.SkillStates.Nemesis_Amp.Components;
 using AmpMod.Modules;
+using UnityEngine.Networking;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -150,19 +151,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         //Debug.Log(muzzleflashEffect);
                         //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandL", true);
                         //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandR", true);
-                        UnityEngine.Object.Instantiate(muzzleflashEffect, rightMuzzleTransformSpawn);
-                       /* EffectManager.SpawnEffect(muzzleflashEffect, new EffectData
-                        {
-                            origin = rightMuzzleTransformSpawn.position,
-                            scale = 1,
-                        }, true);
-                        EffectManager.SpawnEffect(muzzleflashEffect, new EffectData
-                        {
-                            //origin = leftMuzzleTransformSpawn.position,
-                            scale = 1,
-                        }, true); */
-                        UnityEngine.Object.Instantiate(muzzleflashEffect, leftMuzzleTransformSpawn);
 
+                        
+                        UnityEngine.Object.Instantiate(muzzleflashEffect, rightMuzzleTransformSpawn);
+
+                        UnityEngine.Object.Instantiate(muzzleflashEffect, leftMuzzleTransformSpawn);
                         Vector3 forward = this.fieldIndicatorInstance.transform.forward;
                         forward.y = 0f;
                         forward.Normalize();

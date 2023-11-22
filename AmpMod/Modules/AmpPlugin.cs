@@ -373,7 +373,7 @@ namespace AmpMod.Modules
 
             if (info.HasModdedDamageType(DamageTypes.nemAmpSlowOnHit))
             {
-                self.body.AddTimedBuff(RoR2Content.Buffs.Slow60, 5f);
+                self.body.AddTimedBuff(RoR2Content.Buffs.Slow80, 1f);
             }
 
 

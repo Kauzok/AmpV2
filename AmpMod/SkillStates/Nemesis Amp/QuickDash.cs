@@ -9,7 +9,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 {
     public class QuickDash : BaseState
     {
-		private Vector3 forwardVector;
 		private Vector3 blinkVector = Vector3.zero;
 		private float stopwatch;
 		[SerializeField]
@@ -20,7 +19,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		public Material overlayMaterial;
 		private GameObject blinkEffectPrefab;
 		private float duration = .4f;
-		private float upSpeed = 0f;
 		private CharacterModel characterModel;
 		private GameObject blinkVfxInstance;
 		private NemLightningColorController lightningController;
@@ -35,15 +33,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		private string endSoundString = StaticValues.surgeExitString;
 		public static SkillDef primaryOverrideSkillDef = Modules.Skills.fireLightningBallSkillDef;
 		private string loopSound = StaticValues.surgeFlightString;
-		private uint cancelID;
 
 		public override void OnEnter()
 		{
 			base.OnEnter();
 
-			stackDamageController = base.GetComponent<StackDamageController>();
-			stackDamageController.newSkillUsed = this;
-			stackDamageController.resetComboTimer();
+			
 			Util.PlaySound(beginSoundString, base.gameObject);
 			lightningController = base.GetComponent<NemLightningColorController>();
 
@@ -75,7 +70,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //set lightning ball as primary skill
             if (base.skillLocator.primary && primaryOverrideSkillDef)
             {
-				base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+				//base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 
 				/*if (base.skillLocator.primary.skillNameToken != "NT_UTILITY_LIGHTNINGBALL_NAME")
                 {
@@ -88,6 +83,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 
             this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+			
+			stackDamageController = base.GetComponent<StackDamageController>();
+			stackDamageController.newSkillUsed = this;
+			stackDamageController.resetComboTimer();
+			Debug.Log("resetting combo timer");
 		}
 
         protected Vector3 GetBlinkVector()
@@ -119,12 +119,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			EffectData effectData = new EffectData();
 			effectData.rotation = Util.QuaternionSafeLookRotation(this.GetBlinkVector());
 			effectData.origin = origin;
-			EffectManager.SpawnEffect(this.blinkEffectPrefab, effectData, false);
+			EffectManager.SpawnEffect(this.blinkEffectPrefab, effectData, true);
 		}
 
 		public override void OnExit()
 		{
-			AkSoundEngine.StopPlayingID(this.cancelID);
+
 			if (!this.outer.destroying)
 			{
 				Util.PlaySound(this.endSoundString, base.gameObject);

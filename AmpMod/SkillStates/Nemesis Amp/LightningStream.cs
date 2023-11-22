@@ -153,7 +153,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
 
-                this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
+                //this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
+                GameObject spawn = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform);
+                NetworkServer.Spawn(spawn);
+                this.nexusMuzzleTransform = spawn.transform;
 
             }
 

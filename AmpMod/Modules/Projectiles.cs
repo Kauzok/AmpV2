@@ -18,7 +18,9 @@ namespace AmpMod.Modules
         internal static GameObject fireBeamPrefab;
         internal static GameObject fieldProjectilePrefab;
         internal static GameObject bladeProjectilePrefab;
+        internal static GameObject bladeProjectilePrefabBlue;
         internal static GameObject lightningBallPrefab;
+        internal static GameObject lightningBallPrefabBlue;
         internal static GameObject fieldProjectilePrefabBlue;
         internal static GameObject bladeProjectileGhostBlue;
         internal static GameObject bladeProjectileGhost;
@@ -43,6 +45,8 @@ namespace AmpMod.Modules
             AddProjectile(fieldProjectilePrefabBlue);
             AddProjectile(bladeProjectilePrefab);
             AddProjectile(lightningBallPrefab);
+            AddProjectile(lightningBallPrefabBlue);
+            AddProjectile(bladeProjectilePrefabBlue);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -54,26 +58,39 @@ namespace AmpMod.Modules
         {
             bladeProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("BladeProjectilePrefab");
             bladeProjectilePrefab.layer = LayerIndex.projectile.intVal;
-            ProjectileController bladeController = bladeProjectilePrefab.GetComponent<ProjectileController>();
 
-            //instantiates the projectile model and associates it with the prefab
-            //if (Assets.mainAssetBundle.LoadAsset<GameObject>("BladeGhostPrefab") != null) bladeController.ghostPrefab = CreateGhostPrefab("BladeGhostPrefab");
-            
+   
             bladeProjectileGhost = CreateGhostPrefab("BladeGhostPrefab");
 
             bladeProjectileGhostBlue = CreateGhostPrefab("BladeGhostPrefabBlue");
 
             ProjectileSingleTargetImpact bladeContactController = bladeProjectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
             bladeContactController.impactEffect = Assets.bulletImpactEffect;
-            //bladeProjectilePrefab.GetComponent<ProjectileSimple>().lifetimeExpiredEffect = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/Railgunner/RailgunPistolExpire");
 
             var dmgTypeHolder = bladeProjectilePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
             dmgTypeHolder.Add(DamageTypes.controlledChargeProcProjectile);
+
+            #region Blue
+            bladeProjectilePrefabBlue = Assets.mainAssetBundle.LoadAsset<GameObject>("BladeProjectilePrefabBlue");
+            bladeProjectilePrefabBlue.layer = LayerIndex.projectile.intVal;
+
+            ProjectileSingleTargetImpact bladeContactControllerBlue = bladeProjectilePrefabBlue.GetComponent<ProjectileSingleTargetImpact>();
+            bladeContactControllerBlue.impactEffect = Assets.bulletImpactEffect;
+
+            var dmgTypeHolderBlue = bladeProjectilePrefabBlue.AddComponent<ModdedDamageTypeHolderComponent>();
+            dmgTypeHolderBlue.Add(DamageTypes.controlledChargeProcProjectile);
+
+            var bladeProjectileControllerBlue = bladeProjectilePrefabBlue.GetComponent<ProjectileController>();
+            bladeProjectileControllerBlue.procCoefficient = StaticValues.bladeProcCoefficient;
+            #endregion
+
 
             var bladeProjectileController = bladeProjectilePrefab.GetComponent<ProjectileController>();
             bladeProjectileController.procCoefficient = StaticValues.bladeProcCoefficient;
 
             PrefabAPI.RegisterNetworkPrefab(bladeProjectilePrefab);
+            PrefabAPI.RegisterNetworkPrefab(bladeProjectilePrefabBlue);
+
 
         }
 
@@ -86,8 +103,6 @@ namespace AmpMod.Modules
 
             ProjectileController lightningBallController = lightningBallPrefab.GetComponent<ProjectileController>();
 
-            //if (Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallGhost") != null) lightningBallController.ghostPrefab = CreateGhostPrefab("LightningBallGhost");
-
 
             lightningBallGhostBlue = CreateGhostPrefab("PlasmaShotGhostBlue");
             lightningBallGhost = CreateGhostPrefab("PlasmaShotGhost");
@@ -98,26 +113,42 @@ namespace AmpMod.Modules
 
             damageHolder.Add(DamageTypes.controlledChargeProc);
 
+            #region Blue
+            lightningBallPrefabBlue = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefabBlue");
+            lightningBallPrefabBlue.layer = LayerIndex.projectile.intVal;
+
+            ProjectileController lightningBallControllerBlue = lightningBallPrefabBlue.GetComponent<ProjectileController>();
+
+
+            lightningBallControllerBlue.allowPrediction = true;
+
+            var damageHolderBlue = lightningBallPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+
+            damageHolderBlue.Add(DamageTypes.controlledChargeProc);
+            #endregion
+
             PrefabAPI.RegisterNetworkPrefab(lightningBallPrefab);
+            PrefabAPI.RegisterNetworkPrefab(lightningBallPrefabBlue);
         }
 
         private static void CreateStaticField()
         {
             fieldProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOT");
             var dmgTypeHolder = fieldProjectilePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
-            dmgTypeHolder.Add(DamageTypes.controlledChargeProcProjectile);
 
+            //make the field add controlled charge and slow
+            dmgTypeHolder.Add(DamageTypes.controlledChargeProcProjectile);
+            dmgTypeHolder.Add(DamageTypes.nemAmpSlowOnHit);
+
+            //set the damage tick values
             var dotZone = fieldProjectilePrefab.GetComponent<ProjectileDotZone>();
             dotZone.overlapProcCoefficient = StaticValues.staticFieldTickProcCoefficient;
-
-            GameObject FX = fieldProjectilePrefab.transform.GetChild(0).gameObject;
-            GameObject ScaledOnImpact = FX.transform.GetChild(0).gameObject;
-            GameObject Decal = new GameObject();
-            Decal.transform.parent = ScaledOnImpact.transform;
-
+      
+            //add the attack speed buff
             var buffWard = fieldProjectilePrefab.GetComponent<BuffWard>();
             buffWard.buffDef = Buffs.nemAmpAtkSpeed;
 
+            //make the field play sound
             var stopLoop = fieldProjectilePrefab.AddComponent<SkillStates.BaseStates.StopLoop>();
             stopLoop.SoundEventToPlay = StaticValues.fieldLoopString;
             stopLoop.SoundId = 2520482775;
@@ -128,14 +159,10 @@ namespace AmpMod.Modules
             fieldProjectilePrefabBlue = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOTBlue");
             var dmgTypeHolderBlue = fieldProjectilePrefabBlue.AddComponent<ModdedDamageTypeHolderComponent>();
             dmgTypeHolderBlue.Add(DamageTypes.controlledChargeProcProjectile);
+            dmgTypeHolderBlue.Add(DamageTypes.nemAmpSlowOnHit);
 
             var dotZoneBlue = fieldProjectilePrefab.GetComponent<ProjectileDotZone>();
             dotZoneBlue.overlapProcCoefficient = StaticValues.staticFieldTickProcCoefficient;
-
-            GameObject FXBlue = fieldProjectilePrefabBlue.transform.GetChild(0).gameObject;
-            GameObject ScaledOnImpactBlue = FXBlue.transform.GetChild(0).gameObject;
-            GameObject DecalBlue = new GameObject();
-            DecalBlue.transform.parent = ScaledOnImpactBlue.transform;
 
             var buffWardBlue = fieldProjectilePrefabBlue.GetComponent<BuffWard>();
             buffWardBlue.buffDef = Buffs.nemAmpAtkSpeed;

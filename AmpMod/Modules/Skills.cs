@@ -61,14 +61,38 @@ namespace AmpMod.Modules
             skillFamilies.Add(utilityFamily);
             skillFamilies.Add(specialFamily);
 
-            fireLightningBallSkillDef = CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.Nemesis_Amp.FireLightningBall)),
+          /*  fireLightningBallSkillDef = CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.Nemesis_Amp.FireLightningBall)),
                 "Weapon",
                 prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
                 prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPlasmaBall"),
                 false,
                 new String[] { },
-                true);
+                true); */
+
+            fireLightningBallSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPlasmaBall"),
+                activationStateMachineName = "Weapon",
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Nemesis_Amp.FireLightningBall)),
+                baseMaxStock = 1,
+                baseRechargeInterval = 0,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Any,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 0,
+                stockToConsume = 0,
+            });
 
             surgeCancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {

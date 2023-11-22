@@ -37,26 +37,29 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             childLocator = base.GetModelChildLocator();
             characterBody = base.GetComponent<CharacterBody>();
             //Debug.Log("spawning effect");
+
+            //make charactermodel invisible upon first spawning in; this will happen regardless of if we're doing a spawn with lightning or not
+            if (this.characterModel)
+            {
+                 this.characterModel.invisibilityCount++;
+            
+            }
             if (spawnWithLightning)
             {
                 if (NetworkServer.active) base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, NemSpawnState.lightningSpawnDuration * 1.5f);
-                if (this.characterModel)
-                {
-                    this.characterModel.invisibilityCount++;
-                }
+             
+
                 if (this.characterModel.GetComponent<ModelSkinController>().skins[this.characterBody.skinIndex].nameToken == AmpPlugin.developerPrefix + "_NEMAMP_BODY_MASTERY_SKIN_NAME" && !Config.NemOriginPurpleLightning.Value)
                 {
                     isBlue = true;
                 }
             }
-
-            else
+            else if (!spawnWithLightning)
             {
                 if (base.cameraTargetParams)
                 {
                     this.aimRequest = base.cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Aura);
                 }
-                this.characterModel.invisibilityCount++;
                 if (NetworkServer.active)
                 {
                     base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
@@ -94,8 +97,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 damageType = DamageType.Generic,
                 falloffModel = BlastAttack.FalloffModel.None,
                 inflictor = base.gameObject,
-
-                //blastattack is positioned 10 units above where the reticle is placed
                 position = base.gameObject.transform.position,
                 procChainMask = default(ProcChainMask),
                 procCoefficient = 1f,
@@ -110,6 +111,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         {
             base.FixedUpdate();
 
+            //if on the first stage spawn with lightning bolt
             if (spawnWithLightning)
             {
                 if (base.fixedAge >= this.waitDuration && !hasFired)
@@ -137,8 +139,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
                 }
 
+                if (base.fixedAge >= lightningSpawnDuration && base.isAuthority)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
+
             }
 
+            //if not on first stage spawn with normal teleporter vfx
             else if (!spawnWithLightning)
             {
                 if (base.fixedAge >= waitDuration && !hasTeleported)
@@ -146,20 +155,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                     spawnTPEffect();
                     this.characterModel.invisibilityCount--;
                 }
+                if (base.fixedAge >= this.spawnNormalDuration && base.isAuthority)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
 
 
-            if (base.fixedAge >= lightningSpawnDuration && base.isAuthority && spawnWithLightning)
-            {
-                this.outer.SetNextStateToMain();
-                return;
-            }
-
-            if (base.fixedAge >= this.spawnNormalDuration && base.isAuthority && !spawnWithLightning)
-            {
-                this.outer.SetNextStateToMain();
-                return;
-            }
 
         }
 
@@ -176,6 +179,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
                 base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
                 base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 3f);
+            }
+
+            //final check to remove invisibility in case the player is still invisible for whatever reason
+            if (this.characterModel)
+            {
+                this.characterModel.invisibilityCount = 0;
             }
         }
 

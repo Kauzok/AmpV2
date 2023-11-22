@@ -76,7 +76,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     //now, we will only apply the buff if the new skill used is different from the last skill used and if prevTime is valid
                     if ((newSkillUsed.GetType().Name != lastSkillUsed.GetType().Name) && (prevTime != -1f) && (prevTime < comboTime))
                     {
-
+                        
                         repeatTimer = 0f;
                         //Debug.Log("continuing");
                         //this means we are now in a skill combo

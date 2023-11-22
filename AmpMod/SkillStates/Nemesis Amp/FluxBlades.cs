@@ -17,9 +17,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public GameObject fireEffect;
         public string spawnSoundString = StaticValues.fluxBladesSpawnString;
         private Animator animator;
-        public static float baseDuration = 1.2f;
+        public static float baseDuration = 1.5f;
         private float baseChargeTime = .6f;
         private float chargeTime;
+        private float recoverDuration;
         private NemLightningColorController lightningController;
         private float duration;
         private float surgeBuffCount;
@@ -38,7 +39,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float fireDuration;
         private StackDamageController stackDamageController;
         private float chargeDuration;
-        private const float FIRE_TIME_PERCENTAGE = .15f;
+        private const float FIRE_TIME_PERCENTAGE = .1f;
+        private const float RECOVER_TIME_PERCENTAGE = .25f;
 
         public override void OnEnter()
         {
@@ -83,7 +85,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             animator = base.GetModelAnimator();
             this.totalDuration = baseDuration / this.attackSpeedStat;
             fireDuration = FIRE_TIME_PERCENTAGE * totalDuration;
-            chargeDuration = totalDuration - fireDuration;
+            recoverDuration = RECOVER_TIME_PERCENTAGE * totalDuration;
+            chargeDuration = totalDuration - fireDuration - recoverDuration;
             growDuration = .5f * chargeDuration;
             // base.PlayAnimation("Gesture, Override", "LaunchVortex", "BaseSkill.playbackRate", duration);
             animator.SetBool("isUsingIndependentSkill", true);
@@ -262,7 +265,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override InterruptPriority GetMinimumInterruptPriority()
         {
 
-            if (base.fixedAge >= this.chargeDuration) return InterruptPriority.Any;
+            //if (base.fixedAge >= this.chargeDuration) return InterruptPriority.Any;
 
             return InterruptPriority.Skill;
         }

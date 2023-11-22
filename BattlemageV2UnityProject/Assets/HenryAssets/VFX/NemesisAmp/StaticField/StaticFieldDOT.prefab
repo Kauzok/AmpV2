@@ -281,7 +281,7 @@ MonoBehaviour:
   crit: 0
   force: 0
   damageColorIndex: 0
-  damageType: 16392
+  damageType: 16384
   useDotMaxStacksFromAttacker: 0
   dotMaxStacksFromAttacker: 4294967295
 --- !u!114 &1145020192460894205
@@ -328,9 +328,9 @@ Animation:
   m_GameObject: {fileID: 1221455951814538}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: c8ffb1628c37a84498f12d213199e6f2, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: c8ffb1628c37a84498f12d213199e6f2, type: 2}
+  - {fileID: 0}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

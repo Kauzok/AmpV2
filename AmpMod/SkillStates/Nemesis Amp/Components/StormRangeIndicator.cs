@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using RoR2;
 using AmpMod.Modules;
+using UnityEngine.Networking;
 
 namespace AmpMod.SkillStates.Nemesis_Amp.Components
 {
@@ -33,8 +34,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 indicatorPrefab = Assets.stormRangeIndicator;
             }
 
-            indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, body.corePosition, Quaternion.identity);
-            indicatorInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(base.gameObject, null);
+            if (NetworkServer.active)
+            {
+                indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, body.corePosition, Quaternion.identity);
+                indicatorInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(base.gameObject, null);
+               // UnityEngine.Object.Destroy(indicatorInstance);
+                //indicatorInstance = null;
+            }
+           
+         
         }
 
     }
