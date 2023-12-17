@@ -1,42 +1,61 @@
-Suggestions:
-Fix bug where fulmination doesn't exit correctly and thus doesn't destroy the lightning tether or muzzle vfx (done?)
-
-
 To do prerelease:
+- Why does kill_all player (which calls healthcomponent.suicide) skip to exiting after 1 second?
 - Multiplayer
-	- Can't see other nemamps spawn animation
+	- Death explosion plays most of the time, but sometimes doesn't? (check, added hasspawnedexplosion check)
+		- Explosion doesn't destroy body on server for some reason???? Host can still see it
+	- Flux Blades
+		- Can't hear fire sfx (probably another isauthority issue)
 	- Voidsurge 
-		- Plasma projectile has inconsistent collision, & shock debuff only lasts for 1 second instead of 5)
-		- Dash and ball don't count towards passive as clients (removed the override, check again)
-	- Voltaic Onslaught
-		- Range indicator should only be visible for the person playing nemamp
-	- Static field 
-		- Might count too early towards passive, on aim instead of on fire; check
-	- Death switches to spectator view too early (check, if it breaks put an entitystate.destroy back in the spawnexplosion method)
+		- Plasma projectile has inconsistent collision
 	- Invisible vfx:
-			- Static field muzzle flash (unimportant)
 			- Lightning ball muzle flash (unimportant) 
 			- lightning stream muzzle prefab (kind of important) (glitches out and can't see properly)
-			- voidsurge dash prefab (very important) 
 			- Lorentz blades aiming prefabs (important) 
-			- Lightning stream vfx? check if this shows up, since its j a linerenderer (very important)
-	- can't hear other nemamp's furious spark fire sfx (super high attenuation?)
-	- Host can't see client nemamps, but clients can see host nemamp (Adjusted invisibility code, check again)
-- Sprint Animation review?
+			- Lightning stream vfx? check if this shows up, since its j a linerenderer (very important) 
+				- error appears on client when server uses skill, seemingly randomly; probably to do with rightMuzzleTransform
 - Make lightning ball must key press
-- Increase attenuation for nemamp's sounds
-- Consider adjusting lorentz cannon interrupt priorities
+- Plasma ball animations (try changing to lightning/plasma stake)
+- Adjust animations so aiming up actually makes you do things up
+- Implement lorentz blades animations when idle
+
+[Error  : Unity Log] NullReferenceException: Object reference not set to an instance of an object
+Stack trace:
+AmpMod.SkillStates.Nemesis_Amp.NemAmpLightningTetherController.CreateLightningTether (UnityEngine.GameObject attacker, UnityEngine.Transform origin) (at D:/Modding/RoR2/Battlemage V2/BattlemageV2/AmpMod/SkillStates/Nemesis Amp/Components/NemAmpLightningTetherController.cs:89)
+AmpMod.SkillStates.Nemesis_Amp.LightningStream.FixedUpdate () (at D:/Modding/RoR2/Battlemage V2/BattlemageV2/AmpMod/SkillStates/Nemesis Amp/LightningStream.cs:252)
+RoR2.EntityStateMachine.FixedUpdate () (at <1d532be543be416b9db3594e4b62447d>:IL_001A)
+
+[Error  : Unity Log] NullReferenceException
+Stack trace:
+AmpMod.SkillStates.Nemesis_Amp.LightningStream.OnEnter () (at D:/Modding/RoR2/Battlemage V2/BattlemageV2/AmpMod/SkillStates/Nemesis Amp/LightningStream.cs:153)
+RoR2.EntityStateMachine.SetState (EntityStates.EntityState newState) (at <1d532be543be416b9db3594e4b62447d>:IL_005C)
+RoR2.NetworkStateMachine.HandleSetEntityState (UnityEngine.Networking.NetworkMessage netMsg) (at <1d532be543be416b9db3594e4b62447d>:IL_00B9)
+UnityEngine.Networking.NetworkConnection.HandleReader (UnityEngine.Networking.NetworkReader reader, System.Int32 receivedSize, System.Int32 channelId) (at <2a7d59f3977e436480000365e023da3e>:IL_012D)
+UnityEngine.Networking.NetworkConnection.HandleBytes (System.Byte[] buffer, System.Int32 receivedSize, System.Int32 channelId) (at <2a7d59f3977e436480000365e023da3e>:IL_0007)
+UnityEngine.Networking.NetworkConnection.TransportReceive (System.Byte[] bytes, System.Int32 numBytes, System.Int32 channelId) (at <2a7d59f3977e436480000365e023da3e>:IL_0000)
+RoR2.Networking.SteamNetworkConnection.TransportReceive (System.Byte[] bytes, System.Int32 numBytes, System.Int32 channelId) (at <1d532be543be416b9db3594e4b62447d>:IL_0019)
+RoR2.Networking.NetworkManagerSystemSteam.OnP2PData (Facepunch.Steamworks.BaseSteamworks receiver, CSteamID senderSteamId, System.Byte[] data, System.Int32 dataLength, System.Int32 channel) (at <1d532be543be416b9db3594e4b62447d>:IL_0044)
+RoR2.Networking.NetworkManagerSystemSteam.OnSteamClientP2PData (System.UInt64 senderSteamId, System.Byte[] data, System.Int32 dataLength, System.Int32 channel) (at <1d532be543be416b9db3594e4b62447d>:IL_000C)
+Facepunch.Steamworks.Networking.ReadP2PPacket (System.Int32 channel) (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0082)
+Facepunch.Steamworks.Networking.Update () (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0054)
+Facepunch.Steamworks.BaseSteamworks.Update () (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0006)
+Facepunch.Steamworks.Client.Update () (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0025)
+RoR2.SteamworksClientManager.Update () (at <1d532be543be416b9db3594e4b62447d>:IL_0006)
+RoR2.RoR2Application.Update () (at <1d532be543be416b9db3594e4b62447d>:IL_005F)
 
 Amp To Do:
 - Implement anims
 - Fix sawmerang bug
 
 To do post release:
+- Clean up unity project
+- Alt special (fire a continuous beam of light in front of you that deals 100% damage per tick and detonates stacks of controlled charge
+every tick for a 400% damage short range explosion). Instead of a cooldown, works on stocks (ammo), has 100 stocks that decay at 33/s
 - Add ancient scepter support for nemamp
 	-voltaic onslaught now causes enemies to give enemies a tesla coil-like status effect that shocks them & enemies next to them, with a duration dependent
 	on how many stacks of controlled charge they had; a base of 2 seconds with +1 second per stack. this cannot be reset until the status has run out)
 	- OR voltaic onslaught now adds extra lightning bombs to enemies (amount determined by CC stacks) that explode after a duration and chain to other enemies in the vicinity
 	- OR voltaic onslaught is now a global ability that strikes every enemy in the stage (this might be too laggy)
+	- Laser skill now lasts for 5 seconds and controlled charge detonations now add a stack of burning.
 - Add risk of options support
 - Add skills++ support
 - Add support for that one extra animation mod (badass emotes?)

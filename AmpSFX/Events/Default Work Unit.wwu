@@ -31,20 +31,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="PlayBoltState2sec" ID="{205C9611-BDA1-4A95-A44D-238BD4062CF1}">
-					<ChildrenList>
-						<Action Name="" ID="{EBB0B60D-58E5-4D5B-BE27-4E5F2CB52458}" ShortID="141031474">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BoltState2sec" ID="{1C5C0B86-F2E5-478A-8F37-7A2C60665085}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="PlayChargeExplosion" ID="{9147CC50-9D43-4123-B9FC-85C2B1663136}">
 					<ChildrenList>
 						<Action Name="" ID="{91D34517-6945-4C8B-9B66-4F7BC2E129CD}" ShortID="941031679">
@@ -87,20 +73,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="PlayFulminationExit" ID="{7EB5BEE9-A435-4A75-B87C-262D42BE6B99}">
-					<ChildrenList>
-						<Action Name="" ID="{BBC7E888-EA72-41FC-9BC4-F265811F053C}" ShortID="918023470">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="FulminationExit" ID="{D5BD29A4-8AE8-405E-8164-5E39D3264887}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="PlayFulminationState" ID="{DA615D2B-F5EF-433A-9F01-AB71B4B3185D}">
 					<ChildrenList>
 						<Action Name="" ID="{D68BAD34-DF50-45B1-BE1D-33E16CA27BCA}" ShortID="784482540">
@@ -138,20 +110,6 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Stormblade2" ID="{A7A80AA6-DABF-4A4C-B7C7-3DD3DF884CB6}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="PlayBoltStateFull" ID="{C47CAE11-B0F8-472E-974C-231D193CFDD4}">
-					<ChildrenList>
-						<Action Name="" ID="{F4427A62-B7BA-4B94-B012-8E1AAA493B89}" ShortID="198685622">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BoltState" ID="{B69BB5C3-118E-4E33-B608-596EBA32ECE7}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -222,20 +180,6 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="BoltState2secwithwind" ID="{AAE3C0AE-6C3D-4943-B83A-B2AD04A0B060}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="PlayBoltState2SecAlter" ID="{86A2626B-9BC0-4BB5-8328-B9318A68DB40}">
-					<ChildrenList>
-						<Action Name="" ID="{F4AFDFF4-D0DC-49E3-AB69-90326CFC5918}" ShortID="452466562">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BoltState2secAlter" ID="{649E21B9-2F08-475A-A206-5B8E231ADE2F}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catalogIndex: -1
-  ghostPrefab: {fileID: 1321074615563478, guid: e59af381c8d1d714fa96c417b90e4238,
+  ghostPrefab: {fileID: 4882930589440750606, guid: 9277b857d12482b4fa172b9b22b4bab0,
     type: 3}
   ghostTransformAnchor: {fileID: 0}
   startSound: 

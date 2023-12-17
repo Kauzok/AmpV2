@@ -156,11 +156,11 @@ namespace AmpMod.Modules
 
             #region Utility2
             LanguageAPI.Add(nemPrefix + "UTILITY_DASH_NAME", "Voidsurge");
-            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_DESCRIPTION", $"Transform into lightning, becoming <style=cIsUtility>intangible</style> and dashing a short distance. Your next primary cast fires a a <style=cIsUtility>shocking</style> ball of void lightning for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(nemPrefix + "UTILITY_DASH_DESCRIPTION", $"Transform into lightning, becoming <style=cIsUtility>intangible</style> and dashing a short distance. Your next primary cast fires a a <style=cIsUtility>shocking</style> mass of plasma for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
 
 
-            LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_NAME", "Launch Lightning Ball");
-            LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_DESCRIPTION", $"Fire a <style=cIsUtility>shocking</style> ball of void lightning for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_NAME", "Throw Plasma Stake");
+            LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_DESCRIPTION", $"Throw a <style=cIsUtility>shocking</style> mass of plasma for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Utility2Old
@@ -174,6 +174,11 @@ namespace AmpMod.Modules
             #endregion
 
             #region Special2
+            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_NAME", "Photon Barrage");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_DESCRIPTION", $"Fire a beam of light in front of you for <style=cIsDamage>{100f * StaticValues.baseLaserDamageCoefficient}% damage</style>. Ticks <style=cIsDamage>detonate</style> stacks of <color=#8b00ff>Controlled Charge</color> for an additional <style=cIsDamage>{100f * StaticValues.additionalSlashDamageCoefficient}% damage.</style>");
+            #endregion
+
+            #region Special2Old
             LanguageAPI.Add(nemPrefix + "SPECIAL_SLASH_NAME", "Galvanic Cleave");
             LanguageAPI.Add(nemPrefix + "SPECIAL_SLASH_DESCRIPTION", $"<style=cIsUtility>Charge</style> a blade of void lightning and slash, <style=cIsDamage>{100f * StaticValues.minSlashDamageCoefficient}%-{100f * StaticValues.maxSlashDamageCoefficient}% damage</style>. The slash deals an extra <style=cIsDamage>{100f * StaticValues.additionalSlashDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
             #endregion

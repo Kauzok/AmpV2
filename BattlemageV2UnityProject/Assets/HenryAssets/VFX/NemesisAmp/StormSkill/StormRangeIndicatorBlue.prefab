@@ -167,8 +167,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4292016328960344}
-  - component: {fileID: 114929737157424306}
-  - component: {fileID: 114658978776809317}
   m_Layer: 0
   m_Name: StormRangeIndicatorBlue
   m_TagString: Untagged
@@ -192,50 +190,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114929737157424306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486391197924058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 91
-    i1: 162
-    i2: 149
-    i3: 192
-    i4: 163
-    i5: 145
-    i6: 154
-    i7: 84
-    i8: 73
-    i9: 57
-    i10: 230
-    i11: 239
-    i12: 225
-    i13: 255
-    i14: 23
-    i15: 179
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &114658978776809317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486391197924058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1985007777, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldParentToAttachedBody: 1
-  forceHostAuthority: 0

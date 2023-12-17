@@ -182,7 +182,6 @@ namespace AmpMod.Modules
 
         [Header("Quicksurge Effects")]
         internal static GameObject dashVFXPrefab;
-        internal static GameObject dashExitEffect;
         internal static GameObject dashEnterEffect;
         internal static GameObject lightningBallExplosionEffect;
         internal static GameObject lightningBallMuzzleFlashEffect;
@@ -190,6 +189,10 @@ namespace AmpMod.Modules
         internal static GameObject dashEnterEffectBlue;
         internal static GameObject lightningBallExplosionEffectBlue;
         internal static GameObject lightningBallMuzzleFlashEffectBlue;
+        internal static GameObject lightningStakeMuzzleObject;
+        internal static GameObject lightningStakeFlashEffect;
+        internal static GameObject lightningStakeFlashEffectBlue;
+        internal static GameObject lightningStakeMuzzleObjectBlue;
 
         [Header("Voltaic Onslaught Effects")]
         internal static GameObject purpleStormBoltEffect;
@@ -197,9 +200,6 @@ namespace AmpMod.Modules
         internal static GameObject stormMuzzleFlashEffectBlue;
         internal static GameObject stormRangeIndicator;
         internal static GameObject stormRangeIndicatorBlue;
-
-        internal static GameObject teleportExplosionEffect;
-        internal static GameObject teleportAimReticle;
 
 
 
@@ -702,7 +702,7 @@ namespace AmpMod.Modules
             AddNewEffectDef(stormMuzzleFlashEffectBlue);
 
             stormRangeIndicator = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicator");
-            PrefabAPI.RegisterNetworkPrefab(stormRangeIndicator);
+            //PrefabAPI.RegisterNetworkPrefab(stormRangeIndicator);
             stormRangeIndicatorBlue = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicatorBlue");
             PrefabAPI.RegisterNetworkPrefab(stormRangeIndicatorBlue);
         }
@@ -711,6 +711,12 @@ namespace AmpMod.Modules
         {
             dashVFXPrefab = mainAssetBundle.LoadAsset<GameObject>("QuickDashPrefab");
             PrefabAPI.RegisterNetworkPrefab(dashVFXPrefab);
+
+            lightningStakeMuzzleObject = mainAssetBundle.LoadAsset<GameObject>("ChargeStake");
+            PrefabAPI.RegisterNetworkPrefab(lightningStakeMuzzleObject);
+
+            lightningStakeFlashEffect = mainAssetBundle.LoadAsset<GameObject>("StakeFlash");
+            AddNewEffectDef(lightningStakeFlashEffect);
 
             lightningBallExplosionEffect = mainAssetBundle.LoadAsset<GameObject>("LightningBallExplosion");
             AddNewEffectDef(lightningBallExplosionEffect);
@@ -724,6 +730,12 @@ namespace AmpMod.Modules
             #region Blue
             dashVFXPrefabBlue = mainAssetBundle.LoadAsset<GameObject>("QuickDashPrefabBlue");
             PrefabAPI.RegisterNetworkPrefab(dashVFXPrefabBlue);
+
+            lightningStakeMuzzleObjectBlue = mainAssetBundle.LoadAsset<GameObject>("ChargeStakeBlue");
+            PrefabAPI.RegisterNetworkPrefab(lightningStakeMuzzleObjectBlue);
+
+            lightningStakeFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("StakeFlashBlue");
+            AddNewEffectDef(lightningStakeFlashEffectBlue);
 
             lightningBallExplosionEffectBlue = mainAssetBundle.LoadAsset<GameObject>("LightningBallExplosionBlue");
             AddNewEffectDef(lightningBallExplosionEffectBlue);

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catalogIndex: -1
-  ghostPrefab: {fileID: 1321074615563478, guid: 2117ff7548fc95349b2f82d3eb59733c,
+  ghostPrefab: {fileID: 4882930589440750606, guid: 164589e4bb0cd254e805776ed30c282e,
     type: 3}
   ghostTransformAnchor: {fileID: 0}
   startSound: 
@@ -250,10 +250,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.3
-  m_Height: 1.3
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.6
+  m_Height: 3.4
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 1.2}
 --- !u!54 &7898068770208537324
 Rigidbody:
   m_ObjectHideFlags: 0

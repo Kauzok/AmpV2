@@ -96,10 +96,10 @@ namespace AmpMod.Modules.Survivors
                     bodyPrefab.AddComponent<NemAmpBuffVFXController>();
                     bodyPrefab.AddComponent<NemAmpLightningTetherController>();
                     bodyPrefab.AddComponent<NemLightningColorController>();
-                    if (Config.NemStormRangeIndicator.Value)
+                   /* if (Config.NemStormRangeIndicator.Value)
                     {
                         bodyPrefab.AddComponent<StormRangeIndicator>();
-                    }
+                    } */
                     
 
                     var deathComp = bodyPrefab.GetComponent<CharacterDeathBehavior>();

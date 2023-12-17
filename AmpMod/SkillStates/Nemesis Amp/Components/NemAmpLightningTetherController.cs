@@ -2,6 +2,7 @@
 using System.Text;
 using UnityEngine;
 using RoR2;
+using System.Runtime.InteropServices;
 using AmpMod.Modules;
 using UnityEngine.Networking;
 using AmpMod.SkillStates.Nemesis_Amp.Components;
@@ -22,6 +23,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject oldLightningTarget;
         private NemLightningColorController lightningController;
         private CharacterBody victimBody;
+        private GameObject victimObject;
+        private GameObject ownerObject;
         private float posRange = .3f;// 0.5f;
         private float lightningTickFrequency = .1f;
         private float maxZ = 8f;
@@ -29,6 +32,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Transform origin;
         private CharacterBody baseBody;
         private CharacterModel model;
+
+        private NetworkInstanceId ___targetRootNetId;
+        private NetworkInstanceId ___ownerRootNetId;
 
         private void Start()    
         {
@@ -57,6 +63,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (lightningTracker.GetTrackingTarget())
                 {
+                    //set the gameobjects of the victim & owner, which will be synced for networking purposes
+                    victimObject = lightningTracker.GetTrackingTarget().healthComponent.gameObject;
+                    ownerObject = base.gameObject;
+
                     //store attacker gameobject and origin transform in class
                     if (attacker)
                     {
@@ -73,10 +83,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     //save the current gameobject being tracked & its characterbody
                     oldLightningTarget = lightningTracker.GetTrackingTarget().healthComponent.gameObject;
                     victimBody = oldLightningTarget.GetComponent<CharacterBody>();
-                    
+                    victimObject = oldLightningTarget;
+
                     //spawn lightning tether and parent its transform to our origin transform
                     lightningTetherInstance = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, origin.position, origin.rotation);                
                     lightningTetherInstance.transform.parent = origin;
+
+                    //debug check to make sure that the problem actually is the origin
+                    Debug.Log(origin.name + " is our origin");
 
                     //grab linerenderer component
                     if (lightningTetherInstance)
@@ -159,5 +173,66 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 UnityEngine.Object.Destroy(lineRenderer.gameObject);
             }
         }
+        #region networking
+        public GameObject NetworktargetRoot
+        {
+            get
+            {
+                return this.victimObject;
+            }
+            [param: In]
+            set
+            {
+                base.SetSyncVarGameObject(value, ref this.victimObject, 1U, ref this.___targetRootNetId);
+            }
+        }
+
+        public GameObject NetworkownerRoot
+        {
+            get
+            {
+                return this.ownerObject;
+            }
+            [param: In]
+            set
+            {
+                base.SetSyncVarGameObject(value, ref this.ownerObject, 2U, ref this.___ownerRootNetId);
+            }
+        }
+        public override bool OnSerialize(NetworkWriter writer, bool forceAll)
+        {
+            if (forceAll)
+            {
+                writer.Write(this.victimObject);
+                writer.Write(this.ownerObject);
+                return true;
+            }
+            bool flag = false;
+            if ((base.syncVarDirtyBits & 1U) != 0U)
+            {
+                if (!flag)
+                {
+                    writer.WritePackedUInt32(base.syncVarDirtyBits);
+                    flag = true;
+                }
+                writer.Write(this.victimObject);
+            }
+            if ((base.syncVarDirtyBits & 2U) != 0U)
+            {
+                if (!flag)
+                {
+                    writer.WritePackedUInt32(base.syncVarDirtyBits);
+                    flag = true;
+                }
+                writer.Write(this.ownerObject);
+            }
+            if (!flag)
+            {
+                writer.WritePackedUInt32(base.syncVarDirtyBits);
+            }
+            return flag;
+        }
+        #endregion
+
     }
 }

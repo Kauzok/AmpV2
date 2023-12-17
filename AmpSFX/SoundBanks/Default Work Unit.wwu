@@ -37,17 +37,13 @@
 						<ObjectRef Name="PlayFulminationEnter" ID="{D903EDE1-3257-465D-A12C-169D794CDF04}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFluxBladesFire" ID="{63E0C98E-EEC8-466E-8F07-749B67FFAFB2}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayHeatShockCharge" ID="{4D300B6D-D78C-4717-AD34-5F2046FD1D0B}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="PlayBoltStateFull" ID="{C47CAE11-B0F8-472E-974C-231D193CFDD4}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFerroshotLaunch" ID="{6C04C028-EF34-473A-A77A-2B857F43A7B3}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayQuicksurge" ID="{458C62A0-D293-47DA-8EFE-FD15822CF350}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeSwing2" ID="{606AADD7-0F62-490E-B637-778B1B93CBBD}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFerroshotCreate" ID="{FAC584A8-AE58-49D0-B033-54481B672A66}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayBoltExit" ID="{60DCBBF0-835F-4A0F-925F-2D249A8DF8B8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayPlasmaExplosion" ID="{7DB59F3B-CA3F-4A2C-9FBC-B4373A6121B8}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="PlayFulminationExit" ID="{7EB5BEE9-A435-4A75-B87C-262D42BE6B99}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="PlayBoltState2sec" ID="{205C9611-BDA1-4A95-A44D-238BD4062CF1}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayFerroshotCreateAlter" ID="{96DA14A5-35C4-4B5B-886C-44488276602F}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="PlayBoltState2SecAlter" ID="{86A2626B-9BC0-4BB5-8328-B9318A68DB40}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayVortexLoop" ID="{A0CD83BE-6D32-4BD3-9CFE-0D6AE4514F7B}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayStormbladeHit4" ID="{9238F131-EC83-4BE5-B172-88B60E1BC74F}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayNemSpawnBurst" ID="{EE99C133-EE25-4BFD-A05A-8CB03DF4BA94}" WorkUnitID="{2C0AA31F-7FA4-45DD-BC8E-E373A67ABFB7}" Origin="Manual" Filter="7"/>

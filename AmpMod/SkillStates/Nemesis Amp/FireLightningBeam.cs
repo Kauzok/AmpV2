@@ -125,14 +125,20 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             }
 
-            if (base.isAuthority && !hasFired && base.fixedAge > this.waitDuration)
+            if (!hasFired && base.fixedAge > this.waitDuration)
             {
-                this.Fire();
-                hasFired = true;
+                Util.PlaySound(fireSoundString, base.gameObject);
+                if (base.isAuthority)
+                {
+                    this.Fire();
+                    hasFired = true;
+                }
+
             }
 
             if (base.isAuthority && base.fixedAge >= this.duration)
             {
+                //Debug.Log(base.GetComponent<EntityStateMachine>().networkIdentity.hasAuthority + "for authority");
                 this.outer.SetNextStateToMain();
             }
 
@@ -141,7 +147,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             if (base.isAuthority)
             {
-                Util.PlaySound(fireSoundString, base.gameObject);
+                
                 Ray aimRay = base.GetAimRay();
 
                 float calcedDamage = Util.Remap(this.charge, 0f, 1f, this.minDamageCoefficient, this.maxDamageCoefficient);
@@ -193,6 +199,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     base.characterMotor.ApplyForce(aimRay.direction * (-this.selfForce * this.charge), false, false);
                 }
             }
+            
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

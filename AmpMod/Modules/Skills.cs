@@ -77,7 +77,7 @@ namespace AmpMod.Modules
                 skillDescriptionToken = prefix + "_NEMAMP_BODY_UTILITY_LIGHTNINGBALL_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPlasmaBall"),
                 activationStateMachineName = "Weapon",
-                activationState = new SerializableEntityStateType(typeof(SkillStates.Nemesis_Amp.FireLightningBall)),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Nemesis_Amp.FireLightningSpear)),
                 baseMaxStock = 1,
                 baseRechargeInterval = 0,
                 beginSkillCooldownOnSkillEnd = false,

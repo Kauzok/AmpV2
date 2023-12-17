@@ -51,8 +51,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
         [Header("Quicksurge Effects")]
         public GameObject dashEnterExitVFX;
-        public GameObject lightningBallPrefab;
-        public GameObject lightningBallMuzzleVFX;
+        public GameObject lightningStakePrefab;
+        public GameObject lightningStakeMuzzleVFX;
+        public GameObject chargeLightningStakeVFX;
+        public GameObject lightningStakeFlashVFX;
         public GameObject dashPrefab;
 
         [Header("Voltaic Onslaught Effects")]
@@ -118,8 +120,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 #region Voidsurge
                 dashEnterExitVFX = Assets.dashEnterEffectBlue;
                 dashPrefab = Assets.dashVFXPrefabBlue;
-                lightningBallPrefab = Projectiles.lightningBallPrefabBlue;
-                lightningBallMuzzleVFX = Assets.lightningBallMuzzleFlashEffectBlue;
+                lightningStakePrefab = Projectiles.lightningStakePrefabBlue;
+                lightningStakeMuzzleVFX = Assets.lightningBallMuzzleFlashEffectBlue;
+                lightningStakeFlashVFX = Assets.lightningStakeFlashEffectBlue;
+                chargeLightningStakeVFX = Assets.lightningStakeMuzzleObjectBlue;
                 #endregion
 
                 #region Voltaic Onslaught
@@ -170,8 +174,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 #region Voidsurge
                 dashEnterExitVFX = Assets.dashEnterEffect;
                 dashPrefab = Assets.dashVFXPrefab;
-                lightningBallPrefab = Projectiles.lightningBallPrefab;
-                lightningBallMuzzleVFX = Assets.lightningBallMuzzleFlashEffect;
+                lightningStakePrefab = Projectiles.lightningStakePrefab;
+                lightningStakeMuzzleVFX = Assets.lightningBallMuzzleFlashEffect;
+                lightningStakeFlashVFX = Assets.lightningStakeFlashEffect;
+                chargeLightningStakeVFX = Assets.lightningStakeMuzzleObject;
                 #endregion
 
                 #region Voltaic Onslaught

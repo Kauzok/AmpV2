@@ -19,13 +19,13 @@ namespace AmpMod.Modules
         internal static GameObject fieldProjectilePrefab;
         internal static GameObject bladeProjectilePrefab;
         internal static GameObject bladeProjectilePrefabBlue;
-        internal static GameObject lightningBallPrefab;
-        internal static GameObject lightningBallPrefabBlue;
+        internal static GameObject lightningStakePrefab;
+        internal static GameObject lightningStakePrefabBlue;
         internal static GameObject fieldProjectilePrefabBlue;
         internal static GameObject bladeProjectileGhostBlue;
         internal static GameObject bladeProjectileGhost;
-        internal static GameObject lightningBallGhostBlue;
-        internal static GameObject lightningBallGhost;
+        internal static GameObject lightningStakeGhostBlue;
+        internal static GameObject lightningStakeGhost;
 
         internal static void RegisterProjectiles()
         {
@@ -44,8 +44,8 @@ namespace AmpMod.Modules
             AddProjectile(fieldProjectilePrefab);
             AddProjectile(fieldProjectilePrefabBlue);
             AddProjectile(bladeProjectilePrefab);
-            AddProjectile(lightningBallPrefab);
-            AddProjectile(lightningBallPrefabBlue);
+            AddProjectile(lightningStakePrefab);
+            AddProjectile(lightningStakePrefabBlue);
             AddProjectile(bladeProjectilePrefabBlue);
         }
 
@@ -98,37 +98,37 @@ namespace AmpMod.Modules
         {
 
             Assets.CreateIntersectMaterial("matTransparentLightningPurple");
-            lightningBallPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefab");
-            lightningBallPrefab.layer = LayerIndex.projectile.intVal;
+            lightningStakePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefab");
+            lightningStakePrefab.layer = LayerIndex.projectile.intVal;
 
-            ProjectileController lightningBallController = lightningBallPrefab.GetComponent<ProjectileController>();
+            ProjectileController lightningBallController = lightningStakePrefab.GetComponent<ProjectileController>();
 
 
-            lightningBallGhostBlue = CreateGhostPrefab("PlasmaShotGhostBlue");
-            lightningBallGhost = CreateGhostPrefab("PlasmaShotGhost");
+            lightningStakeGhostBlue = CreateGhostPrefab("PlasmaShotGhostBlue");
+            lightningStakeGhost = CreateGhostPrefab("PlasmaShotGhost");
 
             lightningBallController.allowPrediction = true;
 
-            var damageHolder = lightningBallPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+            var damageHolder = lightningStakePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
 
             damageHolder.Add(DamageTypes.controlledChargeProc);
 
             #region Blue
-            lightningBallPrefabBlue = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefabBlue");
-            lightningBallPrefabBlue.layer = LayerIndex.projectile.intVal;
+            lightningStakePrefabBlue = Assets.mainAssetBundle.LoadAsset<GameObject>("LightningBallProjectilePrefabBlue");
+            lightningStakePrefabBlue.layer = LayerIndex.projectile.intVal;
 
-            ProjectileController lightningBallControllerBlue = lightningBallPrefabBlue.GetComponent<ProjectileController>();
+            ProjectileController lightningBallControllerBlue = lightningStakePrefabBlue.GetComponent<ProjectileController>();
 
 
             lightningBallControllerBlue.allowPrediction = true;
 
-            var damageHolderBlue = lightningBallPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+            var damageHolderBlue = lightningStakePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
 
             damageHolderBlue.Add(DamageTypes.controlledChargeProc);
             #endregion
 
-            PrefabAPI.RegisterNetworkPrefab(lightningBallPrefab);
-            PrefabAPI.RegisterNetworkPrefab(lightningBallPrefabBlue);
+            PrefabAPI.RegisterNetworkPrefab(lightningStakePrefab);
+            PrefabAPI.RegisterNetworkPrefab(lightningStakePrefabBlue);
         }
 
         private static void CreateStaticField()

@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="886999140">
+		<SoundBank Id="865939728" Language="SFX" Hash="1543625301">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -45,30 +45,6 @@
 						<File Id="286477067" Language="SFX">
 							<ShortName>BoltExit.wav</ShortName>
 							<Path>SFX\BoltExit_56D34C19.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1644761468" Name="PlayBoltState2sec" ObjectPath="\Events\Default Work Unit\PlayBoltState2sec">
-					<IncludedMemoryFiles>
-						<File Id="515172351" Language="SFX">
-							<ShortName>BoltState2sec.wav</ShortName>
-							<Path>SFX\BoltState2sec_56D34C19.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3666067204" Name="PlayBoltState2SecAlter" ObjectPath="\Events\Default Work Unit\PlayBoltState2SecAlter">
-					<IncludedMemoryFiles>
-						<File Id="196974043" Language="SFX">
-							<ShortName>BoltState2secAlter.wav</ShortName>
-							<Path>SFX\BoltState2secAlter_56D34C19.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="667454058" Name="PlayBoltStateFull" ObjectPath="\Events\Default Work Unit\PlayBoltStateFull">
-					<IncludedMemoryFiles>
-						<File Id="120900190" Language="SFX">
-							<ShortName>BoltState.wav</ShortName>
-							<Path>SFX\BoltState_56D34C19.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -209,14 +185,6 @@
 						<File Id="444271671" Language="SFX">
 							<ShortName>FulminationEnter.wav</ShortName>
 							<Path>SFX\FulminationEnter_56D34C19.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3196255699" Name="PlayFulminationExit" ObjectPath="\Events\Default Work Unit\PlayFulminationExit">
-					<IncludedMemoryFiles>
-						<File Id="426766206" Language="SFX">
-							<ShortName>FulminationExit.wav</ShortName>
-							<Path>SFX\FulminationExit_56D34C19.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

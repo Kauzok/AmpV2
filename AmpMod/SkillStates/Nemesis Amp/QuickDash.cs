@@ -70,7 +70,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //set lightning ball as primary skill
             if (base.skillLocator.primary && primaryOverrideSkillDef)
             {
-				//base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+				base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 
 				/*if (base.skillLocator.primary.skillNameToken != "NT_UTILITY_LIGHTNINGBALL_NAME")
                 {
@@ -87,7 +87,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			stackDamageController = base.GetComponent<StackDamageController>();
 			stackDamageController.newSkillUsed = this;
 			stackDamageController.resetComboTimer();
-			Debug.Log("resetting combo timer");
+			//Debug.Log("resetting combo timer");
 		}
 
         protected Vector3 GetBlinkVector()

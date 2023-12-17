@@ -140,7 +140,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (this.goodPlacement)
                 {
-                    
+
+                    stackDamageController.newSkillUsed = this;
+                    stackDamageController.resetComboTimer();
+
                     base.PlayAnimation("FullBody, Override", "Release Field", "BaseSkill.playbackRate", 1f);
                     animator.SetBool("hasFired", true);
                     float baseDamage = (StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth) * damageCoefficient) + damageCoefficient;
@@ -153,9 +156,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         //EffectManager.SimpleMuzzleFlash(muzzleflashEffect, base.gameObject, "HandR", true);
 
                         
-                        UnityEngine.Object.Instantiate(muzzleflashEffect, rightMuzzleTransformSpawn);
-
-                        UnityEngine.Object.Instantiate(muzzleflashEffect, leftMuzzleTransformSpawn);
+                        
                         Vector3 forward = this.fieldIndicatorInstance.transform.forward;
                         forward.y = 0f;
                         forward.Normalize();
@@ -165,6 +166,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(vector), base.gameObject, this.damageStat * baseDamage, 0f, crit, DamageColorIndex.Default, null, -1f);
                         ProjectileManager.instance.FireProjectile(projectilePrefab, this.fieldIndicatorInstance.transform.position + Vector3.up, Util.QuaternionSafeLookRotation(-vector), base.gameObject, this.damageStat * baseDamage, 0f, crit, DamageColorIndex.Default, null, -1f);
                     }
+                    UnityEngine.Object.Instantiate(muzzleflashEffect, rightMuzzleTransformSpawn);
+
+                    UnityEngine.Object.Instantiate(muzzleflashEffect, leftMuzzleTransformSpawn);
                 }
                 else
                 {
@@ -190,9 +194,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
             hasMuzzles = false;
 
-
-            stackDamageController.newSkillUsed = this;
-            stackDamageController.resetComboTimer();
             AkSoundEngine.StopPlayingID(stopAimLoop, 0);
             base.OnExit();
 

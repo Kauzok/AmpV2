@@ -34,10 +34,21 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 indicatorPrefab = Assets.stormRangeIndicator;
             }
 
+            //only spawn the indicator on nemamp so only the player can see it (only works if you're a client)
+            Debug.Log(base.GetComponent<EntityStateMachine>().networkIdentity.hasAuthority);
+            if (Util.HasEffectiveAuthority(base.GetComponent<EntityStateMachine>().networkIdentity))
+            {
+                //Debug.Log("instantiating indicator");
+                indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, body.corePosition, Quaternion.identity);
+                indicatorInstance.transform.parent = base.gameObject.transform;
+            }
+            
+
             if (NetworkServer.active)
             {
-                indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, body.corePosition, Quaternion.identity);
-                indicatorInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(base.gameObject, null);
+
+                //indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, body.corePosition, Quaternion.identity);
+                //indicatorInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(base.gameObject, null);
                // UnityEngine.Object.Destroy(indicatorInstance);
                 //indicatorInstance = null;
             }

@@ -54,6 +54,8 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
     -  Most of Amp's animations have been changed with the help of . Feedback on the feel of the new anims would be greatly appreciated!
 -  New Character  
     - Nemesis Amp has been added to the mod! An entirely new version of Amp, tainted by the void, with his own unique skills and passive. Feedback on him would be appreciated as well.
+- General
+    - Adjusted sound attenuation for some of normal Amp's abilities
 - More bug fixes, and hopefully new features, to come!
 
 </details>

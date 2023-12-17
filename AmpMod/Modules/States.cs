@@ -80,12 +80,16 @@ namespace AmpMod.Modules
             entityStates.Add(typeof(AimTeleport));
             entityStates.Add(typeof(FireTeleport));
 
+            //voidsurge states
+            entityStates.Add(typeof(QuickDash));
+            entityStates.Add(typeof(FireLightningSpear));
+
 
             //howitzer spark states
             entityStates.Add(typeof(ChargeLightningBeam));
             entityStates.Add(typeof(FireLightningBeam));
 
-            //electron crash state
+            //voltaic onslaught states
             entityStates.Add(typeof(AOELightning));
             #endregion
 

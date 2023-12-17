@@ -58,6 +58,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             HurtBox targetHurtbox;
             HurtBoxReference targetHurtboxReference;
 
+            //use this to sync rightmuzzletransform 
             public SyncTarget()
             {
 
@@ -75,6 +76,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 playerNetId = reader.ReadNetworkId();
                 targetdNetId = reader.ReadNetworkId();
+                
                 targetHurtboxReference = reader.ReadHurtBoxReference();
                 
                 
@@ -150,7 +152,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.targetHurtbox = tracker.GetTrackingTarget();
                 animator.SetBool("NemIsFulminating", true);
                 //base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
+                
+                //this call gets an error, what the hell?
                 rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
+
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
 
                 this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
@@ -232,8 +237,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 base.characterBody.SetAimTimer(this.baseTickTime + 1f);
             }
 
-            if (this.tracker && base.isAuthority)
-            //if (this.tracker)
+            //if (this.tracker && base.isAuthority)
+            if (this.tracker)
             {
                 if (!muzzleHasFlashed && this.targetHurtbox)
                 {
@@ -266,15 +271,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             this.FireLightning();
 
-            //Debug.Log("lightning fire method completed");
-
             stackDamageController.newSkillUsed = this;
             stackDamageController.resetComboTimer();
 
             
             if ((base.isAuthority && !base.inputBank.skill1.down) || (base.isAuthority && this.targetHurtbox && this.targetHurtbox.healthComponent.health <= 0) || (base.isAuthority && !this.targetHurtbox) || !this.skillLocator.isActiveAndEnabled)
             {
-                //Debug.Log("Setting skill to exit");
                 this.outer.SetNextStateToMain();
             }
         }
@@ -293,7 +295,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
             targetHurtbox = tracker.GetTrackingTarget();
-            //Debug.Log("making orb");
             NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
 
             rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
