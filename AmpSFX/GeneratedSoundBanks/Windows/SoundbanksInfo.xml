@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="1543625301">
+		<SoundBank Id="865939728" Language="SFX" Hash="3765350470">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>
@@ -276,6 +276,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1366997452" Name="PlayPlasmaAim" ObjectPath="\Events\Default Work Unit\PlayPlasmaAim">
+					<IncludedMemoryFiles>
+						<File Id="718803146" Language="SFX">
+							<ShortName>NemStakeCharge2.wav</ShortName>
+							<Path>SFX\NemStakeCharge2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="4018580586" Name="PlayPlasmaExplosion" ObjectPath="\Events\Default Work Unit\PlayPlasmaExplosion">
 					<IncludedMemoryFiles>
 						<File Id="513875902" Language="SFX">
@@ -286,9 +294,9 @@
 				</Event>
 				<Event Id="2222450664" Name="PlayPlasmaLaunch" ObjectPath="\Events\Default Work Unit\PlayPlasmaLaunch">
 					<IncludedMemoryFiles>
-						<File Id="858229247" Language="SFX">
-							<ShortName>PlasmaBall.wav</ShortName>
-							<Path>SFX\PlasmaBall_10C4C929.wem</Path>
+						<File Id="1070796600" Language="SFX">
+							<ShortName>NemThrowStake.wav</ShortName>
+							<Path>SFX\NemThrowStake_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

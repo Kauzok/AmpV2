@@ -18,6 +18,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	865102867	PlayFulminationEnter			\Default Work Unit\PlayFulminationEnter	
 	1130506740	PlayVortexSpawn			\Default Work Unit\PlayVortexSpawn	
 	1355851356	PlayFieldRelease			\Default Work Unit\PlayFieldRelease	
+	1366997452	PlayPlasmaAim			\Default Work Unit\PlayPlasmaAim	
 	1441430142	PlayQuicksurgeExit			\Default Work Unit\PlayQuicksurgeExit	
 	1520060982	PlayBeamCharge			\Default Work Unit\PlayBeamCharge	
 	1595742268	PlayStormbladeSwing2			\Default Work Unit\PlayStormbladeSwing2	
@@ -98,6 +99,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	695068599	VortexFlightLoopAlter2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexFlightLoopAlter2_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexFlightLoopAlter2		76736
 	706616777	ChargeBeam	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\ChargeBeam1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Howitzer Spark\ChargeBeam		289964
 	707824451	NemDeath	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\NemDeath_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Death\NemDeath		457576
+	718803146	NemStakeCharge2	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\NemStakeCharge2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\ChargeStake\NemStakeCharge2		227432
 	736458125	VortexExplosionAlt	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexExplosionAlt_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexExplosionAlt		310566
 	756615058	LobbyEntrance	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\LobbyEntrance_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\LobbySFX\LobbyEntrance		458620
 	760072484	Stormblade1	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\Stormblade1Remake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeSwing\Stormblade1		83752
@@ -106,10 +108,10 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	820673821	VortexCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexCharge		215904
 	835628925	FieldLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FieldLoop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Static Field\FieldLoop		1353568
 	845905776	FerroshotCreate	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FerroshotCreateRemake_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\FerroshotCreate\FerroshotCreate		234820
-	858229247	PlasmaBall	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\PlasmaBall_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\PlasmaBall		131388
 	885005710	WormCharge	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\WormCharge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\Worm\WormCharge		529088
 	919812550	FluxBladeFire	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\FluxBladeFire_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\FluxBlades\FluxBlades\FluxBladeFire		156204
 	980239621	VortexLoop	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\VortexLoop_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\MagneticVortex\VortexLoop		540816
 	1038060243	StormbladeHit3	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\StormbladeHit3_56D34C19.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\Amp\StormbladeImpact\StormbladeHit3		141820
 	1062522064	SummonStorm	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\SummonStorm_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Summon Storm\SummonStorm		392368
+	1070796600	NemThrowStake	D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\SFX\NemThrowStake_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFXMixer\NemAmp\Quicksurge\NemThrowStake		262100
 

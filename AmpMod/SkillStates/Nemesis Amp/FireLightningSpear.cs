@@ -19,6 +19,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private GameObject muzzleFlashPrefab;
         private GameObject lightningMuzzlePrefab;
         private GameObject stakeFlashEffect;
+        private string spawnString = StaticValues.plasmaChargeString;
         private int growthBuffCount;
         private float damageCoefficient = Modules.StaticValues.lightningBallDamageCoefficient;
         private StackDamageController stackDamageController;
@@ -29,6 +30,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Transform muzzleTransform;
         private Transform muzzleObjectTransform;
         private Ray aimRay;
+        private uint stopID;
         private Transform lightningMuzzleTransform;
 
         public override void OnEnter()
@@ -60,8 +62,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             },
             true);
             lightningMuzzleTransform = UnityEngine.Object.Instantiate(lightningMuzzlePrefab, muzzleTransform).transform;
-            
-        
+
+           stopID = Util.PlaySound(spawnString, base.gameObject);
             
         }
          
@@ -72,6 +74,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (this.fixedAge > waitDuration)
                 {
+                    AkSoundEngine.StopPlayingID(stopID);
                     Util.PlaySound(shootString, base.gameObject);
 
                     if (base.isAuthority)
@@ -114,7 +117,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         owner = base.gameObject,
                         damage = base.characterBody.damage * calcedDamage,
                         crit = base.RollCrit(),
-                        speedOverride = 130,
+                        speedOverride = 140,
                     };
                     ModifyProjectile(ref fireProjectileInfo);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
@@ -148,6 +151,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (lightningMuzzleTransform)
             {
                 Destroy(lightningMuzzleTransform.gameObject);
+            }
+            AkSoundEngine.StopPlayingID(stopID);
+            if (!hasFired)
+            {
+                base.PlayAnimation("FullBody, Override", "BufferEmpty", "BaseSkill.playbackRate", 1f);
             }
         }
     }

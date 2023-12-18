@@ -131,7 +131,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
 
             if (!charged)
+
             {
+                base.activatorSkillSlot.rechargeStopwatch = (0.9f * base.activatorSkillSlot.finalRechargeInterval);
+
                 base.PlayAnimation("FullBody, Override", "BufferEmpty", "ChargeBeam.playbackRate", 1f);
             }
         }

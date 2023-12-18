@@ -711,7 +711,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="PlasmaBall" ID="{91F911B2-2B30-4541-BD93-3B08AD8598BD}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+									<ObjectRef Name="NemThrowStake" ID="{11D2C1AB-49B8-4C83-BBA1-BF9A3990593E}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -726,6 +726,20 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="FluxBladesSpawn" ID="{286C8957-0EDB-4C41-8773-6DD648B33C1A}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayPlasmaAim" ID="{2B128683-3DE6-49DA-A07C-E2013E71AC62}">
+					<ChildrenList>
+						<Action Name="" ID="{7538F9E8-01F6-4D21-A773-2C948D907809}" ShortID="971475384">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChargeStake" ID="{66A32BA1-818F-4625-AE47-8BE9360890A7}" WorkUnitID="{E6CE07A3-EE33-49A9-A673-C2A1D08E7E44}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

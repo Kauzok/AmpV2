@@ -704,7 +704,6 @@ namespace AmpMod.Modules
             stormRangeIndicator = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicator");
             //PrefabAPI.RegisterNetworkPrefab(stormRangeIndicator);
             stormRangeIndicatorBlue = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicatorBlue");
-            PrefabAPI.RegisterNetworkPrefab(stormRangeIndicatorBlue);
         }
 
         private static void CreateLightningDash()

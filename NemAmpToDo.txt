@@ -6,15 +6,15 @@ To do prerelease:
 	- Flux Blades
 		- Can't hear fire sfx (probably another isauthority issue)
 	- Voidsurge 
-		- Plasma projectile has inconsistent collision
+		- Plasma projectile has inconsistent collision (check)
 	- Invisible vfx:
 			- Lightning ball muzle flash (unimportant) 
 			- lightning stream muzzle prefab (kind of important) (glitches out and can't see properly)
 			- Lorentz blades aiming prefabs (important) 
 			- Lightning stream vfx? check if this shows up, since its j a linerenderer (very important) 
 				- error appears on client when server uses skill, seemingly randomly; probably to do with rightMuzzleTransform
-- Make lightning ball must key press
-- Plasma ball animations (try changing to lightning/plasma stake)
+- Lightning stake spawn sfx
+- Lightning stake interrupt priorities/state machine interactions
 - Adjust animations so aiming up actually makes you do things up
 - Implement lorentz blades animations when idle
 
