@@ -247,7 +247,7 @@ namespace AmpMod.Modules.Survivors
                 skillDescriptionToken = prefix + "_NEMAMP_BODY_UTILITY_FIELD_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemField"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(AimStaticField)),
-                activationStateMachineName = "Slide",
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 7f,
                 beginSkillCooldownOnSkillEnd = true,

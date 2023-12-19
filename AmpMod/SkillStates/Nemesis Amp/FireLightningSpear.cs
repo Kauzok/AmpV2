@@ -16,6 +16,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private NemLightningColorController lightningController;
         public QuickDash src;
         private ChildLocator childLocator;
+        private ChargeLightningBeam beamCharge;
+        private FireLightningBeam beamFire;
         private GameObject muzzleFlashPrefab;
         private GameObject lightningMuzzlePrefab;
         private GameObject stakeFlashEffect;
@@ -36,6 +38,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnEnter()
         {
             base.OnEnter();
+
+            //checkIfBusy();
+
             childLocator = base.GetModelChildLocator();
             //base.characterBody.SetAimTimer(2f);
             this.aimRay = base.GetAimRay();
@@ -48,6 +53,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.PlayAnimation("FullBody, Override", "ThrowStake", "BaseSkill.playbackRate", 4 * this.duration);
            
             muzzleTransform = childLocator.FindChild("HandR");
+
+            base.GetModelTransform().GetComponent<Animator>().SetBool("IsUsingSkill", true);
 
             lightningController = base.GetComponent<NemLightningColorController>();
             muzzleFlashPrefab = lightningController.lightningStakeMuzzleVFX;
@@ -66,12 +73,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
            stopID = Util.PlaySound(spawnString, base.gameObject);
             
         }
-         
+
+        //can't use skill if charging beam
+
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
             if (!hasFired)
             {
+                //checkIfBusy();
                 if (this.fixedAge > waitDuration)
                 {
                     AkSoundEngine.StopPlayingID(stopID);
@@ -142,7 +154,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
             base.OnExit();
             //resets primary back to fulmination
-            if (base.skillLocator.primary)
+            if (base.skillLocator.primary && hasFired)
             {
                 base.skillLocator.primary.UnsetSkillOverride(QuickDash.src, QuickDash.primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
             }
@@ -157,6 +169,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 base.PlayAnimation("FullBody, Override", "BufferEmpty", "BaseSkill.playbackRate", 1f);
             }
+
+            base.GetModelTransform().GetComponent<Animator>().SetBool("IsUsingSkill", false);
+
         }
     }
 }

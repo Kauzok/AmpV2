@@ -86,6 +86,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             stackDamageController.resetComboTimer();
 
 
+            base.GetModelTransform().GetComponent<Animator>().SetBool("IsUsingSkill", false);
+
         }
 
 

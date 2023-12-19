@@ -11,12 +11,9 @@ To do prerelease:
 			- Lightning ball muzle flash (unimportant) 
 			- lightning stream muzzle prefab (kind of important) (glitches out and can't see properly)
 			- Lorentz blades aiming prefabs (important) 
-			- Lightning stream vfx? check if this shows up, since its j a linerenderer (very important) 
+			- Lightning stream chain vfx? check
+			- Lightning stream vfx (very important)
 				- error appears on client when server uses skill, seemingly randomly; probably to do with rightMuzzleTransform
-- Lightning stake spawn sfx
-- Lightning stake interrupt priorities/state machine interactions
-- Adjust animations so aiming up actually makes you do things up
-- Implement lorentz blades animations when idle
 
 [Error  : Unity Log] NullReferenceException: Object reference not set to an instance of an object
 Stack trace:
@@ -47,7 +44,9 @@ Amp To Do:
 - Fix sawmerang bug
 
 To do post release:
+- Implement lorentz blades animations when idle
 - Clean up unity project
+- Adjust animations so aiming up actually makes you do things up
 - Alt special (fire a continuous beam of light in front of you that deals 100% damage per tick and detonates stacks of controlled charge
 every tick for a 400% damage short range explosion). Instead of a cooldown, works on stocks (ammo), has 100 stocks that decay at 33/s
 - Add ancient scepter support for nemamp

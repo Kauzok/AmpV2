@@ -19,7 +19,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Transform muzzleTransform;
         private GameObject muzzleFlashEffect = Assets.stormMuzzleFlashEffect;
         private NemLightningColorController lightningController;
-
+        private Animator animator;
         [Header("Functionality Variables")]
         private float lightningRadius = Modules.StaticValues.stormRadius;
         private float baseStrikeDamage = Modules.StaticValues.baseBoltDamageCoefficient;
@@ -38,10 +38,20 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningController = base.GetComponent<NemLightningColorController>();
             stackDamageController = base.GetComponent<StackDamageController>();
             surgeBuffCount = base.GetBuffCount(Modules.Buffs.damageGrowth);
-            base.PlayAnimation("FullBody, Override", "SummonStorm", "BaseSkill.playbackRate", .6f);
+            Transform modelTransform = base.GetModelTransform();
+            if (modelTransform)
+            {
+                this.childLocator = modelTransform.GetComponent<ChildLocator>();
+                this.animator = modelTransform.GetComponent<Animator>();
+            }
+
+            if (!animator.GetBool("IsUsingSkill"))
+            {
+                base.PlayAnimation("FullBody, Override", "SummonStorm", "BaseSkill.playbackRate", .6f);
+            }
+            
             //lightningEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect");
             //find all enemy hurtboxes within a radius
-            childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
 
             Util.PlaySound(summonString, base.gameObject);
             // muzzleTransform = childLocator.FindChild("HandR");

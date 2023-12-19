@@ -2722,6 +2722,34 @@
 												<ActiveSource Name="NemStakeCharge1" ID="{CAD7BD0C-B03E-42D3-B146-C2EF95D4F82C}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="NemStakeCharge3" ID="{1E266BEB-0D2D-4FF7-8A89-9A5AB8B6B229}" ShortID="174400616">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{40A5B919-B5D7-4A9E-A033-B37679F31156}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="NemStakeCharge3" ID="{DA48B4BB-5456-439D-89D8-6A839CBC7736}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+														<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>NemStakeCharge3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="621334165"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="NemStakeCharge3" ID="{DA48B4BB-5456-439D-89D8-6A839CBC7736}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Gathering Storm" ID="{E83FED15-C513-46E7-B4C2-4BCC27DE7BD1}" ShortID="183295676">

@@ -49,6 +49,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.PlayAnimation("FullBody, Override", "ChargeBeam", "ChargeBeam.playbackRate", this.duration+.2f);
             endLoopSoundID = Util.PlaySound(startSoundString, base.gameObject);
 
+            animator.SetBool("IsUsingSkill", true);
             if (!isGrounded)
             {
                 doHover = true;
@@ -134,7 +135,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             {
                 base.activatorSkillSlot.rechargeStopwatch = (0.9f * base.activatorSkillSlot.finalRechargeInterval);
-
+                animator.SetBool("IsUsingSkill", false);
                 base.PlayAnimation("FullBody, Override", "BufferEmpty", "ChargeBeam.playbackRate", 1f);
             }
         }

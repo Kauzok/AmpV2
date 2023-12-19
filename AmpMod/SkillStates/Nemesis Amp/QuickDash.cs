@@ -77,12 +77,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 					base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
 				} */
 				
-			} 
+			}
+
+			base.GetModelTransform().GetComponent<Animator>().SetBool("IsUsingSkill", true);
 
 
-
-
-            this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+			this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
 			
 			stackDamageController = base.GetComponent<StackDamageController>();
 			stackDamageController.newSkillUsed = this;
@@ -144,7 +144,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter - 1;
 				hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
 			}
-	
+
+			base.GetModelTransform().GetComponent<Animator>().SetBool("IsUsingSkill", false);
+
+
 			base.OnExit();
 		}
 

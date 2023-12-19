@@ -75,11 +75,6 @@ namespace AmpMod.Modules
             //static field states
             entityStates.Add(typeof(AimStaticField));
 
-
-            //teleport states
-            entityStates.Add(typeof(AimTeleport));
-            entityStates.Add(typeof(FireTeleport));
-
             //voidsurge states
             entityStates.Add(typeof(QuickDash));
             entityStates.Add(typeof(FireLightningSpear));

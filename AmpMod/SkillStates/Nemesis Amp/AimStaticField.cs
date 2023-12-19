@@ -67,7 +67,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //Debug.Log(fieldIndicatorInstance);
             this.UpdateAreaIndicator();
             animator.SetBool("isAiming", true);
-
+            animator.SetBool("IsUsingSkill", true);
             stopAimLoop = Util.PlaySound(aimFieldString, base.gameObject);
 
         }
@@ -136,6 +136,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public override void OnExit()
         {
             animator.SetBool("isAiming", false);
+            animator.SetBool("IsUsingSkill", false);
             if (!this.outer.destroying)
             {
                 if (this.goodPlacement)
