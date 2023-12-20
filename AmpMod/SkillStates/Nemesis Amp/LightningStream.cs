@@ -55,11 +55,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
 
             Transform origin;
+            HurtBox hurtbox;
 
             //use this to sync rightmuzzletransform 
             public SyncTransform()
             {
 
+            }
+
+            public SyncTransform(HurtBox hurtbox)
+            {
+                this.hurtbox = hurtbox;
             }
 
             public SyncTransform(Transform origin)
@@ -73,6 +79,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
 
                 this.origin = reader.ReadTransform();
+                this.hurtbox = reader.ReadHurtBoxReference().ResolveHurtBox();
 
             }
 
@@ -86,6 +93,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             public void Serialize(NetworkWriter writer)
             {
                 writer.Write(origin);
+                writer.Write(HurtBoxReference.FromHurtBox(hurtbox));
             }
         } 
       
@@ -112,7 +120,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 this.childLocator = modelTransform.GetComponent<ChildLocator>();
                 this.animator = modelTransform.GetComponent<Animator>();
             }
-
+             
             this.tickTime = this.baseTickTime / this.attackSpeedStat;
 
          
@@ -120,11 +128,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (NetworkServer.active)
                 {
+                    Debug.Log("on network checking target");
                     //rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                     this.targetHurtbox = tracker.GetTrackingTarget();
+                    Debug.Log("now target hurtbox is on network: " + tracker.GetTrackingTarget());
                 }
 
                 this.targetHurtbox = tracker.GetTrackingTarget();
+                Debug.Log(tracker.GetTrackingTarget()) ;
+                Debug.Log("now target hurtbox is on client: " + targetHurtbox);
+
                 animator.SetBool("NemIsFulminating", true);
                 //base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
                 
@@ -134,6 +147,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 SyncTransform sync = new SyncTransform(rightMuzzleTransform);
                 sync.Send(R2API.Networking.NetworkDestination.Clients);
                 sync.Send(R2API.Networking.NetworkDestination.Server);
+
+                SyncTransform syncbox = new SyncTransform(targetHurtbox);
+                syncbox.Send(R2API.Networking.NetworkDestination.Server);
                 //new SyncTransform(rightMuzzleTransform).Send(R2API.Networking.NetworkDestination.Clients);
 
 
@@ -146,6 +162,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             }
 
+            if (NetworkServer.active)
+            {
+                Debug.Log("on network, seeing target hurtbox as" + tracker.GetTrackingTarget());
+            }
             //base.PlayAnimation("Spawn, Override", "Spawn", "Spawn.playbackRate", 4f);
             //animations
 
@@ -171,8 +191,9 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             this.tickTimer = this.tickTime;
 
+
             this.targetHurtbox = tracker.GetTrackingTarget();
-           
+            
 
             if (targetHurtbox)
             {
@@ -250,10 +271,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     hasBegunSound = true;
                 }
 
-        
+
+
 
             }
-
 
             this.FireLightning();
 
@@ -280,6 +301,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                Debug.Log("hurtbox for orb not found");
             }
 
+            Debug.Log("creating damage orb");
             targetHurtbox = tracker.GetTrackingTarget();
             NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
 
@@ -287,7 +309,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             //SyncTransform sync = new SyncTransform(rightMuzzleTransform);
            // sync.Send(R2API.Networking.NetworkDestination.Clients);
             //sync.Send(R2API.Networking.NetworkDestination.Server);
-
             lockOrb.damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat);
             lockOrb.origin = rightMuzzleTransform.position;
             lockOrb.isCrit = base.characterBody.RollCrit();
@@ -302,6 +323,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lockOrb.damageCoefficientPerBounce = .8f;
             lockOrb.nemLightningColorController = this.lightningController;
 
+            Debug.Log("lockorb damage value is " + lockOrb.damageValue);
             return lockOrb;
         }
 

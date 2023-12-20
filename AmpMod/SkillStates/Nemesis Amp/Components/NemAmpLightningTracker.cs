@@ -66,7 +66,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 		private void FixedUpdate()
 		{
-			if (characterBody.skillLocator.primary.skillNameToken != "NT_NEMAMP_BODY_PRIMARY_LIGHTNING_NAME") return;
+			if (characterBody.skillLocator.primary.skillNameToken != "NT_NEMAMP_BODY_PRIMARY_LIGHTNING_NAME" && this.indicator.active)
+            {
+				this.indicator.active = false;
+            }
+
+			if (characterBody.skillLocator.primary.skillNameToken == "NT_NEMAMP_BODY_PRIMARY_LIGHTNING_NAME" && !this.indicator.active)
+			{
+				this.indicator.active = true;
+			}
 
 			this.trackerUpdateStopwatch += Time.fixedDeltaTime;
 			if (this.trackerUpdateStopwatch >= 1f / this.trackerUpdateFrequency)

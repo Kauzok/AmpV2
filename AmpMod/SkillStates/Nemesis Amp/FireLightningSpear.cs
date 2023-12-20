@@ -164,6 +164,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 Destroy(lightningMuzzleTransform.gameObject);
             }
+
             AkSoundEngine.StopPlayingID(stopID);
             if (!hasFired)
             {

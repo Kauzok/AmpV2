@@ -20,6 +20,7 @@ using RoR2.Stats;
 using BepInEx.Configuration;
 using R2API.Networking;
 using AmpMod.SkillStates.Nemesis_Amp;
+using AmpMod.SkillStates.Nemesis_Amp.Orbs;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -88,7 +89,7 @@ namespace AmpMod.Modules
 
             // Register SyncOrbs INetMessage for usage in syncing orbs
             NetworkingAPI.RegisterMessageType<AmpChargeTracker.SyncOrbs>();
-            NetworkingAPI.RegisterMessageType<NemAmpLightningTetherController.SyncTransform>();
+            NetworkingAPI.RegisterMessageType<NemAmpLightningLockOrb.SyncChain>();
             NetworkingAPI.RegisterMessageType<LightningStream.SyncTransform>();
 
             /*   //material shader autoconversion

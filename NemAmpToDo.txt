@@ -4,7 +4,8 @@ To do prerelease:
 	- Death explosion plays most of the time, but sometimes doesn't? (check, added hasspawnedexplosion check)
 		- Explosion doesn't destroy body on server for some reason???? Host can still see it
 	- Invisible vfx:
-			- Lightning stream chain vfx? check
+			- Lightning stream chain vfx
+	- The fulmination latency issue is caused by the network not seeing the targethurtbox until a bit later; consider syncing automatically
 beam fires twice sound?
 
 Amp To Do:
