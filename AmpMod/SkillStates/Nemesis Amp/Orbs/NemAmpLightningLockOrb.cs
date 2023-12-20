@@ -6,6 +6,8 @@ using RoR2;
 using R2API;
 using AmpMod.SkillStates.Nemesis_Amp.Components;
 using System.Linq;
+using R2API.Networking.Interfaces;
+using UnityEngine.Networking;
 
 namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 {
@@ -33,7 +35,43 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		public bool procControlledCharge;
 		public bool isChaining;
 		private Components.NemAmpChainLightningNoise chainObject;
+		public class SyncChain : INetMessage
+		{
 
+			GameObject chain;
+
+			//use this to sync rightmuzzletransform 
+			public SyncChain()
+			{
+
+			}
+
+			public SyncChain(GameObject chain)
+			{
+
+				this.chain = chain;
+			}
+
+			//we then read the targethurtbox as a hurtboxreference
+			public void Deserialize(NetworkReader reader)
+			{
+
+				this.chain = reader.ReadGameObject();
+
+			}
+
+			//give the syncmessage the hurtbox you want to sync TO (will use hurtbox == playerObject.gettrackingtarget)
+			public void OnReceived()
+			{
+
+			}
+
+			//start by writing the current targethurtbox to network as a hurtboxreference
+			public void Serialize(NetworkWriter writer)
+			{
+				writer.Write(chain);
+			}
+		}
 		public override void Begin()
 		{
             //Debug.Log("lightning attack spawning");
@@ -62,7 +100,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 				//chainEffectData.SetHurtBoxReference(this.target);
 				EffectManager.SpawnEffect(Modules.Assets.lightningStreamChainEffect, chainEffectData, true);
 				*/
-				chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<Components.NemAmpChainLightningNoise>();
+				Debug.Log("is chaining");
+				
+				chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<NemAmpChainLightningNoise>();
+				new SyncChain(chainObject.gameObject).Send(R2API.Networking.NetworkDestination.Clients);
 				chainObject.startPosition = this.origin;
 				chainObject.healthComponent = this.target.healthComponent;
 

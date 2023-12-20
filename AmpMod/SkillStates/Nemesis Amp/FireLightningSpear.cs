@@ -88,12 +88,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 {
                     AkSoundEngine.StopPlayingID(stopID);
                     Util.PlaySound(shootString, base.gameObject);
-
+                    stackDamageController.newSkillUsed = this;
+                    stackDamageController.resetComboTimer();
                     if (base.isAuthority)
                     {
                         Fire();
-                        stackDamageController.newSkillUsed = this;
-                        stackDamageController.resetComboTimer();
+                  
                         hasFired = true;
                     }
 

@@ -130,10 +130,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (!hasFired && base.fixedAge > this.waitDuration)
             {
                 Util.PlaySound(fireSoundString, base.gameObject);
+                hasFired = true;
                 if (base.isAuthority)
                 {
-                    this.Fire();
-                    hasFired = true;
+                    this.Fire();                   
                 }
 
             }

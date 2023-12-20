@@ -3,41 +3,9 @@ To do prerelease:
 - Multiplayer
 	- Death explosion plays most of the time, but sometimes doesn't? (check, added hasspawnedexplosion check)
 		- Explosion doesn't destroy body on server for some reason???? Host can still see it
-	- Flux Blades
-		- Can't hear fire sfx (probably another isauthority issue)
-	- Voidsurge 
-		- Plasma projectile has inconsistent collision (check)
 	- Invisible vfx:
-			- Lightning ball muzle flash (unimportant) 
-			- lightning stream muzzle prefab (kind of important) (glitches out and can't see properly)
-			- Lorentz blades aiming prefabs (important) 
 			- Lightning stream chain vfx? check
-			- Lightning stream vfx (very important)
-				- error appears on client when server uses skill, seemingly randomly; probably to do with rightMuzzleTransform
-
-[Error  : Unity Log] NullReferenceException: Object reference not set to an instance of an object
-Stack trace:
-AmpMod.SkillStates.Nemesis_Amp.NemAmpLightningTetherController.CreateLightningTether (UnityEngine.GameObject attacker, UnityEngine.Transform origin) (at D:/Modding/RoR2/Battlemage V2/BattlemageV2/AmpMod/SkillStates/Nemesis Amp/Components/NemAmpLightningTetherController.cs:89)
-AmpMod.SkillStates.Nemesis_Amp.LightningStream.FixedUpdate () (at D:/Modding/RoR2/Battlemage V2/BattlemageV2/AmpMod/SkillStates/Nemesis Amp/LightningStream.cs:252)
-RoR2.EntityStateMachine.FixedUpdate () (at <1d532be543be416b9db3594e4b62447d>:IL_001A)
-
-[Error  : Unity Log] NullReferenceException
-Stack trace:
-AmpMod.SkillStates.Nemesis_Amp.LightningStream.OnEnter () (at D:/Modding/RoR2/Battlemage V2/BattlemageV2/AmpMod/SkillStates/Nemesis Amp/LightningStream.cs:153)
-RoR2.EntityStateMachine.SetState (EntityStates.EntityState newState) (at <1d532be543be416b9db3594e4b62447d>:IL_005C)
-RoR2.NetworkStateMachine.HandleSetEntityState (UnityEngine.Networking.NetworkMessage netMsg) (at <1d532be543be416b9db3594e4b62447d>:IL_00B9)
-UnityEngine.Networking.NetworkConnection.HandleReader (UnityEngine.Networking.NetworkReader reader, System.Int32 receivedSize, System.Int32 channelId) (at <2a7d59f3977e436480000365e023da3e>:IL_012D)
-UnityEngine.Networking.NetworkConnection.HandleBytes (System.Byte[] buffer, System.Int32 receivedSize, System.Int32 channelId) (at <2a7d59f3977e436480000365e023da3e>:IL_0007)
-UnityEngine.Networking.NetworkConnection.TransportReceive (System.Byte[] bytes, System.Int32 numBytes, System.Int32 channelId) (at <2a7d59f3977e436480000365e023da3e>:IL_0000)
-RoR2.Networking.SteamNetworkConnection.TransportReceive (System.Byte[] bytes, System.Int32 numBytes, System.Int32 channelId) (at <1d532be543be416b9db3594e4b62447d>:IL_0019)
-RoR2.Networking.NetworkManagerSystemSteam.OnP2PData (Facepunch.Steamworks.BaseSteamworks receiver, CSteamID senderSteamId, System.Byte[] data, System.Int32 dataLength, System.Int32 channel) (at <1d532be543be416b9db3594e4b62447d>:IL_0044)
-RoR2.Networking.NetworkManagerSystemSteam.OnSteamClientP2PData (System.UInt64 senderSteamId, System.Byte[] data, System.Int32 dataLength, System.Int32 channel) (at <1d532be543be416b9db3594e4b62447d>:IL_000C)
-Facepunch.Steamworks.Networking.ReadP2PPacket (System.Int32 channel) (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0082)
-Facepunch.Steamworks.Networking.Update () (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0054)
-Facepunch.Steamworks.BaseSteamworks.Update () (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0006)
-Facepunch.Steamworks.Client.Update () (at <0ca17294c1634ce4acda47c711e5ecf1>:IL_0025)
-RoR2.SteamworksClientManager.Update () (at <1d532be543be416b9db3594e4b62447d>:IL_0006)
-RoR2.RoR2Application.Update () (at <1d532be543be416b9db3594e4b62447d>:IL_005F)
+beam fires twice sound?
 
 Amp To Do:
 - Implement anims
@@ -45,6 +13,7 @@ Amp To Do:
 
 To do post release:
 - Implement lorentz blades animations when idle
+- Lore
 - Clean up unity project
 - Adjust animations so aiming up actually makes you do things up
 - Alt special (fire a continuous beam of light in front of you that deals 100% damage per tick and detonates stacks of controlled charge

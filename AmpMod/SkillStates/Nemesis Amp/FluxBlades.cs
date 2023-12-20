@@ -146,8 +146,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             this.hasFired = true;
 
 
-            if (base.isAuthority)
-            {
+           
                 // Calculate the angle between each bullet
                 float angle = (Mathf.PI / (numOfBullets - 1));
                 int i = 0;
@@ -205,56 +204,58 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 // there place facing the interction point or if no intersection the players direction
                 for (int k = 0; k < numOfBullets; k++)
                 {
-                    // Weird break where the bullets would lock on too close so in order to avoid that
-                    // I used a arbitrary value of 2.5 so anything too close wont fire wrong
-                    if (somethingHit && hit.distance > 2.5f)
-                    {
-                        // Calculate the directional vector for the bullet to hit the collision point and normalized to a magnitude of 1
-                        direction = (hit.point - bullets[k].transform.position).normalized;
-                    }
-                    else
-                    {
-                        direction = aimRay.direction;
-                    }
 
-
-
-
-                    // Spawn the projectile at the gameobjects current location
-                    ProjectileManager.instance.FireProjectile(bladePrefab,
-                    bullets[k].transform.position,
-                    Quaternion.LookRotation(direction),
-                    base.gameObject,
-                    damageCoefficient * this.damageStat,
-                    launchForce,
-                    base.RollCrit(),
-                    DamageColorIndex.Default,
-                    null,
-                    launchForce);
-                    //play sound for each fire event
-                    ///Util.PlaySound(launchString, base.gameObject);
-                    // Destroy bullet after spawning projectile version
-                    Destroy(bullets[k]);
-                    //yield return new WaitForSeconds(fireDuration / numOfBullets);
-                    //time between projectile launches
-                    //EffectManager.SimpleMuzzleFlash(fireEffect, bullets[k].gameObject, null, true);
-                    EffectManager.SpawnEffect(fireEffect, new EffectData
-                    {
-                        scale = 1f,
-                        origin = bullets[k].gameObject.transform.position,
-                        rotation = bullets[k].gameObject.transform.rotation,
-                    }, true) ;
                     Util.PlayAttackSpeedSound(soundString, base.gameObject, this.attackSpeedStat);
-                    yield return new WaitForSeconds(fireDuration / numOfBullets);
+                    if (base.isAuthority)
+                    {
+                
+                        // Weird break where the bullets would lock on too close so in order to avoid that
+                        // I used a arbitrary value of 2.5 so anything too close wont fire wrong
+                        if (somethingHit && hit.distance > 2.5f)
+                        {
+                            // Calculate the directional vector for the bullet to hit the collision point and normalized to a magnitude of 1
+                            direction = (hit.point - bullets[k].transform.position).normalized;
+                        }
+                        else
+                        {
+                            direction = aimRay.direction;
+                        }
+
+                        // Spawn the projectile at the gameobjects current location
+                        ProjectileManager.instance.FireProjectile(bladePrefab,
+                        bullets[k].transform.position,
+                        Quaternion.LookRotation(direction),
+                        base.gameObject,
+                        damageCoefficient * this.damageStat,
+                        launchForce,
+                        base.RollCrit(),
+                        DamageColorIndex.Default,
+                        null,
+                        launchForce);
+                        //play sound for each fire event
+                        ///Util.PlaySound(launchString, base.gameObject);
+                        
+                        //yield return new WaitForSeconds(fireDuration / numOfBullets);
+                        //time between projectile launches
+                        //EffectManager.SimpleMuzzleFlash(fireEffect, bullets[k].gameObject, null, true);
+                        EffectManager.SpawnEffect(fireEffect, new EffectData
+                        {
+                            scale = 1f,
+                            origin = bullets[k].gameObject.transform.position,
+                            rotation = bullets[k].gameObject.transform.rotation,
+                        }, true) ;
+                    }
+                    Destroy(bullets[k]);
+
+                    //wait for seconds after destroying bullets
+                    if (base.isAuthority)
+                    {
+                        yield return new WaitForSeconds(fireDuration / numOfBullets);
+
+                    }
+
+
                 }
-                //cancel prep sfx
-               // AkSoundEngine.StopPlayingID(stopPrepID);
-                //play ferroshot launch effect from soundbank
-                //Util.PlaySound(launchString, base.gameObject);
-
-
-
-            }
 
         }
         /*     public override InterruptPriority GetMinimumInterruptPriority()

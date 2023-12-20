@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using AmpMod.Modules;
 using UnityEngine.Networking;
 using AmpMod.SkillStates.Nemesis_Amp.Components;
+using R2API.Networking.Interfaces;
 
 namespace AmpMod.SkillStates.Nemesis_Amp
 {
@@ -48,6 +49,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 lightningTetherVFX = Assets.lightningStreamEffectBlue;
             }
+
             else
             {
                 lightningTetherVFX = Assets.lightningStreamEffect;
@@ -85,12 +87,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     victimBody = oldLightningTarget.GetComponent<CharacterBody>();
                     victimObject = oldLightningTarget;
 
-                    //spawn lightning tether and parent its transform to our origin transform
+
                     lightningTetherInstance = UnityEngine.Object.Instantiate<GameObject>(lightningTetherVFX, origin.position, origin.rotation);                
                     lightningTetherInstance.transform.parent = origin;
+                    
 
                     //debug check to make sure that the problem actually is the origin
-                    Debug.Log(origin.name + " is our origin");
+                    if (NetworkServer.active)
+                    {
+                        //Debug.Log(origin.name + " is our origin");
+                    }
+                    
 
                     //grab linerenderer component
                     if (lightningTetherInstance)

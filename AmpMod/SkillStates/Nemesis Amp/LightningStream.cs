@@ -51,67 +51,43 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float soundTimer;
         private bool hasBegunSound;
 
-        public class SyncTarget : INetMessage
+        public class SyncTransform : INetMessage
         {
-            NetworkInstanceId playerNetId;
-            NetworkInstanceId targetdNetId;
-            HurtBox targetHurtbox;
-            HurtBoxReference targetHurtboxReference;
+
+            Transform origin;
 
             //use this to sync rightmuzzletransform 
-            public SyncTarget()
+            public SyncTransform()
             {
 
             }
 
-            public SyncTarget(NetworkInstanceId playerId, NetworkInstanceId trackedId, HurtBox targetHurtbox)
+            public SyncTransform(Transform origin)
             {
-                this.playerNetId = playerId;
-                this.targetdNetId = trackedId;
-                this.targetHurtbox = targetHurtbox;
+
+                this.origin = origin;
             }
 
             //we then read the targethurtbox as a hurtboxreference
             public void Deserialize(NetworkReader reader)
             {
-                playerNetId = reader.ReadNetworkId();
-                targetdNetId = reader.ReadNetworkId();
-                
-                targetHurtboxReference = reader.ReadHurtBoxReference();
-                
-                
-            }
 
+                this.origin = reader.ReadTransform();
+
+            }
 
             //give the syncmessage the hurtbox you want to sync TO (will use hurtbox == playerObject.gettrackingtarget)
             public void OnReceived()
             {
-                if (NetworkServer.active)
-                {
-                    Debug.Log("SyncTarget: Host ran this. Skip.");
-                    return;
-                }
-
-                GameObject playerObject = Util.FindNetworkObject(playerNetId);
-                GameObject targetObject = Util.FindNetworkObject(targetdNetId);
-                CharacterBody targetBody = targetObject.GetComponent<CharacterBody>();
-
-                //sets target reference to what the player is tracking at the given time from clients
-                //have to somehow modify the current instance of targetHurtbox in use
-                HurtBox hurtbox = targetHurtboxReference.ResolveHurtBox();
-                hurtbox =  playerObject.GetComponent<NemAmpLightningTracker>().GetTrackingTarget();
-
+        
             }
 
             //start by writing the current targethurtbox to network as a hurtboxreference
             public void Serialize(NetworkWriter writer)
             {
-                writer.Write(playerNetId);
-                writer.Write(targetdNetId);
-                writer.Write(HurtBoxReference.FromHurtBox(targetHurtbox));
-
+                writer.Write(origin);
             }
-        }
+        } 
       
 
         public override void OnEnter()
@@ -139,7 +115,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             this.tickTime = this.baseTickTime / this.attackSpeedStat;
 
-            //Debug.Log(base.characterBody.bodyIndex);
          
             if (tracker.GetTrackingTarget())
             {
@@ -154,7 +129,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 //base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
                 
                 //this call gets an error, what the hell?
+                
                 rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
+                SyncTransform sync = new SyncTransform(rightMuzzleTransform);
+                sync.Send(R2API.Networking.NetworkDestination.Clients);
+                sync.Send(R2API.Networking.NetworkDestination.Server);
+                //new SyncTransform(rightMuzzleTransform).Send(R2API.Networking.NetworkDestination.Clients);
+
 
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
 
@@ -254,6 +235,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 if (targetHurtbox && !lightningTetherActive)
                 {
+                    /*  rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
+                      SyncTransform sync = new SyncTransform(rightMuzzleTransform);
+                      sync.Send(R2API.Networking.NetworkDestination.Clients);
+                      sync.Send(R2API.Networking.NetworkDestination.Server); */
+                    rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                     lightningEffectController.CreateLightningTether(base.gameObject, rightMuzzleTransform);
                     lightningTetherActive = true;
                 }
@@ -291,13 +277,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (!targetHurtbox)
             {
-               // Debug.Log("hurtbox for orb not found");
+               Debug.Log("hurtbox for orb not found");
             }
 
             targetHurtbox = tracker.GetTrackingTarget();
             NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
 
             rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
+            //SyncTransform sync = new SyncTransform(rightMuzzleTransform);
+           // sync.Send(R2API.Networking.NetworkDestination.Clients);
+            //sync.Send(R2API.Networking.NetworkDestination.Server);
 
             lockOrb.damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat);
             lockOrb.origin = rightMuzzleTransform.position;

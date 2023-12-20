@@ -88,7 +88,8 @@ namespace AmpMod.Modules
 
             // Register SyncOrbs INetMessage for usage in syncing orbs
             NetworkingAPI.RegisterMessageType<AmpChargeTracker.SyncOrbs>();
-            NetworkingAPI.RegisterMessageType<LightningStream.SyncTarget>();
+            NetworkingAPI.RegisterMessageType<NemAmpLightningTetherController.SyncTransform>();
+            NetworkingAPI.RegisterMessageType<LightningStream.SyncTransform>();
 
             /*   //material shader autoconversion
                var materialAssets = Assets.mainAssetBundle.LoadAllAssets<Material>();
