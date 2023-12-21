@@ -87,7 +87,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				//Debug.Log(indicator + " is indicator");
 			}
 
-			checkNearbyEnemies();
+			//checkNearbyEnemies();
 		}
 
 		private void SearchForTarget(Ray aimRay)
@@ -103,11 +103,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			this.search.FilterOutGameObject(base.gameObject);
 			this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
 
-			if (NetworkServer.active)
-            {
-				this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
-				Debug.Log("networkserver tracking target is + " + trackingTarget);
-			}
+
 		}
 
 		private void checkNearbyEnemies() {

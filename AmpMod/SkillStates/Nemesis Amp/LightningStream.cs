@@ -51,41 +51,112 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float soundTimer;
         private bool hasBegunSound;
 
-        public class SyncTransform : INetMessage
+        public class SyncDamage : INetMessage
         {
 
-            Transform origin;
+            HurtBoxReference target;
+            bool isChaining;
+            bool procCharged;
+            NetworkInstanceId bodyID;
+            Transform muzzleTransform;
+            double damageVal;
 
             //use this to sync rightmuzzletransform 
-            public SyncTransform()
+            public SyncDamage()
             {
 
             }
+            private NemAmpLightningLockOrb createDmgOrb(GameObject attacker)
+            {
+                var targetHurtbox = target.ResolveHurtBox();
+                if (targetHurtbox)
+                {
+                    Debug.Log("seeing target hurtbox on syncdamage as " + targetHurtbox);
+                    // Debug.Log("creating orb on hurtbox");
+                    //Debug.Log(targetHurtbox.gameObject.GetComponent<CharacterBody>().name + "is target");
+                }
 
-            public SyncTransform(Transform origin)
+                if (!targetHurtbox)
+                {
+                    Debug.Log("hurtbox for orb not found");
+                }
+
+                NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
+
+                var body = attacker.GetComponent<CharacterBody>();
+
+                lockOrb.damageValue = (float) damageVal;
+                //lockOrb.origin = muzzleTransform.position;
+                lockOrb.isCrit = body.RollCrit();
+                lockOrb.damageType = DamageType.Generic;
+                lockOrb.teamIndex = body.teamComponent.teamIndex;
+                lockOrb.attacker = attacker;
+                lockOrb.procCoefficient = .2f;
+                lockOrb.damageColorIndex = DamageColorIndex.Default;
+                lockOrb.target = targetHurtbox;
+                lockOrb.bouncedObjects = new List<HealthComponent>();
+                lockOrb.range = 30f;
+                lockOrb.damageCoefficientPerBounce = .8f;
+                lockOrb.nemLightningColorController = attacker.GetComponent<NemLightningColorController>();
+
+                Debug.Log("lockorb damage value is " + lockOrb.damageValue);
+                return lockOrb;
+            }
+
+            public SyncDamage(HurtBoxReference target, Transform muzzleTransform, NetworkInstanceId bodyID, double damageVal, bool isChaining, bool procCharged)
             {
 
-                this.origin = origin;
+                this.target = target;
+                this.muzzleTransform = muzzleTransform;
+                this.damageVal = damageVal;
+                this.bodyID = bodyID;
+                this.isChaining = isChaining;
+                this.procCharged = procCharged;
             }
 
             //we then read the targethurtbox as a hurtboxreference
             public void Deserialize(NetworkReader reader)
             {
 
-                this.origin = reader.ReadTransform();
+                this.target = reader.ReadHurtBoxReference();
+                this.bodyID = reader.ReadNetworkId();
+                this.muzzleTransform = reader.ReadTransform();
+                this.damageVal = reader.ReadDouble();
+                this.isChaining = reader.ReadBoolean();
+                this.procCharged = reader.ReadBoolean();
 
             }
 
-            //give the syncmessage the hurtbox you want to sync TO (will use hurtbox == playerObject.gettrackingtarget)
+            //do damage
             public void OnReceived()
             {
-        
+
+                var lightningOrb = createDmgOrb(Util.FindNetworkObject(bodyID));
+
+                lightningOrb.procControlledCharge = this.procCharged;
+
+                if(isChaining)
+                {
+                    lightningOrb.bouncesRemaining = 2;
+                }
+                else
+                {
+                    lightningOrb.isChaining = false;
+                    lightningOrb.bouncesRemaining = 0;
+                }
+
+                OrbManager.instance.AddOrb(lightningOrb);
+
             }
 
-            //start by writing the current targethurtbox to network as a hurtboxreference
             public void Serialize(NetworkWriter writer)
             {
-                writer.Write(origin);
+                writer.Write(target);
+                writer.Write(bodyID);
+                writer.Write(muzzleTransform);
+                writer.Write(damageVal);
+                writer.Write(isChaining);
+                writer.Write(procCharged);
             }
         }
 
@@ -99,9 +170,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             lightningController = base.GetComponent<NemLightningColorController>();
             muzzleEffect = lightningController.streamMuzzleVFX;
             muzzleFlashEffect = lightningController.streamMuzzleFlashVFX;
-            //lightningEffectController.lightningTetherVFX = lightningController.streamVFX;
-
-            //Util.PlaySound(startSoundString, base.gameObject);
 
             tracker = base.GetComponent<NemAmpLightningTracker>();
 
@@ -130,31 +198,18 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 //Debug.Log("now target hurtbox is on client: " + targetHurtbox);
 
                 animator.SetBool("NemIsFulminating", true);
-                //base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
-                
+
                 //this call gets an error, what the hell?
                 
                 rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
-                SyncTransform sync = new SyncTransform(rightMuzzleTransform);
-                sync.Send(R2API.Networking.NetworkDestination.Clients);
-                sync.Send(R2API.Networking.NetworkDestination.Server);
 
-                //new SyncTransform(rightMuzzleTransform).Send(R2API.Networking.NetworkDestination.Clients);
-                
 
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
 
                 this.nexusMuzzleTransform = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform).transform;
-                //GameObject spawn = UnityEngine.Object.Instantiate<GameObject>(muzzleEffect, rightMuzzleTransform);
-                //NetworkServer.Spawn(spawn);
-                //this.nexusMuzzleTransform = spawn.transform;
 
             }
 
-            if (NetworkServer.active)
-            {
-                Debug.Log("on network, seeing target hurtbox as" + tracker.GetTrackingTarget());
-            }
             //base.PlayAnimation("Spawn, Override", "Spawn", "Spawn.playbackRate", 4f);
             //animations
 
@@ -163,7 +218,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
         private void FireLightning()
         {
-            if (!NetworkServer.active && tickTimer <= 0f)
+            /*if (!NetworkServer.active && tickTimer <= 0f)
             {
                 this.targetHurtbox = tracker.GetTrackingTarget();
             }
@@ -173,8 +228,19 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 //Debug.Log("returning");
                 return;
                 
+            } */
+
+            if (tickTimer <= 0f)
+            {
+                this.targetHurtbox = tracker.GetTrackingTarget();
             }
 
+            if (tickTimer > 0f)
+            {
+                //Debug.Log("returning");
+                return;
+
+            }
 
             //Debug.Log("not returning");
 
@@ -186,28 +252,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             if (targetHurtbox)
             {
-                
-                NemAmpLightningLockOrb lightningOrb = createDmgOrb();
-                lightningOrb.procControlledCharge = false;
+                bool isChaining = (base.GetBuffCount(Buffs.damageGrowth) == StaticValues.growthBuffMaxStacks);
+                bool procCharged = (Util.CheckRoll(procCoefficient * 100f, base.characterBody.master));
+                double damageVal = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat);
 
-                if (Util.CheckRoll(procCoefficient * 100f, base.characterBody.master))
-                {
-                    lightningOrb.procControlledCharge = true;
-                }
+                SyncDamage sync = new SyncDamage(HurtBoxReference.FromHurtBox(targetHurtbox), rightMuzzleTransform, base.gameObject.GetComponent<NetworkIdentity>().netId, damageVal, isChaining, procCharged);
+                sync.Send(R2API.Networking.NetworkDestination.Server);
 
-
-                if (base.GetBuffCount(Buffs.damageGrowth) == StaticValues.growthBuffMaxStacks)
-                {
-                    //lightningOrb.isChaining = true;
-                    lightningOrb.bouncesRemaining = 2;
-                }
-                else
-                {
-                    lightningOrb.isChaining = false;
-                    lightningOrb.bouncesRemaining = 0;
-                }
-                OrbManager.instance.AddOrb(lightningOrb);
-                //Debug.Log("firing orb on client");
                 //if (NetworkServer.active) Debug.Log("firing orb on server");
 
             }
@@ -264,11 +315,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 
             }
-            //remove this line if stuff breaks
-            if (NetworkServer.active)
-            {
-                this.targetHurtbox = tracker.GetTrackingTarget();
-            }
             
             this.FireLightning();
 
@@ -282,7 +328,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
         }
 
-        private NemAmpLightningLockOrb createDmgOrb()
+      /*  private NemAmpLightningLockOrb createDmgOrb()
         {
             if (targetHurtbox)
             {
@@ -319,7 +365,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
             Debug.Log("lockorb damage value is " + lockOrb.damageValue);
             return lockOrb;
-        }
+        } */
 
 
         public override void OnExit()

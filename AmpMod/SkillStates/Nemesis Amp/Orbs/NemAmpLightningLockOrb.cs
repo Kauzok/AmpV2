@@ -37,6 +37,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		public bool isChaining;
 		private Components.NemAmpChainLightningNoise chainNoise;
 		private GameObject chainPrefab;
+		public bool isBlue;
 		public class SyncChain : INetMessage
 		{
 
@@ -102,26 +103,22 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		}
 		public override void Begin()
 		{
-            //Debug.Log("lightning attack spawning");
-            //base.Begin();
+
             base.duration = 0.1f;
-			//this.speed = 120f;
 			EffectData effectData = new EffectData
 			{
-				//origin = this.origin,
 				origin = this.target.healthComponent.gameObject.transform.position,
 				genericFloat = base.duration,
 			};
 
 			effectData.SetHurtBoxReference(this.target);
 			//this prefab is empty of everything except for the impact effect; the actual lightning stream is controlled by the lightningeffectcontroller
+			
 			EffectManager.SpawnEffect(nemLightningColorController.streamImpactVFX, effectData, true);
 
 			if (this.isChaining)
 			{
-				Debug.Log("is chaining");
-
-				//chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<NemAmpChainLightningNoise>();
+				//Debug.Log("is chaining");
 				
 				if (this.target.healthComponent.gameObject)
                 {

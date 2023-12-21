@@ -1,9 +1,4 @@
 To do prerelease:
-- Multiplayer
-	- Invisible vfx:
-			- Lightning stream chain vfx
-	- The fulmination latency issue is caused by the network not seeing the targethurtbox until a bit later; consider syncing automatically
-beam fires twice sound?
 
 Amp To Do:
 - Implement anims
