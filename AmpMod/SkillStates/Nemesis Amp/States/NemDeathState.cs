@@ -77,21 +77,22 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 //EntityState.Destroy(base.gameObject);
             }
             //EntityState.Destroy(base.gameObject);
-            //this.OnPreDestroyBodyServer();
-            //EntityState.Destroy(base.gameObject);
+            this.OnPreDestroyBodyServer();
             base.DestroyModel();
+            EntityState.Destroy(base.gameObject);
+            
         }
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;  
 
-            Debug.Log("in fixed update");
-            Debug.Log(stopwatch);
+           // Debug.Log("in fixed update");
+            //Debug.Log(stopwatch);
             if (this.stopwatch >= waitDuration-.22f && !hasSpawnedExplosion)
             {
                 spawnDeathExplosion();
-                Debug.Log("spawning death explosion");
+                //Debug.Log("spawning death explosion");
                 hasSpawnedExplosion = true;
                 
             }
@@ -100,7 +101,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             {
                 //base.DestroyModel();
                 //EntityState.Destroy(base.gameObject);
-                Debug.Log("destroying body");
+               // Debug.Log("destroying body");
                 base.DestroyBodyAsapServer();
             }
         }

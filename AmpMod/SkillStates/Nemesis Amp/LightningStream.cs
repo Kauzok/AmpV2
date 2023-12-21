@@ -55,17 +55,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         {
 
             Transform origin;
-            HurtBox hurtbox;
 
             //use this to sync rightmuzzletransform 
             public SyncTransform()
             {
 
-            }
-
-            public SyncTransform(HurtBox hurtbox)
-            {
-                this.hurtbox = hurtbox;
             }
 
             public SyncTransform(Transform origin)
@@ -79,7 +73,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
 
                 this.origin = reader.ReadTransform();
-                this.hurtbox = reader.ReadHurtBoxReference().ResolveHurtBox();
 
             }
 
@@ -93,10 +86,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             public void Serialize(NetworkWriter writer)
             {
                 writer.Write(origin);
-                writer.Write(HurtBoxReference.FromHurtBox(hurtbox));
             }
-        } 
-      
+        }
 
         public override void OnEnter()
         {
@@ -128,15 +119,15 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             {
                 if (NetworkServer.active)
                 {
-                    Debug.Log("on network checking target");
+                    //Debug.Log("on network checking target");
                     //rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
                     this.targetHurtbox = tracker.GetTrackingTarget();
-                    Debug.Log("now target hurtbox is on network: " + tracker.GetTrackingTarget());
+                    //Debug.Log("now target hurtbox is on network: " + tracker.GetTrackingTarget());
                 }
 
                 this.targetHurtbox = tracker.GetTrackingTarget();
-                Debug.Log(tracker.GetTrackingTarget()) ;
-                Debug.Log("now target hurtbox is on client: " + targetHurtbox);
+                //Debug.Log(tracker.GetTrackingTarget()) ;
+                //Debug.Log("now target hurtbox is on client: " + targetHurtbox);
 
                 animator.SetBool("NemIsFulminating", true);
                 //base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
@@ -148,10 +139,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 sync.Send(R2API.Networking.NetworkDestination.Clients);
                 sync.Send(R2API.Networking.NetworkDestination.Server);
 
-                SyncTransform syncbox = new SyncTransform(targetHurtbox);
-                syncbox.Send(R2API.Networking.NetworkDestination.Server);
                 //new SyncTransform(rightMuzzleTransform).Send(R2API.Networking.NetworkDestination.Clients);
-
+                
 
                 base.PlayAnimation("RightArm, Override", "ShootLightning", "BaseSkill.playbackRate", 0.4f);
 
@@ -275,7 +264,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 
             }
-
+            //remove this line if stuff breaks
+            if (NetworkServer.active)
+            {
+                this.targetHurtbox = tracker.GetTrackingTarget();
+            }
+            
             this.FireLightning();
 
             stackDamageController.newSkillUsed = this;

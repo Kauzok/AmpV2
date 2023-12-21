@@ -102,6 +102,12 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			this.search.RefreshCandidates();
 			this.search.FilterOutGameObject(base.gameObject);
 			this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
+
+			if (NetworkServer.active)
+            {
+				this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
+				Debug.Log("networkserver tracking target is + " + trackingTarget);
+			}
 		}
 
 		private void checkNearbyEnemies() {

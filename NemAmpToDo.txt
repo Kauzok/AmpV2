@@ -1,8 +1,5 @@
 To do prerelease:
-- Why does kill_all player (which calls healthcomponent.suicide) skip to exiting after 1 second?
 - Multiplayer
-	- Death explosion plays most of the time, but sometimes doesn't? (check, added hasspawnedexplosion check)
-		- Explosion doesn't destroy body on server for some reason???? Host can still see it
 	- Invisible vfx:
 			- Lightning stream chain vfx
 	- The fulmination latency issue is caused by the network not seeing the targethurtbox until a bit later; consider syncing automatically

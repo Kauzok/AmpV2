@@ -15,13 +15,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         private CharacterBody endBody;
         private float duration = .25f;
         private float age;
-        public GameObject endGameObject;
+       // public GameObject endGameObject;
         public Vector3 startPosition;
         private float posRange = 0.2f;
         private SkillStates.Nemesis_Amp.NemAmpLightningTetherController nemAmpLightningEffectController;
         private EffectComponent effectComponent;
         private int numLineRendererPoints;
         public HealthComponent healthComponent;
+        public GameObject endObject;
         private Vector3 lastKnownTargetPosition;
         public bool callArrivalIfTargetIsGone = true;
 
@@ -29,15 +30,20 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         {
             lineRenderer = base.GetComponent<LineRenderer>();
             numLineRendererPoints = lineRenderer.positionCount;
-            if (healthComponent)
-            {
-                endGameObject = healthComponent.gameObject;
-                //Debug.Log(endGameObject + " is end gameobject");
-                if (endGameObject)
-                {
-                    endBody = healthComponent.body;
-                }
+            /* if (healthComponent)
+             {
+                 endGameObject = healthComponent.gameObject;
+                 //Debug.Log(endGameObject + " is end gameobject");
+                 if (endGameObject)
+                 {
+                     endBody = healthComponent.body;
+                 }
 
+             } */
+
+            if (endObject)
+            {
+                endBody = endObject.GetComponent<CharacterBody>();
             }
             this.lastKnownTargetPosition = (this.endBody ? this.endBody.corePosition : this.startPosition);
         }

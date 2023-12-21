@@ -8,6 +8,7 @@ using AmpMod.SkillStates.Nemesis_Amp.Components;
 using System.Linq;
 using R2API.Networking.Interfaces;
 using UnityEngine.Networking;
+using AmpMod.Modules;
 
 namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 {
@@ -34,11 +35,16 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		public static event Action<NemAmpLightningLockOrb> onLightningOrbKilledOnAllBounces;
 		public bool procControlledCharge;
 		public bool isChaining;
-		private Components.NemAmpChainLightningNoise chainObject;
+		private Components.NemAmpChainLightningNoise chainNoise;
+		private GameObject chainPrefab;
 		public class SyncChain : INetMessage
 		{
 
-			GameObject chain;
+			int blue;
+			NemAmpChainLightningNoise noiseComponent;
+			Vector3 origin;
+			GameObject endObject;
+			GameObject chainPrefab;
 
 			//use this to sync rightmuzzletransform 
 			public SyncChain()
@@ -46,30 +52,52 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 
 			}
 
-			public SyncChain(GameObject chain)
+			public SyncChain(int blue, Vector3 origin, GameObject endObject)
 			{
 
-				this.chain = chain;
+				this.blue = blue;
+				this.origin = origin;
+				this.endObject = endObject;
 			}
 
 			//we then read the targethurtbox as a hurtboxreference
 			public void Deserialize(NetworkReader reader)
 			{
 
-				this.chain = reader.ReadGameObject();
+				this.blue = reader.ReadInt32();
+				this.origin = reader.ReadVector3();
+				this.endObject = reader.ReadGameObject();
+				
 
 			}
 
 			//give the syncmessage the hurtbox you want to sync TO (will use hurtbox == playerObject.gettrackingtarget)
 			public void OnReceived()
 			{
-
+				switch (blue)
+                {
+                    case 0:
+						chainPrefab = Assets.lightningStreamChainEffectPrefab;
+							break;
+					case 1:
+						chainPrefab = Assets.lightningStreamChainEffectPrefabBlue;
+							break;
+					default:
+						Debug.LogError("SyncChain: Invalid skin index received on server");
+						break;
+				}
+				var chainObject = UnityEngine.Object.Instantiate(chainPrefab).GetComponent<NemAmpChainLightningNoise>();
+				noiseComponent = chainObject.GetComponent<NemAmpChainLightningNoise>();
+				noiseComponent.startPosition = origin;
+				noiseComponent.endObject = endObject;
 			}
 
 			//start by writing the current targethurtbox to network as a hurtboxreference
 			public void Serialize(NetworkWriter writer)
 			{
-				writer.Write(chain);
+				writer.Write(blue);
+				writer.Write(origin);
+				writer.Write(endObject);
 			}
 		}
 		public override void Begin()
@@ -91,21 +119,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 
 			if (this.isChaining)
 			{
-				/*EffectData chainEffectData = new EffectData
-				{
-					origin = this.origin,
-					//origin = this.target.healthComponent.gameObject.transform.position,
-					genericFloat = base.duration,
-				}; 
-				//chainEffectData.SetHurtBoxReference(this.target);
-				EffectManager.SpawnEffect(Modules.Assets.lightningStreamChainEffect, chainEffectData, true);
-				*/
 				Debug.Log("is chaining");
+
+				//chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<NemAmpChainLightningNoise>();
 				
-				chainObject = UnityEngine.Object.Instantiate(nemLightningColorController.streamChainVFX).GetComponent<NemAmpChainLightningNoise>();
-				new SyncChain(chainObject.gameObject).Send(R2API.Networking.NetworkDestination.Clients);
-				chainObject.startPosition = this.origin;
-				chainObject.healthComponent = this.target.healthComponent;
+				if (this.target.healthComponent.gameObject)
+                {
+					int isBlue = nemLightningColorController.isBlue ? 1 : 0;
+					new SyncChain(isBlue, this.origin, this.target.healthComponent.gameObject).Send(R2API.Networking.NetworkDestination.Clients);
+
+				}
+
 
 			}
 
