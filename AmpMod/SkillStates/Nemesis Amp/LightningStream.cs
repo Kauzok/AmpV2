@@ -71,14 +71,14 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 var targetHurtbox = target.ResolveHurtBox();
                 if (targetHurtbox)
                 {
-                    Debug.Log("seeing target hurtbox on syncdamage as " + targetHurtbox);
+                    //Debug.Log("seeing target hurtbox on syncdamage as " + targetHurtbox);
                     // Debug.Log("creating orb on hurtbox");
                     //Debug.Log(targetHurtbox.gameObject.GetComponent<CharacterBody>().name + "is target");
                 }
 
                 if (!targetHurtbox)
                 {
-                    Debug.Log("hurtbox for orb not found");
+                    Debug.LogError("hurtbox for orb not found");
                 }
 
                 NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
@@ -99,7 +99,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 lockOrb.damageCoefficientPerBounce = .8f;
                 lockOrb.nemLightningColorController = attacker.GetComponent<NemLightningColorController>();
 
-                Debug.Log("lockorb damage value is " + lockOrb.damageValue);
+                //Debug.Log("lockorb damage value is " + lockOrb.damageValue);
                 return lockOrb;
             }
 

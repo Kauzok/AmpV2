@@ -10,8 +10,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 [![](https://cdn.discordapp.com/attachments/226439908657463296/1007789478032707614/AmpDisplay.png)]()
 [![](https://cdn.discordapp.com/attachments/226439908657463296/1162550376227143680/NemScreen.PNG)]()
 
-# Skills (picture is slightly outdated)
-[![](https://cdn.discordapp.com/attachments/226439908657463296/1007782321094656132/AmpSkills.png)]()
+# Gameplay Pictures
 
 <p float="left">
   <img src="https://cdn.discordapp.com/attachments/226439908657463296/1007782708614803537/AmpDash.png" width="530" />
@@ -50,14 +49,13 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
  <summary>2.0.0</summary>
  
  - The biggest update since launch! Featuring new animations, and a whole new character for you to play around with!
-- Animation Overhaul
-    -  Most of Amp's animations have been changed with the help of . Feedback on the feel of the new anims would be greatly appreciated!
 -  New Character  
     - Nemesis Amp has been added to the mod! An entirely new version of Amp, tainted by the void, with his own unique skills and passive. Feedback on him would be appreciated as well.
+- Animations
+    - Adjusted some of normal Amp's animations, including his jump. Further updates will implement a full animation overhaul that will allow you to switch between old animations and new ones!
 - General
     - Adjusted sound attenuation for some of normal Amp's abilities
-- More bug fixes, and hopefully new features, to come!
-
+- More features and bug fixes to come! 
 </details>
 
 <details>

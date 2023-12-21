@@ -1,12 +1,11 @@
-To do prerelease:
-
-Amp To Do:
-- Implement anims
-- Fix sawmerang bug
-
-To do post release:
+To do:
+- Test amp animation bugs (e.g. using pulse leap while holding voltaic bombardment breaks the animation)
+- Implement Amp animations, making sure none of them are in base.isauthority calls
+- Fix invisible amp vfx in multiplayer (this should only be the lorentz cannon charge prefab)
+- Fix mastery skins not unlocking on monsoon obliterate bug
 - Implement lorentz blades animations when idle
-- Lore
+- NemAmp Lore
+- Try using r2networkingAPI for amp's surge skill
 - Clean up unity project
 - Adjust animations so aiming up actually makes you do things up
 - Alt special (fire a continuous beam of light in front of you that deals 100% damage per tick and detonates stacks of controlled charge

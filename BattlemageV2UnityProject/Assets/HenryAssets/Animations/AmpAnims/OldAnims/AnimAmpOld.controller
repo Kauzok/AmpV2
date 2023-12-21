@@ -627,33 +627,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &-5769821341091657947
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: BoostAerial
-  m_Speed: 1.5
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 5207059827750100718}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: db9973ee26ee9c54ca2013495604f368, type: 2}
-  m_Tag: 
-  m_SpeedParameter: ShootGun.playbackRate
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &-5573047429207548145
 AnimatorState:
   serializedVersion: 5
@@ -1309,28 +1282,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &-3127758138372882657
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 6147835239188747094}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.6666666
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1101 &-3002443274985556596
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1798,28 +1749,6 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.102899626
   m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &-1426511351133374628
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102812050849431824}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0
-  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -2557,7 +2486,7 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 5987662ee34d3cf4f8579bea6cdf7c69, type: 2}
+    m_Motion: {fileID: 7400000, guid: 7ac14cbcd55e44742bee517f50df1c14, type: 2}
     m_Threshold: 0.25
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -2573,7 +2502,7 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 586fa041dcb6a6c479e45e3868a4176d, type: 2}
+    m_Motion: {fileID: 7400000, guid: 046792021babb8a4683fb273e0ae6714, type: 2}
     m_Threshold: 0.75
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -2581,7 +2510,7 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: da023ff2bbe97b043aacd1443c55885b, type: 2}
+    m_Motion: {fileID: 7400000, guid: 224e080848d4cfc498731edbf109462f, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -5891,12 +5820,6 @@ AnimatorStateMachine:
     m_State: {fileID: 1102785025685061036}
     m_Position: {x: 340, y: 270, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 2107483599106032811}
-    m_Position: {x: 610, y: 120, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -5769821341091657947}
-    m_Position: {x: 600, y: 270, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 8820220832965449711}
     m_Position: {x: 90, y: 120, z: 0}
   - serializedVersion: 1
@@ -6099,7 +6022,7 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4561040596595846124}
-    m_Position: {x: -10, y: 300, z: 0}
+    m_Position: {x: 0, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -306029625023374812}
     m_Position: {x: -10, y: 240, z: 0}
@@ -6355,33 +6278,6 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: cdefb493ea1b537439122f4299c74e49, type: 2}
   m_Tag: 
   m_SpeedParameter: Slash.playbackRate
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &2107483599106032811
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: BoostGrounded
-  m_Speed: 1.5
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -1426511351133374628}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c7ee2c36fc64aa24392019018e70a666, type: 2}
-  m_Tag: 
-  m_SpeedParameter: ShootGun.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -6984,9 +6880,6 @@ AnimatorStateMachine:
     m_State: {fileID: 6147835239188747094}
     m_Position: {x: 290, y: 120, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 6428856075720450821}
-    m_Position: {x: 530, y: 120, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 2930447796378006574}
     m_Position: {x: 290, y: -30, z: 0}
   - serializedVersion: 1
@@ -7120,28 +7013,6 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.40000004
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &5207059827750100718
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102812050849431824}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.82857144
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -7424,33 +7295,6 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: 4ee2daffb6efe724287bd8a5acf403d2, type: 2}
   m_Tag: 
   m_SpeedParameter: Roll.playbackRate
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &6428856075720450821
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: BoostAerial
-  m_Speed: 1.5
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -3127758138372882657}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: db9973ee26ee9c54ca2013495604f368, type: 2}
-  m_Tag: 
-  m_SpeedParameter: ShootGun.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
