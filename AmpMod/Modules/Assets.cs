@@ -201,7 +201,15 @@ namespace AmpMod.Modules
         internal static GameObject stormRangeIndicator;
         internal static GameObject stormRangeIndicatorBlue;
 
-
+        [Header("Photon Shot Effects")]
+        internal static GameObject photonMuzzleFlash;
+        internal static GameObject photonTracer;
+        internal static GameObject photonImpact;
+        internal static GameObject photonImpactDetonate;
+        internal static GameObject photonMuzzleFlashBlue;
+        internal static GameObject photonTracerBlue;
+        internal static GameObject photonImpactBlue;
+        internal static GameObject photonImpactDetonateBlue;
 
         internal static GameObject lightningSwordChargePrefab;
 
@@ -251,6 +259,7 @@ namespace AmpMod.Modules
             {
                 if (material.shader.name == "Hopoo Games/FX/Cloud Remap")
                 {
+
                     material.shader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgcloudremap");
                 }
 
@@ -423,6 +432,7 @@ namespace AmpMod.Modules
             CreateLightningDash();
             CreateLightningSlash();
             CreateFluxBlades();
+            CreatePhotonShot();
             #endregion
 
         }
@@ -705,7 +715,29 @@ namespace AmpMod.Modules
             //PrefabAPI.RegisterNetworkPrefab(stormRangeIndicator);
             stormRangeIndicatorBlue = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicatorBlue");
         }
+        private static void CreatePhotonShot()
+        {
+            photonImpact = mainAssetBundle.LoadAsset<GameObject>("PhotonImpact");
+            photonImpactDetonate = mainAssetBundle.LoadAsset<GameObject>("PhotonImpactDetonate");
+            photonTracer = mainAssetBundle.LoadAsset<GameObject>("PhotonTracer");
+            photonMuzzleFlash = mainAssetBundle.LoadAsset<GameObject>("PhotonMuzzleFlash");
 
+            AddNewEffectDef(photonImpact);
+            AddNewEffectDef(photonImpactDetonate);
+            AddNewEffectDef(photonTracer);
+            AddNewEffectDef(photonMuzzleFlash);
+
+            /*photonImpactBlue = mainAssetBundle.LoadAsset<GameObject>("PhotonImpactBlue");
+            photonImpactDetonateBlue = mainAssetBundle.LoadAsset<GameObject>("PhotonImpactDetonateBlue");
+            photonTracerBlue = mainAssetBundle.LoadAsset<GameObject>("PhotonTracerBlue");
+            photonMuzzleFlashBlue = mainAssetBundle.LoadAsset<GameObject>("PhotonMuzzleFlashBlue");
+
+            AddNewEffectDef(photonImpactBlue);
+            AddNewEffectDef(photonImpactDetonateBlue);
+            AddNewEffectDef(photonTracerBlue);
+            AddNewEffectDef(photonMuzzleFlashBlue); */
+
+        }
         private static void CreateLightningDash()
         {
             dashVFXPrefab = mainAssetBundle.LoadAsset<GameObject>("QuickDashPrefab");

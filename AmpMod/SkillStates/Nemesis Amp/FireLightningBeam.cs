@@ -15,7 +15,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         public float baseDuration = .3f;
 
         private float duration;
-        private float radius = Modules.StaticValues.chargeBeamRadius;
+        private float radius = StaticValues.chargeBeamRadius;
         private float surgeBuffCount;
         private Transform muzzleHandTransform;
         private GameObject muzzleFlashEffect;
@@ -161,7 +161,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
-                    origin = aimRay.origin,
+                    origin = aimRay.origin, //+ 2*Vector3.upVector,
                     aimVector = aimRay.direction,
                     minSpread = 0f,
                     damage = base.characterBody.damage * beamDamage,

@@ -263,7 +263,7 @@ namespace AmpMod.Modules
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             characterModel.mainSkinnedMeshRenderer = characterModel.baseRendererInfos[mainRendererIndex].renderer.GetComponent<SkinnedMeshRenderer>();
-            Debug.Log(characterModel.mainSkinnedMeshRenderer.transform.lossyScale.x + " is the x lossy scale for this skinnedmeshrenderer");
+            //Debug.Log(characterModel.mainSkinnedMeshRenderer.transform.lossyScale.x + " is the x lossy scale for this skinnedmeshrenderer");
         }
         #endregion
 

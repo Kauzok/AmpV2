@@ -105,32 +105,38 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Orbs
 		{
 
             base.duration = 0.1f;
-			EffectData effectData = new EffectData
-			{
-				origin = this.target.healthComponent.gameObject.transform.position,
-				genericFloat = base.duration,
-			};
+			if (this.target)
+            {
 
-			effectData.SetHurtBoxReference(this.target);
-			//this prefab is empty of everything except for the impact effect; the actual lightning stream is controlled by the lightningeffectcontroller
+            
+				EffectData effectData = new EffectData
+				{
+					origin = this.target.healthComponent.gameObject.transform.position,
+					genericFloat = base.duration,
+				};
+
+				effectData.SetHurtBoxReference(this.target);
+				//this prefab is empty of everything except for the impact effect; the actual lightning stream is controlled by the lightningeffectcontroller
 			
-			EffectManager.SpawnEffect(nemLightningColorController.streamImpactVFX, effectData, true);
+				EffectManager.SpawnEffect(nemLightningColorController.streamImpactVFX, effectData, true);
 
-			if (this.isChaining)
-			{
-				//Debug.Log("is chaining");
+				if (this.isChaining)
+				{
+					//Debug.Log("is chaining");
 				
-				if (this.target.healthComponent.gameObject)
-                {
-					int isBlue = nemLightningColorController.isBlue ? 1 : 0;
-					new SyncChain(isBlue, this.origin, this.target.healthComponent.gameObject).Send(R2API.Networking.NetworkDestination.Clients);
+					if (this.target.healthComponent.gameObject)
+					{
+
+						int isBlue = nemLightningColorController.isBlue ? 1 : 0;
+						new SyncChain(isBlue, this.origin, this.target.healthComponent.gameObject).Send(R2API.Networking.NetworkDestination.Clients);
+		
+
+					}
+
 
 				}
 
-
 			}
-
-
 
 		}
 		public override void OnArrival()

@@ -61,6 +61,11 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         public GameObject specialBoltVFX;
         public GameObject specialMuzzleVFX;
 
+        [Header("Photon Shot Effects")]
+        public GameObject specialBeamTracer;
+        public GameObject specialBeamImpact;
+        public GameObject specialBeamImpactDetonate;
+        public GameObject specialBeamMuzzleFlash;
 
 
         private void Awake()
@@ -130,6 +135,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 specialMuzzleVFX = Assets.stormMuzzleFlashEffectBlue;
                 specialBoltVFX = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/SimpleLightningStrikeImpact");
                 #endregion
+
+                #region Photon Shot 
+                specialBeamImpact = Assets.photonImpactBlue;
+                specialBeamImpactDetonate = Assets.photonImpactDetonateBlue;
+                specialBeamMuzzleFlash = Assets.photonMuzzleFlashBlue;
+                specialBeamTracer = Assets.photonTracerBlue;
+                #endregion
             }
             else
             {
@@ -183,6 +195,13 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 #region Voltaic Onslaught
                 specialMuzzleVFX = Assets.stormMuzzleFlashEffect;
                 specialBoltVFX = Assets.purpleStormBoltEffect;
+                #endregion
+
+                #region Photon Shot 
+                specialBeamImpact = Assets.photonImpact;
+                specialBeamImpactDetonate = Assets.photonImpactDetonate;
+                specialBeamMuzzleFlash = Assets.photonMuzzleFlash;
+                specialBeamTracer = Assets.photonTracer;
                 #endregion
             }
         }

@@ -14,7 +14,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
     public class NemAmpLightningTracker : MonoBehaviour
     {
 
-		public float maxTrackingDistance = 30f;
+		public float maxTrackingDistance = StaticValues.lightningChainRange;
 		public float maxTrackingAngle = 20f;
 		public float trackerUpdateFrequency = 10f;
 

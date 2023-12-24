@@ -5,7 +5,7 @@ using RoR2;
 using RoR2.Achievements;
 using RoR2.Stats;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 namespace AmpMod.Modules.Achievements
 {
@@ -34,6 +34,7 @@ namespace AmpMod.Modules.Achievements
         private class NemAmpDashServerAchievement : BaseServerAchievement
         {
             private Run.FixedTimeStamp expirationTimeStamp;
+            private List<string> forbiddenStages = new List<string> { "bazaar", "artifactworld", "limbo", "mysteryspace", "goldshores" };
 
             //begins the timer and starts watching for when the stage is began/completed
             private void BeginStageTimer()
@@ -85,7 +86,7 @@ namespace AmpMod.Modules.Achievements
                 Debug.Log("exit time is  " + Run.FixedTimeStamp.tNow);
                 Debug.Log("max exit time is " + this.expirationTimeStamp.t); */
 
-                if (!this.expirationTimeStamp.hasPassed)
+                if (!this.expirationTimeStamp.hasPassed && !forbiddenStages.Contains(SceneManager.GetActiveScene().name))
                 {
                     base.Grant();
                     //Debug.Log("granting achievement");
@@ -98,9 +99,8 @@ namespace AmpMod.Modules.Achievements
             private void OnStageStart(Stage stage)
             {
                 //Debug.Log("Running onStageStart");
-                List<String> forbiddenStages = new List<string>{ "bazaar", "artifactworld", "limbo", "mysteryspace", "goldshores"};
-
-                if (!forbiddenStages.Contains(stage.name))
+                //List<String> forbiddenStages = new List<string>{ "bazaar", "artifactworld", "limbo", "mysteryspace", "goldshores"};
+                if (!forbiddenStages.Contains(SceneManager.GetActiveScene().name))
                 {
                     BeginStageTimer();
                 }

@@ -129,7 +129,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                         owner = base.gameObject,
                         damage = base.characterBody.damage * calcedDamage,
                         crit = base.RollCrit(),
-                        speedOverride = 140,
+                        speedOverride = 150,
                     };
                     ModifyProjectile(ref fireProjectileInfo);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);

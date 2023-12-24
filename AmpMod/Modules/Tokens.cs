@@ -116,17 +116,17 @@ namespace AmpMod.Modules
             #endregion
 
             #region Descriptions
-            LanguageAPI.Add(nemBodyPrefix + "NAME", Modules.StaticValues.nemCharacterName);
-            LanguageAPI.Add(nemBodyPrefix + "SUBTITLE", Modules.StaticValues.nemCharacterSubtitle);
-            LanguageAPI.Add(nemBodyPrefix + "DESCRIPTION", Modules.StaticValues.nemDescriptionText);
-            LanguageAPI.Add(nemPrefix + "OUTRO_FLAVOR", Modules.StaticValues.nemCharacterOutro);
-            LanguageAPI.Add(nemPrefix + "LORE", Modules.StaticValues.nemCharacterLore);
-            LanguageAPI.Add(nemPrefix + "OUTRO_FAILURE", Modules.StaticValues.nemCharacterOutroFailure);
+            LanguageAPI.Add(nemBodyPrefix + "NAME", StaticValues.nemCharacterName);
+            LanguageAPI.Add(nemBodyPrefix + "SUBTITLE", StaticValues.nemCharacterSubtitle);
+            LanguageAPI.Add(nemBodyPrefix + "DESCRIPTION", StaticValues.nemDescriptionText);
+            LanguageAPI.Add(nemPrefix + "OUTRO_FLAVOR", StaticValues.nemCharacterOutro);
+            LanguageAPI.Add(nemPrefix + "LORE", StaticValues.nemCharacterLore);
+            LanguageAPI.Add(nemPrefix + "OUTRO_FAILURE", StaticValues.nemCharacterOutroFailure);
             #endregion
 
             #region Passive
             LanguageAPI.Add(nemPrefix + "PASSIVE_NAME", "Gathering Storm");
-            LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>within 2 seconds</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.growthBuffMaxStacks * StaticValues.growthDamageCoefficient}%</style>.");
+            LanguageAPI.Add(nemPrefix + "PASSIVE_DESCRIPTION", $"Using a skill <style=cIsUtility>within {StaticValues.comboTimeInterval} seconds</style> after using a different skill will <style=cIsDamage>increase its damage by {100f * StaticValues.growthDamageCoefficient}%</style>, with a maximum bonus of <style=cIsDamage>{100f * StaticValues.growthBuffMaxStacks * StaticValues.growthDamageCoefficient}%</style>.");
             #endregion
 
             #region Primary
@@ -158,7 +158,6 @@ namespace AmpMod.Modules
             LanguageAPI.Add(nemPrefix + "UTILITY_DASH_NAME", "Voidsurge");
             LanguageAPI.Add(nemPrefix + "UTILITY_DASH_DESCRIPTION", $"Transform into lightning, becoming <style=cIsUtility>intangible</style> and dashing a short distance. Your next primary cast fires a a <style=cIsUtility>shocking</style> mass of plasma for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
 
-
             LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_NAME", "Throw Plasma Stake");
             LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_DESCRIPTION", $"Throw a <style=cIsUtility>shocking</style> mass of plasma for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
             #endregion
@@ -174,8 +173,8 @@ namespace AmpMod.Modules
             #endregion
 
             #region Special2
-            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_NAME", "Photon Barrage");
-            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_DESCRIPTION", $"Fire a beam of light in front of you for <style=cIsDamage>{100f * StaticValues.baseLaserDamageCoefficient}% damage</style>. Ticks <style=cIsDamage>detonate</style> stacks of <color=#8b00ff>Controlled Charge</color> for an additional <style=cIsDamage>{100f * StaticValues.additionalSlashDamageCoefficient}% damage.</style>");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_NAME", "Photon Shot");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_DESCRIPTION", $"Fire a beam of light for <style=cIsDamage>{100f * StaticValues.baseLaserDamageCoefficient}% damage</style>. <style=cIsDamage>Detonates</style> stacks of <color=#8b00ff>Controlled Charge</color> for an additional <style=cIsDamage>{100f * StaticValues.additionalLaserDamageCoefficient}% damage.</style>");
             #endregion
 
             #region Special2Old
@@ -196,6 +195,10 @@ namespace AmpMod.Modules
             LanguageAPI.Add("ACHIEVEMENT_NEMAMPBLADESUNLOCK_DESCRIPTION", "As Nemesis Amp, pierce 5 enemies in a row with Furious Spark.");
             LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_BLADES", "Nemesis Amp: Sharpshocker");
 
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPLASERUNLOCK_NAME", "Nemesis Amp: Lux Vindictae");
+            LanguageAPI.Add("ACHIEVEMENT_NEMAMPLASERUNLOCK_DESCRIPTION", "As Nemesis Amp, kill 50 creatures of the Void.");
+            LanguageAPI.Add(AmpPlugin.developerPrefix + "_NEMAMP_BODY_LASER", "Nemesis Amp: Lux Vindictae");
+
             #endregion
 
             #endregion
@@ -209,7 +212,7 @@ namespace AmpMod.Modules
             LanguageAPI.Add("MITHRIX_KILL_AMP_1", "A pity. You may have been a useful servant.");
             LanguageAPI.Add("MITHRIX_KILL_AMP_2", "Frail sparks.");
 
-            LanguageAPI.Add("MITHRIX_SEE_NEMAMP_1", "The power of a wurm... defiled.");
+            LanguageAPI.Add("MITHRIX_SEE_NEMAMP_1", "The power of a wurm... but defiled.");
             LanguageAPI.Add("MITHRIX_SEE_NEMAMP_2", "Your rage will end here, wurm.");
             LanguageAPI.Add("MITHRIX_SEE_NEMAMP_3", "Warped and stolen power. Your blasphemy ends here.");
 

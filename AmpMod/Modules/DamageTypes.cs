@@ -30,6 +30,8 @@ namespace AmpMod.Modules
 
         public static DamageAPI.ModdedDamageType nemAmpSlowOnHit = DamageAPI.ReserveDamageType();
 
+        public static DamageAPI.ModdedDamageType nemAmpDetonateCharge = DamageAPI.ReserveDamageType();
+
 
     }
 }

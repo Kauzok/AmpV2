@@ -78,6 +78,9 @@ namespace AmpMod.Modules.Survivors
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef dashSkillUnlockableDef;
         private static UnlockableDef bladesSkillUnlockableDef;
+        private static UnlockableDef photonSkillUnlockableDef;
+
+        public static readonly StatDef nemAmpTotalVoidEnemiesKilled = StatDef.Register("nemAmpTotalVoidEnemiesKilled", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
         internal override void InitializeCharacter()
         {
@@ -87,7 +90,7 @@ namespace AmpMod.Modules.Survivors
         internal override void InitializeUnlockables()
         {
 
-            if (!Config.UnlockMasterySkin.Value)
+            if (!Config.UnlockNemMasterySkin.Value)
             {
                 masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
                 masterySkinUnlockableDef.cachedName = "Skins.Origin";
@@ -113,6 +116,16 @@ namespace AmpMod.Modules.Survivors
                 bladesSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemBlades");
                 ContentAddition.AddUnlockableDef(bladesSkillUnlockableDef);
             }
+
+            if (!Config.NemUnlockPhotonSkill.Value)
+            {
+                photonSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                photonSkillUnlockableDef.cachedName = "Skills.LaserShot";
+                photonSkillUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_LASER";
+                photonSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPhoton");
+                ContentAddition.AddUnlockableDef(photonSkillUnlockableDef);
+            }
+
 
         }
 
@@ -143,7 +156,8 @@ namespace AmpMod.Modules.Survivors
             #region Primary
             //creates Fulmination
              NemAmpOrbTrackingSkillDef primaryLightningStreamDef =
-                 Skills.CreatePrimarySkillDef<NemAmpOrbTrackingSkillDef>(new EntityStates.SerializableEntityStateType(typeof(LightningStream)),
+                 Skills.CreatePrimarySkillDef<NemAmpOrbTrackingSkillDef>(new EntityStates.SerializableEntityStateType(typeof(LightningStream)), 
+                 true,
                   "Weapon",
                  prefix + "_NEMAMP_BODY_PRIMARY_LIGHTNING_NAME",
                  prefix + "_NEMAMP_BODY_PRIMARY_LIGHTNING_DESCRIPTION",
@@ -327,12 +341,39 @@ namespace AmpMod.Modules.Survivors
                 keywordTokens = new string[] { }
             });
 
-         
+            SkillDef photonSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_NEMAMP_BODY_SPECIAL_LASER_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_SPECIAL_LASER_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_SPECIAL_LASER_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemStorm"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(PhotonShot)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 7f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                // fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { }
+            });
+
+
 
             ;
 
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef);
+            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef, photonSkillDef);
+            //Modules.Skills.AddUnlockableSpecialSkill(bodyPrefab, photonSkillDef, photonSkillUnlockableDef);
             #endregion
         }
 

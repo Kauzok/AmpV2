@@ -25,6 +25,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float procCoefficient = Modules.StaticValues.lightningStreamProcCoefficient;
         private float baseTickTime = Modules.StaticValues.lightningStreamBaseTickTime;
         private float tickTime;
+        private float endTickTime;
         private float tickTimer;
 
         [Header("Tracking/Effect Variables")]
@@ -79,6 +80,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 if (!targetHurtbox)
                 {
                     Debug.LogError("hurtbox for orb not found");
+                    return null;
+
                 }
 
                 NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
@@ -95,7 +98,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 lockOrb.damageColorIndex = DamageColorIndex.Default;
                 lockOrb.target = targetHurtbox;
                 lockOrb.bouncedObjects = new List<HealthComponent>();
-                lockOrb.range = 30f;
+                lockOrb.range = StaticValues.lightningChainRange;
                 lockOrb.damageCoefficientPerBounce = .8f;
                 lockOrb.nemLightningColorController = attacker.GetComponent<NemLightningColorController>();
 
@@ -133,19 +136,23 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
                 var lightningOrb = createDmgOrb(Util.FindNetworkObject(bodyID));
 
-                lightningOrb.procControlledCharge = this.procCharged;
-
-                if(isChaining)
+                if (lightningOrb!= null)
                 {
-                    lightningOrb.bouncesRemaining = 2;
-                }
-                else
-                {
-                    lightningOrb.isChaining = false;
-                    lightningOrb.bouncesRemaining = 0;
-                }
+                    lightningOrb.procControlledCharge = this.procCharged;
 
-                OrbManager.instance.AddOrb(lightningOrb);
+                    if (isChaining)
+                    {
+                        lightningOrb.bouncesRemaining = 2;
+                    }
+                    else
+                    {
+                        lightningOrb.isChaining = false;
+                        lightningOrb.bouncesRemaining = 0;
+                    }
+
+                    OrbManager.instance.AddOrb(lightningOrb);
+                }
+             
 
             }
 
@@ -328,44 +335,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             }
         }
 
-      /*  private NemAmpLightningLockOrb createDmgOrb()
-        {
-            if (targetHurtbox)
-            {
-               // Debug.Log("creating orb on hurtbox");
-                //Debug.Log(targetHurtbox.gameObject.GetComponent<CharacterBody>().name + "is target");
-            }
-
-            if (!targetHurtbox)
-            {
-               Debug.Log("hurtbox for orb not found");
-            }
-
-            Debug.Log("creating damage orb");
-            targetHurtbox = tracker.GetTrackingTarget();
-            NemAmpLightningLockOrb lockOrb = new NemAmpLightningLockOrb();
-
-            rightMuzzleTransform = childLocator.FindChild("LightningNexusMuzzle").transform;
-            //SyncTransform sync = new SyncTransform(rightMuzzleTransform);
-           // sync.Send(R2API.Networking.NetworkDestination.Clients);
-            //sync.Send(R2API.Networking.NetworkDestination.Server);
-            lockOrb.damageValue = lightningTickDamage * damageStat + ((StaticValues.growthDamageCoefficient * base.GetBuffCount(Buffs.damageGrowth)) * lightningTickDamage * damageStat);
-            lockOrb.origin = rightMuzzleTransform.position;
-            lockOrb.isCrit = base.characterBody.RollCrit();
-            lockOrb.damageType = DamageType.Generic;
-            lockOrb.teamIndex = teamComponent.teamIndex;
-            lockOrb.attacker = base.gameObject;
-            lockOrb.procCoefficient = .2f;
-            lockOrb.damageColorIndex = DamageColorIndex.Default;
-            lockOrb.target = targetHurtbox;
-            lockOrb.bouncedObjects = new List<HealthComponent>();
-            lockOrb.range = tracker.maxTrackingDistance;
-            lockOrb.damageCoefficientPerBounce = .8f;
-            lockOrb.nemLightningColorController = this.lightningController;
-
-            Debug.Log("lockorb damage value is " + lockOrb.damageValue);
-            return lockOrb;
-        } */
 
 
         public override void OnExit()

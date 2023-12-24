@@ -42,8 +42,18 @@ namespace AmpMod.Modules
             + "A trail of charred corpses behind him, he breaks into the boardroom. Desperate businessmen fire their sidearms, but the metallic bullets freeze mid-air, refusing to hit their target. The last thing they see is a terrifying, yet magnificent blue light beginning to emanate from their slave-turned-assassin.\n\n"
             + "Electrocute.";
 
-        internal static string nemCharacterLore = "";
-
+        internal static string nemCharacterLore = "Fascinating. \n\n"
+            + "It was a shame that the guardian of this planet had perished. His constructs were unlike anything in the universe, the masterful weaving of soul beyond the capabilities of even [those who live in nothingness]. But now he is gone, and his brother, his only equal in craftsmanship, rejects the use of soul in his constructs, creating servants bereft of will and consciousness. \n\n"
+            + "Yet a new construct appears. \n\n"
+            + "[The inhabitants of the abyss] met him on the planet. He felt them boring into his mind, a psionic attack that he was not prepared for. But he had become accustomed to his powers, and he protected his mind with an electric field while he made quick work of the [creature of cursed knowledge]. But he did not expect a suicide attack. \n\n"
+            + "Captive once more. \n\n"
+            + "They relentlessly experimented on the living, breathing, embodiment of electromagnetism, who rippled with the power of soul. They did so clinically, analytically, and yet with twisted excitement at finding a specimen possessing a portion of the bulwark’s power. \n\n"
+            + "He feels it all. \n\n"
+            + "In his abyssal cell there is nothing to see but darkness. No sound but the mechanical whirs of their scans. No feeling but the all-encompassing pain as [they who live in between] infect him with their own essence. But worse than the pain is the knowledge that he is once again, a prisoner. Once again, controlled by another. Once again. Once again. Once again. \n\n"
+            + "Never again. \n\n"
+            + "And when the [watchers of eternity] make the mistake of attempting to extract his power, of forgetting only two possessed the skill to direct unrestricted soul, he does not miss his chance. Atop the electrified rubble that was once his prison, he gazes upon the infinite sky, before turning his eyes to the wardens who have appeared to return him to his confinement. \n\n"
+            + "And he makes a promise. \n\n"
+            + "The storm will rage until not even nothingness remains. \n\n";
 
 
         [Header("Charge Values")]
@@ -100,7 +110,7 @@ namespace AmpMod.Modules
         internal const float lightningStreamPerSecondDamageCoefficient = 3.6f;
         internal const float lightningStreamProcCoefficient = .15f;
         internal const float lightningStreamBaseTickTime = .333f;
-        internal const float lightningChainRange = 30f;
+        internal const float lightningChainRange = 40f;
 
         [Header("Plasma Orb Primary Values")]
         internal const float plasmaOrbDamageCoefficient = 3f;
@@ -113,7 +123,7 @@ namespace AmpMod.Modules
         internal const float chargeBeamMinDamageCoefficient = 4f;
         internal const float chargeBeamMaxDamageCoefficient = 15f;
         internal const float additionalPierceDamageCoefficient = .3f;
-        internal const float chargeBeamRadius = 1f;
+        internal const float chargeBeamRadius = 1.5f;
 
         [Header("Static Field Values")]
         internal const float staticFieldTickDamageCoefficient = .1f;
@@ -136,7 +146,7 @@ namespace AmpMod.Modules
 
         [Header("Photon Barrage Values")]
         internal const float baseLaserDamageCoefficient = 1f;
-        internal const float additionalBeamCoefficientCoefficient = 3.5f;
+        internal const float additionalLaserDamageCoefficient = 4f;
 
 
         [Header("Void Slash Values")]

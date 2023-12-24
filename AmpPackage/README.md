@@ -35,6 +35,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 # Credits
 - Neon: Animations, Code, VFX, SFX
 - Gaborade: Modeling
+- Spanish: Updated Amp Animations
 - NotWhoYouThink: Lorentz Cannon Code & VFX, Charge Orb Networking
 - Vale-X (Manipulator): Charge debuff icon
 - RandomlyAwesome: Helping me out with networking code
@@ -46,7 +47,40 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 
 # Change Log
 <details>
- <summary>2.0.0</summary>
+<summary>2.0.2</summary>
+ 
+ - General
+    - Added .lang file to mod
+ - Nemesis Amp
+     - Fulmination
+        - Fixed an error that sometimes appeared in multiplayer where the chaining functionality of this skill would misbehave
+    - Config
+        - Added an option to auto unlock the mastery skin
+        - Removed redundant option to unlock Nemesis Amp
+
+</details>
+
+<details>
+<summary>2.0.1</summary>
+ 
+ - Nemesis Amp
+    - Achievements
+        - Fixed a bug that allowed players to acquire the "299,792,458 m/s" achievement in the bazaar between time
+    - Growing Surge
+        - Updated skill description to accurately display the amount of seconds one has to acquire extra stacks
+    - Fulmination
+        - Tentatively increased fulmination range
+        - Fixed a bug that allowed players to spam this ability with fast clicking
+    - Furious Spark
+        - Increased beam radius; may be further increased in future updates.
+    - Voidsurge
+        - Increased the speed of the plasma projectile
+    - Voltaic Onslaught
+        - Adjusted visibility of default skin range indicator; can turn this off in the configs if you find it distracting
+</details>
+
+<details>
+<summary>2.0.0</summary>
  
  - The biggest update since launch! Featuring new animations, and a whole new character for you to play around with!
 -  New Character  

@@ -159,12 +159,19 @@ namespace AmpMod.Modules
 
                 if (statSheet2 != null)
                 {
+                    List<string> voidFamilyEnemies = new List<string> {"bruh"};
                     if (damageReport.attackerBody.baseNameToken == developerPrefix + "_AMP_BODY_NAME" && deathEvent.victimWasBurning)
                     {
                         //Debug.Log("Burned enemy killed");
                         statSheet2.PushStatValue(Survivors.Amp.ampTotalBurnedEnemiesKilled, 1UL);
                     }
+
+                    if (damageReport.attackerBody.baseNameToken == developerPrefix + "_NEMAMP_BODY_NAME" && voidFamilyEnemies.Contains(damageReport.victimBody.name))
+                    {
+                        statSheet2.PushStatValue(Survivors.NemAmp.nemAmpTotalVoidEnemiesKilled, 1UL);
+                    } 
                 }
+
                 orig();
             }
         }
@@ -372,6 +379,23 @@ namespace AmpMod.Modules
                     
                 }
             } */
+
+            if (info.HasModdedDamageType(DamageTypes.nemAmpDetonateCharge))
+            {
+                if (self.body.HasBuff(Buffs.controlledCharge))
+                {
+                    int chargeCount = self.body.GetBuffCount(Buffs.controlledCharge);
+                    self.body.RemoveBuff(Buffs.controlledCharge);
+                    DamageInfo detonateInfo = new DamageInfo {
+                        damageType = DamageType.Stun1s,
+                        damage = chargeCount * (info.attacker.GetComponent<CharacterBody>().damage * StaticValues.additionalLaserDamageCoefficient),
+                        attacker = info.attacker,
+                        crit = info.crit,
+                        procCoefficient = 0f,
+                    };
+                    self.TakeDamage(detonateInfo);
+                }
+            }
 
             if (info.HasModdedDamageType(DamageTypes.nemAmpSlowOnHit))
             {

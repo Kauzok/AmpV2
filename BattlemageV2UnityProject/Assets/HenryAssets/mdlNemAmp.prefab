@@ -273,6 +273,8 @@ MonoBehaviour:
     transform: {fileID: 2591264521685317070}
   - name: BuffLightningBlue
     transform: {fileID: 3186973032216657555}
+  - name: IndexR
+    transform: {fileID: 6889981940518768393}
 --- !u!114 &9052249991326240707
 MonoBehaviour:
   m_ObjectHideFlags: 0

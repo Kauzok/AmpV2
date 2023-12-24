@@ -124,7 +124,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             base.FixedUpdate();
 
             //controls spawn of the range indicator
-            if (spawnIndicator && !indicatorInstance && base.isAuthority)
+            if (spawnIndicator && !indicatorInstance && base.isAuthority && characterBody.skillLocator.special.skillNameToken == "NT_NEMAMP_BODY_SPECIAL_SUMMONSTORM_NAME")
             {
                 indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, base.characterBody.corePosition, Quaternion.identity);
                 indicatorInstance.transform.parent = base.gameObject.transform;

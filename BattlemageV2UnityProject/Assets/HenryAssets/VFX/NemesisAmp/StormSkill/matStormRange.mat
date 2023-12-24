@@ -57,7 +57,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _InternalSimpleBlendMode: 0
-    - _IntersectionStrength: 0.27
+    - _IntersectionStrength: 0.6
     - _InvFade: 3.45
     - _Metallic: 0
     - _Mode: 0
@@ -81,6 +81,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CutoffScroll: {r: 1, g: 1, b: 0, a: 4}
+    - _CutoffScroll: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TintColor: {r: 0.2313, g: 0.1254, b: 0.74901, a: 1}

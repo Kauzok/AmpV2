@@ -393,7 +393,7 @@ namespace AmpMod.Modules
             return skillDef;
         }
 
-        public static T CreatePrimarySkillDef<T>(SerializableEntityStateType state, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens, bool canBeOverriden) where T : SkillDef
+        public static T CreatePrimarySkillDef<T>(SerializableEntityStateType state, bool hasCooldown, string stateMachine, string skillNameToken, string skillDescriptionToken, Sprite skillIcon, bool agile, string[] keywordTokens, bool canBeOverriden) where T : SkillDef
         {
              T skillDef = ScriptableObject.CreateInstance<T>();
 
@@ -405,8 +405,9 @@ namespace AmpMod.Modules
             skillDef.activationState = state;
             skillDef.activationStateMachineName = stateMachine;
             skillDef.baseMaxStock = 1;
-            skillDef.baseRechargeInterval = 0;
-            skillDef.beginSkillCooldownOnSkillEnd = false;
+            skillDef.baseRechargeInterval = 0f;
+            Debug.Log("cooldown is " + skillDef.baseRechargeInterval);
+            skillDef.beginSkillCooldownOnSkillEnd = true;
             skillDef.canceledFromSprinting = false;
             skillDef.forceSprintDuringState = false;
             skillDef.fullRestockOnAssign = true;
@@ -419,6 +420,13 @@ namespace AmpMod.Modules
             skillDef.requiredStock = 0;
             skillDef.stockToConsume = 0;
             skillDef.keywordTokens = keywordTokens;
+
+            if (hasCooldown)
+            {
+                skillDef.baseRechargeInterval = .25f;
+                skillDef.stockToConsume = 1;
+                skillDef.requiredStock = 1;
+            }
 
             skillDefs.Add(skillDef);
 
