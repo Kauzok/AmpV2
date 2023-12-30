@@ -96,6 +96,8 @@ namespace AmpMod.Modules.Survivors
                     bodyPrefab.AddComponent<NemAmpBuffVFXController>();
                     bodyPrefab.AddComponent<NemAmpLightningTetherController>();
                     bodyPrefab.AddComponent<NemLightningColorController>();
+                    bodyPrefab.AddComponent<DashCrosshairController>();
+                    bodyPrefab.AddComponent<DashPrimaryActiveVFXController>();
                    /* if (Config.NemStormRangeIndicator.Value)
                     {
                         bodyPrefab.AddComponent<StormRangeIndicator>();

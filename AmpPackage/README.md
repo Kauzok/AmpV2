@@ -43,6 +43,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 - Mr. Bones: Reformation skin
 - Bubbet: Fixing Melvin's health in multiplayer
 - Goodguy: Nemesis Amp Skill Icons
+- SpanishSpace: New Amp Animations 
 - The Risk of Rain 2 Modding Server: Helping me stay sane through all kinds of other bugs I wouldn't have been able to solve on my own.
 
 # Change Log
@@ -50,13 +51,18 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 <summary>2.0.2</summary>
  
  - General
-    - Added .lang file to mod
+    - Added a customizable .lang file to mod
  - Nemesis Amp
      - Fulmination
         - Fixed an error that sometimes appeared in multiplayer where the chaining functionality of this skill would misbehave
+    - Voltaic Onslaught
+        - Range indicator now disappears and reappears depending on if the skill has been replaced or not (e.g. essence of heresy)
+    - Voidsurge
+        - Added VFX and crosshair for when the plasma projectile is available
     - Config
         - Added an option to auto unlock the mastery skin
         - Removed redundant option to unlock Nemesis Amp
+    - Added lore log entry
 
 </details>
 

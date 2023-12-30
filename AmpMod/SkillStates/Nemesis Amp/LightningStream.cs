@@ -52,6 +52,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private float soundTimer;
         private bool hasBegunSound;
 
+        #region networking stuff 
         public class SyncDamage : INetMessage
         {
 
@@ -166,6 +167,8 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                 writer.Write(procCharged);
             }
         }
+
+        #endregion
 
         public override void OnEnter()
         {

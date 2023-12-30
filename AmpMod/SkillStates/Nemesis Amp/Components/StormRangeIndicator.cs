@@ -10,50 +10,36 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 {
     internal class StormRangeIndicator : MonoBehaviour
     {
-        private GameObject indicatorPrefab;
-        private GameObject indicatorInstance;
-        private bool isEnabled;
-        private NemLightningColorController nemLightningColorController;
-        private CharacterBody body;
-        private bool isBlue;
 
-        private void Awake()
-        {
-            this.body = base.GetComponent<CharacterBody>();
-        }
+        public CharacterBody body;
+        private bool isBlue;
+        public CharacterModel characterModel;
+        private bool isActive;
+        MeshRenderer renderer;
+
         private void Start()
         {
-            nemLightningColorController = base.GetComponent<NemLightningColorController>();
-            isBlue = nemLightningColorController.isBlue;
-            if (isBlue)
-            {
-                indicatorPrefab = Assets.stormRangeIndicatorBlue;
-            }
-            else
-            {
-                indicatorPrefab = Assets.stormRangeIndicator;
-            }
 
-            //only spawn the indicator on nemamp so only the player can see it (only works if you're a client)
-            Debug.Log(base.GetComponent<EntityStateMachine>().networkIdentity.hasAuthority);
-            if (Util.HasEffectiveAuthority(base.GetComponent<EntityStateMachine>().networkIdentity))
-            {
-                //Debug.Log("instantiating indicator");
-                indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, body.corePosition, Quaternion.identity);
-                indicatorInstance.transform.parent = base.gameObject.transform;
-            }
-            
+            renderer = base.gameObject.GetComponentInChildren<MeshRenderer>();
+            //Debug.Log("found renderer as " + renderer);
+        }
 
-            if (NetworkServer.active)
+        private void FixedUpdate()
+        {
+            if (body)
             {
+                bool hasStormSkill = (body.skillLocator.special.skillNameToken == "NT_NEMAMP_BODY_SPECIAL_SUMMONSTORM_NAME");
 
-                //indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, body.corePosition, Quaternion.identity);
-                //indicatorInstance.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(base.gameObject, null);
-               // UnityEngine.Object.Destroy(indicatorInstance);
-                //indicatorInstance = null;
+                if (!hasStormSkill && renderer.enabled)
+                {
+                    renderer.enabled = false;
+                }
+                else if (hasStormSkill && !renderer.enabled)
+                {
+                    renderer.enabled = true;
+                }
             }
            
-         
         }
 
 

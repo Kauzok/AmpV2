@@ -120,7 +120,7 @@ namespace AmpMod.Modules.Survivors
             if (!Config.NemUnlockPhotonSkill.Value)
             {
                 photonSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
-                photonSkillUnlockableDef.cachedName = "Skills.LaserShot";
+                photonSkillUnlockableDef.cachedName = "Skills.Laser";
                 photonSkillUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_LASER";
                 photonSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPhoton");
                 ContentAddition.AddUnlockableDef(photonSkillUnlockableDef);
@@ -226,7 +226,7 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_NAME",
                 skillDescriptionToken = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemSlash"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
+                //activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 6f,
@@ -347,7 +347,7 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_NEMAMP_BODY_SPECIAL_LASER_NAME",
                 skillDescriptionToken = prefix + "_NEMAMP_BODY_SPECIAL_LASER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemStorm"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(PhotonShot)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeLightBlast)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 7f,

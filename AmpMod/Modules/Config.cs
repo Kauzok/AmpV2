@@ -20,7 +20,7 @@ namespace AmpMod.Modules
         public static ConfigEntry<bool> NemUnlockPhotonSkill;
         public static ConfigEntry<bool> NemStormRangeIndicator;
         public static ConfigEntry<bool> UnlockNemMasterySkin;
-
+        public static ConfigEntry<bool> MakeLangFile;
 
         public static void ReadConfig()
         {
@@ -101,6 +101,12 @@ namespace AmpMod.Modules
                                                      "Unlock Nemesis Amp Mastery Skin",
                                                      false,
                                                      "Unlocks Nemesis Amp's Mastery Skin");
+
+            UnlockNemMasterySkin =
+                          AmpPlugin.instance.Config.Bind<bool>("Language Settings",
+                                                   "Make a .lang file",
+                                                   false,
+                                                   "Causes the mod to generate a customizable .lang file on startup");
         }
 
         // this helper automatically makes config entries for disabling survivors

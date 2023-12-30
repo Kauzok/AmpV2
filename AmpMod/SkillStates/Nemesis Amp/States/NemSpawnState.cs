@@ -128,6 +128,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             {
                 indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab, base.characterBody.corePosition, Quaternion.identity);
                 indicatorInstance.transform.parent = base.gameObject.transform;
+                indicatorInstance.GetComponent<StormRangeIndicator>().body = this.characterBody;
             }
 
             //if on the first stage spawn with lightning bolt

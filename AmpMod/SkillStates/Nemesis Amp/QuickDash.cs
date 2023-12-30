@@ -33,6 +33,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		private string endSoundString = StaticValues.surgeExitString;
 		public static SkillDef primaryOverrideSkillDef = Modules.Skills.fireLightningBallSkillDef;
 		private string loopSound = StaticValues.surgeFlightString;
+		DashCrosshairController dashCrosshairController;
 
 		public override void OnEnter()
 		{
@@ -42,7 +43,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			Util.PlaySound(beginSoundString, base.gameObject);
 			lightningController = base.GetComponent<NemLightningColorController>();
 
-
+			dashCrosshairController = base.GetComponent<DashCrosshairController>();
 			blinkVfxPrefab = lightningController.dashPrefab;
 			blinkEffectPrefab = lightningController.dashEnterExitVFX;
 
@@ -56,6 +57,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			{
 				this.characterModel.invisibilityCount++;
 			}
+
 
 			if (this.hurtboxGroup)
 			{
@@ -71,7 +73,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (base.skillLocator.primary && primaryOverrideSkillDef)
             {
 				base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-
 				/*if (base.skillLocator.primary.skillNameToken != "NT_UTILITY_LIGHTNINGBALL_NAME")
                 {
 					base.skillLocator.primary.SetSkillOverride(src, primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);

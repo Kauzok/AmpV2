@@ -34,6 +34,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
         private Ray aimRay;
         private uint stopID;
         private Transform lightningMuzzleTransform;
+        DashCrosshairController dashCrosshairController;
 
         public override void OnEnter()
         {
@@ -57,6 +58,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             base.GetModelTransform().GetComponent<Animator>().SetBool("IsUsingSkill", true);
 
             lightningController = base.GetComponent<NemLightningColorController>();
+            dashCrosshairController = base.GetComponent<DashCrosshairController>();
             muzzleFlashPrefab = lightningController.lightningStakeMuzzleVFX;
             projectilePrefab = lightningController.lightningStakePrefab;
             stakeFlashEffect = lightningController.lightningStakeFlashVFX;
@@ -134,7 +136,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
                     ModifyProjectile(ref fireProjectileInfo);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
-
+                
 
             }
 
@@ -157,6 +159,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             if (base.skillLocator.primary && hasFired)
             {
                 base.skillLocator.primary.UnsetSkillOverride(QuickDash.src, QuickDash.primaryOverrideSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                
             }
 
 

@@ -56,6 +56,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
         public GameObject chargeLightningStakeVFX;
         public GameObject lightningStakeFlashVFX;
         public GameObject dashPrefab;
+        public GameObject dashPrimaryVFX;
 
         [Header("Voltaic Onslaught Effects")]
         public GameObject specialBoltVFX;
@@ -129,6 +130,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 lightningStakeMuzzleVFX = Assets.lightningBallMuzzleFlashEffectBlue;
                 lightningStakeFlashVFX = Assets.lightningStakeFlashEffectBlue;
                 chargeLightningStakeVFX = Assets.lightningStakeMuzzleObjectBlue;
+                dashPrimaryVFX = Assets.plasmaActiveVFXBlue;
                 #endregion
 
                 #region Voltaic Onslaught
@@ -190,6 +192,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                 lightningStakeMuzzleVFX = Assets.lightningBallMuzzleFlashEffect;
                 lightningStakeFlashVFX = Assets.lightningStakeFlashEffect;
                 chargeLightningStakeVFX = Assets.lightningStakeMuzzleObject;
+                dashPrimaryVFX = Assets.plasmaActiveVFX;
                 #endregion
 
                 #region Voltaic Onslaught

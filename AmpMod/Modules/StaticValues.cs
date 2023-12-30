@@ -146,6 +146,7 @@ namespace AmpMod.Modules
 
         [Header("Photon Barrage Values")]
         internal const float baseLaserDamageCoefficient = 1f;
+        internal const float baseLaserBlastDamageCoefficient = 3f;
         internal const float additionalLaserDamageCoefficient = 4f;
 
 

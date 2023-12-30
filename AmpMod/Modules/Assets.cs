@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using RoR2.UI;
 using UnityEngine.Rendering.PostProcessing;
 using TMPro;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 namespace AmpMod.Modules
 {
@@ -193,6 +194,9 @@ namespace AmpMod.Modules
         internal static GameObject lightningStakeFlashEffect;
         internal static GameObject lightningStakeFlashEffectBlue;
         internal static GameObject lightningStakeMuzzleObjectBlue;
+        internal static GameObject plasmaCrosshair;
+        internal static GameObject plasmaActiveVFX;
+        internal static GameObject plasmaActiveVFXBlue;
 
         [Header("Voltaic Onslaught Effects")]
         internal static GameObject purpleStormBoltEffect;
@@ -714,6 +718,9 @@ namespace AmpMod.Modules
             stormRangeIndicator = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicator");
             //PrefabAPI.RegisterNetworkPrefab(stormRangeIndicator);
             stormRangeIndicatorBlue = mainAssetBundle.LoadAsset<GameObject>("StormRangeIndicatorBlue");
+
+            stormRangeIndicator.AddComponent<StormRangeIndicator>();
+            stormRangeIndicatorBlue.AddComponent<StormRangeIndicator>();
         }
         private static void CreatePhotonShot()
         {
@@ -758,6 +765,10 @@ namespace AmpMod.Modules
             lightningBallMuzzleFlashEffect = mainAssetBundle.LoadAsset<GameObject>("BallMuzzleFlash");
             AddNewEffectDef(lightningBallMuzzleFlashEffect);
 
+            plasmaActiveVFX = mainAssetBundle.LoadAsset<GameObject>("PlasmaActive");
+            plasmaActiveVFXBlue = mainAssetBundle.LoadAsset<GameObject>("PlasmaActiveBlue");
+
+
             #region Blue
             dashVFXPrefabBlue = mainAssetBundle.LoadAsset<GameObject>("QuickDashPrefabBlue");
             PrefabAPI.RegisterNetworkPrefab(dashVFXPrefabBlue);
@@ -777,6 +788,8 @@ namespace AmpMod.Modules
             lightningBallMuzzleFlashEffectBlue = mainAssetBundle.LoadAsset<GameObject>("BallMuzzleFlashBlue");
             AddNewEffectDef(lightningBallMuzzleFlashEffectBlue);
             #endregion
+
+            plasmaCrosshair = mainAssetBundle.LoadAsset<GameObject>("NemPlasmaUI");
 
         }
 

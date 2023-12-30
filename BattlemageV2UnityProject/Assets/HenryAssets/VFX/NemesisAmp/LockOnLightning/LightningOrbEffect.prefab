@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4387802820029636826}
-  - component: {fileID: 5305284685253772564}
   - component: {fileID: 1001617808678344736}
   - component: {fileID: 775636318332940482}
   m_Layer: 0
-  m_Name: LightningEffectOrbNew
+  m_Name: LightningOrbEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,24 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &5305284685253772564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4070710612750936417}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectIndex: -1
-  positionAtReferencedTransform: 0
-  parentToReferencedTransform: 0
-  applyScale: 1
-  soundName: 
-  disregardZScale: 0
 --- !u!120 &1001617808678344736
 LineRenderer:
   m_ObjectHideFlags: 0

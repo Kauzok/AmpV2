@@ -50,7 +50,7 @@ namespace AmpMod.Modules
 
         public const string MODUID = "com.NeonThink.Amp";
         public const string MODNAME = "Amp";
-        public const string MODVERSION = "1.2.1";
+        public const string MODVERSION = "2.0.2";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "NT";
@@ -81,6 +81,7 @@ namespace AmpMod.Modules
             // load assets and read config
             Assets.Initialize();
             Modules.Config.ReadConfig();
+            //Language.Init(Info);
             States.RegisterStates(); // register states for networking
             Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Projectiles.RegisterProjectiles(); // add and register custom projectiles
@@ -92,19 +93,11 @@ namespace AmpMod.Modules
             NetworkingAPI.RegisterMessageType<NemAmpLightningLockOrb.SyncChain>();
             NetworkingAPI.RegisterMessageType<LightningStream.SyncDamage>();
 
-            /*   //material shader autoconversion
-               var materialAssets = Assets.mainAssetBundle.LoadAllAssets<Material>();
+//            Modules.Language.Add("AMPMOD_NAME", "Amp");
+            //Modules.Language.Add("AMPMOD_DESCRIPTION", "Adds content from the mod 'Amp' to the game.");
+           // Modules.Language.PrintOutput("Amp.txt");
 
-               foreach (Material material in materialAssets)
-               {
-                   if (!material.shader.name.StartsWith("Stubbed")) { continue; }
 
-                   //var replacementShader = Addressables.LoadAssetAsync<Shader>(material.shader.name.ToLower()).WaitForCompletion();
-                   var replacementShader = LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]); //LegacyResourcesAPI.Load<Shader>(ShaderLookup[material.shader.name.ToLower()]);
-                   if (replacementShader) { material.shader = replacementShader; Debug.Log("Replacing Shader"); }
-                   if (!replacementShader) { Debug.Log("No Shader Found"); }
-
-               } */
 
             //creates Amp
             new Survivors.Amp().Initialize();
@@ -166,10 +159,10 @@ namespace AmpMod.Modules
                         statSheet2.PushStatValue(Survivors.Amp.ampTotalBurnedEnemiesKilled, 1UL);
                     }
 
-                    if (damageReport.attackerBody.baseNameToken == developerPrefix + "_NEMAMP_BODY_NAME" && voidFamilyEnemies.Contains(damageReport.victimBody.name))
+                    /* if (damageReport.attackerBody.baseNameToken == developerPrefix + "_NEMAMP_BODY_NAME" && voidFamilyEnemies.Contains(damageReport.victimBody.name))
                     {
                         statSheet2.PushStatValue(Survivors.NemAmp.nemAmpTotalVoidEnemiesKilled, 1UL);
-                    } 
+                    }  */
                 }
 
                 orig();

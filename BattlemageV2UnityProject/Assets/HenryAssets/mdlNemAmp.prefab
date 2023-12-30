@@ -275,6 +275,10 @@ MonoBehaviour:
     transform: {fileID: 3186973032216657555}
   - name: IndexR
     transform: {fileID: 6889981940518768393}
+  - name: Plasma1Point
+    transform: {fileID: 8953463810298734198}
+  - name: Plasma2Point
+    transform: {fileID: 399867000346279312}
 --- !u!114 &9052249991326240707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8056,6 +8060,36 @@ MonoBehaviour:
   loop: 0
   randomStart: 0
   enableNegativeLights: 0
+--- !u!1 &2269462105569539120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8953463810298734198}
+  m_Layer: 0
+  m_Name: Plasma1Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8953463810298734198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269462105569539120}
+  m_LocalRotation: {x: -0.14785194, y: 0.36806157, z: -0.40804887, w: 0.8222936}
+  m_LocalPosition: {x: 0.0139, y: -0.0889, z: 0.1309}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9139516392199384887}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2288843333511504218
 GameObject:
   m_ObjectHideFlags: 0
@@ -10621,6 +10655,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 353971704795996182}
+  - {fileID: 399867000346279312}
   m_Father: {fileID: 4394264699284230119}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -51.119278, y: 131.94432, z: 158.42615}
@@ -22762,6 +22797,36 @@ Transform:
   m_Father: {fileID: 1960097615416388143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.00000008671138, y: -8.9564476e-12, z: -2.1283693e-15}
+--- !u!1 &4671193481384479103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399867000346279312}
+  m_Layer: 0
+  m_Name: Plasma2Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399867000346279312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671193481384479103}
+  m_LocalRotation: {x: -0.16420957, y: -0.36419386, z: 0.40376067, w: 0.8230282}
+  m_LocalPosition: {x: -0.0121, y: -0.0884, z: 0.1262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 942351145691516641}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4677201609644678519
 GameObject:
   m_ObjectHideFlags: 0
@@ -27719,6 +27784,7 @@ Transform:
   m_LocalScale: {x: 0.99999964, y: 0.99999976, z: 0.9999999}
   m_Children:
   - {fileID: 8958314650545013013}
+  - {fileID: 8953463810298734198}
   m_Father: {fileID: 4394264699284230119}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -49.536236, y: -131.68614, z: -157.4309}
