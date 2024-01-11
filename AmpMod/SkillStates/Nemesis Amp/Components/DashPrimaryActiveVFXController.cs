@@ -102,7 +102,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
             {
                 UnityEngine.Object.Destroy(activeInstance);
             }
-            UnityEngine.Object.Destroy(activeInstance);
         }
 
         private void CreateLightningNoise()
@@ -116,7 +115,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                     var pos2 = Vector3.Lerp(point1Transform.position, point2Transform.position, 1 / (float)(numLineRendererPoints - 1));
                     pos2.y += .07f;
                     pos2.y += Random.Range(-.02f, .02f);
-                    pos2.x += Random.Range(-.05f, .05f);
+                    pos2.x += Random.Range(-.07f, .07f);
 
                     lineRenderer.SetPosition(1, pos2);
 
@@ -141,7 +140,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
                     var pos3 = Vector3.Lerp(point1Transform.position, point2Transform.position, (numLineRendererPoints - 2) / (float)(numLineRendererPoints - 1));
                     pos3.y += .07f;
                     pos3.y += Random.Range(-.02f, .02f);
-                    pos3.x += Random.Range(-.05f, .05f);
+                    pos3.x += Random.Range(-.07f, .07f);
 
                     lineRenderer.SetPosition(numLineRendererPoints - 2, pos3);
 

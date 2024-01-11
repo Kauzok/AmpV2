@@ -76,7 +76,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
             muzzleHandTransform = childLocator.FindChild("HandL");
             //Debug.Log("muzzle rotation = " + muzzleHandTransform.rotation.eulerAngles.x + " " + muzzleHandTransform.rotation.eulerAngles.y + " "+ muzzleHandTransform.rotation.eulerAngles.z);
             this.duration = this.baseDuration / this.attackSpeedStat;
-            this.waitDuration = this.duration / 1.6f;
+            this.waitDuration = this.duration / 2.6f;
             base.characterBody.SetAimTimer(this.duration + .3f);
             this.PlayFireAnimation();
             surgeBuffCount = base.GetBuffCount(Buffs.damageGrowth);

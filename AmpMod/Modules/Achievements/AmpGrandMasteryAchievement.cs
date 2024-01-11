@@ -16,11 +16,11 @@ namespace AmpMod.Modules.Achievements
 
         public override bool ShouldGrant(RunReport runReport)
         {
-            DifficultyDef runDifficulty = DifficultyCatalog.GetDifficultyDef(runReport.ruleBook.FindDifficulty());
-            if (runReport.gameEnding && runReport.gameEnding.isWin && this.localUser.cachedBody.bodyIndex == this.requiredBodyIndex && runDifficulty.scalingValue >= 3.5)
-            {
-                return true;
-            }
+            //DifficultyDef runDifficulty = DifficultyCatalog.GetDifficultyDef(runReport.ruleBook.FindDifficulty());
+            //if (runReport.gameEnding && runReport.gameEnding.isWin && this.localUser.cachedBody.bodyIndex == this.requiredBodyIndex && runDifficulty.scalingValue >= 3.5)
+           // {
+            //    return true;
+           // }
             return false;
         }
     }

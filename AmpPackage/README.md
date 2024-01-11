@@ -48,17 +48,34 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 
 # Change Log
 <details>
-<summary>2.0.2</summary>
+<summary>2.0.3</summary>
  
  - General
-    - Added a customizable .lang file to mod
+    - Fixed a bug where obliterating on Monsoon wouldn't give mastery skins
+- Amp
+    - Updated character select screen icon
  - Nemesis Amp
+    - UI
+        - Standardized location of gathering storm icon across all resolutions
+    - Furious Spark
+        - Modified and sped up firing animation
+    - Config
+        - ACTUALLY Removed redundant option to unlock Nemesis Amp
+
+</details>
+
+<details>
+<summary>2.0.2</summary>
+ 
+ - Nemesis Amp
+    - New known bugs
+        - Body sometimes doesn't disappear after death in multiplayer
      - Fulmination
         - Fixed an error that sometimes appeared in multiplayer where the chaining functionality of this skill would misbehave
     - Voltaic Onslaught
         - Range indicator now disappears and reappears depending on if the skill has been replaced or not (e.g. essence of heresy)
     - Voidsurge
-        - Added VFX and crosshair for when the plasma projectile is available
+        - Added VFX for when the plasma projectile is available
     - Config
         - Added an option to auto unlock the mastery skin
         - Removed redundant option to unlock Nemesis Amp

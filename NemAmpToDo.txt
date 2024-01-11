@@ -1,21 +1,33 @@
 To do:
-- Add lang file to mod
-- Test amp animation bugs (e.g. using pulse leap while holding voltaic bombardment breaks the animation)
-- Implement Amp animations, making sure none of them are in base.isauthority calls
-- Fix invisible amp vfx in multiplayer (this should only be the lorentz cannon charge prefab)
-- Standardize nemamp passive meter position to be under health bar across all resolutions
-- Decrease attenuation for amp surge explosion, also now a lot of amp sounds are too quiet
-- Rebalance amp melvin, a bit TOO strong
-- Fix mastery skins not unlocking on monsoon obliterate bug
-- Implement lorentz blades animations when idle
-- Try using r2networkingAPI for amp's surge skill
+- General
+    - Add lang file to mod 
+    - Fix mastery skins not unlocking on monsoon obliterate bug
+- Amp
+    - Test amp animation bugs (e.g. using pulse leap while holding voltaic bombardment breaks the animation)
+    - Implement Amp animations, making sure none of them are in base.isauthority calls
+    - Adjust magnetic vortex VFX
+    - Change functionality of Amp plasma slash	
+    - Fix invisible amp vfx in multiplayer (this should only be the lorentz cannon charge prefab)
+    - Fix amp css icon being blurry
+    - Decrease attenuation for amp surge explosion, also now a lot of amp sounds are too quiet
+    - Rebalance amp melvin, a bit TOO strong
+    - Try using r2networkingAPI for amp's surge skill
+    - Decrease pulse leap explosion size
+- NemAmp
+    - Standardize nemamp passive meter position to be under health bar across all resolutions
+    - Make nemamp body disappear in multiplayer
+    - Implement lorentz blades animation (?)
+
+
 - Clean up unity project animations folder
 - Adjust animations so aiming up actually makes you do things up
 - Alt special:
 	- Fire a blast of light in front of you that deals XXX% damage and detonates controlled charge for XXX% damage. Hold the ability to
 	focus the blast into a long range beam of light that deals XXX% damage and detonates controlled charge for XXX% damage.
 	- This is to be more technical, and both methods should have good sides: blast is quick, AOE, but sshorter range and lower CC damage
-	-
+	- Fire a burst, OR lock on and fire multiple beams
+	- OR instead of a shotgun burst, make it a short energy pulse/sword slash?
+	- OR a giant orb of electricity that you spawn that functions similar to loader pylon and that you can detonate for big damage
 - Add ancient scepter support for nemamp
 	-voltaic onslaught now causes enemies to give enemies a tesla coil-like status effect that shocks them & enemies next to them, with a duration dependent
 	on how many stacks of controlled charge they had; a base of 2 seconds with +1 second per stack. this cannot be reset until the status has run out)

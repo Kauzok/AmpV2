@@ -372,7 +372,7 @@ namespace AmpMod.Modules.Survivors
             ;
 
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef, photonSkillDef);
+            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef);//, photonSkillDef);
             //Modules.Skills.AddUnlockableSpecialSkill(bodyPrefab, photonSkillDef, photonSkillUnlockableDef);
             #endregion
         }
