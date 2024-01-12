@@ -59,6 +59,8 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
         - Standardized location of gathering storm icon across all resolutions
     - Furious Spark
         - Modified and sped up firing animation
+    - Static Field
+        - Increased vertical range of hitbox
     - Config
         - ACTUALLY Removed redundant option to unlock Nemesis Amp
 

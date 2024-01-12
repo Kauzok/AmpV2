@@ -117,14 +117,14 @@ namespace AmpMod.Modules.Survivors
                 ContentAddition.AddUnlockableDef(bladesSkillUnlockableDef);
             }
 
-            if (!Config.NemUnlockPhotonSkill.Value)
-            {
+           //if (!Config.NemUnlockPhotonSkill.Value)
+         //   {
                 photonSkillUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
                 photonSkillUnlockableDef.cachedName = "Skills.Laser";
                 photonSkillUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_NEMAMP_BODY_LASER";
                 photonSkillUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemPhoton");
                 ContentAddition.AddUnlockableDef(photonSkillUnlockableDef);
-            }
+           // } 
 
 
         }

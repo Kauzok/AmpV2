@@ -14,7 +14,6 @@ namespace AmpMod.Modules
         public static ConfigEntry<bool> UnlockGrandMasterySkin;
         public static ConfigEntry<bool> UnlockWormSkill;
         public static ConfigEntry<bool> UnlockPlasmaSkill;
-        public static ConfigEntry<bool> UnlockNemesisAmp;
         public static ConfigEntry<bool> NemUnlockDashSkill;
         public static ConfigEntry<bool> NemUnlockBladesSkill;
         public static ConfigEntry<bool> NemUnlockPhotonSkill;
@@ -24,7 +23,7 @@ namespace AmpMod.Modules
 
         public static void ReadConfig()
         {
-            /*Dictionary<ConfigDefinition, string> orphanedEntries = (Dictionary<ConfigDefinition, string>)typeof(ConfigFile).GetProperty("OrphanedEntries",
+          /*  Dictionary<ConfigDefinition, string> orphanedEntries = (Dictionary<ConfigDefinition, string>)typeof(ConfigFile).GetProperty("OrphanedEntries",
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(AmpPlugin.instance.Config);
             orphanedEntries.Clear(); */
 
@@ -75,12 +74,6 @@ namespace AmpMod.Modules
                                                       false,
                                                       "Unlocks Amp's Electric Burns Achievement & Corresponding Skill");
 
-            UnlockNemesisAmp =
-                             AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
-                                                      "Unlock Nemesis Amp",
-                                                      false,
-                                                      "Unlocks Nemesis Amp by default");
-
             NemUnlockBladesSkill = AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
                                                       "Unlock Sharpshocker",
                                                       false,
@@ -91,10 +84,10 @@ namespace AmpMod.Modules
                                                    false,
                                                    "Unlocks Nemesis Amp's 299,792,458 m/s Achievement & Corresponding Skill");
 
-            NemUnlockPhotonSkill = AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
+           /* NemUnlockPhotonSkill = AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
                                               "Lux Vindictae",
                                               false,
-                                              "Unlocks Nemesis Amp's Lux Vindictae Achievement & Corresponding Skill");
+                                              "Unlocks Nemesis Amp's Lux Vindictae Achievement & Corresponding Skill"); */
 
             UnlockNemMasterySkin =
                             AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
@@ -102,11 +95,11 @@ namespace AmpMod.Modules
                                                      false,
                                                      "Unlocks Nemesis Amp's Mastery Skin");
 
-            UnlockNemMasterySkin =
+          /*  MakeLangFile =
                           AmpPlugin.instance.Config.Bind<bool>("Language Settings",
                                                    "Make a .lang file",
                                                    false,
-                                                   "Causes the mod to generate a customizable .lang file on startup");
+                                                   "Causes the mod to generate a customizable .lang file on startup"); */
         }
 
         // this helper automatically makes config entries for disabling survivors

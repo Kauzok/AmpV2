@@ -1,22 +1,22 @@
 To do:
 - General
     - Add lang file to mod 
-    - Fix mastery skins not unlocking on monsoon obliterate bug
 - Amp
+    - Fix idle animation sword not touching shoulder
+    - Fix amp css icon being blurry
     - Test amp animation bugs (e.g. using pulse leap while holding voltaic bombardment breaks the animation)
     - Implement Amp animations, making sure none of them are in base.isauthority calls
     - Adjust magnetic vortex VFX
     - Change functionality of Amp plasma slash	
     - Fix invisible amp vfx in multiplayer (this should only be the lorentz cannon charge prefab)
-    - Fix amp css icon being blurry
     - Decrease attenuation for amp surge explosion, also now a lot of amp sounds are too quiet
     - Rebalance amp melvin, a bit TOO strong
     - Try using r2networkingAPI for amp's surge skill
     - Decrease pulse leap explosion size
 - NemAmp
-    - Standardize nemamp passive meter position to be under health bar across all resolutions
     - Make nemamp body disappear in multiplayer
     - Implement lorentz blades animation (?)
+    - Make static field vfx a cylinder instead of a sphere?
 
 
 - Clean up unity project animations folder
