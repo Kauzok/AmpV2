@@ -242,7 +242,7 @@ MonoBehaviour:
   - name: SpineBase
     transform: {fileID: 7266143320729172898}
   - name: SwingCenter
-    transform: {fileID: 7266143320729172898}
+    transform: {fileID: 1886963013051152965}
   - name: BeamMuzzle
     transform: {fileID: 4605182610241253109}
   - name: LightningMuzzle
@@ -279,6 +279,8 @@ MonoBehaviour:
     transform: {fileID: 8953463810298734198}
   - name: Plasma2Point
     transform: {fileID: 399867000346279312}
+  - name: LaserMuzzle
+    transform: {fileID: 7801887773419767073}
 --- !u!114 &9052249991326240707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2764,7 +2766,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416272661810000375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.4, z: 1.801}
+  m_LocalPosition: {x: 0, y: 2.472, z: 2.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 588147430231770611}
@@ -5420,8 +5422,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557656814159736619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.884, z: 5}
-  m_LocalScale: {x: 19, y: 16, z: 20}
+  m_LocalPosition: {x: 0, y: 2.884, z: 11}
+  m_LocalScale: {x: 50, y: 14, z: 50}
   m_Children: []
   m_Father: {fileID: 588147430231770611}
   m_RootOrder: 4
@@ -8149,9 +8151,40 @@ Transform:
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 894735021680295333}
+  - {fileID: 7801887773419767073}
   m_Father: {fileID: 2157284456969353971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -5.9928637, y: 0, z: 0}
+--- !u!1 &2399855017242161174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7801887773419767073}
+  m_Layer: 0
+  m_Name: LaserMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7801887773419767073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399855017242161174}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.008, y: 0.08, z: 0.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7443903398313926454}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2405331349399699162
 GameObject:
   m_ObjectHideFlags: 0

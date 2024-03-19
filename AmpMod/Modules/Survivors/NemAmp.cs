@@ -136,13 +136,13 @@ namespace AmpMod.Modules.Survivors
 
         internal override void InitializeHitboxes()
         {
-          /*
+          
             ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
             GameObject model = childLocator.gameObject;
 
             Transform bigSlashTransform = childLocator.FindChild("CleaveHitbox");
             Modules.Prefabs.SetupHitbox(model, bigSlashTransform, "Cleave");
-             */
+             
 
         }
 
@@ -222,16 +222,16 @@ namespace AmpMod.Modules.Survivors
             //creates void slash; remember to make a config that allows users to put this as a special skill or a secondary
             SkillDef slashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_NAME",
-                skillNameToken = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_NAME",
-                skillDescriptionToken = prefix + "_NEMAMP_BODY_SPECIAL_SLASH_DESCRIPTION",
+                skillName = prefix + "_NEMAMP_BODY_SECONDARY_SLASH_NAME",
+                skillNameToken = prefix + "_NEMAMP_BODY_SECONDARY_SLASH_NAME",
+                skillDescriptionToken = prefix + "_NEMAMP_BODY_SECONDARY_SLASH_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemSlash"),
-                //activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeSlash)),
-                activationStateMachineName = "Slide",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(LightningSlash)),
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 6f,
+                baseRechargeInterval = 5f,
                 beginSkillCooldownOnSkillEnd = true,
-                canceledFromSprinting = true,
+                canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = false,
                 //fullRestockOnAssign = true,
@@ -239,7 +239,7 @@ namespace AmpMod.Modules.Survivors
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = true,
-                cancelSprintingOnActivation = false,
+                cancelSprintingOnActivation = true,
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
@@ -247,8 +247,8 @@ namespace AmpMod.Modules.Survivors
             }); ;
 
 
-            //Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef, slashSkillDef);
-            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef);
+            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef, slashSkillDef);
+            //Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef);
             #endregion
 
 
@@ -347,7 +347,7 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_NEMAMP_BODY_SPECIAL_LASER_NAME",
                 skillDescriptionToken = prefix + "_NEMAMP_BODY_SPECIAL_LASER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemStorm"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeLightBlast)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(PhotonShot)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 7f,
@@ -372,7 +372,7 @@ namespace AmpMod.Modules.Survivors
             ;
 
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef);//, photonSkillDef);
+            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef, photonSkillDef);
             //Modules.Skills.AddUnlockableSpecialSkill(bodyPrefab, photonSkillDef, photonSkillUnlockableDef);
             #endregion
         }

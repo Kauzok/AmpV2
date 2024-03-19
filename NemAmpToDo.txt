@@ -17,6 +17,12 @@ To do:
     - Make nemamp body disappear in multiplayer
     - Implement lorentz blades animation (?)
     - Make static field vfx a cylinder instead of a sphere?
+    - Finish Galvanic Cleave
+    - Finish Photon Shot
+
+For galvanic cleave, want:
+	-If in the air, reach to the sky and perform a downwards swing that hits enemies directly in front, above, and below
+	- Hold to charge forward?
 
 
 - Clean up unity project animations folder

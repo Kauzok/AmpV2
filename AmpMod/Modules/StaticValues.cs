@@ -83,11 +83,11 @@ namespace AmpMod.Modules
         internal const float boltOverlapDamageCoefficient = 1.5f;
 
         [Header("Pulse Leap Values")]
-        internal const float boostDamageCoefficient = 4f;
+        internal const float boostDamageCoefficient = 2.5f;
 
         [Header("Fulmination Values")]
         internal const float fulminationDamageCoefficient = 1.1f;
-        internal const float fulminationTotalDamageCoefficient = 22f;
+        internal const float fulminationTotalDamageCoefficient = 16f;
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
@@ -145,18 +145,12 @@ namespace AmpMod.Modules
         internal const float controlledChargeDuration = 10f;
 
         [Header("Photon Barrage Values")]
-        internal const float baseLaserDamageCoefficient = 1f;
-        internal const float baseLaserBlastDamageCoefficient = 3f;
+        internal const float baseLaserDamageCoefficient = 4f;
+        internal const float baseLaserBlastDamageCoefficient = 4f;
         internal const float additionalLaserDamageCoefficient = 4f;
 
-
-        [Header("Void Slash Values")]
-        internal const float minSlashDamageCoefficient = 5f;
-        internal const float maxSlashDamageCoefficient = 13f;
-        internal const float minSlashLength = 5f;
-        internal const float maxSlashLength = 20f;
-        internal const float additionalSlashDamageCoefficient = 1f;
-        
+        [Header("Galvanic Cleave Values")]
+        internal const float voidSlashDamageCoefficient = 9.5f;
 
         #region  Amp Sounds
         [Header("Charge Sound Strings")]

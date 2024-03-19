@@ -139,14 +139,14 @@ namespace AmpMod.Modules
             LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire 3 <style=cIsUtility>tracking</style> iron sand daggers, each dealing <style=cIsDamage>{100f * StaticValues.bladeDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm charge</style>, fire <style=cIsDamage>6</style> blades.");
             #endregion
 
-            #region Primary3
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_NAME", "Trishock");
-            LanguageAPI.Add(nemPrefix + "PRIMARY_BLADES_DESCRIPTION", $"Fire 3 <style=cIsUtility>tracking</style> orbs of plasma that explode for <style=cIsDamage>{100f * StaticValues.plasmaOrbDamageCoefficient}% damage</style> on hit. At <style=cIsDamage>maximum Gathering Storm bonus</style>, fire <style=cIsDamage>5</style> orbs instead.");
-            #endregion
-
             #region Secondary
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_NAME", "Furious Spark");
             LanguageAPI.Add(nemPrefix + "SECONDARY_CHARGEBEAM_DESCRIPTION", $"Charge a <style=cIsUtility>piercing</style> beam of electricity that deals <style=cIsDamage>{100f * StaticValues.chargeBeamMinDamageCoefficient}%-{100f * StaticValues.chargeBeamMaxDamageCoefficient}% damage</style>. For every enemy pierced, the beam deals <style=cIsDamage>{100f * StaticValues.additionalPierceDamageCoefficient}% of its damage</style> as bonus damage to the next enemy hit.");
+            #endregion
+
+            #region Secondary2
+            LanguageAPI.Add(nemPrefix + "SECONDARY_SLASH_NAME", "Galvanic Cleave");
+            LanguageAPI.Add(nemPrefix + "SECONDARY_SLASH_DESCRIPTION", $"Form a blade of void lightning and slash, <style=cIsDamage>{100f * StaticValues.voidSlashDamageCoefficient} damage</style>. <style=cIsUtility> </style> to perform a instead.");
             #endregion
 
             #region Utility
@@ -162,25 +162,17 @@ namespace AmpMod.Modules
             LanguageAPI.Add(nemPrefix + "UTILITY_LIGHTNINGBALL_DESCRIPTION", $"Throw a <style=cIsUtility>shocking</style> mass of plasma for <style=cIsDamage>{100f * StaticValues.lightningBallDamageCoefficient}% damage</style>.");
             #endregion
 
-            #region Utility2Old
-            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_NAME", "Shocking Teleport");
-            LanguageAPI.Add(nemPrefix + "UTILITY_TELEPORT_DESCRIPTION", $"Teleport to any destination within your line of sight, dealing <style=cIsDamage>{100f * StaticValues.teleportBlastDamageCoefficient}% damage</style> damage upon arrival.");
-            #endregion
-
             #region Special
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_NAME", "Voltaic Onslaught");
             LanguageAPI.Add(nemPrefix + "SPECIAL_SUMMONSTORM_DESCRIPTION", $"Dealing damage adds stacks of <color=#8b00ff>Controlled Charge</color>. Activate this skill to summon a lightning bolt onto every enemy in a radius; the lightning bolt deals <style=cIsDamage>{100f * StaticValues.baseBoltDamageCoefficient}% base damage</style> with an extra <style=cIsDamage>{100f * StaticValues.additionalBoltDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
             #endregion
 
             #region Special2
-            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_NAME", "Photon Shot");
+            LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_NAME", "Light Show");
             LanguageAPI.Add(nemPrefix + "SPECIAL_LASER_DESCRIPTION", $"Fire a beam of light for <style=cIsDamage>{100f * StaticValues.baseLaserDamageCoefficient}% damage</style>. <style=cIsDamage>Detonates</style> stacks of <color=#8b00ff>Controlled Charge</color> for an additional <style=cIsDamage>{100f * StaticValues.additionalLaserDamageCoefficient}% damage.</style>");
             #endregion
 
-            #region Special2Old
-            LanguageAPI.Add(nemPrefix + "SPECIAL_SLASH_NAME", "Galvanic Cleave");
-            LanguageAPI.Add(nemPrefix + "SPECIAL_SLASH_DESCRIPTION", $"<style=cIsUtility>Charge</style> a blade of void lightning and slash, <style=cIsDamage>{100f * StaticValues.minSlashDamageCoefficient}%-{100f * StaticValues.maxSlashDamageCoefficient}% damage</style>. The slash deals an extra <style=cIsDamage>{100f * StaticValues.additionalSlashDamageCoefficient}% damage for every stack of Controlled Charge</style>.");
-            #endregion
+
 
             #region Achievements
             LanguageAPI.Add("ACHIEVEMENT_NEMAMPMASTERYUNLOCK_NAME", "Nemesis Amp: Mastery");

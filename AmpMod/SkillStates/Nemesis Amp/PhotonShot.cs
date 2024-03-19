@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AmpMod.Modules;
+﻿using AmpMod.Modules;
 using RoR2;
 using EntityStates;
 using UnityEngine;
@@ -18,12 +16,17 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		public float damageCoefficient = StaticValues.baseLaserDamageCoefficient;
 		private float force = 1000f;
 		private float maxDistance = 1000f;
-		private String fireSoundString;
+		private string fireSoundString;
 		private float recoilAmplitude = 1f;
-		private float baseDuration = .6f;
+		private float baseDuration = 1.5f;
+		private float basePrepDuration = .58f;
+		private float prepDuration;
+		private GameObject chargeMuzzlePrefab = Assets.photonChargeEffect;
+		private Transform headMuzzleObjectTransform;
 		private float duration;
-		private string muzzle = "IndexR";
+		private string muzzle = "LaserMuzzle";
 		private float bulletRadius = 2;
+		private bool hasFired;
 		private float spreadBloomValue = .2f;
 		private StackDamageController stackDamageController;
 		private ChildLocator childLocator;
@@ -34,6 +37,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 		{
 			base.OnEnter();
 			this.duration = this.baseDuration / this.attackSpeedStat;
+			this.prepDuration = this.basePrepDuration / this.attackSpeedStat;
 			Ray aimRay = base.GetAimRay();
 			//base.PlayAnimation(this.animationLayerName, this.animationStateName, this.animationPlaybackRateParam, this.duration);
 			base.AddRecoil(-1f * this.recoilAmplitude, -2f * this.recoilAmplitude, -0.5f * this.recoilAmplitude, 0.5f * this.recoilAmplitude);
@@ -49,14 +53,34 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			tracerEffectPrefab = lightningColorController.specialBeamTracer;
 			hitEffectPrefab = lightningColorController.specialBeamImpactDetonate;
 
-			base.PlayAnimation("Gesture, Additive", "FireLaser", "BaseSkill.playbackRate", this.duration+.4f);
+			base.PlayAnimation("FullBody, Override", "FireLaser", "BaseSkill.playbackRate", this.duration);
 
+			Transform headMuzzleTransform = base.GetModelChildLocator().FindChild(muzzle);
+			headMuzzleObjectTransform = Object.Instantiate(chargeMuzzlePrefab, headMuzzleTransform).transform;
+	
+			
+			stackDamageController.newSkillUsed = this;
+			stackDamageController.resetComboTimer();
+		}
+
+		public override void OnExit()
+		{
+			base.OnExit();
+			if (headMuzzleObjectTransform)
+			{
+				Destroy(headMuzzleObjectTransform.gameObject);
+			}
+		}
+
+		private void Fire()
+        {
 			if (this.muzzleflashEffectPrefab)
 			{
 				EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, this.muzzle, false);
 			}
 			if (base.isAuthority)
 			{
+				Ray aimRay = base.GetAimRay();
 				BulletAttack photonShot = new BulletAttack
 				{
 					owner = base.gameObject,
@@ -83,23 +107,25 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 			}
 			base.characterBody.AddSpreadBloom(this.spreadBloomValue);
 
-			stackDamageController.newSkillUsed = this;
-			stackDamageController.resetComboTimer();
-		}
-
-		public override void OnExit()
-		{
-			base.OnExit();
 		}
 
 		public override void FixedUpdate()
 		{
 			base.FixedUpdate();
-			if (base.fixedAge >= this.duration && base.isAuthority)
+			if (base.fixedAge >= this.prepDuration && !hasFired)
 			{
-				this.outer.SetNextStateToMain();
-				return;
+				this.Fire();
+				hasFired = true;
+				if (headMuzzleObjectTransform)
+				{
+					Destroy(headMuzzleObjectTransform.gameObject);
+				}
 			}
+
+			if (base.fixedAge > this.duration)
+            {
+				this.outer.SetNextStateToMain();
+            }
 		}
 
 		public override InterruptPriority GetMinimumInterruptPriority()

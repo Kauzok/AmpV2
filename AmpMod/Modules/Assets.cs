@@ -173,6 +173,16 @@ namespace AmpMod.Modules
         internal static GameObject beamMuzzleFlashEffectBlue;
         // internal static GameObject fireBeamEffect;
 
+        [Header("Galvanic Cleave Effects")]
+        internal static GameObject lightningBladePrefab;
+        internal static GameObject spawnLightningBladeVFX;
+        internal static GameObject lightningBladeSlashVFX;
+        internal static GameObject lightningBladeHitVFX;
+        internal static GameObject lightningBladePrefabBlue;
+        internal static GameObject spawnLightningBladeVFXBlue;
+        internal static GameObject lightningBladeSlashVFXBlue;
+        internal static GameObject lightningBladeHitVFXBlue;
+
         [Header("Static Field Effects")]
         internal static GameObject aimFieldMuzzleEffect;
         internal static GameObject releaseFieldMuzzleEffect;
@@ -206,6 +216,7 @@ namespace AmpMod.Modules
         internal static GameObject stormRangeIndicatorBlue;
 
         [Header("Photon Shot Effects")]
+        internal static GameObject photonChargeEffect;
         internal static GameObject photonMuzzleFlash;
         internal static GameObject photonTracer;
         internal static GameObject photonImpact;
@@ -214,8 +225,6 @@ namespace AmpMod.Modules
         internal static GameObject photonTracerBlue;
         internal static GameObject photonImpactBlue;
         internal static GameObject photonImpactDetonateBlue;
-
-        internal static GameObject lightningSwordChargePrefab;
 
         #endregion
 
@@ -649,8 +658,18 @@ namespace AmpMod.Modules
 
         private static void CreateLightningSlash()
         {
-            lightningSwordChargePrefab = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningSlash");
-            PrefabAPI.RegisterNetworkPrefab(lightningSwordChargePrefab);
+            //lightningSwordChargePrefab = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningSlash");
+            //PrefabAPI.RegisterNetworkPrefab(lightningSwordChargePrefab);
+
+            lightningBladePrefab = mainAssetBundle.LoadAsset<GameObject>("SlashBladeVFX");
+            PrefabAPI.RegisterNetworkPrefab(lightningBladePrefab);
+            spawnLightningBladeVFX = mainAssetBundle.LoadAsset<GameObject>("SpawnBlade");
+            AddNewEffectDef(spawnLightningBladeVFX);
+            lightningBladeSlashVFX = mainAssetBundle.LoadAsset<GameObject>("NemSlashSwing");
+            AddNewEffectDef(lightningBladeSlashVFX);
+            lightningBladeHitVFX = mainAssetBundle.LoadAsset<GameObject>("NemSlashImpact");
+            AddNewEffectDef(lightningBladeHitVFX);
+            //lightningBladeHitVFX = mainAssetBundle.LoadAsset<GameObject>("ChargeLightningSlash");
         }
 
         private static void CreateStaticField()
@@ -728,6 +747,8 @@ namespace AmpMod.Modules
             photonImpactDetonate = mainAssetBundle.LoadAsset<GameObject>("PhotonImpactDetonate");
             photonTracer = mainAssetBundle.LoadAsset<GameObject>("PhotonTracer");
             photonMuzzleFlash = mainAssetBundle.LoadAsset<GameObject>("PhotonMuzzleFlash");
+            photonChargeEffect = mainAssetBundle.LoadAsset<GameObject>("LaserCharge");
+            PrefabAPI.RegisterNetworkPrefab(photonChargeEffect);
 
             AddNewEffectDef(photonImpact);
             AddNewEffectDef(photonImpactDetonate);

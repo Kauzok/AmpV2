@@ -328,7 +328,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -302017379368728264, guid: d45d295fb338b154a9c5f7472794f510,
+  m_Motion: {fileID: -4718798213614727921, guid: d45d295fb338b154a9c5f7472794f510,
     type: 3}
   m_Tag: 
   m_SpeedParameter: BaseSkill.playbackRate
@@ -1002,7 +1002,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireSlash
+  m_Name: WideSlash
   m_Speed: 1.3
   m_CycleOffset: 0
   m_Transitions:
@@ -1016,7 +1016,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f924a580fd99dbf4d8d90988bb1df23c, type: 2}
+  m_Motion: {fileID: 2265692327816188759, guid: 0ad3bd83462dfcd43b43dfd8b1d7b27e,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: BaseSkill.playbackRate
   m_MirrorParameter: 
@@ -4660,7 +4661,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FullBody, Override
+  m_Name: FireLaser
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102901510406289610}
@@ -4683,9 +4684,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -4908342303849140373}
     m_Position: {x: -570, y: 220, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -14663981151729938}
-    m_Position: {x: -140, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1115127919165130977}
     m_Position: {x: 100, y: 160, z: 0}

@@ -99,6 +99,42 @@ ModelImporter:
   - first:
       74: 6646863397824563720
     second: metarig|WalkSideR
+  - first:
+      74: -2062074773753952957
+    second: metarig|Death
+  - first:
+      74: 386549202765459875
+    second: metarig|FireBeamAnimFast
+  - first:
+      74: 4586994063164749346
+    second: metarig|FireBlades1
+  - first:
+      74: -3840012281470063456
+    second: metarig|FireBlades1Combo
+  - first:
+      74: -8724702032537889880
+    second: metarig|FireBlades2
+  - first:
+      74: -4718798213614727921
+    second: metarig|FireLaserEye
+  - first:
+      74: -4523365632586647944
+    second: metarig|FirePlasmaShots
+  - first:
+      74: -8961157487246376153
+    second: metarig|LobbyIdleAnim
+  - first:
+      74: 2808714396835539526
+    second: metarig|Run.001
+  - first:
+      74: 4436552065612061661
+    second: metarig|Spawn
+  - first:
+      74: 2265692327816188759
+    second: metarig|SwordSlashAnim
+  - first:
+      74: 8395750235008605518
+    second: metarig|ThrowLightningStake
   externalObjects: {}
   materials:
     materialImportMode: 1

@@ -32,10 +32,9 @@ namespace AmpMod.SkillStates
         protected Animator animator;
         private bool hasMuzzleEffect;
        
-        private Transform fireAOE;
-        private DamageTrail fireTrail;
+
         private GameObject muzzleEffectPrefab = Modules.Assets.plasmaMuzzle;
-        private float fireDamageCoefficient = Modules.StaticValues.fireTrailTickDamageCoefficient;
+
         protected float pushForce = 300f;
         protected Vector3 bonusForce = Vector3.zero;
         protected NetworkSoundEventIndex impactSound = Modules.Assets.heatShockHitSoundEvent.index;

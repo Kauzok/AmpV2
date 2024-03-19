@@ -474,7 +474,7 @@ namespace AmpMod.Modules.Survivors
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("Sword"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("SwordOld"),
                     renderer = defaultRenderers[0].renderer,
                 },
                 new SkinDef.MeshReplacement

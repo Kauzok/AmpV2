@@ -398,6 +398,7 @@ namespace AmpMod.Modules
 
             if (info.HasModdedDamageType(DamageTypes.controlledChargeProc))
             {
+                
                 self.body.AddTimedBuff(Buffs.controlledCharge, StaticValues.controlledChargeDuration);
             }
 
