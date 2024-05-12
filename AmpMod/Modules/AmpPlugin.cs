@@ -21,6 +21,7 @@ using BepInEx.Configuration;
 using R2API.Networking;
 using AmpMod.SkillStates.Nemesis_Amp;
 using AmpMod.SkillStates.Nemesis_Amp.Orbs;
+using System.IO;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -77,6 +78,7 @@ namespace AmpMod.Modules
 
             logger = Logger;
 
+            Language.Init(Info);
 
             // load assets and read config
             Assets.Initialize();
@@ -85,7 +87,7 @@ namespace AmpMod.Modules
             States.RegisterStates(); // register states for networking
             Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Projectiles.RegisterProjectiles(); // add and register custom projectiles
-            Tokens.AddTokens(); // register name tokens
+            Tokens.GenerateTokens(); // register name tokens
             ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
             // Register SyncOrbs INetMessage for usage in syncing orbs
@@ -108,9 +110,11 @@ namespace AmpMod.Modules
             // now make a content pack and add it- this part will change with the next update
             new ContentPacks().Initialize();
 
+
             //RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             //RoR2Application.onLoad += SetItemDisplays;
 
+            RoR2.Language.collectLanguageRootFolders += Language_collectLanguageRootFolders;
 
             Hook();
         }
@@ -138,6 +142,14 @@ namespace AmpMod.Modules
             RecalculateStatsAPI.GetStatCoefficients += wormItemCheck;
             On.RoR2.Stats.StatManager.ProcessDeathEvents += StatManager_ProcessDeathEvents;
 
+        }
+        private void Language_collectLanguageRootFolders(List<string> obj)
+        {
+            string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Info.Location), "Language");
+            if (Directory.Exists(path))
+            {
+                obj.Add(path);
+            }
         }
 
         private void StatManager_ProcessDeathEvents(On.RoR2.Stats.StatManager.orig_ProcessDeathEvents orig)
@@ -378,7 +390,7 @@ namespace AmpMod.Modules
                 if (self.body.HasBuff(Buffs.controlledCharge))
                 {
                     int chargeCount = self.body.GetBuffCount(Buffs.controlledCharge);
-                    self.body.RemoveBuff(Buffs.controlledCharge);
+                    self.body.ClearTimedBuffs(Buffs.controlledCharge);
                     DamageInfo detonateInfo = new DamageInfo {
                         damageType = DamageType.Stun1s,
                         damage = chargeCount * (info.attacker.GetComponent<CharacterBody>().damage * StaticValues.additionalLaserDamageCoefficient),

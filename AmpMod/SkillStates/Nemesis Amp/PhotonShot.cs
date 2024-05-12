@@ -11,7 +11,6 @@ namespace AmpMod.SkillStates.Nemesis_Amp
     {
 		private GameObject muzzleflashEffectPrefab;
 		private GameObject hitEffectPrefab;
-		private EntityStates.VoidSurvivor.Weapon.FireHandBeam handbeam;
 		private GameObject tracerEffectPrefab;
 		public float damageCoefficient = StaticValues.baseLaserDamageCoefficient;
 		private float force = 1000f;
@@ -120,9 +119,10 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 				{
 					Destroy(headMuzzleObjectTransform.gameObject);
 				}
+				this.outer.SetNextStateToMain();
 			}
 
-			if (base.fixedAge > this.duration)
+			else if (base.fixedAge > this.duration)
             {
 				this.outer.SetNextStateToMain();
             }
