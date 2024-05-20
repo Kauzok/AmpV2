@@ -134,15 +134,10 @@ namespace AmpMod.Modules
         private static void CreateStaticField()
         {
             fieldProjectilePrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOT");
-            var dmgTypeHolder = fieldProjectilePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
 
-            //make the field add controlled charge and slow
-            dmgTypeHolder.Add(DamageTypes.controlledChargeProcProjectile);
-            dmgTypeHolder.Add(DamageTypes.nemAmpSlowOnHit);
-
-            //set the damage tick values
-            var dotZone = fieldProjectilePrefab.GetComponent<ProjectileDotZone>();
-            dotZone.overlapProcCoefficient = StaticValues.staticFieldTickProcCoefficient;
+            //use blast attacks instead of DOT Zones
+            var damageComponent = fieldProjectilePrefab.AddComponent<SkillStates.Nemesis_Amp.Components.StaticFieldDamage>();
+            damageComponent.procCoefficient = StaticValues.staticFieldTickProcCoefficient;
       
             //add the attack speed buff
             var buffWard = fieldProjectilePrefab.GetComponent<BuffWard>();
@@ -157,12 +152,9 @@ namespace AmpMod.Modules
 
             #region Blue
             fieldProjectilePrefabBlue = Assets.mainAssetBundle.LoadAsset<GameObject>("StaticFieldDOTBlue");
-            var dmgTypeHolderBlue = fieldProjectilePrefabBlue.AddComponent<ModdedDamageTypeHolderComponent>();
-            dmgTypeHolderBlue.Add(DamageTypes.controlledChargeProcProjectile);
-            dmgTypeHolderBlue.Add(DamageTypes.nemAmpSlowOnHit);
 
-            var dotZoneBlue = fieldProjectilePrefab.GetComponent<ProjectileDotZone>();
-            dotZoneBlue.overlapProcCoefficient = StaticValues.staticFieldTickProcCoefficient;
+            var blueDamageComponent = fieldProjectilePrefabBlue.AddComponent<SkillStates.Nemesis_Amp.Components.StaticFieldDamage>();
+            blueDamageComponent.procCoefficient = StaticValues.staticFieldTickProcCoefficient;
 
             var buffWardBlue = fieldProjectilePrefabBlue.GetComponent<BuffWard>();
             buffWardBlue.buffDef = Buffs.nemAmpAtkSpeed;

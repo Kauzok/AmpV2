@@ -16,7 +16,6 @@ To do:
 - NemAmp
     - Make nemamp body disappear in multiplayer
     - Implement lorentz blades animation (?)
-    - Make static field vfx a cylinder instead of a sphere?
     - Finish Galvanic Cleave
     - Finish Photon Shot
 
@@ -39,9 +38,7 @@ For galvanic cleave, want:
 	on how many stacks of controlled charge they had; a base of 2 seconds with +1 second per stack. this cannot be reset until the status has run out)
 	- OR voltaic onslaught now adds extra lightning bombs to enemies (amount determined by CC stacks) that explode after a duration and chain to other enemies in the vicinity
 	- OR voltaic onslaught is now a global ability that strikes every enemy in the stage (this might be too laggy)
-	- Laser now deals even more bonus damage for every controlled charge stack and causes enemies to explode in a radius determined by
-	the amount of controlled charge stacks they have 
-	- OR and irradiates enemies causing them to 
+	- Laser now deals even more bonus damage for every controlled charge stack, and laser chains will now generate another laser chain if they kill an enemy a la Will o Wisp
 - Add risk of options support
 - Add skills++ support
 - Add support for that one extra animation mod (badass emotes?)

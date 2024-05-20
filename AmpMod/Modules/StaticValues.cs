@@ -28,7 +28,7 @@ namespace AmpMod.Modules
         internal static string nemDescriptionText = "Nemesis Amp harnesses the destructive power of electromagnetism to burst down enemies and bosses at the speed of lightning.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Gathering Storm rewards staying in the fight and precisely timing your abilities - cooldown reduction items are highly recommended! " + Environment.NewLine + Environment.NewLine
              + "< ! > Using Furious Spark in mid-air allows Nemesis Amp to float temporarily; use this to freely reposition while setting up your next attack. " + Environment.NewLine + Environment.NewLine
-             + "< ! > Static Field will only hurt and slow enemies that are touching the sparks on the ground, so lure them in and line them up for a blast with Furious Spark." + Environment.NewLine + Environment.NewLine
+             + "< ! > Static Field will hurt and slow all enemies within the sphere, so lure them in and line them up for a blast with Furious Spark." + Environment.NewLine + Environment.NewLine
              + "< ! > Voltaic Onslaught can be used simultaneously with any of Nemesis Amp's abilities, allowing you to smite your enemies at any time." + Environment.NewLine + Environment.NewLine;
 
         internal static string characterLore = "How long has it been? He pondered, and quickly decided it did not matter. Time had become irrelevant; all he knew was his duty. To find. To capture. To fight. To kill.\n\n"

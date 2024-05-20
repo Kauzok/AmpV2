@@ -52,15 +52,16 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
  
  - General
     - Fixed a bug where obliterating on Monsoon wouldn't give mastery skins
-- Amp
-    - Updated character select screen icon
+    - Added .lang file and removed redundant "generate .lang file" option
  - Nemesis Amp
+    - Flux Blades
+        - Changed mesh of mastery skin blade projectile
     - UI
-        - Standardized location of gathering storm icon across all resolutions
+        - Standardized location of gathering storm meter across all resolutions
     - Furious Spark
         - Modified and sped up firing animation
     - Static Field
-        - Increased vertical range of hitbox
+        - Hitbox of field now takes up the entire sphere
     - Config
         - ACTUALLY Removed redundant option to unlock Nemesis Amp
 

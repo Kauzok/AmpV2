@@ -25,16 +25,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783410774858818482}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3.6, y: 3, z: 2.5}
   m_Children:
   - {fileID: 632640597933647277}
   - {fileID: 5211387154864115021}
   - {fileID: 6640844071870409029}
   m_Father: {fileID: 724570914314173674}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3425839099439829567
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783410774858818482}
-  m_Mesh: {fileID: 4300000, guid: 0955fa78941509443828a8472137b678, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e4c5b8742ce731b4a8954baba77cb791, type: 2}
 --- !u!1 &1269176240874362034
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +425,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 25, y: 25, z: 25}
+    m_Scale: {x: 16, y: 15, z: 13}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -449,7 +449,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    m_Mesh: {fileID: 4300000, guid: 0955fa78941509443828a8472137b678, type: 2}
+    m_Mesh: {fileID: 4300000, guid: e4c5b8742ce731b4a8954baba77cb791, type: 2}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
     m_Sprite: {fileID: 0}
@@ -2872,7 +2872,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369154059223150955}
-  m_Mesh: {fileID: 4300000, guid: 0955fa78941509443828a8472137b678, type: 2}
+  m_Mesh: {fileID: 4300000, guid: e4c5b8742ce731b4a8954baba77cb791, type: 2}
 --- !u!23 &311714219788123552
 MeshRenderer:
   m_ObjectHideFlags: 0
