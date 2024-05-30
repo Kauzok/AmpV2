@@ -7,22 +7,22 @@ For feedback & bug reporting, message Neon#2032 on discord or just @ me in the m
 
 NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT APPEAR IN THE LOBBY, UPDATE BEPINEXPACK.
 
-[![](../Photos/AmpDisplay.png)]()
-[![](../Photos/NemScreen.png)]()
+[![](https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpDisplay.png)]()
+[![](https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemScreen.PNG)]()
 
 # Gameplay Pictures
 
 <p float="left">
-  <img src="../Photos/AmpDash.png" width="530" />
-  <img src="../Photos/AmpLightning.png" width="530" /> 
-  <img src="../Photos/AmpItems.png" with = 530>
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpDash.png" width="530" />
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpLightning.png" width="530" /> 
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpItems.png" with = 530>
 </p>
 
 
 <p float="left">
-  <img src="../Photos/NemStorm.png" width="530" />
-  <img src="../Photos/NemBlades.png" width="530" /> 
-  <img src="../Photos/NemFall.PNG" /> 
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemStorm.png" width="530" />
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemBlades.png" width="530" /> 
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemFall.PNG" /> 
 </p>
 
 
