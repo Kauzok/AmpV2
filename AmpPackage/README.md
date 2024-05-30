@@ -7,30 +7,28 @@ For feedback & bug reporting, message Neon#2032 on discord or just @ me in the m
 
 NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT APPEAR IN THE LOBBY, UPDATE BEPINEXPACK.
 
-[![](https://cdn.discordapp.com/attachments/226439908657463296/1007789478032707614/AmpDisplay.png)]()
-[![](https://cdn.discordapp.com/attachments/226439908657463296/1162550376227143680/NemScreen.PNG)]()
+[![](../Photos/AmpDisplay.png)]()
+[![](../Photos/NemScreen.png)]()
 
 # Gameplay Pictures
 
 <p float="left">
-  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1007782708614803537/AmpDash.png" width="530" />
-  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1007782759227457576/AmpLightning.png" width="530" /> 
-  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1007782614360395907/AmpItems.png" with = 530>
+  <img src="../Photos/AmpDash.png" width="530" />
+  <img src="../Photos/AmpLightning.png" width="530" /> 
+  <img src="../Photos/AmpItems.png" with = 530>
 </p>
 
 
 <p float="left">
-  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1162543155908984922/NemStorm.png" width="530" />
-  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1162543156638789684/NemBlades.png" width="530" /> 
-  <img src="https://cdn.discordapp.com/attachments/226439908657463296/1162549291081023638/NemLightning.PNG" /> 
+  <img src="../Photos/NemStorm.png" width="530" />
+  <img src="../Photos/NemBlades.png" width="530" /> 
+  <img src="../Photos/NemFall.PNG" /> 
 </p>
 
 
 
 # To Do
-- Fix multiplayer functionality
-- Adjust some animations 
-- For a more detailed WIP list as well as a list of known bugs, visit the github!
+- Quite a bit
 
 # Credits
 - Neon: Animations, Code, VFX, SFX
@@ -49,8 +47,9 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 # Change Log
 <details>
 <summary>2.0.3</summary>
- 
+
  - General
+    - Fixed the photo displays
     - Fixed a bug where obliterating on Monsoon wouldn't give mastery skins
     - Added .lang file and removed redundant "generate .lang file" option
  - Nemesis Amp

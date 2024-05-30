@@ -148,6 +148,7 @@ namespace AmpMod.Modules
         internal const float baseLaserDamageCoefficient = 4f;
         internal const float baseLaserBlastDamageCoefficient = 4f;
         internal const float additionalLaserDamageCoefficient = 4f;
+        internal const float laserJumpDamageCoefficient = 2f;
 
         [Header("Galvanic Cleave Values")]
         internal const float voidSlashDamageCoefficient = 9.5f;

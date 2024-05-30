@@ -176,7 +176,7 @@ namespace AmpMod.Modules
 
             #region Special2
             Language.Add(nemPrefix + "SPECIAL_LASER_NAME", "Irradiance");
-            Language.Add(nemPrefix + "SPECIAL_LASER_DESCRIPTION", $"Fire a beam of light for <style=cIsDamage>{100f * StaticValues.baseLaserDamageCoefficient}% damage</style>. The laser <style=cIsDamage>detonates</style> stacks of <color=#8b00ff>Controlled Charge</color> for an additional <style=cIsDamage>{100f * StaticValues.additionalLaserDamageCoefficient}% damage, spawning additional light beams that <style=cIsUtility>chain</style> to nearby enemies.</style>");
+            Language.Add(nemPrefix + "SPECIAL_LASER_DESCRIPTION", $"Fire a beam of light for <style=cIsDamage>{100f * StaticValues.baseLaserDamageCoefficient}% damage</style>. The laser <style=cIsDamage>detonates</style> stacks of <color=#8b00ff>Controlled Charge</color> for an additional <style=cIsDamage>{100f * StaticValues.additionalLaserDamageCoefficient}% damage</style>, spawning additional light beams that <style=cIsUtility>chain</style> to nearby enemies for <style=cIsDamage>{100f * StaticValues.laserJumpDamageCoefficient} damage per stack</style>.");
             #endregion
 
 

@@ -2,6 +2,7 @@ To do:
 - General
     - Add lang file to mod for Trevor & RU translation
 - Amp
+    - General
     - Fix idle animation sword not touching shoulder
     - Fix amp css icon being blurry
     - Test amp animation bugs (e.g. using pulse leap while holding voltaic bombardment breaks the animation)
@@ -13,6 +14,16 @@ To do:
     - Rebalance amp melvin, a bit TOO strong
     - Try using r2networkingAPI for amp's surge skill
     - Decrease pulse leap explosion size
+    - Magnetic vortex special effect?
+    - Plasma Slash
+	- Change functionality
+	- Multiplayer projectile becomes invisible?
+    - Surge
+	- Make momentum cancel on early exit in multiplayer
+	- Try to fix glitchiness if possible
+    - Fulmination
+	- Consider using similar chain effect to NemAmp
+    - Make Typhoon mastery skin actually unlock normally
 - NemAmp
     - Make nemamp body disappear in multiplayer
     - Implement lorentz blades animation (?)

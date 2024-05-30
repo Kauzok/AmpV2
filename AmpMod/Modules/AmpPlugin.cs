@@ -22,6 +22,7 @@ using R2API.Networking;
 using AmpMod.SkillStates.Nemesis_Amp;
 using AmpMod.SkillStates.Nemesis_Amp.Orbs;
 using System.IO;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -399,6 +400,23 @@ namespace AmpMod.Modules
                         procCoefficient = 0f,
                     };
                     self.TakeDamage(detonateInfo);
+                    EffectData effectData = new EffectData
+                    {
+                        origin = self.body.corePosition,
+                    };
+
+                    if (info.attacker.gameObject.GetComponent<NemLightningColorController>())
+                    {
+                        GameObject chargeEffect = info.attacker.gameObject.GetComponent<NemLightningColorController>().specialBeamImpactDetonate;
+                        //set and spawn charge explosion effect
+                        if (chargeEffect)
+                        {
+                            EffectManager.SpawnEffect(chargeEffect, effectData, true);
+                        }
+                        
+                    }
+                   
+
                 }
             }
 

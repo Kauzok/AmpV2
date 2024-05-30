@@ -50,7 +50,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp
 
 			muzzleflashEffectPrefab = lightningColorController.specialBeamMuzzleFlash;
 			tracerEffectPrefab = lightningColorController.specialBeamTracer;
-			hitEffectPrefab = lightningColorController.specialBeamImpactDetonate;
+			hitEffectPrefab = lightningColorController.specialBeamImpact;
 
 			base.PlayAnimation("FullBody, Override", "FireLaser", "BaseSkill.playbackRate", this.duration);
 

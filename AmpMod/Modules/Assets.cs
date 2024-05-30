@@ -220,7 +220,7 @@ namespace AmpMod.Modules
         internal static GameObject photonMuzzleFlash;
         internal static GameObject photonTracer;
         internal static GameObject photonImpact;
-        internal static GameObject photonImpactDetonate;
+        internal static GameObject photonDetonateExplosion;
         internal static GameObject photonMuzzleFlashBlue;
         internal static GameObject photonTracerBlue;
         internal static GameObject photonImpactBlue;
@@ -744,14 +744,14 @@ namespace AmpMod.Modules
         private static void CreatePhotonShot()
         {
             photonImpact = mainAssetBundle.LoadAsset<GameObject>("PhotonImpact");
-            photonImpactDetonate = mainAssetBundle.LoadAsset<GameObject>("PhotonImpactDetonate");
+            photonDetonateExplosion = mainAssetBundle.LoadAsset<GameObject>("PhotonDetonateExplosion");
             photonTracer = mainAssetBundle.LoadAsset<GameObject>("PhotonTracer");
             photonMuzzleFlash = mainAssetBundle.LoadAsset<GameObject>("PhotonMuzzleFlash");
             photonChargeEffect = mainAssetBundle.LoadAsset<GameObject>("LaserCharge");
             PrefabAPI.RegisterNetworkPrefab(photonChargeEffect);
 
             AddNewEffectDef(photonImpact);
-            AddNewEffectDef(photonImpactDetonate);
+            AddNewEffectDef(photonDetonateExplosion);
             AddNewEffectDef(photonTracer);
             AddNewEffectDef(photonMuzzleFlash);
 

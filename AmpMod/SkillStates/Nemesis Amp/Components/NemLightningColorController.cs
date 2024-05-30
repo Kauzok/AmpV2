@@ -199,7 +199,7 @@ namespace AmpMod.SkillStates.Nemesis_Amp.Components
 
                 #region Photon Shot 
                 specialBeamImpact = Assets.photonImpact;
-                specialBeamImpactDetonate = Assets.photonImpactDetonate;
+                specialBeamImpactDetonate = Assets.photonDetonateExplosion;
                 specialBeamMuzzleFlash = Assets.photonMuzzleFlash;
                 specialBeamTracer = Assets.photonTracer;
                 #endregion
