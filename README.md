@@ -15,7 +15,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 <p float="left">
   <img src="Photos/AmpDash.png" width="530" />
   <img src="Photos/AmpLightning.png" width="530" /> 
-  <img src="Photos/AmpItems.png" with = 530>
+  <img src="Photos/AmpItems.png" width = 530>
 </p>
 
 
