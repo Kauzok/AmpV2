@@ -13,16 +13,16 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 # Gameplay Pictures
 
 <p float="left">
-  <img src="../Photos/AmpDash.png" width="530" />
-  <img src="../Photos/AmpLightning.png" width="530" /> 
-  <img src="../Photos/AmpItems.png" with = 530>
+  <img src="Photos/AmpDash.png" width="530" />
+  <img src="Photos/AmpLightning.png" width="530" /> 
+  <img src="Photos/AmpItems.png" with = 530>
 </p>
 
 
 <p float="left">
-  <img src="../Photos/NemStorm.png" width="530" />
-  <img src="../Photos/NemBlades.png" width="530" /> 
-  <img src="../Photos/NemFall.PNG" /> 
+  <img src="Photos/NemStorm.png" width="530" />
+  <img src="Photos/NemBlades.png" width="530" /> 
+  <img src="Photos/NemFall.PNG" /> 
 </p>
 
 
