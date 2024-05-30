@@ -7,9 +7,10 @@ For feedback & bug reporting, message Neon#2032 on discord or just @ me in the m
 
 NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT APPEAR IN THE LOBBY, UPDATE BEPINEXPACK.
 
-[![](Photos/AmpDisplay.png)]()
-
-[![](Photos/NemScreen.png)]()
+<p float="left">
+  <img src="Photos/AmpDisplay.png" />
+  <img src="Photos/NemScreen.png" /> 
+</p>
 
 # Gameplay Pictures
 
