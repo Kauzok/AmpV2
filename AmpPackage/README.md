@@ -7,22 +7,22 @@ For feedback & bug reporting, message Neon#2032 on discord or just @ me in the m
 
 NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT APPEAR IN THE LOBBY, UPDATE BEPINEXPACK.
 
-[![](https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpDisplay.png)]()
-[![](https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemScreen.PNG)]()
+[![](https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpDisplay.png?raw=true)]()
+[![](https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemScreen.PNG?raw=true)]()
 
 # Gameplay Pictures
 
 <p float="left">
-  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpDash.png" width="530" />
-  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpLightning.png" width="530" /> 
-  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpItems.png" with = 530>
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpDash.png?raw=true" width="530" />
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpLightning.png?raw=true" width="530" /> 
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/AmpItems.png?raw=true" with = 530>
 </p>
 
 
 <p float="left">
-  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemStorm.png" width="530" />
-  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemBlades.png" width="530" /> 
-  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemFall.PNG" /> 
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemStorm.png?raw=true" width="530" />
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemBlades.png?raw=true" width="530" /> 
+  <img src="https://github.com/BrightBolt/AmpV2/blob/main/Photos/NemFall.PNG?raw=true" /> 
 </p>
 
 
@@ -45,24 +45,37 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 - The Risk of Rain 2 Modding Server: Helping me stay sane through all kinds of other bugs I wouldn't have been able to solve on my own.
 
 # Change Log
+
+<details>
+<summary>2.0.4</summary>
+
+ - General
+    - Fixed a bug where obliterating on Monsoon wouldn't give mastery skins
+    - Added .lang file and removed redundant "generate .lang file" option
+ - Amp
+    - Updated several animations
+    - Updated CSS Icon
+ - Nemesis Amp
+    - Flux Blades
+        - Changed mesh of mastery skin blade projectile
+    - UI
+        - Standardized location of Gathering Storm meter across all resolutions
+    - Furious Spark
+        - Modified and sped up firing animation
+    - Static Field
+        - Hitbox of field now takes up the entire sphere
+ - Config
+        - ACTUALLY removed redundant option to unlock Nemesis Amp
+
+
+</details>
+
 <details>
 <summary>2.0.3</summary>
 
  - General
     - Fixed the photo displays
-    - Fixed a bug where obliterating on Monsoon wouldn't give mastery skins
-    - Added .lang file and removed redundant "generate .lang file" option
- - Nemesis Amp
-    - Flux Blades
-        - Changed mesh of mastery skin blade projectile
-    - UI
-        - Standardized location of gathering storm meter across all resolutions
-    - Furious Spark
-        - Modified and sped up firing animation
-    - Static Field
-        - Hitbox of field now takes up the entire sphere
-    - Config
-        - ACTUALLY Removed redundant option to unlock Nemesis Amp
+    - I swear I'm still working on this!
 
 </details>
 

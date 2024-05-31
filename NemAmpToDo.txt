@@ -21,6 +21,7 @@ To do:
     - Surge
 	- Make momentum cancel on early exit in multiplayer
 	- Try to fix glitchiness if possible
+	- Decrease attenuation of explosion sound
     - Fulmination
 	- Consider using similar chain effect to NemAmp
     - Make Typhoon mastery skin actually unlock normally
