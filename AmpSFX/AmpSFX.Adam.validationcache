@@ -90,7 +90,7 @@
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Switches\Default Work Unit.wwu" DateLow="1671931044" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\States\Default Work Unit.wwu" DateLow="1671931044" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1671931044" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\SoundBanks\Default Work Unit.wwu" DateLow="1690509850" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\SoundBanks\Default Work Unit.wwu" DateLow="1715735885" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Queries\Factory Queries.wwu" DateLow="1671931044" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Queries\Default Work Unit.wwu" DateLow="1671931044" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Presets\Factory Spatial Audio.wwu" DateLow="1671931044" DateHigh="0"/>
@@ -101,7 +101,7 @@
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1671931043" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1671931043" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Game Parameters\Default Work Unit.wwu" DateLow="1671931043" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Events\Default Work Unit.wwu" DateLow="1690509850" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Events\Default Work Unit.wwu" DateLow="1715735885" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Effects\Factory Reflect.wwu" DateLow="1671931043" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Effects\Factory McDSP Effects.wwu" DateLow="1671931043" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="1671931043" DateHigh="0"/>
@@ -120,10 +120,10 @@
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Control Surface Sessions\Default Work Unit.wwu" DateLow="1671931043" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Audio Devices\Default Work Unit.wwu" DateLow="1671931043" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Audio Devices\Control Surface Sessions\Default Work Unit.wwu" DateLow="1671931043" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Attenuations\Default Work Unit.wwu" DateLow="1688587265" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Attenuations\Default Work Unit.wwu" DateLow="1715735885" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\AmpSFX.wproj" DateLow="1671931043" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\AmpSFX.Adam.wsettings" DateLow="1690576687" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\AmpSFX.Adam.wsettings" DateLow="1715735885" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="1671931043" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="1671931043" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1690576687" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1715735885" DateHigh="0"/>
 </ValidationCache>

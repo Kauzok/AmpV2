@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\</ProjectRoot>
-		<SourceFilesRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\Modding\RoR2\Battlemage V2\BattlemageV2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Adam\RoR2Modding\AmpV2\AmpSFX\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="865939728" Language="SFX" Hash="2233498382">
+		<SoundBank Id="865939728" Language="SFX" Hash="433925032">
 			<ObjectPath>\SoundBanks\Default Work Unit\AmpSoundbank</ObjectPath>
 			<ShortName>AmpSoundbank</ShortName>
 			<Path>AmpSoundbank.bnk</Path>

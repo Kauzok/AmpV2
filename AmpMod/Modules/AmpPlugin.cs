@@ -52,7 +52,7 @@ namespace AmpMod.Modules
 
         public const string MODUID = "com.NeonThink.Amp";
         public const string MODNAME = "Amp";
-        public const string MODVERSION = "2.0.3";
+        public const string MODVERSION = "2.0.4";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "NT";
@@ -96,9 +96,9 @@ namespace AmpMod.Modules
             NetworkingAPI.RegisterMessageType<NemAmpLightningLockOrb.SyncChain>();
             NetworkingAPI.RegisterMessageType<LightningStream.SyncDamage>();
 
-//            Modules.Language.Add("AMPMOD_NAME", "Amp");
-            //Modules.Language.Add("AMPMOD_DESCRIPTION", "Adds content from the mod 'Amp' to the game.");
-           // Modules.Language.PrintOutput("Amp.txt");
+            Modules.Language.Add("AMPMOD_NAME", "Amp");
+            Modules.Language.Add("AMPMOD_DESCRIPTION", "Adds content from the mod 'Amp' to the game.");
+            Modules.Language.PrintOutput("Amp.txt");
 
 
 

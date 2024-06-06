@@ -57,7 +57,7 @@ namespace AmpMod.SkillStates
             chargeDuration = this.baseChargeDuration / this.attackSpeedStat;
             totalDuration = this.baseTotalDuration / this.attackSpeedStat;
             animator.SetBool("isUsingIndependentSkill", true);
-
+            hasMuzzleEffect = false;
             base.characterBody.SetAimTimer(totalDuration);
             //Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             HitBoxGroup hitBoxGroup = null;
@@ -174,6 +174,7 @@ namespace AmpMod.SkillStates
             {
                 hasMuzzleEffect = true;
                 swordMuzzle = UnityEngine.Object.Instantiate<GameObject>(muzzleEffectPrefab, swordMuzzle).transform;
+                Debug.Log("spawning muzzle");
             }
 
 

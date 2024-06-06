@@ -122,7 +122,7 @@ namespace AmpMod.Modules
 
             lightningBallControllerBlue.allowPrediction = true;
 
-            var damageHolderBlue = lightningStakePrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+            var damageHolderBlue = lightningStakePrefabBlue.AddComponent<ModdedDamageTypeHolderComponent>();
 
             damageHolderBlue.Add(DamageTypes.controlledChargeProc);
             #endregion
@@ -190,10 +190,10 @@ namespace AmpMod.Modules
             ferroshotPrefab.GetComponent<ProjectileSimple>().lifetime = 1f;
 
 
-            //ferroshotPrefab.AddComponent<DestroyOnTimer>().duration = .5f;
-            ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedTargeting>();
+            ferroshotPrefab.AddComponent<DestroyOnTimer>().duration = .5f;
+           ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedTargeting>();
             ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedHoming>();
-            ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedDirectionFinder>();
+           ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedDirectionFinder>();
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
          

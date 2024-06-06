@@ -45,16 +45,43 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 - The Risk of Rain 2 Modding Server: Helping me stay sane through all kinds of other bugs I wouldn't have been able to solve on my own.
 
 # Change Log
+<details>
+<summary>2.1.1</summary>
 
+ - General
+    - Updated Russian translation
+ 
+</details>
+
+<details>
+<summary>2.1.0</summary>
+
+ - Fixed stuff: re-implementing patch notes from 2.0.4 with one addition.
+ - Nemesis Amp
+    - Quicksurge
+        - Fixed a bug where the projectile wouldn't proc controlled charge while using NemAmp's mastery skin
+ 
+</details>
+<details>
+<summary>2.0.5</summary>
+
+ - Rolling back update 2.0.4 to fix things.
+ 
+</details>
 <details>
 <summary>2.0.4</summary>
 
  - General
-    - Fixed a bug where obliterating on Monsoon wouldn't give mastery skins
+    - Fixed a bug where obliterating on Monsoon wouldn't unlock mastery skins
     - Added .lang file and removed redundant "generate .lang file" option
+    - Added Russian translation
  - Amp
     - Updated several animations
     - Updated CSS Icon
+    - Lorentz Cannon
+        - Lowered volume of firing sound
+    - Surge
+        - Decreased attenuation of exit sound
  - Nemesis Amp
     - Flux Blades
         - Changed mesh of mastery skin blade projectile
@@ -66,6 +93,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
         - Hitbox of field now takes up the entire sphere
  - Config
         - ACTUALLY removed redundant option to unlock Nemesis Amp
+ - Next patch will probably be a while from now since I'm planning on reworking normal Amp from the ground up, skills and all. Look forward to it!
 
 
 </details>

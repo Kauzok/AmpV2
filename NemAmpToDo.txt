@@ -1,13 +1,11 @@
 To do:
 - General
-    - Add lang file to mod for Trevor & RU translation
+    - Change mod icon to have new Amp character portrait
 - Amp
-    - General
-    - Fix idle animation sword not touching shoulder
-    - Fix amp css icon being blurry
     - Test amp animation bugs (e.g. using pulse leap while holding voltaic bombardment breaks the animation)
     - Implement Amp animations, making sure none of them are in base.isauthority calls
     - Adjust magnetic vortex VFX
+    - Change 
     - Change functionality of Amp plasma slash	
     - Fix invisible amp vfx in multiplayer (this should only be the lorentz cannon charge prefab)
     - Decrease attenuation for amp surge explosion, also now a lot of amp sounds are too quiet
@@ -27,7 +25,6 @@ To do:
     - Make Typhoon mastery skin actually unlock normally
 - NemAmp
     - Make nemamp body disappear in multiplayer
-    - Implement lorentz blades animation (?)
     - Finish Galvanic Cleave
     - Finish Photon Shot
 

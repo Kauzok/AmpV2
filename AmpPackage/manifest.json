@@ -1,8 +1,8 @@
 {
   "name": "Amp",
-  "version_number": "2.0.3",
+  "version_number": "2.1.1",
   "website_url": "https://github.com/BrightBolt/AmpV2",
-  "description": "Ride the lightning (Nemesis Update!)",
+  "description": "Ride the lightning (Animations Update!)",
   "dependencies": [
     "bbepis-BepInExPack-5.4.2101",
     "tristanmcpherson-R2API-4.4.1",

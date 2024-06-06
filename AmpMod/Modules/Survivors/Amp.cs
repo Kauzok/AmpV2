@@ -74,7 +74,7 @@ namespace AmpMod.Modules.Survivors
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private static UnlockableDef masterySkinUnlockableDef;
-        private static UnlockableDef grandMasterySkinUnlockableDef;
+        //private static UnlockableDef grandMasterySkinUnlockableDef;
         private static UnlockableDef wormSkillUnlockableDef;
         private static UnlockableDef plasmaSkillUnlockableDef;
         public static readonly StatDef ampTotalBurnedEnemiesKilled = StatDef.Register("ampTotalBurnedEnemiesKilled", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
@@ -96,14 +96,14 @@ namespace AmpMod.Modules.Survivors
                 ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
             }
 
-            if (!Config.UnlockGrandMasterySkin.Value)
+         /*   if (!Config.UnlockGrandMasterySkin.Value)
             {
                 grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
                 grandMasterySkinUnlockableDef.cachedName = "Skins.Reformation";
                 grandMasterySkinUnlockableDef.nameToken = AmpPlugin.developerPrefix + "_AMP_BODY_GRANDMASTERY";
                 grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement");
                 ContentAddition.AddUnlockableDef(grandMasterySkinUnlockableDef);
-            }
+            } */
 
             if (!Config.UnlockWormSkill.Value)
             {
@@ -474,7 +474,7 @@ namespace AmpMod.Modules.Survivors
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("SwordOld"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("Sword"),
                     renderer = defaultRenderers[0].renderer,
                 },
                 new SkinDef.MeshReplacement
@@ -553,13 +553,13 @@ namespace AmpMod.Modules.Survivors
                 golemSwordMat
 
             });
-            
+
             SkinDef golemSkin = Modules.Skins.CreateSkinDef(AmpPlugin.developerPrefix + "_AMP_BODY_GOLEM_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texReformationSkin"),
                 golemRendererInfos,
                 mainRenderer,
-                updatedModel,
-                grandMasterySkinUnlockableDef);
+                updatedModel);
+                //grandMasterySkinUnlockableDef);
 
             golemSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {

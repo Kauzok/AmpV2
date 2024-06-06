@@ -11,7 +11,7 @@ namespace AmpMod.Modules
         public static ConfigEntry<bool> NemOriginPurpleLightning;
         public static ConfigEntry<bool> chargeOrbsEnable;
         public static ConfigEntry<bool> UnlockMasterySkin;
-        public static ConfigEntry<bool> UnlockGrandMasterySkin;
+     // public static ConfigEntry<bool> UnlockGrandMasterySkin;
         public static ConfigEntry<bool> UnlockWormSkill;
         public static ConfigEntry<bool> UnlockPlasmaSkill;
         public static ConfigEntry<bool> NemUnlockDashSkill;
@@ -23,9 +23,9 @@ namespace AmpMod.Modules
 
         public static void ReadConfig()
         {
-          /*  Dictionary<ConfigDefinition, string> orphanedEntries = (Dictionary<ConfigDefinition, string>)typeof(ConfigFile).GetProperty("OrphanedEntries",
+            Dictionary<ConfigDefinition, string> orphanedEntries = (Dictionary<ConfigDefinition, string>)typeof(ConfigFile).GetProperty("OrphanedEntries",
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(AmpPlugin.instance.Config);
-            orphanedEntries.Clear(); */
+            orphanedEntries.Clear(); 
 
             chargeOrbsEnable =
                 AmpPlugin.instance.Config.Bind<bool>("VFX Settings",
@@ -56,11 +56,11 @@ namespace AmpMod.Modules
                                                         false,
                                                         "Unlocks Amp's Mastery Skin");
 
-            UnlockGrandMasterySkin =
+           /* UnlockGrandMasterySkin =
                AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",
                                                         "Unlock Amp Grand Mastery Skin",
                                                         false,
-                                                        "Unlocks Amp's Grand Mastery Skin");
+                                                        "Unlocks Amp's Grand Mastery Skin"); */
 
             UnlockWormSkill =
               AmpPlugin.instance.Config.Bind<bool>("Unlockable Settings",

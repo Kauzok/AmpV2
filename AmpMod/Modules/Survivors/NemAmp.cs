@@ -80,7 +80,7 @@ namespace AmpMod.Modules.Survivors
         private static UnlockableDef bladesSkillUnlockableDef;
         private static UnlockableDef photonSkillUnlockableDef;
 
-        public static readonly StatDef nemAmpTotalVoidEnemiesKilled = StatDef.Register("nemAmpTotalVoidEnemiesKilled", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
+       // public static readonly StatDef nemAmpTotalVoidEnemiesKilled = StatDef.Register("nemAmpTotalVoidEnemiesKilled", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
         internal override void InitializeCharacter()
         {
@@ -247,8 +247,8 @@ namespace AmpMod.Modules.Survivors
             }); ;
 
 
-            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef, slashSkillDef);
-            //Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef);
+            //Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef, slashSkillDef);
+            Modules.Skills.AddSecondarySkills(bodyPrefab, beamSkillDef);
             #endregion
 
 
@@ -372,7 +372,7 @@ namespace AmpMod.Modules.Survivors
             ;
 
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef, photonSkillDef);
+            Modules.Skills.AddSpecialSkills(bodyPrefab, stormSkillDef);
             //Modules.Skills.AddUnlockableSpecialSkill(bodyPrefab, photonSkillDef, photonSkillUnlockableDef);
             #endregion
         }

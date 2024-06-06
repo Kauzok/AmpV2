@@ -8,7 +8,7 @@ namespace AmpMod.Modules
         public static void GenerateTokens()
         {
             AddTokens();
-            Language.PrintOutput("Amp.txt");
+            //Language.PrintOutput("Amp.txt");
         }
 
 

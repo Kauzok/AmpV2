@@ -443,7 +443,7 @@
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Attenuation">
-													<ObjectRef Name="50LinearAttenuation" ID="{912BB46D-5D16-4BE5-8B1A-F54CE68D1C99}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
 												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
@@ -688,16 +688,11 @@
 										<Sound Name="FerroshotLaunchAlter" ID="{FAB41DB3-AEB6-41FE-8BCB-796D20B6DA91}" ShortID="443668259">
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="1"/>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>11.5</Value>
-													</ValueList>
-												</Property>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Attenuation">
-													<ObjectRef Name="100LinearAttentuation" ID="{7A6B2485-EEE9-4952-8947-749B65C17252}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
+													<ObjectRef Name="50QuickDropAttenuation" ID="{CF7E4B04-179B-4623-85F8-3C6A49DDF0CA}" WorkUnitID="{E123CF18-985A-44C4-8DAC-5C01537632E3}"/>
 												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{117516DB-EFDC-4126-BDD1-788A99BEBA4E}"/>
@@ -711,7 +706,7 @@
 													<PropertyList>
 														<Property Name="VolumeOffset" Type="Real64">
 															<ValueList>
-																<Value>-7.5</Value>
+																<Value>2</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
