@@ -46,15 +46,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
 
 # Change Log
 <details>
-<summary>2.1.1</summary>
-
- - General
-    - Updated Russian translation
- 
-</details>
-
-<details>
-<summary>2.1.0</summary>
+<summary>2.1.2</summary>
 
  - Fixed stuff: re-implementing patch notes from 2.0.4 with one addition.
  - Nemesis Amp
@@ -62,6 +54,7 @@ NOTE: IF YOU HAVE AN ERROR THAT MENTIONS UNLOCKABLEAPI, AND CAUSES AMP TO NOT AP
         - Fixed a bug where the projectile wouldn't proc controlled charge while using NemAmp's mastery skin
  
 </details>
+
 <details>
 <summary>2.0.5</summary>
 
