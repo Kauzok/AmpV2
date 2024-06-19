@@ -15,19 +15,22 @@ namespace AmpMod.Modules
         internal static BuffDef overCharge;
         internal static BuffDef damageGrowth;
         internal static BuffDef nemAmpAtkSpeed;
-
+        internal static BuffDef shieldDamageBoost;
+        internal static BuffDef sandedDebuff;
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
         internal static void RegisterBuffs()
         {
             //charge debuff
+            sandedDebuff = AddNewBuff("AmpSanded", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChargeDebuffAlt"), new Color32(0, 105, 105, 105), false, true);
             chargeBuildup = AddNewBuff("AmpChargeBuildup", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChargeDebuffAlt"), new Color32(0, 145, 255, 255), true, true);
             electrified = AddNewBuff("AmpElectrified", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texElectrified"), new Color32(76, 206, 255, 255), false, true);
             overCharge = AddNewBuff("AmpOverCharge", LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite, new Color32(0, 145, 255, 255), false, false);
+            shieldDamageBoost = AddNewBuff("AmpShieldBoost", null, new Color32(0, 145, 255, 255), false, false, true);
             controlledCharge = AddNewBuff("NemesisAmpContolledCharge", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texControlledChargeAlt"), new Color32(180, 71, 255, 255), true, true);
             damageGrowth = AddNewBuff("NemesisAmpDamageGrowth", null, new Color32(61, 0, 0, 0), true, false, true);
             nemAmpAtkSpeed = AddNewBuff("nemAmpAtkSpeed", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texFieldAtkSpeedCombined"), new Color32(180, 71, 255, 255), false, false);
-
+            
         }
 
         // simple helper method

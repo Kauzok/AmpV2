@@ -14,9 +14,9 @@ namespace AmpMod.SkillStates
             base.OnEnter();
         }
 
-        protected override SummonWurm GetNextState()
+        protected override SummonWurm_Old GetNextState()
         {
-            return new SummonWurm();
+            return new SummonWurm_Old();
         }
 
         public override void FixedUpdate()

@@ -19,7 +19,7 @@ namespace AmpMod.SkillStates.SkillComponents
         public GameObject owner;
         public object wormSkill;
         public SkillDef cancelSkillDef;
-       
+        public Quaternion rotation;
 
         public void Awake()
         {

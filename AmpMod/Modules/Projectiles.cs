@@ -11,11 +11,15 @@ namespace AmpMod.Modules
 {
     internal static class Projectiles
     {
-
+        [Header("Amp Projectiles")]
         internal static GameObject ferroshotPrefab;
         internal static GameObject vortexPrefab;
         internal static GameObject lightningPrefab;
         internal static GameObject fireBeamPrefab;
+        internal static GameObject swordOrbPrefab;
+
+
+        [Header("Nemesis Amp Projectiles")]
         internal static GameObject fieldProjectilePrefab;
         internal static GameObject bladeProjectilePrefab;
         internal static GameObject bladeProjectilePrefabBlue;
@@ -37,10 +41,12 @@ namespace AmpMod.Modules
             CreateStaticField();
             CreateFluxBlade();
             CreateLightningBall();
+            CreateShieldLightningOrb();
 
             AddProjectile(ferroshotPrefab);
             AddProjectile(vortexPrefab);
             AddProjectile(fireBeamPrefab);
+            AddProjectile(swordOrbPrefab);
             AddProjectile(fieldProjectilePrefab);
             AddProjectile(fieldProjectilePrefabBlue);
             AddProjectile(bladeProjectilePrefab);
@@ -94,6 +100,15 @@ namespace AmpMod.Modules
 
         }
 
+        private static void CreateShieldLightningOrb()
+        {
+            swordOrbPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("ElectricOrbProjectile");
+            CreateGhostPrefab("ElectricOrbGhost");
+
+            swordOrbPrefab.GetComponent<ProjectileSimple>().desiredForwardSpeed = 15f;
+            PrefabAPI.RegisterNetworkPrefab(swordOrbPrefab);
+
+        }
         private static void CreateLightningBall()
         {
 
@@ -173,20 +188,13 @@ namespace AmpMod.Modules
             //ferroshotPrefab = CloneProjectilePrefab("LunarShardProjectile", "Ferroshot");
 
             ferroshotPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeProjectile");
-            //ferroshotPrefab.layer = LayerIndex.projectile.intVal;
+            //ferroshotPrefab.layerhttps://risk-of-thunder.github.io/R2Wiki/ = LayerIndex.projectile.intVal;
             //change damagetype of ferroshot to generic
             //ProjectileDamage ferroshotDamage = ferroshotPrefab.GetComponent<ProjectileDamage>();
             //.damageType = DamageType.Generic;
 
-            //remove/nullify components from lunarshard that are unnecessary, such as the tracker and on impact explosion
-            /* AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileImpactExplosion>());
-             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileProximityBeamController>());
-             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileSteerTowardTarget>());
-             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileDirectionalTargetFinder>());
-             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ProjectileTargetComponent>());
-
-             ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
-             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>()); */
+            ferroshotPrefab.GetComponent<Rigidbody>().useGravity = false;
+             AmpPlugin.Destroy(ferroshotPrefab.GetComponent<ParticleSystem>()); 
             ferroshotPrefab.GetComponent<ProjectileSimple>().lifetime = 1f;
 
 
@@ -196,20 +204,26 @@ namespace AmpMod.Modules
            ferroshotPrefab.AddComponent<SkillStates.SkillComponents.ChargedDirectionFinder>();
 
             ProjectileController ferroshotController = ferroshotPrefab.GetComponent<ProjectileController>();
-         
-            //instantiates the projectile model and associates it with the prefab
-            if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
 
+            //instantiates the projectile model and associates it with the prefab
+            //if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
+
+            CreateGhostPrefab("SpikeGhost");
 
             ferroshotController.procCoefficient = .7f;
-            
+
             //ferroshotController.allowPrediction = true;
             //makes ferroshot destroy itself on contact with other entities, + adds impact effect
-            ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
-            InitializeFerroshotContact(ferroshotContact);
-            ferroshotContact.destroyOnWorld = true;
-            ferroshotContact.impactEffect = Assets.bulletImpactEffect;
+            // ProjectileSingleTargetImpact ferroshotContact = ferroshotPrefab.AddComponent<ProjectileSingleTargetImpact>();
+            // InitializeFerroshotContact(ferroshotContact);
+            //ferroshotContact.destroyOnWorld = true;
+            //ferroshotContact.impactEffect = Assets.bulletImpactEffect;
 
+            var projectileImpactExplosion = ferroshotPrefab.GetComponent<ProjectileImpactExplosion>();
+            projectileImpactExplosion.blastDamageCoefficient = StaticValues.ferroshotExplosionDamageCoefficient;
+
+            var damageTypeComponent = ferroshotPrefab.AddComponent<ModdedDamageTypeHolderComponent>();
+            damageTypeComponent.Add(DamageTypes.applySanded);
 
             PrefabAPI.RegisterNetworkPrefab(ferroshotPrefab);
 
@@ -233,7 +247,7 @@ namespace AmpMod.Modules
             stopSound.SoundEventToPlay = StaticValues.vortexFlightLoopStringAlt;
             stopSound.SoundId = 2447326215;
             
-
+            
             PrefabAPI.RegisterNetworkPrefab(vortexPrefab);
 
 

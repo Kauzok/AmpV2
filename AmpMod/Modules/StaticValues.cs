@@ -7,11 +7,14 @@ namespace AmpMod.Modules
     internal static class StaticValues
     {
 
+        public const string replenishColor = "#7fbff9";
         public const string characterName = "Amp";
         public const string characterSubtitle = "Electromagnetic Warrior";
         public const string characterOutro = "..and so he left, with an undeniable freedom.";
         public const string characterOutroFailure = "..and so he vanished, imprisoned for eternity.";
-        public const string chargeDesc = "<style=cKeywordName>Charged</style>" + "<style=cSub>Applies one stack of <color=#0091ff>charge</color> to an enemy. On three stacks, cause an explosion dealing <style=cIsDamage>400% damage</style> that <color=#4cceff>electrifies</color> enemies.";
+        public const string chargeDesc = "<style=cKeywordName>Charged</style>" + "<style=cSub>Applies one stack of <color=#0091ff>charge</color> to an enemy. On three stacks, cause a <color=" + replenishColor + ">replenishing</color> explosion that heals extra shield and deals <style=cIsDamage>400% damage</style>";
+        public const string sandingDesc = "<style=cKeywordName>Sanding</style>" + "<style=cSub>Attacks cover enemies in iron sand, <style=cIsUtility>slowing</style> them. Hitting sanded enemies with <color=" + replenishColor + ">replenishing</color> attacks will heal bonus shields.";
+        public const string replenishingDesc = "<style=cKeywordName>Replenishing</style>" + "<style=cSub>Attacks restore shield for <style=cIsDamage>20%</style> of the damage dealt. At <style=cIsUtility>full shields</style>, attacks spawn <style=cIsDamage>lightning bombs</style> for <style=cIsDamage>half of the original attack's damage</style>.";
         public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
 
         public const string nemCharacterName = "Nemesis Amp";
@@ -61,13 +64,19 @@ namespace AmpMod.Modules
         internal const float chargeDuration = 7;
         internal const float chargeDamageCoefficient = 4f;
         internal const float electrifiedDuration = 3f;
+        internal const float healShieldPercent = .1f;
+        internal const float shieldDamageBoost = .5f;
+        internal const float lightningBombDamageCoefficient = .5f;
 
         [Header("Stormblade Values")]
-        internal const float stormbladeDamageCoefficient = 1.5f;
+        internal const float stormbladeDamageCoefficient = 1.3f;
         internal const float stormbladeChargeProcCoefficient = 100f;
 
         [Header("Lorentz Cannon Values")]
         internal const float ferroshotDamageCoefficient = 1.4f;
+        internal const float ferroshotExplosionDamageCoefficient = 1.5f;
+        internal const float sandedShieldBonus = .3f;
+        internal const float sandedDuration = 3f;
 
         [Header("Plasma Slash Values")]
         internal const float spinSlashDamageCoefficient = 7f;
@@ -84,10 +93,11 @@ namespace AmpMod.Modules
 
         [Header("Pulse Leap Values")]
         internal const float boostDamageCoefficient = 2.5f;
+        internal const float boostSlashDamageCoefficient = 4f;
 
         [Header("Fulmination Values")]
         internal const float fulminationDamageCoefficient = 1.1f;
-        internal const float fulminationTotalDamageCoefficient = 16f;
+        internal const float fulminationTotalDamageCoefficient = 20f;
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
@@ -97,7 +107,7 @@ namespace AmpMod.Modules
         internal const float overchargeAttackSpeed = .3f;
 
         [Header("Bulwark of Storms Values")]
-
+        internal const float wormEatDamageCoefficient = 35f;
 
         [Header("Passive Values")]
         internal const float comboTimeInterval = 3f;

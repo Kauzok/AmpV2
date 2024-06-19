@@ -12,6 +12,9 @@ using RoR2.UI;
 using UnityEngine.Rendering.PostProcessing;
 using TMPro;
 using AmpMod.SkillStates.Nemesis_Amp.Components;
+using EntityStates.ClaymanMonster;
+using EntityStates.LemurianMonster;
+using AmpMod.SkillStates.SkillComponents;
 
 namespace AmpMod.Modules
 {
@@ -53,21 +56,23 @@ namespace AmpMod.Modules
         internal static GameObject swordSwingEffectRed;
         internal static GameObject swordHitImpactEffectRed;
 
-        [Header("Charge Effects")]
+        [Header("Charge/Passive Effects")]
         internal static GameObject chargeExplosionEffect;
         internal static GameObject chargeExplosionEffectRed;
-        internal static GameObject electrifiedOverlay;
-        internal static Material electrifiedMaterial;
         internal static GameObject chargeOrbObject;
         internal static GameObject chargeOrbFullObject;
         internal static GameObject chargeOrbRedObject;
         internal static GameObject chargeOrbFullRedObject;
+        internal static GameObject orbStrikeEffect;
 
         [Header("Ferroshot/Lorentz Cannon Effects")]
         internal static GameObject bulletSpawnEffect;
         internal static GameObject bulletPrepItem;
         internal static GameObject bulletImpactEffect;
         internal static GameObject ampBulletMuzzleEffect;
+        internal static GameObject sandedOverlay;
+        internal static Material sandedMaterial;
+
 
         [Header("Magnetic Vortex Effects")]
         internal static GameObject vortexBlackholePrefab;
@@ -87,6 +92,8 @@ namespace AmpMod.Modules
         internal static GameObject pulseMuzzleEffect;
         internal static GameObject pulseBlastEffectRed;
         internal static GameObject pulseMuzzleEffectRed;
+        internal static GameObject pulseLightningCover;
+        internal static GameObject pulseLightningCoverRed;
 
         [Header("Plasma Slash Effects")]
         internal static GameObject heatSwing;
@@ -386,9 +393,11 @@ namespace AmpMod.Modules
             //on charge proc
             CreateChargeOrb();
 
+                                
+
             //on charge explosion when 3 procs are reached
             CreateChargePrefab();
-            CreateElectrified();
+            CreateSanded();
 
             //on fulmination skill chain
             //electricChainEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityChain");
@@ -413,7 +422,8 @@ namespace AmpMod.Modules
             //CreateBulletMuzzle();
 
             //on ferroshot/Lorentz Cannon spike collision
-            bulletImpactEffect = LoadEffect("SpikeImpact");
+            bulletImpactEffect = mainAssetBundle.LoadAsset<GameObject>("SpikeExplosionEffect");
+            AddNewEffectDef(bulletImpactEffect);
 
             //on pulse leap use
             CreatePulseBlastPrefab();  
@@ -458,6 +468,8 @@ namespace AmpMod.Modules
             swordSwingEffectRed = Assets.LoadEffect("StormbladeSwingRed", true);
             swordHitImpactEffectRed = Assets.LoadEffect("StormbladeHitRed");
 
+            orbStrikeEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricOrbImpact");
+            AddNewEffectDef(orbStrikeEffect);
         }
 
         private static void CreateMaterials()
@@ -847,9 +859,9 @@ namespace AmpMod.Modules
         }
 
 
-        private static void CreateElectrified()
+        private static void CreateSanded()
         {
-            electrifiedMaterial = mainAssetBundle.LoadAsset<Material>("matIsElectrified");
+            sandedMaterial = mainAssetBundle.LoadAsset<Material>("matIsSanded");
 
         }
         private static void CreateMelvin()
@@ -862,20 +874,40 @@ namespace AmpMod.Modules
             //var healthTracker = melvinBody.AddComponent<SkillStates.SkillComponents.WormHealthTracker>();
 
             var melvinCharBody = melvinBody.GetComponent<CharacterBody>();
-            
+
+            melvinBody.AddComponent<WormHealthTracker>();
+
             melvinCharBody.baseNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_DISPLAY_NAME";
             //melvinCharBody.baseMaxHealth = healthTracker.summonerHealth * 3f; //melvinCharBody.baseMaxHealth;//melvinMinionOwner.ownerMaster.GetBody().baseMaxHealth * 3f;
             //melvinCharBody.statsDirty = true;
 
             melvinMaster.bodyPrefab = melvinBody;
+            EntityStateMachine machine = EntityStateMachine.FindByCustomName(melvinBody, "Body");
+            EntityStateMachine machine2 = EntityStateMachine.FindByCustomName(melvinBody, "Weapon");
+            EntityStateMachine machine3 = EntityStateMachine.FindByCustomName(melvinBody, "Stance");
 
-            
+            //AmpPlugin.Destroy(machine2);
+            //AmpPlugin.Destroy(machine3);
+            //EntityStateMachine[] machines = melvinBody.GetComponents<EntityStateMachine>();
 
-            melvinBody.GetComponent<CharacterDeathBehavior>().deathState = new SerializableEntityStateType(typeof(SkillStates.BaseStates.MelvinDeathState));
+            //machine2.initialStateType = new SerializableEntityStateType(typeof(SkillStates.BaseStates.MelvinLeap));
+            //machine.mainStateType = new SerializableEntityStateType(typeof(SkillStates.BaseStates.MelvinDeathState));
+            melvinBody.GetComponent<CharacterDeathBehavior>().deathState = new SerializableEntityStateType(typeof(SkillStates.BaseStates.MelvinSpawn));
 
-            
+            melvinBody.GetComponent<TeamComponent>().hideAllyCardDisplay = true;
+            WormBodyPositions2 bodyController = melvinBody.GetComponent<WormBodyPositions2>();
+            bodyController.shouldFireBlastAttackOnImpact = false;
+            bodyController.shouldFireMeatballsOnImpact = false;
 
-           PrefabAPI.RegisterNetworkPrefab(melvinPrefab);
+            melvinBody.GetComponent<HealthComponent>().dontShowHealthbar = true;
+           // bodyController.followDelay = 0f;
+
+            melvinCharBody.baseDamage = 0f;
+
+            AmpPlugin.Destroy(melvinBody.GetComponent<ContactDamage>());
+
+ 
+            PrefabAPI.RegisterNetworkPrefab(melvinPrefab);
 
         }
 
@@ -1014,149 +1046,27 @@ namespace AmpMod.Modules
         
         private static void CreatePulseBlastPrefab()
         {
-            pulseBlastEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffect", true);
+            pulseBlastEffect = mainAssetBundle.LoadAsset<GameObject>("PulseBlast");
             pulseBlastEffect.AddComponent<NetworkIdentity>();
 
-            pulseBlastEffect.GetComponent<EffectComponent>().applyScale = true;
-
-            pulseBlastEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/omnieffect/OmniImpactVFXLightningMage"), "pulseBlastEffectRed", true);
-            //pulseBlastEffectRed = mainAssetBundle.LoadAsset<GameObject>("pulseBlastRed");
+            pulseBlastEffectRed = mainAssetBundle.LoadAsset<GameObject>("PulseBlastRed");
             pulseBlastEffectRed.AddComponent<NetworkIdentity>();
-
-            pulseBlastEffectRed.GetComponent<EffectComponent>().applyScale = true;
-
-            pulseMuzzleEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffect", true);
-            pulseMuzzleEffect.AddComponent<NetworkIdentity>();
-
-            pulseMuzzleEffectRed = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/muzzleflashes/MuzzleflashMageLightningLargeWithTrail"), "pulseMuzzleEffectRed", true);
-            pulseMuzzleEffectRed.AddComponent<NetworkIdentity>();
-
-          //  Material triMaterial = UnityEngine.Material.Instantiate(LegacyResourcesAPI.Load<Material>("matMageMatrixTriLightning"));
-          //  triMaterial.SetTexture("_RemapTex", texRampRedLightning);
+           
+            pulseLightningCover = mainAssetBundle.LoadAsset<GameObject>("PulseCover"); 
 
 
-            Transform muzzleParticleTransform = pulseMuzzleEffectRed.transform.GetChild(0);
-            foreach (Transform child in muzzleParticleTransform)
-            {
-                switch (child.name)
-                {
-                    case "Matrix, Billboard":
-                        child.GetComponent<ParticleSystemRenderer>().material = matLightningMatrixRed;
-                        break;
-                    case "Flash":
-                        var main = child.GetComponent<ParticleSystem>().main;
-                        main.startColor = redLightningColor;
-                        break;
-                    case "Point light":
-                        child.GetComponent<Light>().color = redLightningColor;
-                        break;
-                    case "Smoke":
-                        break;
-                    case "Matrix, Mesh":
-                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matPulseTriRed);
-                        break;
-                    case "Spinner":
-                        child.GetComponentInChildren<TrailRenderer>().SetMaterial(matLightningLongRed);
-                        break;
-                }
-            }
+            pulseMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("PulseMuzzleFlash");
+            pulseMuzzleEffectRed = mainAssetBundle.LoadAsset<GameObject>("PulseMuzzleFlashRed");
 
-            Transform blastEffectTransformRed = pulseBlastEffectRed.transform;
-            Vector3 scaleChange = new Vector3(0.3f, 03f, 0.3f);    
-            blastEffectTransformRed.localScale = scaleChange;
-            Debug.Log(blastEffectTransformRed.localScale);
-            foreach (Transform child in blastEffectTransformRed)
-            {
-                switch (child.name)
-                {
-                    case "Flash, Blue":
-                        var main = child.GetComponent<ParticleSystem>().main;
-                        main.startColor = redLightningColor;
-                        break;
-                    case "Scaled Hitspark 3 (Random Color)":
-                        var main2 = child.GetComponent<ParticleSystem>().main;
-                        main2.startColor = redLightningColor;
-                        break;
-                    case "Impact Shockwave":
-                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matRing);
-                        var main3 = child.GetComponent<ParticleSystem>().main;
-                        main3.startColor = redLightningColor;
-                        break;
-                    case "Matrix, Directional":
-                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matDirectionalMatrixRed);
-                        break;
-                    case "Matrix, Dynamic":
-                        var main4 = child.GetComponent<ParticleSystem>().main;
-                        main4.startColor = redLightningColor;
-                        child.GetComponent<ParticleSystemRenderer>().trailMaterial = matLightningLongRed;
-                        break;
-                    case "Point light":
-                        child.GetComponent<Light>().color = redLightningColor;
-                        break;
-                    case "Sphere, Expanding":
-                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningSphereRed);
-                        break;
-                    case "Matrix, Billboard": 
-                        child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningMatrixRed);
-                        break;
-                    case "Scaled Hitspark 1 (Random Color)":
-                        var main5 = child.GetComponent<ParticleSystem>().main;
-                        main5.startColor = redLightningColor;
-                        break;
-                    case "Flash, Directional":
-                        GameObject.Destroy(child.gameObject);
-                        break;
-                    case "Dash, Bright":
-                        var main6 = child.GetComponent<ParticleSystem>().main;
-                        main6.startColor = redLightningColor;
-                        break;
-                   
-                }
-                
-           /*     if (child.name == "Flash, Blue")
-                {
-                    var main = child.GetComponent<ParticleSystem>().main;
-                    main.startColor = redLightningColor;
-                }
+            AddNewEffectDef(pulseBlastEffect, null, true);
 
-                else if (child.name == "Matrix, Directional")
-                {
-                    child.GetComponent<ParticleSystemRenderer>().material = mainAssetBundle.LoadAsset<Material>("matDirectionalMatrixRed");
-                }
+            AddNewEffectDef(pulseBlastEffectRed, null, true);
 
-                else if (child.name == "Matrix, Dynamic")
-                {
-                    var main = child.GetComponent<ParticleSystem>().main;
-                    main.startColor = redLightningColor;
-                    child.GetComponent<ParticleSystemRenderer>().trailMaterial = matLightningLongRed;
-                }
+            PrefabAPI.RegisterNetworkPrefab(pulseMuzzleEffect);
+            PrefabAPI.RegisterNetworkPrefab(pulseMuzzleEffectRed);
 
-                else if (child.name == "Point light")
-                {
-                    child.GetComponent<Light>().color = redLightningColor;
-                }
+            PrefabAPI.RegisterNetworkPrefab(pulseLightningCover);
 
-                else if (child.name == "Sphere, Expanding")
-                {
-                    child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningSphereRed);
-                }
-
-                else if (child.name == "Matrix, Billboard")
-                {
-                    child.GetComponent<ParticleSystemRenderer>().SetMaterial(matLightningMatrixRed);
-                } */
-            }
-
-
-            AmpPlugin.Destroy(pulseMuzzleEffect.GetComponent<EffectComponent>());
-            AmpPlugin.Destroy(pulseMuzzleEffectRed.GetComponent<EffectComponent>());
-
-
-              AddNewEffectDef(pulseBlastEffect, null, true);
-              //AddNewEffectDef(pulseMuzzleEffect); 
-
-              AddNewEffectDef(pulseBlastEffectRed, null, true);
-              //AddNewEffectDef(pulseMuzzleEffectRed);
         }
 
         private static void CreateBoltEnterPrefab()

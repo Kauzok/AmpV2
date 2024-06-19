@@ -4,6 +4,10 @@ using System.Text;
 using RoR2;
 using UnityEngine;
 using EntityStates;
+using MonoMod.Cil;
+using Mono.Cecil.Cil;
+using HarmonyLib;
+using JetBrains.Annotations;
 
 namespace AmpMod.Modules.Survivors
 {
@@ -12,18 +16,23 @@ namespace AmpMod.Modules.Survivors
 
         public static event Action<Run> onSunSurvived = delegate { };
 
+        public event Action shieldDepleted;
+        public event Action shieldReplenished;
         private bool swordActive;
         private Material swordMat;
         private float swordTransition;
         private GameObject swordActiveEffect;
         private AmpLightningController lightningController;
         private ChildLocator childLocator;
-
+        private bool hasShield;
         public LocalUser localUser;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            
+            base.characterBody.AddBuff(Buffs.shieldDamageBoost);
+           
 
             if (base.healthComponent.combinedHealth >=  0)
             {
@@ -57,8 +66,8 @@ namespace AmpMod.Modules.Survivors
 
 
             }
-        }
 
+        }
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -70,7 +79,18 @@ namespace AmpMod.Modules.Survivors
                     this.swordActive = true;
                 }
             }
-           
+
+            if (base.healthComponent.shield >= .5*base.healthComponent.fullShield && !base.characterBody.HasBuff(Buffs.shieldDamageBoost))
+            {
+                base.healthComponent.body.AddBuff(Buffs.shieldDamageBoost);
+            }
+
+
+            else if (base.healthComponent.shield < .5 * base.healthComponent.fullShield && base.characterBody.HasBuff(Buffs.shieldDamageBoost)) {
+
+                base.healthComponent.body.RemoveBuff(Buffs.shieldDamageBoost);
+            }
+
 
             if (this.swordActive)
             {

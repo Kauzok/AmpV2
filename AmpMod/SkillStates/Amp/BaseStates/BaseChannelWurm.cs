@@ -12,7 +12,7 @@ namespace AmpMod.SkillStates
 {
     public abstract class BaseChannelWurm : BaseSkillState
     {
-        protected abstract SummonWurm GetNextState();
+        protected abstract SummonWurm_Old GetNextState();
         private ChildLocator childLocator;
         private Animator animator;
         private float baseChannelDuration = 3f;
@@ -60,7 +60,7 @@ namespace AmpMod.SkillStates
             }
             if (fixedAge >= channelDuration && base.isAuthority)    
             {
-                SummonWurm nextState = this.GetNextState();
+                SummonWurm_Old nextState = this.GetNextState();
                 animator.SetBool("HasChannelled", true);
                 // this.outer.SetNextState(summonState);
                 //base.PlayAnimation("Worm, Override", "BufferEmpty", null, channelDuration);

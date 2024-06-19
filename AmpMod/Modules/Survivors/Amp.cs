@@ -40,8 +40,10 @@ namespace AmpMod.Modules.Survivors
             healthGrowth = 33f,
             healthRegen = 1.5f,
             jumpCount = 1,
+            shield = 55f,
             //jumpPower = 18f,
-            maxHealth = 110f,
+            maxHealth = 55f,
+            shieldGrowth = 33f,
             subtitleNameToken = AmpPlugin.developerPrefix + "_AMP_BODY_SUBTITLE",
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
@@ -162,7 +164,7 @@ namespace AmpMod.Modules.Survivors
                 prefix + "_AMP_BODY_PRIMARY_SLASH_DESCRIPTION", 
                 Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texStormblade"), 
                 true, 
-                new String[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" },
+                new String[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE", prefix + "_AMP_BODY_KEYWORD_HEALSHIELD" },
                 true));
             #endregion
 
@@ -175,10 +177,10 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_AMP_BODY_SECONDARY_FERROSHOT_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SECONDARY_FERROSHOT_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texLorentz"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Ferroshot)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Ferroshot_Hitscan)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 3f,
+                baseRechargeInterval = 5f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -191,7 +193,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CHARGE" }
+                keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_SANDED"}
             });
 
             SkillDef vortexSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -241,7 +243,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_CHARGE" }
+                keywordTokens = new string[] { prefix + "_AMP_BODY_KEYWORD_HEALSHIELD" }
             }); 
 
 
@@ -286,8 +288,8 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_AMP_BODY_UTILITY_BOOST_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_UTILITY_BOOST_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPulse"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.AltPulseLeap)),
-                activationStateMachineName = "Slide",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PulseLeap)),
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 3,
                 baseRechargeInterval = 5f,
                 beginSkillCooldownOnSkillEnd = false,
@@ -370,12 +372,12 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_WORM_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSummon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ChannelWurm)),
-                activationStateMachineName = "Slide",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.SummonWurm)),
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 45f,
+                baseRechargeInterval = 15f,
                 beginSkillCooldownOnSkillEnd = true,
-                canceledFromSprinting = true,
+                canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 // fullRestockOnAssign = true,
                 fullRestockOnAssign = false,

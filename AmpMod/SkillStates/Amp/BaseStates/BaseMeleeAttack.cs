@@ -6,10 +6,13 @@ using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Orbs;
 using R2API;
+using AmpMod.Modules;
+using AmpMod.SkillStates.Amp.BaseStates;
+using System.Collections.Generic;
 
 namespace AmpMod.SkillStates.BaseStates
 {
-    public class BaseMeleeAttack : BaseSkillState
+    public class BaseMeleeAttack : BaseReplenishingSkill
     {
         public int swingIndex;
 
@@ -28,10 +31,11 @@ namespace AmpMod.SkillStates.BaseStates
         protected float hitStopDuration = 0.012f;
         protected float attackRecoil = 0.75f;
         protected float hitHopVelocity = 4f;
+        private List<HurtBox> results;
         private bool inCombo;
         protected bool cancelled = false;
-        
 
+        private bool hasStruck;
 
         protected string swingSoundString = "";
         protected string hitSoundString = "";
@@ -57,6 +61,7 @@ namespace AmpMod.SkillStates.BaseStates
             base.OnEnter();
             this.animator = base.GetModelAnimator();
 
+           
             if (this.animator.GetBool("isUsingIndependentSkill") == true)
             {
                 hasFired = true;
@@ -108,7 +113,7 @@ namespace AmpMod.SkillStates.BaseStates
             {
                 if (Util.CheckRoll(chance, base.characterBody.master))
                 {
-                    attack.AddModdedDamageType(Modules.DamageTypes.applyCharge);
+                    attack.AddModdedDamageType(DamageTypes.applyCharge);
                 }
             }
             
@@ -161,7 +166,22 @@ namespace AmpMod.SkillStates.BaseStates
         protected virtual void OnHitEnemyAuthority()
         {
             Util.PlaySound(this.hitSoundString, base.gameObject);
+            if (!this.hasStruck && base.characterBody.healthComponent.shield >= base.characterBody.healthComponent.fullShield)
+            {
+                hasStruck = true;
+                var damage = Modules.StaticValues.lightningBombDamageCoefficient * this.damageCoefficient * damageStat;
+                
+                if (attack.lastFireAverageHitPosition != null)
+                {
+                    this.FireLightningBall(1, damage, attack.lastFireAverageHitPosition);
+                }
 
+                else
+                {
+                    this.FireLightningBall(1, damage, base.characterBody.corePosition + base.characterDirection.forward * 2);
+                }
+                
+            }
             if (!this.hasHopped)
             {
                 if (base.characterMotor && !base.characterMotor.isGrounded && this.hitHopVelocity > 0f)
@@ -198,6 +218,7 @@ namespace AmpMod.SkillStates.BaseStates
             if (base.isAuthority)
             {
                 chargeChance(Modules.StaticValues.stormbladeChargeProcCoefficient, this.attack);
+                attack.AddModdedDamageType(DamageTypes.healShield);
                 if (this.attack.Fire())
                 {
                     this.OnHitEnemyAuthority();

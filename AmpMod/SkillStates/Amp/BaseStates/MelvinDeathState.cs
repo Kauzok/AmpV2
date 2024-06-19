@@ -13,37 +13,17 @@ namespace AmpMod.SkillStates.BaseStates
     {
         public static GameObject initialDeathExplosionEffect = EntityStates.MagmaWorm.DeathState.initialDeathExplosionEffect;
         public static string deathSoundString = EntityStates.MagmaWorm.DeathState.deathSoundString;
-        public static float duration = EntityStates.MagmaWorm.DeathState.duration;
+        public static float duration = 2f;
         private float stopwatch;
         public object wormSkill;
-        public GenericSkill specialSlot;
-        public SkillDef cancelSkillDef;
 
-        public void UnsetOverride()
-        {
-           
-            if (this.specialSlot && this.cancelSkillDef && base.isAuthority)
-            {
-                Debug.Log("unsetting");
-                this.specialSlot.UnsetSkillOverride(SummonWurm.src, SummonWurm.cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-                //this.specialSlot.UnsetSkillOverride(wormSkill, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-            }
-        }
 
         public override void OnEnter()
         {
             base.OnEnter();
 
-            //Debug.Log("died");
+            //Debug.Log("died")
 
-            var SkillHolder = base.GetComponent<SkillComponents.WormHealthTracker>();
-            specialSlot = SkillHolder.specialSlot;
-            cancelSkillDef = SkillHolder.cancelSkillDef;
-            wormSkill = SkillHolder.wormSkill;
-
-
-                
-            UnsetOverride();
 
             WormBodyPositions2 component = base.GetComponent<WormBodyPositions2>();
             WormBodyPositionsDriver component2 = base.GetComponent<WormBodyPositionsDriver>();
@@ -53,7 +33,7 @@ namespace AmpMod.SkillStates.BaseStates
                 component2.ySpringConstant = 0f;
                 component2.maxTurnSpeed = 0f;
                 component.meatballCount = 0;
-                Util.PlaySound(MelvinDeathState.deathSoundString, component.bones[0].gameObject);
+                //Util.PlaySound(MelvinDeathState.deathSoundString, component.bones[0].gameObject);
             }
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)

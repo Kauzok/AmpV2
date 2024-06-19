@@ -3080,6 +3080,7 @@ GameObject:
   - component: {fileID: 7112658576405249117}
   - component: {fileID: 5233461734227876635}
   - component: {fileID: 6286418449387046198}
+  - component: {fileID: 6466381200230765620}
   m_Layer: 0
   m_Name: mdlAmp
   m_TagString: Untagged
@@ -3108,6 +3109,7 @@ Transform:
   - {fileID: 7974622914499324161}
   - {fileID: 7705844718675240532}
   - {fileID: 8459546826536089811}
+  - {fileID: 1093910843468078454}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3209,6 +3211,8 @@ MonoBehaviour:
     transform: {fileID: 6159274933176605965}
   - name: SwordTip
     transform: {fileID: 5551271746585929861}
+  - name: PulseAura
+    transform: {fileID: 67103355184359408}
 --- !u!114 &5233461734227876635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,6 +3306,21 @@ MonoBehaviour:
   m_DistantDisable: 0
   m_ReferenceObject: {fileID: 0}
   m_DistanceToObject: 20
+--- !u!114 &6466381200230765620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950562713335511114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1294804675, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupName: PulseHitbox
+  hitBoxes:
+  - {fileID: 2886583182881857288}
 --- !u!1 &965365872548736040
 GameObject:
   m_ObjectHideFlags: 0
@@ -4739,6 +4758,49 @@ Transform:
   m_Father: {fileID: 4753206061578159078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3222654079083679182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1093910843468078454}
+  - component: {fileID: 2886583182881857288}
+  m_Layer: 0
+  m_Name: PulseHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1093910843468078454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222654079083679182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 466900384232268528}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2886583182881857288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222654079083679182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3337109716966504072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,6 +5873,7 @@ Transform:
   m_LocalScale: {x: 2.2246518, y: 2.2246518, z: 2.2246518}
   m_Children:
   - {fileID: 5414985102366510366}
+  - {fileID: 67103355184359408}
   m_Father: {fileID: 466900384232268528}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9265,6 +9328,36 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.20785785, y: -0.013705373, z: 0.018108696}
     m_Extent: {x: 0.64642054, y: 1.0347539, z: 0.49068472}
   m_DirtyAABB: 0
+--- !u!1 &6717760779547908164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67103355184359408}
+  m_Layer: 0
+  m_Name: PulseAura
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &67103355184359408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717760779547908164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 2.375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8128815825536278247}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6745339061745350214
 GameObject:
   m_ObjectHideFlags: 0

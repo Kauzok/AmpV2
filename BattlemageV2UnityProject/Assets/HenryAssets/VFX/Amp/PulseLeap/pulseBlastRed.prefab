@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4234311599619328
 Transform:
   m_ObjectHideFlags: 0
@@ -4988,7 +4988,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17bd8da5a6b7fe14a972bc5b7e33794b, type: 2}
+  - {fileID: 2100000, guid: 6400b9923e5bf7c4b810acb335328d6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5149,8 +5149,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.8679245, g: 0.032326695, b: 0, a: 1}
-        key1: {r: 0.8679245, g: 0.032326695, b: 0, a: 1}
+        key0: {r: 0.6886792, g: 0.456993, b: 0.44829118, a: 1}
+        key1: {r: 0.6981132, g: 0.4478462, b: 0.5515557, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -7495,7 +7495,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17bd8da5a6b7fe14a972bc5b7e33794b, type: 2}
+  - {fileID: 2100000, guid: 6400b9923e5bf7c4b810acb335328d6b, type: 2}
   - {fileID: 2100000, guid: b769555bb0b2f4f4081e674a80c20c4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -7557,7 +7557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4180441611706909
 Transform:
   m_ObjectHideFlags: 0
@@ -10109,7 +10109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4489945084311187
 Transform:
   m_ObjectHideFlags: 0
@@ -15395,7 +15395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4370680578351015
 Transform:
   m_ObjectHideFlags: 0
@@ -17990,7 +17990,7 @@ GameObject:
   - component: {fileID: 114645749123116779}
   - component: {fileID: 114941633970230743}
   m_Layer: 0
-  m_Name: pulseBlastRed
+  m_Name: PulseBlastRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18005,7 +18005,7 @@ Transform:
   m_GameObject: {fileID: 1635030372645935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4774031681871571}
   - {fileID: 4180441611706909}
@@ -23268,7 +23268,7 @@ Transform:
   m_GameObject: {fileID: 1875396230646593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 14, y: 14, z: 14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4753400926225555}
   m_RootOrder: 12

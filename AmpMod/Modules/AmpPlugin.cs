@@ -1,28 +1,25 @@
-﻿using BepInEx;
+﻿using AmpMod.SkillStates;
+using AmpMod.SkillStates.BaseStates;
+using AmpMod.SkillStates.Nemesis_Amp;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
+using AmpMod.SkillStates.Nemesis_Amp.Orbs;
+using BepInEx;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using R2API;
+using R2API.Networking;
 using R2API.Utils;
 using RoR2;
-using R2API;
+using RoR2.Orbs;
+using RoR2.Stats;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Security;
 using System.Security.Permissions;
-using EntityStates;
 using UnityEngine;
-using AmpMod.SkillStates;
-using RoR2.Orbs;
-using System.Collections.Generic;
-using AmpMod.SkillStates.BaseStates;
 using UnityEngine.Networking;
-using HG.Reflection;
-using IL;
-using System.Collections.ObjectModel;
-using UnityEngine.AddressableAssets;
-using MonoMod.Cil;
-using RoR2.Stats;
-using BepInEx.Configuration;
-using R2API.Networking;
-using AmpMod.SkillStates.Nemesis_Amp;
-using AmpMod.SkillStates.Nemesis_Amp.Orbs;
-using System.IO;
-using AmpMod.SkillStates.Nemesis_Amp.Components;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -139,11 +136,34 @@ namespace AmpMod.Modules
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
-            RecalculateStatsAPI.GetStatCoefficients += overChargeStatGrant;
+            RecalculateStatsAPI.GetStatCoefficients += AmpBuffManager;
             RecalculateStatsAPI.GetStatCoefficients += wormItemCheck;
             On.RoR2.Stats.StatManager.ProcessDeathEvents += StatManager_ProcessDeathEvents;
 
+            //IL hook to stop Amp from regenerating shield passively
+            IL.RoR2.HealthComponent.ServerFixedUpdate += (il) =>
+            {
+                var c = new ILCursor(il);
+                c.GotoNext(x => x.MatchLdfld<HealthComponent>(nameof(HealthComponent.isShieldRegenForced)));
+                c.GotoNext(MoveType.After, x => x.MatchLdloc(out _));
+                //var jump = c.Next;
+                //c.Index++;
+                c.Emit(OpCodes.Ldarg_0);
+                c.EmitDelegate<Func<HealthComponent, bool>>(hc =>
+                {
+                    var body = hc.body;
+                    if (!body) return false;
+
+                    if (body.baseNameToken != AmpPlugin.developerPrefix + "_AMP_BODY_NAME") return false;
+
+                    return true;
+                });
+                c.Emit(OpCodes.Or);
+            };
+
         }
+
+   
         private void Language_collectLanguageRootFolders(List<string> obj)
         {
             string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Info.Location), "Language");
@@ -373,6 +393,7 @@ namespace AmpMod.Modules
             orig(self, damageReport);
         }
 
+        
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo info)
         {
 
@@ -385,6 +406,49 @@ namespace AmpMod.Modules
                     
                 }
             } */
+
+            if (info.HasModdedDamageType(DamageTypes.applySanded))
+            {
+                var go = self.body.gameObject;
+                var body = self.body;
+                var controller = go.GetComponent<SkillStates.SkillComponents.SandedController>();
+                if (!controller)
+                {
+                    ModelLocator modelLocator;
+                    modelLocator = body.GetComponent<ModelLocator>();
+                    Debug.Log("adding overlay");
+
+                    var sandedController = go.AddComponent<SkillStates.SkillComponents.SandedController>();
+                    sandedController.target = modelLocator.modelTransform.gameObject;
+                    sandedController.sandedBody = body;
+                    body.AddTimedBuff(RoR2Content.Buffs.Slow60, StaticValues.sandedDuration);
+                }
+            }
+            int isSanded = self.body.HasBuff(Buffs.sandedDebuff) ? 1 : 0;
+            if (info.HasModdedDamageType(DamageTypes.healShield))
+            {
+                HealthComponent attackerHealth = info.attacker.GetComponent<CharacterBody>().healthComponent;
+
+                float healAmount = info.damage * StaticValues.healShieldPercent;
+                
+                healAmount += isSanded * (info.damage * StaticValues.sandedShieldBonus);
+
+                if (self.body.GetBuffCount(Buffs.chargeBuildup) >= 2) healAmount *= 3;
+                
+
+                //code to make sure shield doesn't go above max shield amount
+                if (attackerHealth.shield <= attackerHealth.fullShield && attackerHealth.fullShield >= attackerHealth.shield + healAmount)
+                {
+                    attackerHealth.shield += healAmount;
+                    
+                }
+                else
+                {
+                    attackerHealth.shield = attackerHealth.fullShield;
+                }
+
+                
+            }
 
             if (info.HasModdedDamageType(DamageTypes.nemAmpDetonateCharge))
             {
@@ -423,6 +487,11 @@ namespace AmpMod.Modules
             if (info.HasModdedDamageType(DamageTypes.nemAmpSlowOnHit))
             {
                 self.body.AddTimedBuff(RoR2Content.Buffs.Slow80, 1f);
+            }
+
+            if (info.HasModdedDamageType(DamageTypes.applySanded))
+            {
+                self.body.AddTimedBuff(Buffs.sandedDebuff, StaticValues.sandedDuration);
             }
 
 
@@ -547,12 +616,17 @@ namespace AmpMod.Modules
             }
         }
 
-        private void overChargeStatGrant(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
+        private void AmpBuffManager(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
         {
 
             if (body && body.HasBuff(Buffs.nemAmpAtkSpeed))
             {
                 args.attackSpeedMultAdd += StaticValues.staticFieldAttackSpeedBoost;
+            }
+
+            if (body && body.HasBuff(Buffs.shieldDamageBoost))
+            {
+                args.damageMultAdd += StaticValues.shieldDamageBoost;
             }
 
             if (body && body.HasBuff(Buffs.overCharge))
@@ -622,6 +696,7 @@ namespace AmpMod.Modules
 
                 chargeBlast.Fire();
 
+          
                 /* var controller = body.gameObject.GetComponent<SkillStates.SkillComponents.ElectrifiedEffectController>();
                 if (!controller)
                 {

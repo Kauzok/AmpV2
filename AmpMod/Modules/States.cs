@@ -27,7 +27,7 @@ namespace AmpMod.Modules
             entityStates.Add(typeof(SlashCombo));
 
             //Lorentz Cannon states
-            entityStates.Add(typeof(Ferroshot));
+            entityStates.Add(typeof(Ferroshot_Old));
 
             //magnetic vortex states
             entityStates.Add(typeof(Vortex));
@@ -40,15 +40,15 @@ namespace AmpMod.Modules
             entityStates.Add(typeof(Surge));
 
             //pulse leap states
+            entityStates.Add(typeof(PulseLeap_Old));
             entityStates.Add(typeof(PulseLeap));
-            entityStates.Add(typeof(AltPulseLeap));
 
             //fulmination states
             entityStates.Add(typeof(Fulmination));
 
             //bulwark of storms states
             entityStates.Add(typeof(BaseChannelWurm));
-            entityStates.Add(typeof(SummonWurm));
+            entityStates.Add(typeof(SummonWurm_Old));
             entityStates.Add(typeof(ChannelWurm));
             entityStates.Add(typeof(CancelWurm));
 

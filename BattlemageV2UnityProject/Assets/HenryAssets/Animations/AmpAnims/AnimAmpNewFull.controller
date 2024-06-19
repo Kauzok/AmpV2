@@ -270,7 +270,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.35
+  m_ExitTime: 0.35000002
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -365,9 +365,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.6666666
+  m_TransitionDuration: 0.24999997
+  m_TransitionOffset: 0.027175965
+  m_ExitTime: 1.6523519
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -799,7 +799,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2b131a52698b8944c87e7f202b29ca82, type: 2}
+  m_Motion: {fileID: 7489251465769447897, guid: 2eb57e50645308841b0847b11e4146d1,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: BaseSkill.playbackRate
   m_MirrorParameter: 
@@ -1420,6 +1421,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isGrounded
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -585812627415619616}
@@ -6125,7 +6129,7 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4561040596595846124}
-    m_Position: {x: -10, y: 300, z: 0}
+    m_Position: {x: -20, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -306029625023374812}
     m_Position: {x: -10, y: 240, z: 0}
@@ -6557,7 +6561,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9db9ac2d3d9359f4abc4f3014637b70b, type: 2}
+  m_Motion: {fileID: 4145742980265360658, guid: 2eb57e50645308841b0847b11e4146d1,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: BaseSkill.playbackRate
   m_MirrorParameter: 
@@ -6571,11 +6576,11 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isGrounded
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isMoving
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isGrounded
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102264566570739738}

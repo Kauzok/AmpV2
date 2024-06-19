@@ -5,245 +5,241 @@ using R2API;
 using UnityEngine;
 using RoR2.Skills;
 using UnityEngine.Networking;
+using AmpMod.SkillStates.Nemesis_Amp.Components;
+using AmpMod.SkillStates.Nemesis_Amp;
+using RoR2.UI;
+using static RoR2.UI.CrosshairController;
+using EntityStates.VoidSurvivor.Weapon;
+using R2API.Utils;
+using AmpMod.SkillStates.SkillComponents;
 
 namespace AmpMod.SkillStates
 {
     public class SummonWurm : BaseSkillState
     {
-        string prefix = AmpPlugin.developerPrefix;
-        private GenericSkill specialSlot;
-        public static SkillDef cancelSkillDef;
-        public static CharacterMaster wormMaster;
-        public CharacterBody wormBody;
-        public static GameObject wormExplosion;
-        public static object src = new SummonWurm();
-        private bool hasSpawned;
-        private float wormLifeDuration = 30f;
+        [Header("Timing Variables")]
+        private float stopwatch;
+
+        [Header("VFX/Animation Variables")]
         private Animator animator;
-        private string summonSoundString = Modules.StaticValues.wormSummonString;
+        private ChildLocator childLocator;
+        private GameObject fieldIndicatorInstance;
+        public static GameObject goodCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.goodCrosshairPrefab;
+        public static GameObject projectilePrefab;
+        public static GameObject badCrosshairPrefab = EntityStates.Mage.Weapon.PrepWall.badCrosshairPrefab;
+        private GameObject muzzleflashEffect;
+        private GameObject fieldAimMuzzleEffect;
+        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
+
+        [Header("SFX Variables")]
+        private string aimFieldString = StaticValues.fieldAimString;
+        private string releaseFieldString = StaticValues.fieldReleaseString;
+        private uint stopAimLoop;
+
+        [Header("Functionality Variables")]
+        public CharacterBody wormBody;
+        private float strikeRadius = 12f;
+        public static CharacterMaster wormMaster;
+        private bool goodPlacement;
+        private float duration = 25f;
+        public static float maxSlopeAngle = 70f;
+        public static float maxDistance = 200f;
+        private StackDamageController stackDamageController;
+        private bool hasMuzzles;
 
 
         public override void OnEnter()
         {
-
             base.OnEnter();
-            base.PlayAnimation("Worm, Override", "WormChannelRelease", "BaseSkill.playbackRate", .5f);
-
-            
-
             animator = base.GetModelAnimator();
+            childLocator = base.GetModelChildLocator();
+            fieldIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.staticFieldIndicatorPrefab);
 
-            cancelSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            base.PlayAnimation("FullBody, Override", "AimField", "BaseSkill.playbackRate", 1f);
+            //Debug.Log(fieldIndicatorInstance);
+            this.UpdateAreaIndicator();
+            stopAimLoop = Util.PlaySound(aimFieldString, base.gameObject);
+
+        }
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            this.stopwatch += Time.fixedDeltaTime;
+            if ((this.stopwatch >= this.duration && base.isAuthority) || (!base.inputBank.skill4.down && base.isAuthority))
             {
-                skillName = prefix + "_AMP_BODY_SPECIAL_WORMCANCEL_NAME",
-                skillNameToken = prefix + "_AMP_BODY_SPECIAL_WORMCANCEL_NAME",
-                skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_WORMCANCEL_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texReturn"),
-                activationStateMachineName = "Slide",
-                activationState = new SerializableEntityStateType(typeof(CancelWurm)),
-                baseMaxStock = 0,
-                baseRechargeInterval = 0,
-                beginSkillCooldownOnSkillEnd = false,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = false,
-                interruptPriority = EntityStates.InterruptPriority.Any,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = false,
-                mustKeyPress = true,
-                cancelSprintingOnActivation = false,
-                rechargeStock = 0,
-                requiredStock = 0,
-                stockToConsume = 0,
-            });
-            specialSlot = base.skillLocator.special;
-            if (this.specialSlot && cancelSkillDef != null)
-            {
-                this.specialSlot.SetSkillOverride(src, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                this.outer.SetNextStateToMain();
             }
-
-
-            if (base.characterBody)
-            {
-                SpawnWorm(base.characterBody);
-            }
-            
-
-
-            animator.SetBool("HasChannelled", false);
+            UpdateAreaIndicator();
 
         }
 
+        public override void Update()
+        {
+            base.Update();
+            //this.UpdateAreaIndicator();
+        }
+
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Pain;
+        }
+
+        #region update area
+        private void UpdateAreaIndicator()
+        {
+            bool flag = this.goodPlacement;
+            this.goodPlacement = false;
+            this.fieldIndicatorInstance.SetActive(true);
+            if (this.fieldIndicatorInstance)
+            {
+                float num = maxDistance;
+                float num2 = 0f;
+                Ray aimRay = base.GetAimRay();
+                RaycastHit raycastHit;
+                if (Physics.Raycast(CameraRigController.ModifyAimRayIfApplicable(aimRay, base.gameObject, out num2), out raycastHit, num + num2, LayerIndex.world.mask))
+                {
+                    this.fieldIndicatorInstance.transform.position = raycastHit.point;
+                    this.fieldIndicatorInstance.transform.up = raycastHit.normal;
+                    this.fieldIndicatorInstance.transform.forward = -aimRay.direction;
+                    this.goodPlacement = (Vector3.Angle(Vector3.up, raycastHit.normal) < maxSlopeAngle);
+                }
+                if (flag != this.goodPlacement || this.crosshairOverrideRequest == null)
+                {
+                    CrosshairUtils.OverrideRequest overrideRequest = this.crosshairOverrideRequest;
+                    if (overrideRequest != null)
+                    {
+                        overrideRequest.Dispose();
+                    }
+                    GameObject crosshairPrefab = this.goodPlacement ? goodCrosshairPrefab : badCrosshairPrefab;
+                    this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, crosshairPrefab, CrosshairUtils.OverridePriority.Skill);
+                }
+            }
+            this.fieldIndicatorInstance.SetActive(this.goodPlacement);
+        }
+        #endregion
+
+        private void BlastFire()
+        {
+
+
+            if (base.isAuthority)
+            {
+
+
+                Ray aimRay = base.GetAimRay();
+
+
+
+
+                //create blastattack
+                BlastAttack wormStrike = new BlastAttack
+                {
+                    attacker = base.gameObject,
+                    baseDamage = Modules.StaticValues.wormEatDamageCoefficient * base.characterBody.damage,
+                    baseForce = 2f,
+                    attackerFiltering = AttackerFiltering.NeverHitSelf,
+                    crit = base.characterBody.RollCrit(),
+                    damageColorIndex = DamageColorIndex.Item,
+                    damageType = DamageType.Generic,
+                    falloffModel = BlastAttack.FalloffModel.None,
+                    inflictor = base.gameObject,
+                    position = this.fieldIndicatorInstance.transform.position,
+                    procChainMask = default(ProcChainMask),
+                    procCoefficient = 1f,
+                    radius = this.strikeRadius,
+                    teamIndex = base.characterBody.teamComponent.teamIndex
+                };
+                wormStrike.AddModdedDamageType(DamageTypes.healShield);
+
+                wormStrike.Fire();
+            }
+
+        }
         private void SpawnWorm(CharacterBody characterBody)
         {
             GameObject masterPrefab = Modules.Assets.melvinPrefab;
 
-           // masterPrefab.GetComponent<CharacterMaster>().GetBody().baseMaxHealth = base.characterBody.baseMaxHealth * 3f;
-
-            Util.PlaySound(summonSoundString, base.gameObject);
-
-            //body.baseMaxHealth = 1f;
+            //Util.PlaySound(summonSoundString, base.gameObject);
 
             EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
 
             //Debug.Log("Spawning worm");
 
 
-            //figure out why this doesnt make worm follow amp
-            //masterPrefab.gameObject.GetComponent<BaseAI>().leader.gameObject = characterBody.gameObject;
-            //masterPrefab.GetComponent<HealthComponent>().health = 3*base.characterBody.maxHealth;
-
             if (NetworkServer.active)
             {
-
-
+                var rotation = fieldIndicatorInstance.transform.rotation; 
+                if (fieldIndicatorInstance.transform.rotation == new Quaternion(0, 0, 0, 0))
+                {
+                    rotation = new Quaternion(-1, -2, 1, 0);
+                }
                 MasterSummon wormSummon = new MasterSummon
                 {
                     masterPrefab = masterPrefab,
                     ignoreTeamMemberLimit = false,
                     teamIndexOverride = TeamIndex.Player,
                     summonerBodyObject = characterBody.gameObject,
-                    position = characterBody.corePosition + new Vector3(0, 0, 2),
-                    rotation = characterBody.transform.rotation,
-                    inventoryToCopy = characterBody.inventory,
-                    inventoryItemCopyFilter = index => index != RoR2Content.Items.ExtraLife.itemIndex && index != DLC1Content.Items.ExtraLifeVoid.itemIndex,
-                    
+                    position = this.fieldIndicatorInstance.transform.position,
+                    rotation = this.fieldIndicatorInstance.transform.rotation,
 
                 };
 
-                wormSummon.preSpawnSetupCallback = master => master.inventory.GiveItem(Assets.wormHealth);
 
-
+                masterPrefab.GetComponent<CharacterMaster>().bodyPrefab.GetComponent<WormHealthTracker>().rotation = rotation;
                 wormMaster = wormSummon.Perform();
+
+                
+                Debug.Log("field rotation is " + fieldIndicatorInstance.transform.rotation);
             }
-            
-            
+
+
 
             if (wormMaster)
             {
                 wormBody = wormMaster.GetBody();
+                wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = 0f;
 
-                wormMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = wormLifeDuration;
-                //wormMaster.gameObject.GetComponent<BaseAI>().leader.gameObject = base.characterBody.gameObject;
-                //wormMaster.onBodyStart += SetupWorm;
-               // R2API.RecalculateStatsAPI.GetStatCoefficients += recalcWorm;
-                
-
-                if (NetworkServer.active)
-                {
-                    // Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
-                    for (int i = -1; i <= wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + 1; i++)
-                    {
-                        wormMaster.inventory.RemoveItem(RoR2Content.Items.ExtraLife.itemIndex);
-                    }
-
-
-                    //Debug.Log(wormMaster.inventory.GetItemCount(RoR2Content.Items.ExtraLife.itemIndex) + "dios in inventory");
-
-                    for (int i = 0; i <= wormMaster.inventory.GetItemCount(DLC1Content.Items.ExtraLifeVoid.itemIndex) + 1; i++)
-                    {
-                        wormMaster.inventory.RemoveItem(DLC1Content.Items.ExtraLifeVoid.itemIndex);
-
-
-                    }
-
-                 
-                }
-
-                if (wormMaster.GetBody())
-                {
-                    //Debug.Log("adding worm tracker");
-                    GameObject wormObject = wormMaster.GetBodyObject();
-
-                   
-
-                    var healthTracker = wormObject.AddComponent<SkillComponents.WormHealthTracker>();
-                   // healthTracker.wormBody = wormMaster.GetBody();
-                    healthTracker.owner = base.gameObject;
-                    healthTracker.wormSkill = src;
-                    
-                    healthTracker.wormMaster = wormMaster;
-                    healthTracker.cancelSkillDef = cancelSkillDef;
-                    healthTracker.specialSlot = base.skillLocator.special;
-
-
-
-                }
-
-                    
             }
-
-            
-            
-
-          
-
         }
-
-
-
-        private void SetupWorm(CharacterBody body)
-        {
-            body.statsDirty = true;
-
-            //body.baseMaxHealth = 3f * base.characterBody.baseMaxHealth;
-
-            // body.maxHealth = body.baseMaxHealth;
-            //   body.baseNameToken = prefix + "_AMP_BODY_SPECIAL_WORM_DISPLAY_NAME";
-
-            //body.statsDirty = true;
-
-            /*   var healthTracker = body.gameObject.AddComponent<SkillComponents.WormHealthTracker>();
-               healthTracker.specialSlot = base.skillLocator.special;
-               healthTracker.wormBody = body;
-               healthTracker.wormSkill = src;
-               healthTracker.cancelSkillDef = cancelSkillDef;
-               healthTracker.wormMaster = wormMaster; */
-
-        }
-
-
-        private void recalcWorm(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
-        {
-
-
-            if (body.bodyIndex == wormBody.bodyIndex)
-            {
-                args.baseHealthAdd -= (wormBody.baseMaxHealth - base.characterBody.baseMaxHealth * 3f);
-            }
-        
-
-            /*   var healthTracker = body.gameObject.AddComponent<SkillComponents.WormHealthTracker>();
-               healthTracker.specialSlot = base.skillLocator.special;
-               healthTracker.wormBody = body;
-               healthTracker.wormSkill = src;
-               healthTracker.cancelSkillDef = cancelSkillDef;
-               healthTracker.wormMaster = wormMaster; */
-
-        }
-
-
         public override void OnExit()
         {
-            
-            base.OnExit();
-            this.specialSlot.UnsetSkillOverride(this, cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-            //  wormBody.moveSpeed = 0f;
-            // Debug.Log(wormBody.moveSpeed);
-        }
 
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-
-            if (base.isAuthority)
+            if (!this.outer.destroying)
             {
-                this.outer.SetNextStateToMain();
+                if (this.goodPlacement)
+                {
+                    if (this.fieldIndicatorInstance && base.isAuthority)
+                    {
 
+                        Vector3 forward = this.fieldIndicatorInstance.transform.forward;
+                        forward.y = 0f;
+                        forward.Normalize();
+                        Vector3 vector = Vector3.Cross(Vector3.up, forward);
+                        bool crit = Util.CheckRoll(this.critStat, base.characterBody.master);
+
+                        this.BlastFire();
+                        this.SpawnWorm(base.characterBody);
+                    }
+                }
+                else
+                {
+                    base.skillLocator.utility.AddOneStock();
+                    base.PlayCrossfade("FullBody, Override", "BufferEmpty", 0.2f);
+                }
+            }
+            EntityState.Destroy(this.fieldIndicatorInstance.gameObject);
+            CrosshairUtils.OverrideRequest overrideRequest = this.crosshairOverrideRequest;
+            if (overrideRequest != null)
+            {
+                overrideRequest.Dispose();
             }
 
+            AkSoundEngine.StopPlayingID(stopAimLoop, 0);
+            base.OnExit();
+
 
         }
-     }
-
+    }
 }
