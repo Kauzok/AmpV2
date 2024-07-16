@@ -99,6 +99,7 @@ namespace AmpMod.SkillStates.BaseStates
                   
                     if (!hasDebugged)
                     {
+                        Debug.Log("chaser is underground: " + wormBodyPositionsDriver.chaserIsUnderground);
                         Debug.Log("INITIAL velocity vector is " + wormBodyPositionsDriver.chaserVelocity);
                         Debug.Log("INITIAL target vector is " + vector);
                         hasDebugged = true;

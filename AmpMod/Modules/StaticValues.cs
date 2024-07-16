@@ -16,6 +16,8 @@ namespace AmpMod.Modules
         public const string sandingDesc = "<style=cKeywordName>Sanding</style>" + "<style=cSub>Attacks cover enemies in iron sand, <style=cIsUtility>slowing</style> them. Hitting sanded enemies with <color=" + replenishColor + ">replenishing</color> attacks will heal bonus shields.";
         public const string replenishingDesc = "<style=cKeywordName>Replenishing</style>" + "<style=cSub>Attacks restore shield for <style=cIsDamage>20%</style> of the damage dealt. At <style=cIsUtility>full shields</style>, attacks spawn <style=cIsDamage>lightning bombs</style> for <style=cIsDamage>half of the original attack's damage</style>.";
         public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
+        public const string consumingDesc = "<style=cKeywordName>Consuming</style>" + "<style=cSub>Absorb an enemy's lifeforce, gaining bonus move and attack speed.</style>";
+
 
         public const string nemCharacterName = "Nemesis Amp";
         public const string nemCharacterSubtitle = "Avatar of the Storm";
@@ -101,13 +103,13 @@ namespace AmpMod.Modules
         internal const float fulminationChargeProcCoefficient = 25f;
 
         [Header("Voltaic Bombardment Values")]
-        internal const float lightningStrikeCoefficient = 14f;
+        internal const float lightningStrikeCoefficient = 20f;
         internal const float overChargeDuration = 5f;
         internal const float overchargeMoveSpeed = 2.5f;
         internal const float overchargeAttackSpeed = .3f;
 
         [Header("Bulwark of Storms Values")]
-        internal const float wormEatDamageCoefficient = 35f;
+        internal const float wormEatDamageCoefficient = 18f;
 
         [Header("Passive Values")]
         internal const float comboTimeInterval = 3f;

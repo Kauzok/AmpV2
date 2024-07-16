@@ -117,6 +117,12 @@ namespace AmpMod.Modules
         internal static GameObject lightningMuzzleChargePrefab;
         internal static GameObject lightningStrikePrefabRed;
         internal static GameObject lightningMuzzleChargePrefabRed;
+        internal static GameObject strikeBlinkPrefab;
+        internal static GameObject strikeBlinkPrefabRed;
+        internal static GameObject strikeBlastPrefab;
+        internal static GameObject strikeBlastPrefabRed;
+        internal static GameObject strikeHover;
+        internal static GameObject strikeHoverRed;
 
         [Header("Bulwark of Storms Effects")]
         internal static GameObject wormExplosionEffect;
@@ -993,7 +999,7 @@ namespace AmpMod.Modules
             //mainAssetBundle.LoadAsset<Material>("lightningEffect");
 
             //on fulmination skill contact
-            electricImpactEffect = LoadEffect("ElectricitySphere 1", null);
+            electricImpactEffect = LoadEffect("ElectricitySphere", null);
             electricImpactEffectRed = LoadEffect("ElectricitySphereRed", null);
 
             electricStreamEffectRed.AddComponent<NetworkIdentity>();
@@ -1133,6 +1139,12 @@ namespace AmpMod.Modules
             }
             // lightningStrikePrefab.GetComponent<ParticleSystem>().scalingMode = ParticleSystemScalingMode.Hierarchy;
 
+            strikeBlinkPrefab = mainAssetBundle.LoadAsset<GameObject>("StrikeBlinkEffect");
+            strikeBlastPrefab = mainAssetBundle.LoadAsset<GameObject>("StrikeLandEffect");
+            strikeHover = mainAssetBundle.LoadAsset<GameObject>("StrikeHover");
+
+            AddNewEffectDef(strikeBlastPrefab);
+            AddNewEffectDef(strikeBlinkPrefab);
             AddNewEffectDef(lightningStrikePrefab);
             AddNewEffectDef(lightningStrikePrefabRed);
 

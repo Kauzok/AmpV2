@@ -347,7 +347,7 @@ namespace AmpMod.Modules.Survivors
                 skillNameToken = prefix + "_AMP_BODY_SPECIAL_LIGHTNING_NAME",
                 skillDescriptionToken = prefix + "_AMP_BODY_SPECIAL_LIGHTNING_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texVoltaic"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.VoltaicBombardmentAim)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.LightningCrash.LightningCrash_Jump)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 8f,
@@ -363,7 +363,7 @@ namespace AmpMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_DOUBLECHARGE" }
+                keywordTokens = new string[] { prefix + "_KEYWORD_REPLENISHING" }//, prefix + "_AMP_BODY_KEYWORD_DOUBLECHARGE" }
             });
             //creates 
             SkillDef wormSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -567,12 +567,14 @@ namespace AmpMod.Modules.Survivors
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("MasteryBody"),
+                    //masterybody
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("EnelBodyMesh"),
                     renderer = defaultRenderers[0].renderer
                 },
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("MasterySword"),
+                    //masterysword
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("EnelRod"),
                     renderer = defaultRenderers[1].renderer
                 }
             };

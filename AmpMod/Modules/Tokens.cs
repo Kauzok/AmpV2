@@ -38,6 +38,7 @@ namespace AmpMod.Modules
             Language.Add(prefix + "KEYWORD_HEALSHIELD", StaticValues.replenishingDesc);
             Language.Add(prefix + "KEYWORD_SANDED", StaticValues.sandingDesc);
             Language.Add(prefix + "KEYWORD_DOUBLECHARGE", StaticValues.doubleChargeDesc);
+            Language.Add(prefix + "KEYWORD_CONSUMING", StaticValues.consumingDesc);
             #endregion
 
             #region OLD
@@ -63,6 +64,11 @@ namespace AmpMod.Modules
             Language.Add(prefix + "UTILITY_BOOST_OLD_DESCRIPTION", $"Magnetically <style=cIsUtility>boost</style> yourself forward, creating a <color=#0091ff>charged</color> explosion that deals <style=cIsDamage>{100f * StaticValues.boostDamageCoefficient}% damage</style>. Can boost up to <style=cIsUtility>3 times</style>.");
             #endregion
 
+            #region Special2_OLD
+            Language.Add(prefix + "SPECIAL_LIGHTNING_OLD_NAME", "Voltaic Bombardment");
+            Language.Add(prefix + "SPECIAL_LIGHTNING_OLD_DESCRIPTION", Helpers.agilePrefix + $"<color=#0091ff>Double Charged</color>. Summon a lightning bolt for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>. Hit yourself or allies with the bolt to become <style=cIsUtility>overcharged</style>, boosting attack and movement speed.");
+            #endregion
+
             #region Special3_OLD
             Language.Add(prefix + "SPECIAL_WORM_OLD_NAME", "Bulwark of Storms");
             Language.Add(prefix + "SPECIAL_WORM_DISPLAY_NAME", "Melvin");
@@ -74,7 +80,7 @@ namespace AmpMod.Modules
             #endregion
 
             #region Passive
-            Language.Add(prefix + "PASSIVE_NAME", "Electric Heart");
+            Language.Add(prefix + "PASSIVE_NAME", "Thundersoul");
             Language.Add(prefix + "PASSIVE_DESCRIPTION", $"Amp's health is half <style=cIsUtility>shield</style>, which can <style=cIsUtility>only be replenished by certain attacks</style>. Deal <style=cIsDamage>bonus damage</style> when <style=cIsUtility>shields are half full</style>.");
             #endregion
 
@@ -85,7 +91,7 @@ namespace AmpMod.Modules
 
             #region Secondary
             Language.Add(prefix + "SECONDARY_FERROSHOT_NAME", "Lorentz Cannon");
-            Language.Add(prefix + "SECONDARY_FERROSHOT_DESCRIPTION", Helpers.agilePrefix + $"<color=#3b3b3b>Sanding.</color> Use magnetism to fire an array of <style=cIsDamage>3</style> iron sand orbs, each dealing <style=cIsDamage>{100f * StaticValues.ferroshotExplosionDamageCoefficient}% damage</style> and <color=#3b3b3b>sanding</color> enemies.");
+            Language.Add(prefix + "SECONDARY_FERROSHOT_DESCRIPTION", Helpers.agilePrefix + $"<color=#3b3b3b>Sanding.</color> Use magnetism to fire <style=cIsDamage>3</style> iron sand orbs, each dealing <style=cIsDamage>{100f * StaticValues.ferroshotExplosionDamageCoefficient}% damage</style> and <color=#3b3b3b>sanding</color> enemies.");
             #endregion
 
             #region Secondary2
@@ -95,7 +101,7 @@ namespace AmpMod.Modules
 
             #region Secondary3
             Language.Add(prefix + "SECONDARY_PLASMASLASH_NAME", "Plasma Slash");
-            Language.Add(prefix + "SECONDARY_PLASMASLASH_DESCRIPTION", replenishingPrefix + $"Perform a sweeping slash with your sword for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage, <style=cIsDamage>burning</style> enemies. If in the air, <style=cIsUtility>charge forward</style> and slice downwards, <style=cIsUtility>sending enemies to the ground</style>");
+            Language.Add(prefix + "SECONDARY_PLASMASLASH_DESCRIPTION", replenishingPrefix + $"Perform a <style=cIsDamage>burning</style> slash for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage. If in the air, <style=cIsUtility>charge forward</style> and slice, <style=cIsUtility>sending enemies downwards.</style>");
             #endregion
 
             #region Utility
@@ -119,13 +125,13 @@ namespace AmpMod.Modules
 
             #region Special2
             Language.Add(prefix + "SPECIAL_LIGHTNING_NAME", "Voltaic Bombardment");
-            Language.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", Helpers.agilePrefix + $"<color=#0091ff>Double Charged</color>. Summon a lightning bolt for <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>. Hit yourself or allies with the bolt to become <style=cIsUtility>overcharged</style>, boosting attack and movement speed.");
+            Language.Add(prefix + "SPECIAL_LIGHTNING_DESCRIPTION", replenishingPrefix + $"<style=cIsUtility>Teleport</style> into the sky and crash down as a bolt of lightning, dealing <style=cIsDamage>{100f * StaticValues.lightningStrikeCoefficient}% damage</style>. <style=cIsUtility>Hold</style> to aim. <style=cIsUtility>Jump</style> to cancel.");
             #endregion
 
 
             #region Special3
-            Language.Add(prefix + "SPECIAL_WORM_NAME", "Ravenous Storm");
-            Language.Add(prefix + "SPECIAL_WORM_DESCRIPTION", $"<style=cIsUtility>Summon</style> an <style=cIsDamage>overloading worm</style> on a targeted area for <style=cIsDamage>{100f * StaticValues.wormEatDamageCoefficient}% damage</style>. Killed enemies are <style=cIsUtility>consumed</style>, replenishing 5% shield");
+            Language.Add(prefix + "SPECIAL_WORM_NAME", "All-Consuming Storm");
+            Language.Add(prefix + "SPECIAL_WORM_DESCRIPTION", $"<style=cIsUtility>Summon</style> an <style=cIsDamage>overloading worm</style> on a targeted area for <style=cIsDamage>{100f * StaticValues.wormEatDamageCoefficient}% damage</style>, <style=cIsUtility>consuming</style> low health enemies.");
             #endregion
 
             #region Achievements
