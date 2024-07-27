@@ -208,7 +208,7 @@ namespace AmpMod.Modules
             //instantiates the projectile model and associates it with the prefab
             //if (Assets.mainAssetBundle.LoadAsset<GameObject>("SpikeGhost") != null) ferroshotController.ghostPrefab = CreateGhostPrefab("SpikeGhost");
 
-            CreateGhostPrefab("SpikeGhost");
+           // CreateGhostPrefab("SpikeGhost");
 
             ferroshotController.procCoefficient = .7f;
 

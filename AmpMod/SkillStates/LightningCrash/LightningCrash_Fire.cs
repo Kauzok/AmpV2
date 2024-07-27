@@ -16,8 +16,10 @@ namespace AmpMod.SkillStates.LightningCrash
         public static float slamRadius = 12f;
         public static float procCoefficient;
         public static float recoil;
+        private GameObject strikeBoltInstance;
         private Transform modelTransform;
         private CharacterModel characterModel;
+        private GameObject boltPrefab = Assets.strikeBoltPrefab;
         private float manualExitThreshold = 6f;
         private bool isInvis;
         public static GameObject slamEffect = Assets.strikeBlastPrefab;
@@ -63,6 +65,9 @@ namespace AmpMod.SkillStates.LightningCrash
                 isInvis = true;
               
             }
+
+            this.strikeBoltInstance = UnityEngine.Object.Instantiate<GameObject>(this.boltPrefab);
+            this.strikeBoltInstance.transform.SetParent(base.transform, false);
 
             characterBody.hideCrosshair = true;
             PlayAnimation("FullBody, Override", "SpecialSwing", "Special.playbackRate", duration * 0.8f);
@@ -206,6 +211,11 @@ namespace AmpMod.SkillStates.LightningCrash
                     scale = 1f,
                 };
                 EffectManager.SpawnEffect(slamEffect, slamData, true);
+
+            }
+            if (strikeBoltInstance)
+            {
+                Destroy(strikeBoltInstance);
             }
             characterMotor.onHitGroundAuthority -= GroundSlam;
             characterBody.bodyFlags -= CharacterBody.BodyFlags.IgnoreFallDamage;

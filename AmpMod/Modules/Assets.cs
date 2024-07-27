@@ -73,7 +73,6 @@ namespace AmpMod.Modules
         internal static GameObject sandedOverlay;
         internal static Material sandedMaterial;
 
-
         [Header("Magnetic Vortex Effects")]
         internal static GameObject vortexBlackholePrefab;
         internal static GameObject vortexExplosionEffect;
@@ -123,6 +122,8 @@ namespace AmpMod.Modules
         internal static GameObject strikeBlastPrefabRed;
         internal static GameObject strikeHover;
         internal static GameObject strikeHoverRed;
+        internal static GameObject strikeBoltPrefab;
+        internal static GameObject strikeBoltPrefabRed;
 
         [Header("Bulwark of Storms Effects")]
         internal static GameObject wormExplosionEffect;
@@ -994,6 +995,8 @@ namespace AmpMod.Modules
             electricStreamEffect = mainAssetBundle.LoadAsset<GameObject>("ElectricityStream");
             electricStreamEffectRed = mainAssetBundle.LoadAsset<GameObject>("ElectricityStreamRed");
 
+            PrefabAPI.RegisterNetworkPrefab(electricStreamEffect);
+            PrefabAPI.RegisterNetworkPrefab(electricStreamEffectRed);
             electricMuzzleEffect = mainAssetBundle.LoadAsset<GameObject>("FulminationMuzzleObject");
 
             //mainAssetBundle.LoadAsset<Material>("lightningEffect");
@@ -1002,6 +1005,8 @@ namespace AmpMod.Modules
             electricImpactEffect = LoadEffect("ElectricitySphere", null);
             electricImpactEffectRed = LoadEffect("ElectricitySphereRed", null);
 
+            AddNewEffectDef(electricImpactEffect);
+            AddNewEffectDef(electricImpactEffectRed);
             electricStreamEffectRed.AddComponent<NetworkIdentity>();
             electricStreamEffect.AddComponent<NetworkIdentity>();
 
@@ -1142,6 +1147,10 @@ namespace AmpMod.Modules
             strikeBlinkPrefab = mainAssetBundle.LoadAsset<GameObject>("StrikeBlinkEffect");
             strikeBlastPrefab = mainAssetBundle.LoadAsset<GameObject>("StrikeLandEffect");
             strikeHover = mainAssetBundle.LoadAsset<GameObject>("StrikeHover");
+            strikeBoltPrefab = mainAssetBundle.LoadAsset<GameObject>("StrikeBoltPrefab");
+
+
+            PrefabAPI.RegisterNetworkPrefab(strikeBoltPrefab);
 
             AddNewEffectDef(strikeBlastPrefab);
             AddNewEffectDef(strikeBlinkPrefab);

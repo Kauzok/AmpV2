@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e7ac62e178e9eb347b2bd1197ee55640, type: 3}
+        m_Texture: {fileID: 2800000, guid: 168f6b648fd82d84a9ebc2ca0b140af0, type: 3}
         m_Scale: {x: 1, y: 0.82}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
@@ -82,4 +82,4 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CutoffScroll: {r: 1, g: -44, b: 0, a: -333}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 0.3679245, g: 0.60046005, b: 1, a: 1}
+    - _TintColor: {r: 0.745283, g: 0.83862656, b: 1, a: 1}

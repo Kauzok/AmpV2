@@ -544,13 +544,15 @@ namespace AmpMod.Modules.Survivors
 
 
             #region ReformationSkin
-            Material golemSuitMat = Modules.Assets.CreateMaterial("MasteryAmp");
-            Material golemSwordMat = Modules.Assets.CreateMaterial("MasteryAmp");
+            //MasteryAmp
+            Material golemSuitMat = Modules.Assets.CreateMaterial("matEnel");
+            Material golemSwordMat = Modules.Assets.CreateMaterial("matEnel");
 
 
 
             CharacterModel.RendererInfo[] golemRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
             {
+                //golesuitMat, golemSwordMat
                 golemSuitMat,
                 golemSwordMat
 

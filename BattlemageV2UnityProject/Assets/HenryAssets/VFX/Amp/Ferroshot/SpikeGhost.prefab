@@ -4803,7 +4803,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3e9d092cefdc04f429f54b3392fa0de3, type: 2}
+  - {fileID: 2100000, guid: 600508e31e4078941962506c55ed755e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7629,7 +7629,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!1 &5903015992828247024
 GameObject:
   m_ObjectHideFlags: 0
@@ -7647,7 +7647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5510241895162561307
 Transform:
   m_ObjectHideFlags: 0
