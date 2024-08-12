@@ -16,7 +16,7 @@ namespace AmpMod.Modules
         public const string sandingDesc = "<style=cKeywordName>Sanding</style>" + "<style=cSub>Attacks cover enemies in iron sand, <style=cIsUtility>slowing</style> them. Hitting sanded enemies with <color=" + replenishColor + ">replenishing</color> attacks will heal bonus shields.";
         public const string replenishingDesc = "<style=cKeywordName>Replenishing</style>" + "<style=cSub>Attacks restore shield for <style=cIsDamage>20%</style> of the damage dealt. At <style=cIsUtility>full shields</style>, attacks spawn <style=cIsDamage>lightning bombs</style> for <style=cIsDamage>half of the original attack's damage</style>.";
         public const string doubleChargeDesc = "<style=cKeywordName>Double Charged</style>" + "<style=cSub>Applies two stacks of <color=#0091ff>charge</color> to an enemy.</style>";
-        public const string consumingDesc = "<style=cKeywordName>Consuming</style>" + "<style=cSub>Absorb an enemy's lifeforce, gaining bonus move and attack speed.</style>";
+        public const string consumingDesc = "<style=cKeywordName>Consuming</style>" + "<style=cSub>Absorb an enemy's lifeforce, converting it into electrical energy that is released as balls of lightning upon hitting enemies with your sword.</style>";
 
 
         public const string nemCharacterName = "Nemesis Amp";
@@ -99,6 +99,7 @@ namespace AmpMod.Modules
 
         [Header("Fulmination Values")]
         internal const float fulminationDamageCoefficient = 1.1f;
+        internal const float fulminationperSecondDamageCoefficient = 8f;
         internal const float fulminationTotalDamageCoefficient = 20f;
         internal const float fulminationChargeProcCoefficient = 25f;
 

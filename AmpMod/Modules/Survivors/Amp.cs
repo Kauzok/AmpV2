@@ -390,6 +390,7 @@ namespace AmpMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
                 //keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_DOUBLECHARGE" }
+                keywordTokens = new string[] { "KEYWORD_AGILE", prefix + "_AMP_BODY_KEYWORD_CONSUMING" }
 
 
             }); 

@@ -58,10 +58,16 @@ namespace AmpMod.Modules
             Language.Add(prefix + "SECONDARY_PLASMASLASH_OLD_DESCRIPTION", $"Perform a sweeping slash with your sword for <style=cIsDamage>{100f * StaticValues.spinSlashDamageCoefficient}%</style> damage, <style=cIsDamage>burning</style> enemies. If in the air, launch a <style=cIsDamage>burning</style> wave of plasma for <style=cIsDamage>{100f * StaticValues.fireBeamDamageCoefficient}%</style> damage. <color=#0091ff>Charged</color> & <color=#4cceff>electrified</color> enemies <style=cIsDamage>burn stronger</style>.");
             #endregion
 
-
             #region Utility2_OLD
             Language.Add(prefix + "UTILITY_BOOST_OLD_NAME", "Pulse Leap");
             Language.Add(prefix + "UTILITY_BOOST_OLD_DESCRIPTION", $"Magnetically <style=cIsUtility>boost</style> yourself forward, creating a <color=#0091ff>charged</color> explosion that deals <style=cIsDamage>{100f * StaticValues.boostDamageCoefficient}% damage</style>. Can boost up to <style=cIsUtility>3 times</style>.");
+            #endregion
+
+            #region Special1_OLD
+            Language.Add(prefix + "SPECIAL_CHAIN_NAME", "Fulmination");
+            Language.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a <style=cIsUtility>chaining</style> stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of being <color=#0091ff>charged</color>.");
+            Language.Add(prefix + "SPECIAL_CANCELCHAIN_NAME", "Cancel Fulmination");
+            Language.Add(prefix + "SPECIAL_CANCELCHAIN_DESCRIPTION", "Exit Fulmination early.");
             #endregion
 
             #region Special2_OLD
@@ -118,7 +124,7 @@ namespace AmpMod.Modules
 
             #region Special
             Language.Add(prefix + "SPECIAL_CHAIN_NAME", "Fulmination");
-            Language.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Fire a <style=cIsUtility>chaining</style> stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationTotalDamageCoefficient}% damage</style> and has a <style=cIsDamage>{StaticValues.fulminationChargeProcCoefficient}%</style> chance of being <color=#0091ff>charged</color>.");
+            Language.Add(prefix + "SPECIAL_CHAIN_DESCRIPTION", Helpers.agilePrefix + $"Burn shields to fire a <style=cIsUtility>chaining</style> stream of electricity that deals <style=cIsDamage>{100f * StaticValues.fulminationDamageCoefficient}% damage</style>. While firing, Amp gains <style=cIsUtility>increased movement speed</style> and the ability to <style=cIsUtility>hover</style>.");
             Language.Add(prefix + "SPECIAL_CANCELCHAIN_NAME", "Cancel Fulmination");
             Language.Add(prefix + "SPECIAL_CANCELCHAIN_DESCRIPTION", "Exit Fulmination early.");
             #endregion
@@ -131,7 +137,7 @@ namespace AmpMod.Modules
 
             #region Special3
             Language.Add(prefix + "SPECIAL_WORM_NAME", "All-Consuming Storm");
-            Language.Add(prefix + "SPECIAL_WORM_DESCRIPTION", $"<style=cIsUtility>Summon</style> an <style=cIsDamage>overloading worm</style> on a targeted area for <style=cIsDamage>{100f * StaticValues.wormEatDamageCoefficient}% damage</style>, <style=cIsUtility>consuming</style> low health enemies.");
+            Language.Add(prefix + "SPECIAL_WORM_DESCRIPTION", $"<style=cIsUtility>Summon</style> an <style=cIsDamage>overloading worm</style> on a targeted area for <style=cIsDamage>{100f * StaticValues.wormEatDamageCoefficient}% damage</style>, <color=#c70039>consuming</color> low health enemies.");
             #endregion
 
             #region Achievements
