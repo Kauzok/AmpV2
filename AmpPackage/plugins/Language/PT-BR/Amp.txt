@@ -53,12 +53,15 @@
     "NT_AMP_BODY_GRANDMASTERY" : "Amp: Grand Mastery",
     "NT_NEMAMP_BODY_DEFAULT_SKIN_NAME" : "Default",
     "NT_NEMAMP_BODY_MASTERY_SKIN_NAME" : "Origin",
-    "NT_NEMAMP_BODY_NAME" : "Nemesis Amp",
-    "NT_NEMAMP_BODY_SUBTITLE" : "Avatar of the Storm",
+
+
+
+    "NT_NEMAMP_BODY_NAME" : "Nêmesis Amp",
+    "NT_NEMAMP_BODY_SUBTITLE" : "Avatar da Tempestade",
     "NT_NEMAMP_BODY_DESCRIPTION" : "Nemesis Amp harnesses the destructive power of electromagnetism to burst down enemies and bosses at the speed of lightning.<color=#CCD3E0>\n\n< ! > Gathering Storm rewards staying in the fight and precisely timing your abilities - cooldown reduction items are highly recommended! \n\n< ! > Using Furious Spark in mid-air allows Nemesis Amp to float temporarily; use this to freely reposition while setting up your next attack. \n\n< ! > Static Field will hurt and slow all enemies within the sphere, so lure them in and line them up for a blast with Furious Spark.\n\n< ! > Voltaic Onslaught can be used simultaneously with any of Nemesis Amp's abilities, allowing you to smite your enemies at any time.\n\n",
     "NT_NEMAMP_BODY_OUTRO_FLAVOR" : "..and so he left, with undeniable power.",
     "NT_NEMAMP_BODY_LORE" : "Fascinating. \n\nIt was a shame that the guardian of this planet had perished. His constructs were unlike anything in the universe, the masterful weaving of soul beyond the capabilities of even [those who live in nothingness]. But now he is gone, and his brother, his only equal in craftsmanship, rejects the use of soul in his constructs, creating servants bereft of will and consciousness. \n\nYet a new construct appears. \n\n[The inhabitants of the abyss] met him on the planet. He felt them boring into his mind, a psionic attack that he was not prepared for. But he had become accustomed to his powers, and he protected his mind with an electric field while he made quick work of the [creature of cursed knowledge]. But he did not expect a suicide attack. \n\nCaptive once more. \n\nThey relentlessly experimented on the living, breathing, embodiment of electromagnetism, who rippled with the power of soul. They did so clinically, analytically, and yet with twisted excitement at finding a specimen possessing a portion of the bulwark’s power. \n\nHe feels it all. \n\nIn his abyssal cell there is nothing to see but darkness. No sound but the mechanical whirs of their scans. No feeling but the all-encompassing pain as [they who live in between] infect him with their own essence. But worse than the pain is the knowledge that he is once again, a prisoner. Once again, controlled by another. Once again. Once again. Once again. \n\nNever again. \n\nAnd when the [watchers of eternity] make the mistake of attempting to extract his power, of forgetting only two possessed the skill to direct unrestricted soul, he does not miss his chance. Atop the electrified rubble that was once his prison, he gazes upon the infinite sky, before turning his eyes to the wardens who have appeared to return him to his confinement. \n\nAnd he makes a promise. \n\nThe storm will rage until not even nothingness remains. \n\n",
-    "NT_NEMAMP_BODY_OUTRO_FAILURE" : "..and so he returned, his revenge tragically incomplete.",
+    "NT_NEMAMP_BODY_OUTRO_FAILURE" : "... e assim retornou, sua vingança tragiamente incompleta.",
     "NT_NEMAMP_BODY_PASSIVE_NAME" : "Gathering Storm",
     "NT_NEMAMP_BODY_PASSIVE_DESCRIPTION" : "Using a skill <style=cIsUtility>within 3 seconds</style> after using a different skill will <style=cIsDamage>increase its damage by 10%</style>, with a maximum bonus of <style=cIsDamage>100%</style>.",
     "NT_NEMAMP_BODY_PRIMARY_LIGHTNING_NAME" : "Fulmination",
